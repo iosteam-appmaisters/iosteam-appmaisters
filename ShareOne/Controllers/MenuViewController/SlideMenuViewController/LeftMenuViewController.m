@@ -6,10 +6,6 @@
 #import "ShareOneUtility.h"
 #import "SideMenuCell.h"
 
-
-//static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
-
-
 @interface LeftMenuViewController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) NSArray *contentArr;
@@ -38,7 +34,6 @@
     _contentArr= [ShareOneUtility getSideMenuDataFromPlist];
     
     self.fzaTblView.allowMultipleSectionsOpen = YES;
-//    [self.fzaTblView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellReuseIdentifier];
     [self.fzaTblView registerNib:[UINib nibWithNibName:@"AccordionHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:kAccordionHeaderViewReuseIdentifier];
 
 
