@@ -7,25 +7,97 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999A1D9135B000157320 /* AccordionHeaderView.m */; };
+		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
+		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
+		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
+		3947D749F833D911D04E3838 /* Pods_ShareOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */; };
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
 		6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058E1D81B59300358036 /* AppDelegate.m */; };
-		6BD405921D81B59300358036 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405911D81B59300358036 /* ViewController.m */; };
 		6BD405951D81B59300358036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD405931D81B59300358036 /* Main.storyboard */; };
 		6BD405971D81B59300358036 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD405961D81B59300358036 /* Assets.xcassets */; };
 		6BD4059A1D81B59300358036 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD405981D81B59300358036 /* LaunchScreen.storyboard */; };
+		6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405B11D81B92E00358036 /* LeftMenuViewController.m */; };
+		6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405B51D829FAA00358036 /* BaseViewController.m */; };
+		6BD405BC1D82B08900358036 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405BB1D82B08900358036 /* Validation.m */; };
+		6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C11D82C93700358036 /* AppServiceModel.m */; };
+		6BD405C51D82C94300358036 /* SignInModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C41D82C94300358036 /* SignInModel.m */; };
+		6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */; };
+		6BD405CC1D82CA7200358036 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405CB1D82CA7200358036 /* User.m */; };
+		6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405D61D8306AC00358036 /* BranchLocationViewController.m */; };
+		6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405D91D8306C800358036 /* LoginViewController.m */; };
+		6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405DC1D8306D900358036 /* ForgotPasswordViewController.m */; };
+		6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405DF1D8306EC00358036 /* QuickBalancesViewController.m */; };
+		6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E21D83070B00358036 /* SendMoneyViewController.m */; };
+		6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E51D83071D00358036 /* SettingsViewController.m */; };
+		6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E81D83073700358036 /* SocialMediaViewController.m */; };
+		6BD405EC1D83074600358036 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EB1D83074600358036 /* SplashViewController.m */; };
+		6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */; };
+		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
+		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
+		6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* SlideMenu.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D2399991D9135B000157320 /* AccordionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionHeaderView.h; sourceTree = "<group>"; };
+		1D23999A1D9135B000157320 /* AccordionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionHeaderView.m; sourceTree = "<group>"; };
+		1D23999B1D9135B000157320 /* AccordionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionHeaderView.xib; sourceTree = "<group>"; };
+		1D23999E1D913C8C00157320 /* ShareOneUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareOneUtility.h; sourceTree = "<group>"; };
+		1D23999F1D913C8C00157320 /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
+		1D2399A11D9169CF00157320 /* SideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuCell.h; sourceTree = "<group>"; };
+		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
+		1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationDelegate.h; sourceTree = "<group>"; };
+		6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD405871D81B59200358036 /* ShareOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD4058B1D81B59200358036 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD4058D1D81B59300358036 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD4058E1D81B59300358036 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6BD405901D81B59300358036 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6BD405911D81B59300358036 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6BD405941D81B59300358036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6BD405961D81B59300358036 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BD405991D81B59300358036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BD4059B1D81B59300358036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BD405B01D81B92E00358036 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		6BD405B11D81B92E00358036 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		6BD405B41D829FAA00358036 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		6BD405B51D829FAA00358036 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		6BD405BA1D82B08900358036 /* Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Validation.h; sourceTree = "<group>"; };
+		6BD405BB1D82B08900358036 /* Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Validation.m; sourceTree = "<group>"; };
+		6BD405BD1D82B09700358036 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		6BD405BE1D82B09700358036 /* Services.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Services.h; sourceTree = "<group>"; };
+		6BD405BF1D82B09700358036 /* SignInModuleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInModuleConstants.h; sourceTree = "<group>"; };
+		6BD405C01D82C93700358036 /* AppServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppServiceModel.h; sourceTree = "<group>"; };
+		6BD405C11D82C93700358036 /* AppServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppServiceModel.m; sourceTree = "<group>"; };
+		6BD405C31D82C94300358036 /* SignInModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInModel.h; sourceTree = "<group>"; };
+		6BD405C41D82C94300358036 /* SignInModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInModel.m; sourceTree = "<group>"; };
+		6BD405C61D82CA2F00358036 /* UtilitiesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilitiesHelper.h; sourceTree = "<group>"; };
+		6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilitiesHelper.m; sourceTree = "<group>"; };
+		6BD405CA1D82CA7200358036 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		6BD405CB1D82CA7200358036 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		6BD405D51D8306AC00358036 /* BranchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationViewController.h; sourceTree = "<group>"; };
+		6BD405D61D8306AC00358036 /* BranchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationViewController.m; sourceTree = "<group>"; };
+		6BD405D81D8306C800358036 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		6BD405D91D8306C800358036 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		6BD405DB1D8306D900358036 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		6BD405DC1D8306D900358036 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		6BD405DE1D8306EC00358036 /* QuickBalancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickBalancesViewController.h; sourceTree = "<group>"; };
+		6BD405DF1D8306EC00358036 /* QuickBalancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBalancesViewController.m; sourceTree = "<group>"; };
+		6BD405E11D83070B00358036 /* SendMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMoneyViewController.h; sourceTree = "<group>"; };
+		6BD405E21D83070B00358036 /* SendMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMoneyViewController.m; sourceTree = "<group>"; };
+		6BD405E41D83071D00358036 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		6BD405E51D83071D00358036 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		6BD405E71D83073700358036 /* SocialMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMediaViewController.h; sourceTree = "<group>"; };
+		6BD405E81D83073700358036 /* SocialMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaViewController.m; sourceTree = "<group>"; };
+		6BD405EA1D83074600358036 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		6BD405EB1D83074600358036 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		6BD405ED1D83077D00358036 /* SurchargeAtmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurchargeAtmsViewController.h; sourceTree = "<group>"; };
+		6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurchargeAtmsViewController.m; sourceTree = "<group>"; };
+		6BD405F01D83079100358036 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		6BD405F11D83079100358036 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		6BD405F41D8307DF00358036 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		6BD405F51D8307DF00358036 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		6BD433DA1D8C09C30067515A /* SlideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SlideMenu.plist; sourceTree = "<group>"; };
+		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
+		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +105,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3947D749F833D911D04E3838 /* Pods_ShareOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DDC9E5B1D910BC30049DAD4 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		6BD4057E1D81B59200358036 = {
 			isa = PBXGroup;
 			children = (
 				6BD405891D81B59200358036 /* ShareOne */,
 				6BD405881D81B59200358036 /* Products */,
+				DCE61F0EA6E37C18C6765C07 /* Pods */,
+				88BB98E136A282A5D9BC05EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +141,18 @@
 		6BD405891D81B59200358036 /* ShareOne */ = {
 			isa = PBXGroup;
 			children = (
+				1DDC9E5B1D910BC30049DAD4 /* Delegates */,
+				6BD405A11D81B5FC00358036 /* Cells */,
+				6BD405A21D81B5FC00358036 /* Constants */,
+				6BD405A31D81B5FC00358036 /* Controllers */,
+				6BD405A61D81B5FC00358036 /* Entity */,
+				6BD405A71D81B5FC00358036 /* Model */,
+				6BD405AA1D81B5FC00358036 /* Reusable Components */,
+				6BD405AC1D81B5FC00358036 /* Utility */,
+				6BD405AD1D81B5FC00358036 /* Validation */,
+				6BD405AE1D81B5FC00358036 /* Views */,
 				6BD4058D1D81B59300358036 /* AppDelegate.h */,
 				6BD4058E1D81B59300358036 /* AppDelegate.m */,
-				6BD405901D81B59300358036 /* ViewController.h */,
-				6BD405911D81B59300358036 /* ViewController.m */,
 				6BD405931D81B59300358036 /* Main.storyboard */,
 				6BD405961D81B59300358036 /* Assets.xcassets */,
 				6BD405981D81B59300358036 /* LaunchScreen.storyboard */,
@@ -75,8 +166,263 @@
 			isa = PBXGroup;
 			children = (
 				6BD4058B1D81B59200358036 /* main.m */,
+				6BD433DA1D8C09C30067515A /* SlideMenu.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6BD405A11D81B5FC00358036 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1D2399991D9135B000157320 /* AccordionHeaderView.h */,
+				1D23999A1D9135B000157320 /* AccordionHeaderView.m */,
+				1D23999B1D9135B000157320 /* AccordionHeaderView.xib */,
+				1D2399A11D9169CF00157320 /* SideMenuCell.h */,
+				1D2399A21D9169CF00157320 /* SideMenuCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6BD405A21D81B5FC00358036 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405BD1D82B09700358036 /* Constants.h */,
+				6BD405BE1D82B09700358036 /* Services.h */,
+				6BD405BF1D82B09700358036 /* SignInModuleConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		6BD405A31D81B5FC00358036 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405A41D81B5FC00358036 /* BaseViewController */,
+				6BD405A51D81B5FC00358036 /* MenuViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6BD405A41D81B5FC00358036 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405B41D829FAA00358036 /* BaseViewController.h */,
+				6BD405B51D829FAA00358036 /* BaseViewController.m */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405F31D8307C800358036 /* WebViewController */,
+				6BD405CD1D83068D00358036 /* BranchLocationViewController */,
+				6BD405CE1D83068D00358036 /* LoginViewController */,
+				6BD405CF1D83068D00358036 /* QuickBalancesViewController */,
+				6BD405D01D83068D00358036 /* SendMoneyViewController */,
+				6BD405D11D83068D00358036 /* SettingsViewController */,
+				6BD405D21D83068D00358036 /* SocialMediaViewController */,
+				6BD405D31D83068D00358036 /* SplashViewController */,
+				6BD405D41D83068D00358036 /* SurchargeAtmsViewController */,
+				6BD405B31D829EBA00358036 /* HomeViewController */,
+				6BD405AF1D81B91E00358036 /* SlideMenuViewController */,
+			);
+			path = MenuViewController;
+			sourceTree = "<group>";
+		};
+		6BD405A61D81B5FC00358036 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405C91D82CA7200358036 /* UserEntity */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		6BD405A71D81B5FC00358036 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405A81D81B5FC00358036 /* ServiceModel */,
+				6BD405A91D81B5FC00358036 /* SignInModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6BD405A81D81B5FC00358036 /* ServiceModel */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405C01D82C93700358036 /* AppServiceModel.h */,
+				6BD405C11D82C93700358036 /* AppServiceModel.m */,
+			);
+			path = ServiceModel;
+			sourceTree = "<group>";
+		};
+		6BD405A91D81B5FC00358036 /* SignInModel */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405C31D82C94300358036 /* SignInModel.h */,
+				6BD405C41D82C94300358036 /* SignInModel.m */,
+			);
+			path = SignInModel;
+			sourceTree = "<group>";
+		};
+		6BD405AA1D81B5FC00358036 /* Reusable Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		6BD405AC1D81B5FC00358036 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405C61D82CA2F00358036 /* UtilitiesHelper.h */,
+				6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */,
+				1D23999E1D913C8C00157320 /* ShareOneUtility.h */,
+				1D23999F1D913C8C00157320 /* ShareOneUtility.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		6BD405AD1D81B5FC00358036 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405BA1D82B08900358036 /* Validation.h */,
+				6BD405BB1D82B08900358036 /* Validation.m */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		6BD405AE1D81B5FC00358036 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6BD405AF1D81B91E00358036 /* SlideMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405B01D81B92E00358036 /* LeftMenuViewController.h */,
+				6BD405B11D81B92E00358036 /* LeftMenuViewController.m */,
+			);
+			path = SlideMenuViewController;
+			sourceTree = "<group>";
+		};
+		6BD405B31D829EBA00358036 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405F01D83079100358036 /* HomeViewController.h */,
+				6BD405F11D83079100358036 /* HomeViewController.m */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		6BD405C91D82CA7200358036 /* UserEntity */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405CA1D82CA7200358036 /* User.h */,
+				6BD405CB1D82CA7200358036 /* User.m */,
+			);
+			path = UserEntity;
+			sourceTree = "<group>";
+		};
+		6BD405CD1D83068D00358036 /* BranchLocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405D51D8306AC00358036 /* BranchLocationViewController.h */,
+				6BD405D61D8306AC00358036 /* BranchLocationViewController.m */,
+			);
+			path = BranchLocationViewController;
+			sourceTree = "<group>";
+		};
+		6BD405CE1D83068D00358036 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405D81D8306C800358036 /* LoginViewController.h */,
+				6BD405D91D8306C800358036 /* LoginViewController.m */,
+				6BD405DB1D8306D900358036 /* ForgotPasswordViewController.h */,
+				6BD405DC1D8306D900358036 /* ForgotPasswordViewController.m */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		6BD405CF1D83068D00358036 /* QuickBalancesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405DE1D8306EC00358036 /* QuickBalancesViewController.h */,
+				6BD405DF1D8306EC00358036 /* QuickBalancesViewController.m */,
+			);
+			path = QuickBalancesViewController;
+			sourceTree = "<group>";
+		};
+		6BD405D01D83068D00358036 /* SendMoneyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405E11D83070B00358036 /* SendMoneyViewController.h */,
+				6BD405E21D83070B00358036 /* SendMoneyViewController.m */,
+			);
+			path = SendMoneyViewController;
+			sourceTree = "<group>";
+		};
+		6BD405D11D83068D00358036 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405E41D83071D00358036 /* SettingsViewController.h */,
+				6BD405E51D83071D00358036 /* SettingsViewController.m */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		6BD405D21D83068D00358036 /* SocialMediaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405E71D83073700358036 /* SocialMediaViewController.h */,
+				6BD405E81D83073700358036 /* SocialMediaViewController.m */,
+			);
+			path = SocialMediaViewController;
+			sourceTree = "<group>";
+		};
+		6BD405D31D83068D00358036 /* SplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405EA1D83074600358036 /* SplashViewController.h */,
+				6BD405EB1D83074600358036 /* SplashViewController.m */,
+			);
+			path = SplashViewController;
+			sourceTree = "<group>";
+		};
+		6BD405D41D83068D00358036 /* SurchargeAtmsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405ED1D83077D00358036 /* SurchargeAtmsViewController.h */,
+				6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */,
+			);
+			path = SurchargeAtmsViewController;
+			sourceTree = "<group>";
+		};
+		6BD405F31D8307C800358036 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6BD405F41D8307DF00358036 /* WebViewController.h */,
+				6BD405F51D8307DF00358036 /* WebViewController.m */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCE61F0EA6E37C18C6765C07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */,
+				814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +432,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6BD4059E1D81B59300358036 /* Build configuration list for PBXNativeTarget "ShareOne" */;
 			buildPhases = (
+				AB9E1443137F2B82276F3EAF /* [CP] Check Pods Manifest.lock */,
 				6BD405831D81B59200358036 /* Sources */,
 				6BD405841D81B59200358036 /* Frameworks */,
 				6BD405851D81B59200358036 /* Resources */,
+				834F6DE2AAE547ADFA1D690D /* [CP] Embed Pods Frameworks */,
+				85AF07800BA45A56C7FF9023 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -110,6 +459,7 @@
 				TargetAttributes = {
 					6BD405861D81B59200358036 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = C96T5T6GY6;
 					};
 				};
 			};
@@ -138,19 +488,89 @@
 			files = (
 				6BD4059A1D81B59300358036 /* LaunchScreen.storyboard in Resources */,
 				6BD405971D81B59300358036 /* Assets.xcassets in Resources */,
+				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
+				6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		834F6DE2AAE547ADFA1D690D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85AF07800BA45A56C7FF9023 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB9E1443137F2B82276F3EAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6BD405831D81B59200358036 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BD405921D81B59300358036 /* ViewController.m in Sources */,
+				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
+				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
+				6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */,
+				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
+				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
+				6BD405CC1D82CA7200358036 /* User.m in Sources */,
+				6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */,
+				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
+				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
+				6BD405C51D82C94300358036 /* SignInModel.m in Sources */,
 				6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */,
+				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
+				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
+				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
+				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
+				6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */,
+				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
+				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
+				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
+				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
+				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,7 +615,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -217,6 +638,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -240,7 +662,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -255,6 +678,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -263,23 +687,31 @@
 		};
 		6BD4059F1D81B59300358036 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = application.ShareOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AM.InsectID;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
 			};
 			name = Debug;
 		};
 		6BD405A01D81B59300358036 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = application.ShareOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AM.InsectID;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
 			};
 			name = Release;
 		};
@@ -302,6 +734,7 @@
 				6BD405A01D81B59300358036 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
