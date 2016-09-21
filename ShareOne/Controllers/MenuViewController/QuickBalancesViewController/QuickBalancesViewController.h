@@ -8,6 +8,12 @@
 
 #import "BaseViewController.h"
 
-@interface QuickBalancesViewController : BaseViewController
+@interface QuickBalancesViewController : UIViewController
+
+
+@property (nonatomic, weak) IBOutlet UITableView *qbTblView;
+@property (nonatomic, strong) NSArray *qbArr;
+
+- (IBAction)dismissQuickBalances:(id)sender;
 
 @end

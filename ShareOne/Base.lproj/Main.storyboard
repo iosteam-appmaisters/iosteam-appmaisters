@@ -238,7 +238,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KP-5D-dKz">
-                                        <rect key="frame" x="282" y="287" width="97" height="22"/>
+                                        <rect key="frame" x="280" y="287" width="99" height="22"/>
                                         <state key="normal" image="Apply_Button"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="PU8-PD-iqw"/>
@@ -255,7 +255,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAv-Pg-6fu">
-                                        <rect key="frame" x="282" y="307" width="53" height="22"/>
+                                        <rect key="frame" x="280" y="307" width="55" height="22"/>
                                         <state key="normal" image="Contact_Button"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="fMR-iq-Zbq"/>
@@ -329,6 +329,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vw2-JE-87t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="766.93333333333328" y="-263.17333333333335"/>
+        </scene>
+        <!--Quick Balances View Controller-->
+        <scene sceneID="W0e-kr-xwh">
+            <objects>
+                <viewController storyboardIdentifier="QuickBalancesViewController" id="k5u-Wq-QWs" customClass="QuickBalancesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Orl-Qi-BKk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dxg-iw-aOG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zs7-ky-beG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61q-bp-SPv">
+                                <rect key="frame" x="0.0" y="20" width="414" height="49"/>
+                                <state key="normal" image="qbDownIcon"/>
+                                <connections>
+                                    <action selector="dismissQuickBalances:" destination="k5u-Wq-QWs" eventType="touchUpInside" id="hrf-an-EXu"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ii0-5V-DRE">
+                                <rect key="frame" x="0.0" y="120" width="414" height="616"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBHeaderCell" id="b4Y-Me-nIs" customClass="QBHeaderCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b4Y-Me-nIs" id="D93-Da-rgD">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fn6-KT-01f">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.61568627450980395" green="0.082352941176470587" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="fn6-KT-01f" firstAttribute="leading" secondItem="D93-Da-rgD" secondAttribute="leading" id="ABD-NX-tmc"/>
+                                                <constraint firstAttribute="bottom" secondItem="fn6-KT-01f" secondAttribute="bottom" id="mCP-El-br2"/>
+                                                <constraint firstItem="fn6-KT-01f" firstAttribute="top" secondItem="D93-Da-rgD" secondAttribute="top" id="pW4-4R-9gR"/>
+                                                <constraint firstAttribute="trailing" secondItem="fn6-KT-01f" secondAttribute="trailing" id="yku-ha-AYU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBDetailsCell" id="buQ-l2-5k5" customClass="QBDetailsCell">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buQ-l2-5k5" id="19o-db-txP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ii0-5V-DRE" firstAttribute="leading" secondItem="Zs7-ky-beG" secondAttribute="leading" id="6hE-Up-Yj4"/>
+                            <constraint firstItem="Dxg-iw-aOG" firstAttribute="top" secondItem="ii0-5V-DRE" secondAttribute="bottom" id="FFH-pw-rOm"/>
+                            <constraint firstItem="61q-bp-SPv" firstAttribute="leading" secondItem="Zs7-ky-beG" secondAttribute="leading" id="GjO-r6-7PJ"/>
+                            <constraint firstAttribute="trailing" secondItem="61q-bp-SPv" secondAttribute="trailing" id="Gki-0b-jCV"/>
+                            <constraint firstAttribute="trailing" secondItem="ii0-5V-DRE" secondAttribute="trailing" id="Nz1-pI-g6p"/>
+                            <constraint firstItem="61q-bp-SPv" firstAttribute="top" secondItem="Orl-Qi-BKk" secondAttribute="bottom" id="UHg-Ws-SGt"/>
+                            <constraint firstItem="ii0-5V-DRE" firstAttribute="top" secondItem="Orl-Qi-BKk" secondAttribute="bottom" constant="100" id="eOo-Bv-LPr"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Shx-xF-jla" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260" y="-264"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G2N-00-CXf">
@@ -508,17 +580,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Apply_Button" width="97" height="10"/>
+        <image name="Apply_Button" width="99" height="10"/>
         <image name="Branch_Button" width="99" height="8"/>
-        <image name="Contact_Button" width="53" height="8"/>
+        <image name="Contact_Button" width="55" height="8"/>
         <image name="FingerPrint_Button" width="205" height="37"/>
         <image name="Join_Button" width="125" height="8"/>
         <image name="Lock_icon" width="37" height="37"/>
-        <image name="Login_Button" width="333" height="40"/>
-        <image name="QuickBalance_Button" width="414" height="48"/>
+        <image name="Login_Button" width="333" height="41"/>
+        <image name="QuickBalance_Button" width="414" height="49"/>
         <image name="Rembember_Box" width="16" height="16"/>
         <image name="UserID_icon" width="37" height="37"/>
         <image name="menu_branch_location_icon" width="24" height="23"/>
+        <image name="qbDownIcon" width="414" height="49"/>
         <image name="splash" width="414" height="736"/>
         <image name="top_Banner" width="414" height="299"/>
         <image name="top_logo" width="194" height="60"/>

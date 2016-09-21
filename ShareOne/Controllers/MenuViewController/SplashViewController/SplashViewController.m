@@ -27,7 +27,7 @@
 
 -(void)showNextViewController{
     
-    if(![SignInModel checkUserData]){
+    if([SignInModel checkUserData]){
         UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
         homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
         [self presentViewController:homeNavigationViewController animated:YES completion:nil];

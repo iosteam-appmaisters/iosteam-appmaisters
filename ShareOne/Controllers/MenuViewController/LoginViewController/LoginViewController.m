@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "QuickBalancesViewController.h"
 
 @interface LoginViewController ()
 
@@ -47,5 +48,7 @@
 }
 
 - (IBAction)quickBalanceButtonClicked:(id)sender {
+    QuickBalancesViewController* objQuickBalancesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickBalancesViewController"];
+    [self presentViewController:objQuickBalancesViewController animated:YES completion:nil];
 }
 @end

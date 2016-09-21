@@ -11,6 +11,8 @@
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
+		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
+		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
 		3947D749F833D911D04E3838 /* Pods_ShareOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */; };
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
 		6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058E1D81B59300358036 /* AppDelegate.m */; };
@@ -46,6 +48,10 @@
 		1D23999F1D913C8C00157320 /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
 		1D2399A11D9169CF00157320 /* SideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuCell.h; sourceTree = "<group>"; };
 		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
+		1D8478E41D92949400153B19 /* QBHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHeaderCell.h; sourceTree = "<group>"; };
+		1D8478E51D92949400153B19 /* QBHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBHeaderCell.m; sourceTree = "<group>"; };
+		1D8478E71D9294EC00153B19 /* QBDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBDetailsCell.h; sourceTree = "<group>"; };
+		1D8478E81D9294EC00153B19 /* QBDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBDetailsCell.m; sourceTree = "<group>"; };
 		1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationDelegate.h; sourceTree = "<group>"; };
 		6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD405871D81B59200358036 /* ShareOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +185,10 @@
 				1D23999B1D9135B000157320 /* AccordionHeaderView.xib */,
 				1D2399A11D9169CF00157320 /* SideMenuCell.h */,
 				1D2399A21D9169CF00157320 /* SideMenuCell.m */,
+				1D8478E41D92949400153B19 /* QBHeaderCell.h */,
+				1D8478E51D92949400153B19 /* QBHeaderCell.m */,
+				1D8478E71D9294EC00153B19 /* QBDetailsCell.h */,
+				1D8478E81D9294EC00153B19 /* QBDetailsCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -554,6 +564,7 @@
 				6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */,
 				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
+				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
 				6BD405CC1D82CA7200358036 /* User.m in Sources */,
 				6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */,
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
@@ -570,6 +581,7 @@
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
+				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
 			);
