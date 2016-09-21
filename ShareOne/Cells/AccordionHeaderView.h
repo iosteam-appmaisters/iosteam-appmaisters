@@ -17,6 +17,8 @@ static NSString *const kAccordionHeaderViewReuseIdentifier = @"AccordionHeaderVi
 @property (nonatomic,weak) IBOutlet UIImageView *sectionImageVw;
 @property (nonatomic,weak) IBOutlet UIView *topSeperatorView;
 @property (nonatomic,weak) IBOutlet UIImageView *arrowImageView;
+@property (nonatomic,weak) IBOutlet UIButton *contentButton;
+
 
 
 

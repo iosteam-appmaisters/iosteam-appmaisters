@@ -136,14 +136,12 @@
     [objFZAccordionTableViewHeaderView.sectionTitle setText:[dict valueForKey:MAIN_CAT_TITLE]];
     [objFZAccordionTableViewHeaderView.sectionImageVw setImage:[UIImage imageNamed:[dict valueForKey:MAIN_CAT_IMAGE]]];
     return (UIView *)objFZAccordionTableViewHeaderView;
-    
-    //    UIButton *cellButton = (UIButton*)[cell viewWithTag:1];
-    //    [cellButton addTarget:self action:@selector(premiumSectionClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"didSelectRowAtIndexPath");
+//    NSLog(@"didSelectRowAtIndexPath");
     [self backgroundButtonClicked:indexPath];
 }
 
@@ -151,6 +149,12 @@
 
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 //    NSLog(@"willOpenSection");
+    NSDictionary *dict = _contentArr[section];
+    NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
+    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]==0){
+        [self backgroundButtonClicked:[NSIndexPath indexPathForRow:0 inSection:section]];
+    }
+
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
