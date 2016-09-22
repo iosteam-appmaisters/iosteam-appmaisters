@@ -33,6 +33,10 @@
 
 - (IBAction)loginButtonClicked:(id)sender {
     
+    UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+    homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+
 }
 
 - (IBAction)forgotPasswordButtonClicked:(id)sender {

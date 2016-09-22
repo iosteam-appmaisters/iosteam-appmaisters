@@ -9,6 +9,9 @@
 #import "QuickBalancesViewController.h"
 #import "QBHeaderCell.h"
 #import "QBDetailsCell.h"
+#import "ShareOneUtility.h"
+
+
 
 @implementation QuickBalancesViewController
 
@@ -17,19 +20,18 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    _qbArr = [ShareOneUtility getDummyDataForQB];
+}
 
-#pragma mark - UITableView Delegate Methods
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    int subCatCount = 0;
     NSDictionary *dict = _qbArr[section];
-    NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
-    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0)
-        subCatCount = [subCatArr count];
-    
-    return subCatCount;
+    NSArray *array = [dict valueForKey:@"section_details"];
+    return  [array count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -37,11 +39,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0;
+    return 25.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44.0;
+    return 25.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,15 +56,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QBDetailsCell *cell =  (QBDetailsCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([QBDetailsCell class]) forIndexPath:indexPath];
+    if(indexPath.row%2==0){
+        [cell.contentView setBackgroundColor:DEFAULT_COLOR_WHITE];
+    }
+    else{
+        [cell.contentView setBackgroundColor:DEFAULT_COLOR_GRAY];
+    }
+    
+    NSDictionary *dict = _qbArr[indexPath.section];
+    NSArray *array = [dict valueForKey:@"section_details"];
+    NSDictionary *detailsDict = array[indexPath.row];
+    [cell.tranTitleLbl setText:[detailsDict valueForKey:@"tran_title"]];
+    [cell.tranDateLbl setText:[detailsDict valueForKey:@"tran_date"]];
+    [cell.tranAmountLbl setText:[detailsDict valueForKey:@"tran_amt"]];
     
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    QBHeaderCell *objFZAccordionTableViewHeaderView =(QBHeaderCell *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([QBHeaderCell class])];
-    
-    return (UIView *)objFZAccordionTableViewHeaderView;
+    NSDictionary *dict =_qbArr[section];
+    QBHeaderCell *objQBHeaderCell = (QBHeaderCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([QBHeaderCell class])];
+    [objQBHeaderCell.sectionTitleLbl setText:[dict valueForKey:@"section_title"]];
+    [objQBHeaderCell.sectionAmountLbl setText:[dict valueForKey:@"section_amt"]];
+    return (UIView *)objQBHeaderCell;
 }
 
 

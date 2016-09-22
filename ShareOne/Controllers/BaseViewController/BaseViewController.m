@@ -140,8 +140,29 @@
 
 - (void)pushViewControllerWithObject:(NSDictionary *)dict{
 
-    WebViewController* objWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [self.navigationController pushViewController:objWebViewController animated:NO];
+    if([[dict valueForKey:CONTROLLER_NAME] length]>0){
+        UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
+        [self.navigationController pushViewController:objUIViewController animated:YES];
+    }
+    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Log Off"]){
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] uppercaseString]
+                                                                       message:@"ARE YOU SURE YOU WANT TO LOG OFF?"
+                                                                preferredStyle:UIAlertControllerStyleAlert]; // 1
+        UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Stay in "
+                                                              style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                                                                  NSLog(@"You pressed button one");
+                                                              }]; // 2
+        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Logout"
+                                                               style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                                                                   [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+                                                               }]; // 3
+        
+        [alert addAction:firstAction]; // 4
+        [alert addAction:secondAction]; // 5
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 @end

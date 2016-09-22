@@ -13,6 +13,8 @@
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
+		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
+		1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBD76A1D93F58600277DF6 /* PayPersonController.m */; };
 		3947D749F833D911D04E3838 /* Pods_ShareOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */; };
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
 		6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058E1D81B59300358036 /* AppDelegate.m */; };
@@ -52,7 +54,11 @@
 		1D8478E51D92949400153B19 /* QBHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBHeaderCell.m; sourceTree = "<group>"; };
 		1D8478E71D9294EC00153B19 /* QBDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBDetailsCell.h; sourceTree = "<group>"; };
 		1D8478E81D9294EC00153B19 /* QBDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBDetailsCell.m; sourceTree = "<group>"; };
+		1D8478EC1D93D6BA00153B19 /* MobileDepositController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileDepositController.h; sourceTree = "<group>"; };
+		1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileDepositController.m; sourceTree = "<group>"; };
 		1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationDelegate.h; sourceTree = "<group>"; };
+		1DEBD7691D93F58600277DF6 /* PayPersonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPersonController.h; sourceTree = "<group>"; };
+		1DEBD76A1D93F58600277DF6 /* PayPersonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPersonController.m; sourceTree = "<group>"; };
 		6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD405871D81B59200358036 /* ShareOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD4058B1D81B59200358036 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -118,12 +124,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D8478EB1D93D68400153B19 /* MobileDepositController */ = {
+			isa = PBXGroup;
+			children = (
+				1D8478EC1D93D6BA00153B19 /* MobileDepositController.h */,
+				1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */,
+			);
+			path = MobileDepositController;
+			sourceTree = "<group>";
+		};
 		1DDC9E5B1D910BC30049DAD4 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		1DEBD7681D93F56E00277DF6 /* PayPersonController */ = {
+			isa = PBXGroup;
+			children = (
+				1DEBD7691D93F58600277DF6 /* PayPersonController.h */,
+				1DEBD76A1D93F58600277DF6 /* PayPersonController.m */,
+			);
+			path = PayPersonController;
 			sourceTree = "<group>";
 		};
 		6BD4057E1D81B59200358036 = {
@@ -224,6 +248,8 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1DEBD7681D93F56E00277DF6 /* PayPersonController */,
+				1D8478EB1D93D68400153B19 /* MobileDepositController */,
 				6BD405F31D8307C800358036 /* WebViewController */,
 				6BD405CD1D83068D00358036 /* BranchLocationViewController */,
 				6BD405CE1D83068D00358036 /* LoginViewController */,
@@ -561,6 +587,7 @@
 			files = (
 				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
+				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
 				6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */,
 				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
@@ -574,6 +601,7 @@
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */,
 				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
 				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
 				6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */,

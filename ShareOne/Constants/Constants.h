@@ -21,6 +21,11 @@
 #define IS_IPHONE_4 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )480 ) < DBL_EPSILON )
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
+#define DEFAULT_COLOR_WHITE [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]
+#define DEFAULT_COLOR_GRAY  [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0]
+
+
+
 #define DATE_TIME_FORMAT_FOR_ADD_MARKER @"MMMM d, YYYY"
 #define DATE_TIME_FORMAT_FOR_EMAIL      @"MMMM d, YYYY HH:mm:ss"
 #define DATE_TIME_FORMAT_FOR_SQL          @"yyyy-MM-dd HH:mm:ss"
@@ -69,14 +74,14 @@
 #define HAS_SECTIONS                @"isSection"
 #define MAIN_CAT_TITLE              @"title"
 #define MAIN_CAT_IMAGE              @"icon"
-#define MAIN_CAT_CONTROLLER         @"detailVCIdentifier"
-#define MAIN_CAT_CONTROLLER_TITLE   @"detailVCTitle"
+#define CONTROLLER_NAME             @"detailVCIdentifier"
+#define CONTROLLER_TITLE            @"detailVCTitle"
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"
 
 #define SUB_CAT_TITLE               @"title"
 #define SUB_CAT_IMAGE               @"icon"
-#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
-#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
+//#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
+//#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
 
 
 #endif

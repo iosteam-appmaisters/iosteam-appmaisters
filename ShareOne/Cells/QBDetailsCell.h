@@ -10,4 +10,13 @@
 
 @interface QBDetailsCell : UITableViewCell
 
+@property (nonatomic,weak)IBOutlet UIImageView *iconImageVew;
+
+@property (nonatomic,weak)IBOutlet UILabel *tranTitleLbl;
+
+@property (nonatomic,weak)IBOutlet UILabel *tranDateLbl;
+
+@property (nonatomic,weak)IBOutlet UILabel *tranAmountLbl;
+
+
 @end

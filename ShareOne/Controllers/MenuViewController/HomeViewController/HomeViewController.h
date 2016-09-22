@@ -10,4 +10,6 @@
 
 @interface HomeViewController : BaseViewController
 
+@property (nonatomic, weak) IBOutlet UIWebView *webview;
+
 @end

@@ -14,4 +14,6 @@
 
 + (NSArray *)getSideMenuDataFromPlist;
 
++ (NSArray *)getDummyDataForQB;
+
 @end

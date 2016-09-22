@@ -10,4 +10,10 @@
 
 @interface QBHeaderCell : UITableViewCell
 
+@property (nonatomic,weak)IBOutlet UIImageView *sectionImgVew;
+
+@property (nonatomic,weak)IBOutlet UILabel *sectionTitleLbl;
+
+@property (nonatomic,weak)IBOutlet UILabel *sectionAmountLbl;
+
 @end

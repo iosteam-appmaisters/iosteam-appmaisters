@@ -11,5 +11,8 @@
 
 @implementation HomeViewController
 
-
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com"]]];
+}
 @end

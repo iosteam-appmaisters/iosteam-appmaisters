@@ -10,4 +10,10 @@
 
 @interface SocialMediaViewController : BaseViewController
 
+
+-(IBAction)goToFacebook:(id)sender;
+-(IBAction)goToLinkedIn:(id)sender;
+-(IBAction)goToTwitter:(id)sender;
+
+
 @end

@@ -9,6 +9,7 @@
 @interface LeftMenuViewController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) NSArray *contentArr;
+@property (nonatomic, strong) NSDictionary *controllerInfoDict;
 @end
 
 @implementation LeftMenuViewController
@@ -54,7 +55,7 @@
 
         if([sender isKindOfClass:[NSIndexPath class]]){
             if (_homeDelegate != nil && [_homeDelegate respondsToSelector:@selector(pushViewControllerWithObject:)]){
-                [[self homeDelegate] pushViewControllerWithObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Me",@"Key", nil]];
+                [[self homeDelegate] pushViewControllerWithObject:_controllerInfoDict];
             }
         }
     }];
@@ -97,6 +98,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SideMenuCell *cell =  (SideMenuCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SideMenuCell class]) forIndexPath:indexPath];
     
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     NSDictionary *dict = _contentArr[indexPath.section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     NSDictionary *dictSubCat = subCatArr[indexPath.row];
@@ -142,6 +144,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSLog(@"didSelectRowAtIndexPath");
+    
+    NSDictionary *dict = _contentArr[indexPath.section];
+    NSArray *catArr =  [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
+    _controllerInfoDict = catArr[indexPath.row];
+
     [self backgroundButtonClicked:indexPath];
 }
 
@@ -152,26 +159,23 @@
     NSDictionary *dict = _contentArr[section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]==0){
+        _controllerInfoDict = _contentArr[section];
         [self backgroundButtonClicked:[NSIndexPath indexPathForRow:0 inSection:section]];
     }
 
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-    
 //    NSLog(@"didOpenSection");
     
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 //    NSLog(@"willCloseSection");
-    
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 //    NSLog(@"didCloseSection");
-    
-    
 }
 
 

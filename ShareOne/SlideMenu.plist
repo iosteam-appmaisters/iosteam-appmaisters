@@ -11,7 +11,7 @@
 			<key>icon</key>
 			<string>menu_transfers_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>WebViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -22,7 +22,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -32,7 +32,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -42,7 +42,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -52,7 +52,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -62,7 +62,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -78,7 +78,7 @@
 			<key>icon</key>
 			<string>menu_online_service_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>WebViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -89,7 +89,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -99,7 +99,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -109,7 +109,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -119,7 +119,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -129,7 +129,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -139,7 +139,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -149,7 +149,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -159,7 +159,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -169,7 +169,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -179,7 +179,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -191,43 +191,11 @@
 			<key>isSection</key>
 			<false/>
 			<key>title</key>
-			<string>Card Management</string>
-			<key>icon</key>
-			<string>menu_card_management_icon</string>
-			<key>detailVCIdentifier</key>
-			<string></string>
-			<key>detailVCTitle</key>
-			<string></string>
-			<key>subCategories</key>
-			<array/>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>isSection</key>
-			<false/>
-			<key>title</key>
 			<string>Mobile Deposit</string>
 			<key>icon</key>
 			<string>menu_mobile_deposit_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
-			<key>detailVCTitle</key>
-			<string></string>
-			<key>subCategories</key>
-			<array/>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>isSection</key>
-			<false/>
-			<key>title</key>
-			<string>Branch Location</string>
-			<key>icon</key>
-			<string>menu_branch_location_icon</string>
-			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>MobileDepositController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -243,7 +211,7 @@
 			<key>icon</key>
 			<string>menu_send_money_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>PayPersonController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -257,9 +225,9 @@
 			<key>title</key>
 			<string>Message Center</string>
 			<key>icon</key>
-			<string>menu_send_money_icon</string>
+			<string>menu_message_center_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>WebViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -275,7 +243,7 @@
 			<key>icon</key>
 			<string>menu_member_service_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>WebViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -286,7 +254,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -296,7 +264,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -306,7 +274,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -316,7 +284,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -326,44 +294,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
-					<key>detailVCTitle</key>
-					<string></string>
-				</dict>
-			</array>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>isSection</key>
-			<true/>
-			<key>title</key>
-			<string>Rates &amp; loan</string>
-			<key>icon</key>
-			<string>menu_member_service_icon</string>
-			<key>detailVCIdentifier</key>
-			<string></string>
-			<key>detailVCTitle</key>
-			<string></string>
-			<key>subCategories</key>
-			<array>
-				<dict>
-					<key>title</key>
-					<string>Apply for A loan</string>
-					<key>icon</key>
-					<string></string>
-					<key>detailVCIdentifier</key>
-					<string></string>
-					<key>detailVCTitle</key>
-					<string></string>
-				</dict>
-				<dict>
-					<key>title</key>
-					<string>Rates</string>
-					<key>icon</key>
-					<string></string>
-					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -379,7 +310,7 @@
 			<key>icon</key>
 			<string>menu_rates_loan_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>WebViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -390,7 +321,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -400,7 +331,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string></string>
+					<string>WebViewController</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -453,7 +384,7 @@
 			<key>icon</key>
 			<string>menu_settings_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>SettingsViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -469,7 +400,7 @@
 			<key>icon</key>
 			<string>menu_social_media_icon</string>
 			<key>detailVCIdentifier</key>
-			<string></string>
+			<string>SocialMediaViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
