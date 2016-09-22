@@ -15,7 +15,12 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - FZAccordionTableView (0.2.3)
-  - IQKeyboardManager (4.0.4)
+  - GoogleMaps (2.1.0):
+    - GoogleMaps/Maps (= 2.1.0)
+  - GoogleMaps/Base (2.1.0)
+  - GoogleMaps/Maps (2.1.0):
+    - GoogleMaps/Base (= 2.1.0)
+  - IQKeyboardManager (4.0.6)
   - MBProgressHUD (1.0.0)
   - SLExpandableTableView (1.3.1)
   - STCollapseTableView (0.1.1)
@@ -23,19 +28,21 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - FZAccordionTableView (~> 0.2)
+  - GoogleMaps
   - IQKeyboardManager
-  - MBProgressHUD
+  - MBProgressHUD (~> 1.0.0)
   - SLExpandableTableView
   - STCollapseTableView
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FZAccordionTableView: e64f49c71c32d750feda14025b088bcd25d1a71f
-  IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
+  GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
+  IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SLExpandableTableView: ff63a4bb4b71c6c3ae2b7cb1cde6a36c1645f23c
   STCollapseTableView: edd40eacf9411ce862da921f83e0b7b1680fac4d
 
-PODFILE CHECKSUM: f1e5847ae6bcbf8194e07e14266ce126e20c2825
+PODFILE CHECKSUM: dfbf0b2b6b70e6a95788944127a2890900a594a1
 
 COCOAPODS: 1.0.1

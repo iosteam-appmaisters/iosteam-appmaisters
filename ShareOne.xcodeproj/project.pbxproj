@@ -16,6 +16,7 @@
 		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
 		1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBD76A1D93F58600277DF6 /* PayPersonController.m */; };
 		3947D749F833D911D04E3838 /* Pods_ShareOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */; };
+		2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */; };
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
 		6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058E1D81B59300358036 /* AppDelegate.m */; };
 		6BD405951D81B59300358036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD405931D81B59300358036 /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
 		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
 		6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* SlideMenu.plist */; };
+		F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C71F11D92CF940072D405 /* BranchLocationCell.m */; };
+		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,7 +112,12 @@
 		6BD405F51D8307DF00358036 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		6BD433DA1D8C09C30067515A /* SlideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SlideMenu.plist; sourceTree = "<group>"; };
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
+		B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShareOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
+		F20C71F01D92CF940072D405 /* BranchLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationCell.h; sourceTree = "<group>"; };
+		F20C71F11D92CF940072D405 /* BranchLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationCell.m; sourceTree = "<group>"; };
+		F26255411D94171300383B9E /* ATMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMLocationViewController.h; sourceTree = "<group>"; };
+		F26255421D94171300383B9E /* ATMLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMLocationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3947D749F833D911D04E3838 /* Pods_ShareOne.framework in Frameworks */,
+				2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +221,8 @@
 				1D8478E51D92949400153B19 /* QBHeaderCell.m */,
 				1D8478E71D9294EC00153B19 /* QBDetailsCell.h */,
 				1D8478E81D9294EC00153B19 /* QBDetailsCell.m */,
+				F20C71F01D92CF940072D405 /* BranchLocationCell.h */,
+				F20C71F11D92CF940072D405 /* BranchLocationCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -250,6 +260,7 @@
 			children = (
 				1DEBD7681D93F56E00277DF6 /* PayPersonController */,
 				1D8478EB1D93D68400153B19 /* MobileDepositController */,
+				F26255401D9416F400383B9E /* ATMLocationViewController */,
 				6BD405F31D8307C800358036 /* WebViewController */,
 				6BD405CD1D83068D00358036 /* BranchLocationViewController */,
 				6BD405CE1D83068D00358036 /* LoginViewController */,
@@ -447,7 +458,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6171A8584DF8E23F43999D1D /* Pods_ShareOne.framework */,
+				B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -459,6 +470,15 @@
 				814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F26255401D9416F400383B9E /* ATMLocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F26255411D94171300383B9E /* ATMLocationViewController.h */,
+				F26255421D94171300383B9E /* ATMLocationViewController.m */,
+			);
+			path = ATMLocationViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,6 +612,7 @@
 				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
 				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
+				F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */,
 				6BD405CC1D82CA7200358036 /* User.m in Sources */,
 				6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */,
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
@@ -605,6 +626,7 @@
 				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
 				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
 				6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */,
+				F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
@@ -675,7 +697,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
@@ -716,7 +738,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
 				SDKROOT = iphoneos;
@@ -733,8 +755,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				INFOPLIST_FILE = ShareOne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AM.InsectID;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
 			};
@@ -748,8 +771,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				INFOPLIST_FILE = ShareOne/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AM.InsectID;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cb123814-6fab-41bc-9d26-56ff18aa7640";
 			};

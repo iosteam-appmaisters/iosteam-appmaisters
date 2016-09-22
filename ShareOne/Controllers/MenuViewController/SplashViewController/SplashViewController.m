@@ -11,6 +11,8 @@
 #import "HomeViewController.h"
 #import "SignInModel.h"
 #import "LoginViewController.h"
+#import "BranchLocationViewController.h"
+
 @implementation SplashViewController
 
 
@@ -27,8 +29,8 @@
 
 -(void)showNextViewController{
     
-    if([SignInModel checkUserData]){
-        UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+    if(![SignInModel checkUserData]){
+        UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationNavigationController"];
         homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
         [self presentViewController:homeNavigationViewController animated:YES completion:nil];
         

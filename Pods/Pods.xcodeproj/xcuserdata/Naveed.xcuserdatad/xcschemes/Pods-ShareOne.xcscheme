@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "933A1622954F2599F8530F92E774D20E"
-               BuildableName = "Pods_ShareOne.framework"
+               BlueprintIdentifier = "D2D47F411C792B6EFFC0F89DBCD9F90C"
+               BuildableName = "libPods-ShareOne.a"
                BlueprintName = "Pods-ShareOne"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "933A1622954F2599F8530F92E774D20E"
-            BuildableName = "Pods_ShareOne.framework"
+            BlueprintIdentifier = "D2D47F411C792B6EFFC0F89DBCD9F90C"
+            BuildableName = "libPods-ShareOne.a"
             BlueprintName = "Pods-ShareOne"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D2D47F411C792B6EFFC0F89DBCD9F90C"
+            BuildableName = "libPods-ShareOne.a"
+            BlueprintName = "Pods-ShareOne"
+            ReferencedContainer = "container:Pods.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
