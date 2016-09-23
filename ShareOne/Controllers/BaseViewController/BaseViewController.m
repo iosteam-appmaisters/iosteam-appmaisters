@@ -8,6 +8,7 @@
 
 @interface BaseViewController (){
     LeftMenuViewController* leftMenuViewController;
+    UIButton* menuButton;
 }
 
 @end
@@ -91,7 +92,7 @@
 }
 
 -(UIButton*)getMenuButton{
-    UIButton* menuButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 30, 44)];
+     menuButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 30, 44)];
     [menuButton setImage:[UIImage imageNamed:@"menu_icon"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -99,6 +100,7 @@
 }
 
 -(void)menuButtonClicked:(id)sender{
+    [menuButton setEnabled:FALSE];
         leftMenuViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"LeftMenuViewController"];
 
     leftMenuViewController.homeDelegate=self;
@@ -107,6 +109,9 @@
     [self.navigationController.view addSubview:leftMenuViewController.view];
     [UIView animateWithDuration:0.3 animations:^{
         [leftMenuViewController.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+
+    } completion:^(BOOL finished) {
+        [menuButton setEnabled:TRUE];
     }];
 }
 
