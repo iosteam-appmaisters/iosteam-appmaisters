@@ -15,5 +15,5 @@
 + (NSArray *)getSideMenuDataFromPlist;
 
 + (NSArray *)getDummyDataForQB;
-
++(NSMutableArray*)getLocationArray;
 @end

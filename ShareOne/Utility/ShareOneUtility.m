@@ -32,7 +32,27 @@
     }];
     return arrayToreturn;
 }
++(NSMutableArray*)getLocationArray
+{
+//    //53.4198855,-2.9808854(Liverpool)
+//    53.4184578,-3.0030442
+//    53.4201264-2.9916392
+//    53.4024066,-2.9844725,
+//    53.4039417,-2.9808717,
+//    53.4035396,-2.9799329
+//    53.4027041,-2.9798886
+    NSMutableArray *locationArr=[[NSMutableArray alloc] init];
+    [locationArr addObject:@"53.4198855,-2.9808854"];
+    [locationArr addObject:@"53.4184578,-3.0030442"];
+    [locationArr addObject:@"53.4201264,-2.9916392"];
+    [locationArr addObject:@"53.4024066,-2.9844725"];
+    [locationArr addObject:@"53.4039417,-2.9808717"];
+    [locationArr addObject:@"53.4035396,-2.9799329"];
+    [locationArr addObject:@"53.4027041,-2.9798886"];
 
+
+    return locationArr;
+}
 + (NSArray *)getDummyDataForQB{
     
     
