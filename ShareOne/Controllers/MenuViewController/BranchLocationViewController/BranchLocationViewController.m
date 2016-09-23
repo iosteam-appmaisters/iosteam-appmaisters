@@ -26,7 +26,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+/*********************************************************************************************************/
+                    #pragma mark - Action Method
+/*********************************************************************************************************/
 
+-(IBAction)showAllBranchesonMapButtonClicked:(id)sender
+{
+    UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:homeNavigationViewController animated:YES];
+
+}
 
 /*********************************************************************************************************/
                         #pragma mark - Table view delagte and data source Method

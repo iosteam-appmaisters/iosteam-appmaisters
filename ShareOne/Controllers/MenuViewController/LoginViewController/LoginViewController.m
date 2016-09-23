@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rememberMeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *userFingerprintBtn;
+@property (weak, nonatomic) IBOutlet UIButton *rememberMetxtBtn;
 
 
 @end
@@ -28,7 +29,12 @@
     
     _userFingerprintBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     _rememberMeBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-
+    _rememberMetxtBtn.titleLabel.numberOfLines = 1;
+    _rememberMetxtBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _rememberMetxtBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    _forgotPasswordBtn.titleLabel.numberOfLines = 1;
+    _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
 }
 
 - (IBAction)loginButtonClicked:(id)sender {

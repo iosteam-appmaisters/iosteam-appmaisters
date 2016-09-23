@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -143,12 +143,13 @@
                                                     <action selector="forgotPasswordButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="6NN-uO-dfU"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh">
                                                 <rect key="frame" x="250" y="68" width="70" height="24"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                                 <state key="normal" title="Remember Me">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -324,6 +325,7 @@
                         <outlet property="forgotPasswordBtn" destination="htK-91-tSX" id="n9g-JN-KLt"/>
                         <outlet property="passwordTxt" destination="XUX-eK-o8f" id="MLQ-BE-91D"/>
                         <outlet property="rememberMeBtn" destination="TFX-Rm-OI0" id="iXe-Sx-LBd"/>
+                        <outlet property="rememberMetxtBtn" destination="dmc-6B-Ssh" id="hQ5-2D-bdQ"/>
                         <outlet property="userFingerprintBtn" destination="3oA-3h-upU" id="yQ5-XA-81i"/>
                         <outlet property="userIDTxt" destination="mah-z6-qDW" id="a2K-qY-Rb5"/>
                     </connections>
@@ -1529,14 +1531,17 @@ Tm90ZToQIA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_banner" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-eI-03L">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="151"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="151"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-oN-4PI">
-                                <rect key="frame" x="268" y="163" width="127" height="22"/>
+                                <rect key="frame" x="268" y="183" width="127" height="22"/>
                                 <state key="normal" image="show_button"/>
+                                <connections>
+                                    <action selector="showAllBranchesonMapButtonClicked:" destination="p2t-aQ-tQO" eventType="touchUpInside" id="gy3-vw-xor"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p87-bd-lgH">
-                                <rect key="frame" x="23" y="192" width="368" height="544"/>
+                                <rect key="frame" x="23" y="212" width="368" height="524"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1670,6 +1675,7 @@ Tm90ZToQIA
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="GLy-eI-03L" secondAttribute="trailing" constant="-20" id="8ZB-M4-Yy6"/>
+                            <constraint firstItem="GLy-eI-03L" firstAttribute="top" secondItem="AK9-dr-dY9" secondAttribute="bottom" id="CIH-NE-UgG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p87-bd-lgH" secondAttribute="trailing" constant="-1" id="Jrf-Xb-VMN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YSc-oN-4PI" secondAttribute="trailing" constant="-1" id="YAx-nI-s2f"/>
                             <constraint firstItem="p87-bd-lgH" firstAttribute="leading" secondItem="94x-xZ-WOl" secondAttribute="leadingMargin" constant="-1" id="ZXV-mQ-C71"/>
@@ -1684,6 +1690,7 @@ Tm90ZToQIA
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="bgr-GW-MNh"/>
                                 <exclude reference="Jrf-Xb-VMN"/>
                                 <exclude reference="ZXV-mQ-C71"/>
                                 <exclude reference="YAx-nI-s2f"/>
@@ -1709,11 +1716,11 @@ Tm90ZToQIA
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ATMtop_banner" translatesAutoresizingMaskIntoConstraints="NO" id="z0w-qo-UrF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="151"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ATMtop_banner" translatesAutoresizingMaskIntoConstraints="NO" id="z0w-qo-UrF">
+                                <rect key="frame" x="0.0" y="20" width="414" height="151"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uTt-OZ-eIk" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="195" width="414" height="540"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTt-OZ-eIk" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="171" width="414" height="564"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -1726,7 +1733,15 @@ Tm90ZToQIA
                             <constraint firstAttribute="trailing" secondItem="uTt-OZ-eIk" secondAttribute="trailing" id="eFG-bG-eAd"/>
                             <constraint firstItem="uTt-OZ-eIk" firstAttribute="leading" secondItem="3lz-Ye-JQQ" secondAttribute="leading" id="hMJ-Mz-zNX"/>
                             <constraint firstItem="z0w-qo-UrF" firstAttribute="top" secondItem="gYu-dH-jti" secondAttribute="bottom" constant="-20" id="kwv-9l-MoX"/>
+                            <constraint firstItem="z0w-qo-UrF" firstAttribute="top" secondItem="gYu-dH-jti" secondAttribute="bottom" id="tHj-wl-C5W"/>
+                            <constraint firstItem="z0w-qo-UrF" firstAttribute="top" secondItem="gYu-dH-jti" secondAttribute="bottom" constant="24" id="uMe-dN-BWK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kwv-9l-MoX"/>
+                                <exclude reference="uMe-dN-BWK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="k41-3o-LlB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
