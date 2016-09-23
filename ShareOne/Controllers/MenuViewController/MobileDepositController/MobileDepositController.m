@@ -8,10 +8,15 @@
 
 #import "MobileDepositController.h"
 
-@interface MobileDepositController ()
+@interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+@property (nonatomic,strong) id objSender;
 
 -(IBAction)captureFrontCardAction:(id)sender;
 -(IBAction)captureBackCardAction:(id)sender;
+
+-(void)showPicker;
+-(void)setSelectedImageOnButton:(UIImage *)image;
 
 @end
 
@@ -22,11 +27,45 @@
     // Do any additional setup after loading the view.
 }
 
+
+#pragma mark - IBAction Methods
+
 -(IBAction)captureFrontCardAction:(id)sender{
-    
+    _objSender=sender;
+    [self showPicker];
 }
 -(IBAction)captureBackCardAction:(id)sender{
+    _objSender=sender;
+    [self showPicker];
+}
+
+
+-(void)setSelectedImageOnButton:(UIImage *)image{
+
+    UIButton *castSenderButton = (UIButton *)_objSender;
+    [castSenderButton setImage:image forState:UIControlStateNormal];
+}
+
+-(void)showPicker{
+    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+    picker.delegate=self;
+    [picker setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
+    [self presentViewController:picker animated:YES completion:Nil];
+}
+
+
+#pragma mark - UIImagePickerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    [self setSelectedImageOnButton:chosenImage];
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 

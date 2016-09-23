@@ -43,12 +43,18 @@
 }
 
 - (IBAction)rememberMeButtonClicked:(id)sender {
+    UIButton *btnCast = (UIButton *)sender;
+    [btnCast setSelected:!btnCast.isSelected];
 }
 
 - (IBAction)fingerprintButtonClicked:(id)sender {
+    UIButton *btnCast = (UIButton *)sender;
+    [btnCast setSelected:!btnCast.isSelected];
 }
 
 - (IBAction)openUrlButtonClicked:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"https://www.google.com"];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)quickBalanceButtonClicked:(id)sender {
