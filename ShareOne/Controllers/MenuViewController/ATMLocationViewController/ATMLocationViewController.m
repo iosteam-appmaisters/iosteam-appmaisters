@@ -27,13 +27,15 @@
 
 - (void)viewDidLoad
 {
-    [self initLocationArray];
     
+    [self initLocationArray];
+    [self initGoogleMap];
+    [self.view layoutIfNeeded];
+
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self initGoogleMap];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -45,6 +47,7 @@
 
 -(void)initLocationArray
 {
+    
     self.locationArr=[[NSMutableArray alloc] init];
     self.locationArr=[ShareOneUtility getLocationArray];
 }
@@ -65,6 +68,7 @@
     _mapView.camera=camera;
     //_mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     _mapView.myLocationEnabled = YES;
+    
     [self createGoogleMapMarker:_mapView];
 
 }
