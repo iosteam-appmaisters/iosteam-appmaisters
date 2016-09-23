@@ -10,6 +10,9 @@
 
 @interface MobileDepositController ()
 
+-(IBAction)captureFrontCardAction:(id)sender;
+-(IBAction)captureBackCardAction:(id)sender;
+
 @end
 
 @implementation MobileDepositController
@@ -18,6 +21,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+-(IBAction)captureFrontCardAction:(id)sender{
+    
+}
+-(IBAction)captureBackCardAction:(id)sender{
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
