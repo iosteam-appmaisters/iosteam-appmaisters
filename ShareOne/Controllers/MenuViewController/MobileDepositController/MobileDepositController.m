@@ -49,7 +49,7 @@
 -(void)showPicker{
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
     picker.delegate=self;
-    [picker setSourceType:(UIImagePickerControllerSourceTypePhotoLibrary)];
+    [picker setSourceType:(UIImagePickerControllerSourceTypeCamera)];
     [self presentViewController:picker animated:YES completion:Nil];
 }
 
