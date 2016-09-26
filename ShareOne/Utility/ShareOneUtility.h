@@ -16,4 +16,5 @@
 
 + (NSArray *)getDummyDataForQB;
 +(NSMutableArray*)getLocationArray;
++(NSString *)getDistancefromAdresses:(NSString *)source Destination:(NSString *)Destination;
 @end

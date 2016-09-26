@@ -7,8 +7,10 @@
 //
 
 #import "ShareOneUtility.h"
+#import <CoreLocation/CoreLocation.h>
 
 #import "Constants.h"
+@import GoogleMaps;
 @implementation ShareOneUtility
 
 + (NSArray *)getSideMenuDataFromPlist{
@@ -52,6 +54,62 @@
 
 
     return locationArr;
+}
+-(void)getDirectionBetweenCurrentLocation
+{
+//    NSString *urlString = [NSString stringWithFormat:
+//                           @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
+//                           @"https://maps.googleapis.com/maps/api/directions/json",
+//                           mapView.myLocation.coordinate.latitude,
+//                           mapView.myLocation.coordinate.longitude,
+//                           destLatitude,
+//                           destLongitude,
+//                           @"Your Google Api Key String"];
+//    NSURL *directionsURL = [NSURL URLWithString:urlString];
+//    
+//    
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:directionsURL];
+//    [request startSynchronous];
+//    NSError *error = [request error];
+//    if (!error) {
+//        NSString *response = [request responseString];
+//        NSLog(@"%@",response);
+//        NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
+//        GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
+//        GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
+//        singleLine.strokeWidth = 7;
+//        singleLine.strokeColor = [UIColor greenColor];
+//        singleLine.map = self.mapView;
+//    }
+//    else NSLog(@"%@",[request error]);
+}
++(NSString *)getDistancefromAdresses:(NSString *)source Destination:(NSString *)Destination
+{
+    NSString *urlPath = [NSString stringWithFormat:@"/maps/api/distancematrix/json?origins=%@&destinations=%@&mode=driving&language=en-EN&sensor=false",source ,Destination ];
+    NSURL *url = [[NSURL alloc]initWithScheme:@"https" host:@"maps.googleapis.com" path:urlPath];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
+    [request setURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    NSURLResponse *response ;
+    NSError *error;
+    NSData *data;
+    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSMutableDictionary *jsonDict= (NSMutableDictionary*)[NSJSONSerialization  JSONObjectWithData:data options:kNilOptions error:&error];
+    NSMutableDictionary *newdict=[jsonDict valueForKey:@"rows"];
+    NSArray *elementsArr=[newdict valueForKey:@"elements"];
+    if([elementsArr count]!=0)
+    {
+        NSArray *arr=[elementsArr objectAtIndex:0];
+        NSDictionary *dict=[arr objectAtIndex:0];
+        NSMutableDictionary *distanceDict=[dict valueForKey:@"distance"];
+        NSLog(@"distance:%@",[distanceDict valueForKey:@"text"]);
+        return [distanceDict valueForKey:@"text"];
+
+    }
+    return [jsonDict valueForKey:@"status"];
 }
 + (NSArray *)getDummyDataForQB{
     

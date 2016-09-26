@@ -8,5 +8,5 @@ pod 'IQKeyboardManager'
 pod 'STCollapseTableView'
 pod 'SLExpandableTableView'
 pod 'FZAccordionTableView', '~> 0.2'
-pod 'GoogleMaps'
+pod 'GoogleMaps', '~> 2.1'
 end

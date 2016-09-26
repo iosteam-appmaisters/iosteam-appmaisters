@@ -31,7 +31,6 @@
     [self initLocationArray];
     [self initGoogleMap];
     [self.view layoutIfNeeded];
-
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -88,23 +87,5 @@
     }
     
 }
-/*********************************************************************************************************/
-                        #pragma mark - Create Current Location
-/*********************************************************************************************************/
 
--(void)createCurrentLocation
-{
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    [locationManager requestAlwaysAuthorization];
-    [locationManager startUpdatingLocation];
-
-    CLLocation *location = [locationManager location];
-    CLLocationCoordinate2D user = [location coordinate];
-    NSLog(@"%f",user.longitude);
-    NSLog(@"%f",user.longitude);
-    
-}
 @end
