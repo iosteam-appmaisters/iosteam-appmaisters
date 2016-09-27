@@ -40,8 +40,10 @@
 
 }
 
--(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture{
-    if(gesture.state==UIGestureRecognizerStateEnded){
+-(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture
+{
+    if(gesture.state==UIGestureRecognizerStateEnded)
+    {
         [self backgroundButtonClicked:self];
     }
 }
@@ -66,7 +68,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    int subCatCount = 0;
+    NSInteger subCatCount = 0;
     NSDictionary *dict = _contentArr[section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0)

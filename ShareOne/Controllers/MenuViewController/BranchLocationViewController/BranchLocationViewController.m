@@ -9,6 +9,15 @@
 #import "BranchLocationViewController.h"
 #import "BranchLocationCell.h"
 #import "UIImageView+AFNetworking.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import <CoreLocation/CoreLocation.h>
+#import "ShareOneUtility.h"
+
+@interface BranchLocationViewController ()<CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+}
+@end
 
 @implementation BranchLocationViewController
 
@@ -18,6 +27,7 @@
 
 - (void)viewDidLoad
 {
+    [self createCurrentLocation];
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -26,6 +36,43 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+/*********************************************************************************************************/
+                        #pragma mark - Create Current Location
+/*********************************************************************************************************/
+
+-(void)createCurrentLocation
+{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager requestAlwaysAuthorization];
+    [locationManager startUpdatingLocation];
+    
+    CLLocation *location = [locationManager location];
+    CLLocationCoordinate2D user = [location coordinate];
+    NSLog(@"%f",user.longitude);
+    NSLog(@"%f",user.longitude);
+    CLLocation *location2=[[CLLocation alloc]initWithLatitude:37.785834 longitude:-122.406417];
+    [self reverseGeoCode:location2];
+}
+
+-(void)reverseGeoCode:(CLLocation *)location
+{
+    [[GMSGeocoder geocoder]reverseGeocodeCoordinate:location.coordinate completionHandler:^(GMSReverseGeocodeResponse *response, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"%@",[error description]);
+         }
+         id userCity=[[[response results] firstObject] locality];
+         NSLog(@"%@",userCity);
+         NSString *Distance=[ShareOneUtility getDistancefromAdresses:userCity Destination:@"South San Francisco"];
+         NSLog(@"Distance..........----------------------%f miles",[Distance floatValue]* 0.000621371);
+     }];
+}
+
 /*********************************************************************************************************/
                     #pragma mark - Action Method
 /*********************************************************************************************************/

@@ -91,6 +91,7 @@
 //#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
 //#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
 
+#define googleApiKey               @"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"
 
 #endif
 

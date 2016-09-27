@@ -27,4 +27,6 @@
 + (NSString *)getAuthHeader;
 
 
++(NSMutableArray*)getLocationArray;
++(NSString *)getDistancefromAdresses:(NSString *)source Destination:(NSString *)Destination;
 @end

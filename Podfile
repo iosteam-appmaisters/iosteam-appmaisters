@@ -10,4 +10,5 @@ pod 'SLExpandableTableView'
 pod 'FZAccordionTableView', '~> 0.2'
 pod 'GoogleMaps'
 pod 'AES256Encrypter', '~> 0.0'
+pod 'GoogleMaps', '~> 2.1'
 end
