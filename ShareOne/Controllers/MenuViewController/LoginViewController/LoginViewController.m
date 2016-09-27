@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "QuickBalancesViewController.h"
+#import "AppServiceModel.h"
+#import "ShareOneUtility.h"
 
 @interface LoginViewController ()
 
@@ -35,6 +37,18 @@
     _forgotPasswordBtn.titleLabel.numberOfLines = 1;
     _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
+}
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeader] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:@"666",@"account",@"5656",@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_LOGIN delegate:self completionBlock:^(NSObject *response) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
 }
 
 - (IBAction)loginButtonClicked:(id)sender {

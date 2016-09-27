@@ -3,6 +3,7 @@
 #import "SignInModel.h"
 #import "Services.h"
 #import "UtilitiesHelper.h"
+#import "Constants.h"
 
 @implementation AppServiceModel
 
@@ -165,6 +166,55 @@
         
 //#endif
         
+    }];
+    
+}
+
+-(void)postRequestWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    [self.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:@"en,en-gb;q=0.5" forHTTPHeaderField:@"Accept-Language"];
+    [self.requestSerializer setValue:@"max-age=0" forHTTPHeaderField:@"Cache-Control"];
+    [self.requestSerializer setValue:@"UTF-8;q=0.7,*;q=0.7" forHTTPHeaderField:@"Accept-Charset"];
+    [self.requestSerializer setValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
+    [self.requestSerializer setValue:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0" forHTTPHeaderField:@"Cache-Control"];
+    [self.requestSerializer setValue:@"Sat, 1 Jan 2000 00:00:00 GMT" forHTTPHeaderField:@"Expires"];
+    [self.requestSerializer setValue:H_MAC_TYPE forHTTPHeaderField:@"HmacType"];
+    [self.requestSerializer setValue:SECURITY_VERSION forHTTPHeaderField:@"SecurityVersion"];
+    [self.requestSerializer setValue:auth_header forHTTPHeaderField:@"Authorization"];
+
+    self.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+//    self.responseSerializer.acceptableContentTypes = nil;
+
+
+//    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+    
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+
+    self.responseSerializer=responseSerializer;
+
+
+    if(progressMessage)
+        [self showProgressWithMessage:progressMessage];
+    
+    [self POST:urlString parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"success : %@",responseObject);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self hideProgressAlert];
+        block(responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"error : %@ code: %d",[error localizedDescription],[error code]);
+
+        [self hideProgressAlert];
+        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
     }];
     
 }

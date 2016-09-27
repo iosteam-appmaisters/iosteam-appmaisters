@@ -13,7 +13,18 @@
 @interface ShareOneUtility : UtilitiesHelper
 
 + (NSArray *)getSideMenuDataFromPlist;
-
 + (NSArray *)getDummyDataForQB;
-+(NSMutableArray*)getLocationArray;
++ (NSMutableArray*)getLocationArray;
+
++(int)getTimeStamp;
+
+
++ (NSString *)createSignatureWithTimeStamp:(int)timestamp andRequestType:(NSString *)request_type havingEncoding:(NSStringEncoding) encoding;
+
++ (NSString *)getAESRandom4WithSecretKey:(NSString *)secret_key AndPublicKey:(NSString *)public_key;
+
+
++ (NSString *)getAuthHeader;
+
+
 @end

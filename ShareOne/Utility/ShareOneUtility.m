@@ -5,10 +5,13 @@
 //  Created by Qazi Naveed on 20/09/2016.
 //  Copyright © 2016 Ali Akbar. All rights reserved.
 //
+#import <CommonCrypto/CommonHMAC.h>
+
 
 #import "ShareOneUtility.h"
-
+#import "BBAES.h"
 #import "Constants.h"
+
 @implementation ShareOneUtility
 
 + (NSArray *)getSideMenuDataFromPlist{
@@ -73,4 +76,68 @@
             ,nil];
 }
 
++(int)getTimeStamp{
+    
+    return [[NSDate date] timeIntervalSince1970];
+}
+
+
++(NSString *)createSignatureWithTimeStamp:(int)timestamp andRequestType:(NSString *)request_type havingEncoding:(NSStringEncoding) encoding{
+    
+    NSString *stringToSignIn = [NSString stringWithFormat:@"%@ \n %d \n %@ \n %@ \n %@",PUBLIC_KEY,timestamp,SECURITY_VERSION,request_type,H_MAC_TYPE];
+    NSLog(@"stringToSignIn : \n%@",stringToSignIn);
+    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding];
+//    [self applyEncriptionWithPrivateKey:PRIVATE_KEY andPublicKey:PUBLIC_KEY];
+}
+
++(NSString *)getHMACSHAWithSignature:(NSString *)signature andEncoding:(NSStringEncoding )encoding{
+    
+    
+    const char *cKey  = [PRIVATE_KEY cStringUsingEncoding:encoding];
+    const char *cData = [signature cStringUsingEncoding:encoding];
+    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
+    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    NSData *HMACData = [NSData dataWithBytes:cHMAC length:sizeof(cHMAC)];
+//    const unsigned char *buffer = (const unsigned char *)[HMACData bytes];
+//    NSMutableString *HMAC = [NSMutableString stringWithCapacity:HMACData.length * 2];
+//    for (int i = 0; i < HMACData.length; ++i){
+//        [HMAC appendFormat:@"%02x", buffer[i]];
+//    }
+
+    NSLog(@"getBase64ValueWithObject : %@",[self getBase64ValueWithObject:HMACData]);
+    return [self getBase64ValueWithObject:HMACData];
+}
+
++ (NSString *)getBase64ValueWithObject:(NSData *)hmac_sha_data{
+    return [hmac_sha_data base64EncodedStringWithOptions:0];
+}
+
++(void)applyEncriptionWithPrivateKey:(NSString *)private_key andPublicKey:(NSString *)public_key{
+    
+    NSData* salt = [BBAES randomDataWithLength:BBAESSaltDefaultLength];
+    NSData *key = [BBAES keyBySaltingPassword:private_key salt:salt keySize:BBAESKeySize256 numberOfIterations:BBAESPBKDF2DefaultIterationsCount];
+    
+    
+    NSString *secretMessage = private_key;
+    NSLog(@"Original message: %@", secretMessage);
+    
+    NSString *encryptedString = [secretMessage bb_AESEncryptedStringForIV:[BBAES randomIV] key:key options:BBAESEncryptionOptionsIncludeIV];
+    NSLog(@"Encrypted message: %@", encryptedString);
+    
+    NSString *decryptedMessage = [encryptedString bb_AESDecryptedStringForIV:nil key:key];
+    NSLog(@"Decrypted message: %@", decryptedMessage);
+}
+
++ (NSString *)getAESRandom4WithSecretKey:(NSString *)secret_key AndPublicKey:(NSString *)public_key{
+    
+    return  [self getBase64ValueWithObject:[BBAES IVFromString:secret_key]];
+}
+
++ (NSString *)getAuthHeader{
+    
+//    string AuthorizationHeader = AesGeneratedIV + "|" + KeyPublic + "||" + unixTS.ToString() + "|" + Signature;
+    
+    NSString *header = [NSString stringWithFormat:@"%@ | %@ || %d | %@",[self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY],PUBLIC_KEY,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:RequestType havingEncoding:NSUTF8StringEncoding]];
+    return header;
+}
 @end
