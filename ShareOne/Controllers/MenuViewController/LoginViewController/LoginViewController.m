@@ -43,18 +43,18 @@
     [super viewDidLoad];
     
     
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:@"spike",@"account",@"5656",@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_LOGIN delegate:self completionBlock:^(NSObject *response) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-    
-//    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:@"leah",@"account",@"secrets!",@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_MEMBER_VALIDATE delegate:self completionBlock:^(NSObject *response) {
+//    [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:@"spike",@"account",@"5656",@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_LOGIN delegate:self completionBlock:^(NSObject *response) {
 //        
 //    } failureBlock:^(NSError *error) {
 //        
 //    }];
-//
+    
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:@"leah",@"account",@"secrets!",@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_MEMBER_VALIDATE delegate:self completionBlock:^(NSObject *response) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
     
 }
 
