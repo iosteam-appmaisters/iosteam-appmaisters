@@ -24,8 +24,6 @@
     // Override point for customization after application launch.
 //    NSASCIIStringEncoding
     [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
-    [ShareOneUtility createSignatureWithTimeStamp:[ShareOneUtility getTimeStamp] andRequestType:RequestType havingEncoding:NSUTF8StringEncoding];
-    [ShareOneUtility getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY];
     [GMSServices provideAPIKey:googleApiKey];
     return YES;
 }

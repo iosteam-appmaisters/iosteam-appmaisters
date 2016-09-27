@@ -17,6 +17,9 @@
 
 #define KWEB_SERVICE_LOGIN                              @"eft/memberLogin"
 
+#define KWEB_SERVICE_MEMBER_VALIDATE                    @"eft/memberValidate"
+
+
 #define KWEB_SERVICE_CHANGE_PASSWORD                    @"user/change_password"
 
 #define KWEB_SERVICE_GET_STATES                         @"user/get_states"

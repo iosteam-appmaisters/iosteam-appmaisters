@@ -67,13 +67,15 @@
 
 #define kPackagePurchased @"kPackagePurchased"
 
-#define RequestType                 @"POST"
+#define RequestType_PUT                 @"PUT"
+#define RequestType_POST                @"POST"
+
 
 
 #define PUBLIC_KEY                  @"bea351786c074347a0528acf729d0b8f"
 #define PRIVATE_KEY                 @"3b185aa994d2408091714536c28e324b"
 #define H_MAC_TYPE                  @"SHA256"
-#define SECURITY_VERSION            @"2.0"
+#define SECURITY_VERSION            @"1.1"
 #define HOST_ADDRESS                @"nsmobile.ns3web.com"
 
 //PLIST CONSTANT

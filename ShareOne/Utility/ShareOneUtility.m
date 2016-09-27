@@ -7,7 +7,6 @@
 //
 #import <CommonCrypto/CommonHMAC.h>
 
-=======
 #import "ShareOneUtility.h"
 #import <CoreLocation/CoreLocation.h>
 
@@ -136,16 +135,15 @@
             ,nil];
 }
 
-+(int)getTimeStamp{
-    
++(int)getTimeStamp{    
     return [[NSDate date] timeIntervalSince1970];
 }
 
 
 +(NSString *)createSignatureWithTimeStamp:(int)timestamp andRequestType:(NSString *)request_type havingEncoding:(NSStringEncoding) encoding{
     
-    NSString *stringToSignIn = [NSString stringWithFormat:@"%@ \n %d \n %@ \n %@ \n %@",PUBLIC_KEY,timestamp,SECURITY_VERSION,request_type,H_MAC_TYPE];
-    NSLog(@"stringToSignIn : \n%@",stringToSignIn);
+    NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",PUBLIC_KEY,timestamp,SECURITY_VERSION,request_type,H_MAC_TYPE];
+//    NSLog(@"stringToSignIn : \n%@",stringToSignIn);
     return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding];
 //    [self applyEncriptionWithPrivateKey:PRIVATE_KEY andPublicKey:PUBLIC_KEY];
 }
@@ -164,7 +162,7 @@
 //        [HMAC appendFormat:@"%02x", buffer[i]];
 //    }
 
-    NSLog(@"getBase64ValueWithObject : %@",[self getBase64ValueWithObject:HMACData]);
+//    NSLog(@"getBase64ValueWithObject : %@",[self getBase64ValueWithObject:HMACData]);
     return [self getBase64ValueWithObject:HMACData];
 }
 
@@ -190,14 +188,38 @@
 
 + (NSString *)getAESRandom4WithSecretKey:(NSString *)secret_key AndPublicKey:(NSString *)public_key{
     
-    return  [self getBase64ValueWithObject:[BBAES IVFromString:secret_key]];
+    NSData *datRow=[BBAES IVFromString:secret_key];
+    return  [self hexStringFromData:datRow];
 }
 
-+ (NSString *)getAuthHeader{
++ (NSString *) hexStringFromData:(NSData *)data
+{
+    NSUInteger bytesCount = data.length;
+    if (bytesCount) {
+        const char *hexChars = "0123456789ABCDEF";
+        const unsigned char *dataBuffer = data.bytes;
+        char *chars = malloc(sizeof(char) * (bytesCount * 2 + 1));
+        char *s = chars;
+        for (unsigned i = 0; i < bytesCount; ++i) {
+            *s++ = hexChars[((*dataBuffer & 0xF0) >> 4)];
+            *s++ = hexChars[(*dataBuffer & 0x0F)];
+            dataBuffer++;
+        }
+        *s = '\0';
+        NSString *hexString = [NSString stringWithUTF8String:chars];
+        free(chars);
+        return hexString;
+    }
+    return @"";
+}
+
++ (NSString *)getAuthHeaderWithRequestType:(NSString *)request_type{
     
 //    string AuthorizationHeader = AesGeneratedIV + "|" + KeyPublic + "||" + unixTS.ToString() + "|" + Signature;
-    
-    NSString *header = [NSString stringWithFormat:@"%@ | %@ || %d | %@",[self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY],PUBLIC_KEY,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:RequestType havingEncoding:NSUTF8StringEncoding]];
+    //dcf421cc2be61068888b2b2b4dd3ca5a
+    NSString *generatedIv =[self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY];
+    NSLog(@"generatedIv :%@",generatedIv);
+    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,PUBLIC_KEY,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:RequestType_PUT havingEncoding:NSUTF8StringEncoding]];
     return header;
 }
 @end

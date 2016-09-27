@@ -24,7 +24,7 @@
 + (NSString *)getAESRandom4WithSecretKey:(NSString *)secret_key AndPublicKey:(NSString *)public_key;
 
 
-+ (NSString *)getAuthHeader;
++ (NSString *)getAuthHeaderWithRequestType:(NSString *)request_type;
 
 
 +(NSMutableArray*)getLocationArray;

@@ -28,7 +28,12 @@
     if (!self) {
         return nil;
     }
-    self.responseSerializer=[AFJSONResponseSerializer serializer];
+//    self.responseSerializer=[AFJSONResponseSerializer serializer];
+    
+    self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",@"application/x-www-form-urlencoded", nil];
+
+    
+
     
 //    NSOperationQueue *operationQueue = self.operationQueue;
     
@@ -180,22 +185,19 @@
     [self.requestSerializer setValue:@"UTF-8;q=0.7,*;q=0.7" forHTTPHeaderField:@"Accept-Charset"];
     [self.requestSerializer setValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
     [self.requestSerializer setValue:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0" forHTTPHeaderField:@"Cache-Control"];
-    [self.requestSerializer setValue:@"Sat, 1 Jan 2000 00:00:00 GMT" forHTTPHeaderField:@"Expires"];
+    [self.requestSerializer setValue:@"Sat, 1 Jan 2020 00:00:00 GMT" forHTTPHeaderField:@"Expires"];
     [self.requestSerializer setValue:H_MAC_TYPE forHTTPHeaderField:@"HmacType"];
     [self.requestSerializer setValue:SECURITY_VERSION forHTTPHeaderField:@"SecurityVersion"];
     [self.requestSerializer setValue:auth_header forHTTPHeaderField:@"Authorization"];
 
-    self.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-//    self.responseSerializer.acceptableContentTypes = nil;
-
-
-//    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [self.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *params, NSError *__autoreleasing *error) {
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *paramJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        return paramJsonString;
+    }];
 
     
-    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-
-    self.responseSerializer=responseSerializer;
-
 
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
@@ -211,12 +213,92 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        NSLog(@"error : %@ code: %d",[error localizedDescription],[error code]);
+        NSLog(@"error : %@ code**: %d",[error description],[error code]);
+        
+        NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        NSLog(@"ErrorResponse : %@",ErrorResponse);
+        
 
         [self hideProgressAlert];
         [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
     }];
     
+    
+}
+
+
+-(void)putRequestWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    [self.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:@"en,en-gb;q=0.5" forHTTPHeaderField:@"Accept-Language"];
+    [self.requestSerializer setValue:@"max-age=0" forHTTPHeaderField:@"Cache-Control"];
+    [self.requestSerializer setValue:@"UTF-8;q=0.7,*;q=0.7" forHTTPHeaderField:@"Accept-Charset"];
+    [self.requestSerializer setValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
+    [self.requestSerializer setValue:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0" forHTTPHeaderField:@"Cache-Control"];
+    [self.requestSerializer setValue:@"Sat, 1 Jan 2020 00:00:00 GMT" forHTTPHeaderField:@"Expires"];
+    [self.requestSerializer setValue:H_MAC_TYPE forHTTPHeaderField:@"HmacType"];
+    [self.requestSerializer setValue:SECURITY_VERSION forHTTPHeaderField:@"SecurityVersion"];
+    [self.requestSerializer setValue:auth_header forHTTPHeaderField:@"Authorization"];
+    
+    // Customizing serialization. Be careful, not work without parametersDictionary
+    [self.requestSerializer setQueryStringSerializationWithBlock:^NSString *(NSURLRequest *request, NSDictionary *params, NSError *__autoreleasing *error) {
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *paremJsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        return paremJsonString;
+    }];
+    
+
+    if(progressMessage)
+        [self showProgressWithMessage:progressMessage];
+    
+        
+    [self PUT:urlString parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"success : %@",responseObject);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self hideProgressAlert];
+        block(responseObject);
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"error : %@ code: %d",[error description],[error code]);
+        
+        NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",ErrorResponse);
+        
+        [self hideProgressAlert];
+        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
+
+    }];
+
+}
+ 
+
+- (NSData *)httpBodyForParamsDictionary:(NSDictionary *)paramDictionary
+{
+    NSMutableArray *parameterArray = [NSMutableArray array];
+    
+    [paramDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
+        NSString *param = [NSString stringWithFormat:@"%@=%@", key, [self percentEscapeString:obj]];
+        [parameterArray addObject:param];
+    }];
+    
+    NSString *string = [parameterArray componentsJoinedByString:@"&"];
+    
+    return [string dataUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)percentEscapeString:(NSString *)string
+{
+    NSString *result = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                                 (CFStringRef)string,
+                                                                                 (CFStringRef)@" ",
+                                                                                 (CFStringRef)@":/?@!$&'()*+,;=",
+                                                                                 kCFStringEncodingUTF8));
+    return [result stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 }
 
 -(void)getMethod{
