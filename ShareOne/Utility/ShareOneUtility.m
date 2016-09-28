@@ -76,33 +76,40 @@
 
     return locationArr;
 }
--(void)getDirectionBetweenCurrentLocation
++ (NSString *) geoCodeUsingAddress:(NSString *)address
 {
-//    NSString *urlString = [NSString stringWithFormat:
-//                           @"%@?origin=%f,%f&destination=%f,%f&sensor=true&key=%@",
-//                           @"https://maps.googleapis.com/maps/api/directions/json",
-//                           mapView.myLocation.coordinate.latitude,
-//                           mapView.myLocation.coordinate.longitude,
-//                           destLatitude,
-//                           destLongitude,
-//                           @"Your Google Api Key String"];
-//    NSURL *directionsURL = [NSURL URLWithString:urlString];
-//    
-//    
-//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:directionsURL];
-//    [request startSynchronous];
-//    NSError *error = [request error];
-//    if (!error) {
-//        NSString *response = [request responseString];
-//        NSLog(@"%@",response);
-//        NSDictionary *json =[NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableContainers error:&error];
-//        GMSPath *path =[GMSPath pathFromEncodedPath:json[@"routes"][0][@"overview_polyline"][@"points"]];
-//        GMSPolyline *singleLine = [GMSPolyline polylineWithPath:path];
-//        singleLine.strokeWidth = 7;
-//        singleLine.strokeColor = [UIColor greenColor];
-//        singleLine.map = self.mapView;
-//    }
-//    else NSLog(@"%@",[request error]);
+    double latitude1 = 0, longitude1 = 0;
+    
+    NSString *esc_addr =  [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", esc_addr]]
+                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                        timeoutInterval:60.0];
+    
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&response error:&requestError];
+    //  NSString *dataString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData //1
+                                                                   options:kNilOptions
+                                                                     error:&requestError];
+    id results = [jsonDictionary objectForKey:@"results"];
+    for( id stuff in results )
+    {
+        //NSDictionary *northeast = [[[stuff objectForKey:@"geometry"] objectForKey:@"bounds"] objectForKey:@"northeast"];
+        //NSDictionary *southwest = [[[stuff objectForKey:@"geometry"] objectForKey:@"bounds"] objectForKey:@"southwest"];
+        NSDictionary *center4 = [[stuff objectForKey:@"geometry"] objectForKey:@"location"];
+        latitude1=[[center4 objectForKey:@"lat"] floatValue];
+        longitude1=[[center4 objectForKey:@"lng"] floatValue];
+        
+    }
+    NSLog(@"%f",latitude1);
+    NSLog(@"%f",longitude1);
+    CLLocationCoordinate2D centers;
+    centers.latitude = latitude1;
+    centers.longitude = longitude1;
+    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",centers.latitude,centers.longitude];
+    return CoordinateStr;
 }
 +(NSString *)getDistancefromAdresses:(NSString *)source Destination:(NSString *)Destination
 {
