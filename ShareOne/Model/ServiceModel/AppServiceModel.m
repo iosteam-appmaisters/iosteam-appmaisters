@@ -276,31 +276,6 @@
 
 }
  
-
-- (NSData *)httpBodyForParamsDictionary:(NSDictionary *)paramDictionary
-{
-    NSMutableArray *parameterArray = [NSMutableArray array];
-    
-    [paramDictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
-        NSString *param = [NSString stringWithFormat:@"%@=%@", key, [self percentEscapeString:obj]];
-        [parameterArray addObject:param];
-    }];
-    
-    NSString *string = [parameterArray componentsJoinedByString:@"&"];
-    
-    return [string dataUsingEncoding:NSUTF8StringEncoding];
-}
-
-- (NSString *)percentEscapeString:(NSString *)string
-{
-    NSString *result = CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                                 (CFStringRef)string,
-                                                                                 (CFStringRef)@" ",
-                                                                                 (CFStringRef)@":/?@!$&'()*+,;=",
-                                                                                 kCFStringEncodingUTF8));
-    return [result stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-}
-
 -(void)getMethod{
     [self GET:@"" parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         

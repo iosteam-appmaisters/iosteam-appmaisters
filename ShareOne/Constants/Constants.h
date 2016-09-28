@@ -67,8 +67,6 @@
 
 #define kPackagePurchased @"kPackagePurchased"
 
-#define RequestType_PUT                 @"PUT"
-#define RequestType_POST                @"POST"
 
 
 
@@ -87,6 +85,8 @@
 #define CONTROLLER_NAME             @"detailVCIdentifier"
 #define CONTROLLER_TITLE            @"detailVCTitle"
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"
+
+#define SHOULD_SHOW                 @"shouldShow"
 
 #define SUB_CAT_TITLE               @"title"
 #define SUB_CAT_IMAGE               @"icon"

@@ -13,6 +13,7 @@
 #import "ShareOneUtility.h"
 #import "BBAES.h"
 #import "Constants.h"
+#import "Services.h"
 
 @import GoogleMaps;
 @implementation ShareOneUtility
@@ -32,8 +33,24 @@
     NSMutableArray *arrayToreturn = [[NSMutableArray alloc] init];
     [arr enumerateObjectsUsingBlock:^(NSArray *arr, NSUInteger idx, BOOL * _Nonnull stop) {
         
+        NSMutableArray *subCatArray = [[NSMutableArray alloc] init];
         if([arr isKindOfClass:[NSArray class]]){
-            [arrayToreturn addObject:arr[0]];
+            NSMutableDictionary *dict = [arr[0] mutableCopy];
+            if([[dict valueForKey:SHOULD_SHOW] boolValue]){
+                [arrayToreturn addObject:dict];
+                
+                NSMutableArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES] ;
+                if([subCatArr isKindOfClass:[NSArray class]]){
+                    
+                    [subCatArr enumerateObjectsUsingBlock:^(NSDictionary *subCatDict, NSUInteger idx, BOOL * _Nonnull stop) {
+                        
+                        if([[subCatDict valueForKey:SHOULD_SHOW] boolValue]){
+                            [subCatArray addObject:subCatDict];
+                        }
+                    }];
+                    [dict setValue:subCatArray forKey:MAIN_CAT_SUB_CATEGORIES];
+                }
+            }
         }
     }];
     return arrayToreturn;
