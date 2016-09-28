@@ -27,6 +27,8 @@
 + (NSString *)getAuthHeaderWithRequestType:(NSString *)request_type;
 
 
-+(NSMutableArray*)getLocationArray;
 +(NSString *)getDistancefromAdresses:(NSString *)source Destination:(NSString *)Destination;
+
++(NSString *) geoCodeUsingAddress:(NSString *)address;
+
 @end

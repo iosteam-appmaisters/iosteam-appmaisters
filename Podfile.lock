@@ -15,6 +15,19 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - ASIHTTPRequest (1.8.2):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
+    - ASIHTTPRequest/CloudFiles (= 1.8.2)
+    - ASIHTTPRequest/Core (= 1.8.2)
+    - ASIHTTPRequest/S3 (= 1.8.2)
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/CloudFiles (1.8.2):
+    - ASIHTTPRequest/Core
+  - ASIHTTPRequest/Core (1.8.2):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.2):
+    - ASIHTTPRequest/Core
   - FZAccordionTableView (0.2.3)
   - GoogleMaps (2.1.0):
     - GoogleMaps/Maps (= 2.1.0)
@@ -23,14 +36,17 @@ PODS:
     - GoogleMaps/Base (= 2.1.0)
   - IQKeyboardManager (4.0.6)
   - MBProgressHUD (1.0.0)
+  - Reachability (3.2)
   - SLExpandableTableView (1.3.1)
   - STCollapseTableView (0.1.1)
 
 DEPENDENCIES:
   - AES256Encrypter (~> 0.0)
   - AFNetworking
+  - ASIHTTPRequest (~> 1.8)
   - FZAccordionTableView (~> 0.2)
   - GoogleMaps
+  - GoogleMaps (~> 2.1)
   - IQKeyboardManager
   - MBProgressHUD (~> 1.0.0)
   - SLExpandableTableView
@@ -39,13 +55,15 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AES256Encrypter: 6428b61e39675814c597a675a5d0425327eaa36d
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   FZAccordionTableView: e64f49c71c32d750feda14025b088bcd25d1a71f
   GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
   IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SLExpandableTableView: ff63a4bb4b71c6c3ae2b7cb1cde6a36c1645f23c
   STCollapseTableView: edd40eacf9411ce862da921f83e0b7b1680fac4d
 
-PODFILE CHECKSUM: 4d3197ba571e16719380cd20df114cf71dfcb971
+PODFILE CHECKSUM: 8ac0cffe4e98790fad1e03b0db10b48f142d05a8
 
 COCOAPODS: 1.0.1
