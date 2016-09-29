@@ -12,10 +12,14 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 #import "ShareOneUtility.h"
+#import "GetDirectionViewController.h"
 
-@interface BranchLocationViewController ()<CLLocationManagerDelegate>
+@interface BranchLocationViewController ()<CLLocationManagerDelegate,branchLocationDelegate>
 {
     CLLocationManager *locationManager;
+    NSString *sourceaddress;
+    NSString *Destinationaddress;
+
 }
 @end
 
@@ -28,6 +32,7 @@
 - (void)viewDidLoad
 {
     [self createCurrentLocation];
+    [self setData];
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -36,7 +41,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+/*********************************************************************************************************/
+                                        #pragma mark - StartUp Method
+/*********************************************************************************************************/
 
+-(void)setData
+{
+    sourceaddress=@"";
+    Destinationaddress=@"South San Francisco";
+}
 /*********************************************************************************************************/
                         #pragma mark - Create Current Location
 /*********************************************************************************************************/
@@ -68,7 +81,8 @@
          }
          id userCity=[[[response results] firstObject] locality];
          NSLog(@"%@",userCity);
-         NSString *Distance=[ShareOneUtility getDistancefromAdresses:userCity Destination:@"South San Francisco"];
+         sourceaddress=userCity;
+         NSString *Distance=[ShareOneUtility getDistancefromAdresses:sourceaddress Destination:Destinationaddress];
          NSLog(@"Distance..........----------------------%f miles",[Distance floatValue]* 0.000621371);
      }];
 }
@@ -79,10 +93,24 @@
 
 -(IBAction)showAllBranchesonMapButtonClicked:(id)sender
 {
-    UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
-    homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-    [self.navigationController pushViewController:homeNavigationViewController animated:YES];
+    UINavigationController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    atmNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:atmNavigationViewController animated:YES];
 
+}
+
+/*********************************************************************************************************/
+                                    #pragma mark - BranchLocation Cell Delegate Method
+/*********************************************************************************************************/
+
+-(void)getDirectionMapButtonClicked:(id)sender
+{
+    GetDirectionViewController* getdirectionNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GetDirectionViewController"];
+    getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+    getdirectionNavigationViewController.sourceAddress=sourceaddress;
+    getdirectionNavigationViewController.DestinationAddress=Destinationaddress;
+    [self.navigationController pushViewController:getdirectionNavigationViewController animated:YES];
+    
 }
 
 /*********************************************************************************************************/
@@ -103,6 +131,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BranchLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell"];
+    [cell setDelegate:self];
     if(!cell)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell" forIndexPath:indexPath];

@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol branchLocationDelegate<NSObject>
+-(void)getDirectionButtonClicked:(id)sender;
+@end
 
 @interface BranchLocationCell : UITableViewCell
+{
+    __weak id<branchLocationDelegate> delegate;
 
+}
+@property (nonatomic, weak) id<branchLocationDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIImageView *branchlocationImgview;
 @property (nonatomic, weak) IBOutlet UILabel *addrressLbl;
 @property (nonatomic, weak) IBOutlet UILabel *streetAddressLbl;
@@ -17,5 +24,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *milesLbl;
 @property (nonatomic, weak) IBOutlet UILabel *officestatusLbl;
 @property (nonatomic, weak) IBOutlet UILabel *drivestatusLbl;
+@property (nonatomic, weak) IBOutlet UIButton *getDirectionbtn;
 
 @end
