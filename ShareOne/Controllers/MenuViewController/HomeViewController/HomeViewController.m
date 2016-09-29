@@ -8,6 +8,8 @@
 
 #import "HomeViewController.h"
 #import "WebViewController.h"
+#import "AppServiceModel.h"
+
 
 @implementation HomeViewController
 
@@ -17,7 +19,7 @@
     _webview.delegate=self;
     if(!_url)
         _url = HOME_WEB_VIEW_URL;
-    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com"]]];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -27,6 +29,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
+    //[[AppServiceModel sharedClient] hideProgressAlert];
     NSString *myLoadedUrl = [[webView.request mainDocumentURL] absoluteString];
     NSLog(@"Loaded url: %@", myLoadedUrl);
     

@@ -64,7 +64,8 @@
 -(void)setSelectedImageOnButton:(UIImage *)image{
     
     UIButton *castSenderButton = (UIButton *)_objSender;
-    [castSenderButton setImage:image forState:UIControlStateNormal];
+    [castSenderButton setSelected:!castSenderButton.isSelected];
+//    [castSenderButton setImage:image forState:UIControlStateNormal];
 }
 
 -(void)showPicker
