@@ -49,6 +49,7 @@
     NSString * center2=[ShareOneUtility geoCodeUsingAddress:self.DestinationAddress];
     [LocationArr addObject:center1];
     [LocationArr addObject:center2];
+    NSLog(@"Location Arr -----------%@",LocationArr);
 
 }
 
