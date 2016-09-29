@@ -80,7 +80,11 @@
     
     __weak LoginViewController *weakSelf = self;
     [[UtilitiesHelper shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
-        
+        if(success){
+            NSLog(@"Verification Success!");
+        }else{
+            NSLog(@"Unable to Verify");
+        }
     }];
     
 
