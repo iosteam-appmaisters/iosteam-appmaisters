@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface HomeViewController : BaseViewController
+@interface HomeViewController : BaseViewController<UIWebViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *webview;
 @property (nonnull, strong) NSString *url;
