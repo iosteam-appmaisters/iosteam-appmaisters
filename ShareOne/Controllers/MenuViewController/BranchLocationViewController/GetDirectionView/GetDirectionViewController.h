@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface GetDirectionViewController : UIViewController
+@interface GetDirectionViewController : BaseViewController
 {
     
 }

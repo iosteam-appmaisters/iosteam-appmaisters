@@ -52,8 +52,13 @@
     
 }
 
-- (IBAction)loginButtonClicked:(id)sender {
+- (IBAction)loginButtonClicked:(id)sender
+{
     
+    UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+    homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+    return;
     [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:_userIDTxt.text,@"account",_passwordTxt.text,@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_MEMBER_VALIDATE delegate:self completionBlock:^(NSObject *response) {
         
         UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];

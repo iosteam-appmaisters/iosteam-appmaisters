@@ -7,10 +7,16 @@
 //
 
 #import "MobileDepositController.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "ImageViewPopUpController.h"
 
-@interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate>
 
 @property (nonatomic,strong) id objSender;
+@property (nonatomic,strong) IBOutlet UIButton *View1btn;
+@property (nonatomic,strong) IBOutlet UIButton *View2btn;
+@property (nonatomic) BOOL isFrontorBack;
+@property (nonatomic,strong) UIImage *showViewimg;
 
 -(IBAction)captureFrontCardAction:(id)sender;
 -(IBAction)captureBackCardAction:(id)sender;
@@ -24,42 +30,105 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self startUpMethod];
 }
 
 
 #pragma mark - IBAction Methods
 
 -(IBAction)captureFrontCardAction:(id)sender{
+    _isFrontorBack=TRUE;
     _objSender=sender;
     [self showPicker];
 }
 -(IBAction)captureBackCardAction:(id)sender{
+    _isFrontorBack=FALSE;
+
     _objSender=sender;
     [self showPicker];
 }
+-(IBAction)viewButtonClicked:(id)sender{
+    
+    UIButton *btn=(UIButton *)sender;
+    if(btn.tag==1)
+    {
+        [self getImageViewPopUpController];
+    }
+    else if(btn.tag==2)
+    {
+        [self getImageViewPopUpController];
 
+    }
+}
 
 -(void)setSelectedImageOnButton:(UIImage *)image{
-
+    
     UIButton *castSenderButton = (UIButton *)_objSender;
     [castSenderButton setImage:image forState:UIControlStateNormal];
 }
 
--(void)showPicker{
-    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-    picker.delegate=self;
-    [picker setSourceType:(UIImagePickerControllerSourceTypeCamera)];
-    [self presentViewController:picker animated:YES completion:Nil];
+-(void)showPicker
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+        picker.delegate=self;
+        [picker setSourceType:(UIImagePickerControllerSourceTypeCamera)];
+        [self presentViewController:picker animated:YES completion:Nil];
+    }
+    
+}
+-(void)startUpMethod
+{
+    [self viewDisabled:_View1btn];
+    [self viewDisabled:_View2btn];
+}
+-(void)viewEnabled:(UIButton *)viewBtn
+{
+    viewBtn.enabled=TRUE;
+    viewBtn.titleLabel.textColor=[UIColor redColor];
+}
+-(void)viewDisabled:(UIButton *)viewBtn
+{
+    viewBtn.enabled=FALSE;
+    viewBtn.titleLabel.textColor=[UIColor colorWithRed:163/255.0 green:163/255.0 blue:163/255.0 alpha:1];
+
 }
 
+/*********************************************************************************************************/
+                    #pragma mark - Get ImageViewPopUpController ViewController Method
+/*********************************************************************************************************/
+
+-(void)getImageViewPopUpController
+{
+    ImageViewPopUpController *obj=[[ImageViewPopUpController alloc] initWithNibName:@"ImageViewPopUpController" bundle:nil];
+    obj.delegate=self;
+    obj.img=_showViewimg;
+    [self presentPopupViewController:obj animationType:0];
+}
+-(void)dismissPopUP:(id)sender
+{
+    [self dismissPopupViewControllerWithanimationType:2];
+
+}
 
 #pragma mark - UIImagePickerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     [self setSelectedImageOnButton:chosenImage];
-    
+    _showViewimg=chosenImage;
+    if(_isFrontorBack)
+    {
+
+        [self viewEnabled:_View1btn];
+    }
+    else
+    {
+
+        [self viewEnabled:_View2btn];
+
+    }
     [picker dismissViewControllerAnimated:YES completion:NULL];
 
 }

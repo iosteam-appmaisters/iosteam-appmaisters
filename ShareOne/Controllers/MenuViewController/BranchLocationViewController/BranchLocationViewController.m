@@ -79,11 +79,14 @@
          {
              NSLog(@"%@",[error description]);
          }
-         id userCity=[[[response results] firstObject] locality];
-         NSLog(@"%@",userCity);
-         sourceaddress=userCity;
-         NSString *Distance=[ShareOneUtility getDistancefromAdresses:sourceaddress Destination:Destinationaddress];
-         NSLog(@"Distance..........----------------------%f miles",[Distance floatValue]* 0.000621371);
+         else
+         {
+             id userCity=[[[response results] firstObject] locality];
+             NSLog(@"%@",userCity);
+             sourceaddress=userCity;
+             NSString *Distance=[ShareOneUtility getDistancefromAdresses:sourceaddress Destination:Destinationaddress];
+             NSLog(@"Distance..........----------------------%f miles",[Distance floatValue]* 0.000621371);
+         }
      }];
 }
 
@@ -103,7 +106,7 @@
                                     #pragma mark - BranchLocation Cell Delegate Method
 /*********************************************************************************************************/
 
--(void)getDirectionMapButtonClicked:(id)sender
+-(void)getDirectionButtonClicked:(id)sender
 {
     GetDirectionViewController* getdirectionNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GetDirectionViewController"];
     getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;

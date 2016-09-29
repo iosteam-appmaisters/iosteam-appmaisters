@@ -120,6 +120,7 @@
     _polyline.map = nil;
     _markerStart.map = nil;
     _markerFinish.map = nil;
+    _coordinates=[[NSMutableArray alloc] init];
     for (int count=0; count<2; count++)
         {
             

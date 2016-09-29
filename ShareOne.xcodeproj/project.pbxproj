@@ -43,6 +43,11 @@
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
 		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
 		6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* SlideMenu.plist */; };
+		F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */; };
+		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
+		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
+		F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */; };
+		F2099FAE1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2099FAC1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib */; };
 		F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C71F11D92CF940072D405 /* BranchLocationCell.m */; };
 		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
@@ -121,6 +126,14 @@
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShareOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
+		F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F2099FA41D9D3B4C00AAA8AC /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
+		F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
+		F2099FA61D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
+		F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
+		F2099FAA1D9D3B7D00AAA8AC /* ImageViewPopUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewPopUpController.h; sourceTree = "<group>"; };
+		F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewPopUpController.m; sourceTree = "<group>"; };
+		F2099FAC1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewPopUpController.xib; sourceTree = "<group>"; };
 		F20C71F01D92CF940072D405 /* BranchLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationCell.h; sourceTree = "<group>"; };
 		F20C71F11D92CF940072D405 /* BranchLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationCell.m; sourceTree = "<group>"; };
 		F26255411D94171300383B9E /* ATMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMLocationViewController.h; sourceTree = "<group>"; };
@@ -136,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */,
 				1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */,
 				1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */,
 				2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */,
@@ -159,6 +173,7 @@
 			children = (
 				1D8478EC1D93D6BA00153B19 /* MobileDepositController.h */,
 				1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */,
+				F2099F921D9D36D700AAA8AC /* ImageZoomPopup */,
 			);
 			path = MobileDepositController;
 			sourceTree = "<group>";
@@ -344,6 +359,7 @@
 		6BD405AC1D81B5FC00358036 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F2099FA31D9D3B2C00AAA8AC /* MJpopupView */,
 				6BD405C61D82CA2F00358036 /* UtilitiesHelper.h */,
 				6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */,
 				1D23999E1D913C8C00157320 /* ShareOneUtility.h */,
@@ -482,6 +498,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */,
 				1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */,
 				1D1AD79E1D9947BD0014C743 /* Security.framework */,
 				B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */,
@@ -496,6 +513,27 @@
 				814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F2099F921D9D36D700AAA8AC /* ImageZoomPopup */ = {
+			isa = PBXGroup;
+			children = (
+				F2099FAA1D9D3B7D00AAA8AC /* ImageViewPopUpController.h */,
+				F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */,
+				F2099FAC1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib */,
+			);
+			path = ImageZoomPopup;
+			sourceTree = "<group>";
+		};
+		F2099FA31D9D3B2C00AAA8AC /* MJpopupView */ = {
+			isa = PBXGroup;
+			children = (
+				F2099FA41D9D3B4C00AAA8AC /* MJPopupBackgroundView.h */,
+				F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */,
+				F2099FA61D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.h */,
+				F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */,
+			);
+			path = MJpopupView;
 			sourceTree = "<group>";
 		};
 		F25B15861D9BCCAE003E5E6C /* GetDirectionView */ = {
@@ -583,6 +621,7 @@
 				6BD405971D81B59300358036 /* Assets.xcassets in Resources */,
 				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
+				F2099FAE1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib in Resources */,
 				6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,8 +684,10 @@
 				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
+				F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */,
 				6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */,
 				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
+				F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */,
 				F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
 				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
@@ -662,6 +703,7 @@
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
 				1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */,
 				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
 				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
