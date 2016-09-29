@@ -27,10 +27,11 @@
 @end
 
 @implementation GetDirectionViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initCoorindatesArray];
+    [self initGoogleMap];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,6 +111,7 @@
             //[mapView_ setSelectedMarker:_markerStart];
         }
     }
+    [self setpolyLine];
 }
 -(void)setpolyLine
 {

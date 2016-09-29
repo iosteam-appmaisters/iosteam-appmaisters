@@ -9,12 +9,20 @@
 #import "BranchLocationCell.h"
 
 @implementation BranchLocationCell
-
-- (void)awakeFromNib {
+@synthesize delegate;
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    // Initialization code
+    [_getDirectionbtn addTarget:self action:@selector(getDirectionbuttonClicked)
+          forControlEvents:UIControlEventTouchUpInside];
 }
-
+-(void)getDirectionbuttonClicked
+{
+    if([self.delegate respondsToSelector:@selector(getDirectionButtonClicked:)])
+    {
+        [self.delegate getDirectionButtonClicked:self];
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
