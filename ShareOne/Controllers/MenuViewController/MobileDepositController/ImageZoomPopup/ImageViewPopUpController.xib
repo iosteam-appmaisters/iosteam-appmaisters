@@ -13,20 +13,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="gMJ-Mm-G58">
-            <rect key="frame" x="0.0" y="0.0" width="346" height="508"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Nh-EO-5YI">
-                    <rect key="frame" x="0.0" y="0.0" width="346" height="508"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIC-uI-TJb">
-                    <rect key="frame" x="280" y="2" width="62" height="44"/>
+                    <rect key="frame" x="256" y="6" width="62" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="62" id="GtI-8L-msr"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                     <state key="normal" title="X">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="ClosebuttonClicked:" destination="-1" eventType="touchUpInside" id="zOE-Su-af4"/>
@@ -37,10 +37,10 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="7Nh-EO-5YI" secondAttribute="bottom" id="2e7-jX-LEm"/>
                 <constraint firstItem="7Nh-EO-5YI" firstAttribute="leading" secondItem="gMJ-Mm-G58" secondAttribute="leading" id="9cc-Qd-YpM"/>
-                <constraint firstItem="uIC-uI-TJb" firstAttribute="top" secondItem="gMJ-Mm-G58" secondAttribute="top" constant="2" id="bhM-EV-zAC"/>
+                <constraint firstItem="uIC-uI-TJb" firstAttribute="top" secondItem="gMJ-Mm-G58" secondAttribute="top" constant="6" id="bhM-EV-zAC"/>
+                <constraint firstAttribute="trailing" secondItem="uIC-uI-TJb" secondAttribute="trailing" constant="2" id="j2S-g4-Sof"/>
                 <constraint firstItem="7Nh-EO-5YI" firstAttribute="top" secondItem="gMJ-Mm-G58" secondAttribute="top" id="mLp-2j-Cwa"/>
                 <constraint firstAttribute="trailing" secondItem="7Nh-EO-5YI" secondAttribute="trailing" id="u8Q-VB-wHF"/>
-                <constraint firstAttribute="trailing" secondItem="uIC-uI-TJb" secondAttribute="trailing" constant="4" id="xyC-HZ-6AL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="175" y="361"/>
