@@ -919,7 +919,7 @@
                                 } else {
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         
-                                        [[UtilitiesHelper shareUtitlities] showToastWithMessage:error.localizedDescription title:@"Error" delegate:delegate];
+//                                        [[UtilitiesHelper shareUtitlities] showToastWithMessage:error.localizedDescription title:@"Error" delegate:delegate];
                                         block(success);
 
                                         NSLog(@"Switch to fall back authentication - ie, display a keypad or password entry box");

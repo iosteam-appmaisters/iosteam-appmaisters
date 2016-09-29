@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *userFingerprintBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rememberMetxtBtn;
 
+- (IBAction)scanTouchID:(id)sender ;
 
 @end
 
@@ -49,20 +50,20 @@
 //        
 //    }];
     
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:@"leah",@"account",@"secrets!",@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_MEMBER_VALIDATE delegate:self completionBlock:^(NSObject *response) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-    
 }
 
 - (IBAction)loginButtonClicked:(id)sender {
     
-    UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
-    homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:[NSDictionary dictionaryWithObjectsAndKeys:_userIDTxt.text,@"account",_passwordTxt.text,@"password", nil] progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_MEMBER_VALIDATE delegate:self completionBlock:^(NSObject *response) {
+        
+        UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+        homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 
 }
 
@@ -77,7 +78,9 @@
 - (IBAction)fingerprintButtonClicked:(id)sender {
     UIButton *btnCast = (UIButton *)sender;
     [btnCast setSelected:!btnCast.isSelected];
-    
+}
+
+- (IBAction)scanTouchID:(id)sender{
     __weak LoginViewController *weakSelf = self;
     [[UtilitiesHelper shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
         if(success){
@@ -86,9 +89,9 @@
             NSLog(@"Unable to Verify");
         }
     }];
-    
 
 }
+
 
 - (IBAction)openUrlButtonClicked:(id)sender {
     NSURL *url = [NSURL URLWithString:@"https://www.google.com"];

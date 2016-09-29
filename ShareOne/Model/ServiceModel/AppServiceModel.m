@@ -257,6 +257,8 @@
         
     [self PUT:urlString parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
         NSLog(@"success : %@",responseObject);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self hideProgressAlert];
@@ -266,11 +268,14 @@
         
         NSLog(@"error : %@ code: %d",[error description],[error code]);
         
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+        
         NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
         NSLog(@"%@",ErrorResponse);
         
         [self hideProgressAlert];
-        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
+        [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
 
     }];
 
