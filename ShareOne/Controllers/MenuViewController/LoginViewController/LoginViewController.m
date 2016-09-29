@@ -77,6 +77,13 @@
 - (IBAction)fingerprintButtonClicked:(id)sender {
     UIButton *btnCast = (UIButton *)sender;
     [btnCast setSelected:!btnCast.isSelected];
+    
+    __weak LoginViewController *weakSelf = self;
+    [[UtilitiesHelper shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
+        
+    }];
+    
+
 }
 
 - (IBAction)openUrlButtonClicked:(id)sender {

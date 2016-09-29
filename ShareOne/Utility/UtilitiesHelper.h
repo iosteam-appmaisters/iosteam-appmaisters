@@ -97,5 +97,8 @@
 +(NSString*)getDeviceIdentifier;
 +(BOOL)isGpsOn;
 
+-(void)showLAContextWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block;
+
+
 @end
 

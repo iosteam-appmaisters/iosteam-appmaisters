@@ -12,6 +12,8 @@
 #import "AppDelegate.h"
 #import<CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>
+#import <LocalAuthentication/LocalAuthentication.h>
+
 
 @implementation UtilitiesHelper
 {
@@ -898,6 +900,41 @@
     }
     
     return isGpsOn;
+}
+
+-(void)showLAContextWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block{
+ 
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    NSString *myLocalizedReasonString = @"Logging in with Touch ID";
+    
+    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                  localizedReason:myLocalizedReasonString
+                            reply:^(BOOL success, NSError *error) {
+                                if (success) {
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        block(success);
+                                    });
+                                } else {
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        
+                                        [[UtilitiesHelper shareUtitlities] showToastWithMessage:error.localizedDescription title:@"Error" delegate:delegate];
+                                        block(success);
+
+                                        NSLog(@"Switch to fall back authentication - ie, display a keypad or password entry box");
+                                    });
+                                }
+                            }];
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[UtilitiesHelper shareUtitlities] showToastWithMessage:authError.localizedDescription title:@"Error" delegate:delegate];
+
+            block(FALSE);
+
+        });
+    }
+
 }
 
 @end
