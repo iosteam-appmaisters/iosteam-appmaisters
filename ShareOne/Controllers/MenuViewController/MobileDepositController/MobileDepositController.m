@@ -86,12 +86,12 @@
 }
 -(void)viewEnabled:(UIButton *)viewBtn
 {
-    viewBtn.enabled=TRUE;
+    viewBtn.userInteractionEnabled=TRUE;
     viewBtn.titleLabel.textColor=[UIColor redColor];
 }
 -(void)viewDisabled:(UIButton *)viewBtn
 {
-    viewBtn.enabled=FALSE;
+    viewBtn.userInteractionEnabled=FALSE;
     viewBtn.titleLabel.textColor=[UIColor colorWithRed:163/255.0 green:163/255.0 blue:163/255.0 alpha:1];
 
 }
