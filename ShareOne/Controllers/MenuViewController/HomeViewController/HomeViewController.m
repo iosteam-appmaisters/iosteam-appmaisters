@@ -13,6 +13,8 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com"]]];
+    if(!_url)
+        _url = HOME_WEB_VIEW_URL;
+    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
 }
 @end

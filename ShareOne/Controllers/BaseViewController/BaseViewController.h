@@ -8,6 +8,7 @@
 #import "SignInModel.h"
 #import "HomeNavigationDelegate.h"
 
+@class HomeViewController;
 @interface BaseViewController : UIViewController<HomeNavigationDelegate>
 
 -(void)setBackgroundImage;

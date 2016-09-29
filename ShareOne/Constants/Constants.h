@@ -85,6 +85,9 @@
 #define CONTROLLER_NAME             @"detailVCIdentifier"
 #define CONTROLLER_TITLE            @"detailVCTitle"
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"
+#define WEB_URL                     @"webUrl"
+
+#define HOME_WEB_VIEW_URL           @"https://nsmobilecp.ns3web.com/Account/Summary"
 
 #define SHOULD_SHOW                 @"shouldShow"
 

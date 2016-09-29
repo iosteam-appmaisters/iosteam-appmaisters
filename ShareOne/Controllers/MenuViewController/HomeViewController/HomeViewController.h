@@ -11,5 +11,6 @@
 @interface HomeViewController : BaseViewController
 
 @property (nonatomic, weak) IBOutlet UIWebView *webview;
+@property (nonnull, strong) NSString *url;
 
 @end

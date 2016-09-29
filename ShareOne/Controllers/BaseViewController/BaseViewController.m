@@ -4,6 +4,7 @@
 #import "Constants.h"
 #import "LeftMenuViewController.h"
 #import "WebViewController.h"
+#import "HomeViewController.h"
 
 
 @interface BaseViewController (){
@@ -146,8 +147,18 @@
 - (void)pushViewControllerWithObject:(NSDictionary *)dict{
 
     if([[dict valueForKey:CONTROLLER_NAME] length]>0){
-        UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
-        [self.navigationController pushViewController:objUIViewController animated:YES];
+        
+        if([[dict valueForKey:CONTROLLER_NAME] isEqualToString:@"WebViewController"]){
+            
+            HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
+            objHomeViewController.url= [dict valueForKey:WEB_URL];
+            [self.navigationController pushViewController:objHomeViewController animated:YES];
+
+        }
+        else{
+            UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
+            [self.navigationController pushViewController:objUIViewController animated:YES];
+        }
     }
     else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Log Off"]){
         
@@ -163,8 +174,8 @@
                                                                    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
                                                                }]; // 3
         
-        [alert addAction:firstAction]; // 4
-        [alert addAction:secondAction]; // 5
+        [alert addAction:firstAction];
+        [alert addAction:secondAction]; 
         
         [self presentViewController:alert animated:YES completion:nil];
     }

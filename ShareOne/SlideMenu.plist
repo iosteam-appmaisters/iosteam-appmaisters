@@ -16,6 +16,8 @@
 			<string>WebViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
+			<key>webUrl</key>
+			<string></string>
 			<key>subCategories</key>
 			<array>
 				<dict>
@@ -23,6 +25,8 @@
 					<string>Account Transfer</string>
 					<key>icon</key>
 					<string></string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Transfers/Account</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCIdentifier</key>
@@ -35,6 +39,8 @@
 					<string>Member Transfer</string>
 					<key>icon</key>
 					<string></string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Transfers/Member</string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>shouldShow</key>
@@ -49,6 +55,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Transfers/Scheduled</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -61,6 +69,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/ACH/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -73,6 +83,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Transfers/Check</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -93,6 +105,8 @@
 			<string>menu_online_service_icon</string>
 			<key>detailVCIdentifier</key>
 			<string>WebViewController</string>
+			<key>webUrl</key>
+			<string></string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -104,6 +118,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/EStatements/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -116,6 +132,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/BillPay/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -128,6 +146,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/CheckOrder/Ineligible</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -140,6 +160,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/MX</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -154,6 +176,8 @@
 					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Alerts/Index</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -166,6 +190,8 @@
 					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/LoanApplication/Index</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -178,6 +204,8 @@
 					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Account/Tax</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -190,6 +218,8 @@
 					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Notices/List</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -200,6 +230,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/ECC</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -212,6 +244,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/StopPayment/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -232,6 +266,8 @@
 			<string>menu_mobile_deposit_icon</string>
 			<key>detailVCIdentifier</key>
 			<string>MobileDepositController</string>
+			<key>webUrl</key>
+			<string></string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -252,6 +288,8 @@
 			<string>PayPersonController</string>
 			<key>detailVCTitle</key>
 			<string></string>
+			<key>webUrl</key>
+			<string></string>
 			<key>subCategories</key>
 			<array/>
 		</dict>
@@ -270,6 +308,8 @@
 			<string>WebViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
+			<key>webUrl</key>
+			<string>https://nsmobilecp.ns3web.com/Messages/Index</string>
 			<key>subCategories</key>
 			<array/>
 		</dict>
@@ -284,6 +324,8 @@
 			<string>Member Service</string>
 			<key>icon</key>
 			<string>menu_member_service_icon</string>
+			<key>webUrl</key>
+			<string></string>
 			<key>detailVCIdentifier</key>
 			<string>WebViewController</string>
 			<key>detailVCTitle</key>
@@ -295,6 +337,8 @@
 					<string>Update profile</string>
 					<key>icon</key>
 					<string></string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Profile/Update</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCIdentifier</key>
@@ -304,11 +348,13 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Change account number</string>
+					<string>Change account name</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Username/Change</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -319,6 +365,8 @@
 					<string>Change password</string>
 					<key>icon</key>
 					<string></string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Password/Change</string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>shouldShow</key>
@@ -333,6 +381,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/SuffixPreferences/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -345,6 +395,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Account/Preferences</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -365,6 +417,8 @@
 			<string>menu_rates_loan_icon</string>
 			<key>detailVCIdentifier</key>
 			<string>WebViewController</string>
+			<key>webUrl</key>
+			<string></string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -376,6 +430,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://www.google.com</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -390,6 +446,8 @@
 					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
+					<key>webUrl</key>
+					<string>https://www.google.com</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -408,6 +466,8 @@
 			<string>menu_location_icon</string>
 			<key>detailVCIdentifier</key>
 			<string></string>
+			<key>webUrl</key>
+			<string></string>
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
@@ -419,6 +479,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>BranchLocationViewController</string>
+					<key>webUrl</key>
+					<string></string>
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>
@@ -431,6 +493,8 @@
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>ATMLocationViewController</string>
+					<key>webUrl</key>
+					<string></string>
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>
@@ -453,6 +517,8 @@
 			<string>SettingsViewController</string>
 			<key>detailVCTitle</key>
 			<string></string>
+			<key>webUrl</key>
+			<string></string>
 			<key>subCategories</key>
 			<array/>
 		</dict>
@@ -467,6 +533,8 @@
 			<string>menu_social_media_icon</string>
 			<key>shouldShow</key>
 			<true/>
+			<key>webUrl</key>
+			<string></string>
 			<key>detailVCIdentifier</key>
 			<string>SocialMediaViewController</string>
 			<key>detailVCTitle</key>
@@ -486,6 +554,8 @@
 			<key>icon</key>
 			<string>menu_log_off_icon</string>
 			<key>detailVCIdentifier</key>
+			<string></string>
+			<key>webUrl</key>
 			<string></string>
 			<key>detailVCTitle</key>
 			<string></string>
