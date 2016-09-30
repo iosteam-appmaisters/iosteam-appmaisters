@@ -6,7 +6,7 @@
 //  Copyright © 2016 Ali Akbar. All rights reserved.
 //
 #import <CommonCrypto/CommonHMAC.h>
-
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "ShareOneUtility.h"
 #import <CoreLocation/CoreLocation.h>
 
@@ -14,6 +14,7 @@
 #import "BBAES.h"
 #import "Constants.h"
 #import "Services.h"
+
 
 @import GoogleMaps;
 @implementation ShareOneUtility
@@ -247,6 +248,17 @@
     return header;
 }
 
++ (void)showProgressViewOnView:(UIView *)view{
+    [MBProgressHUD showHUDAddedTo:view animated:YES];
+}
 
++(void)hideProgressViewOnView:(UIView *)view{
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // Do something...
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:view animated:YES];
+        });
+    });
+}
 
 @end

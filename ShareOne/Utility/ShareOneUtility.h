@@ -31,4 +31,8 @@
 
 +(NSString *) geoCodeUsingAddress:(NSString *)address;
 
++ (void)showProgressViewOnView:(UIView *)view;
++ (void)hideProgressViewOnView:(UIView *)view;
+
+
 @end
