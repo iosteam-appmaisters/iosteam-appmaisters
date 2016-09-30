@@ -50,7 +50,6 @@
 		F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C71F11D92CF940072D405 /* BranchLocationCell.m */; };
 		F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB621D9E734300A705A5 /* CameraViewController.m */; };
 		F229DB661D9E734300A705A5 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB641D9E734300A705A5 /* Global.m */; };
-		F229DB681D9E735200A705A5 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB671D9E735200A705A5 /* libVertifiImageProcessing.a */; };
 		F229DB6A1D9E7D6000A705A5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB691D9E7D6000A705A5 /* CoreVideo.framework */; };
 		F229DB6C1D9E7D6700A705A5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */; };
 		F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */; };
@@ -60,6 +59,7 @@
 		F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB761D9E821C00A705A5 /* CameraGridView.m */; };
 		F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB781D9E821C00A705A5 /* TransparentToolbar.m */; };
 		F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */; };
+		F229DB801D9EAC4E00A705A5 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB7F1D9EAC4E00A705A5 /* libVertifiImageProcessing.a */; };
 		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
 		F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */; };
@@ -150,7 +150,6 @@
 		F229DB621D9E734300A705A5 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		F229DB631D9E734300A705A5 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		F229DB641D9E734300A705A5 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
-		F229DB671D9E735200A705A5 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		F229DB691D9E7D6000A705A5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -164,6 +163,7 @@
 		F229DB781D9E821C00A705A5 /* TransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentToolbar.m; sourceTree = "<group>"; };
 		F229DB7C1D9E83FF00A705A5 /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
 		F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController_iPhone.xib; sourceTree = "<group>"; };
+		F229DB7F1D9EAC4E00A705A5 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		F26255411D94171300383B9E /* ATMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMLocationViewController.h; sourceTree = "<group>"; };
 		F26255421D94171300383B9E /* ATMLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMLocationViewController.m; sourceTree = "<group>"; };
 		F2BFF9FA1D9BF6A000D76E0D /* GetDirectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDirectionViewController.h; sourceTree = "<group>"; };
@@ -177,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F229DB801D9EAC4E00A705A5 /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -186,7 +187,6 @@
 				1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */,
 				1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */,
 				2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */,
-				F229DB681D9E735200A705A5 /* libVertifiImageProcessing.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,12 +525,12 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F229DB7F1D9EAC4E00A705A5 /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
 				F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */,
 				F229DB691D9E7D6000A705A5 /* CoreVideo.framework */,
-				F229DB671D9E735200A705A5 /* libVertifiImageProcessing.a */,
 				F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */,
 				1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */,
 				1D1AD79E1D9947BD0014C743 /* Security.framework */,
@@ -892,13 +892,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -913,13 +914,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";

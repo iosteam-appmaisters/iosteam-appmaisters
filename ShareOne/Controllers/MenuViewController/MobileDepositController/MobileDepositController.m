@@ -54,15 +54,15 @@
 -(IBAction)captureFrontCardAction:(id)sender{
     _isFrontorBack=TRUE;
     _objSender=sender;
-     [self showPicker];  // IOS Camera
-   // [self onCameraClick:_objSender]; //Vertify Camera
+    // [self showPicker];  // IOS Camera
+    [self onCameraClick:_objSender]; //Vertify Camera
 }
 -(IBAction)captureBackCardAction:(id)sender{
     _isFrontorBack=FALSE;
 
     _objSender=sender;
-    [self showPicker];  // IOS Camera
-   // [self onCameraClick:_objSender]; //Vertify Camera
+    //[self showPicker];  // IOS Camera
+    [self onCameraClick:_objSender]; //Vertify Camera
 }
 -(IBAction)viewButtonClicked:(id)sender{
     
@@ -175,7 +175,7 @@
 {
     NSString *strTitle = nil;
     
-    if (sender.tag == FRONT_BUTTON_TAG)
+    if (_isFrontorBack)
         strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_FRONT_PHOTO" value:@"Front Check Image" table:@"VIPSample"];
     else
         strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_BACK_PHOTO" value:@"Back Check Image" table:@"VIPSample"];
@@ -253,7 +253,7 @@
                            {
                                [self setSelectedImageOnButton:imageBW];
                                _showViewimg=imageBW;
-                               if(isFront)
+                               if(_isFrontorBack)
                                {
                                    [self viewEnabled:_View1btn];
                                }
