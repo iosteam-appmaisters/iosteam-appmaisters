@@ -17,6 +17,11 @@
 @property (nonatomic,strong) IBOutlet UIButton *View2btn;
 @property (nonatomic) BOOL isFrontorBack;
 @property (nonatomic,strong) UIImage *showViewimg;
+@property (nonatomic, weak) IBOutlet UIView *seperaterFrontCamView;
+@property (nonatomic, weak) IBOutlet UIView *seperaterBackCamView;
+@property (nonatomic, weak) IBOutlet UIButton *frontCamBtn;
+
+
 
 -(IBAction)captureFrontCardAction:(id)sender;
 -(IBAction)captureBackCardAction:(id)sender;
@@ -50,6 +55,8 @@
 -(IBAction)viewButtonClicked:(id)sender{
     
     UIButton *btn=(UIButton *)sender;
+    
+    
     if(btn.tag==1)
     {
         [self getImageViewPopUpController];
@@ -75,7 +82,7 @@
         UIImagePickerController * picker = [[UIImagePickerController alloc] init];
         picker.delegate=self;
         [picker setSourceType:(UIImagePickerControllerSourceTypeCamera)];
-        [self presentViewController:picker animated:YES completion:Nil];
+        [self presentViewController:picker animated:YES completion:nil];
     }
     
 }
@@ -87,12 +94,18 @@
 -(void)viewEnabled:(UIButton *)viewBtn
 {
     viewBtn.userInteractionEnabled=TRUE;
-    viewBtn.titleLabel.textColor=[UIColor redColor];
+    viewBtn.titleLabel.textColor=_frontCamBtn.tintColor;
+    if([_objSender isEqual:_frontCamBtn]){
+        [_seperaterFrontCamView setBackgroundColor:_frontCamBtn.tintColor];
+    }
+    else{
+        [_seperaterBackCamView setBackgroundColor:_frontCamBtn.tintColor];
+    }
 }
 -(void)viewDisabled:(UIButton *)viewBtn
 {
-    viewBtn.userInteractionEnabled=FALSE;
-    viewBtn.titleLabel.textColor=[UIColor colorWithRed:163/255.0 green:163/255.0 blue:163/255.0 alpha:1];
+//    viewBtn.userInteractionEnabled=FALSE;
+//    viewBtn.titleLabel.textColor=[UIColor colorWithRed:163/255.0 green:163/255.0 blue:163/255.0 alpha:1];
 
 }
 
