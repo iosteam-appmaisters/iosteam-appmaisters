@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController">
+            <connections>
+                <outlet property="previewView" destination="hrv-04-EMc" id="VaK-rw-0LV"/>
+                <outlet property="scrollViewPreview" destination="6T8-to-RtF" id="N1m-70-nlt"/>
+                <outlet property="toolbarBottom" destination="med-LO-hrU" id="hXs-wY-ML3"/>
+                <outlet property="toolbarTop" destination="peh-zg-GTe" id="hVP-DK-HFB"/>
+                <outlet property="view" destination="iN0-l3-epB" id="735-Fe-Tlu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="hrv-04-EMc">
+                    <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" minimumZoomScale="0.10000000149011612" maximumZoomScale="2" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T8-to-RtF">
+                    <rect key="frame" x="0.0" y="0.0" width="736" height="370"/>
+                    <color key="backgroundColor" white="0.89919354839999999" alpha="1" colorSpace="calibratedWhite"/>
+                </scrollView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peh-zg-GTe" customClass="TransparentToolbar">
+                    <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items/>
+                </toolbar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="med-LO-hrU" customClass="TransparentToolbar">
+                    <rect key="frame" x="0.0" y="370" width="736" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="peh-zg-GTe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0cg-yr-fH2"/>
+                <constraint firstAttribute="bottom" secondItem="hrv-04-EMc" secondAttribute="bottom" id="1pW-I0-9Rg"/>
+                <constraint firstAttribute="bottom" secondItem="med-LO-hrU" secondAttribute="bottom" id="L5c-QY-zf0"/>
+                <constraint firstAttribute="trailing" secondItem="med-LO-hrU" secondAttribute="trailing" id="LMA-kr-5AX"/>
+                <constraint firstItem="6T8-to-RtF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nhm-Kl-xfJ"/>
+                <constraint firstAttribute="trailing" secondItem="hrv-04-EMc" secondAttribute="trailing" id="QDA-Sf-dBd"/>
+                <constraint firstItem="peh-zg-GTe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UiP-3K-h4Q"/>
+                <constraint firstItem="med-LO-hrU" firstAttribute="top" secondItem="6T8-to-RtF" secondAttribute="bottom" id="W7l-Ok-Q29"/>
+                <constraint firstAttribute="trailing" secondItem="6T8-to-RtF" secondAttribute="trailing" id="Xwe-ua-sPm"/>
+                <constraint firstItem="6T8-to-RtF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iQz-sC-aDW"/>
+                <constraint firstItem="med-LO-hrU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="l4u-3S-LeA"/>
+                <constraint firstItem="hrv-04-EMc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pDh-Cg-MBX"/>
+                <constraint firstItem="hrv-04-EMc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pwT-VY-2vk"/>
+                <constraint firstAttribute="trailing" secondItem="peh-zg-GTe" secondAttribute="trailing" id="wdc-p6-2UL"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+        </view>
+    </objects>
+</document>

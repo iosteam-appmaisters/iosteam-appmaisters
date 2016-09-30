@@ -9,8 +9,15 @@
 #import "MobileDepositController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "ImageViewPopUpController.h"
-
-@interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate>
+#import "CameraGridView.h"
+#import "VertifiImageProcessing.h"
+#import "Global.h"
+#import "CameraViewController.h"
+#import "Constants.h"
+@interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
+{
+    NSMutableArray *imageErrors;
+}
 
 @property (nonatomic,strong) id objSender;
 @property (nonatomic,strong) IBOutlet UIButton *View1btn;
@@ -47,13 +54,15 @@
 -(IBAction)captureFrontCardAction:(id)sender{
     _isFrontorBack=TRUE;
     _objSender=sender;
-    [self showPicker];
+     [self showPicker];  // IOS Camera
+   // [self onCameraClick:_objSender]; //Vertify Camera
 }
 -(IBAction)captureBackCardAction:(id)sender{
     _isFrontorBack=FALSE;
 
     _objSender=sender;
-    [self showPicker];
+    [self showPicker];  // IOS Camera
+   // [self onCameraClick:_objSender]; //Vertify Camera
 }
 -(IBAction)viewButtonClicked:(id)sender{
     
@@ -61,6 +70,9 @@
     [self getImageViewPopUpControllerWithSender:btn];
 
 }
+/*********************************************************************************************************/
+                        #pragma mark - CameraButton Selected Method
+/*********************************************************************************************************/
 
 -(void)setSelectedImageOnButton:(UIImage *)image{
     
@@ -74,6 +86,9 @@
     }
 //    [castSenderButton setImage:image forState:UIControlStateNormal];
 }
+/*********************************************************************************************************/
+                            #pragma mark - Show IOS Camera Picker
+/*********************************************************************************************************/
 
 -(void)showPicker
 {
@@ -86,11 +101,206 @@
     }
     
 }
+
+/*********************************************************************************************************/
+                            #pragma mark - Show Vertify Camera
+/*********************************************************************************************************/
+
+//-----------------------------------------------------------------------------
+// Camera Click
+//-----------------------------------------------------------------------------
+
+- (void) onCameraClick:(UIButton *)sender
+{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No Camera Detected!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    
+    // check authorization status of camera
+    __block AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    
+    if (status == AVAuthorizationStatusNotDetermined)               // first time use
+    {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            if (granted)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self loadCamera:sender];
+                });
+            }
+        }];
+    }
+    
+    switch (status)
+    {
+        case AVAuthorizationStatusAuthorized:
+            [self loadCamera:sender];
+            break;
+        case AVAuthorizationStatusDenied:
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Camera Use Not Authorized!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+            
+            // for iOS8, this code snippet is a nice alternative to the UIAlertView, as it allows for user to launch to the App Settings screen to enable the camera
+            /*
+             NSString *strTitle = [NSString stringWithFormat:@"Give Permission for %@ to Use Your Camera",@"yourProductName"];
+             UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"" message:strTitle preferredStyle:UIAlertControllerStyleAlert];
+             [sheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+             [sheet addAction:[UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+             
+             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+             
+             }]];
+             
+             [self presentViewController:sheet animated:YES completion:nil];
+             */
+            
+            return;
+        }
+        default:
+            return;
+    }
+    
+   	return;
+}
+
+//-----------------------------------------------------------------------------
+// Camera Click
+//-----------------------------------------------------------------------------
+
+- (void) loadCamera:(UIButton *)sender
+{
+    NSString *strTitle = nil;
+    
+    if (sender.tag == FRONT_BUTTON_TAG)
+        strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_FRONT_PHOTO" value:@"Front Check Image" table:@"VIPSample"];
+    else
+        strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_BACK_PHOTO" value:@"Back Check Image" table:@"VIPSample"];
+    
+    
+    CameraViewController *cameraViewController = nil;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(sender.tag == FRONT_BUTTON_TAG ? YES: NO)];
+    else  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPad" bundle:nil delegate:self title:strTitle isFront:(sender.tag == FRONT_BUTTON_TAG ? YES: NO)];
+    
+    if (cameraViewController != nil)
+    {
+        [self presentViewController:cameraViewController animated:YES completion:^{
+        }];
+    }
+    
+    return;
+}
+
+/*********************************************************************************************************/
+                                #pragma mark  Vertify CameraViewControllerDelegate
+/*********************************************************************************************************/
+
+//--------------------------------------------------------------------------------------------------------
+// CameraViewControllerDelegate onCameraClose
+//--------------------------------------------------------------------------------------------------------
+
+- (void) onCameraClose
+{
+    [self dismissViewControllerAnimated:YES completion:^(void){
+    } ];
+    return;
+}
+
+//--------------------------------------------------------------------------------------------------------
+// CameraViewControllerDelegate onPictureTaken
+//--------------------------------------------------------------------------------------------------------
+
+- (void) onPictureTaken:(UIImage *)imageColor withBWImage:(UIImage *)imageBW results:(NSDictionary *)dictResults isFront:(BOOL)isFront
+{
+    // dismiss CameraViewController
+    [self dismissViewControllerAnimated:YES completion:^(void){} ];
+    NSLog(@"%@",dictResults);
+    // Save images to file system
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cacheDirectory = [paths objectAtIndex:0];
+    NSString *cacheFile;
+    NSString *cacheFileColor;
+    
+    if (isFront)
+    {
+        cacheFile = [NSString stringWithFormat:@"%@/front.png", cacheDirectory];
+        cacheFileColor = [NSString stringWithFormat:@"%@/front_color.jpg", cacheDirectory];
+    }
+    else
+    {
+        cacheFile = [NSString stringWithFormat:@"%@/back.png", cacheDirectory];
+    }
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_t group = dispatch_group_create();
+    
+    // save files on background thread
+    dispatch_group_async(group, queue, ^{
+        
+        if (cacheFileColor != nil)
+            [UIImageJPEGRepresentation(imageColor,0.3f) writeToFile:cacheFileColor atomically:NO];
+        [UIImagePNGRepresentation(imageBW) writeToFile:cacheFile atomically:NO];
+        
+        // UI updates
+        dispatch_async(dispatch_get_main_queue(), ^(void)
+                       {
+                           if (imageBW != nil)
+                           {
+                               [self setSelectedImageOnButton:imageBW];
+                               _showViewimg=imageBW;
+                               if(isFront)
+                               {
+                                   [self viewEnabled:_View1btn];
+                               }
+                               else{
+                                   [self viewEnabled:_View2btn];
+                               }
+
+                               [self onShowErrors];
+                           }
+                           
+                       });
+    });
+    
+    return;
+}
+
+#pragma mark Utility functions
+
+//-----------------------------------------------------------------------------
+// Show Errors
+//-----------------------------------------------------------------------------
+
+- (void) onShowErrors
+{
+    if (imageErrors.count > 0)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Image Errors:\n\n%@",[imageErrors componentsJoinedByString:@"\n"]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        [imageErrors removeAllObjects];
+    }
+    
+}
+
+/*********************************************************************************************************/
+                    #pragma mark - Startup Method
+/*********************************************************************************************************/
+
 -(void)startUpMethod
 {
+    imageErrors=[[NSMutableArray alloc] init];
     [self viewDisabled:_View1btn];
     [self viewDisabled:_View2btn];
 }
+/*********************************************************************************************************/
+                        #pragma mark - View Buttons Enabled and Disabled State Method
+/*********************************************************************************************************/
+
 -(void)viewEnabled:(UIButton *)viewBtn
 {
     viewBtn.userInteractionEnabled=TRUE;
@@ -133,7 +343,10 @@
 
 }
 
-#pragma mark - UIImagePickerDelegate
+/*********************************************************************************************************/
+                                            #pragma mark - UIImagePickerDelegate
+/*********************************************************************************************************/
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
