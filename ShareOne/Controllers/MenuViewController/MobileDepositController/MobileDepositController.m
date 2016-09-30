@@ -20,6 +20,9 @@
 @property (nonatomic, weak) IBOutlet UIView *seperaterFrontCamView;
 @property (nonatomic, weak) IBOutlet UIView *seperaterBackCamView;
 @property (nonatomic, weak) IBOutlet UIButton *frontCamBtn;
+@property (nonatomic, strong)  UIImage *frontImage;
+@property (nonatomic, strong)  UIImage *backImage;
+
 
 
 
@@ -55,23 +58,20 @@
 -(IBAction)viewButtonClicked:(id)sender{
     
     UIButton *btn=(UIButton *)sender;
-    
-    
-    if(btn.tag==1)
-    {
-        [self getImageViewPopUpController];
-    }
-    else if(btn.tag==2)
-    {
-        [self getImageViewPopUpController];
+    [self getImageViewPopUpControllerWithSender:btn];
 
-    }
 }
 
 -(void)setSelectedImageOnButton:(UIImage *)image{
     
     UIButton *castSenderButton = (UIButton *)_objSender;
-    [castSenderButton setSelected:!castSenderButton.isSelected];
+    [castSenderButton setSelected:TRUE];
+    if([castSenderButton isEqual:_frontCamBtn]){
+        _frontImage = image;
+    }
+    else{
+        _backImage = image;
+    }
 //    [castSenderButton setImage:image forState:UIControlStateNormal];
 }
 
@@ -94,7 +94,7 @@
 -(void)viewEnabled:(UIButton *)viewBtn
 {
     viewBtn.userInteractionEnabled=TRUE;
-    viewBtn.titleLabel.textColor=_frontCamBtn.tintColor;
+    [viewBtn setTitleColor:_frontCamBtn.tintColor forState:UIControlStateNormal];
     if([_objSender isEqual:_frontCamBtn]){
         [_seperaterFrontCamView setBackgroundColor:_frontCamBtn.tintColor];
     }
@@ -104,7 +104,7 @@
 }
 -(void)viewDisabled:(UIButton *)viewBtn
 {
-//    viewBtn.userInteractionEnabled=FALSE;
+    viewBtn.userInteractionEnabled=FALSE;
 //    viewBtn.titleLabel.textColor=[UIColor colorWithRed:163/255.0 green:163/255.0 blue:163/255.0 alpha:1];
 
 }
@@ -113,12 +113,19 @@
                     #pragma mark - Get ImageViewPopUpController ViewController Method
 /*********************************************************************************************************/
 
--(void)getImageViewPopUpController
+-(void)getImageViewPopUpControllerWithSender:(UIButton *)button
 {
-    ImageViewPopUpController *obj=[[ImageViewPopUpController alloc] initWithNibName:@"ImageViewPopUpController" bundle:nil];
-    obj.delegate=self;
-    obj.img=_showViewimg;
-    [self presentPopupViewController:obj animationType:0];
+    
+    UIImage *imageToPass = nil;
+    if([button isEqual:_View1btn])
+        imageToPass = _frontImage;
+    else
+        imageToPass = _backImage;
+    
+    ImageViewPopUpController* objImageViewPopUpController = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageViewPopUpController"];
+    objImageViewPopUpController.img=imageToPass;
+    [self presentViewController:objImageViewPopUpController animated:YES completion:nil];
+
 }
 -(void)dismissPopUP:(id)sender
 {
@@ -132,19 +139,14 @@
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     [self setSelectedImageOnButton:chosenImage];
     _showViewimg=chosenImage;
-    if(_isFrontorBack)
-    {
-
+    if(_isFrontorBack){
         [self viewEnabled:_View1btn];
     }
-    else
-    {
-
+    else{
         [self viewEnabled:_View2btn];
-
     }
+    
     [picker dismissViewControllerAnimated:YES completion:NULL];
-
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{

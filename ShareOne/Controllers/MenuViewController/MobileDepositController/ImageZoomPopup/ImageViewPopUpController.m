@@ -16,28 +16,23 @@
 
 @end
 @implementation ImageViewPopUpController
-@synthesize delegate;
 
 /*********************************************************************************************************/
                         #pragma mark - View Controler LifeCycle Methods
 /*********************************************************************************************************/
 
 
-- (void)viewDidLoad
-{
-    [_imgview setImage:_img];
+- (void)viewDidLoad{
     [super viewDidLoad];
+
+    [_imgview setImage:_img];
 }
 - (void)didReceiveMemoryWarnirng {
     [super didReceiveMemoryWarning];
 }
 
--(IBAction)ClosebuttonClicked:(id)sender
-{
-    if([self.delegate respondsToSelector:@selector(dismissPopUP:)])
-    {
-        [self.delegate dismissPopUP:self];
-    }
+-(IBAction)ClosebuttonClicked:(id)sender{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

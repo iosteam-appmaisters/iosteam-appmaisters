@@ -13,10 +13,8 @@
 @end
 @interface ImageViewPopUpController : UIViewController
 {
-    __weak id<ImagePopUpDelegate> delegate;
 
 }
-@property (nonatomic, weak) id<ImagePopUpDelegate> delegate;
 @property(nonatomic,strong)UIImage *img;
 
 
