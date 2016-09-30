@@ -67,7 +67,15 @@
 
 #define kPackagePurchased @"kPackagePurchased"
 
+// tableView section identifiers
+#define SECTION_FRONT_IMAGE         0
+#define SECTION_BACK_IMAGE          1
 
+// control tags
+#define FRONT_BUTTON_TAG            1
+#define BACK_BUTTON_TAG             2
+#define FRONT_IMAGE_VIEW_TAG        10
+#define BACK_IMAGE_VIEW_TAG         11
 
 
 #define PUBLIC_KEY                  @"bea351786c074347a0528acf729d0b8f"

@@ -47,8 +47,19 @@
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
 		F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */; };
-		F2099FAE1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2099FAC1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib */; };
 		F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C71F11D92CF940072D405 /* BranchLocationCell.m */; };
+		F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB621D9E734300A705A5 /* CameraViewController.m */; };
+		F229DB661D9E734300A705A5 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB641D9E734300A705A5 /* Global.m */; };
+		F229DB681D9E735200A705A5 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB671D9E735200A705A5 /* libVertifiImageProcessing.a */; };
+		F229DB6A1D9E7D6000A705A5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB691D9E7D6000A705A5 /* CoreVideo.framework */; };
+		F229DB6C1D9E7D6700A705A5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */; };
+		F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */; };
+		F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */; };
+		F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB711D9E7FEC00A705A5 /* Foundation.framework */; };
+		F229DB791D9E821C00A705A5 /* CameraCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB741D9E821C00A705A5 /* CameraCropView.m */; };
+		F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB761D9E821C00A705A5 /* CameraGridView.m */; };
+		F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB781D9E821C00A705A5 /* TransparentToolbar.m */; };
+		F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */; };
 		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
 		F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */; };
@@ -133,9 +144,26 @@
 		F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
 		F2099FAA1D9D3B7D00AAA8AC /* ImageViewPopUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewPopUpController.h; sourceTree = "<group>"; };
 		F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewPopUpController.m; sourceTree = "<group>"; };
-		F2099FAC1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewPopUpController.xib; sourceTree = "<group>"; };
 		F20C71F01D92CF940072D405 /* BranchLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationCell.h; sourceTree = "<group>"; };
 		F20C71F11D92CF940072D405 /* BranchLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationCell.m; sourceTree = "<group>"; };
+		F229DB611D9E734300A705A5 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		F229DB621D9E734300A705A5 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		F229DB631D9E734300A705A5 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		F229DB641D9E734300A705A5 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		F229DB671D9E735200A705A5 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessing.a; sourceTree = "<group>"; };
+		F229DB691D9E7D6000A705A5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F229DB711D9E7FEC00A705A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F229DB731D9E821C00A705A5 /* CameraCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCropView.h; sourceTree = "<group>"; };
+		F229DB741D9E821C00A705A5 /* CameraCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCropView.m; sourceTree = "<group>"; };
+		F229DB751D9E821C00A705A5 /* CameraGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraGridView.h; sourceTree = "<group>"; };
+		F229DB761D9E821C00A705A5 /* CameraGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraGridView.m; sourceTree = "<group>"; };
+		F229DB771D9E821C00A705A5 /* TransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentToolbar.h; sourceTree = "<group>"; };
+		F229DB781D9E821C00A705A5 /* TransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentToolbar.m; sourceTree = "<group>"; };
+		F229DB7C1D9E83FF00A705A5 /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
+		F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController_iPhone.xib; sourceTree = "<group>"; };
 		F26255411D94171300383B9E /* ATMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMLocationViewController.h; sourceTree = "<group>"; };
 		F26255421D94171300383B9E /* ATMLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMLocationViewController.m; sourceTree = "<group>"; };
 		F2BFF9FA1D9BF6A000D76E0D /* GetDirectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDirectionViewController.h; sourceTree = "<group>"; };
@@ -149,10 +177,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
+				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
+				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
+				F229DB6C1D9E7D6700A705A5 /* OpenGLES.framework in Frameworks */,
+				F229DB6A1D9E7D6000A705A5 /* CoreVideo.framework in Frameworks */,
 				F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */,
 				1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */,
 				1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */,
 				2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */,
+				F229DB681D9E735200A705A5 /* libVertifiImageProcessing.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +250,7 @@
 		6BD405891D81B59200358036 /* ShareOne */ = {
 			isa = PBXGroup;
 			children = (
+				F229DB601D9E730000A705A5 /* ReuseableComponents */,
 				1D1AD7A01D9947CA0014C743 /* ThirdParty */,
 				1DDC9E5B1D910BC30049DAD4 /* Delegates */,
 				6BD405A11D81B5FC00358036 /* Cells */,
@@ -223,7 +258,6 @@
 				6BD405A31D81B5FC00358036 /* Controllers */,
 				6BD405A61D81B5FC00358036 /* Entity */,
 				6BD405A71D81B5FC00358036 /* Model */,
-				6BD405AA1D81B5FC00358036 /* Reusable Components */,
 				6BD405AC1D81B5FC00358036 /* Utility */,
 				6BD405AD1D81B5FC00358036 /* Validation */,
 				6BD405AE1D81B5FC00358036 /* Views */,
@@ -347,13 +381,6 @@
 				6BD405C41D82C94300358036 /* SignInModel.m */,
 			);
 			path = SignInModel;
-			sourceTree = "<group>";
-		};
-		6BD405AA1D81B5FC00358036 /* Reusable Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Reusable Components";
 			sourceTree = "<group>";
 		};
 		6BD405AC1D81B5FC00358036 /* Utility */ = {
@@ -498,6 +525,12 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
+				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
+				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
+				F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */,
+				F229DB691D9E7D6000A705A5 /* CoreVideo.framework */,
+				F229DB671D9E735200A705A5 /* libVertifiImageProcessing.a */,
 				F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */,
 				1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */,
 				1D1AD79E1D9947BD0014C743 /* Security.framework */,
@@ -520,7 +553,6 @@
 			children = (
 				F2099FAA1D9D3B7D00AAA8AC /* ImageViewPopUpController.h */,
 				F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */,
-				F2099FAC1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib */,
 			);
 			path = ImageZoomPopup;
 			sourceTree = "<group>";
@@ -534,6 +566,25 @@
 				F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */,
 			);
 			path = MJpopupView;
+			sourceTree = "<group>";
+		};
+		F229DB601D9E730000A705A5 /* ReuseableComponents */ = {
+			isa = PBXGroup;
+			children = (
+				F229DB611D9E734300A705A5 /* CameraViewController.h */,
+				F229DB621D9E734300A705A5 /* CameraViewController.m */,
+				F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */,
+				F229DB631D9E734300A705A5 /* Global.h */,
+				F229DB641D9E734300A705A5 /* Global.m */,
+				F229DB731D9E821C00A705A5 /* CameraCropView.h */,
+				F229DB741D9E821C00A705A5 /* CameraCropView.m */,
+				F229DB751D9E821C00A705A5 /* CameraGridView.h */,
+				F229DB761D9E821C00A705A5 /* CameraGridView.m */,
+				F229DB771D9E821C00A705A5 /* TransparentToolbar.h */,
+				F229DB781D9E821C00A705A5 /* TransparentToolbar.m */,
+				F229DB7C1D9E83FF00A705A5 /* VertifiImageProcessing.h */,
+			);
+			path = ReuseableComponents;
 			sourceTree = "<group>";
 		};
 		F25B15861D9BCCAE003E5E6C /* GetDirectionView */ = {
@@ -621,7 +672,7 @@
 				6BD405971D81B59300358036 /* Assets.xcassets in Resources */,
 				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
-				F2099FAE1D9D3B7D00AAA8AC /* ImageViewPopUpController.xib in Resources */,
+				F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */,
 				6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,6 +733,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
+				F229DB791D9E821C00A705A5 /* CameraCropView.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
 				F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */,
@@ -711,9 +763,13 @@
 				F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
+				F229DB661D9E734300A705A5 /* Global.m in Sources */,
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
+				F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */,
+				F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */,
+				F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
 			);
@@ -759,8 +815,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -782,7 +838,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "87381ec4-a847-4b5f-a708-58aee078e5bb";
+				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -806,8 +862,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -822,7 +878,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "87381ec4-a847-4b5f-a708-58aee078e5bb";
+				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -836,9 +892,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
@@ -852,9 +913,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
