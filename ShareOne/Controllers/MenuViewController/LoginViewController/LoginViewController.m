@@ -86,9 +86,8 @@
 }
 
 - (IBAction)scanTouchID:(id)sender{
-    /*
-     
-    __weak LoginViewController *weakSelf = self;
+    
+     __weak LoginViewController *weakSelf = self;
     [[UtilitiesHelper shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
         if(success){
             NSLog(@"Verification Success!");
@@ -96,7 +95,6 @@
             NSLog(@"Unable to Verify");
         }
     }];
-     */
 
 }
 

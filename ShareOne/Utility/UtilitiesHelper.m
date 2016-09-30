@@ -920,9 +920,10 @@
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         
 //                                        [[UtilitiesHelper shareUtitlities] showToastWithMessage:error.localizedDescription title:@"Error" delegate:delegate];
+                                        NSLog(@"Switch to fall back authentication - ie, display a keypad or password entry box");
+
                                         block(success);
 
-                                        NSLog(@"Switch to fall back authentication - ie, display a keypad or password entry box");
                                     });
                                 }
                             }];
