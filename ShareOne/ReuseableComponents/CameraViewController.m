@@ -117,9 +117,11 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     previewView.backgroundColor = [UIColor whiteColor];
 
     // camera overlay - the alignment rectangle
-	self.overlayView = [[CameraGridView alloc] initWithFrame:CGRectMake(0,0,previewView.bounds.size.width,previewView.bounds.size.height) sender:self];
+	self.overlayView = [[CameraGridView alloc] initWithFrame:CGRectMake(0,-60,previewView.bounds.size.width,previewView.bounds.size.height) sender:self];
     [previewView addSubview:overlayView];
     
+    NSLog(@"%@",self.overlayView);
+
     // camera crop view - the corner detectors
     self.cropView = [[CameraCropView alloc] initWithFrame:CGRectMake(0,0,previewView.bounds.size.width,previewView.bounds.size.height) sender:self];
     cropView.alpha = 0;
@@ -127,9 +129,11 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 
     // alignment image
     Global *pGl = [Global globalinstance];
-    CGFloat margin = 8;
+    CGFloat margin = 10;
+    
+    //
     UIImageView *alignImage = [[UIImageView alloc] initWithFrame:CGRectMake((previewView.bounds.size.width * pGl.rectViewPort.origin.x) + margin,
-                                                                            (previewView.bounds.size.height * pGl.rectViewPort.origin.y) + margin,
+                                                                            (previewView.bounds.size.height * pGl.rectViewPort.origin.y) + margin-60,
                                                                             (previewView.bounds.size.width * (pGl.rectViewPort.size.width)) - (margin * 2),
                                                                             (previewView.bounds.size.height * (pGl.rectViewPort.size.height)) - (margin * 2))];
     [alignImage setImage:[UIImage imageNamed:isFront ? @"ckalignfront" : @"ckalignback"]];

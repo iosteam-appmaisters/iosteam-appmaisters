@@ -49,7 +49,7 @@
 
         // transparent background, initially hidden
 		self.backgroundColor = [UIColor clearColor];
-        self.autoresizingMask = UIViewAutoresizingNone;;
+       // self.autoresizingMask = UIViewAutoresizingNone;;
         self.clipsToBounds = NO;
         self.alpha = 0.0;
         self.userInteractionEnabled = NO;
