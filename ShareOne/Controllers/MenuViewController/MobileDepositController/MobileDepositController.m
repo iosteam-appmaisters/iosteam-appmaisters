@@ -183,9 +183,9 @@
     
     CameraViewController *cameraViewController = nil;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(sender.tag == FRONT_BUTTON_TAG ? YES: NO)];
+        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
     else  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPad" bundle:nil delegate:self title:strTitle isFront:(sender.tag == FRONT_BUTTON_TAG ? YES: NO)];
+        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPad" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
     
     if (cameraViewController != nil)
     {
