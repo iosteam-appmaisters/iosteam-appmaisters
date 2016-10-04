@@ -7,6 +7,7 @@
 #import "HomeViewController.h"
 
 
+
 @interface BaseViewController (){
     LeftMenuViewController* leftMenuViewController;
     UIButton* menuButton;
@@ -179,6 +180,12 @@
         
         [self presentViewController:alert animated:YES completion:nil];
     }
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+   
+    return UIInterfaceOrientationMaskPortrait;
+
 }
 
 @end
