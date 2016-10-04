@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -120,7 +120,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-xn-S6F">
                                         <rect key="frame" x="20" y="122" width="374" height="97"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p">
                                                 <rect key="frame" x="21" y="25" width="333" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
@@ -143,7 +143,7 @@
                                                     <action selector="forgotPasswordButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="6NN-uO-dfU"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh">
                                                 <rect key="frame" x="250" y="68" width="70" height="24"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -154,7 +154,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0">
                                                 <rect key="frame" x="324" y="67" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
@@ -487,10 +487,10 @@
             </objects>
             <point key="canvasLocation" x="2362.5" y="-278.87323943661971"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Nav Controller-->
         <scene sceneID="G2N-00-CXf">
             <objects>
-                <navigationController storyboardIdentifier="HomeNavigationController" id="U9l-4r-dcs" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavigationController" id="U9l-4r-dcs" customClass="CustomNavController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2p-Tk-Tgg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -502,7 +502,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrI-pt-akW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="579"/>
+            <point key="canvasLocation" x="1008" y="528"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="je4-r8-sm5">

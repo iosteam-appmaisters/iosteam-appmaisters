@@ -17,6 +17,7 @@
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
 		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
+		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
 		1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBD76A1D93F58600277DF6 /* PayPersonController.m */; };
 		2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */; };
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
@@ -83,6 +84,8 @@
 		1D8478E81D9294EC00153B19 /* QBDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBDetailsCell.m; sourceTree = "<group>"; };
 		1D8478EC1D93D6BA00153B19 /* MobileDepositController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileDepositController.h; sourceTree = "<group>"; };
 		1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileDepositController.m; sourceTree = "<group>"; };
+		1D956DC71DA3AFE2007F6D11 /* CustomNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavController.h; sourceTree = "<group>"; };
+		1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavController.m; sourceTree = "<group>"; };
 		1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationDelegate.h; sourceTree = "<group>"; };
 		1DEBD7691D93F58600277DF6 /* PayPersonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPersonController.h; sourceTree = "<group>"; };
 		1DEBD76A1D93F58600277DF6 /* PayPersonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPersonController.m; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 			children = (
 				6BD405B41D829FAA00358036 /* BaseViewController.h */,
 				6BD405B51D829FAA00358036 /* BaseViewController.m */,
+				1D956DC71DA3AFE2007F6D11 /* CustomNavController.h */,
+				1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */,
 			);
 			path = BaseViewController;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */,
 				F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
+				1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
