@@ -115,9 +115,15 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     [self setupAVCapture];
     
     previewView.backgroundColor = [UIColor whiteColor];
-
+    
+    //*Changing Navigation Bar Height +Status Bar Height
+    float navigationbarHeight=toolbarTop.frame.size.height;
+    //float statusbarHeight= [UIApplication sharedApplication].statusBarFrame.size.height;
+    float overlayYPosition=navigationbarHeight;
+    NSLog(@"Overlay Position Y-----------%f",overlayYPosition);
+    
     // camera overlay - the alignment rectangle
-	self.overlayView = [[CameraGridView alloc] initWithFrame:CGRectMake(0,-60,previewView.bounds.size.width,previewView.bounds.size.height) sender:self];
+	self.overlayView = [[CameraGridView alloc] initWithFrame:CGRectMake(0,-overlayYPosition,previewView.bounds.size.width,previewView.bounds.size.height) sender:self];
     [previewView addSubview:overlayView];
     
     NSLog(@"%@",self.overlayView);
@@ -133,7 +139,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     
     //
     UIImageView *alignImage = [[UIImageView alloc] initWithFrame:CGRectMake((previewView.bounds.size.width * pGl.rectViewPort.origin.x) + margin,
-                                                                            (previewView.bounds.size.height * pGl.rectViewPort.origin.y) + margin-60,
+                                                                            (previewView.bounds.size.height * pGl.rectViewPort.origin.y) + margin-overlayYPosition,
                                                                             (previewView.bounds.size.width * (pGl.rectViewPort.size.width)) - (margin * 2),
                                                                             (previewView.bounds.size.height * (pGl.rectViewPort.size.height)) - (margin * 2))];
     [alignImage setImage:[UIImage imageNamed:isFront ? @"ckalignfront" : @"ckalignback"]];
