@@ -59,8 +59,8 @@
 		F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB761D9E821C00A705A5 /* CameraGridView.m */; };
 		F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB781D9E821C00A705A5 /* TransparentToolbar.m */; };
 		F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */; };
-		F2432C9A1DA25DD400626592 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2432C991DA25DD400626592 /* libVertifiImageProcessing.a */; };
 		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
+		F2BEDD9F1DA3AAB400B4571A /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BEDD9E1DA3AAB400B4571A /* libVertifiImageProcessing.a */; };
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
 		F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */; };
 /* End PBXBuildFile section */
@@ -163,9 +163,9 @@
 		F229DB781D9E821C00A705A5 /* TransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentToolbar.m; sourceTree = "<group>"; };
 		F229DB7C1D9E83FF00A705A5 /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
 		F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController_iPhone.xib; sourceTree = "<group>"; };
-		F2432C991DA25DD400626592 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		F26255411D94171300383B9E /* ATMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMLocationViewController.h; sourceTree = "<group>"; };
 		F26255421D94171300383B9E /* ATMLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMLocationViewController.m; sourceTree = "<group>"; };
+		F2BEDD9E1DA3AAB400B4571A /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		F2BFF9FA1D9BF6A000D76E0D /* GetDirectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDirectionViewController.h; sourceTree = "<group>"; };
 		F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDirectionViewController.m; sourceTree = "<group>"; };
 		F2BFF9FD1D9BFBA500D76E0D /* LRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRouteController.h; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2432C9A1DA25DD400626592 /* libVertifiImageProcessing.a in Frameworks */,
+				F2BEDD9F1DA3AAB400B4571A /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -525,7 +525,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F2432C991DA25DD400626592 /* libVertifiImageProcessing.a */,
+				F2BEDD9E1DA3AAB400B4571A /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
