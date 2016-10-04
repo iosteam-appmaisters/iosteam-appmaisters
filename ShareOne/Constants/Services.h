@@ -23,14 +23,16 @@
 
 #define KWEB_SERVICE_PIN_RESET                          @"eft/memberPinReset"
 
-#define KWEB_SERVICE_CHANGE_PASSWORD                    @"user/change_password"
+#define KMEMBER_DEVICES                                 @"eft/memberDevices"
 
-#define KWEB_SERVICE_GET_STATES                         @"user/get_states"
+#define KQUICK_BALANCES                                 @"eft/quickBalances"
+
+#define KQUICK_TRANSACTIONS                             @"eft/quickTransactions"
 
 
 #define RequestType_PUT                                 @"PUT"
 #define RequestType_POST                                @"POST"
 #define RequestType_GET                                 @"GET"
-
+#define RequestType_DELETE                              @"DELETE"
 
 #endif
