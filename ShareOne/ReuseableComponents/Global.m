@@ -51,8 +51,8 @@
 {
 	if ((self = [super init]) != nil)
 	{	
-        self.rectViewPort = CGRectMake(0.005, 0.16, 0.99, 0.65);	// left: 0.5%, top: 16%, width: 99%, height: 65%
-    
+        self.rectViewPort = CGRectMake(0.005, .16, 0.99, 0.65);	// left: 0.5%, top: 16%, width: 99%, height: 65%
+        //changing 0.16
         self.rectFront = CGRectNull;
         self.rectBack = CGRectNull;
 
