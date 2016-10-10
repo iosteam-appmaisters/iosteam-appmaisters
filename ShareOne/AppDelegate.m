@@ -26,26 +26,9 @@
     [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     [GMSServices provideAPIKey:googleApiKey];
     
-//    NSLog(@"randomStringWithLength : %@",[self randomStringWithLength:81]);
-//    NSUInteger bytes = [[self randomStringWithLength:81] lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-//    NSLog(@"%i bytes", bytes);
 
     return YES;
 }
-
--(NSString *) randomStringWithLength: (int) len {
-    
-    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
-    
-    for (int i=0; i<len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
-    }
-    
-    return randomString;
-}
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

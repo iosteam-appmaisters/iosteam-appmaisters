@@ -30,6 +30,9 @@
 #define KQUICK_TRANSACTIONS                             @"eft/quickTransactions"
 
 
+#define kDEPOSIT_MONEY_REGISTER                         @"https://www.member-data.com/rdc/sso/mobdep_regquery.ashx"
+
+
 #define RequestType_PUT                                 @"PUT"
 #define RequestType_POST                                @"POST"
 #define RequestType_GET                                 @"GET"

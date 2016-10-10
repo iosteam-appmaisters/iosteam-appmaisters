@@ -4,6 +4,7 @@
 #import "Services.h"
 #import "UtilitiesHelper.h"
 #import "Constants.h"
+#import "ShareOneUtility.h"
 
 @implementation AppServiceModel
 
@@ -182,22 +183,43 @@
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
     
-    
-    
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
     
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
+    
+
     jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     manager.responseSerializer = jsonResponseSerializer;
     
     
-    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:params error:nil];
-    
-    if(auth_header)
+    // if it is own server call than header must be in the request
+    if(auth_header){
         [self setHeaderOnRequest:req withAuth:auth_header];
+    }
+    else{
+        // Third party server call by handling xml request
+        
+        NSString *boundary = [ShareOneUtility generateBoundaryString];
+        
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        [req setValue:contentType forHTTPHeaderField: @"Content-Type"];
+        
+        
+        // create body
+        NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
+        [req setHTTPBody:httpBody];
+
+
+        AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
+        responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
+        manager.responseSerializer = responseSerializer;
+
+    }
     
-    
+//    [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+
     
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
@@ -209,6 +231,10 @@
                 [self hideProgressAlert];
                 block(responseObject);
                 
+            }else{
+                NSData * data = (NSData *)responseObject;
+                NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
+
             }
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
@@ -471,4 +497,5 @@
      */
 
 }
+
 @end

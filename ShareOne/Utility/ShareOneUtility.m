@@ -307,10 +307,76 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
+
 +(NSString *)getSignedINSignature{
-    
    return  [[NSUserDefaults standardUserDefaults] valueForKey:@"Signature"];
 }
+
++ (BOOL)getSettingsWithKey:(NSString *)key{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+
++ (void)saveSettingsWithStatus:(BOOL)flag AndKey:(NSString *)key{
+    [[NSUserDefaults standardUserDefaults] setBool:flag forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString *) randomStringWithLength: (int) len {
+    
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
+    }
+    
+    return randomString;
+}
+
++ (NSString *)generateBoundaryString
+{
+    return [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
+    
+    // if supporting iOS versions prior to 6.0, you do something like:
+    //
+    // // generate boundary string
+    // //
+    // adapted from http://developer.apple.com/library/ios/#samplecode/SimpleURLConnections
+    //
+    // CFUUIDRef  uuid;
+    // NSString  *uuidStr;
+    //
+    // uuid = CFUUIDCreate(NULL);
+    // assert(uuid != NULL);
+    //
+    // uuidStr = CFBridgingRelease(CFUUIDCreateString(NULL, uuid));
+    // assert(uuidStr != NULL);
+    //
+    // CFRelease(uuid);
+    //
+    // return uuidStr;
+}
+
++ (NSData *)createBodyWithBoundary:(NSString *)boundary
+                        parameters:(NSDictionary *)parameters
+{
+    NSMutableData *httpBody = [NSMutableData data];
+    
+    // add params (all params are strings)
+    
+    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *parameterKey, NSString *parameterValue, BOOL *stop) {
+        [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", parameterKey] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"%@\r\n", parameterValue] dataUsingEncoding:NSUTF8StringEncoding]];
+    }];
+    
+    
+    [httpBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    return httpBody;
+}
+
 
 
 @end

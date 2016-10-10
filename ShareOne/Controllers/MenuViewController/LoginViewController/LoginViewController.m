@@ -111,14 +111,8 @@
         savedUser.Password=_passwordTxt.text;
 
     }
-//    else{
-//        savedUser = [[User alloc] init];
-//        savedUser.UserName=_userIDTxt.text;
-//        savedUser.Password=_passwordTxt.text;
-//    }
-    
-   
-    
+
+
     if([ShareOneUtility isTouchIDEnabled]){
         [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
             

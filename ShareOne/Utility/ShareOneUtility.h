@@ -51,6 +51,18 @@
 +(void)savaLogedInSignature:(NSString *)signature;
 +(NSString *)getSignedINSignature;
 
++ (BOOL)getSettingsWithKey:(NSString *)key;
++ (void)saveSettingsWithStatus:(BOOL)flag AndKey:(NSString *)key;
+
+
++ (NSString *) randomStringWithLength: (int) len;
+
+
++ (NSString *)generateBoundaryString;
+
++ (NSData *)createBodyWithBoundary:(NSString *)boundary parameters:(NSDictionary *)parameters;
+
+
 
 
 @end
