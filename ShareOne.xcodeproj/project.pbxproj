@@ -14,7 +14,6 @@
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
-		1D3920501DA6780A009FDE64 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D39204F1DA6780A009FDE64 /* libVertifiImageProcessing.a */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
@@ -66,6 +65,7 @@
 		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
 		F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */; };
+		F2E1C5041DABAA5B00787AD5 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E1C5031DABAA5B00787AD5 /* libVertifiImageProcessing.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,7 +81,6 @@
 		1D23999F1D913C8C00157320 /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
 		1D2399A11D9169CF00157320 /* SideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuCell.h; sourceTree = "<group>"; };
 		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
-		1D39204F1DA6780A009FDE64 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1D8478E41D92949400153B19 /* QBHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHeaderCell.h; sourceTree = "<group>"; };
 		1D8478E51D92949400153B19 /* QBHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBHeaderCell.m; sourceTree = "<group>"; };
@@ -179,6 +178,7 @@
 		F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDirectionViewController.m; sourceTree = "<group>"; };
 		F2BFF9FD1D9BFBA500D76E0D /* LRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRouteController.h; sourceTree = "<group>"; };
 		F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRouteController.m; sourceTree = "<group>"; };
+		F2E1C5031DABAA5B00787AD5 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D3920501DA6780A009FDE64 /* libVertifiImageProcessing.a in Frameworks */,
+				F2E1C5041DABAA5B00787AD5 /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -548,7 +548,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D39204F1DA6780A009FDE64 /* libVertifiImageProcessing.a */,
+				F2E1C5031DABAA5B00787AD5 /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,

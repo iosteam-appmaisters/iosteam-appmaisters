@@ -146,7 +146,8 @@
 - (void)getSignInWithUser:(User *)user{
     
     __weak LoginViewController *weakSelf = self;
-
+    [weakSelf startApplication];
+    /*
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
@@ -155,6 +156,7 @@
     } failureBlock:^(NSError *error) {
         
     }];
+     */
 }
 
 - (IBAction)forgotPasswordButtonClicked:(id)sender {
@@ -195,12 +197,14 @@
 }
 
 
-- (IBAction)openUrlButtonClicked:(id)sender {
+- (IBAction)openUrlButtonClicked:(id)sender
+{
     NSURL *url = [NSURL URLWithString:@"https://nsmobilecp.ns3web.com/Account/Tax"];
     [[UIApplication sharedApplication] openURL:url];
 }
 
-- (IBAction)quickBalanceButtonClicked:(id)sender {
+- (IBAction)quickBalanceButtonClicked:(id)sender
+{
     QuickBalancesViewController* objQuickBalancesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickBalancesViewController"];
     [self presentViewController:objQuickBalancesViewController animated:YES completion:nil];
 }

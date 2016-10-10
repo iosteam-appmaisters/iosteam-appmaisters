@@ -238,13 +238,15 @@
     
     if (isFront)
     {
-        cacheFile = [NSString stringWithFormat:@"%@/front.png", cacheDirectory];
-        cacheFileColor = [NSString stringWithFormat:@"%@/front_color.jpg", cacheDirectory];
+        cacheFile = [NSString stringWithFormat:@"%@/img.png", cacheDirectory];
+        cacheFileColor = [NSString stringWithFormat:@"%@/img_color.jpg", cacheDirectory];
         
     }
     else
     {
-        cacheFile = [NSString stringWithFormat:@"%@/back.png", cacheDirectory];
+        cacheFile = [NSString stringWithFormat:@"%@/backimg.png", cacheDirectory];
+        cacheFileColor = [NSString stringWithFormat:@"%@/backimg_color.jpg", cacheDirectory];
+
     }
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -336,15 +338,23 @@
 
 -(void)getImageViewPopUpControllerWithSender:(UIButton *)button
 {
-    
+    ImageViewPopUpController* objImageViewPopUpController = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageViewPopUpController"];
+
     UIImage *imageToPass = nil;
     if([button isEqual:_View1btn])
+    {
         imageToPass = _frontImage;
+        objImageViewPopUpController.isFront=TRUE;
+        objImageViewPopUpController.img=imageToPass;
+    }
     else
+    {
         imageToPass = _backImage;
+        objImageViewPopUpController.isFront=FALSE;
+        objImageViewPopUpController.img=imageToPass;
+    }
     
-    ImageViewPopUpController* objImageViewPopUpController = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageViewPopUpController"];
-    objImageViewPopUpController.img=imageToPass;
+
     [self presentViewController:objImageViewPopUpController animated:YES completion:nil];
 
 }

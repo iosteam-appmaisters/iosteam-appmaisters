@@ -271,6 +271,14 @@
     [defaults synchronize];
 }
 
++(UIImage *)getImageInLandscapeOrientation:(UIImage *)img
+{
+    UIImage *imageToDisplay =
+    [UIImage imageWithCGImage:[img CGImage]
+                        scale:[img scale]
+                  orientation: UIImageOrientationDown];
+    return imageToDisplay;
+}
 
 +(User *)getUserObject{
     

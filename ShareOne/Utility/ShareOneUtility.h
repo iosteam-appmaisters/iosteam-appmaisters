@@ -54,6 +54,7 @@
 + (BOOL)getSettingsWithKey:(NSString *)key;
 + (void)saveSettingsWithStatus:(BOOL)flag AndKey:(NSString *)key;
 
++(UIImage *)getImageInLandscapeOrientation:(UIImage *)img;
 
 + (NSString *) randomStringWithLength: (int) len;
 
