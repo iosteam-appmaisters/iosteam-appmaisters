@@ -52,5 +52,6 @@
 +(NSString *)getSignedINSignature;
 
 
++(UIImage *)getImageInLandscapeOrientation:(UIImage *)img;
 
 @end

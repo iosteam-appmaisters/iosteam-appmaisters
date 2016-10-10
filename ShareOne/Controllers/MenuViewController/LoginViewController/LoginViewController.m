@@ -152,7 +152,8 @@
 - (void)getSignInWithUser:(User *)user{
     
     __weak LoginViewController *weakSelf = self;
-
+    [weakSelf startApplication];
+    /*
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
@@ -161,6 +162,7 @@
     } failureBlock:^(NSError *error) {
         
     }];
+     */
 }
 
 - (IBAction)forgotPasswordButtonClicked:(id)sender {

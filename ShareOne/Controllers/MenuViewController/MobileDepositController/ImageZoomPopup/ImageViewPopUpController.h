@@ -16,6 +16,6 @@
 
 }
 @property(nonatomic,strong)UIImage *img;
-
+@property BOOL isFront;
 
 @end

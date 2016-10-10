@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1680,20 +1680,45 @@ Tm90ZToQIA
                                     <action selector="ClosebuttonClicked:" destination="Owd-A3-Jxw" eventType="touchUpInside" id="a7C-yo-YM8"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="u5d-ez-e3W">
+                                <rect key="frame" x="108" y="678" width="199" height="29"/>
+                                <segments>
+                                    <segment title="Black &amp; White"/>
+                                    <segment title="Color"/>
+                                </segments>
+                                <connections>
+                                    <action selector="createSegmentedSwitchColorButton" destination="Owd-A3-Jxw" eventType="valueChanged" id="Xho-2j-wkL"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0Ag-9i-byH" firstAttribute="top" secondItem="QS5-j3-gdl" secondAttribute="bottom" id="4oj-ax-wSD"/>
-                            <constraint firstItem="TsL-hE-m2U" firstAttribute="top" secondItem="0Ag-9i-byH" secondAttribute="bottom" id="Ath-tC-dDf"/>
+                            <constraint firstItem="TsL-hE-m2U" firstAttribute="top" secondItem="0Ag-9i-byH" secondAttribute="bottom" constant="178" id="Bnb-26-el9"/>
+                            <constraint firstItem="TsL-hE-m2U" firstAttribute="top" secondItem="0Ag-9i-byH" secondAttribute="bottom" id="HtO-f6-fLU"/>
                             <constraint firstAttribute="trailing" secondItem="0Ag-9i-byH" secondAttribute="trailing" id="IqB-Yy-MlW"/>
+                            <constraint firstItem="u5d-ez-e3W" firstAttribute="centerX" secondItem="OhJ-Tb-Sn9" secondAttribute="centerX" id="caC-na-vqe"/>
+                            <constraint firstItem="u5d-ez-e3W" firstAttribute="top" secondItem="0Ag-9i-byH" secondAttribute="bottom" constant="120" id="ejV-vW-7J5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u5d-ez-e3W" secondAttribute="trailing" constant="146" id="ikm-xe-iv0"/>
+                            <constraint firstItem="u5d-ez-e3W" firstAttribute="leading" secondItem="OhJ-Tb-Sn9" secondAttribute="leadingMargin" constant="133" id="nxS-YM-Xum"/>
                             <constraint firstItem="9HE-Wg-qLB" firstAttribute="top" secondItem="QS5-j3-gdl" secondAttribute="bottom" constant="20" id="sbU-cH-j3y"/>
                             <constraint firstItem="0Ag-9i-byH" firstAttribute="leading" secondItem="OhJ-Tb-Sn9" secondAttribute="leading" id="xzb-Xe-tiW"/>
                             <constraint firstAttribute="trailing" secondItem="9HE-Wg-qLB" secondAttribute="trailing" constant="20" id="y0S-Ch-GFs"/>
+                            <constraint firstItem="TsL-hE-m2U" firstAttribute="top" secondItem="u5d-ez-e3W" secondAttribute="bottom" constant="30" id="zn6-jX-71B"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ejV-vW-7J5"/>
+                                <exclude reference="ikm-xe-iv0"/>
+                                <exclude reference="nxS-YM-Xum"/>
+                                <exclude reference="Bnb-26-el9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="imgview" destination="0Ag-9i-byH" id="UwR-c2-PA1"/>
+                        <outlet property="switchColor" destination="u5d-ez-e3W" id="sap-zp-veI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7P-O4-dJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
