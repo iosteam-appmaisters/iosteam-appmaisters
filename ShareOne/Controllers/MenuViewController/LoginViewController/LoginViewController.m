@@ -100,12 +100,14 @@
 }
 
 
-- (IBAction)openUrlButtonClicked:(id)sender {
+- (IBAction)openUrlButtonClicked:(id)sender
+{
     NSURL *url = [NSURL URLWithString:@"https://nsmobilecp.ns3web.com/Account/Tax"];
     [[UIApplication sharedApplication] openURL:url];
 }
 
-- (IBAction)quickBalanceButtonClicked:(id)sender {
+- (IBAction)quickBalanceButtonClicked:(id)sender
+{
     QuickBalancesViewController* objQuickBalancesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickBalancesViewController"];
     [self presentViewController:objQuickBalancesViewController animated:YES completion:nil];
 }
