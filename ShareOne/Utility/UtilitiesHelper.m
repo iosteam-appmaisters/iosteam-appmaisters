@@ -938,5 +938,23 @@
 
 }
 
++(void)isTouchIDAvailableWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block{
+    
+    __block BOOL flag= TRUE;
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    
+    if (![myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            flag = FALSE;
+            [[UtilitiesHelper shareUtitlities] showToastWithMessage:authError.localizedDescription title:@"Error" delegate:delegate];
+            block(FALSE);
+        });
+    }
+    else{
+        block(TRUE);
+    }
+}
 @end
 

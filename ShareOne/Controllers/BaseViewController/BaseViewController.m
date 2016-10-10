@@ -5,6 +5,9 @@
 #import "LeftMenuViewController.h"
 #import "WebViewController.h"
 #import "HomeViewController.h"
+#import "ShareOneUtility.h"
+#import "SharedUser.h"
+
 
 
 
@@ -172,7 +175,17 @@
                                                               }]; // 2
         UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Logout"
                                                                style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                                                   [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+                                                                   
+                                                                   __weak BaseViewController *weakSelf = self;\
+                                                                   NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
+                                                                   [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
+                                                                       [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+
+                                                                       
+                                                                   } failureBlock:^(NSError *error) {
+                                                                       
+                                                                   }];
+
                                                                }]; // 3
         
         [alert addAction:firstAction];

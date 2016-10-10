@@ -12,12 +12,16 @@
 
 -(id) initWithDictionary:(NSDictionary *)userProfileDict;
 
-@property (nonatomic,strong) NSString *userAddress;
-@property (nonatomic,strong) NSString *userPhoneNo;
-@property (nonatomic,strong) NSString *userId;
-@property (nonatomic,strong) NSString *userName;
-@property (nonatomic,strong) NSString *userEmail;
-@property (nonatomic,strong) NSString *userSocialMediaId;
+@property (nonatomic,strong) NSString *Account;
+@property (nonatomic,strong) NSString *ContextID;
+@property (nonatomic,strong) NSString *LastLoginDate;
+@property (nonatomic,strong) NSString *MasterID;
+@property (nonatomic,strong) NSString *PostingDate;
+@property (nonatomic,strong) NSString *SystemState;
+
+@property (nonatomic,strong) NSString *UserName;
+@property (nonatomic,strong) NSString *Password;
+
 
 @property (nonatomic,strong) NSURL *userImage;
 @property (nonatomic,strong) NSURL *userThumbImage;
@@ -59,5 +63,9 @@
 +(void)blockUnblockUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id response))block failureBlock:(void(^)(NSError* error))failBlock;
 
 +(void)logoutUserUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id response))block failureBlock:(void(^)(NSError* error))failBlock;
+
+
++(void)signOutUser:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(BOOL  sucess))block failureBlock:(void(^)(NSError* error))failBlock;
+
 
 @end
