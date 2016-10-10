@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
 		1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD79E1D9947BD0014C743 /* Security.framework */; };
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
 		1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999A1D9135B000157320 /* AccordionHeaderView.m */; };
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
+		1D3920501DA6780A009FDE64 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D39204F1DA6780A009FDE64 /* libVertifiImageProcessing.a */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
 		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
 		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
 		1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBD76A1D93F58600277DF6 /* PayPersonController.m */; };
+		1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6081E1DAB997900FF85E2 /* CashDeposit.m */; };
 		2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */; };
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
 		6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058E1D81B59300358036 /* AppDelegate.m */; };
@@ -61,12 +64,13 @@
 		F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB781D9E821C00A705A5 /* TransparentToolbar.m */; };
 		F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */; };
 		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
-		F2BEDDA11DA3ABCB00B4571A /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BEDDA01DA3ABCB00B4571A /* libVertifiImageProcessing.a */; };
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
 		F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D1415471DA4D3710048F8B1 /* SharedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedUser.h; sourceTree = "<group>"; };
+		1D1415481DA4D3710048F8B1 /* SharedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedUser.m; sourceTree = "<group>"; };
 		1D1AD79E1D9947BD0014C743 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1D1AD7A11D9947CA0014C743 /* BBAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAES.h; sourceTree = "<group>"; };
 		1D1AD7A21D9947CA0014C743 /* BBAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAES.m; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		1D23999F1D913C8C00157320 /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
 		1D2399A11D9169CF00157320 /* SideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuCell.h; sourceTree = "<group>"; };
 		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
+		1D39204F1DA6780A009FDE64 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1D8478E41D92949400153B19 /* QBHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHeaderCell.h; sourceTree = "<group>"; };
 		1D8478E51D92949400153B19 /* QBHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBHeaderCell.m; sourceTree = "<group>"; };
@@ -89,6 +94,8 @@
 		1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationDelegate.h; sourceTree = "<group>"; };
 		1DEBD7691D93F58600277DF6 /* PayPersonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPersonController.h; sourceTree = "<group>"; };
 		1DEBD76A1D93F58600277DF6 /* PayPersonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPersonController.m; sourceTree = "<group>"; };
+		1DF6081D1DAB997900FF85E2 /* CashDeposit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashDeposit.h; sourceTree = "<group>"; };
+		1DF6081E1DAB997900FF85E2 /* CashDeposit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashDeposit.m; sourceTree = "<group>"; };
 		6BD405871D81B59200358036 /* ShareOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD4058B1D81B59200358036 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD4058D1D81B59300358036 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -168,7 +175,6 @@
 		F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController_iPhone.xib; sourceTree = "<group>"; };
 		F26255411D94171300383B9E /* ATMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMLocationViewController.h; sourceTree = "<group>"; };
 		F26255421D94171300383B9E /* ATMLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMLocationViewController.m; sourceTree = "<group>"; };
-		F2BEDDA01DA3ABCB00B4571A /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		F2BFF9FA1D9BF6A000D76E0D /* GetDirectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDirectionViewController.h; sourceTree = "<group>"; };
 		F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDirectionViewController.m; sourceTree = "<group>"; };
 		F2BFF9FD1D9BFBA500D76E0D /* LRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRouteController.h; sourceTree = "<group>"; };
@@ -180,11 +186,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D3920501DA6780A009FDE64 /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
 				F229DB6C1D9E7D6700A705A5 /* OpenGLES.framework in Frameworks */,
-				F2BEDDA11DA3ABCB00B4571A /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB6A1D9E7D6000A705A5 /* CoreVideo.framework in Frameworks */,
 				F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */,
 				1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */,
@@ -230,6 +236,15 @@
 				1DEBD76A1D93F58600277DF6 /* PayPersonController.m */,
 			);
 			path = PayPersonController;
+			sourceTree = "<group>";
+		};
+		1DF6081C1DAB995500FF85E2 /* CashDepositEntity */ = {
+			isa = PBXGroup;
+			children = (
+				1DF6081D1DAB997900FF85E2 /* CashDeposit.h */,
+				1DF6081E1DAB997900FF85E2 /* CashDeposit.m */,
+			);
+			path = CashDepositEntity;
 			sourceTree = "<group>";
 		};
 		6BD4057E1D81B59200358036 = {
@@ -356,6 +371,7 @@
 		6BD405A61D81B5FC00358036 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1DF6081C1DAB995500FF85E2 /* CashDepositEntity */,
 				6BD405C91D82CA7200358036 /* UserEntity */,
 			);
 			path = Entity;
@@ -396,6 +412,8 @@
 				6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */,
 				1D23999E1D913C8C00157320 /* ShareOneUtility.h */,
 				1D23999F1D913C8C00157320 /* ShareOneUtility.m */,
+				1D1415471DA4D3710048F8B1 /* SharedUser.h */,
+				1D1415481DA4D3710048F8B1 /* SharedUser.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -530,7 +548,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F2BEDDA01DA3ABCB00B4571A /* libVertifiImageProcessing.a */,
+				1D39204F1DA6780A009FDE64 /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -760,6 +778,7 @@
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
 				1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */,
 				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
@@ -772,6 +791,7 @@
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
+				1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */,
 				F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */,
 				F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */,
 				F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */,

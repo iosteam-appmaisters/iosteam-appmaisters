@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UtilitiesHelper.h"
+#import "User.h"
+
 
 
 @interface ShareOneUtility : UtilitiesHelper
@@ -33,6 +35,22 @@
 
 + (void)showProgressViewOnView:(UIView *)view;
 + (void)hideProgressViewOnView:(UIView *)view;
+
+
++(void)saveUserObject:(User *)user;
++(User *)getUserObject;
+
+
++ (void)setUserRememberedStatusWithBool:(BOOL)isRemember;
++ (BOOL)isUserRemembered;
+
+
++ (void)setTouhIDStatusWithBool:(BOOL)isRemember;
++ (BOOL)isTouchIDEnabled;
+
++(void)savaLogedInSignature:(NSString *)signature;
++(NSString *)getSignedINSignature;
+
 
 
 @end

@@ -249,10 +249,10 @@ static SignInModel *signInSingleton = nil;
     User *ui = [[User alloc]init];
     
     ui.userImage = [NSURL URLWithString:[result valueForKey:@"photo"]];
-    ui.userEmail=[UtilitiesHelper getStringFromObject:[result valueForKey:@"email" ]];
-    ui.userId=[result valueForKey:@"id"];
-    ui.userName=[result valueForKey:@"name"];
-    ui.userPhoneNo=[UtilitiesHelper getStringFromObject:[result valueForKey:@"phone"]];
+    ui.userImage=[UtilitiesHelper getStringFromObject:[result valueForKey:@"email" ]];
+//    ui.userId=[result valueForKey:@"id"];
+//    ui.userName=[result valueForKey:@"name"];
+//    ui.userPhoneNo=[UtilitiesHelper getStringFromObject:[result valueForKey:@"phone"]];
     ui.dob=[result valueForKey:@"age"];
     ui.gender=[result valueForKey:@"gender"];
     ui.race=[result valueForKey:@"race"];

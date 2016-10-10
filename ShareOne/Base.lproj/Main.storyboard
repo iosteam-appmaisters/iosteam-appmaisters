@@ -81,10 +81,10 @@
                                                     <constraint firstAttribute="width" secondItem="Lx4-Z6-gEr" secondAttribute="height" multiplier="1:1" id="My9-t4-186"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="leah" placeholder="Enter your user ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mah-z6-qDW">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your user ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mah-z6-qDW">
                                                 <rect key="frame" x="71" y="21" width="275" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,7 +104,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="qwV-Kb-rR9">
                                                 <rect key="frame" x="20" y="11" width="38" height="38"/>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="secrets!" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-eK-o8f">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-eK-o8f">
                                                 <rect key="frame" x="71" y="21" width="270" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -198,7 +198,7 @@
                                                     <constraint firstAttribute="width" secondItem="h22-wM-h8e" secondAttribute="height" multiplier="205:37" id="kew-pX-5iR"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpL-LP-OlT">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpL-LP-OlT">
                                                 <rect key="frame" x="84" y="12" width="205" height="37"/>
                                                 <connections>
                                                     <action selector="scanTouchID:" destination="Grc-iE-xzY" eventType="touchUpInside" id="NEn-Zq-Ixg"/>
@@ -1130,11 +1130,67 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ios_settings" translatesAutoresizingMaskIntoConstraints="NO" id="WB7-Zu-meI">
                                 <rect key="frame" x="0.0" y="20" width="414" height="151"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Balances" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-eA-PPU">
+                                <rect key="frame" x="20" y="191" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-lg-DcX">
+                                <rect key="frame" x="20" y="252" width="95" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-fj-Obb">
+                                <rect key="frame" x="20" y="313" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYj-eS-w0y">
+                                <rect key="frame" x="20" y="374" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID will be active after you first login." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e98-J2-Pw6">
+                                <rect key="frame" x="20" y="496" width="323" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan will be active after your next login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN3-w5-dYq">
+                                <rect key="frame" x="20" y="557" width="350" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hns-Wh-a4n">
+                                <rect key="frame" x="20" y="435" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="e98-J2-Pw6" firstAttribute="leading" secondItem="C9o-eA-PPU" secondAttribute="leading" id="1Gi-Zd-tK0"/>
+                            <constraint firstItem="jMJ-fj-Obb" firstAttribute="leading" secondItem="C9o-eA-PPU" secondAttribute="leading" id="5vr-GU-FUQ"/>
+                            <constraint firstItem="e98-J2-Pw6" firstAttribute="top" secondItem="hns-Wh-a4n" secondAttribute="bottom" constant="40" id="6a9-5L-zXm"/>
+                            <constraint firstItem="C9o-eA-PPU" firstAttribute="top" secondItem="WB7-Zu-meI" secondAttribute="bottom" constant="20" id="BRe-Tk-Wgb"/>
+                            <constraint firstItem="bMw-lg-DcX" firstAttribute="leading" secondItem="C9o-eA-PPU" secondAttribute="leading" id="Cyp-UK-Ufd"/>
+                            <constraint firstItem="jYj-eS-w0y" firstAttribute="top" secondItem="jMJ-fj-Obb" secondAttribute="bottom" constant="40" id="DbA-LT-fJQ"/>
+                            <constraint firstItem="yN3-w5-dYq" firstAttribute="top" secondItem="e98-J2-Pw6" secondAttribute="bottom" constant="40" id="GqX-ln-VSi"/>
+                            <constraint firstItem="yN3-w5-dYq" firstAttribute="leading" secondItem="C9o-eA-PPU" secondAttribute="leading" id="HTB-aj-h74"/>
+                            <constraint firstItem="jMJ-fj-Obb" firstAttribute="top" secondItem="bMw-lg-DcX" secondAttribute="bottom" constant="40" id="Ke1-ZR-UdF"/>
+                            <constraint firstItem="bMw-lg-DcX" firstAttribute="top" secondItem="C9o-eA-PPU" secondAttribute="bottom" constant="40" id="Kpv-X6-KTP"/>
+                            <constraint firstItem="hns-Wh-a4n" firstAttribute="top" secondItem="jYj-eS-w0y" secondAttribute="bottom" constant="40" id="PSD-LN-9xd"/>
+                            <constraint firstItem="C9o-eA-PPU" firstAttribute="leading" secondItem="v3l-J7-SAt" secondAttribute="leading" constant="20" id="bky-cs-FtK"/>
+                            <constraint firstItem="hns-Wh-a4n" firstAttribute="leading" secondItem="jYj-eS-w0y" secondAttribute="leading" id="gWi-3P-OpI"/>
                             <constraint firstItem="WB7-Zu-meI" firstAttribute="top" secondItem="5Fy-Og-Llq" secondAttribute="bottom" id="ngf-3c-UYW"/>
                             <constraint firstItem="WB7-Zu-meI" firstAttribute="centerX" secondItem="v3l-J7-SAt" secondAttribute="centerX" id="uoT-38-IzN"/>
+                            <constraint firstItem="jYj-eS-w0y" firstAttribute="leading" secondItem="C9o-eA-PPU" secondAttribute="leading" id="zis-Z6-kMz"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>

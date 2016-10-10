@@ -230,6 +230,7 @@
     {
         cacheFile = [NSString stringWithFormat:@"%@/front.png", cacheDirectory];
         cacheFileColor = [NSString stringWithFormat:@"%@/front_color.jpg", cacheDirectory];
+        
     }
     else
     {

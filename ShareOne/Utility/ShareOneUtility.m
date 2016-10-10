@@ -243,8 +243,8 @@
 //    string AuthorizationHeader = AesGeneratedIV + "|" + KeyPublic + "||" + unixTS.ToString() + "|" + Signature;
     //dcf421cc2be61068888b2b2b4dd3ca5a
     NSString *generatedIv =[self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY];
-    NSLog(@"generatedIv :%@",generatedIv);
-    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,PUBLIC_KEY,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:RequestType_PUT havingEncoding:NSUTF8StringEncoding]];
+//    NSLog(@"generatedIv :%@",generatedIv);
+    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,PUBLIC_KEY,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:request_type havingEncoding:NSUTF8StringEncoding]];
     return header;
 }
 
@@ -260,5 +260,57 @@
         });
     });
 }
+
+
+
++(void)saveUserObject:(User *)user{
+    
+    NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:user];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:archivedObject forKey:@"USER_KEY"];
+    [defaults synchronize];
+}
+
+
++(User *)getUserObject{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *archivedObject = [defaults objectForKey:@"USER_KEY"];
+    return  (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
+}
+
+
++ (void)setUserRememberedStatusWithBool:(BOOL)isRemember{
+    
+    [[NSUserDefaults standardUserDefaults] setBool:isRemember forKey:@"isLoginRemembered"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
++ (BOOL)isUserRemembered{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoginRemembered"];
+}
+
+
++ (void)setTouhIDStatusWithBool:(BOOL)isRemember{
+    
+    [[NSUserDefaults standardUserDefaults] setBool:isRemember forKey:@"isTouchEnabled"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
++ (BOOL)isTouchIDEnabled{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isTouchEnabled"];
+}
+
++(void)savaLogedInSignature:(NSString *)signature{
+    [[NSUserDefaults standardUserDefaults] setValue:signature forKey:@"Signature"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
++(NSString *)getSignedINSignature{
+    
+   return  [[NSUserDefaults standardUserDefaults] valueForKey:@"Signature"];
+}
+
 
 @end

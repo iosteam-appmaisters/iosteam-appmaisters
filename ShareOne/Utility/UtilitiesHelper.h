@@ -98,6 +98,8 @@
 +(BOOL)isGpsOn;
 
 -(void)showLAContextWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block;
++(void)isTouchIDAvailableWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block;
+
 
 
 @end

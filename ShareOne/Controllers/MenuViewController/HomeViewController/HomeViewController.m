@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "WebViewController.h"
 #import "ShareOneUtility.h"
+#import "SharedUser.h"
+
 
 
 @implementation HomeViewController
@@ -22,7 +24,9 @@
     _webview.delegate=self;
     if(!_url)
         _url = HOME_WEB_VIEW_URL;
-    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+    
+    NSString *queryString = [NSString stringWithFormat:@"%@/%@",_url,[[[SharedUser sharedManager] userObject] ContextID]];
+    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:queryString]]];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
