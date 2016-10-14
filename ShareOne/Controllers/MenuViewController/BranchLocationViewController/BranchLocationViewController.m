@@ -13,6 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ShareOneUtility.h"
 #import "GetDirectionViewController.h"
+#import "ATMLocationViewController.h"
 
 @interface BranchLocationViewController ()<CLLocationManagerDelegate,branchLocationDelegate>
 {
@@ -96,11 +97,21 @@
 
 -(IBAction)showAllBranchesonMapButtonClicked:(id)sender
 {
-    UINavigationController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    [self.navigationController pushViewController:atmNavigationViewController animated:YES];
+
+}
+
+-(IBAction)showCurrentLocationMapButtonClicked:(id)sender{
+    
+    ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    atmNavigationViewController.showMyLocationOnly= TRUE;
+    
     atmNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:atmNavigationViewController animated:YES];
 
 }
+
 
 /*********************************************************************************************************/
                                     #pragma mark - BranchLocation Cell Delegate Method

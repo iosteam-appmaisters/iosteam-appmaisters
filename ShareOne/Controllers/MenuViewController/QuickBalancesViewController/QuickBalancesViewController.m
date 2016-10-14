@@ -10,6 +10,9 @@
 #import "QBHeaderCell.h"
 #import "QBDetailsCell.h"
 #import "ShareOneUtility.h"
+#import "QBFooterView.h"
+
+
 
 
 
@@ -23,9 +26,15 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     _qbArr = [ShareOneUtility getDummyDataForQB];
+    
+    self.qbTblView.allowMultipleSectionsOpen = YES;
+    [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
+
+
 }
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -76,15 +85,75 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     NSDictionary *dict =_qbArr[section];
+    
+    /*
+    
     QBHeaderCell *objQBHeaderCell = (QBHeaderCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([QBHeaderCell class])];
     [objQBHeaderCell.sectionTitleLbl setText:[dict valueForKey:@"section_title"]];
     [objQBHeaderCell.sectionAmountLbl setText:[dict valueForKey:@"section_amt"]];
     return (UIView *)objQBHeaderCell;
+     */
+    
+
+    
+    QBFooterView *objFZAccordionTableViewHeaderView =(QBFooterView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kQBHeaderViewReuseIdentifier];
+    
+    /* Condtion to check whether top septator view appears or not
+     ** If(section==0) - Show seperator view as it shows in mockup
+     **else -          - Hide seperator view
+     */
+    
+    /*
+    if(section==0)
+        [objFZAccordionTableViewHeaderView.topSeperatorView setHidden:FALSE];
+    else
+        [objFZAccordionTableViewHeaderView.topSeperatorView setHidden:TRUE];
+     */
+    
+    
+    
+    /* Condtion to check whether categories has sub categories or not
+     ** If(TRUE)    - Show right arrow in the section view
+     **else -       - Hide right arrow view
+     */
+    
+
+    
+    
+    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[dict valueForKey:@"section_title"]];
+    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[dict valueForKey:@"section_amt"]];
+
+    [objFZAccordionTableViewHeaderView.sectionImgVew setImage:[UIImage imageNamed:[dict valueForKey:@"section_amt"]]];
+    return (UIView *)objFZAccordionTableViewHeaderView;
+    
+
 }
 
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
+
+
+#pragma mark - <FZAccordionTableViewDelegate> -
+
+- (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+//        NSLog(@"willOpenSection");
+    
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+//        NSLog(@"didOpenSection");
+    
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+//        NSLog(@"willCloseSection");
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+//        NSLog(@"didCloseSection");
+}
+
 
 @end

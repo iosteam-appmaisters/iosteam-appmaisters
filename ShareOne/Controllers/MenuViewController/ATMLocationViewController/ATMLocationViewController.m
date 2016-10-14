@@ -84,6 +84,8 @@
         marker.title = @"AtM Location";
         marker.snippet = @"";
         marker.map = mapView;
+        if(_showMyLocationOnly)
+            break;
     }
     
 }

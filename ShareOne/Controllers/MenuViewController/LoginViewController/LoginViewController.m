@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *rememberMeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *userFingerprintBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rememberMetxtBtn;
+@property (weak, nonatomic) IBOutlet UIButton *quickBalanceBtn;
+
 
 - (IBAction)scanTouchID:(id)sender ;
 
@@ -64,12 +66,18 @@
 
 -(void)updateDataByDefaultValues{
     
+    [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_userFingerprintBtn setSelected:[ShareOneUtility isTouchIDEnabled]];
     if([ShareOneUtility isUserRemembered]){
         User *user = [ShareOneUtility getUserObject];
         [_userIDTxt setText:user.UserName];
         [_passwordTxt setText:user.Password];
+    }
+    else{
+        [_userIDTxt setText:@""];
+        [_passwordTxt setText:@""];
+
     }
     /*
      **  Call login service auto only if touch is enabled
@@ -105,7 +113,8 @@
     
     
     // Get value from text feilds if user object is not locally saved or user did not remember hisself.
-    if(!savedUser || ![ShareOneUtility isUserRemembered]){
+//    if(!savedUser || ![ShareOneUtility isUserRemembered])
+    {
         savedUser = [[User alloc] init];
         savedUser.UserName=_userIDTxt.text;
         savedUser.Password=_passwordTxt.text;
@@ -146,8 +155,8 @@
 - (void)getSignInWithUser:(User *)user{
     
     __weak LoginViewController *weakSelf = self;
-    [weakSelf startApplication];
-    /*
+//    [weakSelf startApplication];
+    
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
@@ -156,7 +165,7 @@
     } failureBlock:^(NSError *error) {
         
     }];
-     */
+    
 }
 
 - (IBAction)forgotPasswordButtonClicked:(id)sender {

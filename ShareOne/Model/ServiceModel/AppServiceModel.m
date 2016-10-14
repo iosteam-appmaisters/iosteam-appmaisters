@@ -189,6 +189,15 @@
     
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
     
+    if(params){
+        
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    
 
     jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     manager.responseSerializer = jsonResponseSerializer;
@@ -218,7 +227,6 @@
 
     }
     
-//    [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
 
     
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
@@ -234,6 +242,9 @@
             }else{
                 NSData * data = (NSData *)responseObject;
                 NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                [self hideProgressAlert];
+                block(responseObject);
 
             }
         } else {
@@ -259,10 +270,6 @@
         [self showProgressWithMessage:progressMessage];
 
     
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -272,12 +279,35 @@
     manager.responseSerializer = jsonResponseSerializer;
     
     
-    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_PUT URLString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] parameters:nil error:nil];
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_PUT URLString:urlString parameters:nil error:nil];
     
-    [self setHeaderOnRequest:req withAuth:auth_header];
+    if(auth_header)
+        [self setHeaderOnRequest:req withAuth:auth_header];
     
-    [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     
+    if(params){
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    
+//    id response;
+//    
+//    NSData * data = [NSURLConnection sendSynchronousRequest:req
+//                                          returningResponse:&response
+//                                                      error:&error];
+//    
+//    if (error == nil)
+//    {
+//        // Parse data here
+//        NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",myString);
+//
+//    }
+//    
+//    return;
     
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
@@ -319,7 +349,8 @@
     
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_GET URLString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,urlString,[params valueForKey:@"ContextID"]] parameters:nil error:nil];
     
-    [self setHeaderOnRequest:req withAuth:auth_header];
+    if(auth_header)
+        [self setHeaderOnRequest:req withAuth:auth_header];
     
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
@@ -433,7 +464,6 @@
     
     NSMutableSet *acceptableContentTypes = [NSMutableSet setWithSet:jsonResponseSerializer.acceptableContentTypes];
     [acceptableContentTypes addObject:@"text/html"];
-    [acceptableContentTypes addObject:@"text/xml"];
     [acceptableContentTypes addObject:@"application/json"];
     return acceptableContentTypes;
 

@@ -10,6 +10,8 @@
 #import "WebViewController.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
+#import "MemberDevices.h"
+
 
 
 
@@ -19,6 +21,13 @@
     [super viewDidLoad];
     
     __weak HomeViewController *weakSelf = self;
+
+    [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getUUID],@"Fingerprint", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
 
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;

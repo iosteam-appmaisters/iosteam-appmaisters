@@ -7,11 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import "FZAccordionTableView.h"
 
-@interface QuickBalancesViewController : UIViewController
+
+@interface QuickBalancesViewController : UIViewController<FZAccordionTableViewDelegate>
 
 
-@property (nonatomic, weak) IBOutlet UITableView *qbTblView;
+@property (nonatomic, weak) IBOutlet FZAccordionTableView *qbTblView;
 @property (nonatomic, strong) NSArray *qbArr;
 
 - (IBAction)dismissQuickBalances:(id)sender;

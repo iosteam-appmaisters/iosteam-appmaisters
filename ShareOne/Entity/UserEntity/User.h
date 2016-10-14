@@ -18,6 +18,7 @@
 @property (nonatomic,strong) NSString *MasterID;
 @property (nonatomic,strong) NSString *PostingDate;
 @property (nonatomic,strong) NSString *SystemState;
+@property (nonatomic,strong) NSString *LoginAttempts;
 
 @property (nonatomic,strong) NSString *UserName;
 @property (nonatomic,strong) NSString *Password;

@@ -21,4 +21,10 @@
     // Configure the view for the selected state
 }
 
+- (UIEdgeInsets)layoutMargins
+{
+    return UIEdgeInsetsZero;
+}
+
+
 @end

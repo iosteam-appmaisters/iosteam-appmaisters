@@ -9,11 +9,14 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "ShareOneUtility.h"
 #import <CoreLocation/CoreLocation.h>
+#import <CommonCrypto/CommonDigest.h>
 
 #import "ShareOneUtility.h"
 #import "BBAES.h"
 #import "Constants.h"
 #import "Services.h"
+#import "Constants.h"
+
 
 
 @import GoogleMaps;
@@ -301,13 +304,13 @@
 
 + (void)setTouhIDStatusWithBool:(BOOL)isRemember{
     
-    [[NSUserDefaults standardUserDefaults] setBool:isRemember forKey:@"isTouchEnabled"];
+    [[NSUserDefaults standardUserDefaults] setBool:isRemember forKey:TOUCH_ID_SETTINGS];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
 
 + (BOOL)isTouchIDEnabled{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isTouchEnabled"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:TOUCH_ID_SETTINGS];
 }
 
 +(void)savaLogedInSignature:(NSString *)signature{
@@ -385,6 +388,94 @@
     return httpBody;
 }
 
++(void)setDefaultSettingValues{
+    
+    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:QUICK_BAL_SETTINGS];
+    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:SHOW_OFFERS_SETTINGS];
+//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:TOUCH_ID_SETTINGS];
+//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:RETINA_SCAN_SETTINGS];
+//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:PUSH_NOTIF_SETTINGS];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 
+}
+
++(void)setPreferencesOnLaunch{
+    NSString *key = [[NSUserDefaults standardUserDefaults] valueForKey:@"FIRST_LAUNCH"];
+    if(!key){
+        [self setDefaultSettingValues];
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"FIRST_LAUNCH"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+        
+}
+
++(NSString *)getSessionnKey{
+    return KEY_VALUE;
+}
+
++(NSString *)getMemberValue{
+    return @"31008";
+}
+
++(NSString *)getAccountValue{
+    return @"666";
+}
+
++ (NSString *)applyMD5OnValue:(NSString *)value{
+    
+    const char* str = [value UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(str, strlen(str), result);
+    
+    NSMutableString *ret = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH*2];
+    for(int i = 0; i<CC_MD5_DIGEST_LENGTH; i++) {
+        [ret appendFormat:@"%02x",result[i]];
+    }
+    return ret;
+}
+
++(NSString *)getMacForVertifi{
+    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
+    NSString *md5Value = [self applyMD5OnValue:mac];
+    [self getBytesOfString:md5Value];
+    NSString *hexStringValue = [self hexStringFromData:[md5Value dataUsingEncoding:NSUTF8StringEncoding]];
+    [self getBytesOfString:hexStringValue];
+    
+    mac=[NSString stringWithFormat:@"%@%d%@%@%@",REQUESTER_VALUE,[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
+    NSData *calculatedMAc =  [self calculateHMACMD5WithKey:[self getSessionnKey] andData:mac];
+    
+   NSString *hex = [self hexStringFromData:calculatedMAc];
+    [self getBytesOfString:hex];
+
+
+    return hex;
+}
+
+
++(void)getBytesOfString:(NSString *)string{
+    NSData* data=[string dataUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger myLength = data.length;
+    NSLog(@"getBytesOfString : %d",data.length);
+}
+
++(NSData*) calculateHMACMD5WithKey:(NSString*) key andData:(NSString*) data{
+    const char *cKey  = [key cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    unsigned char cHMAC[CC_MD5_DIGEST_LENGTH];
+    
+    CCHmac(kCCHmacAlgMD5, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    
+    return [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
+    
+}
+
++(NSString *)getUUID{
+    NSString * deviceID = [[[UIDevice currentDevice]identifierForVendor]UUIDString];
+    if(!deviceID)
+        deviceID=[self randomStringWithLength:32];
+    
+    return deviceID;
+}
 
 @end

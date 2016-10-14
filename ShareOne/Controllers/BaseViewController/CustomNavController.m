@@ -22,10 +22,10 @@
 
 - (BOOL)shouldAutorotate
 {
-    id currentViewController = self.topViewController;
-    
-    if ([currentViewController isKindOfClass:[MobileDepositController class]])
-        return YES;
+//    id currentViewController = self.topViewController;
+//    
+//    if ([currentViewController isKindOfClass:[MobileDepositController class]])
+//        return NO;
     
     return NO;
 }

@@ -49,13 +49,13 @@
     [super viewDidLoad];
     [self startUpMethod];
     
-    __weak MobileDepositController *weakSelf = self;
-
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility randomStringWithLength:80],@"session",@"asdasdsd",@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",@"2342343",@"routing",@"asdadass",@"member",[ShareOneUtility randomStringWithLength:17],@"account",[ShareOneUtility randomStringWithLength:32],@"MAC",@"adeelahmed",@"membername",@"enigmatic@hotmail.com",@"email",@"profilename",@"profile", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
+//    __weak MobileDepositController *weakSelf = self;
+//
+//    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility randomStringWithLength:80],@"session",@"asdasdsd",@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",@"2342343",@"routing",@"asdadass",@"member",[ShareOneUtility randomStringWithLength:17],@"account",[ShareOneUtility randomStringWithLength:32],@"MAC",@"adeelahmed",@"membername",@"enigmatic@hotmail.com",@"email",@"profilename",@"profile", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
 }
 
 
@@ -402,5 +402,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (BOOL)shouldAutorotate{
+    
+    return YES;
+}
+
 
 @end

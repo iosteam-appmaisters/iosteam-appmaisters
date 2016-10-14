@@ -10,4 +10,6 @@
 
 @interface BranchLocationViewController : BaseViewController
 
+-(IBAction)showAllBranchesonMapButtonClicked:(id)sender;
+
 @end

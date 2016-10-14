@@ -63,6 +63,14 @@
 
 + (NSData *)createBodyWithBoundary:(NSString *)boundary parameters:(NSDictionary *)parameters;
 
++(void)setDefaultSettingValues;
++(void)setPreferencesOnLaunch;
+
++(NSString *)getMacForVertifi;
+
++(NSString *)getUUID;
+
+
 
 
 

@@ -11,7 +11,7 @@
 @implementation CashDeposit
 +(void)getRegisterToVirtifi:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
 
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:nil AndParam:param progressMessage:@"Please wait.." urlString:kDEPOSIT_MONEY_REGISTER delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:nil AndParam:param progressMessage:nil urlString:kDEPOSIT_MONEY_REGISTER delegate:delegate completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         

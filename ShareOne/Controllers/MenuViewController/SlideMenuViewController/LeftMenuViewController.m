@@ -101,6 +101,7 @@
     SideMenuCell *cell =  (SideMenuCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SideMenuCell class]) forIndexPath:indexPath];
     
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    
     NSDictionary *dict = _contentArr[indexPath.section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     NSDictionary *dictSubCat = subCatArr[indexPath.row];

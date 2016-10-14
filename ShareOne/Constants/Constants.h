@@ -106,5 +106,17 @@
 
 #define googleApiKey               @"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"
 
+
+#define QUICK_BAL_SETTINGS          @"QUICK_BAL_SETTINGS"
+#define SHOW_OFFERS_SETTINGS        @"SHOW_OFFERS_SETTINGS"
+#define TOUCH_ID_SETTINGS           @"TOUCH_ID_SETTINGS"
+#define RETINA_SCAN_SETTINGS        @"RETINA_SCAN_SETTINGS"
+#define PUSH_NOTIF_SETTINGS         @"PUSH_NOTIF_SETTINGS"
+
+
+#define ROUTING_VALUE               @"700000465"
+#define REQUESTER_VALUE             @"700000465-Shareone"
+#define KEY_VALUE                   @"5fc5a27eedf1b68b98ef3bc0bee7c0a5"
+
 #endif
 

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ShareOneUtility.h"
 #import "Constants.h"
+#import "CashDeposit.h"
 
 #import "Constants.h"
 @import GoogleMaps;
@@ -25,9 +26,21 @@
 //    NSASCIIStringEncoding
     [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     [GMSServices provideAPIKey:googleApiKey];
-    
+    [ShareOneUtility setPreferencesOnLaunch];
+    [ShareOneUtility getUUID];
+//    [self testService];
 
     return YES;
+}
+
+-(void)testService{
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility randomStringWithLength:80],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",@"asdadass",@"member",[ShareOneUtility randomStringWithLength:17],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",@"adeelahmed",@"membername",@"enigmatic@hotmail.com",@"email",@"profilename",@"profile", nil] delegate:nil completionBlock:^(NSObject *user) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -68,7 +68,7 @@
     NSLog(@"signature logeed in : %@",signature);
     [ShareOneUtility savaLogedInSignature:signature];
     
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:@"Pleas Wait..." urlString:KWEB_SERVICE_MEMBER_VALIDATE delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:@"Pleas Wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
         
         User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];
         user.UserName=[param valueForKey:@"account"];
@@ -157,9 +157,7 @@
         self.SystemState = [decoder decodeObjectForKey:@"SystemState"];
         self.UserName = [decoder decodeObjectForKey:@"UserName"];
         self.Password = [decoder decodeObjectForKey:@"Password"];
-
-
-
+        self.LoginAttempts = [decoder decodeObjectForKey:@"LoginAttempts"];
     }
     return self;
 }
@@ -173,6 +171,6 @@
     [encoder encodeObject: self.SystemState forKey:@"SystemState"];
     [encoder encodeObject: self.UserName forKey:@"UserName"];
     [encoder encodeObject: self.Password forKey:@"Password"];
-
+    [encoder encodeObject: self.Password forKey:@"LoginAttempts"];
 }
 @end

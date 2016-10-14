@@ -79,4 +79,10 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (BOOL)shouldAutorotate{
+    
+    return NO;
+}
+
+
 @end
