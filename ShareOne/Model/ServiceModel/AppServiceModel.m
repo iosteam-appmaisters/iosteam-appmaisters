@@ -5,6 +5,8 @@
 #import "UtilitiesHelper.h"
 #import "Constants.h"
 #import "ShareOneUtility.h"
+#import "SharedUser.h"
+
 
 @implementation AppServiceModel
 
@@ -293,26 +295,10 @@
     }
     
     
-//    id response;
-//    
-//    NSData * data = [NSURLConnection sendSynchronousRequest:req
-//                                          returningResponse:&response
-//                                                      error:&error];
-//    
-//    if (error == nil)
-//    {
-//        // Parse data here
-//        NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        NSLog(@"%@",myString);
-//
-//    }
-//    
-//    return;
-    
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
-            NSLog(@"Reply JSON: %@", responseObject);
+ NSLog(@"Reply JSON: %@", responseObject);
             
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -335,7 +321,6 @@
 
 -(void)getMethod:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
@@ -347,10 +332,55 @@
         [self showProgressWithMessage:progressMessage];
 
     
-    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_GET URLString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,urlString,[params valueForKey:@"ContextID"]] parameters:nil error:nil];
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_GET URLString:urlString parameters:params error:nil];
     
     if(auth_header)
         [self setHeaderOnRequest:req withAuth:auth_header];
+
+    
+    NSError *error;
+    if(params){
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        //[req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    
+    id response;
+    
+    NSData * data = [NSURLConnection sendSynchronousRequest:req
+                                          returningResponse:&response
+                                                      error:&error];
+    
+    if (error == nil){
+        
+        // Parse data here
+        NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",myString);
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self hideProgressAlert];
+        block(nil);
+        
+    }
+    else{
+        
+        NSLog(@"%@",error);
+        NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",myString);
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self hideProgressAlert];
+        block(nil);
+
+        
+    }
+    
+    return;
+
+
+    
     
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
@@ -373,6 +403,60 @@
     }] resume];
     
 }
+
+-(void)deleteRequestWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    if(progressMessage)
+        [self showProgressWithMessage:progressMessage];
+    
+    
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+    
+    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+    manager.responseSerializer = jsonResponseSerializer;
+    
+    
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_DELETE URLString:urlString parameters:nil error:nil];
+    
+    if(auth_header)
+        [self setHeaderOnRequest:req withAuth:auth_header];
+    
+    
+    if(params){
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (!error) {
+            NSLog(@"Reply JSON: %@", responseObject);
+            
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                [self hideProgressAlert];
+                block(responseObject);
+                
+            }
+        } else {
+            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            [self hideProgressAlert];
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
+            
+        }
+    }] resume];
+
+}
+
 
 - (void)postImageRequestWithParameters:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
     
@@ -525,6 +609,41 @@
      
      }];
      */
+    
+    
+    //
+    //    NSString *getString = [NSString stringWithFormat:@"DeviceFingerprint=%@",[params valueForKey:@"DeviceFingerprint"]];
+    //    NSData *getData = [getString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
+    //
+    //    [req setHTTPBody:getData];
+    //
+    
+    
+//        id response;
+//    
+//        NSData * data = [NSURLConnection sendSynchronousRequest:req
+//                                              returningResponse:&response
+//                                                          error:&error];
+//    
+//        if (error == nil)
+//        {
+//            // Parse data here
+//            NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//            NSLog(@"%@",myString);
+//    
+//        }
+//        else
+//        {
+//            NSLog(@"%@",error);
+//            NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//            NSLog(@"%@",myString);
+//    
+//        }
+//        block(nil);
+//    
+//        
+//        return;
+
 
 }
 

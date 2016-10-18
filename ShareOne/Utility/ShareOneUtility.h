@@ -70,6 +70,13 @@
 
 +(NSString *)getUUID;
 
++(NSString *)getSessionnKey;
+
++(NSString *)getMemberValue;
+
++(NSString *)getAccountValue;
+
+
 
 
 

@@ -29,6 +29,9 @@
 
 #define KQUICK_TRANSACTIONS                             @"eft/quickTransactions"
 
+#define KSUFFIX_INFO                                    @"eft/suffixInfo"
+
+#define kSUFFIZ_PREPHERENCES                            @"eft/suffixPreferences"
 
 #define kDEPOSIT_MONEY_REGISTER                         @"https://www.member-data.com/rdc/sso/mobdep_regquery.ashx"
 

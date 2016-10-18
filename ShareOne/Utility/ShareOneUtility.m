@@ -16,6 +16,7 @@
 #import "Constants.h"
 #import "Services.h"
 #import "Constants.h"
+#import "SAMKeychain.h"
 
 
 
@@ -410,15 +411,19 @@
 }
 
 +(NSString *)getSessionnKey{
-    return KEY_VALUE;
+//    return KEY_VALUE;
+    return [self randomStringWithLength:80];
+
 }
 
 +(NSString *)getMemberValue{
-    return @"31008";
+//    return @"31008";
+    return [self randomStringWithLength:16];
 }
 
 +(NSString *)getAccountValue{
-    return @"666";
+//    return @"666";
+    return [self randomStringWithLength:17];
 }
 
 + (NSString *)applyMD5OnValue:(NSString *)value{
@@ -471,9 +476,14 @@
 }
 
 +(NSString *)getUUID{
-    NSString * deviceID = [[[UIDevice currentDevice]identifierForVendor]UUIDString];
-    if(!deviceID)
-        deviceID=[self randomStringWithLength:32];
+    
+    NSString *Appname = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    NSString *deviceID = [SAMKeychain passwordForService:Appname account:@""];
+    if (deviceID == nil)
+    {
+        deviceID  = [[[UIDevice currentDevice]identifierForVendor] UUIDString];
+        [SAMKeychain setPassword:deviceID forService:Appname account:@""];
+    }
     
     return deviceID;
 }

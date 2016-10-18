@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C091DB4BCCE000435DE /* QuickBalances.m */; };
+		1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */; };
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
 		1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD79E1D9947BD0014C743 /* Security.framework */; };
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
@@ -72,6 +74,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D112C081DB4BCCE000435DE /* QuickBalances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickBalances.h; sourceTree = "<group>"; };
+		1D112C091DB4BCCE000435DE /* QuickBalances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBalances.m; sourceTree = "<group>"; };
+		1D112C0B1DB4E6C6000435DE /* SuffixInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuffixInfo.h; sourceTree = "<group>"; };
+		1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuffixInfo.m; sourceTree = "<group>"; };
 		1D1415471DA4D3710048F8B1 /* SharedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedUser.h; sourceTree = "<group>"; };
 		1D1415481DA4D3710048F8B1 /* SharedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedUser.m; sourceTree = "<group>"; };
 		1D1AD79E1D9947BD0014C743 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -210,6 +216,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D112C071DB4BCAF000435DE /* QuickBalances */ = {
+			isa = PBXGroup;
+			children = (
+				1D112C081DB4BCCE000435DE /* QuickBalances.h */,
+				1D112C091DB4BCCE000435DE /* QuickBalances.m */,
+				1D112C0B1DB4E6C6000435DE /* SuffixInfo.h */,
+				1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */,
+			);
+			path = QuickBalances;
+			sourceTree = "<group>";
+		};
 		1D1AD7A01D9947CA0014C743 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +408,7 @@
 		6BD405A61D81B5FC00358036 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1D112C071DB4BCAF000435DE /* QuickBalances */,
 				1DBD4DBC1DB0EE6900943995 /* MemberDevices */,
 				1DF6081C1DAB995500FF85E2 /* CashDepositEntity */,
 				6BD405C91D82CA7200358036 /* UserEntity */,
@@ -782,6 +800,7 @@
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
 				F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */,
+				1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */,
 				6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */,
 				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
 				F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */,
@@ -819,6 +838,7 @@
 				F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */,
 				F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
+				1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */,
 				1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */,
 				1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,

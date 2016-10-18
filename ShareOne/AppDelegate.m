@@ -27,15 +27,14 @@
     [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     [GMSServices provideAPIKey:googleApiKey];
     [ShareOneUtility setPreferencesOnLaunch];
-    [ShareOneUtility getUUID];
-//    [self testService];
+    //[self testService];
 
     return YES;
 }
 
 -(void)testService{
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility randomStringWithLength:80],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",@"asdadass",@"member",[ShareOneUtility randomStringWithLength:17],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",@"adeelahmed",@"membername",@"enigmatic@hotmail.com",@"email",@"profilename",@"profile", nil] delegate:nil completionBlock:^(NSObject *user) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",@"spike",@"membername",@"enigmatic@hotmail.com",@"email", nil] delegate:nil completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
         

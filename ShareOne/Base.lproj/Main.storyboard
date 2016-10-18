@@ -1177,37 +1177,37 @@
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="MvJ-SN-47s"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYj-eS-w0y">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYj-eS-w0y">
                                 <rect key="frame" x="20" y="311" width="92" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQB-Kf-Az2">
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQB-Kf-Az2">
                                 <rect key="frame" x="345" y="306" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="CmT-ou-3oi"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hns-Wh-a4n">
-                                <rect key="frame" x="20" y="351" width="130" height="20"/>
+                                <rect key="frame" x="20" y="311" width="130" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-PL-x6r">
-                                <rect key="frame" x="345" y="346" width="51" height="31"/>
+                                <rect key="frame" x="345" y="306" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="IpX-JW-sIo"/>
                                 </connections>
                             </switch>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID will be active after you first login." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e98-J2-Pw6">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Touch ID will be active after you first login." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e98-J2-Pw6">
                                 <rect key="frame" x="20" y="411" width="264" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan will be active after your next login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN3-w5-dYq">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Retina Scan will be active after your next login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN3-w5-dYq">
                                 <rect key="frame" x="20" y="448" width="289" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1232,7 +1232,6 @@
                             <constraint firstItem="jMJ-fj-Obb" firstAttribute="top" secondItem="bMw-lg-DcX" secondAttribute="bottom" constant="20" id="Ke1-ZR-UdF"/>
                             <constraint firstItem="bMw-lg-DcX" firstAttribute="top" secondItem="C9o-eA-PPU" secondAttribute="bottom" constant="20" id="Kpv-X6-KTP"/>
                             <constraint firstItem="NOB-PL-x6r" firstAttribute="centerY" secondItem="UXS-fA-tmL" secondAttribute="centerY" id="MjC-FX-WkJ"/>
-                            <constraint firstItem="hns-Wh-a4n" firstAttribute="top" secondItem="jYj-eS-w0y" secondAttribute="bottom" constant="20" id="PSD-LN-9xd"/>
                             <constraint firstItem="NOB-PL-x6r" firstAttribute="centerY" secondItem="e98-J2-Pw6" secondAttribute="centerY" id="QlH-FB-esP"/>
                             <constraint firstItem="ldA-EZ-1Ro" firstAttribute="trailing" secondItem="jMJ-fj-Obb" secondAttribute="trailing" id="RSD-tU-DDw"/>
                             <constraint firstItem="Gm9-ZJ-zJ3" firstAttribute="trailing" secondItem="UXS-fA-tmL" secondAttribute="trailing" id="Red-8L-VqJ"/>
@@ -1240,9 +1239,11 @@
                             <constraint firstItem="LQB-Kf-Az2" firstAttribute="centerY" secondItem="jYj-eS-w0y" secondAttribute="centerY" id="WKJ-9x-WXO"/>
                             <constraint firstItem="C9o-eA-PPU" firstAttribute="leading" secondItem="v3l-J7-SAt" secondAttribute="leading" constant="20" id="bky-cs-FtK"/>
                             <constraint firstItem="NOB-PL-x6r" firstAttribute="centerY" secondItem="hns-Wh-a4n" secondAttribute="centerY" id="eKL-Mj-zTi"/>
+                            <constraint firstItem="NOB-PL-x6r" firstAttribute="centerY" secondItem="LQB-Kf-Az2" secondAttribute="centerY" id="fcT-nx-opv"/>
                             <constraint firstItem="hns-Wh-a4n" firstAttribute="leading" secondItem="jYj-eS-w0y" secondAttribute="leading" id="gWi-3P-OpI"/>
                             <constraint firstAttribute="trailing" secondItem="UXS-fA-tmL" secondAttribute="trailing" constant="20" id="hH0-1E-mp6"/>
                             <constraint firstItem="WB7-Zu-meI" firstAttribute="top" secondItem="5Fy-Og-Llq" secondAttribute="bottom" id="ngf-3c-UYW"/>
+                            <constraint firstItem="hns-Wh-a4n" firstAttribute="top" secondItem="jYj-eS-w0y" secondAttribute="top" id="ojL-5x-XDp"/>
                             <constraint firstItem="WB7-Zu-meI" firstAttribute="centerX" secondItem="v3l-J7-SAt" secondAttribute="centerX" id="uoT-38-IzN"/>
                             <constraint firstItem="LQB-Kf-Az2" firstAttribute="trailing" secondItem="UXS-fA-tmL" secondAttribute="trailing" id="xHa-pr-xJt"/>
                             <constraint firstItem="jYj-eS-w0y" firstAttribute="leading" secondItem="C9o-eA-PPU" secondAttribute="leading" id="zis-Z6-kMz"/>

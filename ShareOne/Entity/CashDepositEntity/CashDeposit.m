@@ -5,7 +5,7 @@
 //  Created by Qazi Naveed on 10/10/2016.
 //  Copyright © 2016 Ali Akbar. All rights reserved.
 //
-
+#import "SharedUser.h"
 #import "CashDeposit.h"
 
 @implementation CashDeposit
