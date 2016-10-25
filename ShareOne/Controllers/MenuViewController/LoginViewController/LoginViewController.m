@@ -12,6 +12,7 @@
 #import "ShareOneUtility.h"
 #import "User.h"
 #import "SharedUser.h"
+#import "LoadingController.h"
 
 
 @interface LoginViewController ()
@@ -122,7 +123,7 @@
     }
 
 
-    if([ShareOneUtility isTouchIDEnabled]){
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
         [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
             
             if(success){
@@ -151,6 +152,18 @@
     [self presentViewController:homeNavigationViewController animated:YES completion:nil];
 }
 
+-(void)addingLoadingScreen{
+    
+
+    LoadingController * objLoadingController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadingController"];
+    objLoadingController.controllerDelegate=self;
+    [self presentViewController:objLoadingController animated:NO completion:^{
+
+    }];
+    
+}
+
+
 
 - (void)getSignInWithUser:(User *)user{
     
@@ -160,7 +173,7 @@
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
-        [weakSelf startApplication];
+        [weakSelf addingLoadingScreen];
         
     } failureBlock:^(NSError *error) {
         

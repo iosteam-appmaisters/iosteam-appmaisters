@@ -40,6 +40,9 @@
 +(void)saveUserObject:(User *)user;
 +(User *)getUserObject;
 
++(void)saveUserObjectToLocalObjects:(User *)user;
++(NSArray *)getUserObjectsFromLocalObjects;
+
 
 + (void)setUserRememberedStatusWithBool:(BOOL)isRemember;
 + (BOOL)isUserRemembered;
@@ -75,6 +78,14 @@
 +(NSString *)getMemberValue;
 
 +(NSString *)getAccountValue;
+
++(NSString *)getSecretKey;
+
++(NSString *)getMemberEmail;
+
++(NSString *)getMemberName;
+    
+
 
 
 

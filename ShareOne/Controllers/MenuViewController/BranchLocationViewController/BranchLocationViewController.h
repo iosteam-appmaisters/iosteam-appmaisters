@@ -12,4 +12,6 @@
 
 -(IBAction)showAllBranchesonMapButtonClicked:(id)sender;
 
+@property (nonatomic,strong) IBOutlet UITableView *tableView;
+
 @end

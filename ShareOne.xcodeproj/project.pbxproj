@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0885BA1DBA3A2D001787A8 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0885B91DBA3A2D001787A8 /* libVertifiImageProcessing.a */; };
 		1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C091DB4BCCE000435DE /* QuickBalances.m */; };
 		1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */; };
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
@@ -16,12 +17,16 @@
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
+		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
 		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
 		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
-		1D9743441DAFD8C8007E348C /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9743431DAFD8C8007E348C /* libVertifiImageProcessing.a */; };
+		1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3B5F91DB7950500DB5731 /* Location.m */; };
+		1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB927371DBE193E00C08F29 /* LoadingController.m */; };
+		1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */; };
+		1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273E1DBE29B800C08F29 /* LoaderServices.m */; };
 		1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD4DBE1DB0EE7F00943995 /* MemberDevices.m */; };
 		1DBD4DC21DB1053200943995 /* QBFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD4DC11DB1053200943995 /* QBFooterView.m */; };
 		1DBD4DC41DB105BC00943995 /* QBFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DBD4DC31DB105BC00943995 /* QBFooterView.xib */; };
@@ -74,6 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D0885B91DBA3A2D001787A8 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D112C081DB4BCCE000435DE /* QuickBalances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickBalances.h; sourceTree = "<group>"; };
 		1D112C091DB4BCCE000435DE /* QuickBalances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBalances.m; sourceTree = "<group>"; };
 		1D112C0B1DB4E6C6000435DE /* SuffixInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuffixInfo.h; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 		1D23999F1D913C8C00157320 /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
 		1D2399A11D9169CF00157320 /* SideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuCell.h; sourceTree = "<group>"; };
 		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
+		1D3D12781DBF353500719170 /* DeviceAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceAuth.h; sourceTree = "<group>"; };
+		1D3D12791DBF353500719170 /* DeviceAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceAuth.m; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1D8478E41D92949400153B19 /* QBHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHeaderCell.h; sourceTree = "<group>"; };
 		1D8478E51D92949400153B19 /* QBHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBHeaderCell.m; sourceTree = "<group>"; };
@@ -99,7 +107,14 @@
 		1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileDepositController.m; sourceTree = "<group>"; };
 		1D956DC71DA3AFE2007F6D11 /* CustomNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavController.h; sourceTree = "<group>"; };
 		1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavController.m; sourceTree = "<group>"; };
-		1D9743431DAFD8C8007E348C /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
+		1DA3B5F81DB7950500DB5731 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		1DA3B5F91DB7950500DB5731 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		1DB927361DBE193E00C08F29 /* LoadingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingController.h; sourceTree = "<group>"; };
+		1DB927371DBE193E00C08F29 /* LoadingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingController.m; sourceTree = "<group>"; };
+		1DB927391DBE267900C08F29 /* HTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestOperation.h; sourceTree = "<group>"; };
+		1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequestOperation.m; sourceTree = "<group>"; };
+		1DB9273D1DBE29B800C08F29 /* LoaderServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderServices.h; sourceTree = "<group>"; };
+		1DB9273E1DBE29B800C08F29 /* LoaderServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderServices.m; sourceTree = "<group>"; };
 		1DBD4DBD1DB0EE7F00943995 /* MemberDevices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberDevices.h; sourceTree = "<group>"; };
 		1DBD4DBE1DB0EE7F00943995 /* MemberDevices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberDevices.m; sourceTree = "<group>"; };
 		1DBD4DC01DB1053200943995 /* QBFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBFooterView.h; sourceTree = "<group>"; };
@@ -200,7 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D9743441DAFD8C8007E348C /* libVertifiImageProcessing.a in Frameworks */,
+				1D0885BA1DBA3A2D001787A8 /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -246,11 +261,40 @@
 			path = MobileDepositController;
 			sourceTree = "<group>";
 		};
+		1DA3B5F71DB794EC00DB5731 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				1DA3B5F81DB7950500DB5731 /* Location.h */,
+				1DA3B5F91DB7950500DB5731 /* Location.m */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		1DB927351DBE191E00C08F29 /* LoadingController */ = {
+			isa = PBXGroup;
+			children = (
+				1DB927361DBE193E00C08F29 /* LoadingController.h */,
+				1DB927371DBE193E00C08F29 /* LoadingController.m */,
+			);
+			path = LoadingController;
+			sourceTree = "<group>";
+		};
+		1DB9273C1DBE29A100C08F29 /* LoaderEntity */ = {
+			isa = PBXGroup;
+			children = (
+				1DB9273D1DBE29B800C08F29 /* LoaderServices.h */,
+				1DB9273E1DBE29B800C08F29 /* LoaderServices.m */,
+			);
+			path = LoaderEntity;
+			sourceTree = "<group>";
+		};
 		1DBD4DBC1DB0EE6900943995 /* MemberDevices */ = {
 			isa = PBXGroup;
 			children = (
 				1DBD4DBD1DB0EE7F00943995 /* MemberDevices.h */,
 				1DBD4DBE1DB0EE7F00943995 /* MemberDevices.m */,
+				1D3D12781DBF353500719170 /* DeviceAuth.h */,
+				1D3D12791DBF353500719170 /* DeviceAuth.m */,
 			);
 			path = MemberDevices;
 			sourceTree = "<group>";
@@ -387,6 +431,7 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1DB927351DBE191E00C08F29 /* LoadingController */,
 				1DEBD7681D93F56E00277DF6 /* PayPersonController */,
 				1D8478EB1D93D68400153B19 /* MobileDepositController */,
 				F26255401D9416F400383B9E /* ATMLocationViewController */,
@@ -408,6 +453,8 @@
 		6BD405A61D81B5FC00358036 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1DB9273C1DBE29A100C08F29 /* LoaderEntity */,
+				1DA3B5F71DB794EC00DB5731 /* Locations */,
 				1D112C071DB4BCAF000435DE /* QuickBalances */,
 				1DBD4DBC1DB0EE6900943995 /* MemberDevices */,
 				1DF6081C1DAB995500FF85E2 /* CashDepositEntity */,
@@ -430,6 +477,8 @@
 			children = (
 				6BD405C01D82C93700358036 /* AppServiceModel.h */,
 				6BD405C11D82C93700358036 /* AppServiceModel.m */,
+				1DB927391DBE267900C08F29 /* HTTPRequestOperation.h */,
+				1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */,
 			);
 			path = ServiceModel;
 			sourceTree = "<group>";
@@ -587,7 +636,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D9743431DAFD8C8007E348C /* libVertifiImageProcessing.a */,
+				1D0885B91DBA3A2D001787A8 /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -799,6 +848,7 @@
 				F229DB791D9E821C00A705A5 /* CameraCropView.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
+				1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */,
 				F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */,
 				1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */,
 				6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */,
@@ -815,6 +865,7 @@
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
 				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
 				6BD405C51D82C94300358036 /* SignInModel.m in Sources */,
+				1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */,
 				6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */,
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
@@ -827,6 +878,7 @@
 				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
 				6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */,
 				F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */,
+				1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
 				F229DB661D9E734300A705A5 /* Global.m in Sources */,
@@ -841,7 +893,9 @@
 				1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */,
 				1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */,
 				1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */,
+				1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
+				1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,8 +939,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -908,7 +962,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "99cbc9e7-fdc4-44d9-a9e0-ea1bd7695aa9";
+				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -932,8 +986,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -948,7 +1002,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "99cbc9e7-fdc4-44d9-a9e0-ea1bd7695aa9";
+				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -960,8 +1014,8 @@
 			baseConfigurationReference = E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -973,7 +1027,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "99cbc9e7-fdc4-44d9-a9e0-ea1bd7695aa9";
+				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
 			};
 			name = Debug;
 		};
@@ -982,8 +1036,8 @@
 			baseConfigurationReference = 814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: App Maisters Inc (C96T5T6GY6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fahim Iqbal (K75WPD8527)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -995,7 +1049,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppMaisters.ShareOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "99cbc9e7-fdc4-44d9-a9e0-ea1bd7695aa9";
+				PROVISIONING_PROFILE = "6b5996e5-3ad2-458c-8881-acb683076b61";
 			};
 			name = Release;
 		};

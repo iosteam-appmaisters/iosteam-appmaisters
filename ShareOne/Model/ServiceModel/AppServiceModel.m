@@ -6,6 +6,8 @@
 #import "Constants.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
+#import "HTTPRequestOperation.h"
+
 
 
 @implementation AppServiceModel
@@ -294,7 +296,6 @@
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
-    
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
@@ -334,58 +335,24 @@
     
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_GET URLString:urlString parameters:params error:nil];
     
-    if(auth_header)
+    
+    // Setting Headers for Own servers
+    if(auth_header){
         [self setHeaderOnRequest:req withAuth:auth_header];
-
-    
-    NSError *error;
-    if(params){
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        //[req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-
-    
-    id response;
-    
-    NSData * data = [NSURLConnection sendSynchronousRequest:req
-                                          returningResponse:&response
-                                                      error:&error];
-    
-    if (error == nil){
-        
-        // Parse data here
-        NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",myString);
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-        block(nil);
-        
     }
     else{
-        
-        NSLog(@"%@",error);
-        NSString *myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",myString);
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-        block(nil);
-
-        
+        NSLog(@"**************************************************");
+        NSLog(@"|        It Is calling for location API           ");
+        NSLog(@"**************************************************");
+        [self setHeaderForLocationApiOnRequest:req];
     }
-    
-    return;
 
-
-    
-    
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
-            NSLog(@"Reply JSON: %@", responseObject);
+            
+            if(auth_header)
+                NSLog(@"Reply JSON: %@", responseObject);
             
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -543,6 +510,13 @@
     [request setValue:auth forHTTPHeaderField:@"Authorization"];
 }
 
+-(void)setHeaderForLocationApiOnRequest:(NSMutableURLRequest *)request {
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"1" forHTTPHeaderField:@"Version"];
+    [request setValue:kLOCATION_API_KEY forHTTPHeaderField:@"Authorization"];
+
+}
+
 
 -(NSMutableSet *)getAcceptableContentTypesWithSerializer:(AFJSONResponseSerializer *)jsonResponseSerializer{
     
@@ -551,6 +525,111 @@
     [acceptableContentTypes addObject:@"application/json"];
     return acceptableContentTypes;
 
+}
+
+-(void)createBatchOfRequestsWithObject:(NSArray *)reqObjects requestCompletionBlock:(void(^)(NSObject *response,NSURLResponse *responseObj))reqBlock requestFailureBlock:(void(^)(NSError* error))failReqBlock queueCompletionBlock:(void(^)(BOOL sucess))queueBlock queueFailureBlock:(void(^)(NSError* error))failQueueBlock{
+
+    
+    NSMutableArray *customReqArr= [[NSMutableArray alloc] init];
+    
+    [reqObjects enumerateObjectsUsingBlock:^(NSDictionary  *dict, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:dict[REQ_TYPE] URLString:dict[REQ_URL] parameters:dict[REQ_PARAM] error:nil];
+        
+        // Setting Headers for Own servers
+        if(dict[REQ_HEADER]){
+            [self setHeaderOnRequest:req withAuth:dict[REQ_HEADER]];
+        }
+        
+        HTTPRequestOperation *operation = [[HTTPRequestOperation alloc] initWithRequest:req];
+        [operation setCompletionBlock:^(NSURLResponse *response, id responseObject, NSError *error) {
+            if (!error) {
+//                NSLog(@"%@",responseObject);
+                reqBlock(responseObject,response);
+            } else {
+                failReqBlock(error);
+                NSLog(@"operation setCompletionBlock %@",[error localizedDescription]);
+            }
+        }];
+        [customReqArr addObject:operation];
+        
+    }];
+    [self concurrentBatchOfRequestOperations:customReqArr progressBlock:^(NSUInteger numberOfFinishedTasks, NSUInteger totalNumberOfTasks) {
+        
+        NSLog(@"%d of %d process complete",numberOfFinishedTasks,totalNumberOfTasks);
+    } completionBlock:^(NSArray *dataTasks) {
+        NSLog(@"ALL TASK DONE WITH REQ COUNT : %d ",[dataTasks count]);
+        queueBlock(TRUE);
+    }];}
+
+
+
+- (void)concurrentBatchOfRequestOperations:(NSArray *)operations progressBlock:(void (^)(NSUInteger, NSUInteger))progressBlock completionBlock:(void (^)(NSArray *))completionBlock {
+    
+    if (!operations || operations.count == 0) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completionBlock) {
+                completionBlock(@[]);
+            }
+        });
+        return;
+    }
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
+    AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
+    responseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:responseSerializer];
+    manager.responseSerializer = responseSerializer;
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    NSMutableArray *tasks = @[].mutableCopy;
+    
+    __block  NSError *reqError;
+    
+    for (HTTPRequestOperation *operation in operations) {
+        dispatch_group_enter(group);
+        NSURLSessionDataTask *task = [manager dataTaskWithRequest:operation.request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            
+            reqError= error;
+            
+            if(reqError){
+                NSLog(@"Here it comes");
+            }
+            if (operation.completionBlock) {
+                operation.completionBlock(response, responseObject, error);
+            }
+            
+            NSUInteger numberOfFinishedTasks = [[tasks indexesOfObjectsPassingTest:^BOOL(NSURLSessionDataTask * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                return (obj.state == NSURLSessionTaskStateCompleted);
+                
+            }] count];
+            
+            if (progressBlock && !error) {
+                progressBlock(numberOfFinishedTasks, [tasks count]);
+            }
+            
+            dispatch_group_leave(group);
+            
+            
+
+        }];
+        
+        [tasks addObject:task];
+        if(reqError)
+            break;
+    }
+    
+    for (NSURLSessionDataTask *task in tasks) {
+        [task resume];
+    }
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        if (completionBlock) {
+            completionBlock(tasks);
+        }
+    });
 }
 -(void)oldCodeTologin{
     /*

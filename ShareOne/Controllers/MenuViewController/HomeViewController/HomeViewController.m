@@ -13,7 +13,8 @@
 #import "MemberDevices.h"
 #import "QuickBalances.h"
 #import "SuffixInfo.h"
-
+#import "User.h"
+#import "LoadingController.h"
 
 
 
@@ -25,17 +26,21 @@
     __weak HomeViewController *weakSelf = self;
     
     
-    NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
+    //NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
 
-    [self getMemberDevices];
+    //[self getMemberDevices];
     //[self putMemberDevice];
     //[self postMemberDevices];
+    //[self deleteMemberDevices];
     
-    
-    [self getQB];
+    //[self getQB];
     //[self getSuffixInfo];
     //[self postSuffixPrepherences];
-
+    
+    
+    //[self keepMeAlive];
+    
+    //[self getQuickTransaction];
 
 
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
@@ -45,7 +50,9 @@
     
     NSString *queryString = [NSString stringWithFormat:@"%@/%@",_url,[[[SharedUser sharedManager] userObject] ContextID]];
     [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:queryString]]];
+    
 }
+
 
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -67,10 +74,10 @@
     
     __weak HomeViewController *weakSelf = self;
     
-    NSDictionary *zuthDic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSDictionary *zuthDic = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
     NSArray *authArray= [NSArray arrayWithObjects:zuthDic, nil];
     
-    [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint"/*,authArray,@"Authorizations"*/, nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
         
@@ -97,6 +104,18 @@
 
 -(void)deleteMemberDevices{
     
+    __weak HomeViewController *weakSelf = self;
+    
+    NSDictionary *zuthDic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSArray *authArray= [NSArray arrayWithObjects:zuthDic, nil];
+    
+    
+    [MemberDevices deleteMemberDevice:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"14",@"ID",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 -(void)getQB{
@@ -125,12 +144,36 @@
 -(void)postSuffixPrepherences{
     
     __weak HomeViewController *weakSelf = self;
-    [SuffixInfo postSuffixInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",@"123456",@"SuffixID", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [SuffixInfo postSuffixInfo:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",@"55078",@"SuffixID", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
         
     }];
 
+}
+
+-(void)keepMeAlive{
+    
+    __weak HomeViewController *weakSelf = self;
+
+    [User keepAlive:nil delegate:weakSelf completionBlock:^(BOOL sucess) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
+
+-(void)getQuickTransaction{
+    
+    __weak HomeViewController *weakSelf = self;
+    
+
+    [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",@"55078",@"SuffixID",@"2",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{

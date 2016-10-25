@@ -75,7 +75,13 @@
         user.Password=[param valueForKey:@"password"];
 
         [[SharedUser sharedManager] setUserObject:user];
-        [ShareOneUtility saveUserObject:user];
+        //[ShareOneUtility saveUserObject:user];
+        
+        
+        [ShareOneUtility saveUserObjectToLocalObjects:user];
+        
+        //[ShareOneUtility setPreferencesOnLaunch];
+
         block(user);
         
     } failureBlock:^(NSError *error) {}];
@@ -92,6 +98,21 @@
         
     } failureBlock:^(NSError *error) {}];
 }
+
++(void)keepAlive:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(BOOL  sucess))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
+    
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Pleas Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
+        
+        block(TRUE);
+        
+    } failureBlock:^(NSError *error) {}];
+}
+
+
+
+
 //
 //+(void)createOneToOneChatWithParam:(NSDictionary*)param delegate:(id)delegate urlString:(NSString*)urlString completionBlock:(void(^)(id response))block failureBlock:(void(^)(NSError* error))failBlock{
 //    
@@ -158,6 +179,12 @@
         self.UserName = [decoder decodeObjectForKey:@"UserName"];
         self.Password = [decoder decodeObjectForKey:@"Password"];
         self.LoginAttempts = [decoder decodeObjectForKey:@"LoginAttempts"];
+        self.isPushNotifOpen = [decoder decodeBoolForKey:@"isPushNotifOpen"];
+        self.isShowOffersOpen = [decoder decodeBoolForKey:@"isShowOffersOpen"];
+        self.isQBOpen = [decoder decodeBoolForKey:@"isQBOpen"];
+        self.isTouchIDOpen = [decoder decodeBoolForKey:@"isTouchIDOpen"];
+
+
     }
     return self;
 }
@@ -172,5 +199,10 @@
     [encoder encodeObject: self.UserName forKey:@"UserName"];
     [encoder encodeObject: self.Password forKey:@"Password"];
     [encoder encodeObject: self.Password forKey:@"LoginAttempts"];
+    [encoder encodeBool:self.isPushNotifOpen forKey:@"isPushNotifOpen"];
+    [encoder encodeBool:self.isShowOffersOpen forKey:@"isShowOffersOpen"];
+    [encoder encodeBool:self.isQBOpen forKey:@"isQBOpen"];
+    [encoder encodeBool:self.isTouchIDOpen forKey:@"isTouchIDOpen"];
+
 }
 @end

@@ -10,4 +10,8 @@
 
 @interface LoginViewController : BaseViewController
 
+
+- (void)startApplication;
+
+
 @end

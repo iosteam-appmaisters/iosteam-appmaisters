@@ -17,15 +17,31 @@
 +(void)getAllBalances:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
-//    [NSString stringWithFormat:@"%@/%@/Fingerprint/DB26CFD6-141D-4BAE-A34D-495C94763FD6/ServiceType/eft",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES]
     
-//    [[[SharedUser sharedManager] userObject]ContextID],@"ContextID"
-    
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/ContextID/%@/DeviceFingerprint/%@/ServiceType/eft",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,[[[SharedUser sharedManager] userObject]ContextID],[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/DeviceFingerprint/%@/ServiceType/eft",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
         
         
     } failureBlock:^(NSError *error) {}];
 
 }
+
+
++(void)getAllQuickTransaction:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
+    
+//    {"ServiceType":"HomeBank","DeviceFingerprint":"blah","SuffixID":"47309","NumberOfTransactions":"123"}
+    
+    
+    NSString *url = [NSString stringWithFormat:@"%@/%@/ServiceType/%@/DeviceFingerprint/%@/SuffixID/%@/NumberOfTransactions/%@",KWEB_SERVICE_BASE_URL,KQUICK_TRANSACTION,[param valueForKey:@"ServiceType"],[param valueForKey:@"DeviceFingerprint"],[param valueForKey:@"SuffixID"],[param valueForKey:@"NumberOfTransactions"]];
+
+    
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:url delegate:delegate completionBlock:^(NSObject *response) {
+        
+        
+    } failureBlock:^(NSError *error) {}];
+    
+}
+
 
 @end

@@ -112,6 +112,9 @@
 #define TOUCH_ID_SETTINGS           @"TOUCH_ID_SETTINGS"
 #define RETINA_SCAN_SETTINGS        @"RETINA_SCAN_SETTINGS"
 #define PUSH_NOTIF_SETTINGS         @"PUSH_NOTIF_SETTINGS"
+#define USER_KEY                    @"USER_KEY"
+#define ALL_USER_OBJECTS            @"ALL_USER_OBJECTS"
+
 
 
 #define ROUTING_VALUE               @"700000465"

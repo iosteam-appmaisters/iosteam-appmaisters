@@ -23,6 +23,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *phoneNoLbl;
 @property (nonatomic, weak) IBOutlet UILabel *milesLbl;
 @property (nonatomic, weak) IBOutlet UILabel *officestatusLbl;
+@property (nonatomic, weak) IBOutlet UILabel *officeHourLbl;
+@property (nonatomic, weak) IBOutlet UILabel *driveThruHoursLbl;
 @property (nonatomic, weak) IBOutlet UILabel *drivestatusLbl;
 @property (nonatomic, weak) IBOutlet UIButton *getDirectionbtn;
 

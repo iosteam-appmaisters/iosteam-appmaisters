@@ -14,6 +14,10 @@
 
 @property (nonatomic, strong) User *userObject;
 
+@property(nonatomic,strong) NSArray *memberDevicesArr;
+@property(nonatomic,strong) NSArray *suffixInfoArr;
+
+
 + (id)sharedManager;
 
 

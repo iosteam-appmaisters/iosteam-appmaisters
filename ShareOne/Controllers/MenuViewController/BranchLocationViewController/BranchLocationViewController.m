@@ -14,14 +14,17 @@
 #import "ShareOneUtility.h"
 #import "GetDirectionViewController.h"
 #import "ATMLocationViewController.h"
+#import "Location.h"
 
-@interface BranchLocationViewController ()<CLLocationManagerDelegate,branchLocationDelegate>
-{
+
+@interface BranchLocationViewController ()<CLLocationManagerDelegate,branchLocationDelegate>{
+    
     CLLocationManager *locationManager;
     NSString *sourceaddress;
     NSString *Destinationaddress;
-
 }
+
+@property (nonatomic,strong)NSArray *contentArr;
 @end
 
 @implementation BranchLocationViewController
@@ -30,11 +33,40 @@
                             #pragma mark - View Controler LifeCycle Methods
 /*********************************************************************************************************/
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
+    
+    //_contentArr = [[NSMutableArray alloc] init];
+    
     [self createCurrentLocation];
     [self setData];
+    [self getData];
     [super viewDidLoad];
+}
+
+
+-(void)getData{
+    
+    __weak BranchLocationViewController *weakSelf = self;
+    
+    NSDictionary *searchByZipCode =[NSDictionary dictionaryWithObjectsAndKeys:@"91730",@"ZipCode", nil];
+    
+    NSDictionary *searchByStateNCity =[NSDictionary dictionaryWithObjectsAndKeys:@"CA",@"state",@"Hermosa Beach",@"city", nil];
+    
+    NSDictionary *searchByCoordinate =[NSDictionary dictionaryWithObjectsAndKeys:@"34.104369",@"latitude",@"117.573459",@"longitude", nil];
+    
+    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",@"91730",@"zip", nil];
+
+
+    [Location getAllBranchLocations:maxResultsNRadiousNZip delegate:weakSelf completionBlock:^(NSArray *locations) {
+        
+        if([locations count]>0){
+            weakSelf.contentArr=locations;
+            [weakSelf.tableView reloadData];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -98,6 +130,7 @@
 -(IBAction)showAllBranchesonMapButtonClicked:(id)sender
 {
     ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    atmNavigationViewController.locationArr=_contentArr;
     [self.navigationController pushViewController:atmNavigationViewController animated:YES];
 
 }
@@ -106,7 +139,8 @@
     
     ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
     atmNavigationViewController.showMyLocationOnly= TRUE;
-    
+    atmNavigationViewController.locationArr=_contentArr;
+
     atmNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:atmNavigationViewController animated:YES];
 
@@ -140,30 +174,75 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [_contentArr count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BranchLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell"];
     [cell setDelegate:self];
-    if(!cell)
-    {
+    if(!cell){
         cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell" forIndexPath:indexPath];
     }
+    
+    Location *objLocation = _contentArr[indexPath.row];
+    
+    NSString *officeTimeString= nil;
+    NSString *driveThruString= nil;
+
+    
+    
+    if([objLocation.mondayDriveThruOpen length]>0)
+        driveThruString = [NSString stringWithFormat:@"Drive Thru %@am - %@pm",objLocation.mondayDriveThruOpen,objLocation.mondayDriveThruClose];
+    else
+        driveThruString = [NSString stringWithFormat:@"Drive Thru %.0fam - %.0fpm",8.00,9.00];
+    
+    
+    if([objLocation.mondayOpen length]>0)
+        officeTimeString = [NSString stringWithFormat:@"Office %.0fam - %.0fpm",[objLocation.mondayOpen floatValue],[objLocation.mondayClose floatValue]];
+    else
+        officeTimeString = [NSString stringWithFormat:@"Office"];
+    
+    
+    
+        
+    cell.addrressLbl.text=objLocation.institutionName;
+    cell.officeHourLbl.text=officeTimeString;
+    cell.driveThruHoursLbl.text=driveThruString;
+
+    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@",objLocation.address];
+    cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
+    
+    ([objLocation.driveThru boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSE"];
+    
+    ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+    
+    
+    ([objLocation.open24Hours boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSE"];
+    
+    ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
+
+
+    
+    
+    NSURL *imageURL = [NSURL URLWithString:@""];
+    [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
+
+    
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(BranchLocationCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-   // cell.addrressLbl.text=@"Bartlett/Cordova Office 8am - 5pm Drive Thru 8am - 5pm";
-  //  cell.streetAddressLbl.text=@"8058 US Highway 64 Bartlett, TN 38133";
-   // cell.phoneNoLbl.text=@"(901) 452-7900";
-   // cell.milesLbl.text=@"12 Miles away";
-  //  cell.officestatusLbl.text=@"OPEN";
-   // cell.drivestatusLbl.text=@"OPEN";
-   // NSURL *imageURL = [NSURL URLWithString:@""];
-   // [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
+//    cell.addrressLbl.text=@"Bartlett/Cordova Office 8am - 5pm Drive Thru 8am - 5pm";
+//    cell.streetAddressLbl.text=@"8058 US Highway 64 Bartlett, TN 38133";
+//    cell.phoneNoLbl.text=@"(901) 452-7900";
+//    cell.milesLbl.text=@"12 Miles away";
+//    cell.officestatusLbl.text=@"OPEN";
+//    cell.drivestatusLbl.text=@"OPEN";
+//    NSURL *imageURL = [NSURL URLWithString:@""];
+//    [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

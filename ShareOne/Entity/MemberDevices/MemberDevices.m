@@ -11,14 +11,13 @@
 #import "Services.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
+#import "DeviceAuth.h"
 
 
 
 @implementation MemberDevices
 
 +(void)postMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
-    
-    
     
     [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
         
@@ -52,13 +51,41 @@
 +(void)deleteMemberDevice:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *context = [[[SharedUser sharedManager] userObject] ContextID];
-    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@/1",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,context] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@/14",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,context] delegate:delegate completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         
     }];
 
 }
+
+-(id) initWithDictionary:(NSDictionary *)dict{
+    self = [super init];{
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
+
++(NSMutableArray *)getMemberDevices :(NSDictionary *)dict{
+    
+    
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    NSArray *contentArr = dict[@"MemberDevices"];
+    
+    [contentArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        MemberDevices *objMemberDevices = [[MemberDevices alloc] initWithDictionary:obj];
+        
+        objMemberDevices.Authorizations= [DeviceAuth getDeviceAuthArrWithObject:obj];
+        
+        [arr addObject:objMemberDevices];
+        
+        
+    }];
+    return arr;
+
+}
+
 
 
 @end

@@ -33,12 +33,28 @@
 
 #define kSUFFIZ_PREPHERENCES                            @"eft/suffixPreferences"
 
+#define kKEEP_ALIVE                                     @"eft/keepalive"
+
+#define KQUICK_TRANSACTION                              @"eft/quickTransactions"
+
+
+
 #define kDEPOSIT_MONEY_REGISTER                         @"https://www.member-data.com/rdc/sso/mobdep_regquery.ashx"
+
+#define kLOCATION_API                                   @"http://api.co-opfs.org/locator/proximitySearch"
+
+#define kLOCATION_API_KEY                               @"4LobSNzzwp4DKnp"
 
 
 #define RequestType_PUT                                 @"PUT"
 #define RequestType_POST                                @"POST"
 #define RequestType_GET                                 @"GET"
 #define RequestType_DELETE                              @"DELETE"
+
+
+#define REQ_URL                                         @"REQ_URL"
+#define REQ_TYPE                                        @"REQ_TYPE"
+#define REQ_HEADER                                      @"REQ_HEADER"
+#define REQ_PARAM                                       @"REQ_PARAM"
 
 #endif

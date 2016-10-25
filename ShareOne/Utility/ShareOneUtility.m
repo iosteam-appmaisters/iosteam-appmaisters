@@ -11,12 +11,25 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CommonCrypto/CommonDigest.h>
 
+#include <CommonCrypto/CommonDigest.h>
+#include <CommonCrypto/CommonHMAC.h>
+
+#include <sys/types.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
 #import "ShareOneUtility.h"
 #import "BBAES.h"
 #import "Constants.h"
 #import "Services.h"
 #import "Constants.h"
 #import "SAMKeychain.h"
+#import "Location.h"
+#import "SharedUser.h"
 
 
 
@@ -70,13 +83,18 @@
 //    53.4035396,-2.9799329
 //    53.4027041,-2.9798886
     NSMutableArray *locationArr=[[NSMutableArray alloc] init];
-    [locationArr addObject:@"53.4198855,-2.9808854"];
-    [locationArr addObject:@"53.4184578,-3.0030442"];
-    [locationArr addObject:@"53.4201264,-2.9916392"];
-    [locationArr addObject:@"53.4024066,-2.9844725"];
-    [locationArr addObject:@"53.4039417,-2.9808717"];
-    [locationArr addObject:@"53.4035396,-2.9799329"];
-    [locationArr addObject:@"53.4027041,-2.9798886"];
+//    [locationArr addObject:@"53.4198855,-2.9808854"];
+//    [locationArr addObject:@"53.4184578,-3.0030442"];
+//    [locationArr addObject:@"53.4201264,-2.9916392"];
+//    [locationArr addObject:@"53.4024066,-2.9844725"];
+//    [locationArr addObject:@"53.4039417,-2.9808717"];
+//    [locationArr addObject:@"53.4035396,-2.9799329"];
+//    [locationArr addObject:@"53.4027041,-2.9798886"];
+//    
+    [locationArr addObject:@"-117.575323,34.085305"];
+
+    
+    
 
 
     return locationArr;
@@ -164,8 +182,9 @@
             ,nil];
 }
 
-+(int)getTimeStamp{    
-    return [[NSDate date] timeIntervalSince1970];
++(int)getTimeStamp{
+//    return [[NSDate date] timeIntervalSince1970];
+    return 1477292834;
 }
 
 
@@ -271,12 +290,123 @@
     
     NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:user];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:archivedObject forKey:@"USER_KEY"];
+    [defaults setObject:archivedObject forKey:[NSString stringWithFormat:@"%@",USER_KEY]];
     [defaults synchronize];
 }
 
-+(UIImage *)getImageInLandscapeOrientation:(UIImage *)img
-{
++(User *)getUserObject{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *archivedObject = [defaults objectForKey:USER_KEY];
+    return  (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
+}
+
++(void)saveUserObjectToLocalObjects:(User *)user{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    __block User *userFound = nil;
+    
+    NSMutableArray *existingUsers = [[self getUserObjectsFromLocalObjects] mutableCopy];
+    if(!existingUsers)
+        existingUsers = [[NSMutableArray alloc] init];
+    
+    [existingUsers enumerateObjectsUsingBlock:^(NSData *objArchiveData, NSUInteger idx, BOOL * stop) {
+        User *saveedUser = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:objArchiveData];
+        if([[saveedUser Account] intValue]==[[user Account] intValue]){
+            userFound=saveedUser;
+            *stop=TRUE;
+        }
+    }];
+    
+    
+    if(userFound){
+        
+        // User exist in Local DB
+        NSLog(@"USER EXIST");
+        [self copySettingsOfSavedUserToNewLoginInfo:user AndOldUser:userFound];
+        
+        //swaping old to new object
+        //userFound = user;
+        user = userFound;
+        
+//        [[SharedUser sharedManager] setUserObject:user];
+
+        [self saveUserObject:user];
+        
+    }
+    else{
+        
+        // New User
+        
+        [self setDefaultSettngOnUser:user];
+        NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:user];
+        [existingUsers addObject:archivedObject];
+        
+        [self saveUserObject:user];
+
+    }
+    
+    [defaults setObject:existingUsers forKey:ALL_USER_OBJECTS];
+    
+    [defaults synchronize];
+
+
+}
+
+
++(void)setDefaultSettngOnUser:(User *)user{
+    
+    user.isPushNotifOpen=TRUE;
+    user.isShowOffersOpen=TRUE;
+    user.isQBOpen=TRUE;
+    
+}
++(NSArray *)getUserObjectsFromLocalObjects{
+    
+
+    NSArray *user=(NSArray *) [[NSUserDefaults standardUserDefaults]valueForKey:ALL_USER_OBJECTS];
+    return user;
+}
+
+
++(void )getSavedObjectOfCurrentLoginUser:(User *)user{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSMutableArray *userArr=[(NSMutableArray *) [[NSUserDefaults standardUserDefaults]valueForKey:ALL_USER_OBJECTS] mutableCopy];
+    
+    
+    [userArr enumerateObjectsUsingBlock:^(NSData *objArchiveData, NSUInteger idx, BOOL * stop) {
+        User *saveedUser = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:objArchiveData];
+        if([[saveedUser Account] intValue]==[[user Account] intValue]){
+            
+            NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:user];
+
+            [userArr replaceObjectAtIndex:idx withObject:archivedObject];
+            
+            [self saveUserObject:user];
+        }
+        
+        
+    }];
+
+    [defaults setObject:userArr forKey:ALL_USER_OBJECTS];
+    
+    [defaults synchronize];
+
+}
+
+
++(void)copySettingsOfSavedUserToNewLoginInfo:(User *)newUser AndOldUser:(User *)savedUser{
+    newUser.isPushNotifOpen=savedUser.isPushNotifOpen;
+    newUser.isQBOpen=savedUser.isQBOpen;
+    newUser.isShowOffersOpen=savedUser.isShowOffersOpen;
+    newUser.isTouchIDOpen=savedUser.isTouchIDOpen;
+}
+
+
++(UIImage *)getImageInLandscapeOrientation:(UIImage *)img{
+    
     UIImage *imageToDisplay =
     [UIImage imageWithCGImage:[img CGImage]
                         scale:[img scale]
@@ -284,12 +414,6 @@
     return imageToDisplay;
 }
 
-+(User *)getUserObject{
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *archivedObject = [defaults objectForKey:@"USER_KEY"];
-    return  (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
-}
 
 
 + (void)setUserRememberedStatusWithBool:(BOOL)isRemember{
@@ -324,13 +448,46 @@
    return  [[NSUserDefaults standardUserDefaults] valueForKey:@"Signature"];
 }
 
+
 + (BOOL)getSettingsWithKey:(NSString *)key{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+    
+    BOOL flag ;
+    User *user = [self getUserObject];
+    if(user){
+        
+        if([key isEqualToString:PUSH_NOTIF_SETTINGS])
+            flag= user.isPushNotifOpen;
+        else if ([key isEqualToString:QUICK_BAL_SETTINGS])
+            flag = user.isQBOpen;
+        else if ([key isEqualToString:TOUCH_ID_SETTINGS])
+            flag= user.isTouchIDOpen;
+        else if([key isEqualToString:SHOW_OFFERS_SETTINGS])
+            flag= user.isShowOffersOpen;
+    }
+    return flag;
+    
+//    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
 }
 
 + (void)saveSettingsWithStatus:(BOOL)flag AndKey:(NSString *)key{
-    [[NSUserDefaults standardUserDefaults] setBool:flag forKey:key];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    User *user = [self getUserObject];
+    
+    if([key isEqualToString:PUSH_NOTIF_SETTINGS])
+         user.isPushNotifOpen=flag;
+    else if ([key isEqualToString:QUICK_BAL_SETTINGS])
+          user.isQBOpen=flag;
+    else if ([key isEqualToString:TOUCH_ID_SETTINGS])
+         user.isTouchIDOpen=flag;
+    else if([key isEqualToString:SHOW_OFFERS_SETTINGS])
+        user.isShowOffersOpen=flag;
+
+    
+    [self getSavedObjectOfCurrentLoginUser:user];
+
+//    [[NSUserDefaults standardUserDefaults] setBool:flag forKey:key];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSString *) randomStringWithLength: (int) len {
@@ -395,12 +552,23 @@
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:SHOW_OFFERS_SETTINGS];
 //    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:TOUCH_ID_SETTINGS];
 //    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:RETINA_SCAN_SETTINGS];
-//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:PUSH_NOTIF_SETTINGS];
+    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:PUSH_NOTIF_SETTINGS];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
 
 +(void)setPreferencesOnLaunch{
+    
+    
+    
+    User *user = [self getUserObject];
+    if(user){
+        
+    }
+    else{
+        
+    }
+    
     NSString *key = [[NSUserDefaults standardUserDefaults] valueForKey:@"FIRST_LAUNCH"];
     if(!key){
         [self setDefaultSettingValues];
@@ -411,21 +579,37 @@
 }
 
 +(NSString *)getSessionnKey{
-//    return KEY_VALUE;
-    return [self randomStringWithLength:80];
+    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
+//    return [self randomStringWithLength:80];
 
+}
+
++(NSString *)getSecretKey{
+    return KEY_VALUE;
 }
 
 +(NSString *)getMemberValue{
-//    return @"31008";
-    return [self randomStringWithLength:16];
+    return @"666";
+//    return [self randomStringWithLength:16];
 }
 
 +(NSString *)getAccountValue{
-//    return @"666";
-    return [self randomStringWithLength:17];
+    
+    // account number + suffix[000 00000]
+    return @"66655078";
+//    return [self randomStringWithLength:17];
 }
 
+
++(NSString *)getMemberEmail{
+    
+    return @"ggwyn@shareone.com";
+}
+
++(NSString *)getMemberName{
+    
+    return @"Louis Uncommon";
+}
 + (NSString *)applyMD5OnValue:(NSString *)value{
     
     const char* str = [value UTF8String];
@@ -439,22 +623,56 @@
     return ret;
 }
 
++ (NSString*)MD5onData:(NSData *)data
+{
+    // Create byte array of unsigned chars
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+    
+    // Create 16 byte MD5 hash value, store in buffer
+    CC_MD5(data.bytes, data.length, md5Buffer);
+    
+    // Convert unsigned char buffer to NSString of hex values
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x",md5Buffer[i]];
+    
+    return output;
+}
+
 +(NSString *)getMacForVertifi{
+    
+    NSString *hex = nil;
+
     NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
-    NSString *md5Value = [self applyMD5OnValue:mac];
-    [self getBytesOfString:md5Value];
-    NSString *hexStringValue = [self hexStringFromData:[md5Value dataUsingEncoding:NSUTF8StringEncoding]];
-    [self getBytesOfString:hexStringValue];
     
-    mac=[NSString stringWithFormat:@"%@%d%@%@%@",REQUESTER_VALUE,[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
-    NSData *calculatedMAc =  [self calculateHMACMD5WithKey:[self getSessionnKey] andData:mac];
     
-   NSString *hex = [self hexStringFromData:calculatedMAc];
-    [self getBytesOfString:hex];
-
-
+   hex = [self HMACWithSecret:[self getSecretKey] AndData:mac];
+    
     return hex;
 }
+
++ (NSString*) HMACWithSecret:(NSString*) secret AndData:(NSString *)data
+{
+    CCHmacContext    ctx;
+    const char       *key = [secret UTF8String];
+    const char       *str = [data UTF8String];
+    unsigned char    mac[CC_MD5_DIGEST_LENGTH];
+    char             hexmac[2 * CC_MD5_DIGEST_LENGTH + 1];
+    char             *p;
+    
+    CCHmacInit( &ctx, kCCHmacAlgMD5, key, strlen( key ));
+    CCHmacUpdate( &ctx, str, strlen(str) );
+    CCHmacFinal( &ctx, mac );
+    
+    p = hexmac;
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++ ) {
+        snprintf( p, 3, "%02x", mac[ i ] );
+        p += 2;
+    }
+    
+    return [NSString stringWithUTF8String:hexmac];
+}
+
 
 
 +(void)getBytesOfString:(NSString *)string{
@@ -487,5 +705,10 @@
     
     return deviceID;
 }
-
++(NSString *)getLocationStatusWithObject:(Location *)location{
+    
+    NSString *status =nil;
+    
+    return status;
+}
 @end

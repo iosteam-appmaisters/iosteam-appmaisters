@@ -12,13 +12,22 @@
 
 -(id) initWithDictionary:(NSDictionary *)userProfileDict;
 
-@property (nonatomic,strong) NSString *Account;
+@property (nonatomic,strong) NSNumber *Account;
 @property (nonatomic,strong) NSString *ContextID;
 @property (nonatomic,strong) NSString *LastLoginDate;
 @property (nonatomic,strong) NSString *MasterID;
 @property (nonatomic,strong) NSString *PostingDate;
 @property (nonatomic,strong) NSString *SystemState;
 @property (nonatomic,strong) NSString *LoginAttempts;
+
+
+@property (nonatomic) BOOL isQBOpen;
+@property (nonatomic) BOOL isShowOffersOpen;
+@property (nonatomic) BOOL isTouchIDOpen;
+@property (nonatomic) BOOL isPushNotifOpen;
+
+
+
 
 @property (nonatomic,strong) NSString *UserName;
 @property (nonatomic,strong) NSString *Password;
@@ -67,6 +76,9 @@
 
 
 +(void)signOutUser:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(BOOL  sucess))block failureBlock:(void(^)(NSError* error))failBlock;
+
++(void)keepAlive:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(BOOL  sucess))block failureBlock:(void(^)(NSError* error))failBlock;
+
 
 
 @end

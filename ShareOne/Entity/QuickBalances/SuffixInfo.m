@@ -23,12 +23,10 @@
         
         
     } failureBlock:^(NSError *error) {}];
-
 }
 
 
 +(void)postSuffixInfo:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
-    
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
 
@@ -39,5 +37,28 @@
     }];
 }
 
+-(id) initWithDictionary:(NSDictionary *)dict{
+    
+    self = [super init];{
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+
+}
+
+
++(NSMutableArray *)getSuffixArrayWithObject:(NSDictionary *)dict{
+    
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    NSArray *contentArr = dict[@"Suffixes"];
+    
+    [contentArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        SuffixInfo *objSuffixInfo = [[SuffixInfo alloc] initWithDictionary:obj];
+        [arr addObject:objSuffixInfo];
+        
+    }];
+    return arr;
+}
 
 @end

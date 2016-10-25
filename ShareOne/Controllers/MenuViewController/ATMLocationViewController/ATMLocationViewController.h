@@ -11,4 +11,6 @@
 @interface ATMLocationViewController : BaseViewController
 @property BOOL showMyLocationOnly;
 
+@property (nonatomic,strong)NSArray *locationArr;
+
 @end
