@@ -131,6 +131,7 @@
 {
     ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
     atmNavigationViewController.locationArr=_contentArr;
+    atmNavigationViewController.navigationItem.title=self.navigationItem.title;
     [self.navigationController pushViewController:atmNavigationViewController animated:YES];
 
 }
@@ -140,6 +141,7 @@
     ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
     atmNavigationViewController.showMyLocationOnly= TRUE;
     atmNavigationViewController.locationArr=_contentArr;
+    atmNavigationViewController.navigationItem.title=self.navigationItem.title;
 
     atmNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:atmNavigationViewController animated:YES];
@@ -157,6 +159,7 @@
     getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     getdirectionNavigationViewController.sourceAddress=sourceaddress;
     getdirectionNavigationViewController.DestinationAddress=Destinationaddress;
+    getdirectionNavigationViewController.navigationItem.title=self.navigationItem.title;
     [self.navigationController pushViewController:getdirectionNavigationViewController animated:YES];
     
 }

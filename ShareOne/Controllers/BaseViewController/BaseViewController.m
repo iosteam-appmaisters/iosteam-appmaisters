@@ -77,10 +77,10 @@
 
 -(void)setTitleTextAttribute{
     if(APPC_IS_IPAD){
-        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:24],NSFontAttributeName,nil];
+        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:24],NSFontAttributeName,nil];
     }
     else{
-        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,[UIFont systemFontOfSize:17],NSFontAttributeName,nil];
+        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0],NSForegroundColorAttributeName,[UIFont systemFontOfSize:11],NSFontAttributeName,nil];
     }
 }
 
@@ -142,7 +142,9 @@
 -(void)setTitleView{
     
     UIImage* logoImage = [UIImage imageNamed:@"logo"];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[UIImageView alloc] initWithImage:logoImage]];
+
 }
 
 
@@ -156,24 +158,26 @@
             
             HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
             objHomeViewController.url= [dict valueForKey:WEB_URL];
+            objHomeViewController.navigationItem.title=[[dict valueForKey:SUB_CAT_TITLE] uppercaseString];
             [self.navigationController pushViewController:objHomeViewController animated:YES];
 
         }
         else{
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
+            objUIViewController.navigationItem.title=[[dict valueForKey:SUB_CAT_TITLE] uppercaseString];
             [self.navigationController pushViewController:objUIViewController animated:YES];
         }
     }
-    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Log Off"]){
+    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Log Out"]){
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] uppercaseString]
-                                                                       message:@"ARE YOU SURE YOU WANT TO LOG OFF?"
+                                                                       message:@"ARE YOU SURE YOU WANT TO LOG OUT?"
                                                                 preferredStyle:UIAlertControllerStyleAlert]; // 1
-        UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Stay in "
+        UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"CANCEL "
                                                               style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                   NSLog(@"You pressed button one");
                                                               }]; // 2
-        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Logout"
+        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"LOG OUT"
                                                                style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                    
                                                                    __weak BaseViewController *weakSelf = self;\

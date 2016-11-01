@@ -25,7 +25,9 @@
     
     __weak HomeViewController *weakSelf = self;
     
-    
+    if(!self.navigationItem.title){
+        self.title=@"HOME";
+    }
     //NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
 
     //[self getMemberDevices];
@@ -33,7 +35,7 @@
     //[self postMemberDevices];
     //[self deleteMemberDevices];
     
-    //[self getQB];
+    [self getQB];
     //[self getSuffixInfo];
     //[self postSuffixPrepherences];
     
@@ -49,6 +51,8 @@
         _url = HOME_WEB_VIEW_URL;
     
     NSString *queryString = [NSString stringWithFormat:@"%@/%@",_url,[[[SharedUser sharedManager] userObject] ContextID]];
+    
+    NSLog(@"queryString: %@",queryString);
     [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:queryString]]];
     
 }
@@ -169,7 +173,7 @@
     __weak HomeViewController *weakSelf = self;
     
 
-    [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",@"55078",@"SuffixID",@"2",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",@"55220",@"SuffixID",@"2",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
         
@@ -178,7 +182,7 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     
-    NSLog(@"Requested url: %@", _url);
+//    NSLog(@"Requested url: %@", webView.request.URL.absoluteString);
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{

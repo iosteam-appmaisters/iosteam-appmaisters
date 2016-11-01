@@ -104,7 +104,11 @@
 //#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
 //#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
 
-#define googleApiKey               @"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"
+//#define googleApiKey               @"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"
+#define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"
+
+
+
 
 
 #define QUICK_BAL_SETTINGS          @"QUICK_BAL_SETTINGS"
@@ -119,7 +123,7 @@
 
 #define ROUTING_VALUE               @"700000465"
 #define REQUESTER_VALUE             @"700000465-Shareone"
-#define KEY_VALUE                   @"5fc5a27eedf1b68b98ef3bc0bee7c0a5"
+#define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
 
 #endif
 

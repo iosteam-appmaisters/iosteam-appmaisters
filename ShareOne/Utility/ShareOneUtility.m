@@ -183,8 +183,8 @@
 }
 
 +(int)getTimeStamp{
-//    return [[NSDate date] timeIntervalSince1970];
-    return 1477292834;
+    return [[NSDate date] timeIntervalSince1970];
+//    return 1477986029;
 }
 
 
@@ -396,6 +396,15 @@
 
 }
 
++(void)savedSufficInfoLocally:(NSDictionary *)dict{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"sufficInfo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSDictionary *)getSuffixInfoSavesLocally{
+  return (NSDictionary *) [[NSUserDefaults standardUserDefaults] valueForKey:@"sufficInfo"];
+}
 
 +(void)copySettingsOfSavedUserToNewLoginInfo:(User *)newUser AndOldUser:(User *)savedUser{
     newUser.isPushNotifOpen=savedUser.isPushNotifOpen;
@@ -579,8 +588,8 @@
 }
 
 +(NSString *)getSessionnKey{
-    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
-//    return [self randomStringWithLength:80];
+//    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
+    return [self randomStringWithLength:80];
 
 }
 

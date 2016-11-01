@@ -26,7 +26,7 @@
 @property (nonatomic,strong) NSNumber *SuffixID;
 @property (nonatomic,strong) NSNumber *SuffixNumber;
 @property (nonatomic,strong) NSDictionary *TaxInfo;
-@property (nonatomic,strong) NSNumber *Type;
+@property (nonatomic,strong) NSString *Type;
 @property (nonatomic,strong) NSMutableArray *Cards;
 @property (nonatomic,strong) NSString *DraftXRef;
 @property (nonatomic,strong) NSString *Draft;
@@ -38,17 +38,7 @@
 @property (nonatomic,strong) NSString *TotDue;
 @property (nonatomic,strong) NSString *Closed;
 @property (nonatomic,strong) NSString *CreditCard;
-
-
-
-
-
-
-
-
-
-
-
+@property (nonatomic,strong) NSMutableArray *transArray;
 
 
 

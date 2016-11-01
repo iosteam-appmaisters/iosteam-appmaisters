@@ -106,7 +106,7 @@
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     NSDictionary *dictSubCat = subCatArr[indexPath.row];
     cell.categorytitleLbl.text = [dictSubCat valueForKey:SUB_CAT_TITLE];
-    [cell.iconImageVw setImage:[UIImage imageNamed:[dict valueForKey:MAIN_CAT_IMAGE]]];
+    [cell.iconImageVw setImage:[UIImage imageNamed:@"slide-menu-arrow"]];
     return cell;
 }
 

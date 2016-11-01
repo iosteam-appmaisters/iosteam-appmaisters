@@ -529,6 +529,8 @@
 
 -(void)createBatchOfRequestsWithObject:(NSArray *)reqObjects requestCompletionBlock:(void(^)(NSObject *response,NSURLResponse *responseObj))reqBlock requestFailureBlock:(void(^)(NSError* error))failReqBlock queueCompletionBlock:(void(^)(BOOL sucess))queueBlock queueFailureBlock:(void(^)(NSError* error))failQueueBlock{
 
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     
     NSMutableArray *customReqArr= [[NSMutableArray alloc] init];
     
@@ -559,12 +561,16 @@
         NSLog(@"%d of %d process complete",numberOfFinishedTasks,totalNumberOfTasks);
     } completionBlock:^(NSArray *dataTasks) {
         NSLog(@"ALL TASK DONE WITH REQ COUNT : %d ",[dataTasks count]);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
         queueBlock(TRUE);
     }];}
 
 
 
 - (void)concurrentBatchOfRequestOperations:(NSArray *)operations progressBlock:(void (^)(NSUInteger, NSUInteger))progressBlock completionBlock:(void (^)(NSArray *))completionBlock {
+    
+
     
     if (!operations || operations.count == 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -617,8 +623,7 @@
         }];
         
         [tasks addObject:task];
-        if(reqError)
-            break;
+        
     }
     
     for (NSURLSessionDataTask *task in tasks) {

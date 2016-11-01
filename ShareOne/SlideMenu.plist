@@ -506,6 +506,55 @@
 	<array>
 		<dict>
 			<key>isSection</key>
+			<true/>
+			<key>title</key>
+			<string>Important Links</string>
+			<key>shouldShow</key>
+			<true/>
+			<key>icon</key>
+			<string>menu_location_icon</string>
+			<key>detailVCIdentifier</key>
+			<string></string>
+			<key>webUrl</key>
+			<string></string>
+			<key>detailVCTitle</key>
+			<string></string>
+			<key>subCategories</key>
+			<array>
+				<dict>
+					<key>title</key>
+					<string>Link 1</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Transfers/Account</string>
+					<key>detailVCTitle</key>
+					<string></string>
+					<key>shouldShow</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>Link 2</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>https://nsmobilecp.ns3web.com/Transfers/Account</string>
+					<key>detailVCTitle</key>
+					<string></string>
+					<key>shouldShow</key>
+					<true/>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>isSection</key>
 			<false/>
 			<key>title</key>
 			<string>Settings</string>
@@ -548,7 +597,7 @@
 			<key>isSection</key>
 			<false/>
 			<key>title</key>
-			<string>Log Off</string>
+			<string>Log Out</string>
 			<key>shouldShow</key>
 			<true/>
 			<key>icon</key>

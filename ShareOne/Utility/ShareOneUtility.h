@@ -88,6 +88,10 @@
 
 
 
++(void)savedSufficInfoLocally:(NSDictionary *)dict;
+
++(NSDictionary *)getSuffixInfoSavesLocally;
+
 
 
 

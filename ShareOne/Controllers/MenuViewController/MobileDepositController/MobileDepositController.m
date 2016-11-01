@@ -15,6 +15,10 @@
 #import "CameraViewController.h"
 #import "Constants.h"
 #import "CashDeposit.h"
+#import "SharedUser.h"
+#import "SuffixInfo.h"
+
+
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
 {
@@ -31,7 +35,24 @@
 @property (nonatomic, weak) IBOutlet UIButton *frontCamBtn;
 @property (nonatomic, strong)  UIImage *frontImage;
 @property (nonatomic, strong)  UIImage *backImage;
+@property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
+@property (nonatomic, weak) IBOutlet UIView *pickerParentView;
 
+@property (nonatomic, weak) IBOutlet UIButton *submittBtn;
+@property (nonatomic, weak) IBOutlet UITextField *accountTxtFeild;
+@property (nonatomic, weak) IBOutlet UITextField *ammountTxtFeild;
+@property (nonatomic, weak) IBOutlet UIButton *accountTxtFeildBtn;
+
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (nonatomic, weak) NSArray *suffixArr;
+@property (nonatomic, strong) SuffixInfo *objSuffixInfo;
+
+
+
+-(IBAction)doneButtonClicked:(id)sender;
+
+-(IBAction)accountButtonClicked:(id)sender;
 
 
 
@@ -48,6 +69,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self startUpMethod];
+    [self loadDataOnPickerView];
+    
+
+
     
 //    __weak MobileDepositController *weakSelf = self;
 //
@@ -56,6 +81,82 @@
 //    } failureBlock:^(NSError *error) {
 //        
 //    }];
+}
+
+
+-(void)loadDataOnPickerView{
+    
+    _suffixArr= [[SharedUser sharedManager] suffixInfoArr];
+    [self.pickerView reloadAllComponents];
+}
+
+-(IBAction)accountButtonClicked:(id)sender{
+    [self managePickerView];
+}
+
+
+-(void)managePickerView{
+
+    [_ammountTxtFeild resignFirstResponder];
+    if (_bottomConstraint.constant<0){
+        _bottomConstraint.constant=0;
+        [self.view layoutIfNeeded];
+    }
+    else{
+        
+        _bottomConstraint.constant=-500;
+        [self.view layoutIfNeeded];
+    }
+
+}
+-(IBAction)doneButtonClicked:(id)sender{
+    
+    if(!_objSuffixInfo){
+        [_pickerView selectRow:0 inComponent:0 animated:YES];
+        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+    }
+    
+    [self managePickerView];
+    [self setStateOfSubmitButton];
+}
+
+-(void)setStateOfSubmitButton{
+ 
+    NSRange rangeValue = [_objSuffixInfo.Access rangeOfString:@"D" options:NSCaseInsensitiveSearch];
+
+    if(![_objSuffixInfo.Type isEqualToString:@"S"] && rangeValue.length > 0 ){
+        [_submittBtn setHidden:FALSE];
+    }
+    else{
+        [_submittBtn setHidden:TRUE];
+    }
+}
+
+
+#pragma PickerView - Delegate
+// The number of columns of data
+- (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _suffixArr.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    SuffixInfo *obj = _suffixArr[row];
+    return  obj.Descr;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+ 
+     _objSuffixInfo = _suffixArr[row];
+    [_accountTxtFeild setText:_objSuffixInfo.Descr];
 }
 
 
@@ -387,6 +488,14 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if([textField isEqual:_ammountTxtFeild]){
+        _bottomConstraint.constant=-500;
+        [self.view layoutIfNeeded];    }
+    return TRUE;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

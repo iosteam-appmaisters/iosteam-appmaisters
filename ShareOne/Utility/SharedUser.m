@@ -25,6 +25,7 @@
     if (self = [super init]) {
         _memberDevicesArr =[[NSArray alloc] init];
         _suffixInfoArr = [[NSArray alloc] init];
+        _QBSectionsArr = [[NSArray alloc] init];
     }
     return self;
 }

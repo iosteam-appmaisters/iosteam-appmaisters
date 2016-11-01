@@ -11,9 +11,10 @@
 #import "QBDetailsCell.h"
 #import "ShareOneUtility.h"
 #import "QBFooterView.h"
+#import "SuffixInfo.h"
+#import "ShareOneUtility.h"
 
-
-
+#import "QuickBalances.h"
 
 
 @implementation QuickBalancesViewController
@@ -25,6 +26,11 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    
+//    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getSuffixInfoSavesLocally]];
+    
+
     _qbArr = [ShareOneUtility getDummyDataForQB];
     
     self.qbTblView.allowMultipleSectionsOpen = YES;
@@ -38,8 +44,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSDictionary *dict = _qbArr[section];
-    NSArray *array = [dict valueForKey:@"section_details"];
+    
+    NSDictionary *objSuffixInfo = _qbArr[section];
+    NSArray *array = [objSuffixInfo valueForKey:@"section_details"];
     return  [array count];
 }
 
@@ -84,7 +91,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    NSDictionary *dict =_qbArr[section];
+    //SuffixInfo *objSuffixInfo =_qbArr[section];
+    NSDictionary *objSuffixInfo =_qbArr[section];
+
     
     /*
     
@@ -120,10 +129,14 @@
 
     
     
-    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[dict valueForKey:@"section_title"]];
-    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[dict valueForKey:@"section_amt"]];
+//    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:objSuffixInfo.Descr];
+//    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"$ %d",[objSuffixInfo.Balance intValue]]];
+    
+    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[objSuffixInfo valueForKey:@"section_title"]];
+    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"%@",[objSuffixInfo valueForKey:@"section_amt"]]];
 
-    [objFZAccordionTableViewHeaderView.sectionImgVew setImage:[UIImage imageNamed:[dict valueForKey:@"section_amt"]]];
+
+    [objFZAccordionTableViewHeaderView.sectionImgVew setImage:[UIImage imageNamed:@"icon-dollar"]];
     return (UIView *)objFZAccordionTableViewHeaderView;
     
 
@@ -138,13 +151,35 @@
 #pragma mark - <FZAccordionTableViewDelegate> -
 
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+    
+
+    
+    //[_qbTblView reloadData];
+    
 //        NSLog(@"willOpenSection");
     
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 //        NSLog(@"didOpenSection");
-    
+//    SuffixInfo *obj = _qbArr[section];
+//    if(!obj.transArray){
+//        obj.transArray= [[NSMutableArray alloc] init];
+//        [obj.transArray addObject:@""];
+//        //        [obj.transArray addObject:@""];
+//        
+//    }
+//    else{
+//                [obj.transArray addObject:@""];
+//        //
+//        
+//    }
+//    
+//    
+//    
+//    [_qbTblView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:section]] withRowAnimation:UITableViewRowAnimationNone];
+//
+//    
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {

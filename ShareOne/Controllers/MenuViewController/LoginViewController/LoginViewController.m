@@ -13,6 +13,7 @@
 #import "User.h"
 #import "SharedUser.h"
 #import "LoadingController.h"
+#import "LoaderServices.h"
 
 
 @interface LoginViewController ()
@@ -24,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *userFingerprintBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rememberMetxtBtn;
 @property (weak, nonatomic) IBOutlet UIButton *quickBalanceBtn;
+
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
+
 
 
 - (IBAction)scanTouchID:(id)sender ;
@@ -173,7 +177,9 @@
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
-        [weakSelf addingLoadingScreen];
+        //[weakSelf addingLoadingScreen];
+        [weakSelf.loadingView setHidden:FALSE];
+        [weakSelf startLoadingServices];
         
     } failureBlock:^(NSError *error) {
         
@@ -181,6 +187,29 @@
     
 }
 
+
+-(void)startLoadingServices{
+    
+    __weak LoginViewController *weakSelf = self;
+
+    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success) {
+        
+        [weakSelf startApplication];
+
+
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.loadingView setHidden:TRUE];
+
+    
+}
 - (IBAction)forgotPasswordButtonClicked:(id)sender {
 }
 
