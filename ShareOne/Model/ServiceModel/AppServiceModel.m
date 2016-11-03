@@ -3,7 +3,7 @@
 #import "SignInModel.h"
 #import "Services.h"
 #import "UtilitiesHelper.h"
-#import "Constants.h"
+#import "ConstantsShareOne.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
 #import "HTTPRequestOperation.h"
@@ -322,6 +322,9 @@
 
 -(void)getMethod:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
     
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];

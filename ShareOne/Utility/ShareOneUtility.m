@@ -24,9 +24,9 @@
 
 #import "ShareOneUtility.h"
 #import "BBAES.h"
-#import "Constants.h"
+#import "ConstantsShareOne.h"
 #import "Services.h"
-#import "Constants.h"
+#import "ConstantsShareOne.h"
 #import "SAMKeychain.h"
 #import "Location.h"
 #import "SharedUser.h"
@@ -719,5 +719,30 @@
     NSString *status =nil;
     
     return status;
+}
+
++(NSString *)getSectionTitleByCode:(NSString *)code{
+    
+    NSString *formatedString = nil;
+    
+    if([code isEqualToString:@"S"] || [code isEqualToString:@"s"]){
+        formatedString = @"Share";
+    }
+    else if([code isEqualToString:@"L"] || [code isEqualToString:@"l"]){
+        formatedString = @"Loan";
+    }
+    else if([code isEqualToString:@"C"]|| [code isEqualToString:@"c"]){
+        formatedString=@"Certificate";
+    }
+    else if([code isEqualToString:@"V"]|| [code isEqualToString:@"v"]){
+        formatedString=@"Internal credit card";
+    }
+    else if([code isEqualToString:@"T"] || [code isEqualToString:@"t"]){
+        formatedString=@"External credit card";
+    }
+    else if([code isEqualToString:@"M"] || [code isEqualToString:@"m"]){
+        formatedString=@"External Mortgage";
+    }
+    return formatedString;
 }
 @end

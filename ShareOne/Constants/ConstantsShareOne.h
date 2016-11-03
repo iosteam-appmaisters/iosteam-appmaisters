@@ -108,6 +108,7 @@
 #define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"
 
 
+#define ADVERTISMENT_URL (AccountNumber,Width,Height) @"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%@&Channel=Mobile&Width=%@&Height=%@", AccountNumber,Width,Height
 
 
 
@@ -124,6 +125,8 @@
 #define ROUTING_VALUE               @"700000465"
 #define REQUESTER_VALUE             @"700000465-Shareone"
 #define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
+
+#define ADVERTISMENT_WEBVIEW_TAG    1122334
 
 #endif
 

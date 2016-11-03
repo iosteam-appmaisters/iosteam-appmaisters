@@ -12,4 +12,6 @@
 
 - (void)pushViewControllerWithObject:(NSDictionary *)dict;
 
+- (void)sendAdvertismentBack;
+
 @end

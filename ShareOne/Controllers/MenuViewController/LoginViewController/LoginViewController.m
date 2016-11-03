@@ -14,7 +14,8 @@
 #import "SharedUser.h"
 #import "LoadingController.h"
 #import "LoaderServices.h"
-
+#import "MemberDevices.h"
+#import "QuickBalances.h"
 
 @interface LoginViewController ()
 
@@ -152,7 +153,10 @@
 - (void)startApplication{
     
     UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+    
+    
     homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+    
     [self presentViewController:homeNavigationViewController animated:YES completion:nil];
 }
 
@@ -194,10 +198,42 @@
 
     [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success) {
         
-        [weakSelf startApplication];
-
-
+       NSArray *devicesArr = [[SharedUser sharedManager] memberDevicesArr];
         
+        NSPredicate *devicePredicate = [NSPredicate predicateWithFormat:@"Fingerprint == %@",[ShareOneUtility getUUID]];
+        
+        NSArray *deveiceExistArr = [devicesArr filteredArrayUsingPredicate:devicePredicate];
+        
+        if([deveiceExistArr count]>0){
+            // Device Exist : No need to call PostDevices Api
+            [weakSelf startApplication];
+        }
+        else{
+            // Device not exist : We need to call PostDevices Api with QuickBalance & QuickTransaction permissions
+            __weak LoginViewController *weakSelf = self;
+            
+            NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+            NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+            
+            NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
+            
+            [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                
+                
+                [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+                    
+                    [weakSelf startApplication];
+                    
+                } failureBlock:^(NSError *error) {
+                    
+                }];
+                
+            } failureBlock:^(NSError *error) {
+                
+            }];
+
+        }        
+    
     } failureBlock:^(NSError *error) {
         
     }];

@@ -7,7 +7,6 @@
 //
 
 #import "SettingsViewController.h"
-#import "Constants.h"
 #import "ShareOneUtility.h"
 
 
@@ -91,8 +90,16 @@
     
     if(key){
         
+        
         [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
         [ShareOneUtility saveSettingsWithStatus:[sender isOn] AndKey:key];
+        if([key isEqualToString:SHOW_OFFERS_SETTINGS]){
+            if([sender isOn]){
+                [self bringAdvertismentViewToFront];
+            }else{
+                [self sendAdvertismentViewToBack];
+            }
+        }
     }
     else
         [sender setOn:FALSE];

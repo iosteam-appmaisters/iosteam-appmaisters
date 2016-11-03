@@ -13,11 +13,11 @@
 #import "VertifiImageProcessing.h"
 #import "Global.h"
 #import "CameraViewController.h"
-#import "Constants.h"
+#import "ConstantsShareOne.h"
 #import "CashDeposit.h"
 #import "SharedUser.h"
 #import "SuffixInfo.h"
-
+#import "ConstantsShareOne.h"
 
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
@@ -295,6 +295,7 @@
     CameraViewController *cameraViewController = nil;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
+    
     else  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPad" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
     

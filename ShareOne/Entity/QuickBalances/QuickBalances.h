@@ -20,6 +20,8 @@
 @property (nonatomic,strong) NSString *TotDue;
 @property (nonatomic,strong) NSString *Type;
 @property (nonatomic,strong) NSNumber *Available;
+@property (nonatomic,strong) NSMutableArray *transArr;
+
 
 
 

@@ -28,10 +28,10 @@
     [super viewDidLoad];
     
     
-//    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getSuffixInfoSavesLocally]];
+    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getSuffixInfoSavesLocally]];
     
 
-    _qbArr = [ShareOneUtility getDummyDataForQB];
+//    _qbArr = [ShareOneUtility getDummyDataForQB];
     
     self.qbTblView.allowMultipleSectionsOpen = YES;
     [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
@@ -45,9 +45,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     
-    NSDictionary *objSuffixInfo = _qbArr[section];
-    NSArray *array = [objSuffixInfo valueForKey:@"section_details"];
-    return  [array count];
+//    NSDictionary *objSuffixInfo = _qbArr[section];
+//    NSArray *array = [objSuffixInfo valueForKey:@"section_details"];
+//    return  [array count];
+    
+    QuickBalances *qb = _qbArr[section];
+    return  [qb.transArr count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -80,19 +83,19 @@
     }
     
     NSDictionary *dict = _qbArr[indexPath.section];
-    NSArray *array = [dict valueForKey:@"section_details"];
-    NSDictionary *detailsDict = array[indexPath.row];
-    [cell.tranTitleLbl setText:[detailsDict valueForKey:@"tran_title"]];
-    [cell.tranDateLbl setText:[detailsDict valueForKey:@"tran_date"]];
-    [cell.tranAmountLbl setText:[detailsDict valueForKey:@"tran_amt"]];
+//    NSArray *array = [dict valueForKey:@"section_details"];
+//    NSDictionary *detailsDict = array[indexPath.row];
+//    [cell.tranTitleLbl setText:[detailsDict valueForKey:@"tran_title"]];
+//    [cell.tranDateLbl setText:[detailsDict valueForKey:@"tran_date"]];
+//    [cell.tranAmountLbl setText:[detailsDict valueForKey:@"tran_amt"]];
     
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    //SuffixInfo *objSuffixInfo =_qbArr[section];
-    NSDictionary *objSuffixInfo =_qbArr[section];
+    QuickBalances *objQuickBalances =_qbArr[section];
+//    NSDictionary *objSuffixInfo =_qbArr[section];
 
     
     /*
@@ -129,11 +132,11 @@
 
     
     
-//    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:objSuffixInfo.Descr];
-//    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"$ %d",[objSuffixInfo.Balance intValue]]];
+    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:objQuickBalances.Type]];
+    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"$ %.02f",[objQuickBalances.Balance floatValue]]];
     
-    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[objSuffixInfo valueForKey:@"section_title"]];
-    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"%@",[objSuffixInfo valueForKey:@"section_amt"]]];
+//    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[objSuffixInfo valueForKey:@"section_title"]];
+//    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"%@",[objSuffixInfo valueForKey:@"section_amt"]]];
 
 
     [objFZAccordionTableViewHeaderView.sectionImgVew setImage:[UIImage imageNamed:@"icon-dollar"]];
@@ -151,35 +154,41 @@
 #pragma mark - <FZAccordionTableViewDelegate> -
 
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-    
+//    NSLog(@"willOpenSection");
 
+    QuickBalances *obj = _qbArr[section];
     
-    //[_qbTblView reloadData];
+    __weak QuickBalancesViewController *weakSelf = self;
+    NSString *SuffixID = [NSString stringWithFormat:@"%d",[obj.SuffixID intValue]];
     
-//        NSLog(@"willOpenSection");
-    
+    if(!obj.transArr){
+        [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",@"5",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+            
+            if(!obj.transArr){
+                obj.transArr= [[NSMutableArray alloc] init];
+                
+                obj.transArr=[(NSMutableArray *)user mutableCopy];
+                [obj.transArr addObject:@""];
+                [obj.transArr addObject:@""];
+                [obj.transArr addObject:@""];
+                
+                [_qbTblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+    }
 }
 
+-(void)getQuickTransaction{
+    
+    
+}
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 //        NSLog(@"didOpenSection");
-//    SuffixInfo *obj = _qbArr[section];
-//    if(!obj.transArray){
-//        obj.transArray= [[NSMutableArray alloc] init];
-//        [obj.transArray addObject:@""];
-//        //        [obj.transArray addObject:@""];
-//        
-//    }
-//    else{
-//                [obj.transArray addObject:@""];
-//        //
-//        
-//    }
-//    
-//    
-//    
-//    [_qbTblView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:section]] withRowAnimation:UITableViewRowAnimationNone];
-//
-//    
+
+    
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {

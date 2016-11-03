@@ -22,21 +22,19 @@
 +(void)setRequestOnQueueWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block failureBlock:(void(^)(NSError* error))failBlock{
     
     
-    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
-    
-
-    NSDictionary *getDevicesDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] ContextID]],REQ_URL,RequestType_GET,REQ_TYPE,signature,REQ_HEADER,nil,REQ_PARAM, nil];
+    NSDictionary *getDevicesDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] ContextID]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
     
     
-    NSDictionary *getSuffixDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KSUFFIX_INFO,[[[SharedUser sharedManager] userObject] ContextID]],REQ_URL,RequestType_GET,REQ_TYPE,signature,REQ_HEADER,nil,REQ_PARAM, nil];
+    NSDictionary *getSuffixDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KSUFFIX_INFO,[[[SharedUser sharedManager] userObject] ContextID]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
     
     
     NSDictionary *getQBDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,[ShareOneUtility getUUID]]
-,REQ_URL,RequestType_GET,REQ_TYPE,signature,REQ_HEADER,nil,REQ_PARAM, nil];
+,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
 
     
     
     NSArray *reqArr = [NSArray arrayWithObjects:getDevicesDict,getSuffixDict,getQBDict, nil];
+    
     
     [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSURLResponse *responseObj) {
         
@@ -50,7 +48,6 @@
             [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
         }
         if([[responseObj.URL absoluteString] containsString:KQUICK_BALANCES]){
-            
             NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
             [ShareOneUtility savedSufficInfoLocally:(NSDictionary *)response];
             [[SharedUser sharedManager] setQBSectionsArr:qbObjects];

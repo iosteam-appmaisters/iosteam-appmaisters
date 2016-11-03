@@ -1,13 +1,13 @@
 
 #import "BaseViewController.h"
 #import <UIKit/UIKit.h>
-#import "Constants.h"
+#import "ConstantsShareOne.h"
 #import "LeftMenuViewController.h"
 #import "WebViewController.h"
 #import "HomeViewController.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
-
+#import "AdvertisementController.h"
 
 
 
@@ -34,6 +34,15 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+        _bottomAdsConstraint.constant=50;
+    }
+    else{
+        _bottomAdsConstraint.constant=0;
+    }
+
+    
+    
     UIView* dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [dummyView setBackgroundColor:[UIColor clearColor]];
     
@@ -48,7 +57,90 @@
     [self setBackgroundImage];
 
     [self setTitleTextAttribute];
+    
+    
+//    [self performSelector:@selector(addAdvertismentControllerOnBottomScreen) withObject:nil afterDelay:2];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self addAdvertismentControllerOnBottomScreen];
+}
+
+-(void)addAdvertismentControllerOnBottomScreen{
+    
+
+    float height = 50;
+//    AdvertisementController *objAdvertisementController=[self.storyboard instantiateViewControllerWithIdentifier:@"AdvertisementController"];
+//
+//    [[objAdvertisementController view] setBackgroundColor:[UIColor redColor]];
+//    
+//    [objAdvertisementController.view setFrame:CGRectMake(-[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height)];
+//    
+//    [self.navigationController.view.window addSubview:objAdvertisementController.view];
+//
+//    [UIView animateWithDuration:0.3 animations:^{
+//        [objAdvertisementController.view setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height)];
+//        
+//    } completion:^(BOOL finished) {
+//    }];
+//    
+    
+    
+    float isAlreadyAdded = FALSE;
+    for(UIView *view in self.navigationController.view.window.subviews){
+        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            isAlreadyAdded=TRUE;
+            break;
+        }
+    }
+    
+    if(!isAlreadyAdded){
+        CGRect frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height);
+        
+        
+        UIWebView *webView =[[UIWebView alloc] initWithFrame:frame];
+        [webView setTag:ADVERTISMENT_WEBVIEW_TAG];
+        
+        NSString *url =[NSString stringWithFormat:@"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
+        
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+        
+        [self.navigationController.view.window addSubview:webView];
+        
+        if(![ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+            [self sendAdvertismentViewToBack];
+        }
+
+    }
+}
+
+
+
+- (UIWebView *)getAdverTismentView{
+    
+    UIWebView *webView = nil;
+    for(UIView *view in self.navigationController.view.window.subviews){
+        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            webView=(UIWebView *)view;
+            break;
+        }
+    }
+    return webView;
+}
+
+-(void)sendAdvertismentViewToBack{
+    UIWebView *view = [self getAdverTismentView];
+    [self.navigationController.view.window sendSubviewToBack:view];
+}
+
+-(void)bringAdvertismentViewToFront{
+    UIWebView *view = [self getAdverTismentView];
+    if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+        [self.navigationController.view.window bringSubviewToFront:view];
+    }
+}
+
 
 -(void)createLefbarButtonItems{
     UIView* leftView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
@@ -105,6 +197,8 @@
 }
 
 -(void)menuButtonClicked:(id)sender{
+    
+    [self sendAdvertismentViewToBack];
     [menuButton setEnabled:FALSE];
         leftMenuViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"LeftMenuViewController"];
 
@@ -197,6 +291,10 @@
         
         [self presentViewController:alert animated:YES completion:nil];
     }
+}
+
+-(void)sendAdvertismentBack{
+    [self bringAdvertismentViewToFront];
 }
 
 @end

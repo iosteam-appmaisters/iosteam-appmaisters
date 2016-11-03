@@ -56,9 +56,11 @@
     
     NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",@"91730",@"zip", nil];
 
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
     [Location getAllBranchLocations:maxResultsNRadiousNZip delegate:weakSelf completionBlock:^(NSArray *locations) {
         
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         if([locations count]>0){
             weakSelf.contentArr=locations;
             [weakSelf.tableView reloadData];

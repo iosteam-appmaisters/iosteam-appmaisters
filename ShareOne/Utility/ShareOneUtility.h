@@ -93,6 +93,7 @@
 +(NSDictionary *)getSuffixInfoSavesLocally;
 
 
++(NSString *)getSectionTitleByCode:(NSString *)code;
 
 
 

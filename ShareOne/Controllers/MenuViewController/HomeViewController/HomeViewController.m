@@ -25,6 +25,7 @@
     
     __weak HomeViewController *weakSelf = self;
     
+    
     if(!self.navigationItem.title){
         self.title=@"HOME";
     }
@@ -35,7 +36,7 @@
     //[self postMemberDevices];
     //[self deleteMemberDevices];
     
-    [self getQB];
+    //[self getQB];
     //[self getSuffixInfo];
     //[self postSuffixPrepherences];
     
@@ -61,7 +62,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self sendAdvertismentViewToBack];
 
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self sendAdvertismentViewToBack];
 }
 
 -(void)getMemberDevices{
@@ -78,8 +85,10 @@
     
     __weak HomeViewController *weakSelf = self;
     
-    NSDictionary *zuthDic = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-    NSArray *authArray= [NSArray arrayWithObjects:zuthDic, nil];
+    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+
+    NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
     [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         

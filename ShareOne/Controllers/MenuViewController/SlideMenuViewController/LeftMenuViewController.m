@@ -49,6 +49,7 @@
 }
 
 -(IBAction)backgroundButtonClicked:(id)sender{
+    
     [UIView animateWithDuration:0.3 animations:^{
             [self.view setFrame:CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     } completion:^(BOOL finished) {
@@ -58,6 +59,8 @@
         if([sender isKindOfClass:[NSIndexPath class]]){
             if (_homeDelegate != nil && [_homeDelegate respondsToSelector:@selector(pushViewControllerWithObject:)]){
                 [[self homeDelegate] pushViewControllerWithObject:_controllerInfoDict];
+                [[self homeDelegate] sendAdvertismentBack];
+
             }
         }
     }];

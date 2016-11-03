@@ -17,7 +17,7 @@
 
 +(void)getAllBranchLocations:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSArray *locations))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    [[AppServiceModel sharedClient] getMethod:nil AndParam:param progressMessage:@"Please wait.." urlString:[NSString stringWithFormat:@"%@",kLOCATION_API] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:nil AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@",kLOCATION_API] delegate:delegate completionBlock:^(NSObject *response) {
         
         if([response isKindOfClass:[NSDictionary class]]){
             block([self parseAllLocationsWithObject:(NSDictionary *)response]);

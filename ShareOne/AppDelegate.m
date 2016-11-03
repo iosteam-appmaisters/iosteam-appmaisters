@@ -8,10 +8,10 @@
 
 #import "AppDelegate.h"
 #import "ShareOneUtility.h"
-#import "Constants.h"
+#import "ConstantsShareOne.h"
 #import "CashDeposit.h"
 
-#import "Constants.h"
+#import "ConstantsShareOne.h"
 @import GoogleMaps;
 
 @interface AppDelegate ()
