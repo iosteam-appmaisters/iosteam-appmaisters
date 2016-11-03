@@ -45,6 +45,11 @@
     
     //[self getQuickTransaction];
 
+//    [User postContextIDForSSOWithDelegate:self completionBlock:^(BOOL sucess) {
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
 
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;

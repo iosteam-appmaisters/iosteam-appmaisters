@@ -95,6 +95,11 @@
 
 +(NSString *)getSectionTitleByCode:(NSString *)code;
 
++(NSString *)getAESEncryptedContexIDInBase64:(NSString *)contexID;
++(NSString *)getAESRandomIVForSSON;
+
+
+
 
 
 @end

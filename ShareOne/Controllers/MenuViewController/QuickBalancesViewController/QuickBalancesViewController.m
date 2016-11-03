@@ -15,6 +15,8 @@
 #import "ShareOneUtility.h"
 
 #import "QuickBalances.h"
+#import "QuickTransaction.h"
+
 
 
 @implementation QuickBalancesViewController
@@ -82,12 +84,13 @@
         [cell.contentView setBackgroundColor:DEFAULT_COLOR_GRAY];
     }
     
-    NSDictionary *dict = _qbArr[indexPath.section];
-//    NSArray *array = [dict valueForKey:@"section_details"];
-//    NSDictionary *detailsDict = array[indexPath.row];
-//    [cell.tranTitleLbl setText:[detailsDict valueForKey:@"tran_title"]];
-//    [cell.tranDateLbl setText:[detailsDict valueForKey:@"tran_date"]];
-//    [cell.tranAmountLbl setText:[detailsDict valueForKey:@"tran_amt"]];
+    
+    QuickBalances  *objQuickBalances = _qbArr[indexPath.section];
+    QuickTransaction *objQuickTransaction   =  objQuickBalances.transArr[indexPath.row];
+    
+    [cell.tranTitleLbl setText:objQuickTransaction.Tran];
+    [cell.tranDateLbl setText:objQuickTransaction.Eff];
+    [cell.tranAmountLbl setText:[NSString stringWithFormat:@"$ %@",objQuickTransaction.Amt]];
     
     return cell;
 }
@@ -154,8 +157,7 @@
 #pragma mark - <FZAccordionTableViewDelegate> -
 
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    NSLog(@"willOpenSection");
-
+//    NSLog(@"willOpenSection");    
     QuickBalances *obj = _qbArr[section];
     
     __weak QuickBalancesViewController *weakSelf = self;
@@ -168,17 +170,31 @@
                 obj.transArr= [[NSMutableArray alloc] init];
                 
                 obj.transArr=[(NSMutableArray *)user mutableCopy];
-                [obj.transArr addObject:@""];
-                [obj.transArr addObject:@""];
-                [obj.transArr addObject:@""];
                 
-                [_qbTblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+                if([obj.transArr count]>0){
+                    [_qbTblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+   
+                }
+                else{
+                    [self noTransaction];
+                }
+                
             }
             
         } failureBlock:^(NSError *error) {
             
         }];
     }
+    
+    else if ([obj.transArr count]<=0){
+        [self noTransaction];
+    }
+}
+
+-(void)noTransaction{
+    __weak QuickBalancesViewController *weakSelf = self;
+
+    [[ShareOneUtility shareUtitlities] showToastWithMessage:@"No Transaction " title:@"" delegate:weakSelf];
 }
 
 -(void)getQuickTransaction{
@@ -193,6 +209,11 @@
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 //        NSLog(@"willCloseSection");
+    QuickBalances *obj = _qbArr[section];
+    
+    if([obj.transArr count]<=0){
+        [self noTransaction];
+    }
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {

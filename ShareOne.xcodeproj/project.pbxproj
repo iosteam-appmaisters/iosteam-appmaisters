@@ -19,6 +19,7 @@
 		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
 		1D4245D01DCA312A00A76E52 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4245CF1DCA312A00A76E52 /* libVertifiImageProcessing.a */; };
 		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
+		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
@@ -101,6 +102,8 @@
 		1D4245CF1DCA312A00A76E52 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D4245D31DCB198400A76E52 /* AdvertisementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementController.h; sourceTree = "<group>"; };
 		1D4245D41DCB198400A76E52 /* AdvertisementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementController.m; sourceTree = "<group>"; };
+		1D4245D61DCB780200A76E52 /* QuickTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTransaction.h; sourceTree = "<group>"; };
+		1D4245D71DCB780200A76E52 /* QuickTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickTransaction.m; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1D8478E41D92949400153B19 /* QBHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHeaderCell.h; sourceTree = "<group>"; };
 		1D8478E51D92949400153B19 /* QBHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBHeaderCell.m; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 				1D112C091DB4BCCE000435DE /* QuickBalances.m */,
 				1D112C0B1DB4E6C6000435DE /* SuffixInfo.h */,
 				1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */,
+				1D4245D61DCB780200A76E52 /* QuickTransaction.h */,
+				1D4245D71DCB780200A76E52 /* QuickTransaction.m */,
 			);
 			path = QuickBalances;
 			sourceTree = "<group>";
@@ -857,6 +862,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */,
 				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
 				F229DB791D9E821C00A705A5 /* CameraCropView.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,

@@ -11,6 +11,8 @@
 #import "Services.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
+#import "QuickTransaction.h"
+
 
 @implementation QuickBalances
 
@@ -38,7 +40,10 @@
     NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_TRANSACTION,[param valueForKey:@"DeviceFingerprint"],[param objectForKey:@"SuffixID"] ,[param valueForKey:@"NumberOfTransactions"]];
     
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Loading..." urlString:url delegate:delegate completionBlock:^(NSObject *response) {
-        block([(NSDictionary *)response valueForKey:@"Transactions"]);
+        
+        NSArray *qtObjects = [QuickTransaction  getQTObjects:(NSDictionary *)response];
+
+        block((NSArray *)qtObjects);
         
     } failureBlock:^(NSError *error) {}];
 }

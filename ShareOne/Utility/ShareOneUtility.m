@@ -204,13 +204,6 @@
     unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
     CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
     NSData *HMACData = [NSData dataWithBytes:cHMAC length:sizeof(cHMAC)];
-//    const unsigned char *buffer = (const unsigned char *)[HMACData bytes];
-//    NSMutableString *HMAC = [NSMutableString stringWithCapacity:HMACData.length * 2];
-//    for (int i = 0; i < HMACData.length; ++i){
-//        [HMAC appendFormat:@"%02x", buffer[i]];
-//    }
-
-//    NSLog(@"getBase64ValueWithObject : %@",[self getBase64ValueWithObject:HMACData]);
     return [self getBase64ValueWithObject:HMACData];
 }
 
@@ -744,5 +737,13 @@
         formatedString=@"External Mortgage";
     }
     return formatedString;
+}
+
++(NSString *)getAESEncryptedContexIDInBase64:(NSString *)contexID{
+   return  [self getHMACSHAWithSignature:contexID andEncoding:NSUTF8StringEncoding];
+}
+
++(NSString *)getAESRandomIVForSSON{
+     return [self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY];
 }
 @end

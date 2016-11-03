@@ -110,53 +110,23 @@
     } failureBlock:^(NSError *error) {}];
 }
 
++(void)postContextIDForSSOWithDelegate:(id)delegate completionBlock:(void(^)(BOOL  sucess))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSString *contexID = [[[SharedUser sharedManager] userObject] ContextID];
+    
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
 
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getAESEncryptedContexIDInBase64:contexID],@"EncryptedContextID",[ShareOneUtility getAESRandomIVForSSON],@"EncryptionIV",@"/Transfers/Account",@"RedirectPath", nil];
+    
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
 
-
-//
-//+(void)createOneToOneChatWithParam:(NSDictionary*)param delegate:(id)delegate urlString:(NSString*)urlString completionBlock:(void(^)(id response))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:@"Posting..." urlString:urlString delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            block(object);
-//        }
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
-//    
-//}
-//
-//+(void)blockUnblockUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id response))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:@"Updating..." urlString:KWEB_SERVICE_BLOCK_USER delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            block(response);
-//        }
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
-//    
-//}
-//
-//
-//+(void)logoutUserUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id response))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:@"Waiting..." urlString:KWEB_SERVICE_LOGOUT delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            block(response);
-//        }
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
-//    
-//}
 
 -(id) initWithDictionary:(NSDictionary *)userProfileDict{
     self = [super init];{

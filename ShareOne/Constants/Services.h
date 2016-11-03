@@ -37,6 +37,9 @@
 
 #define KQUICK_TRANSACTION                              @"eft/quickTransactions"
 
+#define KSINGLE_SIGN_ON                                 @"api/SSO/SignOn"
+
+
 
 
 #define kDEPOSIT_MONEY_REGISTER                         @"https://www.member-data.com/rdc/sso/mobdep_regquery.ashx"
