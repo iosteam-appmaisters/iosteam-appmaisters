@@ -120,13 +120,20 @@
 #define USER_KEY                    @"USER_KEY"
 #define ALL_USER_OBJECTS            @"ALL_USER_OBJECTS"
 
-
-
-#define ROUTING_VALUE               @"700000465"
-#define REQUESTER_VALUE             @"700000465-Shareone"
-#define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
-
 #define ADVERTISMENT_WEBVIEW_TAG    1122334
+
+
+#define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
+#define KEY_VALUE_2                 @"5fc5a27eedf1b68b98ef3bc0bee7c0a5"
+
+
+
+
+#define REQUESTER_VALUE             @"700000465-Shareone"
+#define ROUTING_VALUE               @"700000465"
+
+
+
 
 #endif
 

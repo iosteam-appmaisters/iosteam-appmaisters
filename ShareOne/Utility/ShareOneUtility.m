@@ -581,13 +581,13 @@
 }
 
 +(NSString *)getSessionnKey{
-//    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
-    return [self randomStringWithLength:80];
+    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
+//    return [self randomStringWithLength:80];
 
 }
 
 +(NSString *)getSecretKey{
-    return KEY_VALUE;
+    return KEY_VALUE_2;
 }
 
 +(NSString *)getMemberValue{
@@ -647,17 +647,27 @@
 
     NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
     
+    NSLog(@"MAC : %@  Key : %@",mac,[self getSecretKey]);
+    
     
    hex = [self HMACWithSecret:[self getSecretKey] AndData:mac];
+    
+    NSLog(@"Encrypted MAC : %@ ",hex);
+
     
     return hex;
 }
 
 + (NSString*) HMACWithSecret:(NSString*) secret AndData:(NSString *)data
 {
+    
     CCHmacContext    ctx;
-    const char       *key = [secret UTF8String];
-    const char       *str = [data UTF8String];
+//    const char       *key = [secret UTF8String];
+//    const char       *str = [data UTF8String];
+    
+    const char       *key = [secret cStringUsingEncoding:NSASCIIStringEncoding];
+    const char       *str = [data cStringUsingEncoding:NSASCIIStringEncoding];
+
     unsigned char    mac[CC_MD5_DIGEST_LENGTH];
     char             hexmac[2 * CC_MD5_DIGEST_LENGTH + 1];
     char             *p;
@@ -673,9 +683,29 @@
     }
     
     return [NSString stringWithUTF8String:hexmac];
+     
+//    NSData *keyData = [secret dataUsingEncoding:NSASCIIStringEncoding];
+//    NSData *dataData = [data dataUsingEncoding:NSASCIIStringEncoding];
+//    NSMutableData *hash = [NSMutableData dataWithLength:CC_MD5_DIGEST_LENGTH];
+//    CCHmac(kCCHmacAlgMD5, keyData.bytes, keyData.length , dataData.bytes, dataData.length, hash.mutableBytes);
+//    
+//    NSString *string = [[NSString alloc] initWithData:hash encoding:NSASCIIStringEncoding] ;
+//    NSLog(@"hash: %@", string);
+//
+//    return string;
+
+
 }
 
++(NSString *)convertStringToASCIIEncoding:(NSString *)sourceString{
+    
+    NSData *asciiData = [sourceString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *asciiString = [[NSString alloc] initWithData:asciiData encoding:NSASCIIStringEncoding];
+    
+    return asciiString;
 
+}
 
 +(void)getBytesOfString:(NSString *)string{
     NSData* data=[string dataUsingEncoding:NSUTF8StringEncoding];

@@ -28,7 +28,7 @@
     
     
     [GMSServices provideAPIKey:googleApiKey];
-    //[self testService];
+    [self testService];
 
     return YES;
 }

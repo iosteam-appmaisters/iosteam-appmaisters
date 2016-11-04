@@ -140,7 +140,6 @@
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
         [self.navigationController.view.window bringSubviewToFront:view];
         [view setHidden:FALSE];
-
     }
 }
 
