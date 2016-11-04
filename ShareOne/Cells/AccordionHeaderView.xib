@@ -21,10 +21,13 @@
                             <rect key="frame" x="586" y="19" width="4" height="7"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="529-R1-yiG">
-                            <rect key="frame" x="54" y="13" width="49" height="18"/>
+                            <rect key="frame" x="54" y="0.0" width="49" height="44"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                            </variation>
                         </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ze1-bW-jH2">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -44,6 +47,9 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="fIQ-eb-zwA" firstAttribute="height" secondItem="aYW-rw-9hm" secondAttribute="height" id="0Xz-he-DSb"/>
+                        <constraint firstItem="529-R1-yiG" firstAttribute="top" secondItem="Y9z-3k-J3L" secondAttribute="top" id="5eO-lD-G5q">
+                            <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                        </constraint>
                         <constraint firstItem="ZqC-F5-CVm" firstAttribute="leading" secondItem="Y9z-3k-J3L" secondAttribute="leading" constant="20" id="Dfs-8j-iEb"/>
                         <constraint firstItem="ZqC-F5-CVm" firstAttribute="centerY" secondItem="Y9z-3k-J3L" secondAttribute="centerY" id="G4b-rT-ZS2"/>
                         <constraint firstItem="aYW-rw-9hm" firstAttribute="leading" secondItem="Y9z-3k-J3L" secondAttribute="leading" id="NgG-h4-KSm"/>
@@ -53,6 +59,9 @@
                         <constraint firstItem="529-R1-yiG" firstAttribute="centerY" secondItem="Y9z-3k-J3L" secondAttribute="centerY" id="hi6-jW-in6"/>
                         <constraint firstAttribute="trailing" secondItem="aYW-rw-9hm" secondAttribute="trailing" id="neG-Cb-Nkd"/>
                         <constraint firstItem="fIQ-eb-zwA" firstAttribute="leading" secondItem="aYW-rw-9hm" secondAttribute="leading" id="prW-cY-uQA"/>
+                        <constraint firstAttribute="bottom" secondItem="529-R1-yiG" secondAttribute="bottom" id="qhD-eo-jqS">
+                            <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                        </constraint>
                         <constraint firstAttribute="bottom" secondItem="aYW-rw-9hm" secondAttribute="bottom" id="sF6-6V-4XP"/>
                     </constraints>
                     <variation key="default">
@@ -84,6 +93,7 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="WxI-RB-Ds7"/>
+                    <exclude reference="yhO-4X-ryP"/>
                 </mask>
             </variation>
             <connections>

@@ -34,10 +34,25 @@
     
     _contentArr= [ShareOneUtility getSideMenuDataFromPlist];
     
+    
+    self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+//    self.fzaTblView.estimatedRowHeight = 100.0;
+//    self.fzaTblView.rowHeight = UITableViewAutomaticDimension;
+//    self.fzaTblView.estimatedSectionHeaderHeight=100;
+
+    
     self.fzaTblView.allowMultipleSectionsOpen = YES;
     [self.fzaTblView registerNib:[UINib nibWithNibName:@"AccordionHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:kAccordionHeaderViewReuseIdentifier];
+    
 
 
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 -(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture
@@ -85,19 +100,28 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0;
+//    return 44.0;
+    return UITableViewAutomaticDimension;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return kDefaultAccordionHeaderViewHeight;
+//    return kDefaultAccordionHeaderViewHeight;
+    return UITableViewAutomaticDimension;
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
+    
+    return 100.0;
+
+//    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-    return [self tableView:tableView heightForHeaderInSection:section];
+    return 100.0;
+
+//    return [self tableView:tableView heightForHeaderInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -146,6 +170,12 @@
     return (UIView *)objFZAccordionTableViewHeaderView;
 }
 
+//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    NSDictionary* dict = _contentArr[section];
+//    //....
+//    return [dict valueForKey:MAIN_CAT_TITLE];
+//}
+//
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
