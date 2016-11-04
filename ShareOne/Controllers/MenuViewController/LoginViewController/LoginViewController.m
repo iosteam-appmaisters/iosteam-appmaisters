@@ -175,6 +175,10 @@
 
 - (void)getSignInWithUser:(User *)user{
     
+    
+    [self startApplication];
+    return;
+    
     __weak LoginViewController *weakSelf = self;
 //    [weakSelf startApplication];
     
