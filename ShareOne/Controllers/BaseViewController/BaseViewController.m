@@ -131,6 +131,7 @@
 
 -(void)sendAdvertismentViewToBack{
     UIWebView *view = [self getAdverTismentView];
+    [view setHidden:TRUE];
     [self.navigationController.view.window sendSubviewToBack:view];
 }
 
@@ -138,6 +139,8 @@
     UIWebView *view = [self getAdverTismentView];
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
         [self.navigationController.view.window bringSubviewToFront:view];
+        [view setHidden:FALSE];
+
     }
 }
 
@@ -293,8 +296,10 @@
     }
 }
 
--(void)sendAdvertismentBack{
-    [self bringAdvertismentViewToFront];
+-(void)bringAdvertismentFront{
+    
+    if(![[self.navigationController.viewControllers lastObject] isKindOfClass:[HomeViewController class]])
+        [self bringAdvertismentViewToFront];
 }
 
 @end

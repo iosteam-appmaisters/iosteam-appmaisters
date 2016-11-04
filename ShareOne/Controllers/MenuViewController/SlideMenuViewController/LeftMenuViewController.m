@@ -74,7 +74,7 @@
         if([sender isKindOfClass:[NSIndexPath class]]){
             if (_homeDelegate != nil && [_homeDelegate respondsToSelector:@selector(pushViewControllerWithObject:)]){
                 [[self homeDelegate] pushViewControllerWithObject:_controllerInfoDict];
-                [[self homeDelegate] sendAdvertismentBack];
+                [[self homeDelegate] bringAdvertismentFront];
 
             }
         }
@@ -170,12 +170,6 @@
     return (UIView *)objFZAccordionTableViewHeaderView;
 }
 
-//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    NSDictionary* dict = _contentArr[section];
-//    //....
-//    return [dict valueForKey:MAIN_CAT_TITLE];
-//}
-//
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

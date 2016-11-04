@@ -72,7 +72,7 @@
 
 -(void)updateDataByDefaultValues{
     
-    [_quickBalanceBtn setHidden:[ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
+    [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_userFingerprintBtn setSelected:[ShareOneUtility isTouchIDEnabled]];
     if([ShareOneUtility isUserRemembered]){
@@ -174,10 +174,6 @@
 
 
 - (void)getSignInWithUser:(User *)user{
-    
-    
-    [self startApplication];
-    return;
     
     __weak LoginViewController *weakSelf = self;
 //    [weakSelf startApplication];
