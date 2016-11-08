@@ -647,26 +647,113 @@
 
     NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
     
-    NSLog(@"MAC : %@  Key : %@",mac,[self getSecretKey]);
     
     
-   hex = [self HMACWithSecret:[self getSecretKey] AndData:mac];
+     char bytes[]={ (Byte)0x5f, (Byte)0xc5, (Byte)0xa2, (Byte)0x7e, (Byte)0xed, (Byte)0xf1, (Byte)0xb6, (Byte)0x8b, (Byte)0x98, (Byte)0xef, (Byte)0x3b, (Byte)0xc0, (Byte)0xbe, (Byte)0xe7, (Byte)0xc0, (Byte)0xa5 };
     
-    NSLog(@"Encrypted MAC : %@ ",hex);
+    
+    NSString *newMac = @"700000465-ShareoneKlko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m147826985270000046566666655078";
+    
+    
+//    hex = [self HMACWithSecret:@"" AndData:newMac withByteArr:bytes];
+//    
+//    NSLog(@"MAC : %@",newMac);
 
+//    NSLog(@"MAC : %@  Key : %@",newMac,str);
+//
+//    
+////   hex = [self HMACWithSecret:str AndData:mac];
+//    
+//    
+//    unsigned char dataArr = [newMac UTF8String];
+//    
+//
+   NSData *d= [self calculateWithAlgorithm:MD5 forKey:bytes andData:nil AndString:newMac];
+
+    
+    NSLog(@"Encrypted MAC : %@ ",[self hexadecimalStringWithData:d]);
+//
+//    NSLog(@"MAC should b : 767f3dcf8b82ad6102a4cf0783efd2e5");
+    
+    
     
     return hex;
 }
 
-+ (NSString*) HMACWithSecret:(NSString*) secret AndData:(NSString *)data
++ (NSString *)hexadecimalStringWithData:(NSData *)data{
+    /* Returns hexadecimal string of NSData. Empty string if data is empty.   */
+    
+    const unsigned char *dataBuffer = (const unsigned char *)[data bytes];
+    
+    if (!dataBuffer)
+        return [NSString string];
+    
+    NSUInteger          dataLength  = [data length];
+    NSMutableString     *hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
+    
+    for (int i = 0; i < dataLength; ++i)
+        [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
+    
+    return [NSString stringWithString:hexString];
+}
+
+// This enum is in HMAC.h
+typedef NS_ENUM(NSInteger, HMACAlgorithm)
+{
+    SHA1,
+    MD5,
+    SHA256,
+    SHA384,
+    SHA512,
+    SHA224
+};
+
+// Class methods here
++ (NSData *)calculateWithAlgorithm:(HMACAlgorithm)algorithm forKey:(const void *)key andData:(const void *)data AndString:(NSString *)hash
+{
+    NSInteger digestLength = [self digestLengthForAlgorithm:algorithm];
+    unsigned char hmac[digestLength];
+    
+    
+    
+    const char       *str = [hash cStringUsingEncoding:NSASCIIStringEncoding];
+
+
+    CCHmac(algorithm, &key, strlen(key), &str, strlen(str), &hmac);
+    
+
+    
+    NSData *hmacBytes = [NSData dataWithBytes:hmac length:sizeof(hmac)];
+    return hmacBytes;
+}
+
++ (NSInteger)digestLengthForAlgorithm:(HMACAlgorithm)algorithm
+{
+    switch (algorithm)
+    {
+        case MD5: return CC_MD5_DIGEST_LENGTH;
+        case SHA1: return CC_SHA1_DIGEST_LENGTH;
+        case SHA224: return CC_SHA224_DIGEST_LENGTH;
+        case SHA256: return CC_SHA256_DIGEST_LENGTH;
+        case SHA384: return CC_SHA384_DIGEST_LENGTH;
+        case SHA512: return CC_SHA512_DIGEST_LENGTH;
+        default: return 0;
+    }
+}
+
++ (NSString*) HMACWithSecret:(NSString*) secret AndData:(NSString *)data withByteArr:(const char       *)byteKey
 {
     
     CCHmacContext    ctx;
 //    const char       *key = [secret UTF8String];
-//    const char       *str = [data UTF8String];
+    const char       *str = [data UTF8String];
     
-    const char       *key = [secret cStringUsingEncoding:NSASCIIStringEncoding];
-    const char       *str = [data cStringUsingEncoding:NSASCIIStringEncoding];
+//    const char       *key = [secret cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    const char       *key = byteKey;
+
+    
+//    const char       *str = [data cStringUsingEncoding:NSASCIIStringEncoding];
 
     unsigned char    mac[CC_MD5_DIGEST_LENGTH];
     char             hexmac[2 * CC_MD5_DIGEST_LENGTH + 1];

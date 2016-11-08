@@ -35,20 +35,34 @@
     _contentArr= [ShareOneUtility getSideMenuDataFromPlist];
     
     
-    self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+//    self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 //    self.fzaTblView.estimatedRowHeight = 100.0;
 //    self.fzaTblView.rowHeight = UITableViewAutomaticDimension;
 //    self.fzaTblView.estimatedSectionHeaderHeight=100;
 
     
+
     self.fzaTblView.allowMultipleSectionsOpen = YES;
     [self.fzaTblView registerNib:[UINib nibWithNibName:@"AccordionHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:kAccordionHeaderViewReuseIdentifier];
     
+    self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    
+    //[self performSelector:@selector(reloadCustomData) withObject:nil afterDelay:2];
 
 
 }
 
+-(void)reloadCustomData{
+
+    NSLog(@"reloadCustomData");
+    [self.fzaTblView reloadData];
+    [self.fzaTblView setNeedsLayout];
+    [self.fzaTblView layoutIfNeeded];
+    [self.fzaTblView reloadData];
+
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -100,28 +114,30 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 44.0;
-    return UITableViewAutomaticDimension;
+    return 44.0;
+//    return UITableViewAutomaticDimension;
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return kDefaultAccordionHeaderViewHeight;
-    return UITableViewAutomaticDimension;
+    return kDefaultAccordionHeaderViewHeight;
+    
+//    return UITableViewAutomaticDimension ;
+    
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 100.0;
+//    return 100.0;
 
-//    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
+    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-    return 100.0;
+//    return 100.0;
 
-//    return [self tableView:tableView heightForHeaderInSection:section];
+    return [self tableView:tableView heightForHeaderInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -196,16 +212,16 @@
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    NSLog(@"didOpenSection");
+    NSLog(@"didOpenSection");
     
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    NSLog(@"willCloseSection");
+    NSLog(@"willCloseSection");
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    NSLog(@"didCloseSection");
+    NSLog(@"didCloseSection");
 }
 
 

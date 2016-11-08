@@ -117,9 +117,9 @@
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
 
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getAESEncryptedContexIDInBase64:contexID],@"EncryptedContextID",[ShareOneUtility getAESRandomIVForSSON],@"EncryptionIV",@"/Transfers/Account",@"RedirectPath", nil];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getAESEncryptedContexIDInBase64:contexID],@"EncryptedContextID",[ShareOneUtility getAESRandomIVForSSON],@"EncryptionIV",@"Transfers/Account",@"RedirectPath", nil];
     
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         

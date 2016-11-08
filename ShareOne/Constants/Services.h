@@ -11,6 +11,8 @@
 
 #define KWEB_SERVICE_BASE_URL                           @"https://nsmobile.ns3web.com"
 
+#define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"
+
 #define KWEB_SERVICE_LOGIN                              @"eft/memberLogin"
 
 #define KWEB_SERVICE_MEMBER_VALIDATE                    @"eft/memberValidate"

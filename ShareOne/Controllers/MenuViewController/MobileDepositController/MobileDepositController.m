@@ -99,7 +99,7 @@
 
     [_ammountTxtFeild resignFirstResponder];
     if (_bottomConstraint.constant<0){
-        _bottomConstraint.constant=0;
+        _bottomConstraint.constant=50;
         [self.view layoutIfNeeded];
     }
     else{
