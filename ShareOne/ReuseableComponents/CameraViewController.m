@@ -114,7 +114,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     // initialize AV Foundation
     [self setupAVCapture];
     
-    previewView.backgroundColor = [UIColor whiteColor];
+    previewView.backgroundColor = [UIColor blackColor];
     
     //*Changing Navigation Bar Height +Status Bar Height
     float navigationbarHeight=toolbarTop.frame.size.height;
@@ -720,7 +720,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
                                     labelProcessing.autoresizingMask = UIViewAutoresizingNone;
                                     [labelProcessing setBackgroundColor:[UIColor clearColor]];
                                     [labelProcessing setShadowOffset:CGSizeMake(1,-1)];
-                                    [labelProcessing setShadowColor:[UIColor blackColor]];
+                                    [labelProcessing setShadowColor:[UIColor greenColor]];
                                     [labelProcessing setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
                                     [labelProcessing setTextColor:[UIColor lightTextColor]];
                                     labelProcessing.numberOfLines = 1;

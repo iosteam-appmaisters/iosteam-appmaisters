@@ -10,6 +10,14 @@
 
 @interface PayPersonController ()
 
+@property (nonatomic,strong) IBOutlet UIWebView *webView;
+@property (nonatomic,strong) IBOutlet UIView *webViewParent;
+@property (nonatomic,strong) IBOutlet UIButton *closeBtn;
+
+
+- (IBAction)submittButtonClicked:(id)sender;
+- (IBAction)closeButtonClicked:(id)sender;
+
 @end
 
 @implementation PayPersonController
@@ -18,6 +26,46 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+- (IBAction)submittButtonClicked:(id)sender{
+    
+    __weak PayPersonController *weakSelf = self;
+    
+
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
+    [_webViewParent setHidden:FALSE];
+    [_closeBtn setHidden:FALSE];
+
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.google.com.pk"]]];
+}
+
+
+- (IBAction)closeButtonClicked:(id)sender{
+    
+    __weak PayPersonController *weakSelf = self;
+    
+    
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
+    [_webViewParent setHidden:TRUE];
+    [_closeBtn setHidden:TRUE];
+
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    __weak PayPersonController *weakSelf = self;
+    
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -15,6 +15,7 @@
 #import "SuffixInfo.h"
 #import "User.h"
 #import "LoadingController.h"
+//#import "WebViewProxyURLProtocol.h"
 
 
 
@@ -23,6 +24,8 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    //[NSURLProtocol registerClass:[WebViewProxyURLProtocol class]];
+
     __weak HomeViewController *weakSelf = self;
     
     
@@ -49,12 +52,27 @@
 
 
 
-    [User postContextIDForSSOWithDelegate:self completionBlock:^(id response) {
+    [User postContextIDForSSOWithDelegate:self completionBlock:^(id urlPath) {
         
 
-        NSLog(@"%@",(NSURL *)response);
+//        NSLog(@"%@",(NSString *)urlPath);
+//        
+//        NSArray * cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+//        NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies: cookies];
         
-        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:response]];
+//        NSLog(@"cookies : %@",cookies);
+        
+//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlPath]];
+//        [request setAllHTTPHeaderFields:headers];
+        
+//        NSMutableURLRequest *request = [(NSMutableURLRequest *)urlPath mutableCopy];
+//        [request setAllHTTPHeaderFields:headers];
+        [weakSelf.webview loadRequest:(NSMutableURLRequest *)urlPath];
+
+
+        
+        
+//        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlPath]]];
         //[weakSelf.webview loadHTMLString:response baseURL:nil];
 
     } failureBlock:^(NSError *error) {
@@ -63,9 +81,9 @@
 
     
     
-//    if(!_url)
-//        _url = HOME_WEB_VIEW_URL;
-//    
+    if(!_url)
+        _url = HOME_WEB_VIEW_URL;
+//
 //    NSString *queryString = [NSString stringWithFormat:@"%@/%@",_url,[[[SharedUser sharedManager] userObject] ContextID]];
 //    
 //    NSLog(@"queryString: %@",queryString);
@@ -216,9 +234,11 @@
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
     NSString *myLoadedUrl = [[webView.request mainDocumentURL] absoluteString];
     NSLog(@"Loaded url: %@", myLoadedUrl);
+//    NSLog(@"Static Url : %@",_url);
+//    
+//    if(![myLoadedUrl isEqualToString:@"https://nsmobilecp.ns3web.com/Log/In"])
+//        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+
     
-    if(![_url isEqualToString:myLoadedUrl]){
-        NSLog(@"It is Redirecting");
-    }
 }
 @end

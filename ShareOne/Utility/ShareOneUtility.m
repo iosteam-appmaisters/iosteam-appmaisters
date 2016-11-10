@@ -781,8 +781,8 @@ NSLog(Y, Z);		\
     
     NSData *encryptedResponse = [self doCipher:plainText key:keyData context:kCCEncrypt padding:0];
     
-    NSLog(@"It should b : HGZJbtfEyim5o5nT9QbgwhXnxCCEMSYwmefv0X1HoCU=");
-    NSLog(@"%@" , [self base64EncodeData:encryptedResponse]);
+//    NSLog(@"It should b : HGZJbtfEyim5o5nT9QbgwhXnxCCEMSYwmefv0X1HoCU=");
+//    NSLog(@"%@" , [self base64EncodeData:encryptedResponse]);
     return [self base64EncodeData:encryptedResponse];
 }
 
