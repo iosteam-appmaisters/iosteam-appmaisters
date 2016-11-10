@@ -40,6 +40,7 @@ PODS:
   - SAMKeychain (1.5.1)
   - SLExpandableTableView (1.3.1)
   - STCollapseTableView (0.1.1)
+  - XMLDictionary (1.4)
 
 DEPENDENCIES:
   - AES256Encrypter (~> 0.0)
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - SAMKeychain (~> 1.5)
   - SLExpandableTableView
   - STCollapseTableView
+  - XMLDictionary (~> 1.4)
 
 SPEC CHECKSUMS:
   AES256Encrypter: 6428b61e39675814c597a675a5d0425327eaa36d
@@ -66,7 +68,8 @@ SPEC CHECKSUMS:
   SAMKeychain: 6b04852a20684167aea97bdf8ba12c95d3616376
   SLExpandableTableView: ff63a4bb4b71c6c3ae2b7cb1cde6a36c1645f23c
   STCollapseTableView: edd40eacf9411ce862da921f83e0b7b1680fac4d
+  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-PODFILE CHECKSUM: f89078323bf9df7f71576966a0199bf8f42ac729
+PODFILE CHECKSUM: e8209d5ff53f8dd5f51c88bb2d307a6b78ae511b
 
 COCOAPODS: 1.0.1

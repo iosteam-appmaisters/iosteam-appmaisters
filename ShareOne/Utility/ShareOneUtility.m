@@ -9,19 +9,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "ShareOneUtility.h"
 #import <CoreLocation/CoreLocation.h>
-#import <CommonCrypto/CommonDigest.h>
-
-#include <CommonCrypto/CommonDigest.h>
-#include <CommonCrypto/CommonHMAC.h>
-
-#include <sys/types.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
+#import "NSString+MD5String.h"
 #import "ShareOneUtility.h"
 #import "BBAES.h"
 #import "ConstantsShareOne.h"
@@ -30,6 +18,23 @@
 #import "SAMKeychain.h"
 #import "Location.h"
 #import "SharedUser.h"
+#import <CommonCrypto/CommonCryptor.h>
+#import <CommonCrypto/CommonDigest.h>
+#import <Security/Security.h>
+
+static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+#define LOGGING_FACILITY(X, Y)	\
+if(!(X)) {			\
+NSLog(Y);		\
+}
+
+#define LOGGING_FACILITY1(X, Y, Z)	\
+if(!(X)) {				\
+NSLog(Y, Z);		\
+}
+
+
 
 
 
@@ -192,24 +197,11 @@
     
     NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",PUBLIC_KEY,timestamp,SECURITY_VERSION,request_type,H_MAC_TYPE];
 //    NSLog(@"stringToSignIn : \n%@",stringToSignIn);
-    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding];
+    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding AndKey:PRIVATE_KEY];
 //    [self applyEncriptionWithPrivateKey:PRIVATE_KEY andPublicKey:PUBLIC_KEY];
 }
 
-+(NSString *)getHMACSHAWithSignature:(NSString *)signature andEncoding:(NSStringEncoding )encoding{
-    
-    
-    const char *cKey  = [PRIVATE_KEY cStringUsingEncoding:encoding];
-    const char *cData = [signature cStringUsingEncoding:encoding];
-    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
-    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
-    NSData *HMACData = [NSData dataWithBytes:cHMAC length:sizeof(cHMAC)];
-    return [self getBase64ValueWithObject:HMACData];
-}
 
-+ (NSString *)getBase64ValueWithObject:(NSData *)hmac_sha_data{
-    return [hmac_sha_data base64EncodedStringWithOptions:0];
-}
 
 +(void)applyEncriptionWithPrivateKey:(NSString *)private_key andPublicKey:(NSString *)public_key{
     
@@ -587,18 +579,24 @@
 }
 
 +(NSString *)getSecretKey{
-    return KEY_VALUE_2;
+    return KEY_VALUE;
 }
 
 +(NSString *)getMemberValue{
-    return @"666";
-//    return [self randomStringWithLength:16];
+    
+//    return @"444";
+
+    User *obj =     [[SharedUser sharedManager] userObject];
+    return [NSString stringWithFormat:@"%d",[obj.Account intValue]];
 }
 
 +(NSString *)getAccountValue{
+
+    User *obj =     [[SharedUser sharedManager] userObject];
+    return [NSString stringWithFormat:@"%d55078",[obj.Account intValue]];
+
     
-    // account number + suffix[000 00000]
-    return @"66655078";
+//    return @"44455078";
 //    return [self randomStringWithLength:17];
 }
 
@@ -612,186 +610,88 @@
     
     return @"Louis Uncommon";
 }
-+ (NSString *)applyMD5OnValue:(NSString *)value{
-    
-    const char* str = [value UTF8String];
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(str, strlen(str), result);
-    
-    NSMutableString *ret = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH*2];
-    for(int i = 0; i<CC_MD5_DIGEST_LENGTH; i++) {
-        [ret appendFormat:@"%02x",result[i]];
-    }
-    return ret;
-}
-
-+ (NSString*)MD5onData:(NSData *)data
-{
-    // Create byte array of unsigned chars
-    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
-    
-    // Create 16 byte MD5 hash value, store in buffer
-    CC_MD5(data.bytes, data.length, md5Buffer);
-    
-    // Convert unsigned char buffer to NSString of hex values
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x",md5Buffer[i]];
-    
-    return output;
-}
 
 +(NSString *)getMacForVertifi{
     
-    NSString *hex = nil;
 
     NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
     
+    NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
     
-    
-     char bytes[]={ (Byte)0x5f, (Byte)0xc5, (Byte)0xa2, (Byte)0x7e, (Byte)0xed, (Byte)0xf1, (Byte)0xb6, (Byte)0x8b, (Byte)0x98, (Byte)0xef, (Byte)0x3b, (Byte)0xc0, (Byte)0xbe, (Byte)0xe7, (Byte)0xc0, (Byte)0xa5 };
-    
-    
-    NSString *newMac = @"700000465-ShareoneKlko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m147826985270000046566666655078";
-    
-    
-//    hex = [self HMACWithSecret:@"" AndData:newMac withByteArr:bytes];
-//    
-//    NSLog(@"MAC : %@",newMac);
-
-//    NSLog(@"MAC : %@  Key : %@",newMac,str);
-//
-//    
-////   hex = [self HMACWithSecret:str AndData:mac];
-//    
-//    
-//    unsigned char dataArr = [newMac UTF8String];
-//    
-//
-   NSData *d= [self calculateWithAlgorithm:MD5 forKey:bytes andData:nil AndString:newMac];
-
-    
-    NSLog(@"Encrypted MAC : %@ ",[self hexadecimalStringWithData:d]);
-//
-//    NSLog(@"MAC should b : 767f3dcf8b82ad6102a4cf0783efd2e5");
-    
-    
-    
-    return hex;
+    return  [self calculateHMACMD5:data];
 }
 
-+ (NSString *)hexadecimalStringWithData:(NSData *)data{
-    /* Returns hexadecimal string of NSData. Empty string if data is empty.   */
++(NSString *)getHMACSHAWithSignature:(NSString *)signature andEncoding:(NSStringEncoding )encoding AndKey:(NSString *)key{
     
-    const unsigned char *dataBuffer = (const unsigned char *)[data bytes];
     
-    if (!dataBuffer)
-        return [NSString string];
-    
-    NSUInteger          dataLength  = [data length];
-    NSMutableString     *hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
-    
-    for (int i = 0; i < dataLength; ++i)
-        [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
-    
-    return [NSString stringWithString:hexString];
+    const char *cKey  = [key cStringUsingEncoding:encoding];
+    const char *cData = [signature cStringUsingEncoding:encoding];
+    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
+    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    NSData *HMACData = [NSData dataWithBytes:cHMAC length:sizeof(cHMAC)];
+    return [self getBase64ValueWithObject:HMACData];
 }
 
-// This enum is in HMAC.h
-typedef NS_ENUM(NSInteger, HMACAlgorithm)
-{
-    SHA1,
-    MD5,
-    SHA256,
-    SHA384,
-    SHA512,
-    SHA224
-};
-
-// Class methods here
-+ (NSData *)calculateWithAlgorithm:(HMACAlgorithm)algorithm forKey:(const void *)key andData:(const void *)data AndString:(NSString *)hash
-{
-    NSInteger digestLength = [self digestLengthForAlgorithm:algorithm];
-    unsigned char hmac[digestLength];
++(NSString *)getAESEncryption:(NSString *)signature andEncoding:(NSStringEncoding )encoding AndKey:(NSString *)key{
     
     
+    NSData *keyData =[key hexToBytes];
     
-    const char       *str = [hash cStringUsingEncoding:NSASCIIStringEncoding];
-
-
-    CCHmac(algorithm, &key, strlen(key), &str, strlen(str), &hmac);
+    NSData* data = [signature dataUsingEncoding:NSUTF8StringEncoding];
     
-
     
-    NSData *hmacBytes = [NSData dataWithBytes:hmac length:sizeof(hmac)];
-    return hmacBytes;
-}
-
-+ (NSInteger)digestLengthForAlgorithm:(HMACAlgorithm)algorithm
-{
-    switch (algorithm)
-    {
-        case MD5: return CC_MD5_DIGEST_LENGTH;
-        case SHA1: return CC_SHA1_DIGEST_LENGTH;
-        case SHA224: return CC_SHA224_DIGEST_LENGTH;
-        case SHA256: return CC_SHA256_DIGEST_LENGTH;
-        case SHA384: return CC_SHA384_DIGEST_LENGTH;
-        case SHA512: return CC_SHA512_DIGEST_LENGTH;
-        default: return 0;
-    }
-}
-
-+ (NSString*) HMACWithSecret:(NSString*) secret AndData:(NSString *)data withByteArr:(const char       *)byteKey
-{
+    NSMutableData *hMacOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     
-    CCHmacContext    ctx;
-//    const char       *key = [secret UTF8String];
-    const char       *str = [data UTF8String];
+    CCHmac(kCCHmacAlgSHA256,
+           keyData.bytes, keyData.length,
+           data.bytes,    data.length,
+           hMacOut.mutableBytes);
     
-//    const char       *key = [secret cStringUsingEncoding:NSASCIIStringEncoding];
-    
-    const char       *key = byteKey;
-
-    
-//    const char       *str = [data cStringUsingEncoding:NSASCIIStringEncoding];
-
-    unsigned char    mac[CC_MD5_DIGEST_LENGTH];
-    char             hexmac[2 * CC_MD5_DIGEST_LENGTH + 1];
-    char             *p;
-    
-    CCHmacInit( &ctx, kCCHmacAlgMD5, key, strlen( key ));
-    CCHmacUpdate( &ctx, str, strlen(str) );
-    CCHmacFinal( &ctx, mac );
-    
-    p = hexmac;
-    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++ ) {
-        snprintf( p, 3, "%02x", mac[ i ] );
-        p += 2;
+    /* Returns hexadecimal string of NSData. Empty string if data is empty. */
+    NSString *hexString = @"";
+    if (data) {
+        uint8_t *dataPointer = (uint8_t *)(hMacOut.bytes);
+        for (int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++) {
+            hexString = [hexString stringByAppendingFormat:@"%02x", dataPointer[i]];
+        }
     }
     
-    return [NSString stringWithUTF8String:hexmac];
-     
-//    NSData *keyData = [secret dataUsingEncoding:NSASCIIStringEncoding];
-//    NSData *dataData = [data dataUsingEncoding:NSASCIIStringEncoding];
-//    NSMutableData *hash = [NSMutableData dataWithLength:CC_MD5_DIGEST_LENGTH];
-//    CCHmac(kCCHmacAlgMD5, keyData.bytes, keyData.length , dataData.bytes, dataData.length, hash.mutableBytes);
-//    
-//    NSString *string = [[NSString alloc] initWithData:hash encoding:NSASCIIStringEncoding] ;
-//    NSLog(@"hash: %@", string);
-//
-//    return string;
-
+    
+    
+    NSLog(@"It should b HGZJbtfEyim5o5nT9QbgwhXnxCCEMSYwmefv0X1HoCU=");
+    NSLog(@"REal : %@",[self getBase64ValueWithObject:hMacOut]);
+    
+    return [self getBase64ValueWithObject:hMacOut];
+    
 
 }
 
-+(NSString *)convertStringToASCIIEncoding:(NSString *)sourceString{
-    
-    NSData *asciiData = [sourceString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    
-    NSString *asciiString = [[NSString alloc] initWithData:asciiData encoding:NSASCIIStringEncoding];
-    
-    return asciiString;
++ (NSString *)getBase64ValueWithObject:(NSData *)hmac_sha_data{
+    return [hmac_sha_data base64EncodedStringWithOptions:0];
+}
 
++ (NSString *)calculateHMACMD5:(NSData *)data {
+    NSParameterAssert(data);
+    
+    NSData *keyData =[[self getSecretKey] hexToBytes];
+
+    NSMutableData *hMacOut = [NSMutableData dataWithLength:CC_MD5_DIGEST_LENGTH];
+    
+    CCHmac(kCCHmacAlgMD5,
+           keyData.bytes, keyData.length,
+           data.bytes,    data.length,
+           hMacOut.mutableBytes);
+    
+    /* Returns hexadecimal string of NSData. Empty string if data is empty. */
+    NSString *hexString = @"";
+    if (data) {
+        uint8_t *dataPointer = (uint8_t *)(hMacOut.bytes);
+        for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+            hexString = [hexString stringByAppendingFormat:@"%02x", dataPointer[i]];
+        }
+    }
+    
+    return hexString;
 }
 
 +(void)getBytesOfString:(NSString *)string{
@@ -800,17 +700,7 @@ typedef NS_ENUM(NSInteger, HMACAlgorithm)
     NSLog(@"getBytesOfString : %d",data.length);
 }
 
-+(NSData*) calculateHMACMD5WithKey:(NSString*) key andData:(NSString*) data{
-    const char *cKey  = [key cStringUsingEncoding:NSASCIIStringEncoding];
-    const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];
-    
-    unsigned char cHMAC[CC_MD5_DIGEST_LENGTH];
-    
-    CCHmac(kCCHmacAlgMD5, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
-    
-    return [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
-    
-}
+
 
 +(NSString *)getUUID{
     
@@ -857,10 +747,242 @@ typedef NS_ENUM(NSInteger, HMACAlgorithm)
 }
 
 +(NSString *)getAESEncryptedContexIDInBase64:(NSString *)contexID{
-   return  [self getHMACSHAWithSignature:contexID andEncoding:NSUTF8StringEncoding];
+    
+    return [self encryptString:contexID];
+
+//    return [self encryptString:@"0a4e586b4db22c7e"];
 }
 
 +(NSString *)getAESRandomIVForSSON{
-     return [self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY];
+    
+    return @"e878fe035963e073897d00b2039268c1";
+//     return [self getAESRandom4WithSecretKey:PRIVATE_KEY_SSO AndPublicKey:PUBLIC_KEY];
 }
+//- (NSData *)doCipher:(NSData *)plainText key:(NSData *)theSymmetricKey context:(CCOperation)encryptOrDecrypt padding:(CCOptions *)pkcs7{
+//    
+//}
+
++ (NSString*)encryptString:(NSString*)string
+{
+    NSRange fullRange;
+    fullRange.length = [string length];
+    fullRange.location = 0;
+    
+    uint8_t buffer[[string length]];
+    
+    [string getBytes:&buffer maxLength:[string length] usedLength:NULL encoding:NSUTF8StringEncoding options:0 range:fullRange remainingRange:NULL];
+    
+    NSData *plainText = [NSData dataWithBytes:buffer length:[string length]];
+    
+    NSData *keyData =[PRIVATE_KEY_SSO hexToBytes];
+    
+    //NSData* data = [string dataUsingEncoding:NSUTF8StringEncoding];
+
+    
+    NSData *encryptedResponse = [self doCipher:plainText key:keyData context:kCCEncrypt padding:0];
+    
+    NSLog(@"It should b : HGZJbtfEyim5o5nT9QbgwhXnxCCEMSYwmefv0X1HoCU=");
+    NSLog(@"%@" , [self base64EncodeData:encryptedResponse]);
+    return [self base64EncodeData:encryptedResponse];
+}
+
+
+
++ (NSData *)doCipher:(NSData *)plainText key:(NSData *)theSymmetricKey context:(CCOperation)encryptOrDecrypt padding:(CCOptions *)pkcs7
+{
+    CCCryptorStatus ccStatus = kCCSuccess;
+    // Symmetric crypto reference.
+    CCCryptorRef thisEncipher = NULL;
+    // Cipher Text container.
+    NSData * cipherOrPlainText = nil;
+    // Pointer to output buffer.
+    uint8_t * bufferPtr = NULL;
+    // Total size of the buffer.
+    size_t bufferPtrSize = 0;
+    // Remaining bytes to be performed on.
+    size_t remainingBytes = 0;
+    // Number of bytes moved to buffer.
+    size_t movedBytes = 0;
+    // Length of plainText buffer.
+    size_t plainTextBufferSize = 0;
+    // Placeholder for total written.
+    size_t totalBytesWritten = 0;
+    // A friendly helper pointer.
+    uint8_t * ptr;
+    
+    // Initialization vector; dummy in this case 0's.
+    uint8_t iv[kCCBlockSizeAES128];
+    memset((void *) iv, 0x0, (size_t) sizeof(iv));
+    
+    LOGGING_FACILITY(plainText != nil, @"PlainText object cannot be nil." );
+    LOGGING_FACILITY(theSymmetricKey != nil, @"Symmetric key object cannot be nil." );
+    LOGGING_FACILITY(pkcs7 != NULL, @"CCOptions * pkcs7 cannot be NULL." );
+    LOGGING_FACILITY([theSymmetricKey length] == kCCKeySizeAES128, @"Disjoint choices for key size." );
+    
+    plainTextBufferSize = [plainText length];
+    
+    LOGGING_FACILITY(plainTextBufferSize > 0, @"Empty plaintext passed in." );
+    
+    // We don't want to toss padding on if we don't need to
+    
+    
+    if(encryptOrDecrypt == kCCEncrypt)
+    {
+        /*
+        if(*pkcs7 != kCCOptionECBMode)
+        {
+            if((plainTextBufferSize % kCCBlockSizeAES128) == 0)
+            {
+                *pkcs7 = 0x0000;
+            }
+            else
+            {
+                *pkcs7 = kCCOptionPKCS7Padding;
+            }
+        }
+         */
+        
+//        *pkcs7 = kCCOptionPKCS7Padding;
+
+    }
+    else if(encryptOrDecrypt != kCCDecrypt)
+    {
+        LOGGING_FACILITY1( 0, @"Invalid CCOperation parameter [%d] for cipher context.", *pkcs7 );
+    }
+    
+    // Create and Initialize the crypto reference.
+    ccStatus = CCCryptorCreate(	encryptOrDecrypt,
+                               kCCAlgorithmAES128,
+                               kCCOptionPKCS7Padding,
+                               (const void *)[theSymmetricKey bytes],
+                               kCCKeySizeAES128,
+                               (const void *)iv,
+                               &thisEncipher
+                               );
+    
+    LOGGING_FACILITY1( ccStatus == kCCSuccess, @"Problem creating the context, ccStatus == %d.", ccStatus );
+    
+    // Calculate byte block alignment for all calls through to and including final.
+    bufferPtrSize = CCCryptorGetOutputLength(thisEncipher, plainTextBufferSize, true);
+    
+    // Allocate buffer.
+    bufferPtr = malloc( bufferPtrSize * sizeof(uint8_t) );
+    
+    // Zero out buffer.
+    memset((void *)bufferPtr, 0x0, bufferPtrSize);
+    
+    // Initialize some necessary book keeping.
+    
+    ptr = bufferPtr;
+    
+    // Set up initial size.
+    remainingBytes = bufferPtrSize;
+    
+    // Actually perform the encryption or decryption.
+    ccStatus = CCCryptorUpdate( thisEncipher,
+                               (const void *) [plainText bytes],
+                               plainTextBufferSize,
+                               ptr,
+                               remainingBytes,
+                               &movedBytes
+                               );
+    
+    LOGGING_FACILITY1( ccStatus == kCCSuccess, @"Problem with CCCryptorUpdate, ccStatus == %d.", ccStatus );
+    
+    // Handle book keeping.
+    ptr += movedBytes;
+    remainingBytes -= movedBytes;
+    totalBytesWritten += movedBytes;
+    
+    // Finalize everything to the output buffer.
+    ccStatus = CCCryptorFinal(	thisEncipher,
+                              ptr,
+                              remainingBytes,
+                              &movedBytes
+                              );
+    
+    totalBytesWritten += movedBytes;
+    
+    if(thisEncipher)
+    {
+        (void) CCCryptorRelease(thisEncipher);
+        thisEncipher = NULL;
+    }
+    
+    LOGGING_FACILITY1( ccStatus == kCCSuccess, @"Problem with encipherment ccStatus == %d", ccStatus );
+    
+    cipherOrPlainText = [NSData dataWithBytes:(const void *)bufferPtr length:(NSUInteger)totalBytesWritten];
+    
+    if(bufferPtr) free(bufferPtr);
+    
+    return cipherOrPlainText;
+    
+    /*
+     Or the corresponding one-shot call:
+     
+     ccStatus = CCCrypt(	encryptOrDecrypt,
+     kCCAlgorithmAES128,
+     typeOfSymmetricOpts,
+     (const void *)[self getSymmetricKeyBytes],
+     kChosenCipherKeySize,
+     iv,
+     (const void *) [plainText bytes],
+     plainTextBufferSize,
+     (void *)bufferPtr,
+     bufferPtrSize,
+     &movedBytes
+     );
+     
+     ccStatus = CCCrypt(	encryptOrDecrypt,
+     kCCAlgorithmAES128,
+     0,
+     symmetricKey,
+     kCCKeySizeAES128,
+     iv,
+     (const void *) [plainText bytes],
+     plainTextBufferSize,
+     (void *)bufferPtr,
+     bufferPtrSize,
+     &movedBytes
+     );
+     
+     */
+}
+
+#pragma mark Base64 Encode/Decoder
++ (NSString *)base64EncodeData:(NSData*)dataToConvert
+{
+    if ([dataToConvert length] == 0)
+        return @"";
+    
+    char *characters = malloc((([dataToConvert length] + 2) / 3) * 4);
+    if (characters == NULL)
+        return nil;
+    
+    NSUInteger length = 0;
+    
+    NSUInteger i = 0;
+    while (i < [dataToConvert length])
+    {
+        char buffer[3] = {0,0,0};
+        short bufferLength = 0;
+        while (bufferLength < 3 && i < [dataToConvert length])
+            buffer[bufferLength++] = ((char *)[dataToConvert bytes])[i++];
+        
+        //  Encode the bytes in the buffer to four characters, including padding "=" characters if necessary.
+        characters[length++] = encodingTable[(buffer[0] & 0xFC) >> 2];
+        characters[length++] = encodingTable[((buffer[0] & 0x03) << 4) | ((buffer[1] & 0xF0) >> 4)];
+        if (bufferLength > 1)
+            characters[length++] = encodingTable[((buffer[1] & 0x0F) << 2) | ((buffer[2] & 0xC0) >> 6)];
+        else characters[length++] = '=';
+        if (bufferLength > 2)
+            characters[length++] = encodingTable[buffer[2] & 0x3F];
+        else characters[length++] = '=';
+    }
+    
+    return [[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES];
+}
+
+
+
 @end

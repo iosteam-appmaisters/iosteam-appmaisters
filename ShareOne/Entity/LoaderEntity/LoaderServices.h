@@ -12,4 +12,7 @@
 
 +(void)setRequestOnQueueWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block failureBlock:(void(^)(NSError* error))failBlock;
 
++(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success))block failureBlock:(void(^)(NSError* error))failBlock;
+
+
 @end

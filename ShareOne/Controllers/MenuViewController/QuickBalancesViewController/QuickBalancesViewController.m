@@ -16,7 +16,7 @@
 
 #import "QuickBalances.h"
 #import "QuickTransaction.h"
-
+#import "LoaderServices.h"
 
 
 @implementation QuickBalancesViewController
@@ -29,13 +29,23 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    
+    __weak QuickBalancesViewController *weakSelf = self;
+
     _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getSuffixInfoSavesLocally]];
+    [ShareOneUtility showProgressViewOnView:self.view];
     
+    [LoaderServices setQTRequestOnQueueWithDelegate:weakSelf AndQuickBalanceArr:weakSelf.qbArr completionBlock:^(BOOL success) {
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        [weakSelf.qbTblView reloadData];
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 
 //    _qbArr = [ShareOneUtility getDummyDataForQB];
     
-    self.qbTblView.allowMultipleSectionsOpen = YES;
+    self.qbTblView.allowMultipleSectionsOpen = NO;
     [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
 
 
@@ -126,14 +136,10 @@
      */
     
     
-    
     /* Condtion to check whether categories has sub categories or not
      ** If(TRUE)    - Show right arrow in the section view
      **else -       - Hide right arrow view
      */
-    
-
-    
     
     [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:objQuickBalances.Type]];
     [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"$ %.02f",[objQuickBalances.Balance floatValue]]];
@@ -144,11 +150,7 @@
 
     [objFZAccordionTableViewHeaderView.sectionImgVew setImage:[UIImage imageNamed:@"icon-dollar"]];
     return (UIView *)objFZAccordionTableViewHeaderView;
-    
-
 }
-
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
@@ -157,7 +159,39 @@
 #pragma mark - <FZAccordionTableViewDelegate> -
 
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    NSLog(@"willOpenSection");    
+//    NSLog(@"willOpenSection");
+//    QuickBalances *obj = _qbArr[section];
+//    
+//    if([obj.transArr count]<=0){
+//        [self noTransaction];
+//    }
+
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+//        NSLog(@"didOpenSection");
+    QuickBalances *obj = _qbArr[section];
+    
+    if([obj.transArr count]<=0){
+        [self noTransaction];
+    }
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+//        NSLog(@"willCloseSection");
+//    QuickBalances *obj = _qbArr[section];
+//    
+//    if([obj.transArr count]<=0){
+//        [self noTransaction];
+//    }
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+//        NSLog(@"didCloseSection");
+}
+
+- (void)getQTForSelectedSection:(int)section{
+    
     QuickBalances *obj = _qbArr[section];
     
     __weak QuickBalancesViewController *weakSelf = self;
@@ -173,7 +207,7 @@
                 
                 if([obj.transArr count]>0){
                     [_qbTblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
-   
+                    
                 }
                 else{
                     [self noTransaction];
@@ -189,36 +223,12 @@
     else if ([obj.transArr count]<=0){
         [self noTransaction];
     }
+    
 }
-
 -(void)noTransaction{
     __weak QuickBalancesViewController *weakSelf = self;
-
+    
     [[ShareOneUtility shareUtitlities] showToastWithMessage:@"No Transaction " title:@"" delegate:weakSelf];
 }
-
--(void)getQuickTransaction{
-    
-    
-}
-- (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//        NSLog(@"didOpenSection");
-
-    
-}
-
-- (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//        NSLog(@"willCloseSection");
-    QuickBalances *obj = _qbArr[section];
-    
-    if([obj.transArr count]<=0){
-        [self noTransaction];
-    }
-}
-
-- (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//        NSLog(@"didCloseSection");
-}
-
 
 @end

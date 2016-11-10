@@ -110,21 +110,26 @@
     } failureBlock:^(NSError *error) {}];
 }
 
-+(void)postContextIDForSSOWithDelegate:(id)delegate completionBlock:(void(^)(BOOL  sucess))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)postContextIDForSSOWithDelegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *contexID = [[[SharedUser sharedManager] userObject] ContextID];
     
-    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
 
+    NSString *redirect_path = [NSString stringWithFormat:@"/Account/Summary"];
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getAESEncryptedContexIDInBase64:contexID],@"EncryptedContextID",[ShareOneUtility getAESRandomIVForSSON],@"EncryptionIV",@"Transfers/Account",@"RedirectPath", nil];
+    NSString *genIV= [ShareOneUtility getAESRandomIVForSSON];
     
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+    
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getAESEncryptedContexIDInBase64:contexID],@"EncryptedContextID",genIV,@"EncryptionIV",redirect_path,@"RedirectPath", nil];
+    
+    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+        block(response);
         
     } failureBlock:^(NSError *error) {
         
     }];
-    
 }
 
 

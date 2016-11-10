@@ -80,6 +80,9 @@
 
 #define PUBLIC_KEY                  @"bea351786c074347a0528acf729d0b8f"
 #define PRIVATE_KEY                 @"3b185aa994d2408091714536c28e324b"
+
+#define PRIVATE_KEY_SSO             @"1c4d379e533945a8a0c23525ddd85e89"
+
 #define H_MAC_TYPE                  @"SHA256"
 #define SECURITY_VERSION            @"1.1"
 #define HOST_ADDRESS                @"nsmobile.ns3web.com"
@@ -124,7 +127,6 @@
 
 
 #define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
-#define KEY_VALUE_2                 @"5fc5a27eedf1b68b98ef3bc0bee7c0a5"
 
 
 

@@ -28,14 +28,23 @@
     
     
     [GMSServices provideAPIKey:googleApiKey];
-//    [self testService];
-
+    //[self testService];
+    //[self sso];
     return YES;
 }
 
 -(void)testService{
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:nil completionBlock:^(NSObject *user) {
+//    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:nil url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:@"Registering" completionBlock:^(NSObject *user) {
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
+
+}
+
+-(void)sso{
+    [User postContextIDForSSOWithDelegate:self completionBlock:^(id response) {
         
     } failureBlock:^(NSError *error) {
         

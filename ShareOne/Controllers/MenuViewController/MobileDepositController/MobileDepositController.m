@@ -18,6 +18,8 @@
 #import "SharedUser.h"
 #import "SuffixInfo.h"
 #import "ConstantsShareOne.h"
+#import "VertifiObject.h"
+
 
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
@@ -70,17 +72,62 @@
     [super viewDidLoad];
     [self startUpMethod];
     [self loadDataOnPickerView];
+    [self getRegisterToVirtifi];
+}
+
+-(void)getRegisterToVirtifi{
     
+    __weak MobileDepositController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
 
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+        if(success){
+            VertifiObject *obj = (VertifiObject *)user;
+            if(![obj.InputValidation isEqualToString:@"OK"]){
+                //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
+            }
+            
+            if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
+                [weakSelf VertifiRegAcceptance];
+            }
+            else
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
     
-//    __weak MobileDepositController *weakSelf = self;
-//
-//    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility randomStringWithLength:80],@"session",@"asdasdsd",@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",@"2342343",@"routing",@"asdadass",@"member",[ShareOneUtility randomStringWithLength:17],@"account",[ShareOneUtility randomStringWithLength:32],@"MAC",@"adeelahmed",@"membername",@"enigmatic@hotmail.com",@"email",@"profilename",@"profile", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
+}
+
+-(void)VertifiRegAcceptance{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+        VertifiObject *obj = (VertifiObject *)user;
+        if(![obj.InputValidation isEqualToString:@"OK"]){
+            //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
+        }
+        
+        [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 

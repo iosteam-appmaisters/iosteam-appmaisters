@@ -7,11 +7,34 @@
 //
 #import "SharedUser.h"
 #import "CashDeposit.h"
+#import "XMLDictionary.h"
+#import "VertifiObject.h"
+
 
 @implementation CashDeposit
-+(void)getRegisterToVirtifi:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)getRegisterToVirtifi:(NSDictionary*)param delegate:(id)delegate url:(NSString *)vertifiUrl AndLoadingMessage:(NSString *)message completionBlock:(void(^)(NSObject *user,BOOL succes))block failureBlock:(void(^)(NSError* error))failBlock{
 
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:nil AndParam:param progressMessage:nil urlString:kDEPOSIT_MONEY_REGISTER delegate:delegate completionBlock:^(NSObject *response) {
+    
+    [[AppServiceModel sharedClient] postRequestForVertifiWithParam:param progressMessage:message urlString:vertifiUrl delegate:delegate completionBlock:^(NSObject *response,BOOL success) {
+        
+        if(response){
+            NSData * data = (NSData *)response;
+            
+            NSDictionary *xmlDoc = [NSDictionary dictionaryWithXMLData:data];
+            //        NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
+            
+            NSString *InputValidation = [xmlDoc valueForKeyPath:@"MessageValidation.InputValidation"];
+            NSString *LoginValidation = [xmlDoc valueForKeyPath:@"UserValidation.LoginValidation"];
+            
+            VertifiObject *obj = [[VertifiObject alloc] init];
+            obj.InputValidation=InputValidation;
+            obj.LoginValidation=LoginValidation;
+            
+            block(obj,TRUE);
+        }
+        else{
+            block(nil,FALSE);
+        }
         
     } failureBlock:^(NSError *error) {
         

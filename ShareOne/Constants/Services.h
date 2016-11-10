@@ -42,9 +42,20 @@
 #define KSINGLE_SIGN_ON                                 @"api/SSO/SignOn"
 
 
+#define kNO_OF_TRANSACTION                              @"5"
 
 
-#define kDEPOSIT_MONEY_REGISTER                         @"https://www.member-data.com/rdc/sso/mobdep_regquery.ashx"
+//SSO/SignOn
+
+
+
+#define kVERTIFY_MONEY_REGISTER                         @"https://www.member-data.com/rdc/sso/mobdep_regquery.ashx"
+#define kVERTIFY_MONEY_REGISTER_TEST                    @"https://www.test.vertifi.com/rdc/sso/mobdep_regquery.ashx"
+
+
+#define kVERTIFI_ACCEPTANCE                             @"https://www.member-data.com/rdc/sso/mobdep_regaccept.ashx"
+#define kVERTIFI_ACCEPTANCE_TEST                        @"https://www.test.vertifi.com/rdc/sso/mobdep_regaccept.ashx"
+
 
 #define kLOCATION_API                                   @"http://api.co-opfs.org/locator/proximitySearch"
 

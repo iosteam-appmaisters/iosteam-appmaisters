@@ -176,16 +176,18 @@
 - (void)getSignInWithUser:(User *)user{
     
     __weak LoginViewController *weakSelf = self;
-//    [weakSelf startApplication];
-//    
-//    return;
+    [weakSelf startApplication];
+
+    return;
     
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
-        //[weakSelf addingLoadingScreen];
-        [weakSelf.loadingView setHidden:FALSE];
-        [weakSelf startLoadingServices];
+//        [weakSelf.loadingView setHidden:FALSE];
+//        [weakSelf startLoadingServices];
+        
+        [weakSelf startApplication];
+
         
     } failureBlock:^(NSError *error) {
         

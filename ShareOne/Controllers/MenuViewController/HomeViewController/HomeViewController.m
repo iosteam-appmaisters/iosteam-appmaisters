@@ -44,22 +44,32 @@
     //[self keepMeAlive];
     
     //[self getQuickTransaction];
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    _webview.delegate=self;
 
-    [User postContextIDForSSOWithDelegate:self completionBlock:^(BOOL sucess) {
+
+
+    [User postContextIDForSSOWithDelegate:self completionBlock:^(id response) {
         
+
+        NSLog(@"%@",(NSURL *)response);
+        
+        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:response]];
+        //[weakSelf.webview loadHTMLString:response baseURL:nil];
+
     } failureBlock:^(NSError *error) {
         
     }];
 
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    _webview.delegate=self;
-    if(!_url)
-        _url = HOME_WEB_VIEW_URL;
     
-    NSString *queryString = [NSString stringWithFormat:@"%@/%@",_url,[[[SharedUser sharedManager] userObject] ContextID]];
     
-    NSLog(@"queryString: %@",queryString);
-    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:queryString]]];
+//    if(!_url)
+//        _url = HOME_WEB_VIEW_URL;
+//    
+//    NSString *queryString = [NSString stringWithFormat:@"%@/%@",_url,[[[SharedUser sharedManager] userObject] ContextID]];
+//    
+//    NSLog(@"queryString: %@",queryString);
+//    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:queryString]]];
     
 }
 

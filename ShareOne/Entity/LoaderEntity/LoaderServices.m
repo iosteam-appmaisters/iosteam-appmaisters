@@ -14,6 +14,8 @@
 #import "MemberDevices.h"
 #import "SuffixInfo.h"
 #import "QuickBalances.h"
+#import "QuickTransaction.h"
+
 
 
 
@@ -41,7 +43,6 @@
         if([[responseObj.URL absoluteString] containsString:KMEMBER_DEVICES]){
             NSArray *arr = [MemberDevices getMemberDevices:(NSDictionary *)response];
             [[SharedUser sharedManager] setMemberDevicesArr:arr];
-
         }
         if([[responseObj.URL absoluteString] containsString:KSUFFIX_INFO]){
             NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:(NSDictionary *)response];
@@ -62,6 +63,44 @@
     } queueFailureBlock:^(NSError *error) {
         
     }];
+}
+
++(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSMutableArray *queuReqArr = [[NSMutableArray alloc] init];
+    [qbArr enumerateObjectsUsingBlock:^(QuickBalances *object, NSUInteger idx, BOOL *stop) {
+        
+        NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%d/%@",KWEB_SERVICE_BASE_URL,KQUICK_TRANSACTION,[ShareOneUtility getUUID],[object.SuffixID intValue] ,kNO_OF_TRANSACTION];
+        [queuReqArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:url,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil]];
+    }];
+    
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:queuReqArr requestCompletionBlock:^(NSObject *response, NSURLResponse *responseObj) {
+        
+        NSLog(@"%@",[responseObj.URL absoluteString]);
+        NSArray *urlCompArr = [[responseObj.URL absoluteString] componentsSeparatedByString:@"/"];
+        NSString *suffixID = urlCompArr[[urlCompArr count]-2];
+        
+        NSPredicate *suffixPredicate = [NSPredicate predicateWithFormat:@"SuffixID = %d",[suffixID intValue]];
+        
+        NSArray *filteredQBArr = [qbArr filteredArrayUsingPredicate:suffixPredicate];
+        
+        if([filteredQBArr count]>0){
+            
+            QuickBalances *obj = filteredQBArr[0];
+            NSArray *qtObjects = [QuickTransaction  getQTObjects:(NSDictionary *)response];
+            obj.transArr=[qtObjects mutableCopy];
+        }
+        
+
+        
+    } requestFailureBlock:^(NSError *error) {
+        
+    } queueCompletionBlock:^(BOOL sucess) {
+        block(sucess);
+    } queueFailureBlock:^(NSError *error) {
+        
+    }];
+    
 }
 
 @end
