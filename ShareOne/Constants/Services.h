@@ -39,22 +39,38 @@
 
 #define KQUICK_TRANSACTION                              @"eft/quickTransactions"
 
-#define KSINGLE_SIGN_ON                                 @"api/SSO/SignOn"
+//#define KSINGLE_SIGN_ON                                 @"api/SSO/SignOn"
 
+#define KSINGLE_SIGN_ON                                 @"SSO/SignOn"
 
 #define kNO_OF_TRANSACTION                              @"5"
 
 
-//SSO/SignOn
-
-
-
 #define kVERTIFY_MONEY_REGISTER                         @"https://www.member-data.com/rdc/sso/mobdep_regquery.ashx"
-#define kVERTIFY_MONEY_REGISTER_TEST                    @"https://www.test.vertifi.com/rdc/sso/mobdep_regquery.ashx"
+#define kVERTIFY_MONEY_REGISTER_TEST                    @"https://test.vertifi.com/rdc/sso/mobdep_regquery.ashx"
 
 
 #define kVERTIFI_ACCEPTANCE                             @"https://www.member-data.com/rdc/sso/mobdep_regaccept.ashx"
-#define kVERTIFI_ACCEPTANCE_TEST                        @"https://www.test.vertifi.com/rdc/sso/mobdep_regaccept.ashx"
+#define kVERTIFI_ACCEPTANCE_TEST                        @"https://test.vertifi.com/rdc/sso/mobdep_regaccept.ashx"
+
+
+#define kVERTIFI_DEP_ININT                              @"https://www.member-data.com/rdc/sso/mobdep_init.ashx"
+#define kVERTIFI_DEP_ININT_TEST                         @"https://test.vertifi.com/rdc/sso/mobdep_init.ashx"
+
+
+#define kVERTIFI_COMMIT                                 @"https://www.member-data.com/rdc/sso/mobdep_commit.ashx"
+#define kVERTIFI_COMMIT_TEST                            @"https://test.vertifi.com/rdc/sso/mobdep_commit.ashx"
+
+#define kVERTIFI_DEP_LIST                               @"https://www.member-data.com/rdc/sso/mobdep_reviewquery.ashx"
+#define kVERTIFI_DEP_LIST_TEST                          @"https://test.vertifi.com/rdc/sso/mobdep_reviewquery.ashx"
+
+#define KVERTIFY_DEP_DETAILS                            @"https://www.member-data.com/rdc/sso/mobdep_reviewreport.ashx"
+#define KVERTIFY_DEP_DETAILS_TEST                       @"https://test.vertifi.com/rdc/sso/mobdep_reviewreport.ashx"
+
+
+#define kVERTIFY_ALL_DEP_LIST                           @"https://www.member-data.com/rdc/sso/mobdep_historyaudit.ashx"
+#define kVERTIFY_ALL_DEP_LIST_TEST                      @"https://test.vertifi.com/rdc/sso/mobdep_historyaudit.ashx"
+
 
 
 #define kLOCATION_API                                   @"http://api.co-opfs.org/locator/proximitySearch"

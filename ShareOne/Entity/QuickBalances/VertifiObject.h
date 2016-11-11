@@ -12,5 +12,9 @@
 
 @property (nonatomic,strong) NSString *InputValidation;
 @property (nonatomic,strong) NSString *LoginValidation;
+@property (nonatomic,strong) NSString *SSOKey;
+@property (nonatomic,strong) NSString *Deposit_ID;
+@property (nonatomic,strong) NSString *URL;
+
 
 @end

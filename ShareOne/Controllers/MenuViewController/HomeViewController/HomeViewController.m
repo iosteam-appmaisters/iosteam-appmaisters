@@ -52,6 +52,7 @@
 
 
 
+    return;
     [User postContextIDForSSOWithDelegate:self completionBlock:^(id urlPath) {
         
 
@@ -67,13 +68,14 @@
         
 //        NSMutableURLRequest *request = [(NSMutableURLRequest *)urlPath mutableCopy];
 //        [request setAllHTTPHeaderFields:headers];
+        
         [weakSelf.webview loadRequest:(NSMutableURLRequest *)urlPath];
 
 
         
         
 //        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlPath]]];
-        //[weakSelf.webview loadHTMLString:response baseURL:nil];
+        //[weakSelf.webview loadHTMLString:urlPath baseURL:nil];
 
     } failureBlock:^(NSError *error) {
         

@@ -98,6 +98,7 @@
 +(NSString *)getAESEncryptedContexIDInBase64:(NSString *)contexID;
 +(NSString *)getAESRandomIVForSSON;
 
++ (NSString *)encodeToBase64String:(UIImage *)image;
 
 
 

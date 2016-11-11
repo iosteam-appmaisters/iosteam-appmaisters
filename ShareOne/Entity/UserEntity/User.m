@@ -116,7 +116,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
 
-    NSString *redirect_path = [NSString stringWithFormat:@"/Account/Summary"];
+    NSString *redirect_path = [NSString stringWithFormat:@"/Transfers/Account"];
     
     
     NSString *genIV= [ShareOneUtility getAESRandomIVForSSON];
@@ -125,6 +125,21 @@
     
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getAESEncryptedContexIDInBase64:contexID],@"EncryptedContextID",genIV,@"EncryptionIV",redirect_path,@"RedirectPath", nil];
     
+    
+    
+   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+       
+       
+        block(response);
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+    block(req);
+    
+    return;
     [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);
         

@@ -21,14 +21,22 @@
             NSData * data = (NSData *)response;
             
             NSDictionary *xmlDoc = [NSDictionary dictionaryWithXMLData:data];
-            //        NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
+            NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
             
             NSString *InputValidation = [xmlDoc valueForKeyPath:@"MessageValidation.InputValidation"];
             NSString *LoginValidation = [xmlDoc valueForKeyPath:@"UserValidation.LoginValidation"];
-            
+            NSString *SSOKey = [xmlDoc valueForKeyPath:@"DepositStatus.SSOKey"];
+            NSString *Deposit_ID = [xmlDoc valueForKeyPath:@"Deposit.Deposit_ID"];
+            NSString *URL = [xmlDoc valueForKeyPath:@"Report.URL"];
+
+
+        
             VertifiObject *obj = [[VertifiObject alloc] init];
             obj.InputValidation=InputValidation;
             obj.LoginValidation=LoginValidation;
+            obj.SSOKey=SSOKey;
+            obj.Deposit_ID=Deposit_ID;
+            obj.URL=URL;
             
             block(obj,TRUE);
         }

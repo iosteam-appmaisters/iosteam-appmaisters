@@ -396,6 +396,58 @@
     
 }
 
+-(NSMutableURLRequest *)getRequestForSSOWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer = jsonResponseSerializer;
+    
+    if(progressMessage)
+        [self showProgressWithMessage:progressMessage];
+    
+    
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_GET URLString:urlString parameters:params error:nil];
+    
+    
+    // Setting Headers for Own servers
+    if(auth_header){
+        [self setHeaderOnRequest:req withAuth:auth_header];
+    }
+    
+    return req;
+    
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (!error) {
+            
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+
+            NSString *string = [NSString stringWithUTF8String:[responseObject bytes]];
+
+            NSLog(@"json: %@, %@, %@", json, response, responseObject);
+            
+            NSString * url = response.URL.absoluteString;
+
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            [self hideProgressAlert];
+            block(string);
+        } else {
+            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            block(responseObject);
+            
+            [self hideProgressAlert];
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
+            
+        }
+    }] resume];
+    
+
+}
+
 
 
 -(void)postRequestForVertifiWithParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response,BOOL succes))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -425,6 +477,8 @@
     // create body
     NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
     [req setHTTPBody:httpBody];
+    
+    
     
         
     AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];

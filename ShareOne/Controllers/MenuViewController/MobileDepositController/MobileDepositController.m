@@ -72,9 +72,102 @@
     [super viewDidLoad];
     [self startUpMethod];
     [self loadDataOnPickerView];
-    [self getRegisterToVirtifi];
+    //[self getRegisterToVirtifi];
+    //[self getListOfReviewDeposits];
+    [self getListOfPast6MonthsDeposits];
 }
 
+-(void)getListOfPast6MonthsDeposits{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:REQUESTER_VALUE forKey:@"requestor"];
+    
+    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    
+    [params setValue:ROUTING_VALUE forKey:@"routing"];
+    
+    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+    
+    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    
+    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+    
+    
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFY_ALL_DEP_LIST_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+
+}
+
+-(void)getListOfReviewDeposits{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:REQUESTER_VALUE forKey:@"requestor"];
+    
+    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    
+    [params setValue:ROUTING_VALUE forKey:@"routing"];
+    
+    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+    
+    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    
+    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+    
+    
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_LIST_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        [self getDetailsOfDepositWithObject:(VertifiObject *)user];
+
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+}
+
+
+-(void)getDetailsOfDepositWithObject:(VertifiObject *)vertify{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:REQUESTER_VALUE forKey:@"requestor"];
+    
+    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    
+    [params setValue:ROUTING_VALUE forKey:@"routing"];
+    
+    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+    
+    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    
+    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+    
+    [params setValue:vertify.Deposit_ID forKey:@"deposit_id"];
+
+
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:KVERTIFY_DEP_DETAILS_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+}
 -(void)getRegisterToVirtifi{
     
     __weak MobileDepositController *weakSelf = self;
@@ -95,9 +188,11 @@
             if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
                 [weakSelf VertifiRegAcceptance];
             }
+            else if ([obj.LoginValidation isEqualToString:@"OK"]){
+                //[weakSelf vertifiPaymentInIt];
+            }
             else
                 [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
-
         }
         
     } failureBlock:^(NSError *error) {
@@ -106,11 +201,86 @@
     
 }
 
--(void)VertifiRegAcceptance{
+-(void)vertifiPaymentInIt{
     
     __weak MobileDepositController *weakSelf = self;
     
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:REQUESTER_VALUE forKey:@"requestor"];
     
+    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+
+    [params setValue:ROUTING_VALUE forKey:@"routing"];
+
+    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+    
+    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    
+    [params setValue:@"1" forKey:@"accounttype"];
+    [params setValue:@"2" forKey:@"amount"];
+    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+    [params setValue:@"test" forKey:@"mode"];
+    [params setValue:@"2" forKey:@"source"];
+    
+    NSData *imageDataPNG = UIImagePNGRepresentation(_showViewimg);
+    [params setValue:imageDataPNG forKey:@"image"];
+    
+    
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_ININT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        [weakSelf vertifiComitWithObject:(VertifiObject *)user];
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
+
+-(void)vertifiComitWithObject:(VertifiObject *)objVertifi{
+    
+    __weak MobileDepositController *weakSelf = self;
+
+
+    if(objVertifi.SSOKey){
+        
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+        [params setValue:REQUESTER_VALUE forKey:@"requestor"];
+        
+        [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+        
+        [params setValue:ROUTING_VALUE forKey:@"routing"];
+        
+        [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+        
+        [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+        
+        [params setValue:@"1" forKey:@"accounttype"];
+        [params setValue:@"2" forKey:@"amount"];
+        [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+        [params setValue:@"test" forKey:@"mode"];
+        [params setValue:@"2" forKey:@"source"];
+        
+        NSData *imageDataPNG = UIImagePNGRepresentation(_showViewimg);
+        [params setValue:imageDataPNG forKey:@"image"];
+        
+        [params setValue:imageDataPNG forKey:@"image"];
+        
+        [params setValue:objVertifi.SSOKey forKey:@"ssokey"];
+
+        
+        [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_COMMIT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+
+    }
+    
+}
+-(void)VertifiRegAcceptance{
+    
+    __weak MobileDepositController *weakSelf = self;
     
     [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
@@ -416,6 +586,7 @@
                            {
                                [self setSelectedImageOnButton:imageBW];
                                _showViewimg=imageBW;
+                               [self vertifiPaymentInIt];
                                if(_isFrontorBack)
                                {
                                    [self viewEnabled:_View1btn];

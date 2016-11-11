@@ -535,7 +535,33 @@ NSLog(Y, Z);		\
     }];
     
     
+    // add image data
+    NSData *imageDataJPG = [parameters valueForKey:@"imageColor"];
+    if (imageDataJPG) {
+        [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", @"imageColor"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:imageDataJPG];
+        [httpBody appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    
+    NSData *imageDataPNG = [parameters valueForKey:@"image"];
+    if (imageDataPNG) {
+        [httpBody appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.png\"\r\n", @"image"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [httpBody appendData:imageDataPNG];
+        [httpBody appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+
+    
     [httpBody appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSMutableDictionary *dict = [parameters mutableCopy];
+    [dict removeObjectForKey:@"image"];
+    [dict removeObjectForKey:@"imageColor"];
+
     
     return httpBody;
 }
@@ -984,5 +1010,8 @@ NSLog(Y, Z);		\
 }
 
 
++ (NSString *)encodeToBase64String:(UIImage *)image {
+    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
 
 @end
