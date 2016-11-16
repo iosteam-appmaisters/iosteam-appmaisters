@@ -32,6 +32,8 @@
 @property (nonatomic,strong) IBOutlet UIButton *View2btn;
 @property (nonatomic) BOOL isFrontorBack;
 @property (nonatomic,strong) UIImage *showViewimg;
+@property (nonatomic,strong) UIImage *showViewimgBW;
+
 @property (nonatomic, weak) IBOutlet UIView *seperaterFrontCamView;
 @property (nonatomic, weak) IBOutlet UIView *seperaterBackCamView;
 @property (nonatomic, weak) IBOutlet UIButton *frontCamBtn;
@@ -56,6 +58,9 @@
 
 -(IBAction)accountButtonClicked:(id)sender;
 
+-(IBAction)submittButtonClicked:(id)sender;
+
+
 
 
 -(IBAction)captureFrontCardAction:(id)sender;
@@ -74,7 +79,43 @@
     [self loadDataOnPickerView];
     //[self getRegisterToVirtifi];
     //[self getListOfReviewDeposits];
-    [self getListOfPast6MonthsDeposits];
+    //[self getListOfPast6MonthsDeposits];
+}
+
+-(IBAction)submittButtonClicked:(id)sender{
+    
+    __weak MobileDepositController *weakSelf = self;
+
+    if(![self getValidationStausMessage])
+    {
+        //[self vertifiPaymentInIt];
+        [self getRegisterToVirtifi];
+
+    }
+    else{
+        [[ShareOneUtility shareUtitlities] showToastWithMessage:[self getValidationStausMessage] title:@"" delegate:weakSelf];
+    }
+}
+
+-(NSString *)getValidationStausMessage{
+    
+    NSString *status = nil;
+    
+    if(!_frontImage){
+        status = @"Front Image is missing";
+        return status;
+    }
+
+    if(!_backImage){
+        status = @"Back Image is missing";
+        return status;
+    }
+    if([_ammountTxtFeild.text length]<=0){
+        status = @"Amount can not be empty";
+        return status;
+    }
+    
+    return status;
 }
 
 -(void)getListOfPast6MonthsDeposits{
@@ -93,9 +134,9 @@
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
-    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
     
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFY_ALL_DEP_LIST_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
@@ -123,9 +164,9 @@
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
-    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
     
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_LIST_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
@@ -154,9 +195,9 @@
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
-    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
+    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
     
     [params setValue:vertify.Deposit_ID forKey:@"deposit_id"];
 
@@ -175,9 +216,8 @@
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
 
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
         if(success){
             VertifiObject *obj = (VertifiObject *)user;
@@ -189,7 +229,7 @@
                 [weakSelf VertifiRegAcceptance];
             }
             else if ([obj.LoginValidation isEqualToString:@"OK"]){
-                //[weakSelf vertifiPaymentInIt];
+                [weakSelf vertifiPaymentInIt];
             }
             else
                 [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
@@ -215,17 +255,24 @@
 
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
-    [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
     
-    [params setValue:@"1" forKey:@"accounttype"];
-    [params setValue:@"2" forKey:@"amount"];
-    [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
-    [params setValue:@"test" forKey:@"mode"];
-    [params setValue:@"2" forKey:@"source"];
+    [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
+    [params setValue:_ammountTxtFeild.text forKey:@"amount"];
+    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+    [params setValue:VERTIFI_MODE_TEST forKey:@"mode"];
+    [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
     
-    NSData *imageDataPNG = UIImagePNGRepresentation(_showViewimg);
+    
+    
+    
+    NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"img.png"]);
     [params setValue:imageDataPNG forKey:@"image"];
     
+    
+    NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 1.0);
+    [params setValue:imageDataJPG forKey:@"imageColor"];
+
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_ININT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
         [weakSelf vertifiComitWithObject:(VertifiObject *)user];
@@ -234,6 +281,29 @@
         
     }];
 }
+
+-(UIImage *)getBWImagePath:(NSString *)filename
+{
+    // load the image into the UIImageView - creating a scaled down thumbnail image would be more memory efficient here!
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cacheDirectory = [paths objectAtIndex:0];
+    NSString *cacheFile;
+   
+    cacheFile = [NSString stringWithFormat:@"%@/%@", cacheDirectory,filename];
+    
+    return [self getimageFromDocumentsDirectory:cacheFile];
+}
+
+-(UIImage *)getimageFromDocumentsDirectory:(NSString *)path
+{
+    NSString *cacheFile=path;
+    UIImage *image;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:cacheFile]){
+        image = [UIImage imageWithContentsOfFile:cacheFile];
+    }
+    return image;
+}
+
 
 
 -(void)vertifiComitWithObject:(VertifiObject *)objVertifi{
@@ -253,23 +323,32 @@
         
         [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
         
-        [params setValue:[ShareOneUtility getAccountValue] forKey:@"account"];
+        [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
         
-        [params setValue:@"1" forKey:@"accounttype"];
-        [params setValue:@"2" forKey:@"amount"];
-        [params setValue:[ShareOneUtility  getMacForVertifi] forKey:@"MAC"];
-        [params setValue:@"test" forKey:@"mode"];
-        [params setValue:@"2" forKey:@"source"];
+        [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
+        [params setValue:_ammountTxtFeild.text forKey:@"amount"];
+        [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+        [params setValue:VERTIFI_MODE_TEST forKey:@"mode"];
+        [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
         
-        NSData *imageDataPNG = UIImagePNGRepresentation(_showViewimg);
-        [params setValue:imageDataPNG forKey:@"image"];
         
+        NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"backimg.png"]);
         [params setValue:imageDataPNG forKey:@"image"];
         
         [params setValue:objVertifi.SSOKey forKey:@"ssokey"];
 
         
         [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_COMMIT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+            
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
+            VertifiObject *obj =(VertifiObject *)user;
+            
+            if(![obj.InputValidation isEqualToString:@"OK"]){
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"Status" delegate:weakSelf];
+            }
+            else
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Status" delegate:weakSelf];
             
         } failureBlock:^(NSError *error) {
             
@@ -282,7 +361,7 @@
     
     __weak MobileDepositController *weakSelf = self;
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
@@ -290,8 +369,12 @@
         if(![obj.InputValidation isEqualToString:@"OK"]){
             //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
         }
+        else if ([obj.LoginValidation isEqualToString:@"OK"]){
+            [weakSelf vertifiPaymentInIt];
+        }
+
         
-        [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+//        [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
         
         
     } failureBlock:^(NSError *error) {
@@ -577,16 +660,16 @@
         
         if (cacheFileColor != nil)
             [UIImageJPEGRepresentation(imageColor,0.3f) writeToFile:cacheFileColor atomically:NO];
-        [UIImagePNGRepresentation(imageBW) writeToFile:cacheFile atomically:NO];
+            [UIImagePNGRepresentation(imageBW) writeToFile:cacheFile atomically:NO];
         
         // UI updates
         dispatch_async(dispatch_get_main_queue(), ^(void)
                        {
-                           if (imageBW != nil)
+                           if (imageBW != nil && imageColor!=nil)
                            {
                                [self setSelectedImageOnButton:imageBW];
-                               _showViewimg=imageBW;
-                               [self vertifiPaymentInIt];
+                               _showViewimgBW=imageBW;
+                               _showViewimg=imageColor;
                                if(_isFrontorBack)
                                {
                                    [self viewEnabled:_View1btn];

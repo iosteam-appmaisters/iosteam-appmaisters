@@ -92,14 +92,7 @@ THE SOFTWARE.
 
 ## GoogleMaps
 
-If you use the Google Maps SDK for iOS in your application, you must
-include the attribution text as part of a legal notices section in your
-application. Including legal notices as an independent menu item, or as
-part of an "About" menu item, is recommended.
-
-You can get the attribution text by making a call to
-GMSServices.openSourceLicenseInfo().
-
+Copyright 2016 Google
 
 ## IQKeyboardManager
 
@@ -219,6 +212,10 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+## TestFairy
+
 
 
 ## XMLDictionary

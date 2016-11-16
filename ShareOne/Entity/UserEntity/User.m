@@ -13,6 +13,8 @@
 #import "Validation.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
+#import "NSString+MD5String.h"
+
 
 
 
@@ -110,24 +112,31 @@
     } failureBlock:^(NSError *error) {}];
 }
 
-+(void)postContextIDForSSOWithDelegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)postContextIDForSSOWithDelegate:(id)delegate withTabName:(NSString *)url completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *contexID = [[[SharedUser sharedManager] userObject] ContextID];
     
-    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
 
-    NSString *redirect_path = [NSString stringWithFormat:@"/Transfers/Account"];
+    NSDictionary *object = [ShareOneUtility encryptionByFBEncryptorAESWithContextID:contexID];
     
+    NSString *encrytedID = [[object valueForKey:@"EncryptedContextID"] URLEncodedString_ch];
+    NSString *randomIV = [[object valueForKey:@"EncryptionIV"] URLEncodedString_ch];
+    NSString *redirect_path = [url URLEncodedString_ch] ;
+
+    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:encrytedID ,@"EncryptedContextID",randomIV ,@"EncryptionIV",redirect_path  ,@"RedirectPath", nil];
     
-    NSString *genIV= [ShareOneUtility getAESRandomIVForSSON];
+    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON];
+    NSString *enquiryurl = [NSString stringWithFormat:@"%@EncryptedContextID=%@&EncryptionIV=%@&RedirectPath=%@",siteurl,encrytedID,randomIV,redirect_path];
     
-    
-    
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getAESEncryptedContexIDInBase64:contexID],@"EncryptedContextID",genIV,@"EncryptionIV",redirect_path,@"RedirectPath", nil];
-    
-    
-    
-   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:enquiryurl]];
+    NSLog(@"ULR : %@",request.URL.absoluteString);
+
+
+    block(request);
+
+    return;
+   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:nil AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
        
        
         block(response);
@@ -138,6 +147,8 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
     block(req);
+    
+    NSLog(@"req.URL : %@",req.URL.absoluteString);
     
     return;
     [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {

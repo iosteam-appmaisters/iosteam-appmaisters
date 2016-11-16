@@ -72,9 +72,11 @@
 #define kVERTIFY_ALL_DEP_LIST_TEST                      @"https://test.vertifi.com/rdc/sso/mobdep_historyaudit.ashx"
 
 
+#define VERTIFI_MODE_TEST                               @"test"
+#define VERTIFI_MODE                                    @"prod"
+
 
 #define kLOCATION_API                                   @"http://api.co-opfs.org/locator/proximitySearch"
-
 #define kLOCATION_API_KEY                               @"4LobSNzzwp4DKnp"
 
 

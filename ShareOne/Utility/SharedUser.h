@@ -17,6 +17,7 @@
 @property(nonatomic,strong) NSArray *memberDevicesArr;
 @property(nonatomic,strong) NSArray *suffixInfoArr;
 @property(nonatomic,strong) NSArray *QBSectionsArr;
+@property BOOL skipTouchIDForJustLogOut;
 
 
 + (id)sharedManager;

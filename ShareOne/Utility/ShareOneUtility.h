@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UtilitiesHelper.h"
 #import "User.h"
+#import "SuffixInfo.h"
 
 
 
@@ -69,7 +70,10 @@
 +(void)setDefaultSettingValues;
 +(void)setPreferencesOnLaunch;
 
-+(NSString *)getMacForVertifi;
+//+(NSString *)getMacForVertifi;
+
++(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo;
+
 
 +(NSString *)getUUID;
 
@@ -99,6 +103,19 @@
 +(NSString *)getAESRandomIVForSSON;
 
 + (NSString *)encodeToBase64String:(UIImage *)image;
+
++(NSString *)getAccountTypeWithSuffix:(SuffixInfo *)objSuffixInfo;
+
+
++(NSString *)getDeviceType;
+
++(NSString *)getAccountValueWithSuffix:(SuffixInfo *)suffix;
+
+
++(NSDictionary *)getAESObjectWithGeneratedIV:(NSString *)contexID;
+
++(NSDictionary *)encryptionByFBEncryptorAESWithContextID:(NSString *)contextID;
+
 
 
 

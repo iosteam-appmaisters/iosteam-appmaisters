@@ -28,15 +28,15 @@
             NSString *SSOKey = [xmlDoc valueForKeyPath:@"DepositStatus.SSOKey"];
             NSString *Deposit_ID = [xmlDoc valueForKeyPath:@"Deposit.Deposit_ID"];
             NSString *URL = [xmlDoc valueForKeyPath:@"Report.URL"];
+            NSString *DepositStatus = [xmlDoc valueForKeyPath:@"DepositStatus.DepositDispositionMessage"];
 
-
-        
             VertifiObject *obj = [[VertifiObject alloc] init];
             obj.InputValidation=InputValidation;
             obj.LoginValidation=LoginValidation;
             obj.SSOKey=SSOKey;
             obj.Deposit_ID=Deposit_ID;
             obj.URL=URL;
+            obj.DepositStatus=DepositStatus;
             
             block(obj,TRUE);
         }

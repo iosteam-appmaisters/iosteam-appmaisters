@@ -18,7 +18,9 @@
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
-		1D33C6651DD5DA7800DC7AE5 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D33C6641DD5DA7800DC7AE5 /* libVertifiImageProcessing.a */; };
+		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1D37D0951DDC77570076F5B6 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D37D0941DDC77570076F5B6 /* libVertifiImageProcessing.a */; };
 		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
 		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
@@ -103,7 +105,11 @@
 		1D23999F1D913C8C00157320 /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
 		1D2399A11D9169CF00157320 /* SideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuCell.h; sourceTree = "<group>"; };
 		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
-		1D33C6641DD5DA7800DC7AE5 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
+		1D37D08E1DDC418F0076F5B6 /* FBEncryptorAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBEncryptorAES.h; sourceTree = "<group>"; };
+		1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBEncryptorAES.m; sourceTree = "<group>"; };
+		1D37D0901DDC418F0076F5B6 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		1D37D0941DDC77570076F5B6 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D3D12781DBF353500719170 /* DeviceAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceAuth.h; sourceTree = "<group>"; };
 		1D3D12791DBF353500719170 /* DeviceAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceAuth.m; sourceTree = "<group>"; };
 		1D4245D31DCB198400A76E52 /* AdvertisementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementController.h; sourceTree = "<group>"; };
@@ -227,7 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D33C6651DD5DA7800DC7AE5 /* libVertifiImageProcessing.a in Frameworks */,
+				1D37D0951DDC77570076F5B6 /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -261,12 +267,24 @@
 		1D1AD7A01D9947CA0014C743 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				1D37D08D1DDC418F0076F5B6 /* FBEncryptor */,
 				1D1AD7A11D9947CA0014C743 /* BBAES.h */,
 				1D1AD7A21D9947CA0014C743 /* BBAES.m */,
 				1D0309A01DD2F070005953FA /* NSString+MD5String.h */,
 				1D0309A11DD2F070005953FA /* NSString+MD5String.m */,
 			);
 			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		1D37D08D1DDC418F0076F5B6 /* FBEncryptor */ = {
+			isa = PBXGroup;
+			children = (
+				1D37D08E1DDC418F0076F5B6 /* FBEncryptorAES.h */,
+				1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */,
+				1D37D0901DDC418F0076F5B6 /* NSData+Base64.h */,
+				1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */,
+			);
+			path = FBEncryptor;
 			sourceTree = "<group>";
 		};
 		1D4245D21DCB193700A76E52 /* AdvertismentController */ = {
@@ -664,7 +682,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D33C6641DD5DA7800DC7AE5 /* libVertifiImageProcessing.a */,
+				1D37D0941DDC77570076F5B6 /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -899,6 +917,7 @@
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
 				1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */,
@@ -927,6 +946,7 @@
 				1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */,
 				1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
+				1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */,
 				1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1046,7 +1066,7 @@
 			baseConfigurationReference = E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
@@ -1068,7 +1088,7 @@
 			baseConfigurationReference = 814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;

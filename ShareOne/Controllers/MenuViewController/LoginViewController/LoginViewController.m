@@ -16,6 +16,8 @@
 #import "LoaderServices.h"
 #import "MemberDevices.h"
 #import "QuickBalances.h"
+#import "CashDeposit.h"
+#import "VertifiObject.h"
 
 @interface LoginViewController ()
 
@@ -68,8 +70,15 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLogin)
+     
+                                                 name:UIApplicationWillEnterForegroundNotification object:nil];
+
 }
 
+-(void)askAutoLogin{
+    [self updateDataByDefaultValues];
+}
 -(void)updateDataByDefaultValues{
     
     [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
@@ -89,12 +98,30 @@
      **  Call login service auto only if touch is enabled
      **
      */
-    if([ShareOneUtility getUserObject]  && [ShareOneUtility isTouchIDEnabled]){
-        [self loginButtonClicked:nil];
+    if([ShareOneUtility getUserObject]  && [ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
+        //[self loginButtonClicked:nil];
+        [self showTouchID];
+        [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
     }
 
 }
 
+-(void)showTouchID{
+    
+    __weak LoginViewController *weakSelf = self;
+
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+        [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
+            
+            if(success){
+                
+                // Call Sign In Service
+                [self loginButtonClicked:nil];
+            }
+        }];
+    }
+
+}
 
 - (IBAction)loginButtonClicked:(id)sender
 {
@@ -120,6 +147,8 @@
     
     // Get value from text feilds if user object is not locally saved or user did not remember hisself.
 //    if(!savedUser || ![ShareOneUtility isUserRemembered])
+    if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
+
     {
         savedUser = [[User alloc] init];
         savedUser.UserName=_userIDTxt.text;
@@ -127,7 +156,10 @@
 
     }
 
+    [self getSignInWithUser:savedUser];
 
+
+    /*
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
         [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
             
@@ -140,14 +172,17 @@
     }
     else{
         
-        /*
+     
          **  If touch ID is not enabled call the login service, touch ID verification skipped
          **
-         */
+     
         
         // Call Sign In Service
         [self getSignInWithUser:savedUser];
+    
     }
+     */
+
 }
 
 - (void)startApplication{
@@ -183,10 +218,12 @@
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
-//        [weakSelf.loadingView setHidden:FALSE];
-//        [weakSelf startLoadingServices];
+        [weakSelf.loadingView setHidden:FALSE];
+        [weakSelf startLoadingServices];
         
-        [weakSelf startApplication];
+        //[weakSelf registerToVertify];
+        
+//        [weakSelf startApplication];
 
         
     } failureBlock:^(NSError *error) {
@@ -210,7 +247,12 @@
         
         if([deveiceExistArr count]>0){
             // Device Exist : No need to call PostDevices Api
+            // Register Logged In User with Virtifi
+            //[self registerToVertify];
+            
+            //Skip vertifi reg on login screen
             [weakSelf startApplication];
+
         }
         else{
             // Device not exist : We need to call PostDevices Api with QuickBalance & QuickTransaction permissions
@@ -226,7 +268,13 @@
                 
                 [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
                     
+                    
+                    // Register Logged In User with Virtifi
+                    //[self registerToVertify];
+                    
+                    //Skip vertifi reg on login screen
                     [weakSelf startApplication];
+
                     
                 } failureBlock:^(NSError *error) {
                     
@@ -243,6 +291,60 @@
     }];
 
 }
+
+
+-(void)registerToVertify{
+    
+    __weak LoginViewController *weakSelf = self;
+    
+    
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifiForSuffix:nil],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+        
+        
+        if(success){
+            VertifiObject *obj = (VertifiObject *)user;
+            if(![obj.InputValidation isEqualToString:@"OK"]){
+                //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
+            }
+            
+            if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
+                [weakSelf VertifiRegAcceptance];
+            }
+            else if ([obj.LoginValidation isEqualToString:@"OK"]){
+                [weakSelf startApplication];
+            }
+            else
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
+-(void)VertifiRegAcceptance{
+    
+    __weak LoginViewController *weakSelf = self;
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifiForSuffix:nil],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+        
+        
+        VertifiObject *obj = (VertifiObject *)user;
+        if([obj.InputValidation isEqualToString:@"OK"]){
+            [weakSelf startApplication];
+        }
+
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
+
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -304,6 +406,11 @@
     
     return NO;
 }
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 
 @end

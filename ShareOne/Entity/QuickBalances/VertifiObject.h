@@ -15,6 +15,8 @@
 @property (nonatomic,strong) NSString *SSOKey;
 @property (nonatomic,strong) NSString *Deposit_ID;
 @property (nonatomic,strong) NSString *URL;
+@property (nonatomic,strong) NSString *DepositStatus;
+
 
 
 @end

@@ -10,8 +10,10 @@
 #import "ShareOneUtility.h"
 #import "ConstantsShareOne.h"
 #import "CashDeposit.h"
-
+#import "SharedUser.h"
 #import "ConstantsShareOne.h"
+#import "TestFairy.h"
+
 @import GoogleMaps;
 
 @interface AppDelegate ()
@@ -25,11 +27,10 @@
     // Override point for customization after application launch.
 //    NSASCIIStringEncoding
 //    [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
-    
+    [TestFairy begin:@"0d214628fc17621672de9113b24e97cc48c454eb"];
     
     [GMSServices provideAPIKey:googleApiKey];
     //[self testService];
-    //[self sso];
     return YES;
 }
 
@@ -43,14 +44,6 @@
 
 }
 
--(void)sso{
-    [User postContextIDForSSOWithDelegate:self completionBlock:^(id response) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -60,6 +53,17 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+//    UIViewController* mainController = (UIViewController*)  self.window.rootViewController;
+//    NSLog(@"%@",mainController);
+
+//    NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
+//    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
+//        
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

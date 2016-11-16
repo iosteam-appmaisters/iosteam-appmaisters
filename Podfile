@@ -14,4 +14,5 @@ pod 'GoogleMaps', '~> 2.1'
 pod 'ASIHTTPRequest', '~> 1.8'
 pod 'SAMKeychain', '~> 1.5'
 pod 'XMLDictionary', '~> 1.4'
+pod 'TestFairy', '~> 1.8'
 end

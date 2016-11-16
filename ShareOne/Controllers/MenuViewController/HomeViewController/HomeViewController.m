@@ -50,47 +50,17 @@
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;
 
+    if(!_url)
+        _url = @"";
 
-
-    return;
-    [User postContextIDForSSOWithDelegate:self completionBlock:^(id urlPath) {
-        
-
-//        NSLog(@"%@",(NSString *)urlPath);
-//        
-//        NSArray * cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-//        NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies: cookies];
-        
-//        NSLog(@"cookies : %@",cookies);
-        
-//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlPath]];
-//        [request setAllHTTPHeaderFields:headers];
-        
-//        NSMutableURLRequest *request = [(NSMutableURLRequest *)urlPath mutableCopy];
-//        [request setAllHTTPHeaderFields:headers];
+    [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
         
         [weakSelf.webview loadRequest:(NSMutableURLRequest *)urlPath];
-
-
-        
-        
-//        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlPath]]];
-        //[weakSelf.webview loadHTMLString:urlPath baseURL:nil];
 
     } failureBlock:^(NSError *error) {
         
     }];
 
-    
-    
-    if(!_url)
-        _url = HOME_WEB_VIEW_URL;
-//
-//    NSString *queryString = [NSString stringWithFormat:@"%@/%@",_url,[[[SharedUser sharedManager] userObject] ContextID]];
-//    
-//    NSLog(@"queryString: %@",queryString);
-//    [_webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:queryString]]];
-    
 }
 
 
@@ -234,13 +204,5 @@
     __weak HomeViewController *weakSelf = self;
 
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-    NSString *myLoadedUrl = [[webView.request mainDocumentURL] absoluteString];
-    NSLog(@"Loaded url: %@", myLoadedUrl);
-//    NSLog(@"Static Url : %@",_url);
-//    
-//    if(![myLoadedUrl isEqualToString:@"https://nsmobilecp.ns3web.com/Log/In"])
-//        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
-
-    
 }
 @end

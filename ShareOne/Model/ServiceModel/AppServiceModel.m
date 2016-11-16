@@ -418,7 +418,7 @@
     }
     
     return req;
-    
+
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
@@ -444,7 +444,7 @@
             
         }
     }] resume];
-    
+
 
 }
 

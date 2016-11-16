@@ -276,10 +276,14 @@
         UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"LOG OUT"
                                                                style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                    
-                                                                   __weak BaseViewController *weakSelf = self;\
+                                                                   
+                                                                   __weak BaseViewController *weakSelf = self;
+                                                                   [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
                                                                    NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
                                                                    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
-                                                                       [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+                                                                       [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
+                                                                           [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+                                                                       }];
 
                                                                        
                                                                    } failureBlock:^(NSError *error) {

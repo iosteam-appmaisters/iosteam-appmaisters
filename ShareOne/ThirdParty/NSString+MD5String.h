@@ -10,5 +10,6 @@
 
 @interface NSString (MD5String)
 -(NSData*) hexToBytes ;
+- (NSString *) URLEncodedString_ch;
 
 @end

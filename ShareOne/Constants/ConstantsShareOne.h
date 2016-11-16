@@ -98,7 +98,7 @@
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"
 #define WEB_URL                     @"webUrl"
 
-#define HOME_WEB_VIEW_URL           @"https://nsmobilecp.ns3web.com/Account/Summary"
+#define HOME_WEB_VIEW_URL           @"/Account/Summary"
 
 #define SHOULD_SHOW                 @"shouldShow"
 
@@ -133,6 +133,7 @@
 
 #define REQUESTER_VALUE             @"700000465-Shareone"
 #define ROUTING_VALUE               @"700000465"
+
 
 
 

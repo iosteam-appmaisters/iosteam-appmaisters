@@ -21,6 +21,11 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <Security/Security.h>
+#import "SuffixInfo.h"
+#import "FBEncryptorAES.h"
+#import "NSData+Base64.h"
+
+
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
@@ -203,13 +208,48 @@ NSLog(Y, Z);		\
 
 
 
-+(void)applyEncriptionWithPrivateKey:(NSString *)private_key andPublicKey:(NSString *)public_key{
++(NSDictionary *)applyEncriptionWithPrivateKey:(NSString *)private_key andPublicKey:(NSString *)public_key{
     
-    NSData* salt = [BBAES randomDataWithLength:BBAESSaltDefaultLength];
-    NSData *key = [BBAES keyBySaltingPassword:private_key salt:salt keySize:BBAESKeySize256 numberOfIterations:BBAESPBKDF2DefaultIterationsCount];
     
+    
+    NSString *string= public_key;
+    NSRange fullRange;
+    fullRange.length = [string length];
+    fullRange.location = 0;
+    
+    uint8_t buffer[[string length]];
+    
+    [string getBytes:&buffer maxLength:[string length] usedLength:NULL encoding:NSUTF8StringEncoding options:0 range:fullRange remainingRange:NULL];
+    
+    NSData *plainText = [NSData dataWithBytes:buffer length:[string length]];
+    
+    NSData *keyData =[private_key hexToBytes];
+    
+    NSString* myString;
+    myString = [[NSString alloc] initWithData:keyData encoding:NSASCIIStringEncoding];
+
+
+    
+    
+    
+    
+    NSData *genIV = [BBAES randomIV] ;
+    
+    
+    NSString *result = [BBAES encryptedStringFromData:plainText IV:genIV key:keyData options:BBAESEncryptionOptionsIncludeIV];
+    
+    NSLog(@"BBAES : %@",result);
+    
+    NSString * genratedIV = [self hexStringFromData:genIV];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:result,@"EncryptedContextID",genratedIV,@"EncryptionIV", nil];
+    
+    return dict;
     
     NSString *secretMessage = private_key;
+
+    NSData* salt = [BBAES randomDataWithLength:BBAESSaltDefaultLength];
+    NSData *key = [BBAES keyBySaltingPassword:private_key salt:salt keySize:BBAESKeySize256 numberOfIterations:BBAESPBKDF2DefaultIterationsCount];
+
     NSLog(@"Original message: %@", secretMessage);
     
     NSString *encryptedString = [secretMessage bb_AESEncryptedStringForIV:[BBAES randomIV] key:key options:BBAESEncryptionOptionsIncludeIV];
@@ -610,7 +650,7 @@ NSLog(Y, Z);		\
 
 +(NSString *)getMemberValue{
     
-//    return @"444";
+//    return @"546";
 
     User *obj =     [[SharedUser sharedManager] userObject];
     return [NSString stringWithFormat:@"%d",[obj.Account intValue]];
@@ -619,12 +659,27 @@ NSLog(Y, Z);		\
 +(NSString *)getAccountValue{
 
     User *obj =     [[SharedUser sharedManager] userObject];
-    return [NSString stringWithFormat:@"%d55078",[obj.Account intValue]];
+    return [NSString stringWithFormat:@"%d55122",[obj.Account intValue]];
 
     
-//    return @"44455078";
+//    return @"54645432";
 //    return [self randomStringWithLength:17];
 }
+
++(NSString *)getAccountValueWithSuffix:(SuffixInfo *)suffix{
+    
+    NSString *accountValue = nil;
+    if(suffix){
+        User *obj =     [[SharedUser sharedManager] userObject];
+        accountValue= [NSString stringWithFormat:@"%d%d",[obj.Account intValue],[suffix.SuffixID intValue]];
+    }
+    else{
+        accountValue = [self getAccountValue];
+    }
+
+    return accountValue;
+}
+
 
 
 +(NSString *)getMemberEmail{
@@ -637,10 +692,10 @@ NSLog(Y, Z);		\
     return @"Louis Uncommon";
 }
 
-+(NSString *)getMacForVertifi{
++(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo{
     
 
-    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValue]];
+    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
     
     NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -774,14 +829,27 @@ NSLog(Y, Z);		\
 
 +(NSString *)getAESEncryptedContexIDInBase64:(NSString *)contexID{
     
-    return [self encryptString:contexID];
+    
+    //eab08a6943728a37
+    
+    
+   return  [self applyEncriptionWithPrivateKey:PRIVATE_KEY_SSO andPublicKey:contexID];
+    
+//    return [self encryptString:contexID];
+
 
 //    return [self encryptString:@"0a4e586b4db22c7e"];
 }
 
++(NSDictionary *)getAESObjectWithGeneratedIV:(NSString *)contexID{
+    
+    NSDictionary *dic =  [self applyEncriptionWithPrivateKey:PRIVATE_KEY_SSO andPublicKey:contexID];
+    return dic;;
+}
+
 +(NSString *)getAESRandomIVForSSON{
     
-    return @"e878fe035963e073897d00b2039268c1";
+    return @"1db91e439b4521f72dde897f8a193e61";
 //     return [self getAESRandom4WithSecretKey:PRIVATE_KEY_SSO AndPublicKey:PUBLIC_KEY];
 }
 //- (NSData *)doCipher:(NSData *)plainText key:(NSData *)theSymmetricKey context:(CCOperation)encryptOrDecrypt padding:(CCOptions *)pkcs7{
@@ -807,8 +875,10 @@ NSLog(Y, Z);		\
     
     NSData *encryptedResponse = [self doCipher:plainText key:keyData context:kCCEncrypt padding:0];
     
-//    NSLog(@"It should b : HGZJbtfEyim5o5nT9QbgwhXnxCCEMSYwmefv0X1HoCU=");
-//    NSLog(@"%@" , [self base64EncodeData:encryptedResponse]);
+    NSLog(@"It should b :  e/m+RmrpJgdiT5suEjzzNovFSrKQOYggjOYEjF+gdjk=");
+    NSLog(@"base64EncodeData :%@" , [self base64EncodeData:encryptedResponse]);
+    NSLog(@"getBase64ValueWithObject :%@" , [self getBase64ValueWithObject:encryptedResponse]);
+
     return [self base64EncodeData:encryptedResponse];
 }
 
@@ -1013,5 +1083,92 @@ NSLog(Y, Z);		\
 + (NSString *)encodeToBase64String:(UIImage *)image {
     return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 }
+
+
++(NSString *)getAccountTypeWithSuffix:(SuffixInfo *)objSuffixInfo{
+    
+    NSString *accountType = @"0" ;
+    
+    if([objSuffixInfo.Type isEqualToString:@"S"]){
+        // Share
+        accountType = @"1";
+    }
+    else if([objSuffixInfo.Type isEqualToString:@"L"]){
+        // Loan
+        accountType = @"3";
+
+    }
+    else if([objSuffixInfo.Type isEqualToString:@"C"]){
+        //Certificate
+        accountType = @"1";
+
+    }
+   else if([objSuffixInfo.Type isEqualToString:@"V"]){
+       //Internal credit card
+       accountType = @"1";
+    }
+   else if([objSuffixInfo.Type isEqualToString:@"T"]){
+       // External credit card
+       accountType = @"1";
+   }
+   else if([objSuffixInfo.Type isEqualToString:@"M"]){
+       // External Mortgage
+       accountType = @"1";
+   }
+    return accountType;
+}
+
++(NSString *)getDeviceType{
+     return  [UIDevice currentDevice].model;
+}
++(NSDictionary *)encryptionByFBEncryptorAESWithContextID:(NSString *)contextID{
+    
+    NSData* ivData = [FBEncryptorAES generateIv];
+    NSString* hexStringIV = [FBEncryptorAES hexStringForData:ivData];
+    
+    NSString *keyString = PRIVATE_KEY_SSO;
+    NSData *keyData = [keyString hexToBytes];
+    
+    NSString *plaintText = contextID;
+    
+    NSRange fullRange;
+    fullRange.length = [plaintText length];
+    fullRange.location = 0;
+    
+    uint8_t buffer[[plaintText length]];
+    
+    [plaintText getBytes:&buffer maxLength:[plaintText length] usedLength:NULL encoding:NSUTF8StringEncoding options:0 range:fullRange remainingRange:NULL];
+    
+    NSData *plainTextData = [NSData dataWithBytes:buffer length:[plaintText length]];
+    
+    
+    NSData *encryptedData = [FBEncryptorAES encryptData:plainTextData key:keyData iv:ivData];
+    
+    NSData *decryptedData = [FBEncryptorAES decryptData:encryptedData key:keyData iv:ivData];
+    
+    BOOL res = [decryptedData isEqualToData:plainTextData];
+    NSLog(@"Match: %@", res ? @"Yes" : @"No"); // Match: Yes
+    
+    
+//    NSString* contextIDFromDecryptedString = [NSString stringWithUTF8String:[decryptedData bytes]];
+//    NSString* contextIDFromPlaintData = [NSString stringWithUTF8String:[plainTextData bytes]];
+    
+    NSString *base64EncodedString = [encryptedData base64EncodedString];
+    
+    
+//    NSLog(@"1: base64EncodedString  :  %@",base64EncodedString);
+//        NSLog(@"1: base64EncodedString2  :  %@",base64EncodedString2);
+    
+    
+//    NSString *hexadecimalString = [ivData hexadecimalString];
+//    NSLog(@"1: hexadecimalString  :  %@",hexadecimalString);
+//    NSLog(@"2: hexStringIV : %@",hexStringIV);
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:base64EncodedString,@"EncryptedContextID",hexStringIV,@"EncryptionIV", nil];
+    
+    return dict;
+}
+
+
 
 @end
