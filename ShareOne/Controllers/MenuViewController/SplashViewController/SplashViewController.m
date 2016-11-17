@@ -10,7 +10,6 @@
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "SignInModel.h"
-#import "LoginViewController.h"
 #import "BranchLocationViewController.h"
 
 @implementation SplashViewController
@@ -37,6 +36,7 @@
     }else{
         
         LoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//        self.objLoginViewController=loginViewController;
         
         loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         

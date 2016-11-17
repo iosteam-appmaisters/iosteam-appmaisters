@@ -11,6 +11,7 @@
 @interface LoginViewController : UIViewController
 
 
+//@property(nonatomic,strong)UINavigationController* homeNavigationViewController;
 - (void)startApplication;
 
 

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
+
 
 @interface SplashViewController : UIViewController
+
+//@property (nonatomic,strong)LoginViewController *objLoginViewController;
 
 @end
