@@ -47,10 +47,10 @@
     else if([sender isEqual:_showOffersSwitch]){
         key=SHOW_OFFERS_SETTINGS;
         if([_showOffersSwitch isOn]){
-            alertMesage=@"Admob will be shown.";
+            alertMesage=@"Offers will be displayed.";
         }
         else{
-            alertMesage=@"Admob won't be shown.";
+            alertMesage=@"Offers will not be displayed.";
         }
     }
     else if([sender isEqual:_touchIDSwitch]){
@@ -59,10 +59,10 @@
             if(success){
                 key=TOUCH_ID_SETTINGS;
                 if([_touchIDSwitch isOn]){
-                    alertMesage=@"Finger Print will be asked on next login.";
+                    alertMesage=@"Touch ID will be requested.";
                 }
                 else{
-                    alertMesage=@"Finger Print won't be asked on next login.";
+                    alertMesage=@"Touch ID will not not be requested.";
                 }
 
             }
@@ -81,10 +81,10 @@
     else if([sender isEqual:_pushNotifSwitch]){
         key=PUSH_NOTIF_SETTINGS;
         if([_pushNotifSwitch isOn]){
-            alertMesage=@"Notification will be recieved.";
+            alertMesage=@"Notifications enabled.";
         }
         else{
-            alertMesage=@"Notification won't be recieved.";
+            alertMesage=@"Notifications disabled.";
         }
     }
     

@@ -41,7 +41,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Pleas Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
         
         
     } failureBlock:^(NSError *error) {}];

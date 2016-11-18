@@ -24,6 +24,8 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+
     //[NSURLProtocol registerClass:[WebViewProxyURLProtocol class]];
 
     __weak HomeViewController *weakSelf = self;
@@ -64,6 +66,9 @@
 }
 
 
+-(void)appWillResignActive{
+    
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

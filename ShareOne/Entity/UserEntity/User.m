@@ -70,7 +70,7 @@
     NSLog(@"signature logeed in : %@",signature);
     [ShareOneUtility savaLogedInSignature:signature];
     
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:@"Pleas Wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
         
         User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];
         user.UserName=[param valueForKey:@"account"];
@@ -94,7 +94,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Pleas Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_SIGN_OUT,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_SIGN_OUT,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
 
         block(TRUE);
         
@@ -105,7 +105,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Pleas Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
         
         block(TRUE);
         
