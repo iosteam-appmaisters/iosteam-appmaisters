@@ -218,8 +218,12 @@
 
 
 -(UIButton*)getBackButton{
-    UIButton* backButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
+    UIButton* backButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+//    [backButton setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
+    [backButton setTitle:@"Account Summary >" forState:UIControlStateNormal];
+    
+    [backButton titleLabel].font = [UIFont fontWithName:@"ArialMT" size:10];
+    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [backButton setContentMode:UIViewContentModeLeft];
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     return backButton;

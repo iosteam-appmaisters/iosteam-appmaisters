@@ -518,9 +518,12 @@
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+//    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+//    
+//    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     
-    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+    AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
+
     manager.responseSerializer = jsonResponseSerializer;
     
     
@@ -540,7 +543,7 @@
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
- NSLog(@"Reply JSON: %@", responseObject);
+            NSLog(@"Reply JSON: %@", responseObject);
             
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -549,8 +552,33 @@
 
             }
         } else {
-            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+            
+            
+            
+            //NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+            //NSLog(@"Headers : %@",headers);
+            
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+            //NSLog(@"status code: %li", (long)httpResponse.statusCode);
+            
+            NSHTTPURLResponse *response = error.userInfo[AFNetworkingOperationFailingURLResponseErrorKey];
+            
+            NSInteger statusCode = response.statusCode;
+            
+            //NSLog(@"status code: %li", (long)statusCode);
+
+            NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+//            NSLog(@"%@",ErrorResponse);
+            
+            NSDictionary *userInfo = [error userInfo];
+            NSString *errorString = [[userInfo objectForKey:NSUnderlyingErrorKey] localizedDescription];
+            NSLog(@"%@",errorString);
+
+            NSString *eerorString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+
+
             [self hideProgressAlert];
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
 

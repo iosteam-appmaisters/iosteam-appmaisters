@@ -375,7 +375,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qRY-Qf-hUb">
-                                        <rect key="frame" x="197" y="35" width="20" height="20"/>
+                                        <rect key="frame" x="197" y="40" width="20" height="20"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -385,7 +385,7 @@
                                     <constraint firstItem="qRY-Qf-hUb" firstAttribute="centerX" secondItem="2FB-WI-wE0" secondAttribute="centerX" id="7uj-TS-agK"/>
                                     <constraint firstItem="Q8r-7b-Bux" firstAttribute="leading" secondItem="2FB-WI-wE0" secondAttribute="leading" id="A83-Hd-yl5"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="centerX" secondItem="2FB-WI-wE0" secondAttribute="centerX" id="Sfb-RK-XUM"/>
-                                    <constraint firstItem="Wfl-1D-8YN" firstAttribute="top" secondItem="qRY-Qf-hUb" secondAttribute="bottom" constant="5" id="ayv-uG-QYP"/>
+                                    <constraint firstItem="Wfl-1D-8YN" firstAttribute="top" secondItem="qRY-Qf-hUb" secondAttribute="bottom" id="ayv-uG-QYP"/>
                                     <constraint firstAttribute="bottom" secondItem="Q8r-7b-Bux" secondAttribute="bottom" id="ljR-0X-HSB"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="centerY" secondItem="2FB-WI-wE0" secondAttribute="centerY" id="m5t-sT-zDj"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="top" secondItem="2FB-WI-wE0" secondAttribute="top" constant="60" id="mqw-yL-JRX"/>
@@ -2000,7 +2000,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Note : Check can not be deposit. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIa-7b-mPB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note : Cheque can not be deposit. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIa-7b-mPB">
                                 <rect key="frame" x="113" y="314" width="189" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2801,7 +2801,7 @@ Tm90ZToQIA
         <image name="show_button" width="127" height="18"/>
         <image name="show_map" width="53" height="10"/>
         <image name="social-media-header" width="414" height="151"/>
-        <image name="splash" width="414" height="736"/>
+        <image name="splash" width="375" height="667"/>
         <image name="submit-btn" width="367" height="41"/>
         <image name="top_Banner" width="414" height="299"/>
         <image name="top_banner" width="414" height="151"/>
