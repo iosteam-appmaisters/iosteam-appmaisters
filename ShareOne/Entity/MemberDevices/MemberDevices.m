@@ -52,7 +52,10 @@
 +(void)deleteMemberDevice:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *context = [[[SharedUser sharedManager] userObject] ContextID];
-    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@/14",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,context] delegate:delegate completionBlock:^(NSObject *response) {
+    NSString *deviceID = [param valueForKey:@"ID"];
+    NSString *deviceFingerPrint = [param valueForKey:@"Fingerprint"];
+
+    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,context,deviceFingerPrint] delegate:delegate completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         

@@ -33,7 +33,9 @@
 
     _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getSuffixInfoSavesLocally]];
     [ShareOneUtility showProgressViewOnView:self.view];
-    
+//    [self getQTForSelectedSection:0];
+//    
+//    return;
     [LoaderServices setQTRequestOnQueueWithDelegate:weakSelf AndQuickBalanceArr:weakSelf.qbArr completionBlock:^(BOOL success) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
@@ -53,13 +55,7 @@
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    
-//    NSDictionary *objSuffixInfo = _qbArr[section];
-//    NSArray *array = [objSuffixInfo valueForKey:@"section_details"];
-//    return  [array count];
     
     QuickBalances *qb = _qbArr[section];
     return  [qb.transArr count];
@@ -192,43 +188,88 @@
 
 - (void)getQTForSelectedSection:(int)section{
     
-    QuickBalances *obj = _qbArr[section];
+//    QuickBalances *obj = _qbArr[section];
     
     __weak QuickBalancesViewController *weakSelf = self;
-    NSString *SuffixID = [NSString stringWithFormat:@"%d",[obj.SuffixID intValue]];
+//    NSString *SuffixID = [NSString stringWithFormat:@"%d",[obj.SuffixID intValue]];
+    NSString *SuffixID = [NSString stringWithFormat:@"%d",0];
+
     
-    if(!obj.transArr){
+//    if(!obj.transArr)
+    {
+        
         [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",@"5",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
             
-            if(!obj.transArr){
-                obj.transArr= [[NSMutableArray alloc] init];
-                
-                obj.transArr=[(NSMutableArray *)user mutableCopy];
-                
-                if([obj.transArr count]>0){
-                    [_qbTblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
-                    
-                }
-                else{
-                    [self noTransaction];
-                }
-                
-            }
+            [self applyURLSessionOnReq:(NSMutableURLRequest *)user];
+            
+//            if(!obj.transArr){
+//                obj.transArr= [[NSMutableArray alloc] init];
+//                
+//                obj.transArr=[(NSMutableArray *)user mutableCopy];
+//                
+//                if([obj.transArr count]>0){
+//                    [_qbTblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+//                    
+//                }
+//                else{
+//                    [self noTransaction];
+//                }
+//                
+//            }
             
         } failureBlock:^(NSError *error) {
             
         }];
     }
     
-    else if ([obj.transArr count]<=0){
-        [self noTransaction];
-    }
+//    else if ([obj.transArr count]<=0){
+//        [self noTransaction];
+//    }
     
 }
 -(void)noTransaction{
     __weak QuickBalancesViewController *weakSelf = self;
     
     [[ShareOneUtility shareUtitlities] showToastWithMessage:@"No Transaction " title:@"" delegate:weakSelf];
+}
+-(void)applyURLSessionOnReq:(NSMutableURLRequest *)req{
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: self delegateQueue: nil];
+    NSURLSessionDataTask * task = [defaultSession dataTaskWithRequest:req];
+
+    
+//    NSURLSessionDataTask *task = [defaultSession dataTaskWithRequest:req completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+//        NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+//    }];
+    [task resume];
+
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    NSLog(@"%lld",[response expectedContentLength]);
+    dataToDownload=[[NSMutableData alloc]init];
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    NSLog(@"didReceiveData");
+    [dataToDownload appendData:data];
+    NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)dataToDownload encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",ErrorResponse);
+
+}
+
+//- (void) URLSession:(NSURLSession *)session
+//           dataTask:(NSURLSessionDataTask *)dataTask
+// didReceiveResponse:(NSURLResponse *)response
+//  completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
+//{
+//    completionHandler(NSURLSessionResponseAllow);
+//}
+
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
+    NSLog(@"didCompleteWithError");
 }
 
 @end

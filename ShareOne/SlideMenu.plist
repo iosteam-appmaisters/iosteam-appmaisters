@@ -257,11 +257,11 @@
 	<array>
 		<dict>
 			<key>isSection</key>
-			<false/>
+			<true/>
 			<key>shouldShow</key>
 			<true/>
 			<key>title</key>
-			<string>Mobile Deposit</string>
+			<string>Deposit</string>
 			<key>icon</key>
 			<string>menu_mobile_deposit_icon</string>
 			<key>detailVCIdentifier</key>
@@ -271,7 +271,36 @@
 			<key>detailVCTitle</key>
 			<string></string>
 			<key>subCategories</key>
-			<array/>
+			<array>
+				<dict>
+					<key>title</key>
+					<string>Mobile Deposit</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>MobileDepositController</string>
+					<key>webUrl</key>
+					<string></string>
+					<key>shouldShow</key>
+					<true/>
+					<key>detailVCTitle</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>Deposited Cheques List</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>DepositListController</string>
+					<key>webUrl</key>
+					<string></string>
+					<key>shouldShow</key>
+					<true/>
+					<key>detailVCTitle</key>
+					<string></string>
+				</dict>
+			</array>
 		</dict>
 	</array>
 	<array>

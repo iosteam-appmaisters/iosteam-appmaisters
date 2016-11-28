@@ -65,7 +65,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self updateDataByDefaultValues];
-
 }
 
 -(void)viewDidLoad{
@@ -73,6 +72,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLogin)
      
                                                  name:UIApplicationWillEnterForegroundNotification object:nil];
+    
 
 }
 
@@ -155,6 +155,12 @@
         savedUser.Password=_passwordTxt.text;
 
     }
+    
+    else if(![savedUser.UserName isEqualToString:_userIDTxt.text]){
+        savedUser = [[User alloc] init];
+        savedUser.UserName=_userIDTxt.text;
+        savedUser.Password=_passwordTxt.text;
+    }
 
     [self getSignInWithUser:savedUser];
 
@@ -187,6 +193,7 @@
 
 - (void)startApplication{
     
+
     UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
     
     
@@ -211,19 +218,22 @@
 - (void)getSignInWithUser:(User *)user{
     
     __weak LoginViewController *weakSelf = self;
-    [weakSelf startApplication];
+//    [weakSelf.loadingView setHidden:FALSE];
+//    [weakSelf startLoadingServices];
 
-    return;
+//    [weakSelf startApplication];
+//
+//    return;
 //    user.Password
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         // Go though to thee application
-        [weakSelf.loadingView setHidden:FALSE];
-        [weakSelf startLoadingServices];
+//        [weakSelf.loadingView setHidden:FALSE];
+//        [weakSelf startLoadingServices];
         
         //[weakSelf registerToVertify];
         
-//        [weakSelf startApplication];
+        [weakSelf startApplication];
 
         
     } failureBlock:^(NSError *error) {

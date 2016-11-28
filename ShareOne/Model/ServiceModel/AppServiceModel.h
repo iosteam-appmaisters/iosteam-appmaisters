@@ -6,9 +6,10 @@
 #import "AFNetworkReachabilityManager.h"
 #import "Services.h"
 
-@interface AppServiceModel : AFHTTPSessionManager <MBProgressHUDDelegate>{
+@interface AppServiceModel : AFHTTPSessionManager <MBProgressHUDDelegate,NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>{
 
     MBProgressHUD *progressHud;
+    NSMutableData *dataToDownload;
 }
 
 + (AppServiceModel *)sharedClient;

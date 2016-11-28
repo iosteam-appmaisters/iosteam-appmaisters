@@ -35,6 +35,7 @@
     
     
     __block UIView *objLoaderView;
+
     
 }
 
@@ -100,6 +101,9 @@
 -(void)showLAContextWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block;
 +(void)isTouchIDAvailableWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block;
 
+
+- (void)startTimerWithCompletionBlock:(void(^)(BOOL  sucess))block;
+- (void)cancelTimer;
 
 
 @end

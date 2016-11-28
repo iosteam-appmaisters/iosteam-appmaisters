@@ -13,11 +13,15 @@
 
 
 
-@interface ShareOneUtility : UtilitiesHelper
+@interface ShareOneUtility : UtilitiesHelper{
+}
 
 + (NSArray *)getSideMenuDataFromPlist;
 + (NSArray *)getDummyDataForQB;
 + (NSMutableArray*)getLocationArray;
+
+
+
 
 +(int)getTimeStamp;
 
@@ -116,6 +120,7 @@
 
 +(NSDictionary *)encryptionByFBEncryptorAESWithContextID:(NSString *)contextID;
 
++(NSString *)getTitleOfMobileDeposit;
 
 
 

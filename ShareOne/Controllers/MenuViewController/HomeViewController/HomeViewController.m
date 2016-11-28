@@ -24,7 +24,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+
 
     //[NSURLProtocol registerClass:[WebViewProxyURLProtocol class]];
 
@@ -32,9 +32,9 @@
     
     
     if(!self.navigationItem.title){
-        self.title=@"HOME";
+        self.navigationItem.title=@"ACCOUNT SUMMARY";
     }
-    //NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
+//    NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
 
     //[self getMemberDevices];
     //[self putMemberDevice];
@@ -65,20 +65,27 @@
 
 }
 
-
--(void)appWillResignActive{
-    
-}
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self sendAdvertismentViewToBack];
+//    [self sendAdvertismentViewToBack];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
 
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self sendAdvertismentViewToBack];
+    //[self sendAdvertismentViewToBack];
+    [self bringAdvertismentViewToFront];
+
+}
+
+
+#define mark - UnWind Segue
+-(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue{
+    NSLog(@"prepareForUnwindToHome");
 }
 
 -(void)getMemberDevices{
@@ -129,11 +136,12 @@
     
     __weak HomeViewController *weakSelf = self;
     
-    NSDictionary *zuthDic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-    NSArray *authArray= [NSArray arrayWithObjects:zuthDic, nil];
+    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
     
-    [MemberDevices deleteMemberDevice:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"14",@"ID",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [MemberDevices deleteMemberDevice:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"53",@"ID",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
         
@@ -201,13 +209,17 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     
+
 //    NSLog(@"Requested url: %@", webView.request.URL.absoluteString);
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
-    __weak HomeViewController *weakSelf = self;
+    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    self.navigationItem.title=theTitle;
+    [self setTitleOnNavBar:theTitle];
 
+    __weak HomeViewController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 @end

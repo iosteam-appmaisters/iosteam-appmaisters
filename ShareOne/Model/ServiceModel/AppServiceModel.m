@@ -46,7 +46,7 @@
     [self.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
        
         if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
-            NSLog(@"Internet Working");
+//            NSLog(@"Internet Working");
 //            [noInternetImageView removeFromSuperview];
         }else{
 //            UIWindow* window=[[[UIApplication sharedApplication]delegate]window];
@@ -492,7 +492,7 @@
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             [self hideProgressAlert];
             block(responseObject,TRUE);
-            NSLog(@"Reply JSON: %@", responseObject);
+//            NSLog(@"Reply JSON: %@", responseObject);
             
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
@@ -518,11 +518,11 @@
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-//    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-//    
-//    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
     
-    AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
+    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+    
+//    AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
 
     manager.responseSerializer = jsonResponseSerializer;
     
@@ -540,11 +540,14 @@
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
+    
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
             
+//            NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)responseObject encoding:NSUTF8StringEncoding];
+
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self hideProgressAlert];
@@ -552,8 +555,6 @@
 
             }
         } else {
-            
-            
             
             //NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -600,6 +601,11 @@
     
     jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     manager.responseSerializer = jsonResponseSerializer;
+    
+//    AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
+    
+//    manager.responseSerializer = jsonResponseSerializer;
+
 
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
@@ -618,7 +624,7 @@
         NSLog(@"**************************************************");
         [self setHeaderForLocationApiOnRequest:req];
     }
-
+    
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
@@ -635,7 +641,12 @@
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
+            if([response.URL.absoluteString containsString:kKEEP_ALIVE])
+                block(responseObject);
+
             [self hideProgressAlert];
+            
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
 
         }
@@ -643,6 +654,16 @@
     
 }
 
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    NSLog(@"%lld",[response expectedContentLength]);
+    dataToDownload=[[NSMutableData alloc]init];
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    [dataToDownload appendData:data];
+    
+}
 -(void)deleteRequestWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];

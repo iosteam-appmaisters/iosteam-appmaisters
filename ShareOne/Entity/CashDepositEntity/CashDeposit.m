@@ -29,6 +29,8 @@
             NSString *Deposit_ID = [xmlDoc valueForKeyPath:@"Deposit.Deposit_ID"];
             NSString *URL = [xmlDoc valueForKeyPath:@"Report.URL"];
             NSString *DepositStatus = [xmlDoc valueForKeyPath:@"DepositStatus.DepositDispositionMessage"];
+            NSArray *DepositArray = [xmlDoc arrayValueForKeyPath:@"Deposit"];
+
 
             VertifiObject *obj = [[VertifiObject alloc] init];
             obj.InputValidation=InputValidation;
@@ -37,6 +39,7 @@
             obj.Deposit_ID=Deposit_ID;
             obj.URL=URL;
             obj.DepositStatus=DepositStatus;
+            obj.depositArr=[VertifiObject parseAllDepositsWithObject:DepositArray];
             
             block(obj,TRUE);
         }

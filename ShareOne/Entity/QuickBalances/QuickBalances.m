@@ -41,9 +41,11 @@
     
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Loading..." urlString:url delegate:delegate completionBlock:^(NSObject *response) {
         
-        NSArray *qtObjects = [QuickTransaction  getQTObjects:(NSDictionary *)response];
+//        NSArray *qtObjects = [QuickTransaction  getQTObjects:(NSDictionary *)response];
 
-        block((NSArray *)qtObjects);
+        block(response);
+
+//        block((NSArray *)qtObjects);
         
     } failureBlock:^(NSError *error) {}];
 }

@@ -84,11 +84,11 @@
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
         [self.navigationController.childViewControllers.lastObject removeFromParentViewController];
+        [[self homeDelegate] bringAdvertismentFront];
 
         if([sender isKindOfClass:[NSIndexPath class]]){
             if (_homeDelegate != nil && [_homeDelegate respondsToSelector:@selector(pushViewControllerWithObject:)]){
                 [[self homeDelegate] pushViewControllerWithObject:_controllerInfoDict];
-                [[self homeDelegate] bringAdvertismentFront];
 
             }
         }
@@ -103,7 +103,10 @@
     NSInteger subCatCount = 0;
     NSDictionary *dict = _contentArr[section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
-    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0)
+    
+
+
+    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0 && [[dict valueForKey:HAS_SECTIONS] boolValue])
         subCatCount = [subCatArr count];
     
     return subCatCount;
@@ -204,7 +207,7 @@
 //    NSLog(@"willOpenSection");
     NSDictionary *dict = _contentArr[section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
-    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]==0){
+    if([subCatArr isKindOfClass:[NSArray class]] && ![[dict valueForKey:HAS_SECTIONS] boolValue]){
         _controllerInfoDict = _contentArr[section];
         [self backgroundButtonClicked:[NSIndexPath indexPathForRow:0 inSection:section]];
     }

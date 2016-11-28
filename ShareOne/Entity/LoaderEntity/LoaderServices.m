@@ -71,6 +71,7 @@
     [qbArr enumerateObjectsUsingBlock:^(QuickBalances *object, NSUInteger idx, BOOL *stop) {
         
         NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%d/%@",KWEB_SERVICE_BASE_URL,KQUICK_TRANSACTION,[ShareOneUtility getUUID],[object.SuffixID intValue] ,kNO_OF_TRANSACTION];
+
         [queuReqArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:url,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil]];
     }];
     

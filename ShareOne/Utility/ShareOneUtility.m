@@ -24,7 +24,7 @@
 #import "SuffixInfo.h"
 #import "FBEncryptorAES.h"
 #import "NSData+Base64.h"
-
+#import "MobileDepositController.h"
 
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -38,6 +38,7 @@ NSLog(Y);		\
 if(!(X)) {				\
 NSLog(Y, Z);		\
 }
+
 
 
 
@@ -82,6 +83,23 @@ NSLog(Y, Z);		\
         }
     }];
     return arrayToreturn;
+}
+
++(NSString *)getTitleOfMobileDeposit{
+    NSString *title = nil;
+    
+    NSArray * array = [self getSideMenuDataFromPlist];
+    
+    NSPredicate *depositTitlePredicate = [NSPredicate predicateWithFormat: @"SELF[%@] CONTAINS %@",CONTROLLER_NAME,NSStringFromClass([MobileDepositController class])];
+    
+    NSArray *filteredArr = [array filteredArrayUsingPredicate:depositTitlePredicate];
+    
+    if([filteredArr count]>0){
+        NSDictionary * depositControllerDict = filteredArr[0];
+        title = [[depositControllerDict valueForKey:SUB_CAT_TITLE] uppercaseString];
+    }
+    
+    return title;
 }
 +(NSMutableArray*)getLocationArray
 {
@@ -347,7 +365,7 @@ NSLog(Y, Z);		\
     if(userFound){
         
         // User exist in Local DB
-        NSLog(@"USER EXIST");
+//        NSLog(@"USER EXIST");
         [self copySettingsOfSavedUserToNewLoginInfo:user AndOldUser:userFound];
         
         //swaping old to new object
@@ -381,7 +399,7 @@ NSLog(Y, Z);		\
 
 +(void)setDefaultSettngOnUser:(User *)user{
     
-    user.isPushNotifOpen=TRUE;
+    user.isPushNotifOpen=FALSE;
     user.isShowOffersOpen=TRUE;
     user.isQBOpen=TRUE;
     
@@ -410,8 +428,8 @@ NSLog(Y, Z);		\
             [userArr replaceObjectAtIndex:idx withObject:archivedObject];
             
             [self saveUserObject:user];
+            *stop=TRUE;
         }
-        
         
     }];
 
@@ -516,7 +534,15 @@ NSLog(Y, Z);		\
          user.isTouchIDOpen=flag;
     else if([key isEqualToString:SHOW_OFFERS_SETTINGS])
         user.isShowOffersOpen=flag;
+    else if([key isEqualToString:VERTIFI_AGREEMANT_KEY])
+        user.hasUserAcceptedVertifiAgremant=flag;
+    else if([key isEqualToString:NOTIFICATION_SETTINGS_UPDATION])
+        user.hasUserUpdatedNotificationSettings=flag;
+    else if([key isEqualToString:TOUCH_ID_SETTINGS_UPDATION])
+        user.hasUserUpdatedTouchIDSettings=flag;
 
+    
+    
     
     [self getSavedObjectOfCurrentLoginUser:user];
 
@@ -612,7 +638,7 @@ NSLog(Y, Z);		\
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:SHOW_OFFERS_SETTINGS];
 //    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:TOUCH_ID_SETTINGS];
 //    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:RETINA_SCAN_SETTINGS];
-    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:PUSH_NOTIF_SETTINGS];
+//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:PUSH_NOTIF_SETTINGS];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
@@ -1147,7 +1173,7 @@ NSLog(Y, Z);		\
     NSData *decryptedData = [FBEncryptorAES decryptData:encryptedData key:keyData iv:ivData];
     
     BOOL res = [decryptedData isEqualToData:plainTextData];
-    NSLog(@"Match: %@", res ? @"Yes" : @"No"); // Match: Yes
+//    NSLog(@"Match: %@", res ? @"Yes" : @"No"); // Match: Yes
     
     
 //    NSString* contextIDFromDecryptedString = [NSString stringWithUTF8String:[decryptedData bytes]];

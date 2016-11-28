@@ -67,7 +67,7 @@
 +(void)getUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT];
-    NSLog(@"signature logeed in : %@",signature);
+//    NSLog(@"signature logeed in : %@",signature);
     [ShareOneUtility savaLogedInSignature:signature];
     
     [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
@@ -105,9 +105,12 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] ContextID]] delegate:nil completionBlock:^(NSObject *response) {
         
-        block(TRUE);
+        if([response isKindOfClass:[NSDictionary class]])
+            block(TRUE);
+        else
+            block(FALSE);
         
     } failureBlock:^(NSError *error) {}];
 }
@@ -130,7 +133,7 @@
     NSString *enquiryurl = [NSString stringWithFormat:@"%@EncryptedContextID=%@&EncryptionIV=%@&RedirectPath=%@",siteurl,encrytedID,randomIV,redirect_path];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:enquiryurl]];
-    NSLog(@"ULR : %@",request.URL.absoluteString);
+//    NSLog(@"ULR : %@",request.URL.absoluteString);
 
 
     block(request);
@@ -185,7 +188,9 @@
         self.isShowOffersOpen = [decoder decodeBoolForKey:@"isShowOffersOpen"];
         self.isQBOpen = [decoder decodeBoolForKey:@"isQBOpen"];
         self.isTouchIDOpen = [decoder decodeBoolForKey:@"isTouchIDOpen"];
-
+        self.hasUserAcceptedVertifiAgremant = [decoder decodeBoolForKey:@"hasUserAcceptedVertifiAgremant"];
+        self.hasUserUpdatedNotificationSettings = [decoder decodeBoolForKey:@"hasUserUpdatedNotificationSettings"];
+        self.hasUserUpdatedTouchIDSettings = [decoder decodeBoolForKey:@"hasUserUpdatedTouchIDSettings"];
 
     }
     return self;
@@ -205,6 +210,9 @@
     [encoder encodeBool:self.isShowOffersOpen forKey:@"isShowOffersOpen"];
     [encoder encodeBool:self.isQBOpen forKey:@"isQBOpen"];
     [encoder encodeBool:self.isTouchIDOpen forKey:@"isTouchIDOpen"];
+    [encoder encodeBool:self.hasUserAcceptedVertifiAgremant forKey:@"hasUserAcceptedVertifiAgremant"];
+    [encoder encodeBool:self.hasUserUpdatedNotificationSettings forKey:@"hasUserUpdatedNotificationSettings"];
+    [encoder encodeBool:self.hasUserUpdatedTouchIDSettings forKey:@"hasUserUpdatedTouchIDSettings"];
 
 }
 @end

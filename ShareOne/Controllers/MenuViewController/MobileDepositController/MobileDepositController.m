@@ -46,6 +46,8 @@
 @property (nonatomic, weak) IBOutlet UITextField *accountTxtFeild;
 @property (nonatomic, weak) IBOutlet UITextField *ammountTxtFeild;
 @property (nonatomic, weak) IBOutlet UIButton *accountTxtFeildBtn;
+@property (nonatomic, weak) IBOutlet UILabel *accountStatusLbl;
+
 
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -118,6 +120,11 @@
     return status;
 }
 
+-(void)backButtonClicked:(id)sender{
+    [self performSegueWithIdentifier:@"goToHome" sender:self];
+}
+
+
 -(void)getListOfPast6MonthsDeposits{
     
     __weak MobileDepositController *weakSelf = self;
@@ -134,9 +141,9 @@
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
-    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:nil] forKey:@"account"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:nil] forKey:@"MAC"];
     
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFY_ALL_DEP_LIST_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
@@ -348,7 +355,8 @@
                 [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"Status" delegate:weakSelf];
             }
             else
-                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Status" delegate:weakSelf];
+                [self showAlertWithTitle:@"Status" AndMessage:obj.DepositStatus];
+//                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Status" delegate:weakSelf];
             
         } failureBlock:^(NSError *error) {
             
@@ -399,7 +407,13 @@
 
     [_ammountTxtFeild resignFirstResponder];
     if (_bottomConstraint.constant<0){
-        _bottomConstraint.constant=50;
+        if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+            _bottomConstraint.constant=50;
+        }
+        else{
+            _bottomConstraint.constant=0;
+        }
+
         [self.view layoutIfNeeded];
     }
     else{
@@ -425,10 +439,13 @@
     NSRange rangeValue = [_objSuffixInfo.Access rangeOfString:@"D" options:NSCaseInsensitiveSearch];
 
     if(![_objSuffixInfo.Type isEqualToString:@"S"] && rangeValue.length > 0 ){
-        [_submittBtn setHidden:FALSE];
+//        [_submittBtn setHidden:FALSE];
+        [_accountStatusLbl setHidden:TRUE];
     }
     else{
-        [_submittBtn setHidden:TRUE];
+//        [_submittBtn setHidden:TRUE];
+        [_accountStatusLbl setHidden:FALSE];
+
     }
 }
 
@@ -820,5 +837,27 @@
     return YES;
 }
 
+#pragma mark - Status Alert Message
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                                 [self.navigationController popViewControllerAnimated:NO];
+                             }];
+                             
+                         }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
 
 @end

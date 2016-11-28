@@ -10,7 +10,9 @@
 #import "FZAccordionTableView.h"
 
 
-@interface QuickBalancesViewController : UIViewController<FZAccordionTableViewDelegate>
+@interface QuickBalancesViewController : UIViewController<FZAccordionTableViewDelegate,NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>{
+    NSMutableData *dataToDownload;
+}
 
 
 @property (nonatomic, weak) IBOutlet FZAccordionTableView *qbTblView;

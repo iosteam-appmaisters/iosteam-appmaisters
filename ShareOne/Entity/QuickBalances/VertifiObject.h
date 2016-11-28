@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VertifiDepositObject.h"
 
 @interface VertifiObject : NSObject
 
@@ -16,7 +17,7 @@
 @property (nonatomic,strong) NSString *Deposit_ID;
 @property (nonatomic,strong) NSString *URL;
 @property (nonatomic,strong) NSString *DepositStatus;
+@property (nonatomic,strong) NSArray *depositArr;
 
-
-
++(NSArray *)parseAllDepositsWithObject:(NSArray *)array;
 @end

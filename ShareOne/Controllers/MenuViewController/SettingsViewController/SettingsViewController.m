@@ -8,6 +8,8 @@
 
 #import "SettingsViewController.h"
 #import "ShareOneUtility.h"
+#import "TouchIDSettingsController.h"
+#import "NotifSettingsController.h"
 
 
 @implementation SettingsViewController
@@ -15,9 +17,12 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self loadSettingsLocally];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadSettingsLocally];
 
+}
 -(void)loadSettingsLocally{
     
     [_quickBalanceSwitch setOn:[ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
@@ -54,12 +59,18 @@
         }
     }
     else if([sender isEqual:_touchIDSwitch]){
-        
         [ShareOneUtility isTouchIDAvailableWithDelegate:weakSelf completionBlock:^(BOOL success) {
             if(success){
                 key=TOUCH_ID_SETTINGS;
                 if([_touchIDSwitch isOn]){
                     alertMesage=@"Touch ID will be requested.";
+                    User *obj = [ShareOneUtility getUserObject];
+                    if(!obj.hasUserUpdatedTouchIDSettings){
+                        key=nil;
+                        [self addTouchIDAlertScreen];
+                        return;
+                    }
+
                 }
                 else{
                     alertMesage=@"Touch ID will not not be requested.";
@@ -81,9 +92,16 @@
     else if([sender isEqual:_pushNotifSwitch]){
         key=PUSH_NOTIF_SETTINGS;
         if([_pushNotifSwitch isOn]){
+            
+            User *obj = [ShareOneUtility getUserObject];
+            if(!obj.hasUserUpdatedNotificationSettings){
+                [self addNotifAlertScreen];
+                return;
+            }
             alertMesage=@"Notifications enabled.";
         }
         else{
+            
             alertMesage=@"Notifications disabled.";
         }
     }
@@ -103,6 +121,21 @@
     }
     else
         [sender setOn:FALSE];
+}
+
+-(void)addNotifAlertScreen{
+    
+    NotifSettingsController * obj = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NotifSettingsController class])];
+    obj.navigationItem.title=@"ENABLE PUSH NOTIFICATION";
+    [self.navigationController pushViewController:obj animated:YES];
+    
+}
+
+-(void)addTouchIDAlertScreen{
+    
+    TouchIDSettingsController * obj = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TouchIDSettingsController class])];
+    obj.navigationItem.title=@"ENABLE TOUCH ID";
+    [self.navigationController pushViewController:obj animated:YES];
 }
 
 @end

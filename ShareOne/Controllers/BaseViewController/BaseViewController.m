@@ -8,8 +8,8 @@
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
 #import "AdvertisementController.h"
-
-
+#import "VertifiAgreemantController.h"
+#import "MobileDepositController.h"
 
 @interface BaseViewController (){
     LeftMenuViewController* leftMenuViewController;
@@ -34,14 +34,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
-        _bottomAdsConstraint.constant=50;
-    }
-    else{
-        _bottomAdsConstraint.constant=0;
-    }
-
-    
     
     UIView* dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [dummyView setBackgroundColor:[UIColor clearColor]];
@@ -64,29 +56,39 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self addAdvertismentControllerOnBottomScreen];
+    [self startTimerForKeepAlive];
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self setTitleOnNavBar:self.navigationItem.title];
+
+    [self addAdvertismentControllerOnBottomScreen];
+
+    if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+        _bottomAdsConstraint.constant=50;
+    }
+    else{
+        _bottomAdsConstraint.constant=0;
+    }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
+
+
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+
 
 -(void)addAdvertismentControllerOnBottomScreen{
     
-
     float height = 50;
-//    AdvertisementController *objAdvertisementController=[self.storyboard instantiateViewControllerWithIdentifier:@"AdvertisementController"];
-//
-//    [[objAdvertisementController view] setBackgroundColor:[UIColor redColor]];
-//    
-//    [objAdvertisementController.view setFrame:CGRectMake(-[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height)];
-//    
-//    [self.navigationController.view.window addSubview:objAdvertisementController.view];
-//
-//    [UIView animateWithDuration:0.3 animations:^{
-//        [objAdvertisementController.view setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height)];
-//        
-//    } completion:^(BOOL finished) {
-//    }];
-//    
-    
-    
     float isAlreadyAdded = FALSE;
     for(UIView *view in self.navigationController.view.window.subviews){
         if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
@@ -111,6 +113,8 @@
         if(![ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
             [self sendAdvertismentViewToBack];
         }
+        else
+            [self bringAdvertismentViewToFront];
 
     }
 }
@@ -178,6 +182,26 @@
     }
 }
 
+-(void)setTitleOnNavBar:(NSString *)title{
+    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width/2, 40)];
+    titleLabel.text = title;
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.textColor = [UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0];
+    if(APPC_IS_IPAD){
+        titleLabel.font=[UIFont boldSystemFontOfSize:24];
+    }
+    else{
+        titleLabel.font=[UIFont boldSystemFontOfSize:11];
+    }
+    
+    titleLabel.numberOfLines=0;
+//    titleLabel.adjustsFontSizeToFitWidth = YES; // As alternative you can also make it multi-line.
+//    titleLabel.minimumScaleFactor = 0.5;
+    self.navigationItem.titleView = titleLabel;
+
+}
+
 -(void)setBackgroundImage{
     UIImageView* backgroundImageView;
     backgroundImageView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_bg2"]];
@@ -219,11 +243,11 @@
 
 -(UIButton*)getBackButton{
     UIButton* backButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-//    [backButton setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
-    [backButton setTitle:@"Account Summary >" forState:UIControlStateNormal];
-    
-    [backButton titleLabel].font = [UIFont fontWithName:@"ArialMT" size:10];
-    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"back_icon"] forState:UIControlStateNormal];
+//    [backButton setTitle:@"Account Summary>" forState:UIControlStateNormal];
+//    
+//    [backButton titleLabel].font = [UIFont fontWithName:@"ArialMT" size:8];
+//    [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [backButton setContentMode:UIViewContentModeLeft];
     [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     return backButton;
@@ -252,35 +276,59 @@
 
 - (void)pushViewControllerWithObject:(NSDictionary *)dict{
 
-    if([[dict valueForKey:CONTROLLER_NAME] length]>0){
+    NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
+    NSString *webUrl = [dict valueForKey:WEB_URL];
+    NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] uppercaseString];
+
+
+    
+    if([contrlollerName length]>0){
         
-        if([[dict valueForKey:CONTROLLER_NAME] isEqualToString:@"WebViewController"]){
+        if([contrlollerName isEqualToString:@"WebViewController"]){
             
-            HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
-            objHomeViewController.url= [dict valueForKey:WEB_URL];
-            objHomeViewController.navigationItem.title=[[dict valueForKey:SUB_CAT_TITLE] uppercaseString];
+            HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+            objHomeViewController.url= webUrl;
+            objHomeViewController.navigationItem.title=screenTitle;
             [self.navigationController pushViewController:objHomeViewController animated:YES];
 
         }
+        
         else{
-            UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:[dict valueForKey:CONTROLLER_NAME]];
-            objUIViewController.navigationItem.title=[[dict valueForKey:SUB_CAT_TITLE] uppercaseString];
+            
+            if([contrlollerName isEqualToString:NSStringFromClass([MobileDepositController class])]){
+                
+                // Check whether current user has Accepted Vertifi Agreemant or not
+                User *currentUser = [ShareOneUtility getUserObject];
+                if(currentUser.hasUserAcceptedVertifiAgremant){
+                    contrlollerName= [dict valueForKey:CONTROLLER_NAME];
+                }
+                else{
+                    // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
+                    contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
+                    screenTitle= @"Register";
+                }
+            }
+            
+            UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+            objUIViewController.navigationItem.title=screenTitle;
             [self.navigationController pushViewController:objUIViewController animated:YES];
         }
     }
     else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Log Out"]){
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] uppercaseString]
-                                                                       message:@"ARE YOU SURE YOU WANT TO LOG OUT?"
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] capitalizedString]
+                                                                       message:@"Are You Sure You Want To Log Out?"
                                                                 preferredStyle:UIAlertControllerStyleAlert]; // 1
-        UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"CANCEL "
+        UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                               style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                   NSLog(@"You pressed button one");
                                                               }]; // 2
-        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"LOG OUT"
+        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Log Out"
                                                                style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                    
-                                                                   
+                                                                   [[ShareOneUtility shareUtitlities] cancelTimer];
+
+                                                                   [self sendAdvertismentViewToBack];
                                                                    __weak BaseViewController *weakSelf = self;
                                                                    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
                                                                    NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
@@ -305,8 +353,60 @@
 
 -(void)bringAdvertismentFront{
     
-    if(![[self.navigationController.viewControllers lastObject] isKindOfClass:[HomeViewController class]])
+//    if(![[self.navigationController.viewControllers lastObject] isKindOfClass:[HomeViewController class]])
         [self bringAdvertismentViewToFront];
+}
+
+-(void)logoutOnGoingBackground{
+    
+    
+    NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
+    
+    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+        
+
+
+    [self sendAdvertismentViewToBack];
+
+    [[ShareOneUtility shareUtitlities] cancelTimer];
+    
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)appGoingToBackground{
+    NSLog(@"appGoingToBackground");
+    [[ShareOneUtility shareUtitlities] cancelTimer];
+}
+
+-(void)appComingFromBackground{
+    NSLog(@"appComingFromBackground");
+    
+    __weak BaseViewController *weakSelf = self;
+
+    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+        NSLog(@"keepAlive2");
+        if(!sucess){
+            [weakSelf logoutOnGoingBackground];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+    [self startTimerForKeepAlive];
+    
+}
+
+-(void)startTimerForKeepAlive{
+    __weak BaseViewController *weakSelf = self;
+
+    [[ShareOneUtility shareUtitlities] startTimerWithCompletionBlock:^(BOOL sucess) {
+        [weakSelf logoutOnGoingBackground];
+    }];
 }
 
 @end
