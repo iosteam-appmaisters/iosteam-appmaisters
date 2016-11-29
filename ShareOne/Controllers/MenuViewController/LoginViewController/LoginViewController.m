@@ -18,6 +18,7 @@
 #import "QuickBalances.h"
 #import "CashDeposit.h"
 #import "VertifiObject.h"
+#import "PinResetController.h"
 
 @interface LoginViewController ()
 
@@ -40,6 +41,8 @@
 - (void)startApplication;
 
 - (void)getSignInWithUser:(User *)user;
+
+-(IBAction)pinResetButtonClicked:(id)sender;
 
 
 
@@ -221,9 +224,9 @@
 //    [weakSelf.loadingView setHidden:FALSE];
 //    [weakSelf startLoadingServices];
 
-//    [weakSelf startApplication];
-//
-//    return;
+    [weakSelf startApplication];
+
+    return;
 //    user.Password
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
@@ -411,6 +414,16 @@
     QuickBalancesViewController* objQuickBalancesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickBalancesViewController"];
     [self presentViewController:objQuickBalancesViewController animated:YES completion:nil];
 }
+
+-(IBAction)pinResetButtonClicked:(id)sender{
+    
+    
+    PinResetController* objPinResetController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PinResetController class])];
+    [self presentViewController:objPinResetController animated:YES completion:nil];
+
+    
+}
+
 
 - (BOOL)shouldAutorotate{
     
