@@ -299,6 +299,16 @@
                 
                 // Check whether current user has Accepted Vertifi Agreemant or not
                 User *currentUser = [ShareOneUtility getUserObject];
+                if(!currentUser.vertifyEUAContents){
+                    contrlollerName= [dict valueForKey:CONTROLLER_NAME];
+                }
+                else{
+                    // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
+                    contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
+                    screenTitle= @"Register";
+                }
+                
+                /*
                 if(currentUser.hasUserAcceptedVertifiAgremant){
                     contrlollerName= [dict valueForKey:CONTROLLER_NAME];
                 }
@@ -307,6 +317,7 @@
                     contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
                     screenTitle= @"Register";
                 }
+                 */
             }
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
@@ -314,16 +325,16 @@
             [self.navigationController pushViewController:objUIViewController animated:YES];
         }
     }
-    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Log Out"]){
+    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Logout"]){
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] capitalizedString]
-                                                                       message:@"Are You Sure You Want To Log Out?"
+                                                                       message:@"Are you sure you want to logout?"
                                                                 preferredStyle:UIAlertControllerStyleAlert]; // 1
         UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                               style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                   NSLog(@"You pressed button one");
                                                               }]; // 2
-        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Log Out"
+        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Logout"
                                                                style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                    
                                                                    [[ShareOneUtility shareUtitlities] cancelTimer];
@@ -379,12 +390,27 @@
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground");
+    if([[UIApplication sharedApplication] isProtectedDataAvailable])
+        NSLog(@"appGoingToBackground: TRUE");
+    
+    else
+        NSLog(@"appGoingToBackground: FALSE");
+
+
     [[ShareOneUtility shareUtitlities] cancelTimer];
 }
 
 -(void)appComingFromBackground{
     NSLog(@"appComingFromBackground");
     
+    
+    NSLog(@"appComingFromBackground");
+    if([[UIApplication sharedApplication] isProtectedDataAvailable])
+        NSLog(@"appComingFromBackground: TRUE");
+    
+    else
+        NSLog(@"appComingFromBackground: FALSE");
+
     __weak BaseViewController *weakSelf = self;
 
     [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {

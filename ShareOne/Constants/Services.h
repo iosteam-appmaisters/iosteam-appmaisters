@@ -39,6 +39,15 @@
 
 #define KQUICK_TRANSACTION                              @"eft/quickTransactions"
 
+#define KPIN_RESET                                      @"eft/memberPINReset"
+
+#define KACCOUNT_NAME                                   @"eft/memberAccountName"
+
+#define KSET_ACCOUNT_NAME                               @"eft/memberPreferences"
+
+
+
+
 //#define KSINGLE_SIGN_ON                                 @"api/SSO/SignOn"
 
 #define KSINGLE_SIGN_ON                                 @"SSO/SignOn"

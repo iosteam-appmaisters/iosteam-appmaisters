@@ -665,6 +665,7 @@ NSLog(Y, Z);		\
 }
 
 +(NSString *)getSessionnKey{
+//    [self getBytesOfString:@"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m"];
     return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
 //    return [self randomStringWithLength:80];
 
@@ -685,7 +686,18 @@ NSLog(Y, Z);		\
 +(NSString *)getAccountValue{
 
     User *obj =     [[SharedUser sharedManager] userObject];
-    return [NSString stringWithFormat:@"%d55122",[obj.Account intValue]];
+    
+    SuffixInfo *objSuffixInfo;
+    int suffixID = 0;
+    if([[[SharedUser sharedManager] suffixInfoArr] count]>0){
+        objSuffixInfo= (SuffixInfo *)[[SharedUser sharedManager] suffixInfoArr][0];
+        suffixID= [objSuffixInfo.SuffixID intValue];
+    }
+    else
+        suffixID= 55122;
+    
+    
+    return [NSString stringWithFormat:@"%d%d",[obj.Account intValue],suffixID];
 
     
 //    return @"54645432";
@@ -1195,6 +1207,12 @@ NSLog(Y, Z);		\
     return dict;
 }
 
++(NSString *)decodeBase64ToStirng:(NSString *)encodedString{
+    
+    NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:encodedString options:0];
+    NSString *decodedString = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];
+    return decodedString;
+}
 
 
 @end

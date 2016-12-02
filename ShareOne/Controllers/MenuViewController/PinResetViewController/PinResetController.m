@@ -9,15 +9,88 @@
 #import "PinResetController.h"
 #import "ShareOneUtility.h"
 #import "ConstantsShareOne.h"
-
+#import "LoginViewController.h"
+#import "User.h"
 @implementation PinResetController
+
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    if(_isFromForgotUserName)
+        _navBar.topItem.title = @"Forgot Username";
+    else
+        _navBar.topItem.title = @"Forgot Password";
+
+    [_accountNameTxtFeild setText:@"7"];
+    [_taxIDTxtFeild setText:@"9456"];
+    [_dateTxtFeild setText:@"01/01/1980"];
+    [_postalCodeTxtFeild setText:@"77777"];
+    
+}
+
+
+-(IBAction)backButtonClicked:(id)sender{
+    _loginDelegate.objPinResetController=nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 -(IBAction)submittButtonClicked:(id)sender{
     
-    [_accountInfoView setHidden:FALSE];
+    
+    __weak PinResetController *weakSelf = self;
+
+    if(_isFromForgotUserName){
+        
+        [User userAccountName:[NSDictionary dictionaryWithObjectsAndKeys:_accountNameTxtFeild.text,@"AccountNumber",_taxIDTxtFeild.text,@"Last4",_dateTxtFeild.text,@"DateOfBirth",_postalCodeTxtFeild.text,@"PostalCode", nil] delegate:self completionBlock:^(id  response) {
+            
+            NSDictionary *dict =(NSDictionary *)response;
+            [weakSelf showAlertWithTitle:@"Account Name" AndMessage:[NSString stringWithFormat:@"Your member account name is \"%@\"",dict[@"AccountName"]]];
+
+        } failureBlock:^(NSError *error) {
+            
+        }];
+
+        
+    }
+    else{
+        [_accountNameTxtFeild setText:@"newton"];
+
+        
+        [User userPinReset:[NSDictionary dictionaryWithObjectsAndKeys:_accountNameTxtFeild.text,@"Account",_taxIDTxtFeild.text,@"Last4",_dateTxtFeild.text,@"DateOfBirth",_postalCodeTxtFeild.text,@"PostalCode", nil] delegate:self completionBlock:^(id  response) {
+            
+            _accountInfoDict=(NSDictionary *)response;
+            
+            [_emailLbl setText:_accountInfoDict[@"EmailAddress"]];
+            [_passLbl setText:_accountInfoDict[@"TempPassword"]];
+            [_dateLbl setText:_accountInfoDict[@"NewExpiration"]];
+            
+            
+            [_accountInfoView setHidden:FALSE];
+            
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+
+    }
+
 }
 -(IBAction)okButtonClicked:(id)sender{
-    [_accountInfoView setHidden:TRUE];
+    
+    User *user = [[User alloc] init];
+    user.UserName=_accountNameTxtFeild.text;
+    user.Password=_passLbl.text;
+    user.EmailAddress=_emailLbl.text;
+    user.TempPassword=_passLbl.text;
+    user.NewExpiration=_dateLbl.text;
+    user.last4=_taxIDTxtFeild.text;
+    user.dob=_dateTxtFeild.text;
+    user.zip=_postalCodeTxtFeild.text;
+    [ShareOneUtility saveUserObject:user];
+    [ShareOneUtility saveUserObjectToLocalObjects:user];
+    [_loginDelegate getSignInWithUser:user];
 }
 
 -(IBAction)doneButtonClickedOnPicker:(id)sender{
@@ -73,5 +146,36 @@
     }
     
 }
+
+#pragma mark - Status Alert Message
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                             [self backButtonClicked:self];
+                             
+                             
+                         }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+
+- (BOOL)shouldAutorotate{
+    
+    return NO;
+}
+
 
 @end

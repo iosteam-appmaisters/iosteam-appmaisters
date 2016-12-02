@@ -17,10 +17,14 @@
 
 }
 -(IBAction)noButtonClicked:(id)sender{
-    [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:TOUCH_ID_SETTINGS_UPDATION];
-    [ShareOneUtility saveSettingsWithStatus:FALSE AndKey:TOUCH_ID_SETTINGS];
+//    [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:TOUCH_ID_SETTINGS_UPDATION];
+//    [ShareOneUtility saveSettingsWithStatus:FALSE AndKey:TOUCH_ID_SETTINGS];
     [self.navigationController popViewControllerAnimated:YES];
 
 }
 
+- (BOOL)shouldAutorotate{
+    
+    return NO;
+}
 @end

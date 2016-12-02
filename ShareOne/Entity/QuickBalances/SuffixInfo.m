@@ -54,7 +54,9 @@
     
     [contentArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        SuffixInfo *objSuffixInfo = [[SuffixInfo alloc] initWithDictionary:obj];
+        NSMutableDictionary *mutDic = [(NSMutableDictionary *)obj mutableCopy];
+//        [mutDic removeObjectForKey:@"TaxInfo"];
+        SuffixInfo *objSuffixInfo = [[SuffixInfo alloc] initWithDictionary:mutDic];
         [arr addObject:objSuffixInfo];
         
     }];

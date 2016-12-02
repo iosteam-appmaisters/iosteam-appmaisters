@@ -22,6 +22,7 @@
 @property (nonatomic,strong) NSNumber *OptInATM;
 @property (nonatomic,strong) NSNumber *Primary;
 @property (nonatomic,strong) NSNumber *RegD;
+@property (nonatomic,strong) NSNumber *IRA;
 @property (nonatomic,strong) NSNumber *RptCode;
 @property (nonatomic,strong) NSNumber *SuffixID;
 @property (nonatomic,strong) NSNumber *SuffixNumber;

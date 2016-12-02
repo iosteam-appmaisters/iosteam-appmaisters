@@ -163,6 +163,43 @@
 }
 
 
++(void)userPinReset:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KPIN_RESET] delegate:delegate completionBlock:^(NSObject *response) {
+        
+        block(response);
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+}
+
++(void)userAccountName:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
+        
+        block(response);
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
+
+
++(void)setUserName:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
+
+    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KSET_ACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
+        block(response);
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+}
+
 -(id) initWithDictionary:(NSDictionary *)userProfileDict{
     self = [super init];{
         [self setValuesForKeysWithDictionary:userProfileDict];
@@ -175,6 +212,7 @@
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if(self) {
+        self.vertifyEUAContents=[decoder decodeObjectForKey:@"vertifyEUAContents"];
         self.Account=[decoder decodeObjectForKey:@"Account"];
         self.ContextID=[decoder decodeObjectForKey:@"ContextID"];;
         self.LastLoginDate=[decoder decodeObjectForKey:@"LastLoginDate"];
@@ -191,12 +229,17 @@
         self.hasUserAcceptedVertifiAgremant = [decoder decodeBoolForKey:@"hasUserAcceptedVertifiAgremant"];
         self.hasUserUpdatedNotificationSettings = [decoder decodeBoolForKey:@"hasUserUpdatedNotificationSettings"];
         self.hasUserUpdatedTouchIDSettings = [decoder decodeBoolForKey:@"hasUserUpdatedTouchIDSettings"];
+        self.EmailAddress=[decoder decodeObjectForKey:@"EmailAddress"];
+        self.TempPassword=[decoder decodeObjectForKey:@"TempPassword"];
+        self.NewExpiration=[decoder decodeObjectForKey:@"NewExpiration"];
 
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
+    
+    [encoder encodeObject: self.vertifyEUAContents forKey:@"vertifyEUAContents"];
     [encoder encodeObject: self.Account forKey:@"Account"];
     [encoder encodeObject: self.ContextID forKey:@"ContextID"];
     [encoder encodeObject: self.LastLoginDate forKey:@"LastLoginDate"];
@@ -213,6 +256,9 @@
     [encoder encodeBool:self.hasUserAcceptedVertifiAgremant forKey:@"hasUserAcceptedVertifiAgremant"];
     [encoder encodeBool:self.hasUserUpdatedNotificationSettings forKey:@"hasUserUpdatedNotificationSettings"];
     [encoder encodeBool:self.hasUserUpdatedTouchIDSettings forKey:@"hasUserUpdatedTouchIDSettings"];
+    [encoder encodeObject: self.EmailAddress forKey:@"EmailAddress"];
+    [encoder encodeObject: self.TempPassword forKey:@"TempPassword"];
+    [encoder encodeObject: self.NewExpiration forKey:@"NewExpiration"];
 
 }
 @end

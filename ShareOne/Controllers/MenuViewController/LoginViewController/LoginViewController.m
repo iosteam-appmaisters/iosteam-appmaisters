@@ -1,4 +1,4 @@
-//
+ //
 //  LoginViewController.m
 //  ShareOne
 //
@@ -19,6 +19,8 @@
 #import "CashDeposit.h"
 #import "VertifiObject.h"
 #import "PinResetController.h"
+#import "PasswordChangeController.h"
+#import "UserNamecontroller.h"
 
 @interface LoginViewController ()
 
@@ -31,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *quickBalanceBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
+
 
 
 
@@ -68,6 +71,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self updateDataByDefaultValues];
+    
+//    __weak LoginViewController *weakSelf = self;
+//
+//    [weakSelf.loadingView setHidden:FALSE];
+//    [weakSelf startLoadingServices];
+
 }
 
 -(void)viewDidLoad{
@@ -224,19 +233,49 @@
 //    [weakSelf.loadingView setHidden:FALSE];
 //    [weakSelf startLoadingServices];
 
-    [weakSelf startApplication];
+//    [weakSelf startApplication];
 
-    return;
+//    return;
 //    user.Password
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
-        // Go though to thee application
-//        [weakSelf.loadingView setHidden:FALSE];
-//        [weakSelf startLoadingServices];
+        if(_objPinResetController){
+            [_objPinResetController dismissViewControllerAnimated:NO completion:nil];
+            _objPinResetController=nil;
+            
+            if(user.Requirements){
+                if([user.Requirements count]>1){
+                    NSString *status = user.Requirements[0];
+                    
+                    if([status isEqualToString:CHANGE_PIN]){
+                        [weakSelf addPasswordChangeController:user];
+                    }
+                    
+                }
+                if([user.Requirements count]>0){
+                    NSString *status = user.Requirements[0];
+                    
+                    if([status isEqualToString:CHANGE_PIN]){
+                        [weakSelf addPasswordChangeController:user];
+                    }
+                    if([status isEqualToString:CHANGE_ACCOUNT_USER_NAME]){
+                        [self addControllerToChangeUserName];
+                    }
+                }
+
+            }
+        }
+        else{
+            // Go though to thee application
+            [weakSelf.loadingView setHidden:FALSE];
+            [weakSelf startLoadingServices];
+        }
+
         
         //[weakSelf registerToVertify];
         
-        [weakSelf startApplication];
+        
+//        [weakSelf startApplication];
 
         
     } failureBlock:^(NSError *error) {
@@ -246,59 +285,123 @@
 }
 
 
+-(void)startLoadingServicesFromChangePassword:(User *)user{
+    
+    if([user.Requirements containsObject:CHANGE_ACCOUNT_USER_NAME]){
+        [self addControllerToChangeUserName];
+    }
+    else{
+        [self.loadingView setHidden:FALSE];
+        [self startLoadingServices];
+    }
+}
+
+-(void)addControllerToChangeUserName{
+ 
+    UserNamecontroller *objUserNamecontroller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([UserNamecontroller class])];
+    objUserNamecontroller.loginDelegate=self;
+    [self presentViewController:objUserNamecontroller animated:YES completion:nil];
+    
+}
+
+-(void)addPasswordChangeController:(User *)user{
+    PasswordChangeController *objPasswordChangeController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PasswordChangeController class])];
+    objPasswordChangeController.loginDelegate=self;
+    objPasswordChangeController.user=user;
+    [self presentViewController:objPasswordChangeController animated:YES completion:nil];
+
+}
+
+
 -(void)startLoadingServices{
     
     __weak LoginViewController *weakSelf = self;
 
     [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success) {
         
-       NSArray *devicesArr = [[SharedUser sharedManager] memberDevicesArr];
         
-        NSPredicate *devicePredicate = [NSPredicate predicateWithFormat:@"Fingerprint == %@",[ShareOneUtility getUUID]];
-        
-        NSArray *deveiceExistArr = [devicesArr filteredArrayUsingPredicate:devicePredicate];
-        
-        if([deveiceExistArr count]>0){
-            // Device Exist : No need to call PostDevices Api
-            // Register Logged In User with Virtifi
-            //[self registerToVertify];
+        if(success){
+            NSArray *devicesArr = [[SharedUser sharedManager] memberDevicesArr];
             
-            //Skip vertifi reg on login screen
-            [weakSelf startApplication];
-
-        }
-        else{
-            // Device not exist : We need to call PostDevices Api with QuickBalance & QuickTransaction permissions
-            __weak LoginViewController *weakSelf = self;
+            NSPredicate *devicePredicate = [NSPredicate predicateWithFormat:@"Fingerprint == %@",[ShareOneUtility getUUID]];
             
-            NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-            NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+            NSArray *deveiceExistArr = [devicesArr filteredArrayUsingPredicate:devicePredicate];
             
-            NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
-            
-            [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
-                
+            if([deveiceExistArr count]>0){
+                // Device Exist : No need to call PostDevices Api
+                // Register Logged In User with Virtifi
                 
                 [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
                     
                     
                     // Register Logged In User with Virtifi
-                    //[self registerToVertify];
+                    [self registerToVertify];
                     
                     //Skip vertifi reg on login screen
-                    [weakSelf startApplication];
-
+                    //                    [weakSelf startApplication];
+                    
                     
                 } failureBlock:^(NSError *error) {
                     
+                    [weakSelf.loadingView setHidden:TRUE];
+                    
+                    [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
+
                 }];
                 
-            } failureBlock:^(NSError *error) {
+                //Skip vertifi reg on login screen
+                //[weakSelf startApplication];
                 
-            }];
+            }
+            else{
+                // Device not exist : We need to call PostDevices Api with QuickBalance & QuickTransaction permissions
+                __weak LoginViewController *weakSelf = self;
+                
+                NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+                NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+                
+                NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
+                
+                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                    
+                    
+                    [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+                        
+                        
+                        // Register Logged In User with Virtifi
+                        [self registerToVertify];
+                        
+                        //Skip vertifi reg on login screen
+                        //                    [weakSelf startApplication];
+                        
+                        
+                    } failureBlock:^(NSError *error) {
+                        
+                        [weakSelf.loadingView setHidden:TRUE];
+                        
+                        [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
 
-        }        
-    
+                        
+                    }];
+                    
+                } failureBlock:^(NSError *error) {
+                    
+                    [weakSelf.loadingView setHidden:TRUE];
+                    
+                    [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
+
+                }];
+                
+            }        
+
+            
+        }
+        else{
+            
+            [weakSelf.loadingView setHidden:TRUE];
+
+            [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
+        }
     } failureBlock:^(NSError *error) {
         
     }];
@@ -322,7 +425,8 @@
             }
             
             if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
-                [weakSelf VertifiRegAcceptance];
+                //[weakSelf VertifiRegAcceptance];
+                [weakSelf startApplication];
             }
             else if ([obj.LoginValidation isEqualToString:@"OK"]){
                 [weakSelf startApplication];
@@ -417,9 +521,22 @@
 
 -(IBAction)pinResetButtonClicked:(id)sender{
     
-    
-    PinResetController* objPinResetController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PinResetController class])];
-    [self presentViewController:objPinResetController animated:YES completion:nil];
+    BOOL isFromForgotUserName =FALSE;
+    UIButton *btn = (UIButton *)sender;
+    if(btn.tag==111){
+        isFromForgotUserName=TRUE;
+    }
+    else{
+        isFromForgotUserName=FALSE;
+    }
+    if(!_objPinResetController){
+        
+        _objPinResetController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PinResetController class])];
+        
+        _objPinResetController.isFromForgotUserName=isFromForgotUserName;
+        _objPinResetController.loginDelegate=self;
+        [self presentViewController:_objPinResetController animated:YES completion:nil];
+    }
 
     
 }

@@ -116,7 +116,12 @@
         status = @"Amount can not be empty";
         return status;
     }
-    
+
+    if([_accountTxtFeild.text length]<=0){
+        status = @"Select Suffix";
+        return status;
+    }
+
     return status;
 }
 
@@ -396,6 +401,12 @@
     
     _suffixArr= [[SharedUser sharedManager] suffixInfoArr];
     [self.pickerView reloadAllComponents];
+    if(!_objSuffixInfo){
+        [_pickerView selectRow:0 inComponent:0 animated:YES];
+        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+    }
+    
+    [self setStateOfSubmitButton];
 }
 
 -(IBAction)accountButtonClicked:(id)sender{

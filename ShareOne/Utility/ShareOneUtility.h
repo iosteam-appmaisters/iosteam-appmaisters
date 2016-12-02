@@ -122,7 +122,9 @@
 
 +(NSString *)getTitleOfMobileDeposit;
 
++(NSString *)decodeBase64ToStirng:(NSString *)encodedString;
 
++(void )getSavedObjectOfCurrentLoginUser:(User *)user;
 
 
 @end

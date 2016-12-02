@@ -20,7 +20,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,/*@"asd"*/[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
         
         NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
         [ShareOneUtility savedSufficInfoLocally:(NSDictionary *)response];
@@ -28,7 +28,9 @@
 
         block(response);
         
-    } failureBlock:^(NSError *error) {}];
+    } failureBlock:^(NSError *error) {
+        failBlock(error);
+    }];
 
 }
 

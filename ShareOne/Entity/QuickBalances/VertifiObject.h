@@ -18,6 +18,10 @@
 @property (nonatomic,strong) NSString *URL;
 @property (nonatomic,strong) NSString *DepositStatus;
 @property (nonatomic,strong) NSArray *depositArr;
+@property (nonatomic,strong) NSString *EUAContents;
+
+
+
 
 +(NSArray *)parseAllDepositsWithObject:(NSArray *)array;
 @end

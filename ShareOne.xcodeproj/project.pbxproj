@@ -21,11 +21,13 @@
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
 		1D2887481DED517400AD7C74 /* PinResetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2887471DED517400AD7C74 /* PinResetController.m */; };
-		1D28874C1DED621B00AD7C74 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D28874B1DED621B00AD7C74 /* libVertifiImageProcessing.a */; };
 		1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D33909C1DE5A9E900D89982 /* DepositListController.m */; };
 		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D38BE1A1DE6F47800F37849 /* VertifiAgreemantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D38BE191DE6F47800F37849 /* VertifiAgreemantController.m */; };
+		1D3935FC1DF1862A00FE0104 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3935FB1DF1862A00FE0104 /* libVertifiImageProcessing.a */; };
+		1D3A7BDA1DF0599900AEA159 /* PasswordChangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A7BD91DF0599900AEA159 /* PasswordChangeController.m */; };
+		1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A7BDD1DF0828200AEA159 /* UserNamecontroller.m */; };
 		1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */; };
 		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
 		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
@@ -118,7 +120,6 @@
 		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
 		1D2887461DED517400AD7C74 /* PinResetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinResetController.h; sourceTree = "<group>"; };
 		1D2887471DED517400AD7C74 /* PinResetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinResetController.m; sourceTree = "<group>"; };
-		1D28874B1DED621B00AD7C74 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D33909B1DE5A9E900D89982 /* DepositListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositListController.h; sourceTree = "<group>"; };
 		1D33909C1DE5A9E900D89982 /* DepositListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositListController.m; sourceTree = "<group>"; };
 		1D37D08E1DDC418F0076F5B6 /* FBEncryptorAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBEncryptorAES.h; sourceTree = "<group>"; };
@@ -127,6 +128,11 @@
 		1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		1D38BE181DE6F47800F37849 /* VertifiAgreemantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiAgreemantController.h; sourceTree = "<group>"; };
 		1D38BE191DE6F47800F37849 /* VertifiAgreemantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertifiAgreemantController.m; sourceTree = "<group>"; };
+		1D3935FB1DF1862A00FE0104 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
+		1D3A7BD81DF0599900AEA159 /* PasswordChangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordChangeController.h; sourceTree = "<group>"; };
+		1D3A7BD91DF0599900AEA159 /* PasswordChangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordChangeController.m; sourceTree = "<group>"; };
+		1D3A7BDC1DF0828200AEA159 /* UserNamecontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNamecontroller.h; sourceTree = "<group>"; };
+		1D3A7BDD1DF0828200AEA159 /* UserNamecontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNamecontroller.m; sourceTree = "<group>"; };
 		1D3B4EE21DEC12ED00F1D536 /* TouchIDSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchIDSettingsController.h; sourceTree = "<group>"; };
 		1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDSettingsController.m; sourceTree = "<group>"; };
 		1D3D12781DBF353500719170 /* DeviceAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceAuth.h; sourceTree = "<group>"; };
@@ -254,7 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D28874C1DED621B00AD7C74 /* libVertifiImageProcessing.a in Frameworks */,
+				1D3935FC1DF1862A00FE0104 /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -335,6 +341,24 @@
 				1D38BE191DE6F47800F37849 /* VertifiAgreemantController.m */,
 			);
 			path = VertifiAgreemantViewController;
+			sourceTree = "<group>";
+		};
+		1D3A7BD71DF0598000AEA159 /* PasswordChangeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D3A7BD81DF0599900AEA159 /* PasswordChangeController.h */,
+				1D3A7BD91DF0599900AEA159 /* PasswordChangeController.m */,
+			);
+			path = PasswordChangeViewController;
+			sourceTree = "<group>";
+		};
+		1D3A7BDB1DF0826A00AEA159 /* SetUserNameController */ = {
+			isa = PBXGroup;
+			children = (
+				1D3A7BDC1DF0828200AEA159 /* UserNamecontroller.h */,
+				1D3A7BDD1DF0828200AEA159 /* UserNamecontroller.m */,
+			);
+			path = SetUserNameController;
 			sourceTree = "<group>";
 		};
 		1D3B4EE11DEC12D200F1D536 /* TouchIDSettingsViewController */ = {
@@ -546,6 +570,8 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D3A7BDB1DF0826A00AEA159 /* SetUserNameController */,
+				1D3A7BD71DF0598000AEA159 /* PasswordChangeViewController */,
 				1D2887451DED515500AD7C74 /* PinResetViewController */,
 				1D3B4EE11DEC12D200F1D536 /* TouchIDSettingsViewController */,
 				1D72E24A1DEC023700A054BA /* NotifSettingsViewController */,
@@ -757,7 +783,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D28874B1DED621B00AD7C74 /* libVertifiImageProcessing.a */,
+				1D3935FB1DF1862A00FE0104 /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -874,6 +900,14 @@
 					6BD405861D81B59200358036 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = G3487YQ6F8;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -989,6 +1023,7 @@
 				F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */,
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
 				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
+				1D3A7BDA1DF0599900AEA159 /* PasswordChangeController.m in Sources */,
 				6BD405C51D82C94300358036 /* SignInModel.m in Sources */,
 				1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */,
 				6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */,
@@ -1018,6 +1053,7 @@
 				F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */,
 				F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */,
 				1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */,
+				1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */,
 				1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */,
 				F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
@@ -1096,7 +1132,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "4814d06c-4f17-4c2c-8803-2be27f2102d1";
+				PROVISIONING_PROFILE = "c72fb8e1-cce8-463c-95ee-f8583cf96715";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1136,7 +1172,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "4814d06c-4f17-4c2c-8803-2be27f2102d1";
+				PROVISIONING_PROFILE = "c72fb8e1-cce8-463c-95ee-f8583cf96715";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1161,7 +1197,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4814d06c-4f17-4c2c-8803-2be27f2102d1";
+				PROVISIONING_PROFILE = "c72fb8e1-cce8-463c-95ee-f8583cf96715";
 			};
 			name = Debug;
 		};
@@ -1183,7 +1219,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4814d06c-4f17-4c2c-8803-2be27f2102d1";
+				PROVISIONING_PROFILE = "c72fb8e1-cce8-463c-95ee-f8583cf96715";
 			};
 			name = Release;
 		};

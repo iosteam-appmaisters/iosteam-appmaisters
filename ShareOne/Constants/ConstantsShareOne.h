@@ -106,6 +106,10 @@
 
 #define SUB_CAT_TITLE               @"title"
 #define SUB_CAT_IMAGE               @"icon"
+
+#define CHANGE_PIN                  @"PINChange"
+#define CHANGE_ACCOUNT_USER_NAME    @"AccountName"
+
 //#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
 //#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
 

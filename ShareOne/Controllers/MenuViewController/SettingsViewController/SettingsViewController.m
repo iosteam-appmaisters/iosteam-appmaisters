@@ -17,6 +17,13 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    if([[UIApplication sharedApplication] isProtectedDataAvailable])
+        NSLog(@"appComingFromBackground: TRUE");
+    
+    else
+        NSLog(@"appComingFromBackground: FALSE");
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -59,6 +66,7 @@
         }
     }
     else if([sender isEqual:_touchIDSwitch]){
+        
         [ShareOneUtility isTouchIDAvailableWithDelegate:weakSelf completionBlock:^(BOOL success) {
             if(success){
                 key=TOUCH_ID_SETTINGS;

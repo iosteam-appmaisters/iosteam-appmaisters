@@ -23,7 +23,7 @@
         block(response);
         
     } failureBlock:^(NSError *error) {
-        
+        failBlock(error);
     }];
 }
 

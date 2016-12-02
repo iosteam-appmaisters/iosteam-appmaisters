@@ -26,6 +26,14 @@
     
     _suffixArr= [[SharedUser sharedManager] suffixInfoArr];
     [self.pickerView reloadAllComponents];
+    
+    if(!_objSuffixInfo){
+        [_pickerView selectRow:0 inComponent:0 animated:YES];
+        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+    }
+    
+    [self getDataFromVertifi];
+
 }
 
 
@@ -177,5 +185,9 @@
     return cell;
 }
 
+- (BOOL)shouldAutorotate{
+    
+    return NO;
+}
 
 @end

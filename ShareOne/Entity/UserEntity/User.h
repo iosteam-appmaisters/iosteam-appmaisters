@@ -53,6 +53,8 @@
 @property (nonatomic,strong) NSNumber *latitude;
 @property (nonatomic,strong) NSNumber *longitude;
 @property (nonatomic,strong) NSString *isOnline;
+@property (nonatomic,strong) NSString *vertifyEUAContents;
+
 
 @property (nonatomic,strong) NSNumber *isPictureSaveOn;
 @property (nonatomic,strong) NSNumber *amIFollowing;
@@ -70,6 +72,19 @@
 
 @property (nonatomic,strong) NSString *groupId;
 
+@property (nonatomic,strong) NSString *EmailAddress;
+@property (nonatomic,strong) NSString *TempPassword;
+@property (nonatomic,strong) NSString *NewExpiration;
+@property (nonatomic,strong) NSString *last4;
+@property (nonatomic,strong) NSString *zip;
+
+@property (nonatomic,strong) NSArray *Requirements;
+
+
+
+
+
+
 +(void)getUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock;
 
 +(void)createOneToOneChatWithParam:(NSDictionary*)param delegate:(id)delegate urlString:(NSString*)urlString completionBlock:(void(^)(id response))block failureBlock:(void(^)(NSError* error))failBlock;
@@ -84,6 +99,13 @@
 +(void)keepAlive:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(BOOL  sucess))block failureBlock:(void(^)(NSError* error))failBlock;
 
 +(void)postContextIDForSSOWithDelegate:(id)delegate withTabName:(NSString *)url completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock;
+
++(void)userPinReset:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock;
+
++(void)userAccountName:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock;
+
++(void)setUserName:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock;
+
 
 
 @end

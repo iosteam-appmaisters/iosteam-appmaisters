@@ -188,7 +188,7 @@
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+//    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
     
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
     
@@ -200,8 +200,8 @@
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
 
-    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
-    manager.responseSerializer = jsonResponseSerializer;
+//    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+//    manager.responseSerializer = jsonResponseSerializer;
     
     
     // if it is own server call than header must be in the request
@@ -225,8 +225,11 @@
         [req setHTTPBody:httpBody];
 
 
-        AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
-        responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
+//        AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
+//        responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
+        
+        AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
+
         manager.responseSerializer = responseSerializer;
 
     }
@@ -246,7 +249,6 @@
             }else{
                 NSData * data = (NSData *)responseObject;
                 
-                
                 NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self hideProgressAlert];
@@ -259,8 +261,13 @@
             NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
             
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            NSLog(@"response status code: %@",[NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode]);
+            
 
 
+            if([response.URL.absoluteString containsString:KMEMBER_DEVICES])
+                failBlock(error);
 
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             [self hideProgressAlert];
@@ -644,6 +651,8 @@
             
             if([response.URL.absoluteString containsString:kKEEP_ALIVE])
                 block(responseObject);
+            
+            
 
             [self hideProgressAlert];
             
@@ -792,6 +801,8 @@
 
 -(void)setHeaderOnRequest:(NSMutableURLRequest *)request withAuth:(NSString *)auth{
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"en,en-gb;q=0.5" forHTTPHeaderField:@"Accept-Language"];
     [request setValue:@"max-age=0" forHTTPHeaderField:@"Cache-Control"];
     [request setValue:@"UTF-8;q=0.7,*;q=0.7" forHTTPHeaderField:@"Accept-Charset"];
@@ -826,7 +837,8 @@
 
     
     NSMutableArray *customReqArr= [[NSMutableArray alloc] init];
-    
+    __block NSError *reqError = nil;
+
     [reqObjects enumerateObjectsUsingBlock:^(NSDictionary  *dict, NSUInteger idx, BOOL * _Nonnull stop) {
         
         NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:dict[REQ_TYPE] URLString:dict[REQ_URL] parameters:dict[REQ_PARAM] error:nil];
@@ -842,6 +854,8 @@
 //                NSLog(@"%@",responseObject);
                 reqBlock(responseObject,response);
             } else {
+                
+                reqError=error;
                 failReqBlock(error);
                 NSLog(@"operation setCompletionBlock %@",[error localizedDescription]);
             }
@@ -856,7 +870,10 @@
         NSLog(@"ALL TASK DONE WITH REQ COUNT : %d ",[dataTasks count]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-        queueBlock(TRUE);
+        if(reqError)
+            queueBlock(FALSE);
+        else
+            queueBlock(TRUE);
     }];}
 
 

@@ -35,7 +35,7 @@
 
     
     
-    NSArray *reqArr = [NSArray arrayWithObjects:getDevicesDict,getSuffixDict,getQBDict, nil];
+    NSArray *reqArr = [NSArray arrayWithObjects:getDevicesDict,getSuffixDict, nil];
     
     
     [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSURLResponse *responseObj) {

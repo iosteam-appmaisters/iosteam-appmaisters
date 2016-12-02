@@ -26,7 +26,6 @@
     
 
 
-    //[NSURLProtocol registerClass:[WebViewProxyURLProtocol class]];
 
     __weak HomeViewController *weakSelf = self;
     
@@ -49,6 +48,8 @@
     //[self keepMeAlive];
     
     //[self getQuickTransaction];
+    
+    //[self setUserName];
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;
 
@@ -201,6 +202,16 @@
     
 
     [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",@"55220",@"SuffixID",@"2",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
+-(void)setUserName{
+    
+    NSString *context = [[[SharedUser sharedManager] userObject] ContextID];
+    [User setUserName:[NSDictionary dictionaryWithObjectsAndKeys:/*@"",@"AccountName",*/context,@"ContextID", nil] delegate:self completionBlock:^(id response) {
         
     } failureBlock:^(NSError *error) {
         
