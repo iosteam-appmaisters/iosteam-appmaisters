@@ -22,10 +22,10 @@
     else
         _navBar.topItem.title = @"Forgot Password";
 
-    [_accountNameTxtFeild setText:@"7"];
-    [_taxIDTxtFeild setText:@"9456"];
-    [_dateTxtFeild setText:@"01/01/1980"];
-    [_postalCodeTxtFeild setText:@"77777"];
+//    [_accountNameTxtFeild setText:@"7"];
+//    [_taxIDTxtFeild setText:@"9456"];
+//    [_dateTxtFeild setText:@"01/01/1980"];
+//    [_postalCodeTxtFeild setText:@"77777"];
     
 }
 
@@ -55,7 +55,7 @@
         
     }
     else{
-        [_accountNameTxtFeild setText:@"newton"];
+//        [_accountNameTxtFeild setText:@"newton"];
 
         
         [User userPinReset:[NSDictionary dictionaryWithObjectsAndKeys:_accountNameTxtFeild.text,@"Account",_taxIDTxtFeild.text,@"Last4",_dateTxtFeild.text,@"DateOfBirth",_postalCodeTxtFeild.text,@"PostalCode", nil] delegate:self completionBlock:^(id  response) {

@@ -198,9 +198,9 @@
 //    if(!obj.transArr)
     {
         
-        [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",@"5",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",@"0",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
             
-            [self applyURLSessionOnReq:(NSMutableURLRequest *)user];
+//            [self applyURLSessionOnReq:(NSMutableURLRequest *)user];
             
 //            if(!obj.transArr){
 //                obj.transArr= [[NSMutableArray alloc] init];

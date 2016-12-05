@@ -7,6 +7,7 @@
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
 #import "HTTPRequestOperation.h"
+#import "ASIHTTPRequest.h"
 
 
 @implementation AppServiceModel
@@ -604,14 +605,14 @@
 
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-    
-    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
-    manager.responseSerializer = jsonResponseSerializer;
-    
-//    AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
-    
+//    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+//    
+//    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
 //    manager.responseSerializer = jsonResponseSerializer;
+    
+    AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    manager.responseSerializer = jsonResponseSerializer;
 
 
     if(progressMessage)
@@ -632,7 +633,25 @@
         [self setHeaderForLocationApiOnRequest:req];
     }
     
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
+//    ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
+//    [self setHeaderOnRequest:requestASI withAuth:auth_header];
+//    
+//    [requestASI setCompletionBlock:^{
+//        NSString *responseString = [requestASI responseString];
+//        NSLog(@"Response: %@", responseString);
+//    }];
+//    [requestASI setFailedBlock:^{
+//        NSError *error = [requestASI error];
+//        NSLog(@"Error: %@", error.localizedDescription);
+//    }];
+//    
+//    [requestASI startAsynchronous];
+//    return;
+    
+    
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * response, id   responseObject, NSError * _Nullable error) {
         
         if (!error) {
             
@@ -649,6 +668,10 @@
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             
+            NSString *eerorString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSLog(@"eerorString : %@",eerorString);
+    
+
             if([response.URL.absoluteString containsString:kKEEP_ALIVE])
                 block(responseObject);
             
@@ -660,6 +683,7 @@
 
         }
     }] resume];
+    
     
 }
 
@@ -800,9 +824,27 @@
 
 
 -(void)setHeaderOnRequest:(NSMutableURLRequest *)request withAuth:(NSString *)auth{
+    
+    
+    //    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    //    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+//    ASIHTTPRequest *requestAsiHttp = (ASIHTTPRequest *)request;
+//    [requestAsiHttp addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
+//    [requestAsiHttp addRequestHeader:@"Accept-Language" value:@"en,en-gb;q=0.5"];
+//    [requestAsiHttp addRequestHeader:@"Cache-Control" value:@"max-age=0"];
+//    [requestAsiHttp addRequestHeader:@"Accept-Charset" value:@"UTF-8;q=0.7,*;q=0.7"];
+//    [requestAsiHttp addRequestHeader:@"Pragma" value:@"no-cache"];
+//    [requestAsiHttp addRequestHeader:@"Cache-Control" value:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0"];
+//    [requestAsiHttp addRequestHeader:@"Expires" value:@"Sat, 1 Jan 2020 00:00:00 GMT"];
+//    [requestAsiHttp addRequestHeader:@"HmacType" value:H_MAC_TYPE];
+//    [requestAsiHttp addRequestHeader:@"SecurityVersion" value:SECURITY_VERSION];
+//    [requestAsiHttp addRequestHeader:@"Authorization" value:auth];
+
+
+
+    
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"en,en-gb;q=0.5" forHTTPHeaderField:@"Accept-Language"];
     [request setValue:@"max-age=0" forHTTPHeaderField:@"Cache-Control"];
     [request setValue:@"UTF-8;q=0.7,*;q=0.7" forHTTPHeaderField:@"Accept-Charset"];
@@ -812,6 +854,7 @@
     [request setValue:H_MAC_TYPE forHTTPHeaderField:@"HmacType"];
     [request setValue:SECURITY_VERSION forHTTPHeaderField:@"SecurityVersion"];
     [request setValue:auth forHTTPHeaderField:@"Authorization"];
+    
 }
 
 -(void)setHeaderForLocationApiOnRequest:(NSMutableURLRequest *)request {
