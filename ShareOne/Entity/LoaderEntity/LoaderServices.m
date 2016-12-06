@@ -21,7 +21,7 @@
 
 @implementation LoaderServices
 
-+(void)setRequestOnQueueWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)setRequestOnQueueWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
     
     
     NSDictionary *getDevicesDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] ContextID]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
@@ -38,17 +38,17 @@
     NSArray *reqArr = [NSArray arrayWithObjects:getDevicesDict,getSuffixDict, nil];
     
     
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSURLResponse *responseObj) {
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
         
-        if([[responseObj.URL absoluteString] containsString:KMEMBER_DEVICES]){
+        if([responseObj containsString:KMEMBER_DEVICES]){
             NSArray *arr = [MemberDevices getMemberDevices:(NSDictionary *)response];
             [[SharedUser sharedManager] setMemberDevicesArr:arr];
         }
-        if([[responseObj.URL absoluteString] containsString:KSUFFIX_INFO]){
+        if([responseObj containsString:KSUFFIX_INFO]){
             NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:(NSDictionary *)response];
             [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
         }
-        if([[responseObj.URL absoluteString] containsString:KQUICK_BALANCES]){
+        if([responseObj containsString:KQUICK_BALANCES]){
             NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
             [ShareOneUtility savedSufficInfoLocally:(NSDictionary *)response];
             [[SharedUser sharedManager] setQBSectionsArr:qbObjects];
@@ -57,15 +57,15 @@
 
     } requestFailureBlock:^(NSError *error) {
         
-    } queueCompletionBlock:^(BOOL sucess) {
-        block(sucess);
+    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
+        block(sucess,errorString);
         
     } queueFailureBlock:^(NSError *error) {
         
     }];
 }
 
-+(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSMutableArray *queuReqArr = [[NSMutableArray alloc] init];
     [qbArr enumerateObjectsUsingBlock:^(QuickBalances *object, NSUInteger idx, BOOL *stop) {
@@ -75,10 +75,9 @@
         [queuReqArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:url,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil]];
     }];
     
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:queuReqArr requestCompletionBlock:^(NSObject *response, NSURLResponse *responseObj) {
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:queuReqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
         
-        NSLog(@"%@",[responseObj.URL absoluteString]);
-        NSArray *urlCompArr = [[responseObj.URL absoluteString] componentsSeparatedByString:@"/"];
+        NSArray *urlCompArr = [responseObj  componentsSeparatedByString:@"/"];
         NSString *suffixID = urlCompArr[[urlCompArr count]-2];
         
         NSPredicate *suffixPredicate = [NSPredicate predicateWithFormat:@"SuffixID = %d",[suffixID intValue]];
@@ -96,8 +95,8 @@
         
     } requestFailureBlock:^(NSError *error) {
         
-    } queueCompletionBlock:^(BOOL sucess) {
-        block(sucess);
+    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
+        block(sucess,errorString);
     } queueFailureBlock:^(NSError *error) {
         
     }];

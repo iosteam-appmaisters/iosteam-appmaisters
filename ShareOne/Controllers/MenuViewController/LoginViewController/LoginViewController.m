@@ -317,10 +317,10 @@
     
     __weak LoginViewController *weakSelf = self;
 
-    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success) {
+    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
         
         
-        if(success){
+        if(success && !errorString){
             NSArray *devicesArr = [[SharedUser sharedManager] memberDevicesArr];
             
             NSPredicate *devicePredicate = [NSPredicate predicateWithFormat:@"Fingerprint == %@",[ShareOneUtility getUUID]];
@@ -345,7 +345,6 @@
                     
                     [weakSelf.loadingView setHidden:TRUE];
                     
-                    [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
 
                 }];
                 
@@ -378,18 +377,11 @@
                     } failureBlock:^(NSError *error) {
                         
                         [weakSelf.loadingView setHidden:TRUE];
-                        
-                        [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
-
-                        
                     }];
                     
                 } failureBlock:^(NSError *error) {
                     
                     [weakSelf.loadingView setHidden:TRUE];
-                    
-                    [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
-
                 }];
                 
             }        
@@ -400,7 +392,7 @@
             
             [weakSelf.loadingView setHidden:TRUE];
 
-            [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"Unable to proceed" title:@"Error" delegate:weakSelf];
+            [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
         }
     } failureBlock:^(NSError *error) {
         

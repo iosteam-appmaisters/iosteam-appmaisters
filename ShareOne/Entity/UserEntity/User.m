@@ -191,12 +191,14 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
 
-    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KSET_ACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
+    
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KSET_ACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);
         
     } failureBlock:^(NSError *error) {
-        
+        failBlock(error);
     }];
+
 
 }
 

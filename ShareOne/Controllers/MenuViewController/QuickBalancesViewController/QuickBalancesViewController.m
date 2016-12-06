@@ -36,10 +36,15 @@
 //    [self getQTForSelectedSection:0];
 //    
 //    return;
-    [LoaderServices setQTRequestOnQueueWithDelegate:weakSelf AndQuickBalanceArr:weakSelf.qbArr completionBlock:^(BOOL success) {
-        
+    [LoaderServices setQTRequestOnQueueWithDelegate:weakSelf AndQuickBalanceArr:weakSelf.qbArr completionBlock:^(BOOL success,NSString *errorString) {
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-        [weakSelf.qbTblView reloadData];
+
+        if(success && !errorString){
+            [weakSelf.qbTblView reloadData];
+        }
+        else
+            [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
+
         
     } failureBlock:^(NSError *error) {
         
