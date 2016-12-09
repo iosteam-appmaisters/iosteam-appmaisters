@@ -338,14 +338,11 @@
                     [self registerToVertify];
                     
                     //Skip vertifi reg on login screen
-                    //                    [weakSelf startApplication];
-                    
+                    //  [weakSelf startApplication];
                     
                 } failureBlock:^(NSError *error) {
                     
                     [weakSelf.loadingView setHidden:TRUE];
-                    
-
                 }];
                 
                 //Skip vertifi reg on login screen
@@ -361,7 +358,7 @@
                 
                 NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
                 
-                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"0",@"ProviderType",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
                     
                     
                     [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
@@ -371,25 +368,18 @@
                         [self registerToVertify];
                         
                         //Skip vertifi reg on login screen
-                        //                    [weakSelf startApplication];
-                        
+                        //  [weakSelf startApplication];
                         
                     } failureBlock:^(NSError *error) {
-                        
                         [weakSelf.loadingView setHidden:TRUE];
                     }];
                     
                 } failureBlock:^(NSError *error) {
-                    
                     [weakSelf.loadingView setHidden:TRUE];
                 }];
-                
-            }        
-
-            
+            }
         }
         else{
-            
             [weakSelf.loadingView setHidden:TRUE];
 
             [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
@@ -397,9 +387,7 @@
     } failureBlock:^(NSError *error) {
         
     }];
-
 }
-
 
 -(void)registerToVertify{
     

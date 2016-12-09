@@ -17,7 +17,15 @@
 
 +(void)getAllBranchLocations:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSArray *locations))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    [[AppServiceModel sharedClient] getMethod:nil AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@",kLOCATION_API] delegate:delegate completionBlock:^(NSObject *response) {
+    NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"%@",kLOCATION_API]];
+    NSURLQueryItem *maxRadiud = [NSURLQueryItem queryItemWithName:@"maxRadius" value:@"20"];
+    NSURLQueryItem *maxResults = [NSURLQueryItem queryItemWithName:@"maxResults" value:@"20"];
+    NSURLQueryItem *zip = [NSURLQueryItem queryItemWithName:@"zip" value:@"91730"];
+
+    components.queryItems = @[ maxRadiud, zip,maxResults ];
+    NSString  *urlString = components.URL.absoluteString; // http://stackoverflow.com?q=ios&count=10
+
+    [[AppServiceModel sharedClient] getMethod:nil AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@",urlString] delegate:delegate completionBlock:^(NSObject *response) {
         
         if([response isKindOfClass:[NSDictionary class]]){
             block([self parseAllLocationsWithObject:(NSDictionary *)response]);

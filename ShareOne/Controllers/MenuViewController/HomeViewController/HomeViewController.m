@@ -229,8 +229,21 @@
     NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.navigationItem.title=theTitle;
     [self setTitleOnNavBar:theTitle];
+    
 
     __weak HomeViewController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    [self trackPrintingEventWithScheme:webView.request.URL.scheme];
+}
+
+
+-(void)trackPrintingEventWithScheme:(NSString * )scheme{
+    
+    NSString *jsString = [NSString stringWithFormat:@"(function(){var originalPrintFn = window.print;window.print = function(){window.location = '%@:print';}})();",scheme];
+    
+    [self.webview stringByEvaluatingJavaScriptFromString:jsString];
+    
+//    [self.webview stringByEvaluatingJavaScriptFromString:@"(function(){var originalPrintFn = window.print;window.print = function(){window.location = 'your_app_scheme:print';}})();"];
+
 }
 @end

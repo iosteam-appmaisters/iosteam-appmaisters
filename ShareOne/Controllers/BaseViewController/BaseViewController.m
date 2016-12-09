@@ -34,12 +34,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    
     UIView* dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [dummyView setBackgroundColor:[UIColor clearColor]];
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:dummyView];
    
+//    [self manageAds];
+
     [self createLefbarButtonItems];
     
     [self setNavigationBarImage];
@@ -49,7 +50,6 @@
     [self setBackgroundImage];
 
     [self setTitleTextAttribute];
-    
     
 //    [self performSelector:@selector(addAdvertismentControllerOnBottomScreen) withObject:nil afterDelay:2];
 }
@@ -65,18 +65,19 @@
     [self setTitleOnNavBar:self.navigationItem.title];
 
     [self addAdvertismentControllerOnBottomScreen];
+    [self manageAds];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+-(void)manageAds{
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
         _bottomAdsConstraint.constant=50;
     }
     else{
         _bottomAdsConstraint.constant=0;
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
-
-
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

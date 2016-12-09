@@ -33,8 +33,9 @@
     [self.view layoutIfNeeded];
     [super viewDidLoad];
 }
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSLog(@"viewWillAppear");
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

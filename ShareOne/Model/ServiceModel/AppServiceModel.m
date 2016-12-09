@@ -488,20 +488,15 @@
     jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     manager.responseSerializer = jsonResponseSerializer;
     
-    
     NSString *boundary = [ShareOneUtility generateBoundaryString];
         
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [req setValue:contentType forHTTPHeaderField: @"Content-Type"];
-        
-        
+    
     // create body
     NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
     [req setHTTPBody:httpBody];
     
-    
-    
-        
     AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
     responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
     manager.responseSerializer = responseSerializer;
@@ -509,7 +504,6 @@
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
-            
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             [self hideProgressAlert];
             block(responseObject,TRUE);
@@ -578,7 +572,6 @@
             
             [self hideProgressAlert];
             
-
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:[self getErrorMessageWithObject:errorInfo] title:@"" delegate:delegate];
         }
         
@@ -597,7 +590,6 @@
     [requestASI startAsynchronous];
 
 
-    
     /*
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -606,12 +598,9 @@
     
     jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     
-
-    manager.responseSerializer = jsonResponseSerializer;
-    
+     manager.responseSerializer = jsonResponseSerializer;
     
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_PUT URLString:urlString parameters:nil error:nil];
-    
     
     if(auth_header)
         [self setHeaderOnRequest:req withAuth:auth_header];
@@ -718,7 +707,6 @@
             
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:[self getErrorMessageWithObject:errorInfo] title:@"" delegate:delegate];
         }
-        
     }];
     [requestASI setFailedBlock:^{
         
@@ -734,7 +722,6 @@
     }];
     
     [requestASI startAsynchronous];
-    
     
     /*
      

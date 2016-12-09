@@ -16,6 +16,8 @@
 
 @property (nonatomic,strong) NSString *Fingerprint;
 @property (nonatomic,strong) NSNumber *ID;
+@property (nonatomic,strong) NSNumber *ProviderType;
+
 @property (nonatomic,strong) NSMutableArray *Authorizations;
 
 

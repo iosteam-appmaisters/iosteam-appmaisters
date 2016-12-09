@@ -132,7 +132,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-xn-S6F" userLabel="View3">
                                         <rect key="frame" x="20" y="122" width="374" height="97"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p">
                                                 <rect key="frame" x="21" y="25" width="333" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
@@ -161,7 +161,7 @@
                                                     <action selector="forgotPasswordButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="6NN-uO-dfU"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh">
                                                 <rect key="frame" x="250" y="68" width="70" height="24"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -178,7 +178,7 @@
                                                     <rect key="frame" x="423" y="107" width="108" height="37"/>
                                                 </variation>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0">
                                                 <rect key="frame" x="324" y="67" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
@@ -467,8 +467,12 @@
                             <constraint firstItem="XMz-Ei-3Z8" firstAttribute="top" secondItem="ol8-GV-fdp" secondAttribute="bottom" constant="-20" id="1PH-Fp-36Z"/>
                             <constraint firstAttribute="trailing" secondItem="7Am-NF-euc" secondAttribute="trailing" id="1Qp-KC-igU"/>
                             <constraint firstItem="pBa-4E-7vZ" firstAttribute="bottom" secondItem="mah-z6-qDW" secondAttribute="bottom" id="2OT-0x-90x"/>
-                            <constraint firstItem="HHb-XY-Cad" firstAttribute="leading" secondItem="jx4-XD-MOx" secondAttribute="leadingMargin" constant="20" id="4t0-WB-TDW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yZf-ZN-8NF" secondAttribute="trailing" constant="20" id="83T-x6-T5r"/>
+                            <constraint firstItem="HHb-XY-Cad" firstAttribute="leading" secondItem="jx4-XD-MOx" secondAttribute="leadingMargin" constant="20" id="4t0-WB-TDW">
+                                <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="yZf-ZN-8NF" secondAttribute="trailing" constant="20" id="83T-x6-T5r">
+                                <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                            </constraint>
                             <constraint firstItem="Jwb-Zb-xKg" firstAttribute="top" secondItem="2FB-WI-wE0" secondAttribute="bottom" id="8rM-U2-0Vt"/>
                             <constraint firstItem="9Na-Ef-zQf" firstAttribute="width" secondItem="XMz-Ei-3Z8" secondAttribute="height" multiplier="97:150" id="C4A-6g-kkg"/>
                             <constraint firstItem="7Am-NF-euc" firstAttribute="leading" secondItem="jx4-XD-MOx" secondAttribute="leading" id="COj-y9-cke"/>
@@ -3662,7 +3666,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHB-et-H1P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cHB-et-H1P">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3735,7 +3739,7 @@ Tm90ZToQIA
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.88620918989181519" green="0.88631266355514526" blue="0.88616174459457397" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 4 Digits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Au4-TD-eBk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 4 Digits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Au4-TD-eBk">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3762,7 +3766,7 @@ Tm90ZToQIA
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.88620918989999997" green="0.88631266360000005" blue="0.88616174459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-rc-cQg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-rc-cQg">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3801,7 +3805,7 @@ Tm90ZToQIA
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.88620918989999997" green="0.88631266360000005" blue="0.88616174459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-R8-E64">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-R8-E64">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -4220,7 +4224,9 @@ Tm90ZToQIA
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
                             <constraint firstItem="ibj-rc-cQg" firstAttribute="leading" secondItem="cHB-et-H1P" secondAttribute="leading" id="bUD-UO-o1C"/>
-                            <constraint firstItem="cHB-et-H1P" firstAttribute="leading" secondItem="qOf-Dc-r6Z" secondAttribute="leading" constant="20" id="bUL-W1-OFD"/>
+                            <constraint firstItem="cHB-et-H1P" firstAttribute="leading" secondItem="qOf-Dc-r6Z" secondAttribute="leading" constant="20" id="bUL-W1-OFD">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="Au4-TD-eBk" firstAttribute="leading" secondItem="cHB-et-H1P" secondAttribute="leading" id="bjn-2I-6b8"/>
                             <constraint firstItem="Sfa-qE-hhc" firstAttribute="centerX" secondItem="qOf-Dc-r6Z" secondAttribute="centerX" id="cBn-Uq-mtH"/>
                             <constraint firstItem="VpU-ln-kwQ" firstAttribute="top" secondItem="eeX-3v-0Dc" secondAttribute="bottom" constant="9" id="cPf-Pc-qWN">
@@ -4265,7 +4271,9 @@ Tm90ZToQIA
                             <constraint firstItem="qeH-pe-sJL" firstAttribute="top" secondItem="4tr-nH-rnu" secondAttribute="bottom" constant="597" id="o29-MJ-NhQ">
                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="RSo-gs-Rxj" secondAttribute="trailing" constant="20" id="oNA-M2-b1a"/>
+                            <constraint firstAttribute="trailing" secondItem="RSo-gs-Rxj" secondAttribute="trailing" constant="20" id="oNA-M2-b1a">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstItem="nIb-P4-ARs" firstAttribute="top" secondItem="cjz-Vu-5iQ" secondAttribute="bottom" id="oPd-rk-1lZ"/>
                             <constraint firstItem="yeT-b2-WLB" firstAttribute="top" secondItem="9ul-MI-I5r" secondAttribute="bottom" id="oRq-6G-te4"/>
                             <constraint firstItem="msy-IG-iIk" firstAttribute="height" secondItem="uYd-WP-dLY" secondAttribute="height" id="oZS-Vv-avf"/>
@@ -5042,12 +5050,12 @@ Tm90ZToQIA
         <image name="UserID_icon" width="37" height="37"/>
         <image name="back_icon" width="25" height="17"/>
         <image name="boc-icon" width="98" height="75"/>
-        <image name="boc-icon-active" width="116" height="75"/>
+        <image name="boc-icon-active" width="98" height="75"/>
         <image name="crossBtnNew" width="25" height="25"/>
         <image name="directions" width="50" height="10"/>
         <image name="down-arrow" width="7" height="4"/>
         <image name="fb-image" width="225" height="65"/>
-        <image name="foc-icon" width="117" height="75"/>
+        <image name="foc-icon" width="99" height="75"/>
         <image name="foc-icon-active" width="99" height="75"/>
         <image name="icon-clock" width="12" height="12"/>
         <image name="icon-dollar" width="20" height="20"/>
