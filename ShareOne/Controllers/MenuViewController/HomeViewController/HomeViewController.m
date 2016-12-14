@@ -231,14 +231,33 @@
     [self setTitleOnNavBar:theTitle];
     
 
+    NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+    //NSLog(@"yourHTMLSourceCodeString: %@",yourHTMLSourceCodeString_inner);
+    
+    
+    NSString *yourHTMLSourceCodeString_outer = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    //NSLog(@"yourHTMLSourceCodeString: %@",yourHTMLSourceCodeString_outer);
+
+
+
     __weak HomeViewController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-    [self trackPrintingEventWithScheme:webView.request.URL.scheme];
+    //[self trackPrintingEventWithScheme:webView.request.URL.scheme];
 }
 
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    NSLog(@"url: %@", [[request URL] absoluteString]);
 
+//    NSString* clicked = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('memberInfo').click();"];
+//    
+//    NSLog(@"CLICK %@",clicked);
+    return TRUE;
+    
+}
 -(void)trackPrintingEventWithScheme:(NSString * )scheme{
     
+    NSLog(@"trackPrintingEventWithScheme");
     NSString *jsString = [NSString stringWithFormat:@"(function(){var originalPrintFn = window.print;window.print = function(){window.location = '%@:print';}})();",scheme];
     
     [self.webview stringByEvaluatingJavaScriptFromString:jsString];

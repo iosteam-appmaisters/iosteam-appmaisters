@@ -1208,14 +1208,28 @@ static NSOperationQueue *sharedQueue = nil;
     if([[[[self url] scheme] lowercaseString] isEqualToString:@"https"]) {       
        
         // Tell CFNetwork not to validate SSL certificates
+        //qazi
+        NSLog(@"sslProperties configuring qazi");
+
+        
+            NSDictionary *sslProperties = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                                                              @"kCFStreamSocketSecurityLevelTLSv1_0SSLv3", (NSString *)kCFStreamSSLLevel,
+                                                                              nil];
+        
+            CFReadStreamSetProperty((CFReadStreamRef)[self readStream],
+                                                                kCFStreamPropertySSLSettings,
+                                                                (CFTypeRef)sslProperties);
+
+
         if (![self validatesSecureCertificate]) {
             // see: http://iphonedevelopment.blogspot.com/2010/05/nsstream-tcp-and-ssl.html
-            
+            NSLog(@"sslProperties configuring");
             NSDictionary *sslProperties = [[NSDictionary alloc] initWithObjectsAndKeys:
                                       [NSNumber numberWithBool:YES], kCFStreamSSLAllowsExpiredCertificates,
                                       [NSNumber numberWithBool:YES], kCFStreamSSLAllowsAnyRoot,
                                       [NSNumber numberWithBool:NO],  kCFStreamSSLValidatesCertificateChain,
                                       kCFNull,kCFStreamSSLPeerName,
+                                           @"kCFStreamSocketSecurityLevelTLSv1_0SSLv3", kCFStreamSSLLevel,
                                       nil];
             
             CFReadStreamSetProperty((CFReadStreamRef)[self readStream], 
@@ -1226,7 +1240,13 @@ static NSOperationQueue *sharedQueue = nil;
         
         // Tell CFNetwork to use a client certificate
         if (clientCertificateIdentity) {
-            NSMutableDictionary *sslProperties = [NSMutableDictionary dictionaryWithCapacity:1];
+            
+            NSLog(@"sslProperties configuring from clientCertificateIdentity");
+
+            // old code
+//            NSMutableDictionary *sslProperties = [NSMutableDictionary dictionaryWithCapacity:1];
+
+            NSMutableDictionary *sslProperties = [NSMutableDictionary dictionaryWithCapacity:2];
             
 			NSMutableArray *certificates = [NSMutableArray arrayWithCapacity:[clientCertificates count]+1];
 
@@ -1239,6 +1259,7 @@ static NSOperationQueue *sharedQueue = nil;
 			}
             
             [sslProperties setObject:certificates forKey:(NSString *)kCFStreamSSLCertificates];
+            [sslProperties setObject:@"kCFStreamSocketSecurityLevelTLSv1_0SSLv3" forKey:kCFStreamSSLLevel];
             
             CFReadStreamSetProperty((CFReadStreamRef)[self readStream], kCFStreamPropertySSLSettings, sslProperties);
         }

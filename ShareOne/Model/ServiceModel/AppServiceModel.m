@@ -189,12 +189,96 @@
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
     
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    if(auth_header){
+    //    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+    
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
+    
+    if(params){
         
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    //    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+    //    manager.responseSerializer = jsonResponseSerializer;
+    
+    
+    // if it is own server call than header must be in the request
+    if(auth_header){
+        [self setHeaderOnRequest:req withAuth:auth_header];
+        
+        [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        
+    }
+    else{
+        // Third party server call by handling xml request
+        
+        NSString *boundary = [ShareOneUtility generateBoundaryString];
+        
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        [req setValue:contentType forHTTPHeaderField: @"Content-Type"];
+        
+        
+        // create body
+        NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
+        [req setHTTPBody:httpBody];
+        
+        
+        //        AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
+        //        responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
+        
+        AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+        manager.responseSerializer = responseSerializer;
+        
+    }
+    
+    
+    
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (!error) {
+            NSLog(@"Reply JSON: %@", responseObject);
+            
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                [self hideProgressAlert];
+                block(responseObject);
+                
+            }else{
+                NSData * data = (NSData *)responseObject;
+                
+                NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                [self hideProgressAlert];
+                block(responseObject);
+                
+            }
+        } else {
+            
+            if([response.URL.absoluteString containsString:KMEMBER_DEVICES])
+                failBlock(error);
+            
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            [self hideProgressAlert];
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
+            
+        }
+    }] resume];
+    
+    
+
+    
+    /*
+    if(auth_header){
+     
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
         __weak ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
-        
+     
         // Setting Headers for Own servers
         if(auth_header){
             [self setHeaderOnRequest:(NSMutableURLRequest *)requestASI withAuth:auth_header];
@@ -340,6 +424,7 @@
 
         
     }
+     */
 }
 
 -(void)postRequestForSSOWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -524,12 +609,16 @@
 
 -(void)putRequestWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
     
+    
+    NSLog(@"putRequestWithAuthHeader");
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
     
     
+    /*
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
     __weak ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
     
@@ -583,14 +672,18 @@
         
         NSError *error = [requestASI error];
         NSLog(@"Error: %@", error.localizedDescription);
+        NSLog(@"sow alert");
+        block(nil);
+
         [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
         
     }];
     
     [requestASI startAsynchronous];
+*/
 
-
-    /*
+    
+    
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -605,14 +698,137 @@
     if(auth_header)
         [self setHeaderOnRequest:req withAuth:auth_header];
     
-    
+    NSString *bodyHttpString=nil;
     if(params){
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        bodyHttpString=jsonString;
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
+    
+    /*
+    CFStringRef headerFieldName_1 = CFSTR("Content-Type");
+    CFStringRef headerFieldValue_1 = CFSTR("application/x-www-form-urlencoded");
+    
+    
+    CFStringRef headerFieldName_2 = CFSTR("Accept-Language");
+    CFStringRef headerFieldValue_2 = CFSTR("en,en-gb;q=0.5");
+    
+    
+    CFStringRef headerFieldName_3 = CFSTR("Cache-Control");
+    CFStringRef headerFieldValue_3 = CFSTR("max-age=0");
+
+    
+    CFStringRef headerFieldName_4 = CFSTR("Accept-Charset");
+    CFStringRef headerFieldValue_4 = CFSTR("UTF-8;q=0.7,*;q=0.7");
+    
+    CFStringRef headerFieldName_5 = CFSTR("Pragma");
+    CFStringRef headerFieldValue_5 = CFSTR("no-cache");
+
+    
+    CFStringRef headerFieldName_6 = CFSTR("Cache-Control");
+    CFStringRef headerFieldValue_6 = CFSTR("no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0");
+    
+    
+    CFStringRef headerFieldName_7 = CFSTR("Expires");
+    CFStringRef headerFieldValue_7 = CFSTR("Sat, 1 Jan 2020 00:00:00 GMT");
+    
+    CFStringRef headerFieldName_8 = CFSTR("HmacType");
+    CFStringRef headerFieldValue_8 = CFSTR("SHA256");
+
+    
+    CFStringRef headerFieldName_9 = CFSTR("SecurityVersion");
+    CFStringRef headerFieldValue_9 = CFSTR("1.1");
+
+    
+    NSString *authNSString = auth_header;
+    CFStringRef authCFString = (__bridge CFStringRef)authNSString;
+
+    CFStringRef headerFieldName_10 = CFSTR("Authorization");
+    CFStringRef headerFieldValue_10 = authCFString;
+
+
+    
+    NSString *urlNSString = req.URL.absoluteString;
+    CFStringRef aCFString = (__bridge CFStringRef)urlNSString;
+    CFStringRef url = aCFString;
+    CFURLRef myURL = CFURLCreateWithString(kCFAllocatorDefault, url, NULL);
+    CFStringRef requestMethod = CFSTR("PUT");
+    CFStringRef bodyString = (__bridge CFStringRef)bodyHttpString;
+
+    CFDataRef bodyData = CFStringCreateExternalRepresentation(kCFAllocatorDefault,
+                                                              bodyString, kCFStringEncodingUTF8, 0);
+
+    
+    CFHTTPMessageRef myRequest = CFHTTPMessageCreateRequest(kCFAllocatorDefault,
+                                                            requestMethod, myURL, kCFHTTPVersion1_1);
+    CFHTTPMessageSetBody(myRequest, bodyData);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_1, headerFieldValue_1);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_2, headerFieldValue_2);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_3, headerFieldValue_3);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_4, headerFieldValue_4);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_5, headerFieldValue_5);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_6, headerFieldValue_6);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_7, headerFieldValue_7);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_8, headerFieldValue_8);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_9, headerFieldValue_9);
+    CFHTTPMessageSetHeaderFieldValue(myRequest, headerFieldName_10, headerFieldValue_10);
+
+    
+    CFDataRef mySerializedRequest = CFHTTPMessageCopySerializedMessage(myRequest);
+    
+    
+    NSData *myData = (__bridge NSData *)mySerializedRequest;
+    
+    NSString* responseString = [[NSString alloc] initWithData:myData encoding:NSUTF8StringEncoding];
+
+
+    
+    CFReadStreamRef myReadStream = CFReadStreamCreateForHTTPRequest(kCFAllocatorDefault, myRequest);
+    
+    CFReadStreamOpen(myReadStream);
+    
+    
+    
+    CFHTTPMessageRef myResponse = CFReadStreamCopyProperty(myReadStream, kCFStreamPropertyHTTPResponseHeader);
+    
+    
+    CFStringRef myStatusLine = CFHTTPMessageCopyResponseStatusLine(myResponse);
+
+
+    
+//    CFHTTPMessageRef myResponse = (CFHTTPMessageRef)CFReadStreamCopyProperty(myReadStream, kCFStreamPropertyHTTPResponseHeader);
+//
+//    CFStringRef myStatusLine = CFHTTPMessageCopyResponseStatusLine(myResponse);
+//    
+//    NSLog(@"myStatusLine: %@",(__bridge NSString *)myStatusLine);
+//
+//    UInt32 myErrCode = CFHTTPMessageGetResponseStatusCode(myResponse);
+
+    
+    
+    NSLog(@"sadas");
+
+
+*/
+    
+//    return;
+//    
+//    
+//    [NSURLConnection sendAsynchronousRequest:req
+//                                       queue:[NSOperationQueue mainQueue]
+//                           completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+//                               
+//                               NSString* responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+////CFHTTPMessageCopyResponseStatusLine                               
+//
+//
+//                               NSLog(@"%@", response);
+//                               NSLog(@"%@", responseString);
+//                           }];
+
      
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
@@ -658,7 +874,8 @@
 
         }
     }] resume];
-     */
+    
+    
 }
 
 
@@ -668,6 +885,7 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
+    /*
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
     __weak ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
     
@@ -722,20 +940,21 @@
     }];
     
     [requestASI startAsynchronous];
+     */
     
-    /*
+    
      
      AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
      
-     //    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-     //
-     //    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
-     //    manager.responseSerializer = jsonResponseSerializer;
+         AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+    
+         jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+         manager.responseSerializer = jsonResponseSerializer;
      
-     AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
-     
-     manager.responseSerializer = jsonResponseSerializer;
-     
+//     AFHTTPResponseSerializer *jsonResponseSerializer = [AFHTTPResponseSerializer serializer];
+//     
+//     manager.responseSerializer = jsonResponseSerializer;
+    
      
      if(progressMessage)
      [self showProgressWithMessage:progressMessage];
@@ -755,10 +974,10 @@
      NSLog(@"**************************************************");
      [self setHeaderForLocationApiOnRequest:req];
      }
-     */
     
     
-    /*
+    
+    
     
     
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * response, id   responseObject, NSError * _Nullable error) {
@@ -772,8 +991,10 @@
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self hideProgressAlert];
                 block(responseObject);
-
             }
+            
+
+            
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -793,7 +1014,7 @@
 
         }
     }] resume];
-     */
+    
     
     
 }
@@ -999,6 +1220,7 @@
 
 -(void)createBatchOfRequestsWithObject:(NSArray *)reqObjects requestCompletionBlock:(void(^)(NSObject *response,NSString *responseObj))reqBlock requestFailureBlock:(void(^)(NSError* error))failReqBlock queueCompletionBlock:(void(^)(BOOL sucess,NSString *errorString ))queueBlock queueFailureBlock:(void(^)(NSError* error))failQueueBlock{
 
+    /*
     queueCompletionBlockClone=queueBlock;
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -1068,10 +1290,10 @@
     [objASINetworkQueue setQueueDidFinishSelector:@selector(queueFinished:)];
 
     [objASINetworkQueue go];
-
+*/
     
     
-    /*
+    
      
      NSMutableArray *customReqArr= [[NSMutableArray alloc] init];
      __block NSError *reqError = nil;
@@ -1090,6 +1312,7 @@
      if (!error) {
      //                NSLog(@"%@",responseObject);
      reqBlock(responseObject,response);
+         
      } else {
      
      reqError=error;
@@ -1109,12 +1332,14 @@
         NSLog(@"ALL TASK DONE WITH REQ COUNT : %d ",[dataTasks count]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-        if(reqError)
-            queueBlock(FALSE);
-        else
-            queueBlock(TRUE);
+        if(reqError){
+            queueBlock(FALSE,nil);
+        }
+        else{
+            queueBlock(TRUE,nil);
+        }
     }];
-     */
+    
 }
 
 

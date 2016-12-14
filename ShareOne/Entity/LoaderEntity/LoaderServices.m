@@ -40,15 +40,26 @@
     
     [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
         
-        if([responseObj containsString:KMEMBER_DEVICES]){
+        NSURLResponse *responseCast = (NSURLResponse *)responseObj;
+
+        if([[responseCast.URL absoluteString] containsString:KMEMBER_DEVICES])
+
+//        if([responseObj containsString:KMEMBER_DEVICES])
+        {
             NSArray *arr = [MemberDevices getMemberDevices:(NSDictionary *)response];
             [[SharedUser sharedManager] setMemberDevicesArr:arr];
         }
-        if([responseObj containsString:KSUFFIX_INFO]){
+        if([[responseCast.URL absoluteString] containsString:KSUFFIX_INFO])
+
+//        if([responseObj containsString:KSUFFIX_INFO])
+        {
             NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:(NSDictionary *)response];
             [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
         }
-        if([responseObj containsString:KQUICK_BALANCES]){
+        if([[responseCast.URL absoluteString] containsString:KQUICK_BALANCES])
+
+//        if([responseObj containsString:KQUICK_BALANCES])
+        {
             NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
             [ShareOneUtility savedSufficInfoLocally:(NSDictionary *)response];
             [[SharedUser sharedManager] setQBSectionsArr:qbObjects];

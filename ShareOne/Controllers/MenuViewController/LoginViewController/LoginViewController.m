@@ -81,6 +81,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLogin)
      
                                                  name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -116,6 +117,10 @@
         [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
     }
 
+    
+//    [_userIDTxt setText:@"asd"];
+//    [_passwordTxt setText:@"asd"];
+
 }
 
 -(void)showTouchID{
@@ -137,6 +142,8 @@
 
 - (IBAction)loginButtonClicked:(id)sender
 {
+    
+    NSLog(@"loginButtonClicked");
     __weak LoginViewController *weakSelf = self;
     /*
      **  Check if Touch ID is enabled than verify touch first if its verified than call login service
@@ -239,6 +246,7 @@
 //    user.Password
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
+        
         if(_objPinResetController){
             [_objPinResetController dismissViewControllerAnimated:NO completion:nil];
             _objPinResetController=nil;
@@ -267,6 +275,10 @@
         }
         else{
             // Go though to thee application
+            
+//            [weakSelf startApplication];
+
+            //asi flow
             [weakSelf.loadingView setHidden:FALSE];
             [weakSelf startLoadingServices];
         }
