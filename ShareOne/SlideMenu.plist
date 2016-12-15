@@ -113,13 +113,13 @@
 			<array>
 				<dict>
 					<key>title</key>
-					<string>E Statement</string>
+					<string>eStatements</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>/EStatements/Index</string>
+					<string>https://nsmobilecp.ns3web.com/EStatements/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -131,9 +131,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>/BillPay/Index</string>
+					<string>https://nsmobilecp.ns3web.com/BillPay/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -145,9 +145,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>/CheckOrder/Ineligible</string>
+					<string>https://nsmobilecp.ns3web.com/CheckOrder/Ineligible</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -155,13 +155,13 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Money Desktop</string>
+					<string>MX</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>/MX</string>
+					<string>https://nsmobilecp.ns3web.com/MX</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -173,11 +173,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>/Alerts/Index</string>
+					<string>https://nsmobilecp.ns3web.com/Alerts/Index</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -187,11 +187,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>/LoanApplication/Index</string>
+					<string>https://nsmobilecp.ns3web.com/LoanApplication/Index</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -201,11 +201,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>/Account/Tax</string>
+					<string>https://nsmobilecp.ns3web.com/Account/Tax</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -215,23 +215,23 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>/Notices/List</string>
+					<string>https://nsmobilecp.ns3web.com/Notices/List</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>External Credit Card</string>
+					<string>Credit Cards</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>/ECC</string>
+					<string>https://nsmobilecp.ns3web.com/ECC</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -243,9 +243,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>/StopPayment/Index</string>
+					<string>https://nsmobilecp.ns3web.com/StopPayment/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -441,7 +441,7 @@
 			<key>shouldShow</key>
 			<true/>
 			<key>title</key>
-			<string>Rates &amp; loan</string>
+			<string>Rates &amp; Loans</string>
 			<key>icon</key>
 			<string>menu_rates_loan_icon</string>
 			<key>detailVCIdentifier</key>
@@ -556,9 +556,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/Transfers/Account</string>
+					<string>http://www.nadaguides.com/</string>
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>
@@ -570,9 +570,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/Transfers/Account</string>
+					<string>https://www.enterprisecarsales.com</string>
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>

@@ -21,6 +21,8 @@
 #import "PinResetController.h"
 #import "PasswordChangeController.h"
 #import "UserNamecontroller.h"
+#import "IQKeyboardManager.h"
+
 
 @interface LoginViewController ()
 
@@ -31,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *userFingerprintBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rememberMetxtBtn;
 @property (weak, nonatomic) IBOutlet UIButton *quickBalanceBtn;
+@property (weak, nonatomic) IBOutlet UISwitch *rememberMeSwitch;
+
 
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 
@@ -70,6 +74,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+
     [self updateDataByDefaultValues];
     
 //    __weak LoginViewController *weakSelf = self;
@@ -82,6 +89,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLogin)
      
                                                  name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -96,6 +104,7 @@
     
     [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
+    [_rememberMeSwitch setOn:[ShareOneUtility isUserRemembered]];
     [_userFingerprintBtn setSelected:[ShareOneUtility isTouchIDEnabled]];
     if([ShareOneUtility isUserRemembered]){
         User *user = [ShareOneUtility getUserObject];
@@ -144,6 +153,10 @@
 {
     
     NSLog(@"loginButtonClicked");
+    
+    [_passwordTxt resignFirstResponder];
+    [_userIDTxt resignFirstResponder];
+    [self moveViewDown];
     __weak LoginViewController *weakSelf = self;
     /*
      **  Check if Touch ID is enabled than verify touch first if its verified than call login service
@@ -465,9 +478,13 @@
 }
 
 - (IBAction)rememberMeButtonClicked:(id)sender {
-    UIButton *btnCast = (UIButton *)sender;
-    [btnCast setSelected:!btnCast.isSelected];
-    [ShareOneUtility setUserRememberedStatusWithBool:btnCast.isSelected];
+//    UIButton *btnCast = (UIButton *)sender;
+//    [btnCast setSelected:!btnCast.isSelected];
+//    [ShareOneUtility setUserRememberedStatusWithBool:btnCast.isSelected];
+
+    
+    UISwitch *switchObj = (UISwitch *)sender;
+    [ShareOneUtility setUserRememberedStatusWithBool:switchObj.isOn];
 
 }
 
@@ -529,8 +546,38 @@
         _objPinResetController.loginDelegate=self;
         [self presentViewController:_objPinResetController animated:YES completion:nil];
     }
+}
 
+
+-(void)moveViewUp{
+    if(_loginViewConstraintY.constant<=-20)
+        _loginViewConstraintY.constant=-140;
+}
+
+-(void)moveViewDown{
     
+    if(_loginViewConstraintY.constant>=-140)
+        _loginViewConstraintY.constant=-20;
+}
+
+#pragma mark UITextFeildDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if([textField isEqual:_passwordTxt]){
+        [textField resignFirstResponder];
+        [self moveViewDown];
+    }
+    else{
+        [textField resignFirstResponder];
+        [_passwordTxt becomeFirstResponder];
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    [self moveViewUp];
+    return YES;
 }
 
 

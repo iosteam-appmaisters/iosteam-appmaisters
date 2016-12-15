@@ -153,6 +153,8 @@
     NSDictionary *dictSubCat = subCatArr[indexPath.row];
     cell.categorytitleLbl.text = [dictSubCat valueForKey:SUB_CAT_TITLE];
     [cell.iconImageVw setImage:[UIImage imageNamed:@"slide-menu-arrow"]];
+    
+
     return cell;
 }
 
@@ -186,6 +188,9 @@
     
     [objFZAccordionTableViewHeaderView.sectionTitle setText:[dict valueForKey:MAIN_CAT_TITLE]];
     [objFZAccordionTableViewHeaderView.sectionImageVw setImage:[UIImage imageNamed:[dict valueForKey:MAIN_CAT_IMAGE]]];
+    
+    objFZAccordionTableViewHeaderView.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+
     return (UIView *)objFZAccordionTableViewHeaderView;
 }
 

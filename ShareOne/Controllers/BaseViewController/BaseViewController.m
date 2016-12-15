@@ -10,6 +10,7 @@
 #import "AdvertisementController.h"
 #import "VertifiAgreemantController.h"
 #import "MobileDepositController.h"
+#import "IQKeyboardManager.h"
 
 @interface BaseViewController (){
     LeftMenuViewController* leftMenuViewController;
@@ -34,6 +35,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:TRUE];
+
     UIView* dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [dummyView setBackgroundColor:[UIColor clearColor]];
     
@@ -285,9 +288,7 @@
 
     NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
     NSString *webUrl = [dict valueForKey:WEB_URL];
-    NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] uppercaseString];
-
-
+    NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
     
     if([contrlollerName length]>0){
         
@@ -297,6 +298,13 @@
             objHomeViewController.url= webUrl;
             objHomeViewController.navigationItem.title=screenTitle;
             [self.navigationController pushViewController:objHomeViewController animated:YES];
+
+        }
+        
+        else if([contrlollerName isEqualToString:@"NotNative"]){
+            
+            NSURL *url = [NSURL URLWithString:webUrl];
+            [[UIApplication sharedApplication] openURL:url];
 
         }
         

@@ -88,7 +88,11 @@
     
     [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:queuReqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
         
-        NSArray *urlCompArr = [responseObj  componentsSeparatedByString:@"/"];
+        
+        NSURLResponse *responseCast = (NSURLResponse *)responseObj;
+        NSString *url = responseCast.URL.absoluteString;
+
+        NSArray *urlCompArr = [url  componentsSeparatedByString:@"/"];
         NSString *suffixID = urlCompArr[[urlCompArr count]-2];
         
         NSPredicate *suffixPredicate = [NSPredicate predicateWithFormat:@"SuffixID = %d",[suffixID intValue]];

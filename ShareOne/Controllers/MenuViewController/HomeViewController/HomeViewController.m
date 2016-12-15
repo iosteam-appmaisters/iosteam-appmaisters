@@ -31,7 +31,7 @@
     
     
     if(!self.navigationItem.title){
-        self.navigationItem.title=@"ACCOUNT SUMMARY";
+        self.navigationItem.title=@"Account Summary";
     }
 //    NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
 
@@ -227,7 +227,16 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    if ([theTitle containsString:@"Account Summary"]){
+        theTitle = [theTitle componentsSeparatedByString:@"-"][0];
+    }
+    
+//    NSString *js = @"document.getElementById('printPage').click = function() { window.location = 'https://www.facebook.com/';}";
+//    
+//    [webView stringByEvaluatingJavaScriptFromString: js];
+
     self.navigationItem.title=theTitle;
+
     [self setTitleOnNavBar:theTitle];
     
 

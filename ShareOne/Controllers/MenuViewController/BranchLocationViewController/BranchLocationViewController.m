@@ -217,12 +217,12 @@
     cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@",objLocation.address];
     cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
     
-    ([objLocation.driveThru boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSE"];
+    ([objLocation.driveThru boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
     
     ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
     
     
-    ([objLocation.open24Hours boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSE"];
+    ([objLocation.open24Hours boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
     
     ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
 

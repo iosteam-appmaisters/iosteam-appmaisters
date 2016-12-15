@@ -22,6 +22,9 @@
 
 @property (strong, nonatomic) PinResetController *objPinResetController;
 
+@property (nonatomic,strong) IBOutlet NSLayoutConstraint *loginViewConstraintY;
+
+
 
 
 @end
