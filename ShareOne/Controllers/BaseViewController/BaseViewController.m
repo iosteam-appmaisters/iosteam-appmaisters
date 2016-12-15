@@ -72,8 +72,11 @@
 }
 
 -(void)manageAds{
+    
+    float height =     [UIScreen mainScreen].bounds.size.width/6.4;
+
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
-        _bottomAdsConstraint.constant=50;
+        _bottomAdsConstraint.constant=height;
     }
     else{
         _bottomAdsConstraint.constant=0;
@@ -89,7 +92,10 @@
 
 -(void)addAdvertismentControllerOnBottomScreen{
     
-    float height = 50;
+//    float height = 50;
+    
+    float height =     [UIScreen mainScreen].bounds.size.width/6.4;
+
     float isAlreadyAdded = FALSE;
     for(UIView *view in self.navigationController.view.window.subviews){
         if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){

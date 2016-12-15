@@ -30,6 +30,9 @@
     [TestFairy begin:@"0d214628fc17621672de9113b24e97cc48c454eb"];
     
     [GMSServices provideAPIKey:googleApiKey];
+    
+    
+//    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width/6.4);
     //[self testService];
     return YES;
 }

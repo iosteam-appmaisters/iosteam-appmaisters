@@ -247,14 +247,60 @@
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
     
+    BOOL shouldReload = FALSE;
+    
     NSLog(@"url: %@", [[request URL] absoluteString]);
+    
+    NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 
+
+    if([[[request URL] absoluteString] containsString:@"Account/Refresh"]){
+        shouldReload= FALSE;
+        [self printIt:yourHTMLSourceCodeString_inner];
+    }
+    else
+        shouldReload= TRUE;
+    
 //    NSString* clicked = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('memberInfo').click();"];
 //    
 //    NSLog(@"CLICK %@",clicked);
+//    return TRUE;
     return TRUE;
-    
 }
+
+-(void)printIt:(NSString *)html{
+    
+    __weak HomeViewController *weakSelf = self;
+
+    if ([UIPrintInteractionController class]) {
+        // Create an instance of the class and use it.
+        
+        [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
+
+        UIMarkupTextPrintFormatter *htmlFormatter = [[UIMarkupTextPrintFormatter alloc] initWithMarkupText:html];
+        
+        htmlFormatter.contentInsets = UIEdgeInsetsMake(0, 20, 0, 20);
+
+        UIPrintInteractionController* printController = [UIPrintInteractionController sharedPrintController];
+        [printController setPrintFormatter:htmlFormatter];
+        [printController presentAnimated:YES completionHandler:^(UIPrintInteractionController *printInteractionController, BOOL completed, NSError *error) {
+            if(completed && !error){
+                NSLog(@"Print done");
+            }
+            else{
+                if(error)
+                    [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:weakSelf];
+            }
+        }];
+
+    } else {
+        // Alternate code path to follow when the
+        // class is not available.
+        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Printer not found" title:@"" delegate:weakSelf];
+    }
+}
+
+
 -(void)trackPrintingEventWithScheme:(NSString * )scheme{
     
     NSLog(@"trackPrintingEventWithScheme");
