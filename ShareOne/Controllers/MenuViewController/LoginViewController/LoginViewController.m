@@ -41,6 +41,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *branchLocationButton;
 @property (weak, nonatomic) IBOutlet UIButton *applyLoanButton;
 @property (weak, nonatomic) IBOutlet UIButton *contactButton;
+@property (weak, nonatomic) IBOutlet UIButton *privacyButton;
+
 
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 
@@ -553,6 +555,9 @@
         urlString=URL_BRANCH_LOCATION;
     else if ([sender isEqual:_contactButton])
         urlString=URL_CONTACT_US;
+    else if ([sender isEqual:_privacyButton])
+        urlString=URL_PRIVACY_POLICY;
+
 
     NSURL *url = [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];

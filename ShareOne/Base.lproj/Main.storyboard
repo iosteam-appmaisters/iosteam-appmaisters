@@ -317,9 +317,16 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mG7-Ba-Ey9">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="Branch_Button"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="T1U-dd-azo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-AC-ghJ">
+                                        <state key="normal" image="privacy_button"/>
+                                        <connections>
+                                            <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="IGs-dn-N1C"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KP-5D-dKz">
@@ -363,6 +370,7 @@
                                     <constraint firstItem="DZ6-QP-Jpq" firstAttribute="leading" secondItem="AUa-t5-lxc" secondAttribute="leading" constant="15" id="HXH-HL-rHp"/>
                                     <constraint firstItem="1KP-5D-dKz" firstAttribute="height" secondItem="DZ6-QP-Jpq" secondAttribute="height" id="HeC-2G-w2u"/>
                                     <constraint firstItem="uAv-Pg-6fu" firstAttribute="top" secondItem="mG7-Ba-Ey9" secondAttribute="top" id="IPm-KO-j6L"/>
+                                    <constraint firstItem="ECX-AC-ghJ" firstAttribute="top" secondItem="mG7-Ba-Ey9" secondAttribute="bottom" id="Ibc-ET-HgI"/>
                                     <constraint firstItem="nZA-zR-XcZ" firstAttribute="leading" secondItem="J2R-fr-ibL" secondAttribute="leading" id="JKf-bE-Nuv"/>
                                     <constraint firstItem="mG7-Ba-Ey9" firstAttribute="leading" secondItem="DZ6-QP-Jpq" secondAttribute="leading" id="KBN-Gl-CCc"/>
                                     <constraint firstItem="J2R-fr-ibL" firstAttribute="leading" secondItem="7Am-NF-euc" secondAttribute="leading" constant="20" id="LTi-yQ-5Wh">
@@ -386,6 +394,8 @@
                                     </constraint>
                                     <constraint firstItem="AUa-t5-lxc" firstAttribute="top" secondItem="oaW-xn-S6F" secondAttribute="bottom" constant="1" id="rAg-Ms-5I1"/>
                                     <constraint firstItem="mG7-Ba-Ey9" firstAttribute="top" secondItem="DZ6-QP-Jpq" secondAttribute="bottom" constant="-2" id="rXs-a8-84C"/>
+                                    <constraint firstItem="ECX-AC-ghJ" firstAttribute="leading" secondItem="mG7-Ba-Ey9" secondAttribute="leading" id="uvr-5h-0tP"/>
+                                    <constraint firstItem="ECX-AC-ghJ" firstAttribute="height" secondItem="DZ6-QP-Jpq" secondAttribute="height" id="vqb-UB-OQx"/>
                                     <constraint firstItem="AUa-t5-lxc" firstAttribute="height" secondItem="nZA-zR-XcZ" secondAttribute="height" id="wGW-S1-RQ8"/>
                                     <constraint firstItem="J2R-fr-ibL" firstAttribute="top" secondItem="7Am-NF-euc" secondAttribute="top" id="xVb-7x-hW8"/>
                                     <constraint firstItem="SQp-OX-1do" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uAv-Pg-6fu" secondAttribute="bottom" constant="10" id="yk2-37-oX5"/>
@@ -512,6 +522,7 @@
                         <outlet property="loadingView" destination="2FB-WI-wE0" id="Jb3-0Z-g59"/>
                         <outlet property="loginViewConstraintY" destination="1PH-Fp-36Z" id="JEo-sE-2fz"/>
                         <outlet property="passwordTxt" destination="a22-uc-P6y" id="9qQ-rv-BBw"/>
+                        <outlet property="privacyButton" destination="ECX-AC-ghJ" id="hud-aQ-LuJ"/>
                         <outlet property="quickBalanceBtn" destination="SQp-OX-1do" id="bPl-LA-Rjc"/>
                         <outlet property="rememberMeBtn" destination="TFX-Rm-OI0" id="iXe-Sx-LBd"/>
                         <outlet property="rememberMeSwitch" destination="X9W-pp-gWk" id="Neh-qa-DiR"/>
@@ -1590,7 +1601,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="331" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdE-he-zu3" id="AWs-QG-jWE">
-                                                    <frame key="frameInset" width="331.33333333333331" height="43.666666666666664"/>
+                                                    <frame key="frameInset" width="331" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
@@ -2572,7 +2583,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="28" width="384" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uD2-fN-AfI" id="Q4n-an-dXz">
-                                            <frame key="frameInset" width="384" height="99.666666666666671"/>
+                                            <frame key="frameInset" width="384" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl6-J8-yHa">
@@ -4854,6 +4865,7 @@ Tm90ZToQIA
         <image name="pay-person-header" width="414" height="151"/>
         <image name="pin-ok-btn" width="348" height="41"/>
         <image name="pin-submit-btn" width="348" height="41"/>
+        <image name="privacy_button" width="94" height="12"/>
         <image name="qbDownIcon" width="414" height="49"/>
         <image name="show_button" width="127" height="18"/>
         <image name="show_map" width="53" height="10"/>
