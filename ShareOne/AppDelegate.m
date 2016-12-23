@@ -31,6 +31,31 @@
     
     [GMSServices provideAPIKey:googleApiKey];
     
+    [self registerForPushNotifications:application];
+
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if( !error ){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];
+    }
+    else{
+        
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+                                                                                                  | UIUserNotificationTypeBadge
+                                                                                                  | UIUserNotificationTypeSound)
+                                                                                      categories:nil];
+            
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        }
+    }
+
+
+    
     
 //    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width/6.4);
     //[self testService];
@@ -89,5 +114,53 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark Push Notification
+
+-(void)registerForPushNotifications:(UIApplication *)application {
+    
+    // Register the supported interaction types.
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    
+    // Register for remote notifications.
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"deviceToken---%@", token);
+    [ShareOneUtility saveDeviceToken:token];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Error in registration. Error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+}
+
+#pragma mark NOTIFICATION FOR IOS TEN
+
+-(void)userNotificationCenter:(UNUserNotificationCenter* )center willPresentNotification:(UNNotification* )notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    
+    //Called when a notification is delivered to a foreground app.
+    
+    NSLog(@"Userinfo %@",notification.request.content.userInfo);
+    
+    completionHandler(UNNotificationPresentationOptionAlert);
+}
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler{
+    
+    //Called to let your app know which action was selected by the user for a given notification.
+    
+    NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
+    
+}
+
 
 @end

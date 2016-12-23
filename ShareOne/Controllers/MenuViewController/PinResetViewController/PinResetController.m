@@ -26,18 +26,41 @@
 //    [_taxIDTxtFeild setText:@"9456"];
 //    [_dateTxtFeild setText:@"01/01/1980"];
 //    [_postalCodeTxtFeild setText:@"77777"];
+}
+
+
+-(void)manageKeyboard{
     
+    
+    if([_dateTxtFeild isFirstResponder]){
+        [_dateTxtFeild resignFirstResponder];
+    }
+
+    if([_accountNameTxtFeild isFirstResponder]){
+        [_accountNameTxtFeild resignFirstResponder];
+    }
+
+    if([_taxIDTxtFeild isFirstResponder]){
+        [_taxIDTxtFeild resignFirstResponder];
+    }
+
+    if([_postalCodeTxtFeild isFirstResponder]){
+        [_postalCodeTxtFeild resignFirstResponder];
+    }
+
 }
 
 
 -(IBAction)backButtonClicked:(id)sender{
     _loginDelegate.objPinResetController=nil;
+    [self manageKeyboard];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 -(IBAction)submittButtonClicked:(id)sender{
     
+    [self manageKeyboard];
     
     __weak PinResetController *weakSelf = self;
 
@@ -55,8 +78,6 @@
         
     }
     else{
-//        [_accountNameTxtFeild setText:@"newton"];
-
         
         [User userPinReset:[NSDictionary dictionaryWithObjectsAndKeys:_accountNameTxtFeild.text,@"Account",_taxIDTxtFeild.text,@"Last4",_dateTxtFeild.text,@"DateOfBirth",_postalCodeTxtFeild.text,@"PostalCode", nil] delegate:self completionBlock:^(id  response) {
             
@@ -79,18 +100,24 @@
 }
 -(IBAction)okButtonClicked:(id)sender{
     
+    [self manageKeyboard];
+
     User *user = [[User alloc] init];
     user.UserName=_accountNameTxtFeild.text;
     user.Password=_passLbl.text;
-    user.EmailAddress=_emailLbl.text;
-    user.TempPassword=_passLbl.text;
-    user.NewExpiration=_dateLbl.text;
-    user.last4=_taxIDTxtFeild.text;
+    user.Emailaddress=_emailLbl.text;
+    user.Temppassword=_passLbl.text;
+    user.Newexpiration=_dateLbl.text;
+    user.Last4=_taxIDTxtFeild.text;
     user.dob=_dateTxtFeild.text;
     user.zip=_postalCodeTxtFeild.text;
     [ShareOneUtility saveUserObject:user];
     [ShareOneUtility saveUserObjectToLocalObjects:user];
+    
     [_loginDelegate getSignInWithUser:user];
+    
+    
+
 }
 
 -(IBAction)doneButtonClickedOnPicker:(id)sender{

@@ -45,6 +45,13 @@
 
 #define KSET_ACCOUNT_NAME                               @"eft/memberPreferences"
 
+#define KBRANCH_LOCATIONS                               @"organization/branches"
+
+#define URL_JOIN_CREDIT_UNION                           @"https://nsmobiledemo.ns3web.com/NSJoin.html?id=48b9462bd306475fa32ddc28dd603faab9"
+#define URL_APPLY_FOR_LOAN                              @"https://nsmobiledemo.ns3web.com/NSLoan.html?id=48b9462bd306475fa32ddc28dd603faab9"
+#define URL_BRANCH_LOCATION                             @"https://nsmobiledemo.ns3web.com/BranchLocations.html?id=48b9462bd306475fa32ddc28dd603faab9"
+#define URL_CONTACT_US                                  @"https://nsmobiledemo.ns3web.com/ContactUs.html?id=48b9462bd306475fa32ddc28dd603faab9"
+
 
 
 

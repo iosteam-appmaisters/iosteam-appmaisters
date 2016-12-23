@@ -22,6 +22,8 @@
 #import "PasswordChangeController.h"
 #import "UserNamecontroller.h"
 #import "IQKeyboardManager.h"
+#import "Location.h"
+
 
 
 @interface LoginViewController ()
@@ -35,6 +37,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *quickBalanceBtn;
 @property (weak, nonatomic) IBOutlet UISwitch *rememberMeSwitch;
 
+@property (weak, nonatomic) IBOutlet UIButton *joinButton;
+@property (weak, nonatomic) IBOutlet UIButton *branchLocationButton;
+@property (weak, nonatomic) IBOutlet UIButton *applyLoanButton;
+@property (weak, nonatomic) IBOutlet UIButton *contactButton;
 
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 
@@ -109,7 +115,9 @@
     if([ShareOneUtility isUserRemembered]){
         User *user = [ShareOneUtility getUserObject];
         [_userIDTxt setText:user.UserName];
-        [_passwordTxt setText:user.Password];
+        [_passwordTxt setText:@""];
+
+//        [_passwordTxt setText:user.Password];
     }
     else{
         [_userIDTxt setText:@""];
@@ -141,8 +149,25 @@
             
             if(success){
                 
-                // Call Sign In Service
-                [self loginButtonClicked:nil];
+                // check whether session is available or not
+                [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+                    NSLog(@"keepAlive from showTouchID");
+                    if(sucess){
+                        [weakSelf startApplication];
+                    }
+                    else{
+                        // Call Sign In Service
+                        
+                        User *user = [ShareOneUtility getUserObject];
+                        [_userIDTxt setText:user.UserName];
+                        [_passwordTxt setText:user.Password];
+                        [self loginButtonClicked:nil];
+                    }
+                    
+                } failureBlock:^(NSError *error) {
+                    
+                }];
+
             }
         }];
     }
@@ -289,7 +314,6 @@
         else{
             // Go though to thee application
             
-//            [weakSelf startApplication];
 
             //asi flow
             [weakSelf.loadingView setHidden:FALSE];
@@ -383,7 +407,7 @@
                 
                 NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
                 
-                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]ContextID],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"0",@"ProviderType",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"0",@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
                     
                     
                     [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
@@ -516,9 +540,21 @@
 }
 
 
-- (IBAction)openUrlButtonClicked:(id)sender
-{
-    NSURL *url = [NSURL URLWithString:@"https://nsmobilecp.ns3web.com/Account/Tax"];
+- (IBAction)openUrlButtonClicked:(id)sender{
+    
+    
+    NSString *urlString =nil;
+    
+    if([sender isEqual:_joinButton])
+        urlString=URL_JOIN_CREDIT_UNION;
+    else if ([sender isEqual:_applyLoanButton])
+        urlString=URL_APPLY_FOR_LOAN;
+    else if ([sender isEqual:_branchLocationButton])
+        urlString=URL_BRANCH_LOCATION;
+    else if ([sender isEqual:_contactButton])
+        urlString=URL_CONTACT_US;
+
+    NSURL *url = [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];
 }
 

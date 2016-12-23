@@ -5,6 +5,26 @@
 	<array>
 		<dict>
 			<key>isSection</key>
+			<false/>
+			<key>shouldShow</key>
+			<true/>
+			<key>title</key>
+			<string>Account Summary</string>
+			<key>icon</key>
+			<string>menu_message_center_icon</string>
+			<key>detailVCIdentifier</key>
+			<string>WebViewController</string>
+			<key>detailVCTitle</key>
+			<string></string>
+			<key>webUrl</key>
+			<string>/Account/Summary</string>
+			<key>subCategories</key>
+			<array/>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>isSection</key>
 			<true/>
 			<key>shouldShow</key>
 			<true/>

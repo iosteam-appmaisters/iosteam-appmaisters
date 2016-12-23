@@ -14,9 +14,6 @@
 
 @property (nonatomic,weak)   IBOutlet UIView *accountInfoView;
 @property (nonatomic,weak)   IBOutlet UITextField *dateTxtFeild;
-
-@property (nonatomic,assign) LoginViewController *loginDelegate;
-
 @property (nonatomic,weak)   IBOutlet UITextField *accountNameTxtFeild;
 @property (nonatomic,weak)   IBOutlet UITextField *taxIDTxtFeild;
 @property (nonatomic,weak)   IBOutlet UITextField *postalCodeTxtFeild;
@@ -32,6 +29,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *passLbl;
 @property (nonatomic,strong) NSDictionary *accountInfoDict;
+
+@property (nonatomic,assign) LoginViewController *loginDelegate;
 
 
 @property BOOL         isFromForgotUserName;

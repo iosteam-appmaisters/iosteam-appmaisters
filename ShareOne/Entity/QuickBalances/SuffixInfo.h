@@ -10,12 +10,13 @@
 
 @interface SuffixInfo : NSObject
 
+//display suffix number and type for selection
 @property (nonatomic,strong) NSString *Access;
 @property (nonatomic,strong) NSNumber *Account;
 @property (nonatomic,strong) NSNumber *Available;
 @property (nonatomic,strong) NSNumber *Balance;
 @property (nonatomic,strong) NSNumber *Class;
-@property (nonatomic,strong) NSString *DefaultDescr;
+@property (nonatomic,strong) NSString *Defaultdescr;
 @property (nonatomic,strong) NSNumber *DefaultTransfer;
 @property (nonatomic,strong) NSString *Descr;
 @property (nonatomic,strong) NSNumber *Hidden;
@@ -24,8 +25,8 @@
 @property (nonatomic,strong) NSNumber *RegD;
 @property (nonatomic,strong) NSNumber *IRA;
 @property (nonatomic,strong) NSNumber *RptCode;
-@property (nonatomic,strong) NSNumber *SuffixID;
-@property (nonatomic,strong) NSNumber *SuffixNumber;
+@property (nonatomic,strong) NSNumber *Suffixid;
+@property (nonatomic,strong) NSNumber *Suffixnumber;
 @property (nonatomic,strong) NSDictionary *TaxInfo;
 @property (nonatomic,strong) NSString *Type;
 @property (nonatomic,strong) NSMutableArray *Cards;
@@ -38,12 +39,16 @@
 @property (nonatomic,strong) NSString *Payoff;
 @property (nonatomic,strong) NSString *TotDue;
 @property (nonatomic,strong) NSString *Closed;
+@property (nonatomic,strong) NSString *IntYTD;
 @property (nonatomic,strong) NSString *CreditCard;
+
 @property (nonatomic,strong) NSMutableArray *transArray;
 
 
 
 -(id) initWithDictionary:(NSDictionary *)dict;
+
+-(id) init;
 
 
 +(NSMutableArray *)getSuffixArrayWithObject:(NSDictionary *)dict;

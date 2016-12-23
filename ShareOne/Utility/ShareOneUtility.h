@@ -126,5 +126,11 @@
 
 +(void )getSavedObjectOfCurrentLoginUser:(User *)user;
 
++(void)saveDeviceToken:(NSString *)token;
+
++(NSString *)getDeiviceToken;
+
++(NSString *)getDeviceNotifToken;
+
 
 @end

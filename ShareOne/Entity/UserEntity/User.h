@@ -13,12 +13,12 @@
 -(id) initWithDictionary:(NSDictionary *)userProfileDict;
 
 @property (nonatomic,strong) NSNumber *Account;
-@property (nonatomic,strong) NSString *ContextID;
-@property (nonatomic,strong) NSString *LastLoginDate;
-@property (nonatomic,strong) NSString *MasterID;
-@property (nonatomic,strong) NSString *PostingDate;
-@property (nonatomic,strong) NSString *SystemState;
-@property (nonatomic,strong) NSString *LoginAttempts;
+@property (nonatomic,strong) NSString *Contextid;
+@property (nonatomic,strong) NSString *Lastlogindate;
+@property (nonatomic,strong) NSString *Masterid;
+@property (nonatomic,strong) NSString *Postingdate;
+@property (nonatomic,strong) NSString *Systemstate;
+@property (nonatomic,strong) NSString *Loginattempts;
 
 
 @property (nonatomic) BOOL isQBOpen;
@@ -66,16 +66,16 @@
 @property (nonatomic,strong) NSNumber *isBlocked;
 @property (nonatomic,strong) NSNumber *amIBlocked;
 
-@property (nonatomic,strong) NSString *gender;
-@property (nonatomic,strong) NSString *race;
+@property (nonatomic,strong) NSString *Gender;
+@property (nonatomic,strong) NSString *Race;
 
 
-@property (nonatomic,strong) NSString *groupId;
+@property (nonatomic,strong) NSString *Groupid;
 
-@property (nonatomic,strong) NSString *EmailAddress;
-@property (nonatomic,strong) NSString *TempPassword;
-@property (nonatomic,strong) NSString *NewExpiration;
-@property (nonatomic,strong) NSString *last4;
+@property (nonatomic,strong) NSString *Emailaddress;
+@property (nonatomic,strong) NSString *Temppassword;
+@property (nonatomic,strong) NSString *Newexpiration;
+@property (nonatomic,strong) NSString *Last4;
 @property (nonatomic,strong) NSString *zip;
 
 @property (nonatomic,strong) NSArray *Requirements;

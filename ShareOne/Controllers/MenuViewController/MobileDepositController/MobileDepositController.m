@@ -49,6 +49,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *accountStatusLbl;
 
 
+@property (nonatomic, weak) IBOutlet UILabel *suffixNumberLbl;
+@property (nonatomic, weak) IBOutlet UILabel *suffixTypeLbl;
+
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (nonatomic, weak) NSArray *suffixArr;
@@ -416,10 +419,12 @@
 
 -(void)managePickerView{
 
+    float height =     [UIScreen mainScreen].bounds.size.width/6.4;
+
     [_ammountTxtFeild resignFirstResponder];
     if (_bottomConstraint.constant<0){
         if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
-            _bottomConstraint.constant=50;
+            _bottomConstraint.constant=height;
         }
         else{
             _bottomConstraint.constant=0;
@@ -485,6 +490,9 @@
  
      _objSuffixInfo = _suffixArr[row];
     [_accountTxtFeild setText:_objSuffixInfo.Descr];
+    [_suffixNumberLbl setText:[NSString stringWithFormat:@"%d",[_objSuffixInfo.Suffixnumber intValue]]];
+    [_suffixTypeLbl setText:[NSString stringWithFormat:@"%@",[ShareOneUtility getSectionTitleByCode:_objSuffixInfo.Type] ]];
+
 }
 
 

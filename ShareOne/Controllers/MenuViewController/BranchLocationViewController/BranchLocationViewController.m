@@ -57,18 +57,32 @@
     NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",@"91730",@"zip", nil];
 
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
-
-    [Location getAllBranchLocations:maxResultsNRadiousNZip delegate:weakSelf completionBlock:^(NSArray *locations) {
+    
+    [Location getShareOneBranchLocations:nil delegate:nil completionBlock:^(NSArray *locations) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         if([locations count]>0){
             weakSelf.contentArr=locations;
             [weakSelf.tableView reloadData];
         }
+
         
     } failureBlock:^(NSError *error) {
         
     }];
+
+
+//    [Location getAllBranchLocations:maxResultsNRadiousNZip delegate:weakSelf completionBlock:^(NSArray *locations) {
+//        
+//        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+//        if([locations count]>0){
+//            weakSelf.contentArr=locations;
+//            [weakSelf.tableView reloadData];
+//        }
+//
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -193,6 +207,49 @@
     
     NSString *officeTimeString= nil;
     NSString *driveThruString= nil;
+    
+    
+    
+    if([objLocation.mondayDriveThruOpen length]>0)
+        driveThruString = [NSString stringWithFormat:@"Drive Thru %@am - %@pm",objLocation.mondayDriveThruOpen,objLocation.mondayDriveThruClose];
+    else
+        driveThruString = [NSString stringWithFormat:@"Drive Thru %.0fam - %.0fpm",8.00,9.00];
+    
+    
+    if([objLocation.mondayOpen length]>0)
+        officeTimeString = [NSString stringWithFormat:@"Office %.0fam - %.0fpm",[objLocation.mondayOpen floatValue],[objLocation.mondayClose floatValue]];
+    else
+        officeTimeString = [NSString stringWithFormat:@"Office"];
+    
+    
+    
+    
+    cell.addrressLbl.text=objLocation.Name;
+    cell.officeHourLbl.text=officeTimeString;
+    cell.driveThruHoursLbl.text=driveThruString;
+    
+    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@ %@",objLocation.address.Address1,objLocation.address.Address2];
+    cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
+    
+    ([objLocation.driveThru boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
+    
+    ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+    
+    
+    ([objLocation.open24Hours boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
+    
+    ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
+    
+    
+    
+    
+    NSURL *imageURL = [NSURL URLWithString:@""];
+    [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
+
+    
+    /*
+    NSString *officeTimeString= nil;
+    NSString *driveThruString= nil;
 
     
     
@@ -231,7 +288,7 @@
     
     NSURL *imageURL = [NSURL URLWithString:@""];
     [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
-
+*/
     
     
     return cell;

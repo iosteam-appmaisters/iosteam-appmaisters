@@ -12,6 +12,7 @@
 #import "MobileDepositController.h"
 #import "IQKeyboardManager.h"
 
+
 @interface BaseViewController (){
     LeftMenuViewController* leftMenuViewController;
     UIButton* menuButton;
@@ -162,6 +163,8 @@
     UIView* leftView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
     [leftView setBackgroundColor:[UIColor clearColor]];
 
+    /*
+    
     if([[self.navigationController viewControllers] count]>1){
         [leftView addSubview:[self getBackButton]];
 //        [leftView addSubview:[self getMenuButton]];
@@ -172,6 +175,11 @@
         [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
         [leftView addSubview:menuBtn];
     }
+     */
+    UIButton* menuBtn=[self getMenuButton];
+    [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
+    [leftView addSubview:menuBtn];
+
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftView];
 
@@ -225,31 +233,52 @@
 }
 
 -(UIButton*)getMenuButton{
+    
      menuButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 30, 44)];
     [menuButton setImage:[UIImage imageNamed:@"menu_icon"] forState:UIControlStateNormal];
-    [menuButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    if([[self.navigationController viewControllers] count]>1)
+//        [menuButton addTarget:self action:@selector(popWithOutAnimation) forControlEvents:UIControlEventTouchUpInside];
+//    else
+        [menuButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     return menuButton;
 }
 
 -(void)menuButtonClicked:(id)sender{
     
+
+    if([[self.navigationController viewControllers] count]>1){
+        
+        [self showSideMenu];
+
+//        [self popWithOutAnimation];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOTIFICATION object:nil];
+
+    }
+    else{
+        [self showSideMenu];
+    }
+}
+
+-(void)showSideMenu{
+    NSLog(@"showSideMenu");
     [self sendAdvertismentViewToBack];
     [menuButton setEnabled:FALSE];
-        leftMenuViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"LeftMenuViewController"];
-
+    leftMenuViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"LeftMenuViewController"];
+    
     leftMenuViewController.homeDelegate=self;
     [leftMenuViewController.view setFrame:CGRectMake(-[UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     [self.navigationController addChildViewController:leftMenuViewController];
     [self.navigationController.view addSubview:leftMenuViewController.view];
     [UIView animateWithDuration:0.3 animations:^{
         [leftMenuViewController.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-
+        
     } completion:^(BOOL finished) {
         [menuButton setEnabled:TRUE];
     }];
-}
 
+}
 
 -(UIButton*)getBackButton{
     UIButton* backButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
@@ -267,6 +296,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)popWithOutAnimation{
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent; // your own style
@@ -295,6 +327,7 @@
         if([contrlollerName isEqualToString:@"WebViewController"]){
             
             HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+            currentController = objHomeViewController;
             objHomeViewController.url= webUrl;
             objHomeViewController.navigationItem.title=screenTitle;
             [self.navigationController pushViewController:objHomeViewController animated:YES];
@@ -336,6 +369,9 @@
             }
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+            
+            currentController = objUIViewController;
+
             objUIViewController.navigationItem.title=screenTitle;
             [self.navigationController pushViewController:objUIViewController animated:YES];
         }
@@ -352,13 +388,18 @@
         UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Logout"
                                                                style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                    
+                                                                   [ShareOneUtility showProgressViewOnView:self.view];
+
                                                                    [[ShareOneUtility shareUtitlities] cancelTimer];
 
                                                                    [self sendAdvertismentViewToBack];
                                                                    __weak BaseViewController *weakSelf = self;
                                                                    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
-                                                                   NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
+                                                                   NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
                                                                    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
+                                                                       
+                                                                       [ShareOneUtility hideProgressViewOnView:self.view];
+
                                                                        [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
                                                                            [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
                                                                        }];
@@ -386,7 +427,7 @@
 -(void)logoutOnGoingBackground{
     
     
-    NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
+    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
     
     [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
         
@@ -403,43 +444,54 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)goBackToLoginView{
+    
+    [self sendAdvertismentViewToBack];
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground");
-    if([[UIApplication sharedApplication] isProtectedDataAvailable])
-        NSLog(@"appGoingToBackground: TRUE");
-    
-    else
-        NSLog(@"appGoingToBackground: FALSE");
 
+    if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
+        [self logoutOnGoingBackground];
+    else
+        [self goBackToLoginView];
 
     [[ShareOneUtility shareUtitlities] cancelTimer];
 }
 
 -(void)appComingFromBackground{
     NSLog(@"appComingFromBackground");
-    
-    
-    NSLog(@"appComingFromBackground");
-    if([[UIApplication sharedApplication] isProtectedDataAvailable])
-        NSLog(@"appComingFromBackground: TRUE");
-    
-    else
-        NSLog(@"appComingFromBackground: FALSE");
-
     __weak BaseViewController *weakSelf = self;
-
-    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
-        NSLog(@"keepAlive2");
-        if(!sucess){
-            [weakSelf logoutOnGoingBackground];
-        }
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-    [self startTimerForKeepAlive];
     
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+        
+        [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+            NSLog(@"keepAlive2");
+            if(sucess){
+            }
+            else{
+                
+            }
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+    }
+
+
+//    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+//        NSLog(@"keepAlive2");
+//        if(!sucess){
+//            [weakSelf logoutOnGoingBackground];
+//        }
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
+
+//    [self startTimerForKeepAlive];
 }
 
 -(void)startTimerForKeepAlive{

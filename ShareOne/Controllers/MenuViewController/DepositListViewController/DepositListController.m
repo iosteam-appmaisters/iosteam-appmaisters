@@ -177,8 +177,8 @@
     
     VertifiDepositObject  *objVertifiDepositObject = _contentArr[indexPath.row];
     
-    [cell.headerLbl setText:[NSString stringWithFormat:@"Deposit # %@",objVertifiDepositObject.Deposit_ID]];
-    [cell.dateLbl setText:[NSString stringWithFormat:@"Submitted %@",objVertifiDepositObject.Create_Timestamp]];
+    [cell.headerLbl setText:[NSString stringWithFormat:@"Deposit # %@",objVertifiDepositObject.Deposit_id]];
+    [cell.dateLbl setText:[NSString stringWithFormat:@"Submitted %@",objVertifiDepositObject.Create_timestamp]];
     [cell.amountLbl setText:[NSString stringWithFormat:@"$%@ >",objVertifiDepositObject.Amount]];
     
     

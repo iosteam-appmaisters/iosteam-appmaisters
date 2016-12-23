@@ -132,17 +132,21 @@
 #define NOTIFICATION_SETTINGS_UPDATION  @"NOTIFICATION_SETTINGS_UPDATION"
 #define TOUCH_ID_SETTINGS_UPDATION      @"TOUCH_ID_SETTINGS_UPDATION"
 
+#define RESPONSE_TIME_OUT               60.0
+
 
 #define ADVERTISMENT_WEBVIEW_TAG    1122334
 
 
 #define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
 
-
+#define SHOW_MENU_NOTIFICATION      @"SHOW_MENU_NOTIFICATION"
 
 
 #define REQUESTER_VALUE             @"700000465-Shareone"
 #define ROUTING_VALUE               @"700000465"
+
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 
 

@@ -12,7 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UIWebView *webview;
 @property (nonnull, strong) NSString *url;
-
+//@property BOOL isLoadedFirstTime;
 -(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue;
 
 

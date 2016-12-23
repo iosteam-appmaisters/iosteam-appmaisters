@@ -40,6 +40,20 @@
     
 }
 
++(void)getShareOneBranchLocations:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSArray *locations))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
+
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KBRANCH_LOCATIONS,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
+        if([response isKindOfClass:[NSDictionary class]]){
+            block([self parseAllShareOneLocationsWithObject:(NSDictionary *)response]);
+        }
+
+        
+    } failureBlock:^(NSError *error) {}];
+
+}
+
 
 +(NSMutableArray *)parseAllLocationsWithObject:(NSDictionary *)dictionary{
     NSMutableArray *locationArr = [[NSMutableArray alloc] init];
@@ -55,12 +69,61 @@
     return locationArr;
 }
 
++(NSMutableArray *)parseAllShareOneLocationsWithObject:(NSDictionary *)dictionary{
+    NSMutableArray *locationArr = [[NSMutableArray alloc] init];
+    
+    
+    NSArray *rawDataArr = dictionary[@"Branches"];
+    
+    [rawDataArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        Location *objLocation = [[Location alloc] initWithDictionary:obj];
+        
+        NSDictionary *addresDict =[obj valueForKey:@"Address"];
+        NSDictionary *hoursDict =[obj valueForKey:@"Hours"];
+        NSDictionary *photosDict =[obj valueForKey:@"Photos"];
+
+        if([addresDict isKindOfClass:[NSDictionary class]])
+            objLocation.address= [[Address alloc] initWithDictionary:addresDict];
+        
+        if([hoursDict isKindOfClass:[NSDictionary class]])
+            objLocation.hours= [[Hours alloc] initWithDictionary:hoursDict];
+        
+        if([photosDict isKindOfClass:[NSDictionary class]])
+            objLocation.photos= [[Photos alloc] initWithDictionary:photosDict];
+        
+
+        [locationArr addObject:objLocation];
+        
+    }];
+    return locationArr;
+}
+
 
 -(id) initWithDictionary:(NSDictionary *)locationDict{
+    
+    Location *obj = [[Location alloc] init];
     self = [super init];{
-        [self setValuesForKeysWithDictionary:locationDict];
+        
+        for (NSString* key in locationDict) {
+            id value = [locationDict objectForKey:key];
+            
+            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
+                                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+            if (value != [NSNull null]) {
+                if ([obj respondsToSelector:selector]) {
+                    
+#       pragma clang diagnostic push
+#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    [obj performSelector:selector withObject:value];
+#       pragma clang diagnostic pop
+                }
+            }
+        }
     }
-    return self;
+
+//        [self setValuesForKeysWithDictionary:locationDict];
+    
+    return obj;
 }
 
 

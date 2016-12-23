@@ -64,8 +64,12 @@
     }
     
     Location *objLocation= _locationArr[0];
-    float lat=[[objLocation latitude] floatValue];
-    float lon=[[objLocation longitude] floatValue];
+//    float lat=[[objLocation latitude] floatValue];
+//    float lon=[[objLocation longitude] floatValue];
+    
+    float lat=[[objLocation Gpslatitude] floatValue];
+    float lon=[[objLocation Gpslongitude] floatValue];
+
 
     
     
@@ -89,6 +93,7 @@
     
     __weak ATMLocationViewController *weakSelf = self;
     
+    /*
     NSDictionary *searchByZipCode =[NSDictionary dictionaryWithObjectsAndKeys:@"91730",@"ZipCode", nil];
     
     NSDictionary *searchByStateNCity =[NSDictionary dictionaryWithObjectsAndKeys:@"CA",@"state",@"Hermosa Beach",@"city", nil];
@@ -96,9 +101,37 @@
     NSDictionary *searchByCoordinate =[NSDictionary dictionaryWithObjectsAndKeys:@"34.104369",@"latitude",@"117.573459",@"longitude", nil];
     
     NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",@"91730",@"zip", nil];
+     */
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    
+    [Location getShareOneBranchLocations:nil delegate:nil completionBlock:^(NSArray *locations) {
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        if([locations count]>0){
+            weakSelf.locationArr=locations;
+            Location *objLocation= _locationArr[0];
+            float lat=[[objLocation latitude] floatValue];
+            float lon=[[objLocation longitude] floatValue];
+            
+            
+            GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lon
+                                                                    longitude:lat
+                                                                         zoom:13];
+            _mapView.camera=camera;
+            //    _mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+            _mapView.myLocationEnabled = YES;
+            
+            [self createGoogleMapMarker:_mapView];
+        }
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 
+/*
     [Location getAllBranchLocations:maxResultsNRadiousNZip delegate:weakSelf completionBlock:^(NSArray *locations) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
@@ -124,6 +157,7 @@
     } failureBlock:^(NSError *error) {
         
     }];
+ */
 }
 
 -(void)createGoogleMapMarker:(GMSMapView *)mapView
@@ -137,13 +171,17 @@
 
         Location *objLocation= _locationArr[count];
         
-        float lat=[[objLocation latitude] floatValue];
-        float lon=[[objLocation longitude] floatValue];
+//        float lat=[[objLocation latitude] floatValue];
+//        float lon=[[objLocation longitude] floatValue];
+        
+        float lat=[[objLocation Gpslatitude] floatValue];
+        float lon=[[objLocation Gpslongitude] floatValue];
+
 
         GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake(lon, lat);
-        marker.title = objLocation.address;
-        marker.snippet = [NSString stringWithFormat:@"%@, %@",objLocation.city,objLocation.countryname];
+        marker.position = CLLocationCoordinate2DMake(lat, lon);
+        marker.title = objLocation.address.Address1;
+        marker.snippet = [NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
         marker.map = mapView;
         
         if(_showMyLocationOnly)

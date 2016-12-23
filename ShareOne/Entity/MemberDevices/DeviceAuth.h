@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface DeviceAuth : NSObject
-@property (nonatomic,strong) NSString *AuthorizingDateTime;
-@property (nonatomic,strong) NSNumber *AuthorizingUser;
-@property (nonatomic,strong) NSString *ID;
+@property (nonatomic,strong) NSString *Authorizingdatetime;
+@property (nonatomic,strong) NSNumber *Authorizinguser;
+@property (nonatomic,strong) NSString *Id;
 @property (nonatomic,strong) NSNumber *Source;
 @property (nonatomic,strong) NSNumber *Status;
 @property (nonatomic,strong) NSNumber *Type;

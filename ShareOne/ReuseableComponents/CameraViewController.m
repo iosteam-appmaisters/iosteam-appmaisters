@@ -353,7 +353,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     
     // close button
     if (buttonClose == nil)
-        self.buttonClose = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStyleBordered target:self action:@selector(onCameraClose:)];
+        self.buttonClose = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(onCameraClose:)];
     
     // set the toolbar buttons
     if (itemsToolbarPhoto == nil)

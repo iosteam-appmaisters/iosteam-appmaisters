@@ -16,7 +16,7 @@
 
     
     if([_userNameTxtFeild.text length]>0){
-        NSString *context = [[[SharedUser sharedManager] userObject] ContextID];
+        NSString *context = [[[SharedUser sharedManager] userObject] Contextid];
         [User setUserName:[NSDictionary dictionaryWithObjectsAndKeys:_userNameTxtFeild.text,@"AccountName",context,@"ContextID", nil] delegate:self completionBlock:^(id response) {
             
             [_loginDelegate startLoadingServicesFromChangePassword:nil];

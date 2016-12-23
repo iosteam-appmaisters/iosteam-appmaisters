@@ -42,6 +42,8 @@
 
 -(IBAction)changeSettingsAction:(UISwitch *)sender{
     
+    User *obj = [ShareOneUtility getUserObject];
+
     __weak SettingsViewController *weakSelf = self;
 
     __block NSString *key=nil;
@@ -81,6 +83,7 @@
 
                 }
                 else{
+                    
                     alertMesage=@"Touch ID will not not be requested.";
                 }
 

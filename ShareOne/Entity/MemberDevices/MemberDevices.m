@@ -41,7 +41,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
         
         
     } failureBlock:^(NSError *error) {}];
@@ -51,7 +51,7 @@
 
 +(void)deleteMemberDevice:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    NSString *context = [[[SharedUser sharedManager] userObject] ContextID];
+    NSString *context = [[[SharedUser sharedManager] userObject] Contextid];
     NSString *deviceID = [param valueForKey:@"ID"];
     NSString *deviceFingerPrint = [param valueForKey:@"Fingerprint"];
 
@@ -64,10 +64,30 @@
 }
 
 -(id) initWithDictionary:(NSDictionary *)dict{
+    MemberDevices *obj = [[MemberDevices alloc] init];
     self = [super init];{
-        [self setValuesForKeysWithDictionary:dict];
+        
+        for (NSString* key in dict) {
+            id value = [dict objectForKey:key];
+            
+            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
+//            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+            if (value != [NSNull null]) {
+                if ([obj respondsToSelector:selector]) {
+                    
+#       pragma clang diagnostic push
+#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    [obj performSelector:selector withObject:value];
+#       pragma clang diagnostic pop
+                }
+            }
+        }
     }
-    return self;
+    
+    //        [self setValuesForKeysWithDictionary:locationDict];
+    
+    return obj;
+
 }
 
 +(NSMutableArray *)getMemberDevices :(NSDictionary *)dict{

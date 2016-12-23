@@ -691,7 +691,7 @@ NSLog(Y, Z);		\
     int suffixID = 0;
     if([[[SharedUser sharedManager] suffixInfoArr] count]>0){
         objSuffixInfo= (SuffixInfo *)[[SharedUser sharedManager] suffixInfoArr][0];
-        suffixID= [objSuffixInfo.SuffixID intValue];
+        suffixID= [objSuffixInfo.Suffixid intValue];
     }
     else
         suffixID= 55122;
@@ -709,7 +709,7 @@ NSLog(Y, Z);		\
     NSString *accountValue = nil;
     if(suffix){
         User *obj =     [[SharedUser sharedManager] userObject];
-        accountValue= [NSString stringWithFormat:@"%d%d",[obj.Account intValue],[suffix.SuffixID intValue]];
+        accountValue= [NSString stringWithFormat:@"%d%d",[obj.Account intValue],[suffix.Suffixid intValue]];
     }
     else{
         accountValue = [self getAccountValue];
@@ -832,6 +832,13 @@ NSLog(Y, Z);		\
     }
     
     return deviceID;
+}
+
++(NSString *)getDeviceNotifToken{
+    NSString *device_token = [ShareOneUtility getDeiviceToken];
+    if(!device_token)
+        device_token=@"";
+    return device_token;
 }
 +(NSString *)getLocationStatusWithObject:(Location *)location{
     
@@ -1214,5 +1221,13 @@ NSLog(Y, Z);		\
     return decodedString;
 }
 
++(void)saveDeviceToken:(NSString *)token{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:token forKey:@"device_token"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
++(NSString *)getDeiviceToken{
+    return  [[NSUserDefaults standardUserDefaults] valueForKey:@"device_token"];
+}
 @end

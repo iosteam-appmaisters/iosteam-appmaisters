@@ -15,8 +15,8 @@
 @interface MemberDevices : NSObject
 
 @property (nonatomic,strong) NSString *Fingerprint;
-@property (nonatomic,strong) NSNumber *ID;
-@property (nonatomic,strong) NSNumber *ProviderType;
+@property (nonatomic,strong) NSNumber *Id;
+@property (nonatomic,strong) NSNumber *Providertype;
 
 @property (nonatomic,strong) NSMutableArray *Authorizations;
 

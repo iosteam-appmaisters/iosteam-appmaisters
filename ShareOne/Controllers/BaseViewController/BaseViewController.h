@@ -11,7 +11,10 @@
 
 
 @class HomeViewController;
-@interface BaseViewController : UIViewController<HomeNavigationDelegate>
+@interface BaseViewController : UIViewController<HomeNavigationDelegate>{
+    
+    UIViewController *currentController;
+}
 
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint *bottomAdsConstraint;
 
@@ -27,6 +30,7 @@
 -(void)logoutOnGoingBackground;
 -(void)setTitleOnNavBar:(NSString *)title;
 
+-(void)showSideMenu;
 
 
 

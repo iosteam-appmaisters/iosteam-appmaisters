@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Photos.h"
+#import "Hours.h"
+#import "Address.h"
 
 @interface Location : NSObject
 
 +(void)getAllBranchLocations:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSArray *locations))block failureBlock:(void(^)(NSError* error))failBlock;
+
++(void)getShareOneBranchLocations:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSArray *locations))block failureBlock:(void(^)(NSError* error))failBlock;
+
 
 
 -(id) initWithDictionary:(NSDictionary *)locationDict;
@@ -20,7 +26,7 @@
 @property(nonatomic,strong) NSNumber *acceptDeposit;
 @property(nonatomic,strong) NSNumber *access;
 @property(nonatomic,strong) NSString *accessNote;
-@property(nonatomic,strong) NSString *address;
+//@property(nonatomic,strong) NSString *address;
 @property(nonatomic,strong) NSString *cashless;
 @property(nonatomic,strong) NSString *city;
 @property(nonatomic,strong) NSString *comment;
@@ -98,5 +104,24 @@
 @property(nonatomic,strong) NSString *wednesdayOpen;
 @property(nonatomic,strong) NSString *zip;
 @property(nonatomic,strong) NSString *zip4;
+
+
+
+@property(nonatomic,strong) NSNumber *Branchid;
+@property(nonatomic,strong) NSString *Name;
+@property(nonatomic,strong) NSNumber *Code;
+@property(nonatomic,strong) NSString *Timezone;
+@property(nonatomic,strong) NSString *Phonenumber;
+@property(nonatomic,strong) NSNumber *Routingnumber;
+@property(nonatomic,strong) NSNumber *Gpslatitude;
+@property(nonatomic,strong) NSNumber *Gpslongitude;
+@property(nonatomic,strong) Address *address;
+@property(nonatomic,strong) Hours *hours;
+@property(nonatomic,strong) Photos *photos;
+
+
+
+
+
 
 @end

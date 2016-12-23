@@ -39,7 +39,8 @@
 //    self.navigationItem.title=theTitle;
     
     if([webView.request.URL.absoluteString containsString:@"Account/Summary"]){
-        [_loginDelegate startLoadingServicesFromChangePassword:_user];
+        // disabled auto login
+//        [_loginDelegate startLoadingServicesFromChangePassword:_user];
         [self dismissViewControllerAnimated:NO completion:nil];
     }
     __weak PasswordChangeController *weakSelf = self;

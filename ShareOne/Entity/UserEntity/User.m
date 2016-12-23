@@ -94,7 +94,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_SIGN_OUT,[[[SharedUser sharedManager] userObject] ContextID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_SIGN_OUT,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
 
         block(TRUE);
         
@@ -105,7 +105,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] ContextID]] delegate:nil completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] Contextid]] delegate:nil completionBlock:^(NSObject *response) {
         
         if([response isKindOfClass:[NSDictionary class]])
             block(TRUE);
@@ -117,7 +117,7 @@
 
 +(void)postContextIDForSSOWithDelegate:(id)delegate withTabName:(NSString *)url completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    NSString *contexID = [[[SharedUser sharedManager] userObject] ContextID];
+    NSString *contexID = [[[SharedUser sharedManager] userObject] Contextid];
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
 
@@ -133,7 +133,7 @@
     NSString *enquiryurl = [NSString stringWithFormat:@"%@EncryptedContextID=%@&EncryptionIV=%@&RedirectPath=%@",siteurl,encrytedID,randomIV,redirect_path];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:enquiryurl]];
-//    NSLog(@"ULR : %@",request.URL.absoluteString);
+    NSLog(@"ULR : %@",request.URL.absoluteString);
 
 
     block(request);
@@ -203,10 +203,29 @@
 }
 
 -(id) initWithDictionary:(NSDictionary *)userProfileDict{
+    User *obj = [[User alloc] init];
     self = [super init];{
-        [self setValuesForKeysWithDictionary:userProfileDict];
+        
+        for (NSString* key in userProfileDict) {
+            id value = [userProfileDict objectForKey:key];
+            
+            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
+            //            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+            if (value != [NSNull null]) {
+                if ([obj respondsToSelector:selector]) {
+                    
+#       pragma clang diagnostic push
+#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    [obj performSelector:selector withObject:value];
+#       pragma clang diagnostic pop
+                }
+            }
+        }
     }
-    return self;
+    
+    //        [self setValuesForKeysWithDictionary:locationDict];
+    
+    return obj;
 }
 
 
@@ -216,14 +235,14 @@
     if(self) {
         self.vertifyEUAContents=[decoder decodeObjectForKey:@"vertifyEUAContents"];
         self.Account=[decoder decodeObjectForKey:@"Account"];
-        self.ContextID=[decoder decodeObjectForKey:@"ContextID"];;
-        self.LastLoginDate=[decoder decodeObjectForKey:@"LastLoginDate"];
-        self.MasterID=[decoder decodeObjectForKey:@"MasterID"];
-        self.PostingDate=[decoder decodeObjectForKey:@"PostingDate"];
-        self.SystemState = [decoder decodeObjectForKey:@"SystemState"];
+        self.Contextid=[decoder decodeObjectForKey:@"Contextid"];;
+        self.Lastlogindate=[decoder decodeObjectForKey:@"Lastlogindate"];
+        self.Masterid=[decoder decodeObjectForKey:@"Masterid"];
+        self.Postingdate=[decoder decodeObjectForKey:@"Postingdate"];
+        self.Systemstate = [decoder decodeObjectForKey:@"Systemstate"];
         self.UserName = [decoder decodeObjectForKey:@"UserName"];
         self.Password = [decoder decodeObjectForKey:@"Password"];
-        self.LoginAttempts = [decoder decodeObjectForKey:@"LoginAttempts"];
+        self.Loginattempts = [decoder decodeObjectForKey:@"Loginattempts"];
         self.isPushNotifOpen = [decoder decodeBoolForKey:@"isPushNotifOpen"];
         self.isShowOffersOpen = [decoder decodeBoolForKey:@"isShowOffersOpen"];
         self.isQBOpen = [decoder decodeBoolForKey:@"isQBOpen"];
@@ -231,9 +250,9 @@
         self.hasUserAcceptedVertifiAgremant = [decoder decodeBoolForKey:@"hasUserAcceptedVertifiAgremant"];
         self.hasUserUpdatedNotificationSettings = [decoder decodeBoolForKey:@"hasUserUpdatedNotificationSettings"];
         self.hasUserUpdatedTouchIDSettings = [decoder decodeBoolForKey:@"hasUserUpdatedTouchIDSettings"];
-        self.EmailAddress=[decoder decodeObjectForKey:@"EmailAddress"];
-        self.TempPassword=[decoder decodeObjectForKey:@"TempPassword"];
-        self.NewExpiration=[decoder decodeObjectForKey:@"NewExpiration"];
+        self.Emailaddress=[decoder decodeObjectForKey:@"Emailaddress"];
+        self.Temppassword=[decoder decodeObjectForKey:@"Temppassword"];
+        self.Newexpiration=[decoder decodeObjectForKey:@"Newexpiration"];
 
     }
     return self;
@@ -243,11 +262,11 @@
     
     [encoder encodeObject: self.vertifyEUAContents forKey:@"vertifyEUAContents"];
     [encoder encodeObject: self.Account forKey:@"Account"];
-    [encoder encodeObject: self.ContextID forKey:@"ContextID"];
-    [encoder encodeObject: self.LastLoginDate forKey:@"LastLoginDate"];
-    [encoder encodeObject: self.MasterID forKey:@"MasterID"];
-    [encoder encodeObject: self.PostingDate forKey:@"PostingDate"];
-    [encoder encodeObject: self.SystemState forKey:@"SystemState"];
+    [encoder encodeObject: self.Contextid forKey:@"Contextid"];
+    [encoder encodeObject: self.Lastlogindate forKey:@"Lastlogindate"];
+    [encoder encodeObject: self.Masterid forKey:@"Masterid"];
+    [encoder encodeObject: self.Postingdate forKey:@"Postingdate"];
+    [encoder encodeObject: self.Systemstate forKey:@"Systemstate"];
     [encoder encodeObject: self.UserName forKey:@"UserName"];
     [encoder encodeObject: self.Password forKey:@"Password"];
     [encoder encodeObject: self.Password forKey:@"LoginAttempts"];
@@ -258,9 +277,9 @@
     [encoder encodeBool:self.hasUserAcceptedVertifiAgremant forKey:@"hasUserAcceptedVertifiAgremant"];
     [encoder encodeBool:self.hasUserUpdatedNotificationSettings forKey:@"hasUserUpdatedNotificationSettings"];
     [encoder encodeBool:self.hasUserUpdatedTouchIDSettings forKey:@"hasUserUpdatedTouchIDSettings"];
-    [encoder encodeObject: self.EmailAddress forKey:@"EmailAddress"];
-    [encoder encodeObject: self.TempPassword forKey:@"TempPassword"];
-    [encoder encodeObject: self.NewExpiration forKey:@"NewExpiration"];
+    [encoder encodeObject: self.Emailaddress forKey:@"Emailaddress"];
+    [encoder encodeObject: self.Temppassword forKey:@"Temppassword"];
+    [encoder encodeObject: self.Newexpiration forKey:@"Newexpiration"];
 
 }
 @end
