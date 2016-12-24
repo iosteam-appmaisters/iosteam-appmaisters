@@ -138,7 +138,7 @@
 
     
 //    [_userIDTxt setText:@"asd"];
-//    [_passwordTxt setText:@"asd"];
+//    [_passwordTxt setText:@"1234"];
 
 }
 
@@ -147,6 +147,9 @@
     __weak LoginViewController *weakSelf = self;
 
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+        
+        [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
+
         [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
             
             if(success){
@@ -220,6 +223,14 @@
         savedUser.UserName=_userIDTxt.text;
         savedUser.Password=_passwordTxt.text;
     }
+    
+    if(sender){
+        
+        savedUser = [[User alloc] init];
+        savedUser.UserName=_userIDTxt.text;
+        savedUser.Password=_passwordTxt.text;
+
+    }
 
     [self getSignInWithUser:savedUser];
 
@@ -281,7 +292,7 @@
 //    [weakSelf startLoadingServices];
 
 //    [weakSelf startApplication];
-
+//
 //    return;
 //    user.Password
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {

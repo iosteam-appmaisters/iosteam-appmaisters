@@ -55,8 +55,32 @@
 
     [self setTitleTextAttribute];
     
+    //[self setGesturesToBringLeftMenu];
+    
 //    [self performSelector:@selector(addAdvertismentControllerOnBottomScreen) withObject:nil afterDelay:2];
 }
+
+-(void)setGesturesToBringLeftMenu{
+    
+    UISwipeGestureRecognizer* gesture=[[UISwipeGestureRecognizer alloc]init];
+    [gesture setDirection:UISwipeGestureRecognizerDirectionRight];
+    [gesture addTarget:self action:@selector(userDidSwipe:)];
+    [self.view setGestureRecognizers:[NSArray arrayWithObject:gesture]];
+}
+
+-(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture
+{
+    if(gesture.state==UIGestureRecognizerStateEnded){
+        [self showSideMenu];
+    }
+
+    if(gesture.state==UIGestureRecognizerStateBegan){
+        
+    }
+
+}
+
+
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -163,8 +187,8 @@
     UIView* leftView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
     [leftView setBackgroundColor:[UIColor clearColor]];
 
+    //rootview
     /*
-    
     if([[self.navigationController viewControllers] count]>1){
         [leftView addSubview:[self getBackButton]];
 //        [leftView addSubview:[self getMenuButton]];
@@ -175,7 +199,9 @@
         [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
         [leftView addSubview:menuBtn];
     }
-     */
+     
+    */
+    
     UIButton* menuBtn=[self getMenuButton];
     [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
     [leftView addSubview:menuBtn];
@@ -330,6 +356,10 @@
             currentController = objHomeViewController;
             objHomeViewController.url= webUrl;
             objHomeViewController.navigationItem.title=screenTitle;
+            
+            //rootview
+//            self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
+
             [self.navigationController pushViewController:objHomeViewController animated:YES];
 
         }
@@ -373,6 +403,10 @@
             currentController = objUIViewController;
 
             objUIViewController.navigationItem.title=screenTitle;
+            
+            //rootview
+//            self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
+
             [self.navigationController pushViewController:objUIViewController animated:YES];
         }
     }
