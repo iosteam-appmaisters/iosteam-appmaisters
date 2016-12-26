@@ -121,6 +121,10 @@
 
 
 
+#define PROVIDER_TYPE_VALUE            @"1"     // FOR iOS =1 ; 2= GOOGLE
+
+
+
 #define QUICK_BAL_SETTINGS              @"QUICK_BAL_SETTINGS"
 #define SHOW_OFFERS_SETTINGS            @"SHOW_OFFERS_SETTINGS"
 #define TOUCH_ID_SETTINGS               @"TOUCH_ID_SETTINGS"

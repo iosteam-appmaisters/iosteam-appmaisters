@@ -23,6 +23,7 @@
 #import "UserNamecontroller.h"
 #import "IQKeyboardManager.h"
 #import "Location.h"
+#import "WeblinksController.h"
 
 
 
@@ -420,7 +421,7 @@
                 
                 NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
                 
-                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"0",@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
                     
                     
                     [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
@@ -549,20 +550,39 @@
     
     
     NSString *urlString =nil;
+    NSString *screenTitle= nil;
+    UIButton *btn = (UIButton *)sender;
     
-    if([sender isEqual:_joinButton])
+    screenTitle=[btn titleForState:UIControlStateNormal];
+    if([sender isEqual:_joinButton]){
         urlString=URL_JOIN_CREDIT_UNION;
-    else if ([sender isEqual:_applyLoanButton])
+//        screenTitle=JOIN_CREDIT_UNION_TITLE;
+    }
+    else if ([sender isEqual:_applyLoanButton]){
         urlString=URL_APPLY_FOR_LOAN;
-    else if ([sender isEqual:_branchLocationButton])
+//        screenTitle=APPLY_FOR_LOAN_TITLE;
+    }
+    else if ([sender isEqual:_branchLocationButton]){
         urlString=URL_BRANCH_LOCATION;
-    else if ([sender isEqual:_contactButton])
+//        screenTitle=BRANCH_LOCATION_TITLE;
+    }
+    else if ([sender isEqual:_contactButton]){
         urlString=URL_CONTACT_US;
-    else if ([sender isEqual:_privacyButton])
+//        screenTitle=CONTACT_TITLE;
+    }
+    else if ([sender isEqual:_privacyButton]){
         urlString=URL_PRIVACY_POLICY;
+//        screenTitle=PRIVACY_POLICY_TITLE;
+    }
 
-    NSURL *url = [NSURL URLWithString:urlString];
-    [[UIApplication sharedApplication] openURL:url];
+    WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
+    objWeblinksController.navTitle=screenTitle;
+    objWeblinksController.webLink=urlString;
+    [self presentViewController:objWeblinksController animated:YES completion:nil];
+
+
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)quickBalanceButtonClicked:(id)sender

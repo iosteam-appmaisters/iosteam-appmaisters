@@ -33,6 +33,7 @@
 		1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A7BDD1DF0828200AEA159 /* UserNamecontroller.m */; };
 		1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */; };
 		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
+		1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F0F9E1E11484E00B57B5F /* WeblinksController.m */; };
 		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
@@ -147,6 +148,8 @@
 		1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDSettingsController.m; sourceTree = "<group>"; };
 		1D3D12781DBF353500719170 /* DeviceAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceAuth.h; sourceTree = "<group>"; };
 		1D3D12791DBF353500719170 /* DeviceAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceAuth.m; sourceTree = "<group>"; };
+		1D3F0F9D1E11484E00B57B5F /* WeblinksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeblinksController.h; sourceTree = "<group>"; };
+		1D3F0F9E1E11484E00B57B5F /* WeblinksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeblinksController.m; sourceTree = "<group>"; };
 		1D4245D31DCB198400A76E52 /* AdvertisementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementController.h; sourceTree = "<group>"; };
 		1D4245D41DCB198400A76E52 /* AdvertisementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementController.m; sourceTree = "<group>"; };
 		1D4245D61DCB780200A76E52 /* QuickTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTransaction.h; sourceTree = "<group>"; };
@@ -380,6 +383,15 @@
 			path = TouchIDSettingsViewController;
 			sourceTree = "<group>";
 		};
+		1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */ = {
+			isa = PBXGroup;
+			children = (
+				1D3F0F9D1E11484E00B57B5F /* WeblinksController.h */,
+				1D3F0F9E1E11484E00B57B5F /* WeblinksController.m */,
+			);
+			path = LoginWebViewsController;
+			sourceTree = "<group>";
+		};
 		1D4245D21DCB193700A76E52 /* AdvertismentController */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +607,7 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */,
 				1D3A7BDB1DF0826A00AEA159 /* SetUserNameController */,
 				1D3A7BD71DF0598000AEA159 /* PasswordChangeViewController */,
 				1D2887451DED515500AD7C74 /* PinResetViewController */,
@@ -1078,6 +1091,7 @@
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
 				1D2887481DED517400AD7C74 /* PinResetController.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
+				1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */,
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
 				1D398FA11E07F66E00275E4E /* Hours.m in Sources */,
 				1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */,

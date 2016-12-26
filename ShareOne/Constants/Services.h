@@ -48,11 +48,15 @@
 #define KBRANCH_LOCATIONS                               @"organization/branches"
 
 #define URL_JOIN_CREDIT_UNION                           @"https://nsmobiledemo.ns3web.com/NSJoin.html?id=48b9462bd306475fa32ddc28dd603faab9"
+#define JOIN_CREDIT_UNION_TITLE                         @"Join Credit Union"
 #define URL_APPLY_FOR_LOAN                              @"https://nsmobiledemo.ns3web.com/NSLoan.html?id=48b9462bd306475fa32ddc28dd603faab9"
+#define APPLY_FOR_LOAN_TITLE                            @"Apply For A Loan"
 #define URL_BRANCH_LOCATION                             @"https://nsmobiledemo.ns3web.com/BranchLocations.html?id=48b9462bd306475fa32ddc28dd603faab9"
+#define BRANCH_LOCATION_TITLE                           @"Branch Location"
 #define URL_CONTACT_US                                  @"https://nsmobiledemo.ns3web.com/ContactUs.html?id=48b9462bd306475fa32ddc28dd603faab9"
+#define CONTACT_TITLE                                   @"Contact"
 #define URL_PRIVACY_POLICY                              @"https://nsmobiledemo.ns3web.com/PrivacyPolicy.html?id=48b9462bd306475fa32ddc28dd603faab9"
-
+#define PRIVACY_POLICY_TITLE                            @"Privacy Policy"
 
 
 //#define KSINGLE_SIGN_ON                                 @"api/SSO/SignOn"
