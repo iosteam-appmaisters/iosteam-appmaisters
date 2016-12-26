@@ -194,7 +194,7 @@
                                                 </connections>
                                             </switch>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="edQ-yo-nMS" firstAttribute="centerY" secondItem="X9W-pp-gWk" secondAttribute="centerY" id="3pQ-jL-4NN"/>
                                             <constraint firstItem="X9W-pp-gWk" firstAttribute="top" secondItem="8u9-YS-oWe" secondAttribute="top" id="6Ka-SF-Czv"/>
@@ -324,26 +324,30 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="mS1-Sf-t9Y"/>
                                         </constraints>
-                                        <state key="normal" image="Join_Button"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
+                                        <state key="normal" title="Join The Credit Union"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="sRI-mO-fIC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mG7-Ba-Ey9">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" image="Branch_Button"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
+                                        <state key="normal" title="Branch Location"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="T1U-dd-azo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-AC-ghJ">
-                                        <state key="normal" image="privacy_button"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
+                                        <state key="normal" title="Privacy Policy"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="IGs-dn-N1C"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KP-5D-dKz">
-                                        <state key="normal" image="Apply_Button"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
+                                        <state key="normal" title="Apply For A Loan"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="PU8-PD-iqw"/>
                                         </connections>
@@ -358,7 +362,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAv-Pg-6fu">
-                                        <state key="normal" image="Contact_Button"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
+                                        <state key="normal" title="Contact"/>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="fMR-iq-Zbq"/>
                                         </connections>
@@ -382,7 +387,7 @@
                                     <constraint firstItem="oaW-xn-S6F" firstAttribute="top" secondItem="nZA-zR-XcZ" secondAttribute="bottom" constant="1" id="Ah6-qD-A6G"/>
                                     <constraint firstItem="DZ6-QP-Jpq" firstAttribute="top" secondItem="AUa-t5-lxc" secondAttribute="bottom" constant="7" id="BEb-6M-bJb"/>
                                     <constraint firstItem="qwV-Kb-rR9" firstAttribute="height" secondItem="Lx4-Z6-gEr" secondAttribute="height" id="Fb4-L5-4uh"/>
-                                    <constraint firstItem="DZ6-QP-Jpq" firstAttribute="leading" secondItem="AUa-t5-lxc" secondAttribute="leading" constant="15" id="HXH-HL-rHp"/>
+                                    <constraint firstItem="DZ6-QP-Jpq" firstAttribute="leading" secondItem="AUa-t5-lxc" secondAttribute="leading" id="HXH-HL-rHp"/>
                                     <constraint firstItem="1KP-5D-dKz" firstAttribute="height" secondItem="DZ6-QP-Jpq" secondAttribute="height" id="HeC-2G-w2u"/>
                                     <constraint firstItem="uAv-Pg-6fu" firstAttribute="top" secondItem="mG7-Ba-Ey9" secondAttribute="top" id="IPm-KO-j6L"/>
                                     <constraint firstItem="ECX-AC-ghJ" firstAttribute="top" secondItem="mG7-Ba-Ey9" secondAttribute="bottom" id="Ibc-ET-HgI"/>
@@ -396,7 +401,7 @@
                                     <constraint firstItem="mN0-OE-4gt" firstAttribute="top" secondItem="J2R-fr-ibL" secondAttribute="bottom" id="P0S-8l-0p9"/>
                                     <constraint firstItem="X9W-pp-gWk" firstAttribute="trailing" secondItem="F7s-uQ-F6p" secondAttribute="trailing" id="Pxn-Kv-ffc"/>
                                     <constraint firstItem="mN0-OE-4gt" firstAttribute="trailing" secondItem="J2R-fr-ibL" secondAttribute="trailing" id="Qkj-00-8jn"/>
-                                    <constraint firstItem="1KP-5D-dKz" firstAttribute="trailing" secondItem="AUa-t5-lxc" secondAttribute="trailing" constant="-15" id="TJs-kb-IQQ"/>
+                                    <constraint firstItem="1KP-5D-dKz" firstAttribute="trailing" secondItem="AUa-t5-lxc" secondAttribute="trailing" id="TJs-kb-IQQ"/>
                                     <constraint firstItem="nZA-zR-XcZ" firstAttribute="height" secondItem="J2R-fr-ibL" secondAttribute="height" id="UAi-6c-gWe"/>
                                     <constraint firstItem="qwV-Kb-rR9" firstAttribute="leading" secondItem="Lx4-Z6-gEr" secondAttribute="leading" id="VBL-Ud-GvX"/>
                                     <constraint firstItem="AUa-t5-lxc" firstAttribute="width" secondItem="nZA-zR-XcZ" secondAttribute="width" id="W7R-Qn-An4"/>
@@ -412,7 +417,7 @@
                                     <constraint firstItem="9hV-j4-ex4" firstAttribute="trailing" secondItem="mN0-OE-4gt" secondAttribute="trailing" id="mkH-4E-AIQ"/>
                                     <constraint firstItem="oaW-xn-S6F" firstAttribute="width" secondItem="nZA-zR-XcZ" secondAttribute="width" id="qAc-u3-p3Q"/>
                                     <constraint firstItem="8u9-YS-oWe" firstAttribute="top" secondItem="F7s-uQ-F6p" secondAttribute="bottom" id="qvJ-Mc-Jfr">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="-10"/>
+                                        <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                                     </constraint>
                                     <constraint firstItem="AUa-t5-lxc" firstAttribute="top" secondItem="oaW-xn-S6F" secondAttribute="bottom" constant="1" id="rAg-Ms-5I1"/>
                                     <constraint firstItem="mG7-Ba-Ey9" firstAttribute="top" secondItem="DZ6-QP-Jpq" secondAttribute="bottom" constant="-2" id="rXs-a8-84C"/>
@@ -486,7 +491,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="XMz-Ei-3Z8" firstAttribute="top" secondItem="ol8-GV-fdp" secondAttribute="bottom" constant="-20" id="1PH-Fp-36Z"/>
+                            <constraint firstItem="XMz-Ei-3Z8" firstAttribute="top" secondItem="ol8-GV-fdp" secondAttribute="bottom" constant="-30" id="1PH-Fp-36Z">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-80"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="7Am-NF-euc" secondAttribute="trailing" id="1Qp-KC-igU"/>
                             <constraint firstItem="pBa-4E-7vZ" firstAttribute="bottom" secondItem="mah-z6-qDW" secondAttribute="bottom" id="2OT-0x-90x"/>
                             <constraint firstItem="HHb-XY-Cad" firstAttribute="leading" secondItem="jx4-XD-MOx" secondAttribute="leadingMargin" constant="20" id="4t0-WB-TDW">
@@ -532,11 +539,16 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="2OT-0x-90x"/>
-                                <exclude reference="nHL-UR-XLi"/>
+                                <exclude reference="TVk-Pa-8nV"/>
                                 <exclude reference="Xf5-Uf-a9J"/>
                                 <exclude reference="baE-Pz-p5i"/>
-                                <exclude reference="TVk-Pa-8nV"/>
+                                <exclude reference="2OT-0x-90x"/>
+                                <exclude reference="nHL-UR-XLi"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="1PH-Fp-36Z"/>
                             </mask>
                         </variation>
                     </view>
@@ -704,7 +716,7 @@
         <scene sceneID="G2N-00-CXf">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" id="U9l-4r-dcs" customClass="CustomNavController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2p-Tk-Tgg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2p-Tk-Tgg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1629,7 +1641,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="331" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdE-he-zu3" id="AWs-QG-jWE">
-                                                    <frame key="frameInset" width="331" height="43"/>
+                                                    <frame key="frameInset" width="331.33333333333331" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
@@ -4860,13 +4872,9 @@ Tm90ZToQIA
     </scenes>
     <resources>
         <image name="ATMtop_banner" width="414" height="151"/>
-        <image name="Apply_Button" width="95" height="10"/>
-        <image name="Branch_Button" width="91" height="8"/>
-        <image name="Contact_Button" width="51" height="8"/>
         <image name="FingerPrint_Button" width="205" height="37"/>
-        <image name="Join_Button" width="116" height="8"/>
         <image name="Lock_icon" width="37" height="37"/>
-        <image name="Login_Button" width="334" height="41"/>
+        <image name="Login_Button" width="384" height="45"/>
         <image name="QuickBalance_Button" width="414" height="49"/>
         <image name="Rembember_Box" width="16" height="16"/>
         <image name="Rembember_Box_checked" width="16" height="16"/>
@@ -4894,7 +4902,6 @@ Tm90ZToQIA
         <image name="pay-person-header" width="414" height="151"/>
         <image name="pin-ok-btn" width="348" height="41"/>
         <image name="pin-submit-btn" width="348" height="41"/>
-        <image name="privacy_button" width="94" height="12"/>
         <image name="qbDownIcon" width="414" height="49"/>
         <image name="show_button" width="127" height="18"/>
         <image name="show_map" width="53" height="10"/>

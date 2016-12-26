@@ -55,7 +55,7 @@
 
     [self setTitleTextAttribute];
     
-    //[self setGesturesToBringLeftMenu];
+    [self setGesturesToBringLeftMenu];
     
 //    [self performSelector:@selector(addAdvertismentControllerOnBottomScreen) withObject:nil afterDelay:2];
 }
@@ -188,7 +188,7 @@
     [leftView setBackgroundColor:[UIColor clearColor]];
 
     //rootview
-    /*
+    
     if([[self.navigationController viewControllers] count]>1){
         [leftView addSubview:[self getBackButton]];
 //        [leftView addSubview:[self getMenuButton]];
@@ -200,11 +200,11 @@
         [leftView addSubview:menuBtn];
     }
      
-    */
     
-    UIButton* menuBtn=[self getMenuButton];
-    [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
-    [leftView addSubview:menuBtn];
+    
+//    UIButton* menuBtn=[self getMenuButton];
+//    [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
+//    [leftView addSubview:menuBtn];
 
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftView];
@@ -358,9 +358,9 @@
             objHomeViewController.navigationItem.title=screenTitle;
             
             //rootview
-//            self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
+            self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
 
-            [self.navigationController pushViewController:objHomeViewController animated:YES];
+//            [self.navigationController pushViewController:objHomeViewController animated:YES];
 
         }
         
@@ -405,9 +405,9 @@
             objUIViewController.navigationItem.title=screenTitle;
             
             //rootview
-//            self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
+            self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
 
-            [self.navigationController pushViewController:objUIViewController animated:YES];
+//            [self.navigationController pushViewController:objUIViewController animated:YES];
         }
     }
     else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Logout"]){
