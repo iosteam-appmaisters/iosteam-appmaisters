@@ -489,28 +489,20 @@
     
     [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifiForSuffix:nil],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
-        
         VertifiObject *obj = (VertifiObject *)user;
         if([obj.InputValidation isEqualToString:@"OK"]){
             [weakSelf startApplication];
         }
-
-        
-        
     } failureBlock:^(NSError *error) {
-        
     }];
-    
 }
-
 
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self.loadingView setHidden:TRUE];
-
-    
 }
+
 - (IBAction)forgotPasswordButtonClicked:(id)sender {
 }
 
@@ -568,7 +560,6 @@
         urlString=URL_CONTACT_US;
     else if ([sender isEqual:_privacyButton])
         urlString=URL_PRIVACY_POLICY;
-
 
     NSURL *url = [NSURL URLWithString:urlString];
     [[UIApplication sharedApplication] openURL:url];

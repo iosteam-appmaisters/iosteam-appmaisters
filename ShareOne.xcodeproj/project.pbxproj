@@ -11,6 +11,7 @@
 		1D0309A51DD30B1B005953FA /* VertifiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0309A41DD30B1B005953FA /* VertifiObject.m */; };
 		1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C98FE1DE81A58009B60F0 /* VertifiDepositObject.m */; };
 		1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C99011DE847CC009B60F0 /* DepositCell.m */; };
+		1D0EF1D11E10EB31007BBF87 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0EF1D01E10EB31007BBF87 /* libVertifiImageProcessing.a */; };
 		1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C091DB4BCCE000435DE /* QuickBalances.m */; };
 		1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */; };
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
@@ -41,7 +42,6 @@
 		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
 		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
 		1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3B5F91DB7950500DB5731 /* Location.m */; };
-		1DA5A5541E0E87B2005AA4B0 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA5A5531E0E87B2005AA4B0 /* libVertifiImageProcessing.a */; };
 		1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB927371DBE193E00C08F29 /* LoadingController.m */; };
 		1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */; };
 		1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273E1DBE29B800C08F29 /* LoaderServices.m */; };
@@ -105,6 +105,7 @@
 		1D0C98FE1DE81A58009B60F0 /* VertifiDepositObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertifiDepositObject.m; sourceTree = "<group>"; };
 		1D0C99001DE847CC009B60F0 /* DepositCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositCell.h; sourceTree = "<group>"; };
 		1D0C99011DE847CC009B60F0 /* DepositCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositCell.m; sourceTree = "<group>"; };
+		1D0EF1D01E10EB31007BBF87 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D112C081DB4BCCE000435DE /* QuickBalances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickBalances.h; sourceTree = "<group>"; };
 		1D112C091DB4BCCE000435DE /* QuickBalances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBalances.m; sourceTree = "<group>"; };
 		1D112C0B1DB4E6C6000435DE /* SuffixInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuffixInfo.h; sourceTree = "<group>"; };
@@ -163,7 +164,6 @@
 		1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavController.m; sourceTree = "<group>"; };
 		1DA3B5F81DB7950500DB5731 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		1DA3B5F91DB7950500DB5731 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		1DA5A5531E0E87B2005AA4B0 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1DB927361DBE193E00C08F29 /* LoadingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingController.h; sourceTree = "<group>"; };
 		1DB927371DBE193E00C08F29 /* LoadingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingController.m; sourceTree = "<group>"; };
 		1DB927391DBE267900C08F29 /* HTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DA5A5541E0E87B2005AA4B0 /* libVertifiImageProcessing.a in Frameworks */,
+				1D0EF1D11E10EB31007BBF87 /* libVertifiImageProcessing.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -808,7 +808,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DA5A5531E0E87B2005AA4B0 /* libVertifiImageProcessing.a */,
+				1D0EF1D01E10EB31007BBF87 /* libVertifiImageProcessing.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
