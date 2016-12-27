@@ -454,6 +454,9 @@ NSLog(Y, Z);		\
     newUser.isQBOpen=savedUser.isQBOpen;
     newUser.isShowOffersOpen=savedUser.isShowOffersOpen;
     newUser.isTouchIDOpen=savedUser.isTouchIDOpen;
+    
+    //swap contexid
+    savedUser.Contextid=newUser.Contextid;
 }
 
 
@@ -1230,4 +1233,15 @@ NSLog(Y, Z);		\
 +(NSString *)getDeiviceToken{
     return  [[NSUserDefaults standardUserDefaults] valueForKey:@"device_token"];
 }
+
++(void)saveMenuItemObjectForTouchIDAuthentication:(NSDictionary *)dict{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:dict forKey:@"menu_item"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSDictionary *)getMenuItemForTouchIDAuthentication{
+    return  [[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
+}
+
 @end

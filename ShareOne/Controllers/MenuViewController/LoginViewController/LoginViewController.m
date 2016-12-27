@@ -24,8 +24,8 @@
 #import "IQKeyboardManager.h"
 #import "Location.h"
 #import "WeblinksController.h"
-
-
+#import "SettingsViewController.h"
+#import "HomeViewController.h"
 
 @interface LoginViewController ()
 
@@ -155,6 +155,7 @@
             
             if(success){
                 
+                _isComingAfterAuthenticatingFromTouchID= TRUE;
                 // check whether session is available or not
                 [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
                     NSLog(@"keepAlive from showTouchID");
@@ -264,13 +265,51 @@
 
 - (void)startApplication{
     
+    if(_isComingAfterAuthenticatingFromTouchID){
+        
+        UIViewController *controllerToPush =nil;
+        _isComingAfterAuthenticatingFromTouchID=FALSE;
+        
+        NSDictionary *dict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
+        
+        NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
+        NSString *webUrl = [dict valueForKey:WEB_URL];
+        NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
 
-    UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
-    
-    
-    homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-    
-    [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+        UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+
+        if([contrlollerName isEqualToString:@"WebViewController"]){
+            
+            HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+            controllerToPush = objHomeViewController;
+            objHomeViewController.url= webUrl;
+            objHomeViewController.navigationItem.title=screenTitle;
+
+        }
+        else{
+            
+            UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+            
+            controllerToPush = objUIViewController;
+
+            objUIViewController.navigationItem.title=screenTitle;
+            
+        }
+        
+        
+        homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
+
+        homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+        
+        [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+    }
+    else{
+        UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+        
+        homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+        
+        [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+    }
 }
 
 -(void)addingLoadingScreen{
@@ -333,13 +372,6 @@
             [weakSelf.loadingView setHidden:FALSE];
             [weakSelf startLoadingServices];
         }
-
-        
-        //[weakSelf registerToVertify];
-        
-        
-//        [weakSelf startApplication];
-
         
     } failureBlock:^(NSError *error) {
         
@@ -364,7 +396,6 @@
     UserNamecontroller *objUserNamecontroller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([UserNamecontroller class])];
     objUserNamecontroller.loginDelegate=self;
     [self presentViewController:objUserNamecontroller animated:YES completion:nil];
-    
 }
 
 -(void)addPasswordChangeController:(User *)user{

@@ -357,6 +357,7 @@
             objHomeViewController.url= webUrl;
             objHomeViewController.navigationItem.title=screenTitle;
             
+            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
             //rootview
             self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
 
@@ -373,8 +374,12 @@
         
         else{
             
+            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+
             if([contrlollerName isEqualToString:NSStringFromClass([MobileDepositController class])]){
                 
+                
+
                 // Check whether current user has Accepted Vertifi Agreemant or not
                 User *currentUser = [ShareOneUtility getUserObject];
                 if(!currentUser.vertifyEUAContents){

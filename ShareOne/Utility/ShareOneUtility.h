@@ -132,5 +132,10 @@
 
 +(NSString *)getDeviceNotifToken;
 
++(void)saveMenuItemObjectForTouchIDAuthentication:(NSDictionary *)dict;
+
++(NSDictionary *)getMenuItemForTouchIDAuthentication;
+
+
 
 @end

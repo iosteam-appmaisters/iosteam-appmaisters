@@ -24,6 +24,7 @@
 
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint *loginViewConstraintY;
 
+@property BOOL isComingAfterAuthenticatingFromTouchID;
 
 
 
