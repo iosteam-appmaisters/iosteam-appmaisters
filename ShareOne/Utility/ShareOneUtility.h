@@ -136,6 +136,8 @@
 
 +(NSDictionary *)getMenuItemForTouchIDAuthentication;
 
++(int)getDayOfWeek;
 
++(NSString *)getDateInCustomeFormatWithSourceDate:(NSString *)sourceDate andDateFormat:(NSString *)dateFormater;
 
 @end

@@ -208,8 +208,63 @@
     NSString *officeTimeString= nil;
     NSString *driveThruString= nil;
     
+    NSArray *hoursArr = nil;
+    if([objLocation.hours count]>0){
+        
+        hoursArr= objLocation.hours;
+        NSPredicate *suffixPredicate = [NSPredicate predicateWithFormat:@"Daynumber = %d",[ShareOneUtility getDayOfWeek]];
+        
+        NSArray *currentDayHourArr = [hoursArr filteredArrayUsingPredicate:suffixPredicate];
+        
+        if([currentDayHourArr count]>0){
+            
+            Hours *objHours = [currentDayHourArr lastObject];
+            
+            if(objHours.Drivethruopentime &&  objHours.Drivethruclosetime)
+                driveThruString = [NSString stringWithFormat:@"Drive Thru %@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruopentime andDateFormat:@"hh:mm a"],[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruclosetime andDateFormat:@"hh:mm a"]];
+            else
+                driveThruString = [NSString stringWithFormat:@"Drive Thru"];
+            
+            
+            if(objHours.Lobbyopentime && objHours.Lobbyclosetime)
+                officeTimeString = [NSString stringWithFormat:@"Office %@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyopentime andDateFormat:@"hh:mm a"] ,[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyclosetime andDateFormat:@"hh:mm a"]];
+            else
+                officeTimeString = [NSString stringWithFormat:@"Office"];
+            
+            
+            
+            ([objHours.Drivethruisopen boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
+            
+            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+            
+            
+            ([objHours.Lobbyisopen boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
+            
+            ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
+
+
+        }
+
+    }
+    
+    else{
+        
+        officeTimeString = [NSString stringWithFormat:@"Office"];
+        driveThruString = [NSString stringWithFormat:@"Drive Thru"];
+        
+        [[cell drivestatusLbl] setText:@"CLOSED"];
+        [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+        
+        [[cell officestatusLbl] setText:@"CLOSED"];
+        [[cell officestatusLbl] setTextColor:[UIColor redColor]];
+
+    }
     
     
+    
+    
+
+/*
     if([objLocation.mondayDriveThruOpen length]>0)
         driveThruString = [NSString stringWithFormat:@"Drive Thru %@am - %@pm",objLocation.mondayDriveThruOpen,objLocation.mondayDriveThruClose];
     else
@@ -220,6 +275,7 @@
         officeTimeString = [NSString stringWithFormat:@"Office %.0fam - %.0fpm",[objLocation.mondayOpen floatValue],[objLocation.mondayClose floatValue]];
     else
         officeTimeString = [NSString stringWithFormat:@"Office"];
+ */
     
     
     
@@ -228,9 +284,13 @@
     cell.officeHourLbl.text=officeTimeString;
     cell.driveThruHoursLbl.text=driveThruString;
     
-    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@ %@",objLocation.address.Address1,objLocation.address.Address2];
+    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@ %@, %@",objLocation.address.Address1,objLocation.address.City,objLocation.address.Country];
     cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
     
+
+
+    
+    /*
     ([objLocation.driveThru boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
     
     ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
@@ -240,7 +300,7 @@
     
     ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
     
-    
+    */
     
     
     NSURL *imageURL = [NSURL URLWithString:@""];

@@ -59,13 +59,24 @@
     if(!_url)
         _url = @"";
 
-    [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
+    
+    
+    
+    if([_url containsString:@"nsmobiledemo"]){
+        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+    }
+    
+    else{
         
-        [weakSelf.webview loadRequest:(NSMutableURLRequest *)urlPath];
+        [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
+            
+            [weakSelf.webview loadRequest:(NSMutableURLRequest *)urlPath];
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
 
-    } failureBlock:^(NSError *error) {
-        
-    }];
+    }
     
 
 }

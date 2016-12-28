@@ -26,6 +26,9 @@
 
 @property BOOL isComingAfterAuthenticatingFromTouchID;
 
+@property BOOL isComingAfterPressedOpenUrlButton;
+
+
 
 
 @end

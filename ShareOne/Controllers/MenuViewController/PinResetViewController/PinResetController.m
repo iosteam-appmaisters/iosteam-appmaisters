@@ -22,7 +22,8 @@
     else
         _navBar.topItem.title = @"Forgot Password";
 
-//    [_accountNameTxtFeild setText:@"7"];
+//    [_accountNameTxtFeild setText:@"newton"];
+////    [_accountNameTxtFeild setText:@"7"];
 //    [_taxIDTxtFeild setText:@"9456"];
 //    [_dateTxtFeild setText:@"01/01/1980"];
 //    [_postalCodeTxtFeild setText:@"77777"];

@@ -1244,4 +1244,29 @@ NSLog(Y, Z);		\
     return  [[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
 }
 
+
++(int)getDayOfWeek{
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    NSDateComponents* comp = [cal components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+    NSLog(@"weekday :%ld",(long)[comp weekday]);
+    return (int)[comp weekday]; // 1 = Sunday, 2 = Monday, etc.
+}
+
+
++(NSString *)getDateInCustomeFormatWithSourceDate:(NSString *)sourceDate andDateFormat:(NSString *)dateFormater{
+    
+    NSString *dateString;
+    
+    NSDateFormatter *sourceDateFormater = [[NSDateFormatter alloc] init];
+    
+    [sourceDateFormater setDateFormat:@"HH:mm:ss.000"];
+    
+    NSDate *date = [sourceDateFormater dateFromString:sourceDate];
+    
+    [sourceDateFormater setDateFormat:dateFormater];
+    
+    dateString = [sourceDateFormater stringFromDate:date];
+    
+    return dateString;
+}
 @end

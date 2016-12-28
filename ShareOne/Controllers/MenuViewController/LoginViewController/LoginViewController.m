@@ -133,8 +133,14 @@
      */
     if([ShareOneUtility getUserObject]  && [ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
         //[self loginButtonClicked:nil];
-        [self showTouchID];
-        [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+        
+        if(_isComingAfterPressedOpenUrlButton){
+            _isComingAfterPressedOpenUrlButton= FALSE;
+        }
+        else{
+            [self showTouchID];
+            [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+        }
     }
 
     
@@ -393,12 +399,16 @@
 
 -(void)addControllerToChangeUserName{
  
+    _isComingAfterPressedOpenUrlButton = TRUE;
+
     UserNamecontroller *objUserNamecontroller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([UserNamecontroller class])];
     objUserNamecontroller.loginDelegate=self;
     [self presentViewController:objUserNamecontroller animated:YES completion:nil];
 }
 
 -(void)addPasswordChangeController:(User *)user{
+    _isComingAfterPressedOpenUrlButton = TRUE;
+
     PasswordChangeController *objPasswordChangeController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PasswordChangeController class])];
     objPasswordChangeController.loginDelegate=self;
     objPasswordChangeController.user=user;
@@ -580,6 +590,7 @@
 - (IBAction)openUrlButtonClicked:(id)sender{
     
     
+    _isComingAfterPressedOpenUrlButton = TRUE;
     NSString *urlString =nil;
     NSString *screenTitle= nil;
     UIButton *btn = (UIButton *)sender;
@@ -618,12 +629,16 @@
 
 - (IBAction)quickBalanceButtonClicked:(id)sender
 {
+    _isComingAfterPressedOpenUrlButton = TRUE;
+
     QuickBalancesViewController* objQuickBalancesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickBalancesViewController"];
     [self presentViewController:objQuickBalancesViewController animated:YES completion:nil];
 }
 
 -(IBAction)pinResetButtonClicked:(id)sender{
     
+    _isComingAfterPressedOpenUrlButton = TRUE;
+
     BOOL isFromForgotUserName =FALSE;
     UIButton *btn = (UIButton *)sender;
     if(btn.tag==111){
