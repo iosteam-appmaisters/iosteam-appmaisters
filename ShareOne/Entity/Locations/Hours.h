@@ -10,14 +10,14 @@
 
 @interface Hours : NSObject
 
-@property(nonatomic,strong) NSNumber *DayNumber;
-@property(nonatomic,strong) NSNumber *LobbyIsOpen;
-@property(nonatomic,strong) NSString *LobbyOpenTime;
-@property(nonatomic,strong) NSString *LobbyCloseTime;
-@property(nonatomic,strong) NSNumber *DriveThruIsOpen;
-@property(nonatomic,strong) NSString *DriveThruOpenTime;
-@property(nonatomic,strong) NSString *DriveThruCloseTime;
+@property(nonatomic,strong) NSNumber *Daynumber;
+@property(nonatomic,strong) NSNumber *Lobbyisopen;
+@property(nonatomic,strong) NSString *Lobbyopentime;
+@property(nonatomic,strong) NSString *Lobbyclosetime;
+@property(nonatomic,strong) NSNumber *Drivethruisopen;
+@property(nonatomic,strong) NSString *Drivethruopentime;
+@property(nonatomic,strong) NSString *Drivethruclosetime;
 
--(id) initWithDictionary:(NSDictionary *)hoursDict;
++(NSMutableArray *) parseHours:(NSArray *)hoursArr;
 
 @end

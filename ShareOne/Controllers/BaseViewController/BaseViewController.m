@@ -152,6 +152,10 @@
             [self bringAdvertismentViewToFront];
 
     }
+    if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+        [self bringAdvertismentViewToFront];
+    }
+
 }
 
 

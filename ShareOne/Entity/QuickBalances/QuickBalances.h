@@ -21,6 +21,7 @@
 @property (nonatomic,strong) NSString *Type;
 @property (nonatomic,strong) NSNumber *Available;
 @property (nonatomic,strong) NSMutableArray *transArr;
+@property (nonatomic,strong) NSString *Descr;
 
 
 

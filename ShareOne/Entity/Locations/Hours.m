@@ -10,17 +10,19 @@
 
 @implementation Hours
 
--(id) initWithDictionary:(NSDictionary *)hoursDict{
++(NSMutableArray *) parseHours:(NSArray *)hoursArr{
+
+    NSMutableArray *parsedHoursArr = [[NSMutableArray alloc] init];
     
-    Hours *obj = [[Hours alloc] init];
-    self = [super init];{
-        //        [self setValuesForKeysWithDictionary:hoursDict];
+    [hoursArr enumerateObjectsUsingBlock:^(NSDictionary *hoursDict, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        Hours *obj = [[Hours alloc] init];
         
         for (NSString* key in hoursDict) {
             id value = [hoursDict objectForKey:key];
             
             SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-            //            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
             if (value != [NSNull null]) {
                 if ([obj respondsToSelector:selector]) {
                     
@@ -31,9 +33,14 @@
                 }
             }
         }
-    }
+        
+        [parsedHoursArr addObject:obj];
+        
+    }];
     
-    return obj;
+    
+    
+    return parsedHoursArr;
 }
 
 @end

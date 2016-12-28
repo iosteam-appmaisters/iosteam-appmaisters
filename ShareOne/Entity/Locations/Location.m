@@ -79,14 +79,14 @@
         Location *objLocation = [[Location alloc] initWithDictionary:obj];
         
         NSDictionary *addresDict =[obj valueForKey:@"Address"];
-        NSDictionary *hoursDict =[obj valueForKey:@"Hours"];
+        NSArray *hoursArr =[obj valueForKey:@"Hours"];
         NSDictionary *photosDict =[obj valueForKey:@"Photos"];
 
         if([addresDict isKindOfClass:[NSDictionary class]])
             objLocation.address= [[Address alloc] initWithDictionary:addresDict];
         
-        if([hoursDict isKindOfClass:[NSDictionary class]])
-            objLocation.hours= [[Hours alloc] initWithDictionary:hoursDict];
+        if([hoursArr isKindOfClass:[NSArray class]])
+            objLocation.hours= [Hours parseHours:hoursArr];
         
         if([photosDict isKindOfClass:[NSDictionary class]])
             objLocation.photos= [[Photos alloc] initWithDictionary:photosDict];
