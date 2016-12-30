@@ -96,9 +96,9 @@
 
 
 
-+(void)savedSufficInfoLocally:(NSDictionary *)dict;
++(void)savedQBHeaderInfo:(NSDictionary *)dict;
 
-+(NSDictionary *)getSuffixInfoSavesLocally;
++(NSDictionary *)getQBHeaderInfo;
 
 
 +(NSString *)getSectionTitleByCode:(NSString *)code;
@@ -135,6 +135,15 @@
 +(void)saveMenuItemObjectForTouchIDAuthentication:(NSDictionary *)dict;
 
 +(NSDictionary *)getMenuItemForTouchIDAuthentication;
+
+
++(void)savedSuffixInfo:(NSDictionary *)dict;
++(NSDictionary *)getSuffixInfo;
+
+
++(void)savedDevicesInfo:(NSDictionary *)dict;
++(NSDictionary *)getDevicesInfo;
+
 
 +(int)getDayOfWeek;
 

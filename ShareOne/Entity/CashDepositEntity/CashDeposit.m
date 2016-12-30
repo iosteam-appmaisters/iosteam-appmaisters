@@ -18,7 +18,7 @@
     
     [[AppServiceModel sharedClient] postRequestForVertifiWithParam:param progressMessage:message urlString:vertifiUrl delegate:delegate completionBlock:^(NSObject *response,BOOL success) {
         
-        if(response){
+        if(response && success){
             NSData * data = (NSData *)response;
             
             NSDictionary *xmlDoc = [NSDictionary dictionaryWithXMLData:data];
@@ -54,7 +54,7 @@
             block(obj,TRUE);
         }
         else{
-            block(nil,FALSE);
+            block(response,FALSE);
         }
         
     } failureBlock:^(NSError *error) {

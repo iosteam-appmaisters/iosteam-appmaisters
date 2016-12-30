@@ -23,7 +23,7 @@
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,/*@"asd"*/[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
         
         NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
-        [ShareOneUtility savedSufficInfoLocally:(NSDictionary *)response];
+        [ShareOneUtility savedQBHeaderInfo:(NSDictionary *)response];
         [[SharedUser sharedManager] setQBSectionsArr:qbObjects];
 
         block(response);

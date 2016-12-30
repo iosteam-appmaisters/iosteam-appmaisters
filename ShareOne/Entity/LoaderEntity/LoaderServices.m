@@ -47,6 +47,7 @@
 //        if([responseObj containsString:KMEMBER_DEVICES])
         {
             NSArray *arr = [MemberDevices getMemberDevices:(NSDictionary *)response];
+            [ShareOneUtility savedDevicesInfo:(NSDictionary *)response];
             [[SharedUser sharedManager] setMemberDevicesArr:arr];
         }
         if([[responseCast.URL absoluteString] containsString:KSUFFIX_INFO])
@@ -54,6 +55,7 @@
 //        if([responseObj containsString:KSUFFIX_INFO])
         {
             NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:(NSDictionary *)response];
+            [ShareOneUtility savedSuffixInfo:(NSDictionary *)response];
             [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
         }
         if([[responseCast.URL absoluteString] containsString:KQUICK_BALANCES])
@@ -61,7 +63,7 @@
 //        if([responseObj containsString:KQUICK_BALANCES])
         {
             NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
-            [ShareOneUtility savedSufficInfoLocally:(NSDictionary *)response];
+            [ShareOneUtility savedQBHeaderInfo:(NSDictionary *)response];
             [[SharedUser sharedManager] setQBSectionsArr:qbObjects];
         }
 

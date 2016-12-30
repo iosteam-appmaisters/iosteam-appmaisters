@@ -25,6 +25,12 @@
 -(void)loadDataOnPickerView{
     
     _suffixArr= [[SharedUser sharedManager] suffixInfoArr];
+    
+    if([_suffixArr count]<=0){
+        NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
+        _suffixArr=suffixArr;
+        [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
+    }
     [self.pickerView reloadAllComponents];
     
     if(!_objSuffixInfo){

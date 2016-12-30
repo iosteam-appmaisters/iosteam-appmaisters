@@ -283,11 +283,22 @@
     cell.addrressLbl.text=objLocation.Name;
     cell.officeHourLbl.text=officeTimeString;
     cell.driveThruHoursLbl.text=driveThruString;
-    
-    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@ %@, %@",objLocation.address.Address1,objLocation.address.City,objLocation.address.Country];
+    [cell.phoneNoLbl setText:[NSString stringWithFormat:@"Phone: %@",objLocation.Phonenumber]];
+    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@ %@, %@",objLocation.address.Address1,objLocation.address.City,objLocation.address.State];
     cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
     
+    if([objLocation.photos count]>0){
 
+        
+        Photos *objPhotos = objLocation.photos[0];
+        NSData *data = [[NSData alloc]initWithBase64EncodedString:objPhotos.Data options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        UIImage *image64 = [UIImage imageWithData:data];
+        [cell.branchlocationImgview setImage:image64];
+    }
+    else{
+        NSURL *imageURL = [NSURL URLWithString:@""];
+        [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
+    }
 
     
     /*
@@ -303,8 +314,8 @@
     */
     
     
-    NSURL *imageURL = [NSURL URLWithString:@""];
-    [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
+//    NSURL *imageURL = [NSURL URLWithString:@""];
+//    [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
 
     
     /*

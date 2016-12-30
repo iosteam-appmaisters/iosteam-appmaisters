@@ -17,7 +17,9 @@
 @property(nonatomic,strong) NSString *Filetype;
 
 
--(id) initWithDictionary:(NSDictionary *)photoDict;
+
++(NSMutableArray *) parsePhotos:(NSArray *)photosArr;
+
 
 
 @end

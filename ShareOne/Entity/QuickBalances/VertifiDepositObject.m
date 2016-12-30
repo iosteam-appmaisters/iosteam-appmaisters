@@ -21,7 +21,7 @@
             id value = [dict objectForKey:key];
             
             SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+//            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
             if (value != [NSNull null]) {
                 if ([obj respondsToSelector:selector]) {
                     

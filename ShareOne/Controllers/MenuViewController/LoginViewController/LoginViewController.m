@@ -98,17 +98,21 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLogin)
-     
-                                                 name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
--(void)askAutoLogin{
+-(void)appGoingToBackgroundFromLogin{
+    NSLog(@"appGoingToBackgroundFromLogin");
+}
+-(void)askAutoLoginOnEnteringBackGround{
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+    NSLog(@"askAutoLoginOnEnteringBackGround");
     [self updateDataByDefaultValues];
 }
+
+
 -(void)updateDataByDefaultValues{
     
     [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
@@ -125,13 +129,12 @@
     else{
         [_userIDTxt setText:@""];
         [_passwordTxt setText:@""];
-
     }
+    
     /*
      **  Call login service auto only if touch is enabled
-     **
-     */
-    if([ShareOneUtility getUserObject]  && [ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
+     
+     if([ShareOneUtility getUserObject]  && [ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
         //[self loginButtonClicked:nil];
         
         if(_isComingAfterPressedOpenUrlButton){
@@ -142,45 +145,95 @@
             [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
         }
     }
+    */
 
+    /*
+     **  Call login service auto only if touch is enabled
+     
+     */
     
-//    [_userIDTxt setText:@"asd"];
-//    [_passwordTxt setText:@"1234"];
+    if([ShareOneUtility getUserObject] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
+        
+        if(_isComingAfterPressedOpenUrlButton){
+            _isComingAfterPressedOpenUrlButton= FALSE;
+        }
+        else{
+            
+            if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
+                [self showTouchID];
+            else
+                [self validateSessionForTouchID_OffSession];
 
+            [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+        }
+    }
+}
+
+-(void)validateSessionForTouchID_OffSession{
+    
+    __weak LoginViewController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
+
+    [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
+
+    _isComingAfterAuthenticatingFromTouchID= TRUE;
+    // check whether session is available or not
+    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+        NSLog(@"keepAlive from validateSessionForTouchID_OffSession");
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
+        if(sucess){
+            [weakSelf startApplication];
+        }
+        else{
+            // if session not validated
+            
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 }
 
 -(void)showTouchID{
     
     __weak LoginViewController *weakSelf = self;
-
+    
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
         
         [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
-
+        
         [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
             
             if(success){
                 
                 _isComingAfterAuthenticatingFromTouchID= TRUE;
                 // check whether session is available or not
+                [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
                 [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+                    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
                     NSLog(@"keepAlive from showTouchID");
                     if(sucess){
                         [weakSelf startApplication];
                     }
                     else{
-                        // Call Sign In Service
-                        
-                        User *user = [ShareOneUtility getUserObject];
-                        [_userIDTxt setText:user.UserName];
-                        [_passwordTxt setText:user.Password];
-                        [self loginButtonClicked:nil];
+                        // if session not validated
+                        /*
+                         User *user = [ShareOneUtility getUserObject];
+                         [_userIDTxt setText:user.UserName];
+                         [_passwordTxt setText:user.Password];
+                         [self loginButtonClicked:nil];
+                         */
                     }
                     
                 } failureBlock:^(NSError *error) {
                     
                 }];
-
+                
             }
         }];
     }
@@ -189,9 +242,7 @@
 
 - (IBAction)loginButtonClicked:(id)sender
 {
-    
     NSLog(@"loginButtonClicked");
-    
     [_passwordTxt resignFirstResponder];
     [_userIDTxt resignFirstResponder];
     [self moveViewDown];
@@ -234,6 +285,7 @@
     
     if(sender){
         
+        _isComingAfterAuthenticatingFromTouchID = FALSE;
         savedUser = [[User alloc] init];
         savedUser.UserName=_userIDTxt.text;
         savedUser.Password=_passwordTxt.text;
@@ -266,7 +318,6 @@
     
     }
      */
-
 }
 
 - (void)startApplication{
@@ -289,7 +340,7 @@
             HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             controllerToPush = objHomeViewController;
             objHomeViewController.url= webUrl;
-            objHomeViewController.navigationItem.title=screenTitle;
+//            objHomeViewController.navigationItem.title=screenTitle;
 
         }
         else{
@@ -517,6 +568,11 @@
             }
             else
                 [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+        }
+        else{
+            
+            NSString *message = (NSString *)user;
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"Status" delegate:weakSelf];
         }
         
     } failureBlock:^(NSError *error) {

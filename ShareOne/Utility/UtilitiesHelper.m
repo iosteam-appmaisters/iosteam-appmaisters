@@ -773,12 +773,24 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 -(void)showToastWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate{
     
     UIAlertController* alert=[UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action){
+                                   [alert dismissViewControllerAnimated:YES completion:^{
+                                   }];
+                               }];
+    
+    [alert addAction:okAction];
+
     [delegate presentViewController:alert animated:YES completion:nil];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(3*NSEC_PER_SEC) ), dispatch_get_main_queue(), ^{
-        [alert dismissViewControllerAnimated:YES completion:^{
-        }];
-    });
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(3*NSEC_PER_SEC) ), dispatch_get_main_queue(), ^{
+//        [alert dismissViewControllerAnimated:YES completion:^{
+//        }];
+//    });
 }
 
 -(void)showToastWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate completion:(void (^)(bool completed))block{

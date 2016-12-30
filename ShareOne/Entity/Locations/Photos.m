@@ -10,17 +10,20 @@
 
 @implementation Photos
 
--(id) initWithDictionary:(NSDictionary *)photoDict{
++(NSMutableArray *) parsePhotos:(NSArray *)photosArr{
+
     
-    Photos *obj = [[Photos alloc] init];
-    self = [super init];{
-        //        [self setValuesForKeysWithDictionary:hoursDict];
+    NSMutableArray *parsedPhotoArr = [[NSMutableArray alloc] init];
+    [photosArr enumerateObjectsUsingBlock:^(NSDictionary *photoDict, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        Photos *obj = [[Photos alloc] init];
+        
         
         for (NSString* key in photoDict) {
             id value = [photoDict objectForKey:key];
             
             SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+//            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
             if (value != [NSNull null]) {
                 if ([obj respondsToSelector:selector]) {
                     
@@ -31,10 +34,11 @@
                 }
             }
         }
-    }
-    
-    return obj;
+        [parsedPhotoArr addObject:obj];
 
+    }];
+    
+    return parsedPhotoArr;
 }
 
 @end

@@ -117,7 +117,7 @@
 @property(nonatomic,strong) NSNumber *Gpslongitude;
 @property(nonatomic,strong) Address *address;
 @property(nonatomic,strong) NSMutableArray *hours;
-@property(nonatomic,strong) Photos *photos;
+@property(nonatomic,strong) NSMutableArray *photos;
 
 
 

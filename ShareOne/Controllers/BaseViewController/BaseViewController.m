@@ -352,6 +352,19 @@
     NSString *webUrl = [dict valueForKey:WEB_URL];
     NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
     
+    NSDictionary *cacheControlerDict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
+    
+    if(cacheControlerDict){
+        
+//        NSString *contrlollerName_cache = [cacheControlerDict valueForKey:CONTROLLER_NAME];
+//        NSString *webUrl_cache = [cacheControlerDict valueForKey:WEB_URL];
+        NSString *screenTitle_cache = [[cacheControlerDict valueForKey:SUB_CAT_TITLE] capitalizedString];
+        
+        if([screenTitle isEqualToString:screenTitle_cache])
+            return;
+
+    }
+    
     if([contrlollerName length]>0){
         
         if([contrlollerName isEqualToString:@"WebViewController"]){
@@ -359,7 +372,7 @@
             HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             currentController = objHomeViewController;
             objHomeViewController.url= webUrl;
-            objHomeViewController.navigationItem.title=screenTitle;
+            //objHomeViewController.navigationItem.title=screenTitle;
             
             [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
             //rootview
@@ -496,16 +509,23 @@
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground");
 
-    if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
-        [self logoutOnGoingBackground];
-    else
-        [self goBackToLoginView];
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
+
+    [self goBackToLoginView];
+
+//    if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
+//        [self logoutOnGoingBackground];
+//    else
+//        [self goBackToLoginView];
 
     [[ShareOneUtility shareUtitlities] cancelTimer];
 }
 
 -(void)appComingFromBackground{
     NSLog(@"appComingFromBackground");
+    
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+
     __weak BaseViewController *weakSelf = self;
     
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){

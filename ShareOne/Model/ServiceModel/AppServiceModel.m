@@ -605,11 +605,13 @@
             
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
-            block(nil,FALSE);
+
+
+            block([self getLocalizeErrorMessageForInternetConnection:error],FALSE);
 
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             [self hideProgressAlert];
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
+            //[[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
             
         }
     }] resume];

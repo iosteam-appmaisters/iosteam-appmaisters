@@ -31,7 +31,7 @@
     
     __weak QuickBalancesViewController *weakSelf = self;
 
-    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getSuffixInfoSavesLocally]];
+    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getQBHeaderInfo]];
     [ShareOneUtility showProgressViewOnView:self.view];
 //    [self getQTForSelectedSection:0];
 //    
@@ -142,7 +142,14 @@
      **else -       - Hide right arrow view
      */
     
-    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:objQuickBalances.Type]];
+    
+    if(objQuickBalances.Descr)
+        [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:objQuickBalances.Descr];
+    else
+        
+        [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:objQuickBalances.Type]];
+    
+    
     [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"$ %.02f",[objQuickBalances.Balance floatValue]]];
     
 //    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[objSuffixInfo valueForKey:@"section_title"]];

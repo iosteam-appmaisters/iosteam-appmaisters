@@ -85,6 +85,17 @@ NSLog(Y, Z);		\
     return arrayToreturn;
 }
 
+
++(NSDictionary *)getAccountSummaryObjectFromPlist{
+    
+    NSDictionary *accountSummaryDict = nil;
+    NSArray *plsitArr =[self getSideMenuDataFromPlist];
+    if([plsitArr count]>0)
+        accountSummaryDict = plsitArr[0];
+    
+    return accountSummaryDict;
+    
+}
 +(NSString *)getTitleOfMobileDeposit{
     NSString *title = nil;
     
@@ -439,14 +450,34 @@ NSLog(Y, Z);		\
 
 }
 
-+(void)savedSufficInfoLocally:(NSDictionary *)dict{
++(void)savedQBHeaderInfo:(NSDictionary *)dict{
     
-    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"sufficInfo"];
+    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"qb_header_info"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+(NSDictionary *)getSuffixInfoSavesLocally{
-  return (NSDictionary *) [[NSUserDefaults standardUserDefaults] valueForKey:@"sufficInfo"];
++(NSDictionary *)getQBHeaderInfo{
+  return (NSDictionary *) [[NSUserDefaults standardUserDefaults] valueForKey:@"qb_header_info"];
+}
+
++(void)savedSuffixInfo:(NSDictionary *)dict{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"suffix_info"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSDictionary *)getSuffixInfo{
+    return (NSDictionary *) [[NSUserDefaults standardUserDefaults] valueForKey:@"suffix_info"];
+}
+
++(void)savedDevicesInfo:(NSDictionary *)dict{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"deveices_info"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSDictionary *)getDevicesInfo{
+    return (NSDictionary *) [[NSUserDefaults standardUserDefaults] valueForKey:@"deveices_info"];
 }
 
 +(void)copySettingsOfSavedUserToNewLoginInfo:(User *)newUser AndOldUser:(User *)savedUser{
@@ -1241,7 +1272,14 @@ NSLog(Y, Z);		\
 }
 
 +(NSDictionary *)getMenuItemForTouchIDAuthentication{
-    return  [[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
+    
+    NSDictionary *lastSelectedItem = (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
+    if(!lastSelectedItem)
+        lastSelectedItem = [self getAccountSummaryObjectFromPlist];
+    
+    return  lastSelectedItem;
+    
+//    return  (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
 }
 
 

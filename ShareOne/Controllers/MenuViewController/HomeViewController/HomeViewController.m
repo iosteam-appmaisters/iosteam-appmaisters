@@ -30,9 +30,9 @@
     __weak HomeViewController *weakSelf = self;
     
     
-    if(!self.navigationItem.title){
-        self.navigationItem.title=@"Account Summary";
-    }
+//    if(!self.navigationItem.title){
+//        self.navigationItem.title=@"Account Summary";
+//    }
     
 //    _isLoadedFirstTime= TRUE;
     
@@ -147,11 +147,12 @@
     
     __weak HomeViewController *weakSelf = self;
     
-    NSDictionary *zuthDic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-    NSArray *authArray= [NSArray arrayWithObjects:zuthDic, nil];
+    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
+    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
+    NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
 
     
-    [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"1",@"ID",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"109",@"ID",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
         
@@ -169,7 +170,7 @@
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
     
-    [MemberDevices deleteMemberDevice:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"96",@"ID",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [MemberDevices deleteMemberDevice:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",@"109",@"ID",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
         
@@ -263,13 +264,13 @@
 
     NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     if ([theTitle containsString:@"Account Summary"]){
-        theTitle = [theTitle componentsSeparatedByString:@"-"][0];
+        [self trackPrintingEventWithScheme:webView.request.URL.scheme];
     }
-    
-
-    self.navigationItem.title=theTitle;
-
-    [self setTitleOnNavBar:theTitle];
+//
+//
+//    self.navigationItem.title=theTitle;
+//
+//    [self setTitleOnNavBar:theTitle];
     
 
     //NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
@@ -283,7 +284,6 @@
 
     __weak HomeViewController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-    [self trackPrintingEventWithScheme:webView.request.URL.scheme];
 }
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{

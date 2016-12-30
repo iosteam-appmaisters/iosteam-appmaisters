@@ -80,7 +80,7 @@
         
         NSDictionary *addresDict =[obj valueForKey:@"Address"];
         NSArray *hoursArr =[obj valueForKey:@"Hours"];
-        NSDictionary *photosDict =[obj valueForKey:@"Photos"];
+        NSArray *photosArr =[obj valueForKey:@"Photos"];
 
         if([addresDict isKindOfClass:[NSDictionary class]])
             objLocation.address= [[Address alloc] initWithDictionary:addresDict];
@@ -88,8 +88,8 @@
         if([hoursArr isKindOfClass:[NSArray class]])
             objLocation.hours= [Hours parseHours:hoursArr];
         
-        if([photosDict isKindOfClass:[NSDictionary class]])
-            objLocation.photos= [[Photos alloc] initWithDictionary:photosDict];
+        if([photosArr isKindOfClass:[NSArray class]])
+            objLocation.photos= [Photos parsePhotos:photosArr];
         
 
         [locationArr addObject:objLocation];
@@ -107,8 +107,9 @@
         for (NSString* key in locationDict) {
             id value = [locationDict objectForKey:key];
             
+            NSLog(@"locationDict : %@",locationDict);
             SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-                                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+//                                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
             if (value != [NSNull null]) {
                 if ([obj respondsToSelector:selector]) {
                     

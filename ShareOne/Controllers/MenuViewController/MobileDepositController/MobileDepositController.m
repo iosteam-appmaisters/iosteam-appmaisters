@@ -403,6 +403,13 @@
 -(void)loadDataOnPickerView{
     
     _suffixArr= [[SharedUser sharedManager] suffixInfoArr];
+    
+    if([_suffixArr count]<=0){
+        NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
+        _suffixArr=suffixArr;
+        [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
+    }
+
     [self.pickerView reloadAllComponents];
     if(!_objSuffixInfo){
         [_pickerView selectRow:0 inComponent:0 animated:YES];
@@ -492,7 +499,6 @@
     [_accountTxtFeild setText:_objSuffixInfo.Descr];
     [_suffixNumberLbl setText:[NSString stringWithFormat:@"%d",[_objSuffixInfo.Suffixnumber intValue]]];
     [_suffixTypeLbl setText:[NSString stringWithFormat:@"%@",[ShareOneUtility getSectionTitleByCode:_objSuffixInfo.Type] ]];
-
 }
 
 
