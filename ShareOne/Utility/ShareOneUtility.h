@@ -144,6 +144,9 @@
 +(void)savedDevicesInfo:(NSDictionary *)dict;
 +(NSDictionary *)getDevicesInfo;
 
++(void)removeCacheControllerName;
+
+
 
 +(int)getDayOfWeek;
 

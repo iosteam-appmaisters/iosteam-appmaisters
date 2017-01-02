@@ -12,5 +12,6 @@
 @property BOOL showMyLocationOnly;
 
 @property (nonatomic,strong)NSArray *locationArr;
+@property int selectedIndex;
 
 @end

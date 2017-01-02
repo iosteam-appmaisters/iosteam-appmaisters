@@ -27,5 +27,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *driveThruHoursLbl;
 @property (nonatomic, weak) IBOutlet UILabel *drivestatusLbl;
 @property (nonatomic, weak) IBOutlet UIButton *getDirectionbtn;
+@property (nonatomic, weak) IBOutlet UIButton *currentLocationBtn;
+
 
 @end

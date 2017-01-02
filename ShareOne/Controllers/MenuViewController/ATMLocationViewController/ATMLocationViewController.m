@@ -65,7 +65,16 @@
         return;
     }
     
-    Location *objLocation= _locationArr[0];
+    
+    
+    Location *objLocation= nil;
+
+    if(_showMyLocationOnly){
+        objLocation=  _locationArr[_selectedIndex];
+    }
+    else{
+      objLocation=  _locationArr[0];
+    }
 //    float lat=[[objLocation latitude] floatValue];
 //    float lon=[[objLocation longitude] floatValue];
     
@@ -73,16 +82,15 @@
     float lon=[[objLocation Gpslongitude] floatValue];
 
 
-    
-    
+
 //    NSArray *latlongArr=[[_locationArr objectAtIndex:0] componentsSeparatedByString:@","];
 //    float lat=[[latlongArr objectAtIndex:0] floatValue];
 //    float lon=[[latlongArr objectAtIndex:1] floatValue];
 
     
 
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lon
-                                                            longitude:lat
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat
+                                                            longitude:lon
                                                                  zoom:13];
     _mapView.camera=camera;
 //    _mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
@@ -172,9 +180,17 @@
 //        float lat=[[latlongArr objectAtIndex:0] floatValue];
 //        float lon=[[latlongArr objectAtIndex:1] floatValue];
 
+        Location *objLocation= nil;
+
+        if(_showMyLocationOnly){
+            
+          objLocation=  _locationArr[_selectedIndex];
+        }
+        else
+          objLocation=  _locationArr[count];
+
         GMSMarker *marker = [[GMSMarker alloc] init];
 
-        Location *objLocation= _locationArr[count];
         
         float lat ,lon;
         NSString *address;

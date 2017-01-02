@@ -354,6 +354,13 @@
     
     NSDictionary *cacheControlerDict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
     
+    // Do nothing as client said for Bill Pay & Check Order
+    
+    if([screenTitle isEqualToString:@"Bill Pay"] || [screenTitle isEqualToString:@"Check Order"]){
+        return;
+    }
+
+    
     if(cacheControlerDict){
         
 //        NSString *contrlollerName_cache = [cacheControlerDict valueForKey:CONTROLLER_NAME];

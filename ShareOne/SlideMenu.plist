@@ -137,9 +137,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/EStatements/Index</string>
+					<string>/EStatements/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -151,9 +151,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/BillPay/Index</string>
+					<string>/BillPay/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -165,9 +165,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/CheckOrder/Ineligible</string>
+					<string>/CheckOrder/Ineligible</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -193,11 +193,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/Alerts/Index</string>
+					<string>/Alerts/Index</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -207,11 +207,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/LoanApplication/Index</string>
+					<string>https://nsmobiledemo.ns3web.com/NSLoan.html?id=48b9462bd306475fa32ddc28dd603faab9</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -221,11 +221,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/Account/Tax</string>
+					<string>/Account/Tax</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -235,11 +235,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/Notices/List</string>
+					<string>/Notices/List</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -251,9 +251,9 @@
 					<key>detailVCIdentifier</key>
 					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/ECC</string>
+					<string>/ECC</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -263,9 +263,9 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>webUrl</key>
-					<string>https://nsmobilecp.ns3web.com/StopPayment/Index</string>
+					<string>/StopPayment/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>

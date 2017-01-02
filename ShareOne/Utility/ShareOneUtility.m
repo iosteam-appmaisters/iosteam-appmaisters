@@ -1282,6 +1282,11 @@ NSLog(Y, Z);		\
 //    return  (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
 }
 
++(void)removeCacheControllerName{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"menu_item"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 
 +(int)getDayOfWeek{
     NSCalendar* cal = [NSCalendar currentCalendar];

@@ -154,14 +154,16 @@
 
 -(IBAction)showCurrentLocationMapButtonClicked:(id)sender{
     
+    UITableViewCell *clickedCell = (UITableViewCell *)[[sender superview] superview];
+    NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    
     ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
     atmNavigationViewController.showMyLocationOnly= TRUE;
     atmNavigationViewController.locationArr=_contentArr;
+    atmNavigationViewController.selectedIndex=(int)clickedButtonPath.row;
     atmNavigationViewController.navigationItem.title=self.navigationItem.title;
-
     atmNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:atmNavigationViewController animated:YES];
-
 }
 
 
@@ -171,13 +173,16 @@
 
 -(void)getDirectionButtonClicked:(id)sender
 {
+
+    UITableViewCell *clickedCell = (UITableViewCell *)sender  ;
+    NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+
     GetDirectionViewController* getdirectionNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GetDirectionViewController"];
     getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     getdirectionNavigationViewController.sourceAddress=sourceaddress;
     getdirectionNavigationViewController.DestinationAddress=Destinationaddress;
     getdirectionNavigationViewController.navigationItem.title=self.navigationItem.title;
     [self.navigationController pushViewController:getdirectionNavigationViewController animated:YES];
-    
 }
 
 /*********************************************************************************************************/
@@ -204,7 +209,8 @@
     }
     
     Location *objLocation = _contentArr[indexPath.row];
-    
+    [cell.currentLocationBtn setTag:indexPath.row];
+    [cell.getDirectionbtn setTag:indexPath.row];
     NSString *officeTimeString= nil;
     NSString *driveThruString= nil;
     
