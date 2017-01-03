@@ -23,7 +23,10 @@
             
             NSDictionary *xmlDoc = [NSDictionary dictionaryWithXMLData:data];
             NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
+            NSString *responseString = [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding];
             
+//            [[ShareOneUtility shareUtitlities] showToastWithMessage:[NSString stringWithFormat:@"%@ : %@",param,responseString] title:@"Error me" delegate:delegate];
+
             NSString *InputValidation = [xmlDoc valueForKeyPath:@"MessageValidation.InputValidation"];
             NSString *LoginValidation = [xmlDoc valueForKeyPath:@"UserValidation.LoginValidation"];
             NSString *SSOKey = [xmlDoc valueForKeyPath:@"DepositStatus.SSOKey"];

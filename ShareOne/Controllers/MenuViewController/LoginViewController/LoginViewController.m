@@ -566,13 +566,17 @@
             else if ([obj.LoginValidation isEqualToString:@"OK"]){
                 [weakSelf startApplication];
             }
-            else
-                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+            else{
+                
+//                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+                [weakSelf startApplication];
+
+            }
         }
         else{
             
             NSString *message = (NSString *)user;
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"Status" delegate:weakSelf];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"" delegate:weakSelf];
         }
         
     } failureBlock:^(NSError *error) {

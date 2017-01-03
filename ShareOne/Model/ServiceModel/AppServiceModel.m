@@ -245,7 +245,7 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
         if (!error) {
-            NSLog(@"Reply JSON: %@", responseObject);
+//            NSLog(@"Reply JSON: %@", responseObject);
             
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

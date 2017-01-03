@@ -857,11 +857,13 @@ NSLog(Y, Z);		\
 
 +(NSString *)getUUID{
     
+    User * user= [self getUserObject];
     NSString *Appname = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
     NSString *deviceID = [SAMKeychain passwordForService:Appname account:@""];
     if (deviceID == nil)
     {
         deviceID  = [[[UIDevice currentDevice]identifierForVendor] UUIDString];
+        deviceID = [NSString stringWithFormat:@"%@%d",deviceID,[user.Account intValue]];
         [SAMKeychain setPassword:deviceID forService:Appname account:@""];
     }
     
