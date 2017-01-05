@@ -893,6 +893,10 @@
 
             if([req.URL.absoluteString containsString:KQUICK_BALANCES])
                 failBlock(error);
+            
+            if([req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT])
+                block(responseObject);
+
 
         }
     }] resume];

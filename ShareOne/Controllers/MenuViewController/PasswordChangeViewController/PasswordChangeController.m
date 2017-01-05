@@ -41,6 +41,7 @@
     if([webView.request.URL.absoluteString containsString:@"Account/Summary"]){
         // disabled auto login
 //        [_loginDelegate startLoadingServicesFromChangePassword:_user];
+        _loginDelegate.isComingAfterPressedOpenUrlButton=TRUE;
         [self dismissViewControllerAnimated:NO completion:nil];
     }
     __weak PasswordChangeController *weakSelf = self;

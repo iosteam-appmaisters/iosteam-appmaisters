@@ -95,8 +95,11 @@
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_SIGN_OUT,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
-
-        block(TRUE);
+        
+        if([response isKindOfClass:[NSDictionary class]])
+            block(TRUE);
+        else
+            block(FALSE);
         
     } failureBlock:^(NSError *error) {}];
 }

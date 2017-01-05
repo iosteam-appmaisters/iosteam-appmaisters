@@ -105,8 +105,12 @@
 
 -(void)appGoingToBackgroundFromLogin{
     NSLog(@"appGoingToBackgroundFromLogin");
+    [[ShareOneUtility shareUtitlities] cancelTimer];
+
+
 }
 -(void)askAutoLoginOnEnteringBackGround{
+
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
     NSLog(@"askAutoLoginOnEnteringBackGround");
     [self updateDataByDefaultValues];
@@ -149,26 +153,113 @@
 
     /*
      **  Call login service auto only if touch is enabled
-     
      */
     
     if([ShareOneUtility getUserObject] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
         
+        __weak LoginViewController *weakSelf = self;
+
         if(_isComingAfterPressedOpenUrlButton){
             _isComingAfterPressedOpenUrlButton= FALSE;
         }
         else{
             
-            if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
-                [self showTouchID];
-            else
-                [self validateSessionForTouchID_OffSession];
+            if([[SharedUser sharedManager] isLaunchFirstTime]){
+                // if is coming after calling didFinishLaunchingWithOptions
+                
+                if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+                    
+                    [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
+                    
+                    [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
+                        
+                        if(success){
+                            
+                            [ShareOneUtility removeCacheControllerName];
 
+                            User *user = [ShareOneUtility getUserObject];
+                            [_userIDTxt setText:user.UserName];
+                            [_passwordTxt setText:user.Password];
+                            [self loginButtonClicked:nil];
+                        }
+                    }];
+                }
+                else{
+                    NSLog(@"isLaunchFirstTime Touch off");
+                    
+//                    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
+                    
+                    [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
+                    
+                    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+                    
+                    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
+                        
+//                        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+                        
+                        
+//                        [self applyConditionsForSessionValidation];
+                        
+                    } failureBlock:^(NSError *error) {
+                        
+                    }];
+
+                }
+            }
+            else{
+                
+                // if it is coming from Background
+                
+                // Remove last session if it is still exist
+                if([ShareOneUtility isTerminated]){
+                    
+
+                    [ShareOneUtility setTerminateState:FALSE];
+                    [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
+                    
+                    [self applyConditionsForSessionValidation];
+
+
+//                    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+//                    
+//                    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
+//                        
+//                        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+//
+//                        
+//                        [self applyConditionsForSessionValidation];
+//                        
+//                    } failureBlock:^(NSError *error) {
+//                        
+//                    }];
+
+                }
+                else{
+                    [self applyConditionsForSessionValidation];
+                }
+            }
+            
             [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
         }
     }
+    
+    
+    // trick : set flag when user not saved and app lauch first time
+    if([[SharedUser sharedManager] isLaunchFirstTime]){
+        [[SharedUser sharedManager] setIsLaunchFirstTime:FALSE];
+    }
 }
 
+
+-(void)applyConditionsForSessionValidation{
+    
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
+        [self showTouchID];
+    else
+        [self validateSessionForTouchID_OffSession];
+
+}
 -(void)validateSessionForTouchID_OffSession{
     
     __weak LoginViewController *weakSelf = self;
@@ -189,6 +280,8 @@
         }
         else{
             // if session not validated
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
+
             
         }
         
@@ -222,6 +315,8 @@
                     }
                     else{
                         // if session not validated
+                        [[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
+
                         /*
                          User *user = [ShareOneUtility getUserObject];
                          [_userIDTxt setText:user.UserName];
@@ -575,6 +670,8 @@
         }
         else{
             
+            [weakSelf.loadingView setHidden:TRUE];
+
             NSString *message = (NSString *)user;
             [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"" delegate:weakSelf];
         }

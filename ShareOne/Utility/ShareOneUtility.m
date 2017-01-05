@@ -859,14 +859,12 @@ NSLog(Y, Z);		\
     
     User * user= [self getUserObject];
     NSString *Appname = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
-    NSString *deviceID = [SAMKeychain passwordForService:Appname account:@""];
-    if (deviceID == nil)
-    {
+    NSString *deviceID = [SAMKeychain passwordForService:Appname account:[NSString stringWithFormat:@"%d",[user.Account intValue]]];
+    if (deviceID == nil){
         deviceID  = [[[UIDevice currentDevice]identifierForVendor] UUIDString];
         deviceID = [NSString stringWithFormat:@"%@%d",deviceID,[user.Account intValue]];
-        [SAMKeychain setPassword:deviceID forService:Appname account:@""];
+        [SAMKeychain setPassword:deviceID forService:Appname account:[NSString stringWithFormat:@"%d",[user.Account intValue]]];
     }
-    
     return deviceID;
 }
 
@@ -1297,7 +1295,6 @@ NSLog(Y, Z);		\
     return (int)[comp weekday]; // 1 = Sunday, 2 = Monday, etc.
 }
 
-
 +(NSString *)getDateInCustomeFormatWithSourceDate:(NSString *)sourceDate andDateFormat:(NSString *)dateFormater{
     
     NSString *dateString;
@@ -1314,4 +1311,15 @@ NSLog(Y, Z);		\
     
     return dateString;
 }
+
++ (void)setTerminateState:(BOOL)isTerminated{
+    
+    [[NSUserDefaults standardUserDefaults] setBool:isTerminated forKey:@"isTerminated"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL)isTerminated{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isTerminated"];
+}
+
 @end

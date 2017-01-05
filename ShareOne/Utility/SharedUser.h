@@ -18,6 +18,10 @@
 @property(nonatomic,strong) NSArray *suffixInfoArr;
 @property(nonatomic,strong) NSArray *QBSectionsArr;
 @property BOOL skipTouchIDForJustLogOut;
+@property BOOL isLaunchFirstTime;
+@property BOOL isComingAfterTerminate;
+
+
 
 
 + (id)sharedManager;

@@ -152,4 +152,10 @@
 
 +(NSString *)getDateInCustomeFormatWithSourceDate:(NSString *)sourceDate andDateFormat:(NSString *)dateFormater;
 
++ (void)setTerminateState:(BOOL)isTerminated;
+
++ (BOOL)isTerminated;
+
+
+
 @end

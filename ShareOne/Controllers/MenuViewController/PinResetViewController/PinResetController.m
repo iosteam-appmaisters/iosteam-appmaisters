@@ -17,10 +17,16 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    if(_isFromForgotUserName)
+    if(_isFromForgotUserName){
         _navBar.topItem.title = @"Forgot Username";
-    else
+        [_accountLbl setText:@"Account No."];
+        [_accountNameTxtFeild setPlaceholder:@"Enter Account No."];
+    }
+    else{
         _navBar.topItem.title = @"Forgot Password";
+        [_accountLbl setText:@"Account Name"];
+        [_accountNameTxtFeild setPlaceholder:@"Enter Account Name"];
+    }
 
 //    [_accountNameTxtFeild setText:@"newton"];
 ////    [_accountNameTxtFeild setText:@"7"];
@@ -48,7 +54,6 @@
     if([_postalCodeTxtFeild isFirstResponder]){
         [_postalCodeTxtFeild resignFirstResponder];
     }
-
 }
 
 
@@ -116,9 +121,6 @@
     [ShareOneUtility saveUserObjectToLocalObjects:user];
     
     [_loginDelegate getSignInWithUser:user];
-    
-    
-
 }
 
 -(IBAction)doneButtonClickedOnPicker:(id)sender{

@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailLbl;
 @property (weak, nonatomic) IBOutlet UILabel *dateLbl;
 
+@property (weak, nonatomic) IBOutlet UILabel *accountLbl;
+
+
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 
