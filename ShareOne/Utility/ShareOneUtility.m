@@ -452,7 +452,9 @@ NSLog(Y, Z);		\
 
 +(void)savedQBHeaderInfo:(NSDictionary *)dict{
     
-    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"qb_header_info"];
+    NSDictionary *notNullValuesDict = [self eliminateNullValuesFromDictionary:dict parentDictionaryKey:@"Suffixes"];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:notNullValuesDict forKey:@"qb_header_info"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -462,7 +464,8 @@ NSLog(Y, Z);		\
 
 +(void)savedSuffixInfo:(NSDictionary *)dict{
     
-    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"suffix_info"];
+    NSDictionary *notNullValuesDict = [self eliminateNullValuesFromDictionary:dict parentDictionaryKey:@"Suffixes"];
+    [[NSUserDefaults standardUserDefaults] setValue:notNullValuesDict forKey:@"suffix_info"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -472,7 +475,9 @@ NSLog(Y, Z);		\
 
 +(void)savedDevicesInfo:(NSDictionary *)dict{
     
-    [[NSUserDefaults standardUserDefaults] setValue:dict forKey:@"deveices_info"];
+    NSDictionary *notNullValuesDict = [self eliminateNullValuesFromDictionary:dict parentDictionaryKey:@"MemberDevices"];
+
+    [[NSUserDefaults standardUserDefaults] setValue:notNullValuesDict forKey:@"deveices_info"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -1320,6 +1325,29 @@ NSLog(Y, Z);		\
 
 + (BOOL)isTerminated{
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"isTerminated"];
+}
+
++(NSMutableDictionary *)eliminateNullValuesFromDictionary:(NSDictionary *)dict parentDictionaryKey:(NSString *)key{
+    
+    NSMutableArray *arrayOfDictWithNoNullValues = [[NSMutableArray alloc] init];
+    
+    NSArray *nullValesArr =[dict valueForKey:key];
+    
+    for(NSDictionary *nullValuesDict in nullValesArr){
+        
+        NSMutableDictionary *prunedDictionary = [NSMutableDictionary dictionary];
+
+        for (NSString * key in [nullValuesDict allKeys]){
+            if (![[nullValuesDict objectForKey:key] isKindOfClass:[NSNull class]])
+                [prunedDictionary setObject:[nullValuesDict objectForKey:key] forKey:key];
+        }
+        
+        [arrayOfDictWithNoNullValues addObject:prunedDictionary];
+    }
+    
+    NSMutableDictionary *castParentDictWithNonNullValues = [dict mutableCopy];
+    [castParentDictWithNonNullValues setValue:arrayOfDictWithNoNullValues forKey:key];
+    return castParentDictWithNonNullValues;
 }
 
 @end

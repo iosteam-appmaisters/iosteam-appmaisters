@@ -156,6 +156,7 @@
 
 + (BOOL)isTerminated;
 
++(NSMutableDictionary *)eliminateNullValuesFromDictionary:(NSDictionary *)dict parentDictionaryKey:(NSString *)key;
 
 
 @end

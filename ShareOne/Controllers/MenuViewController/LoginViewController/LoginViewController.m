@@ -243,8 +243,7 @@
             [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
         }
     }
-    
-    
+
     // trick : set flag when user not saved and app lauch first time
     if([[SharedUser sharedManager] isLaunchFirstTime]){
         [[SharedUser sharedManager] setIsLaunchFirstTime:FALSE];

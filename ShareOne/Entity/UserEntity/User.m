@@ -70,6 +70,16 @@
 //    NSLog(@"signature logeed in : %@",signature);
     [ShareOneUtility savaLogedInSignature:signature];
     
+    
+//    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_LOGIN] delegate:delegate completionBlock:^(NSObject *response) {
+//        block(response);
+//        
+//    } failureBlock:^(NSError *error) {
+//        failBlock(error);
+//    }];
+//
+//    return;
+//    
     [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
         
         User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];

@@ -75,8 +75,7 @@
         NSMutableDictionary *mutDic = [(NSMutableDictionary *)obj mutableCopy];
 //        [mutDic removeObjectForKey:@"TaxInfo"];
         SuffixInfo *objSuffixInfo = [[SuffixInfo alloc] initWithDictionary:mutDic];
-        [arr addObject:objSuffixInfo];
-        
+        [arr addObject:objSuffixInfo];        
     }];
     return arr;
 }

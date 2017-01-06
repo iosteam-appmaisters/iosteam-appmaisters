@@ -88,8 +88,12 @@
 #define KVERTIFY_DEP_DETAILS_TEST                       @"https://test.vertifi.com/rdc/sso/mobdep_reviewreport.ashx"
 
 
-#define kVERTIFY_ALL_DEP_LIST                           @"https://www.member-data.com/rdc/sso/mobdep_historyaudit.ashx"
-#define kVERTIFY_ALL_DEP_LIST_TEST                      @"https://test.vertifi.com/rdc/sso/mobdep_historyaudit.ashx"
+//#define kVERTIFY_ALL_DEP_LIST                           @"https://www.member-data.com/rdc/sso/mobdep_historyaudit.ashx"
+//#define kVERTIFY_ALL_DEP_LIST_TEST                      @"https://test.vertifi.com/rdc/sso/mobdep_historyaudit.ashx"
+
+#define kVERTIFY_ALL_DEP_LIST                           @"https://www.member-data.com/rdc/sso/mobdep_reviewquery.ashx"
+#define kVERTIFY_ALL_DEP_LIST_TEST                      @"https://test.vertifi.com/rdc/sso/mobdep_reviewquery.ashx"
+
 
 
 #define VERTIFI_MODE_TEST                               @"test"
