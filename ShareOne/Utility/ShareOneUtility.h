@@ -158,5 +158,7 @@
 
 +(NSMutableDictionary *)eliminateNullValuesFromDictionary:(NSDictionary *)dict parentDictionaryKey:(NSString *)key;
 
++(void)showProgressOnLoginViewForReAuthentication:(UIView *)view;
+
 
 @end

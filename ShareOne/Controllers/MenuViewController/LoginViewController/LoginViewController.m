@@ -98,6 +98,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -119,6 +120,7 @@
 
 -(void)updateDataByDefaultValues{
     
+    [self moveViewDown];
     [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_rememberMeSwitch setOn:[ShareOneUtility isUserRemembered]];
@@ -175,6 +177,7 @@
                         
                         if(success){
                             
+                            [ShareOneUtility showProgressOnLoginViewForReAuthentication:weakSelf.view];
                             [ShareOneUtility removeCacheControllerName];
 
                             User *user = [ShareOneUtility getUserObject];
@@ -279,8 +282,8 @@
         }
         else{
             // if session not validated
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
-
+            //[[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
+            [self performSelector:@selector(reAuthenticateLoginWithDelay) withObject:nil afterDelay:0.2];
             
         }
         
@@ -289,6 +292,18 @@
     }];
 }
 
+-(void)reAuthenticateLoginWithDelay{
+    
+    __weak LoginViewController *weakSelf = self;
+
+    [ShareOneUtility showProgressOnLoginViewForReAuthentication:weakSelf.view];
+    
+    User *user = [ShareOneUtility getUserObject];
+    [_userIDTxt setText:user.UserName];
+    [_passwordTxt setText:user.Password];
+    [self loginButtonClicked:nil];
+
+}
 -(void)showTouchID{
     
     __weak LoginViewController *weakSelf = self;
@@ -314,24 +329,16 @@
                     }
                     else{
                         // if session not validated
-                        [[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
-
-                        /*
-                         User *user = [ShareOneUtility getUserObject];
-                         [_userIDTxt setText:user.UserName];
-                         [_passwordTxt setText:user.Password];
-                         [self loginButtonClicked:nil];
-                         */
+                        //[[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
+                        [self performSelector:@selector(reAuthenticateLoginWithDelay) withObject:nil afterDelay:0.2];
                     }
                     
                 } failureBlock:^(NSError *error) {
                     
                 }];
-                
             }
         }];
     }
-
 }
 
 - (IBAction)loginButtonClicked:(id)sender
@@ -384,6 +391,8 @@
         savedUser.UserName=_userIDTxt.text;
         savedUser.Password=_passwordTxt.text;
         [ShareOneUtility removeCacheControllerName];
+        [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
     }
 
     [self getSignInWithUser:savedUser];
@@ -474,8 +483,6 @@
     
 }
 
-
-
 - (void)getSignInWithUser:(User *)user{
     
     __weak LoginViewController *weakSelf = self;
@@ -488,40 +495,45 @@
 //    user.Password
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
-        if(_objPinResetController){
-            [_objPinResetController dismissViewControllerAnimated:NO completion:nil];
-            _objPinResetController=nil;
+        if(user){
             
-            if(user.Requirements){
-                if([user.Requirements count]>1){
-                    NSString *status = user.Requirements[0];
-                    
-                    if([status isEqualToString:CHANGE_PIN]){
-                        [weakSelf addPasswordChangeController:user];
+            if(_objPinResetController){
+                [_objPinResetController dismissViewControllerAnimated:NO completion:nil];
+                _objPinResetController=nil;
+                
+                if(user.Requirements){
+                    if([user.Requirements count]>1){
+                        NSString *status = user.Requirements[0];
+                        
+                        if([status isEqualToString:CHANGE_PIN]){
+                            [weakSelf addPasswordChangeController:user];
+                        }
+                        
+                    }
+                    if([user.Requirements count]>0){
+                        NSString *status = user.Requirements[0];
+                        
+                        if([status isEqualToString:CHANGE_PIN]){
+                            [weakSelf addPasswordChangeController:user];
+                        }
+                        if([status isEqualToString:CHANGE_ACCOUNT_USER_NAME]){
+                            [self addControllerToChangeUserName];
+                        }
                     }
                     
                 }
-                if([user.Requirements count]>0){
-                    NSString *status = user.Requirements[0];
-                    
-                    if([status isEqualToString:CHANGE_PIN]){
-                        [weakSelf addPasswordChangeController:user];
-                    }
-                    if([status isEqualToString:CHANGE_ACCOUNT_USER_NAME]){
-                        [self addControllerToChangeUserName];
-                    }
-                }
-
             }
-        }
-        else{
-            // Go though to thee application
-            
+            else{
+                // Go though to thee application
+                
+                
+                //asi flow
+                [weakSelf.loadingView setHidden:FALSE];
+                [weakSelf startLoadingServices];
+            }
 
-            //asi flow
-            [weakSelf.loadingView setHidden:FALSE];
-            [weakSelf startLoadingServices];
         }
         
     } failureBlock:^(NSError *error) {
@@ -566,6 +578,7 @@
     
     __weak LoginViewController *weakSelf = self;
 
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
     [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
         
         
@@ -848,8 +861,13 @@
 
 - (BOOL)shouldAutorotate{
     
-    return NO;
+    return YES;
 }
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

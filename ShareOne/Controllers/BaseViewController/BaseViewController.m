@@ -356,10 +356,6 @@
     
     // Do nothing as client said for Bill Pay & Check Order
     
-    if([screenTitle isEqualToString:@"Bill Pay"] || [screenTitle isEqualToString:@"Check Order"]){
-        return;
-    }
-
     
     if(cacheControlerDict){
         

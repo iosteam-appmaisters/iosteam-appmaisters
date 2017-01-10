@@ -55,7 +55,7 @@
     NSString *deviceID = [param valueForKey:@"ID"];
     NSString *deviceFingerPrint = [param valueForKey:@"Fingerprint"];
 
-    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,context,deviceID] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/ContextID/%@/ID/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,context,deviceID] delegate:delegate completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         

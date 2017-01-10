@@ -66,21 +66,38 @@
 
 +(void)getUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT];
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
 //    NSLog(@"signature logeed in : %@",signature);
     [ShareOneUtility savaLogedInSignature:signature];
     
     
-//    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_LOGIN] delegate:delegate completionBlock:^(NSObject *response) {
-//        block(response);
-//        
-//    } failureBlock:^(NSError *error) {
-//        failBlock(error);
-//    }];
-//
-//    return;
-//    
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_LOGIN] delegate:delegate completionBlock:^(NSObject *response) {
+        
+        User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];
+        user.UserName=[param valueForKey:@"account"];
+        user.Password=[param valueForKey:@"password"];
+        
+        [[SharedUser sharedManager] setUserObject:user];
+        //[ShareOneUtility saveUserObject:user];
+        
+        
+        [ShareOneUtility saveUserObjectToLocalObjects:user];
+        
+        //[ShareOneUtility setPreferencesOnLaunch];
+        
+        if(response)
+            block(user);
+        else
+            block(nil);
+
+        
+    } failureBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+
+    return;
+    
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
         
         User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];
         user.UserName=[param valueForKey:@"account"];
@@ -93,8 +110,12 @@
         [ShareOneUtility saveUserObjectToLocalObjects:user];
         
         //[ShareOneUtility setPreferencesOnLaunch];
+        
+        if(response)
+            block(user);
+        else
+            block(nil);
 
-        block(user);
         
     } failureBlock:^(NSError *error) {}];
 }
@@ -218,30 +239,34 @@
 -(id) initWithDictionary:(NSDictionary *)userProfileDict{
     User *obj = [[User alloc] init];
     self = [super init];{
+        [self parseUserInfoOnLoginWithObject:obj AndParsingDict:userProfileDict];
+        NSDictionary *masterDict = userProfileDict[@"Master"];
+        [self parseUserInfoOnLoginWithObject:obj AndParsingDict:masterDict];
         
-        for (NSString* key in userProfileDict) {
-            id value = [userProfileDict objectForKey:key];
-            
-            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-            //            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
-            if (value != [NSNull null]) {
-                if ([obj respondsToSelector:selector]) {
-                    
-#       pragma clang diagnostic push
-#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    [obj performSelector:selector withObject:value];
-#       pragma clang diagnostic pop
-                }
-            }
-        }
     }
-    
-    //        [self setValuesForKeysWithDictionary:locationDict];
     
     return obj;
 }
 
+-(void)parseUserInfoOnLoginWithObject:(User *)obj AndParsingDict:(NSDictionary *)userProfileDict{
+    
+    for (NSString* key in userProfileDict) {
+        id value = [userProfileDict objectForKey:key];
+        
+        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
+//        NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+        if (value != [NSNull null]) {
+            if ([obj respondsToSelector:selector]) {
+                
+#       pragma clang diagnostic push
+#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                [obj performSelector:selector withObject:value];
+#       pragma clang diagnostic pop
+            }
+        }
+    }
 
+}
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
@@ -266,6 +291,10 @@
         self.Emailaddress=[decoder decodeObjectForKey:@"Emailaddress"];
         self.Temppassword=[decoder decodeObjectForKey:@"Temppassword"];
         self.Newexpiration=[decoder decodeObjectForKey:@"Newexpiration"];
+        
+        self.Accountname=[decoder decodeObjectForKey:@"Accountname"];
+        self.Name=[decoder decodeObjectForKey:@"Name"];
+        self.Email=[decoder decodeObjectForKey:@"Email"];
 
     }
     return self;
@@ -293,6 +322,9 @@
     [encoder encodeObject: self.Emailaddress forKey:@"Emailaddress"];
     [encoder encodeObject: self.Temppassword forKey:@"Temppassword"];
     [encoder encodeObject: self.Newexpiration forKey:@"Newexpiration"];
+    [encoder encodeObject: self.Accountname forKey:@"Accountname"];
+    [encoder encodeObject: self.Name forKey:@"Name"];
+    [encoder encodeObject: self.Email forKey:@"Email"];
 
 }
 @end

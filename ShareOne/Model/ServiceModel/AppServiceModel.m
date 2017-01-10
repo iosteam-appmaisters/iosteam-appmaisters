@@ -629,74 +629,7 @@
         [self showProgressWithMessage:progressMessage];
     
     
-    /*
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
-    __weak ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
-    
-    // Setting Headers for Own servers
-    if(auth_header){
-        [self setHeaderOnRequest:(NSMutableURLRequest *)requestASI withAuth:auth_header];
-    }
-    
-    [requestASI setRequestMethod:RequestType_PUT];
-    
-    
-    if(params){
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        NSData* requestData = [NSData dataWithBytes:[jsonString UTF8String] length:[jsonString length]];
-        [requestASI appendPostData:requestData];
-    }
-
-    [requestASI setCompletionBlock:^{
-        NSString *responseString = [requestASI responseString];
-        NSLog(@"URL : %@ Response: %@",url, responseString);
-
-        
-        NSDictionary *jsonDict = [self parseResponseToJsonWithData:[requestASI responseData]];
-
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-        
-        
-        if([jsonDict isKindOfClass:[NSArray class]] || [jsonDict isKindOfClass:[NSDictionary class]]){
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            [self hideProgressAlert];
-            block(jsonDict);
-
-        }
-        else{
-            NSDictionary *errorInfo = [self getErrorObjectWithStatusMessage:requestASI.responseStatusMessage andStatusCode:requestASI.responseStatusCode];
-            
-            [self hideProgressAlert];
-            
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:[self getErrorMessageWithObject:errorInfo] title:@"" delegate:delegate];
-        }
-        
-    }];
-    [requestASI setFailedBlock:^{
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-        
-        NSError *error = [requestASI error];
-        NSLog(@"Error: %@", error.localizedDescription);
-        NSLog(@"sow alert");
-        block(nil);
-
-        [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
-        
-    }];
-    
-    [requestASI startAsynchronous];
-*/
-
-    
-    
-    
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+   AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -720,9 +653,6 @@
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
-    
-    
-     
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
@@ -748,7 +678,9 @@
             if(!customError)
                 customError = [self getLocalizeErrorMessageForInternetConnection:error];
             
-            
+            if([req.URL.absoluteString containsString:KWEB_SERVICE_MEMBER_VALIDATE])
+                block(nil);
+
             
             [self hideProgressAlert];
             
@@ -961,8 +893,22 @@
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            
+            
+            NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+            //NSLog(@"Headers : %@",headers);
+            
+            NSString *errorString = [headers valueForKey:@"ApiResponse"];
+            
+            NSString *customError = [self parseErrorObject:errorString];
+            
+            if(!customError)
+                customError = [self getLocalizeErrorMessageForInternetConnection:error];
+            
             [self hideProgressAlert];
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
+            
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+            
             
         }
     }] resume];

@@ -39,7 +39,7 @@
 //    NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
 
     //[self getMemberDevices];
-    //[self putMemberDevice];
+    [self putMemberDevice];
     //[self postMemberDevices];
     //[self deleteMemberDevices];
     

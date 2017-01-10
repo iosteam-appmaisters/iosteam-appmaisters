@@ -45,8 +45,12 @@
 -(void)initCoorindatesArray
 {
     LocationArr=[[NSMutableArray alloc] init];
-     NSString * center1=[ShareOneUtility geoCodeUsingAddress:self.sourceAddress];
-    NSString * center2=[ShareOneUtility geoCodeUsingAddress:self.DestinationAddress];
+//    NSString * center1=[ShareOneUtility geoCodeUsingAddress:self.sourceAddress];
+//    NSString * center2=[ShareOneUtility geoCodeUsingAddress:self.DestinationAddress];
+    
+    NSString * center1=self.sourceAddress;
+    NSString * center2=self.DestinationAddress;
+
     [LocationArr addObject:center1];
     [LocationArr addObject:center2];
     NSLog(@"Location Arr -----------%@",LocationArr);
@@ -70,7 +74,6 @@
     _mapView.myLocationEnabled = YES;
     
     [self createGoogleMapMarker:_mapView];
-    
 }
 -(void)createGoogleMapMarker:(GMSMapView *)mapView
 {
@@ -86,7 +89,7 @@
             tittle=@"Pickup";
             _markerFinish = [GMSMarker new];
             _markerFinish.position = CLLocationCoordinate2DMake(lat, lon);
-            _markerFinish.title = @"Pickup Point";
+//            _markerFinish.title = @"Pickup Point";
             _markerFinish.snippet = @"";
             
             

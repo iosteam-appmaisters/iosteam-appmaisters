@@ -19,6 +19,12 @@
 @property (nonatomic,strong) NSString *Postingdate;
 @property (nonatomic,strong) NSString *Systemstate;
 @property (nonatomic,strong) NSString *Loginattempts;
+@property (nonatomic,strong) NSString *Accountname;
+@property (nonatomic,strong) NSString *Name;
+@property (nonatomic,strong) NSString *Email;
+
+
+
 
 
 @property (nonatomic) BOOL isQBOpen;

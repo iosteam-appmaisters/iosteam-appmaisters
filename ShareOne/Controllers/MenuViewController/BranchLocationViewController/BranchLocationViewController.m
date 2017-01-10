@@ -96,8 +96,8 @@
 
 -(void)setData
 {
-    sourceaddress=@"";
-    Destinationaddress=@"South San Francisco";
+//    sourceaddress=@"";
+//    Destinationaddress=@"South San Francisco";
 }
 /*********************************************************************************************************/
                         #pragma mark - Create Current Location
@@ -105,19 +105,35 @@
 
 -(void)createCurrentLocation
 {
+//    locationManager = [[CLLocationManager alloc] init];
+//    locationManager.delegate = self;
+//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    locationManager.distanceFilter = kCLDistanceFilterNone;
+//    [locationManager requestAlwaysAuthorization];
+//    [locationManager startUpdatingLocation];
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
+    [locationManager requestWhenInUseAuthorization];
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = kCLDistanceFilterNone;
-    [locationManager requestAlwaysAuthorization];
     [locationManager startUpdatingLocation];
-    
     CLLocation *location = [locationManager location];
+
+    
     CLLocationCoordinate2D user = [location coordinate];
-    NSLog(@"%f",user.longitude);
-    NSLog(@"%f",user.longitude);
-    CLLocation *location2=[[CLLocation alloc]initWithLatitude:37.785834 longitude:-122.406417];
-    [self reverseGeoCode:location2];
+    NSLog(@"longitude :%f",user.longitude);
+    NSLog(@"latitude  :%f",user.latitude);
+//    CLLocation *location2=[[CLLocation alloc]initWithLatitude:37.785834 longitude:-122.406417];
+    CLLocation *currentLocation=[[CLLocation alloc]initWithLatitude:user.latitude longitude:user.longitude];
+    
+    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",user.latitude ,user.longitude];
+    
+//    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",33.473178 ,-90.208646];
+
+    sourceaddress = CoordinateStr;
+    
+    //[self reverseGeoCode:currentLocation];
 }
 
 -(void)reverseGeoCode:(CLLocation *)location
@@ -176,11 +192,17 @@
 
     UITableViewCell *clickedCell = (UITableViewCell *)sender  ;
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    Location *objLocation = self.contentArr[clickedButtonPath.row];
+    
+    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",[objLocation.Gpslatitude floatValue],[objLocation.Gpslongitude floatValue]];
 
     GetDirectionViewController* getdirectionNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GetDirectionViewController"];
     getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     getdirectionNavigationViewController.sourceAddress=sourceaddress;
-    getdirectionNavigationViewController.DestinationAddress=Destinationaddress;
+    getdirectionNavigationViewController.DestinationAddress=CoordinateStr;
+    getdirectionNavigationViewController.locationArr=_contentArr;
+    getdirectionNavigationViewController.selectedIndex=(int)clickedButtonPath.row;
+
     getdirectionNavigationViewController.navigationItem.title=self.navigationItem.title;
     [self.navigationController pushViewController:getdirectionNavigationViewController animated:YES];
 }

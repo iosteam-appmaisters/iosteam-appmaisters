@@ -27,8 +27,14 @@
 //    if ([currentViewController isKindOfClass:[MobileDepositController class]])
 //        return NO;
     
-    return NO;
+    return YES;
 }
+
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

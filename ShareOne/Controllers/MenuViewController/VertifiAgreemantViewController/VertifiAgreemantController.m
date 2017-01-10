@@ -84,9 +84,5 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
 }
-- (BOOL)shouldAutorotate{
-    
-    return NO;
-}
 
 @end

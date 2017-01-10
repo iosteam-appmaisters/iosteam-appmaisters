@@ -326,7 +326,13 @@ NSLog(Y, Z);		\
 }
 
 + (void)showProgressViewOnView:(UIView *)view{
-    [MBProgressHUD showHUDAddedTo:view animated:YES];
+     [MBProgressHUD showHUDAddedTo:view animated:YES];
+}
+
++(void)showProgressOnLoginViewForReAuthentication:(UIView *)view{
+    MBProgressHUD *hud =  [MBProgressHUD showHUDAddedTo:view animated:YES];
+    [hud.label setText:@"Please wait, we are Re-authenticating"];
+    [hud.detailsLabel setText:@"As your session has been expired."];
 }
 
 +(void)hideProgressViewOnView:(UIView *)view{
@@ -761,12 +767,18 @@ NSLog(Y, Z);		\
 
 +(NSString *)getMemberEmail{
     
-    return @"ggwyn@shareone.com";
+    User *obj =     [[SharedUser sharedManager] userObject];
+    return obj.Email;
+
+//    return @"ggwyn@shareone.com";
 }
 
 +(NSString *)getMemberName{
     
-    return @"Louis Uncommon";
+    User *obj =     [[SharedUser sharedManager] userObject];
+    return obj.Name;
+
+//    return @"Louis Uncommon";
 }
 
 +(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo{
