@@ -7,7 +7,8 @@
 //
 
 #import "PaymentSettingController.h"
-#import "QBDetailsCell.h"
+#import "EditContactCell.h"
+#import "DeleteContactCell.h"
 
 @interface PaymentSettingController ()
 
@@ -43,7 +44,7 @@
 //}
 //
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 25.0;
+    return 35.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,13 +60,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    QBDetailsCell *cell =  (QBDetailsCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([QBDetailsCell class]) forIndexPath:indexPath];
-
+    UITableViewCell *cell = nil;
+    
     if(_isFromDelete){
-        [cell.contentView setBackgroundColor:[UIColor redColor]];
+        
+        DeleteContactCell *cellDelete =  (DeleteContactCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DeleteContactCell class]) forIndexPath:indexPath];
+        
+        cell=cellDelete;
     }
     else{
-        [cell.contentView setBackgroundColor:DEFAULT_COLOR_GRAY];
+        EditContactCell *editCell =  (EditContactCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EditContactCell class]) forIndexPath:indexPath];
+        
+        NSAttributedString *nickNamePlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new Nickname" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
+        
+        NSAttributedString *urlPlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new URL" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
+        
+        editCell.nickNameTxtFeild.attributedPlaceholder = nickNamePlaceHolder;
+        editCell.urlTxtFeild.attributedPlaceholder = urlPlaceHolder;
+
+
+        cell = editCell;
     }
     
     return cell;

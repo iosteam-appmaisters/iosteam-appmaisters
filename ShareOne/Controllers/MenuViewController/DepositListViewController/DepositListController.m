@@ -12,6 +12,7 @@
 #import "DepositCell.h"
 #import "VertifiDepositObject.h"
 #import "SharedUser.h"
+#import "ImageViewPopUpController.h"
 
 
 @implementation DepositListController
@@ -187,9 +188,123 @@
     [cell.dateLbl setText:[NSString stringWithFormat:@"Submitted %@",objVertifiDepositObject.Create_timestamp]];
     [cell.amountLbl setText:[NSString stringWithFormat:@"$%@ >",objVertifiDepositObject.Amount]];
     
+    [cell.bocBtn setTag:indexPath.row];
+    [cell.focBtn setTag:indexPath.row];
     
+    [cell.bocBtn addTarget:self action:@selector(bocButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.focBtn addTarget:self action:@selector(focButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
     return cell;
 }
+
+
+#pragma mark SelectorMethods of UITableViewCell
+-(void)focButtonClicked:(id)sender{
+    NSLog(@"focButtonClicked");
+    UIButton *btn = (UIButton *)sender;
+    VertifiDepositObject  *objVertifiDepositObject = _contentArr[btn.tag];
+    if(objVertifiDepositObject.image_dict)
+        [self showImageViewerWithSender:btn];
+    else
+        [self getDetailsOfDepositWithObject:objVertifiDepositObject sender:btn];
+}
+
+-(void)bocButtonClicked:(id)sender{
+    NSLog(@"bocButtonClicked");
+    UIButton *btn = (UIButton *)sender;
+    VertifiDepositObject  *objVertifiDepositObject = _contentArr[btn.tag];
+    
+    if(objVertifiDepositObject.image_dict)
+        [self showImageViewerWithSender:btn];
+    else
+        [self getDetailsOfDepositWithObject:objVertifiDepositObject sender:btn];
+
+}
+
+
+#pragma mark Vertifi Api Methods
+-(void)getDetailsOfDepositWithObject:(VertifiDepositObject *)vertify sender:(UIButton *)button{
+    
+    __weak DepositListController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:REQUESTER_VALUE forKey:@"requestor"];
+    
+    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    
+    [params setValue:ROUTING_VALUE forKey:@"routing"];
+    
+    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+    
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
+    
+    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+    
+    [params setValue:vertify.Deposit_id forKey:@"deposit_id"];
+    
+    [params setValue:@"PNG" forKey:@"output_type"];
+    
+    
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:KVERTIFY_DEP_DETAILS_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        if(user){
+            VertifiObject *obj = (VertifiObject *)user;
+            vertify.image_dict=obj.imageDictionary;
+            [weakSelf getImageViewPopUpControllerWithSender:button];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
+#pragma mark ImagePopOverViewController
+/*********************************************************************************************************/
+#pragma mark - Get ImageViewPopUpController ViewController Method
+/*********************************************************************************************************/
+
+
+-(void)showImageViewerWithSender:(UIButton *)button{
+    __weak DepositListController *weakSelf = self;
+
+    [weakSelf getImageViewPopUpControllerWithSender:button];
+}
+
+-(void)getImageViewPopUpControllerWithSender:(UIButton *)button{
+
+    NSIndexPath *index = [NSIndexPath indexPathForRow:button.tag inSection:0];
+    DepositCell *clickedCell =(DepositCell *)[self.tblView cellForRowAtIndexPath:index];
+    ImageViewPopUpController* objImageViewPopUpController = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageViewPopUpController"];
+    
+    VertifiDepositObject  *objVertifiDepositObject = _contentArr[button.tag];
+
+    UIImage *imageToPass = nil;
+    if([button isEqual:clickedCell.focBtn])
+    {
+        NSString *focImageString = [[objVertifiDepositObject.image_dict valueForKey:@"PNG"] valueForKey:@"Front"];
+        imageToPass = [ShareOneUtility getImageFromBase64String:focImageString];
+        
+         objImageViewPopUpController.isFront=TRUE;
+        objImageViewPopUpController.img=imageToPass;
+    }
+    else
+    {
+        NSString *focImageString = [[objVertifiDepositObject.image_dict valueForKey:@"PNG"] valueForKey:@"Back"];
+        imageToPass = [ShareOneUtility getImageFromBase64String:focImageString];
+
+        objImageViewPopUpController.isFront=FALSE;
+        objImageViewPopUpController.img=imageToPass;
+    }
+    
+    
+    [self presentViewController:objImageViewPopUpController animated:YES completion:nil];
+    
+}
+
 
 - (BOOL)shouldAutorotate{
     

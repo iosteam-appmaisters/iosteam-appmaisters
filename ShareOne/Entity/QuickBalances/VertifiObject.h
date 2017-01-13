@@ -19,6 +19,11 @@
 @property (nonatomic,strong) NSString *DepositStatus;
 @property (nonatomic,strong) NSArray *depositArr;
 @property (nonatomic,strong) NSString *EUAContents;
+@property (nonatomic,strong) NSString *focbase64String;
+@property (nonatomic,strong) NSString *bocbase64String;
+@property (nonatomic,strong) NSDictionary *imageDictionary;
+
+
 
 
 

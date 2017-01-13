@@ -102,6 +102,10 @@
 
 #define kLOCATION_API                                   @"http://api.co-opfs.org/locator/proximitySearch"
 #define kLOCATION_API_KEY                               @"4LobSNzzwp4DKnp"
+//#define kLOCATION_API_KEY                               @"7vrmEHdjhlSnMOX"
+
+
+
 
 
 #define RequestType_PUT                                 @"PUT"

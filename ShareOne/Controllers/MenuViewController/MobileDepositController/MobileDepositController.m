@@ -83,7 +83,7 @@
     [self startUpMethod];
     [self loadDataOnPickerView];
     //[self getRegisterToVirtifi];
-    //[self getListOfReviewDeposits];
+    [self getListOfReviewDeposits];
     //[self getListOfPast6MonthsDeposits];
 }
 
@@ -214,7 +214,9 @@
     
     [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
     
-    [params setValue:vertify.Deposit_ID forKey:@"deposit_id"];
+    [params setValue:@"124958" forKey:@"deposit_id"];
+    
+    [params setValue:@"PNG" forKey:@"output_type"];
 
 
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:KVERTIFY_DEP_DETAILS_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {

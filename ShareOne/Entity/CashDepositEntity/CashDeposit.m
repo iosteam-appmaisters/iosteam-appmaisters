@@ -23,9 +23,8 @@
             
             NSDictionary *xmlDoc = [NSDictionary dictionaryWithXMLData:data];
             NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
-            NSString *responseString = [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding];
+//            NSString *responseString = [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding];
             
-//            [[ShareOneUtility shareUtitlities] showToastWithMessage:[NSString stringWithFormat:@"%@ : %@",param,responseString] title:@"Error me" delegate:delegate];
 
             NSString *InputValidation = [xmlDoc valueForKeyPath:@"MessageValidation.InputValidation"];
             NSString *LoginValidation = [xmlDoc valueForKeyPath:@"UserValidation.LoginValidation"];
@@ -36,6 +35,7 @@
             NSString *EUAContents = [xmlDoc valueForKeyPath:@"UserValidation.EUAContents"];
 
             NSArray *DepositArray = [xmlDoc arrayValueForKeyPath:@"Deposit"];
+            NSDictionary *imageDictionary = [xmlDoc valueForKeyPath:@"Deposit.Deposit_Item"];
 
 
             VertifiObject *obj = [[VertifiObject alloc] init];
@@ -49,8 +49,10 @@
                 obj.EUAContents= [ShareOneUtility decodeBase64ToStirng:EUAContents];
             obj.depositArr=[VertifiObject parseAllDepositsWithObject:DepositArray];
             
+            obj.imageDictionary=imageDictionary;
             User *user = [ShareOneUtility getUserObject];
             user.vertifyEUAContents= obj.EUAContents;
+            
             [ShareOneUtility getSavedObjectOfCurrentLoginUser:user];
 
             

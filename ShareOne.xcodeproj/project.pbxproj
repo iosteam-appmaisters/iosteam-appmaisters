@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0309A11DD2F070005953FA /* NSString+MD5String.m */; };
 		1D0309A51DD30B1B005953FA /* VertifiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0309A41DD30B1B005953FA /* VertifiObject.m */; };
+		1D03DD351E28B46E0025D7D0 /* DeleteContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D03DD341E28B46E0025D7D0 /* DeleteContactCell.m */; };
 		1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C98FE1DE81A58009B60F0 /* VertifiDepositObject.m */; };
 		1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C99011DE847CC009B60F0 /* DepositCell.m */; };
 		1D10A60E1E2606CE00BD40CD /* PaymentSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D10A60D1E2606CE00BD40CD /* PaymentSettingController.m */; };
@@ -18,6 +19,7 @@
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
 		1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD79E1D9947BD0014C743 /* Security.framework */; };
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
+		1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */; };
 		1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999A1D9135B000157320 /* AccordionHeaderView.m */; };
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
@@ -44,6 +46,7 @@
 		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
+		1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */; };
 		1D72E24D1DEC025500A054BA /* NotifSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D72E24C1DEC025500A054BA /* NotifSettingsController.m */; };
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
@@ -82,7 +85,7 @@
 		6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */; };
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
 		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
-		6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* SlideMenu.plist */; };
+		6BD433DB1D8C09C30067515A /* po.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* po.plist */; };
 		F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */; };
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
@@ -109,6 +112,8 @@
 		1D0309A11DD2F070005953FA /* NSString+MD5String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5String.m"; sourceTree = "<group>"; };
 		1D0309A31DD30B1B005953FA /* VertifiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiObject.h; sourceTree = "<group>"; };
 		1D0309A41DD30B1B005953FA /* VertifiObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertifiObject.m; sourceTree = "<group>"; };
+		1D03DD331E28B46E0025D7D0 /* DeleteContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteContactCell.h; sourceTree = "<group>"; };
+		1D03DD341E28B46E0025D7D0 /* DeleteContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteContactCell.m; sourceTree = "<group>"; };
 		1D0C98FD1DE81A58009B60F0 /* VertifiDepositObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiDepositObject.h; sourceTree = "<group>"; };
 		1D0C98FE1DE81A58009B60F0 /* VertifiDepositObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertifiDepositObject.m; sourceTree = "<group>"; };
 		1D0C99001DE847CC009B60F0 /* DepositCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositCell.h; sourceTree = "<group>"; };
@@ -126,6 +131,8 @@
 		1D1AD79E1D9947BD0014C743 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1D1AD7A11D9947CA0014C743 /* BBAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAES.h; sourceTree = "<group>"; };
 		1D1AD7A21D9947CA0014C743 /* BBAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAES.m; sourceTree = "<group>"; };
+		1D21A18C1E28CEDA005CCAB5 /* EditContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContactCell.h; sourceTree = "<group>"; };
+		1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContactCell.m; sourceTree = "<group>"; };
 		1D2399991D9135B000157320 /* AccordionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionHeaderView.h; sourceTree = "<group>"; };
 		1D23999A1D9135B000157320 /* AccordionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionHeaderView.m; sourceTree = "<group>"; };
 		1D23999B1D9135B000157320 /* AccordionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionHeaderView.xib; sourceTree = "<group>"; };
@@ -174,6 +181,7 @@
 		1D4245D61DCB780200A76E52 /* QuickTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTransaction.h; sourceTree = "<group>"; };
 		1D4245D71DCB780200A76E52 /* QuickTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickTransaction.m; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SlideMenu.plist; sourceTree = "<group>"; };
 		1D72E24B1DEC025500A054BA /* NotifSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifSettingsController.h; sourceTree = "<group>"; };
 		1D72E24C1DEC025500A054BA /* NotifSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifSettingsController.m; sourceTree = "<group>"; };
 		1D8478E41D92949400153B19 /* QBHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHeaderCell.h; sourceTree = "<group>"; };
@@ -249,7 +257,7 @@
 		6BD405F11D83079100358036 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		6BD405F41D8307DF00358036 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		6BD405F51D8307DF00358036 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		6BD433DA1D8C09C30067515A /* SlideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SlideMenu.plist; sourceTree = "<group>"; };
+		6BD433DA1D8C09C30067515A /* po.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = po.plist; sourceTree = "<group>"; };
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShareOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
@@ -580,6 +588,7 @@
 				6BD405AE1D81B5FC00358036 /* Views */,
 				6BD4058D1D81B59300358036 /* AppDelegate.h */,
 				6BD4058E1D81B59300358036 /* AppDelegate.m */,
+				1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */,
 				6BD405931D81B59300358036 /* Main.storyboard */,
 				6BD405961D81B59300358036 /* Assets.xcassets */,
 				6BD405981D81B59300358036 /* LaunchScreen.storyboard */,
@@ -593,7 +602,7 @@
 			isa = PBXGroup;
 			children = (
 				6BD4058B1D81B59200358036 /* main.m */,
-				6BD433DA1D8C09C30067515A /* SlideMenu.plist */,
+				6BD433DA1D8C09C30067515A /* po.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -624,6 +633,10 @@
 				1D3ED8561E2676A800AE91C1 /* ContactEditCell.m */,
 				1D3ED8581E2676BD00AE91C1 /* ContactDeleteCell.h */,
 				1D3ED8591E2676BD00AE91C1 /* ContactDeleteCell.m */,
+				1D03DD331E28B46E0025D7D0 /* DeleteContactCell.h */,
+				1D03DD341E28B46E0025D7D0 /* DeleteContactCell.m */,
+				1D21A18C1E28CEDA005CCAB5 /* EditContactCell.h */,
+				1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1038,7 +1051,8 @@
 				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
 				F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */,
-				6BD433DB1D8C09C30067515A /* SlideMenu.plist in Resources */,
+				6BD433DB1D8C09C30067515A /* po.plist in Resources */,
+				1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1111,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */,
 				1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */,
 				1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */,
 				1D398F9E1E07F5DE00275E4E /* Address.m in Sources */,
@@ -1145,6 +1160,7 @@
 				6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */,
 				1D72E24D1DEC025500A054BA /* NotifSettingsController.m in Sources */,
 				1D0309A51DD30B1B005953FA /* VertifiObject.m in Sources */,
+				1D03DD351E28B46E0025D7D0 /* DeleteContactCell.m in Sources */,
 				F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */,
 				1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
@@ -1292,8 +1308,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareOne/ShareOne.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Bush (G3487YQ6F8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Scott Bush (G3487YQ6F8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
 				DEVELOPMENT_TEAM = G3487YQ6F8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
@@ -1306,8 +1322,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7ccce6af-04d7-4c2e-bf13-fa5d1fa0c318";
-				PROVISIONING_PROFILE_SPECIFIER = "AppStoreIPA-PushNotifActive";
+				PROVISIONING_PROFILE = "e2d5b634-4a3a-4b6f-844a-2f2eeab4b450";
+				PROVISIONING_PROFILE_SPECIFIER = APNS_DEV_PROFILE;
 			};
 			name = Debug;
 		};

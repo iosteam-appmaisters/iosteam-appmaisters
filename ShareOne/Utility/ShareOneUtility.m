@@ -1374,5 +1374,12 @@ NSLog(Y, Z);		\
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"isComingFromPasswordChanged"];
 }
 
++(UIImage *)getImageFromBase64String:(NSString *)base64String{
+    
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:base64String options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    UIImage *image64 = [UIImage imageWithData:data];
+    return image64;
+}
+
 
 @end

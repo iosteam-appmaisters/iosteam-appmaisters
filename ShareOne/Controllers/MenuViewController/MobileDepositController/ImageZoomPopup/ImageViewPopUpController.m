@@ -49,6 +49,17 @@
         
         [_imgview setImage:portraitImage];
     }
+    else{
+        
+        [switchColor setHidden:TRUE];
+        UIImage * portraitImage = [[UIImage alloc] initWithCGImage: _img.CGImage
+                                                             scale: 1.0
+                                                       orientation: UIImageOrientationRight];
+        [_imgview setImage:portraitImage];
+
+
+    }
+
 
 }
 -(NSString *)retriveColorFileFromDocumentsDirectory

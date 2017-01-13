@@ -164,5 +164,8 @@
 
 + (BOOL)isComingFromPasswordChanged;
 
++(UIImage *)getImageFromBase64String:(NSString *)base64String;
+
+
 
 @end

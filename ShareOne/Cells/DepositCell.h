@@ -16,4 +16,9 @@
 
 @property (nonatomic,weak)IBOutlet UILabel *amountLbl;
 
+@property (nonatomic,weak)IBOutlet UIButton *bocBtn;
+@property (nonatomic,weak)IBOutlet UIButton *focBtn;
+
+
+
 @end
