@@ -67,23 +67,27 @@
 +(void)getUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
-//    NSLog(@"signature logeed in : %@",signature);
+    NSLog(@"param logeed in : %@",param);
     [ShareOneUtility savaLogedInSignature:signature];
     
     
     [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_LOGIN] delegate:delegate completionBlock:^(NSObject *response) {
         
-        User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];
-        user.UserName=[param valueForKey:@"account"];
-        user.Password=[param valueForKey:@"password"];
-        
-        [[SharedUser sharedManager] setUserObject:user];
-        //[ShareOneUtility saveUserObject:user];
-        
-        
-        [ShareOneUtility saveUserObjectToLocalObjects:user];
-        
-        //[ShareOneUtility setPreferencesOnLaunch];
+        User* user;
+        if(response){
+
+            [ShareOneUtility setStatusOfPasswordChanged:NO];
+            user = [[User alloc]initWithDictionary:(NSDictionary *)response];
+            user.UserName=[param valueForKey:@"account"];
+            user.Password=[param valueForKey:@"password"];
+            
+            [[SharedUser sharedManager] setUserObject:user];
+            //[ShareOneUtility saveUserObject:user];
+            
+            [ShareOneUtility saveUserObjectToLocalObjects:user];
+            
+            //[ShareOneUtility setPreferencesOnLaunch];
+        }
         
         if(response)
             block(user);

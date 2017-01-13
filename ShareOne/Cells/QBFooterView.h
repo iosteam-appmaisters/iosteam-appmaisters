@@ -22,5 +22,8 @@ static NSString *const kQBHeaderViewReuseIdentifier = @"kQBHeaderViewReuseIdenti
 
 @property (nonatomic,weak)IBOutlet UILabel *sectionAmountLbl;
 
+@property (nonatomic,weak)IBOutlet UIButton *headerBtn;
+
+
 
 @end

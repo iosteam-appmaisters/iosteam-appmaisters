@@ -160,5 +160,9 @@
 
 +(void)showProgressOnLoginViewForReAuthentication:(UIView *)view;
 
++ (void)setStatusOfPasswordChanged:(BOOL)isComingFromPasswordChanged;
+
++ (BOOL)isComingFromPasswordChanged;
+
 
 @end

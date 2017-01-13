@@ -304,7 +304,7 @@
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
-					<string></string>
+					<string>Mobile Deposit</string>
 				</dict>
 				<dict>
 					<key>title</key>
@@ -318,7 +318,7 @@
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
-					<string></string>
+					<string>Deposited Checks List</string>
 				</dict>
 			</array>
 		</dict>
@@ -336,11 +336,40 @@
 			<key>detailVCIdentifier</key>
 			<string>PayPersonController</string>
 			<key>detailVCTitle</key>
-			<string></string>
+			<string>Send Money (P2P)</string>
 			<key>webUrl</key>
 			<string></string>
 			<key>subCategories</key>
-			<array/>
+			<array>
+				<dict>
+					<key>title</key>
+					<string>Payment</string>
+					<key>icon</key>
+					<string></string>
+					<key>webUrl</key>
+					<string></string>
+					<key>shouldShow</key>
+					<true/>
+					<key>detailVCIdentifier</key>
+					<string>PaymentController</string>
+					<key>detailVCTitle</key>
+					<string>Send Money (P2P)</string>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>Settings</string>
+					<key>icon</key>
+					<string></string>
+					<key>webUrl</key>
+					<string></string>
+					<key>shouldShow</key>
+					<true/>
+					<key>detailVCIdentifier</key>
+					<string>PaymentSettingController</string>
+					<key>detailVCTitle</key>
+					<string>Send Money (P2P) Settings</string>
+				</dict>
+			</array>
 		</dict>
 	</array>
 	<array>
@@ -531,7 +560,7 @@
 					<key>webUrl</key>
 					<string></string>
 					<key>detailVCTitle</key>
-					<string></string>
+					<string>Branch Locations</string>
 					<key>shouldShow</key>
 					<true/>
 				</dict>
@@ -545,7 +574,7 @@
 					<key>webUrl</key>
 					<string></string>
 					<key>detailVCTitle</key>
-					<string></string>
+					<string>Surcharge free ATMs</string>
 					<key>shouldShow</key>
 					<true/>
 				</dict>
@@ -606,7 +635,7 @@
 			<key>isSection</key>
 			<false/>
 			<key>title</key>
-			<string>Settings</string>
+			<string>Settings </string>
 			<key>shouldShow</key>
 			<true/>
 			<key>icon</key>
@@ -614,7 +643,7 @@
 			<key>detailVCIdentifier</key>
 			<string>SettingsViewController</string>
 			<key>detailVCTitle</key>
-			<string></string>
+			<string>Settings</string>
 			<key>webUrl</key>
 			<string></string>
 			<key>subCategories</key>
@@ -636,7 +665,7 @@
 			<key>detailVCIdentifier</key>
 			<string>SocialMediaViewController</string>
 			<key>detailVCTitle</key>
-			<string></string>
+			<string>Social Media</string>
 			<key>subCategories</key>
 			<array/>
 		</dict>

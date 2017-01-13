@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>13</string>
+	<string>14.4</string>
 	<key>LSApplicationCategoryType</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -37,9 +37,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) take photos</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>This application requires to access your current location in order to work correctly.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>This application requires to access your current location in order to work correctly.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) use photos</string>
 	<key>UILaunchStoryboardName</key>
@@ -50,6 +50,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>

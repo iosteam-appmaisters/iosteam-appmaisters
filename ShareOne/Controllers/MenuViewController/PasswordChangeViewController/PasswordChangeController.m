@@ -43,6 +43,7 @@
 //        [_loginDelegate startLoadingServicesFromChangePassword:_user];
         _loginDelegate.isComingAfterPressedOpenUrlButton=TRUE;
         [self dismissViewControllerAnimated:NO completion:nil];
+        [ShareOneUtility setStatusOfPasswordChanged:YES];
     }
     __weak PasswordChangeController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];

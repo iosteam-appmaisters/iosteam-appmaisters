@@ -17,6 +17,7 @@
 #import "QuickBalances.h"
 #import "QuickTransaction.h"
 #import "LoaderServices.h"
+#import "SharedUser.h"
 
 
 @implementation QuickBalancesViewController
@@ -26,12 +27,28 @@
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)HeaderButtonAction:(id)sender{
+    
+    UIButton *btnCase = (UIButton *)sender;
+    QBFooterView*    groupSectionHeaderView = (QBFooterView *)[self.qbTblView headerViewForSection:btnCase.tag];
+    [self.qbTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+}
+
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     __weak QuickBalancesViewController *weakSelf = self;
+    
+    _qbArr= [[SharedUser sharedManager] suffixInfoArr];
+    
+    if([_qbArr count]<=0){
+        NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
+        _qbArr=suffixArr;
+        [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
+    }
 
-    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getQBHeaderInfo]];
+//    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getQBHeaderInfo]];
     [ShareOneUtility showProgressViewOnView:self.view];
 //    [self getQTForSelectedSection:0];
 //    
@@ -62,8 +79,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    QuickBalances *qb = _qbArr[section];
-    return  [qb.transArr count];
+    SuffixInfo *qb = _qbArr[section];
+    return  [qb.transArray count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -71,11 +88,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 25.0;
+    return 30.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 25.0;
+    return 30.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,8 +113,8 @@
     }
     
     
-    QuickBalances  *objQuickBalances = _qbArr[indexPath.section];
-    QuickTransaction *objQuickTransaction   =  objQuickBalances.transArr[indexPath.row];
+    SuffixInfo  *objQuickBalances = _qbArr[indexPath.section];
+    QuickTransaction *objQuickTransaction   =  objQuickBalances.transArray[indexPath.row];
     
     [cell.tranTitleLbl setText:objQuickTransaction.Tran];
     [cell.tranDateLbl setText:objQuickTransaction.Eff];
@@ -108,7 +125,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    QuickBalances *objQuickBalances =_qbArr[section];
+    SuffixInfo *objQuickBalances =_qbArr[section];
 //    NSDictionary *objSuffixInfo =_qbArr[section];
 
     
@@ -123,6 +140,9 @@
 
     
     QBFooterView *objFZAccordionTableViewHeaderView =(QBFooterView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kQBHeaderViewReuseIdentifier];
+    
+//    [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+    
     
     /* Condtion to check whether top septator view appears or not
      ** If(section==0) - Show seperator view as it shows in mockup
@@ -152,6 +172,10 @@
     
     [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"$ %.02f",[objQuickBalances.Balance floatValue]]];
     
+    [objFZAccordionTableViewHeaderView.headerBtn setTag:section];
+    
+//    [objFZAccordionTableViewHeaderView.headerBtn addTarget:self action:@selector(HeaderButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
 //    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[objSuffixInfo valueForKey:@"section_title"]];
 //    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"%@",[objSuffixInfo valueForKey:@"section_amt"]]];
 
@@ -178,9 +202,9 @@
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 //        NSLog(@"didOpenSection");
-    QuickBalances *obj = _qbArr[section];
+    SuffixInfo *obj = _qbArr[section];
     
-    if([obj.transArr count]<=0){
+    if([obj.transArray count]<=0){
         [self noTransaction];
     }
 }

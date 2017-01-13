@@ -351,6 +351,7 @@
     NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
     NSString *webUrl = [dict valueForKey:WEB_URL];
     NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
+    NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     
     NSDictionary *cacheControlerDict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
     
@@ -409,6 +410,7 @@
                     // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
                     contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
                     screenTitle= @"Register";
+                    navigationTitle = @"Register";
                 }
                 
                 /*
@@ -427,7 +429,7 @@
             
             currentController = objUIViewController;
 
-            objUIViewController.navigationItem.title=screenTitle;
+            objUIViewController.navigationItem.title=navigationTitle;
             
             //rootview
             self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
@@ -510,7 +512,9 @@
 }
 
 -(void)appGoingToBackground{
-    NSLog(@"appGoingToBackground");
+    NSLog(@"appGoingToBackground from Home");
+
+    [[SharedUser sharedManager] setIsLogingOutFromHome:TRUE];
 
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
 
@@ -525,7 +529,7 @@
 }
 
 -(void)appComingFromBackground{
-    NSLog(@"appComingFromBackground");
+    NSLog(@"appComingFromBackground from home");
     
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
 

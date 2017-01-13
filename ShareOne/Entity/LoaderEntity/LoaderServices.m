@@ -81,7 +81,7 @@
 +(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSMutableArray *queuReqArr = [[NSMutableArray alloc] init];
-    [qbArr enumerateObjectsUsingBlock:^(QuickBalances *object, NSUInteger idx, BOOL *stop) {
+    [qbArr enumerateObjectsUsingBlock:^(SuffixInfo *object, NSUInteger idx, BOOL *stop) {
         
         NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%d/%@",KWEB_SERVICE_BASE_URL,KQUICK_TRANSACTION,[ShareOneUtility getUUID],[object.Suffixid intValue] ,kNO_OF_TRANSACTION];
 
@@ -103,9 +103,9 @@
         
         if([filteredQBArr count]>0){
             
-            QuickBalances *obj = filteredQBArr[0];
+            SuffixInfo *obj = filteredQBArr[0];
             NSArray *qtObjects = [QuickTransaction  getQTObjects:(NSDictionary *)response];
-            obj.transArr=[qtObjects mutableCopy];
+            obj.transArray=[qtObjects mutableCopy];
         }
         
 

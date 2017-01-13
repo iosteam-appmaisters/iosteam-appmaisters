@@ -63,11 +63,12 @@
 
 - (void)singleInit {
 
+    id clickedCell = [self superview] ;
     
-    _headerTapGesture =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedHeaderView:)];
-    
-    [self addGestureRecognizer:_headerTapGesture];
-//    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedHeaderView:)]];
+//    if([clickedCell isKindOfClass:[QBFooterView class]]){
+//        
+//    }
+
 }
 
 - (void)touchedHeaderView:(UITapGestureRecognizer *)recognizer {

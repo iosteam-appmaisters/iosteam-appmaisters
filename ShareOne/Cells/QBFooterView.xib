@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,10 +18,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCM-oh-32N">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                     <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdx-o0-2Gu">
+                            <rect key="frame" x="277" y="0.0" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-fb-Yxo">
                             <rect key="frame" x="45" y="6" width="37" height="18"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular-widthClass=regular">
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
@@ -26,25 +34,27 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0a-Sy-dgP">
                             <rect key="frame" x="543" y="6" width="37" height="18"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-dollar" translatesAutoresizingMaskIntoConstraints="NO" id="lnh-gF-mll">
                             <rect key="frame" x="20" y="5" width="20" height="20"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.61568627450000002" green="0.08235294118" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.61568627450000002" green="0.08235294118" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerX" secondItem="TCM-oh-32N" secondAttribute="centerX" id="3Ln-fl-fNC"/>
                         <constraint firstAttribute="trailing" secondItem="i0a-Sy-dgP" secondAttribute="trailing" constant="20" id="Tp0-6z-FeY"/>
                         <constraint firstItem="AWE-fb-Yxo" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="V4m-lA-Zsv"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="leading" secondItem="TCM-oh-32N" secondAttribute="leading" constant="20" id="WBa-gO-FBB"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="aOP-mf-BEJ"/>
                         <constraint firstItem="AWE-fb-Yxo" firstAttribute="leading" secondItem="lnh-gF-mll" secondAttribute="trailing" constant="5" id="bx4-gP-LFz"/>
+                        <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="oLq-Eg-JC7"/>
                         <constraint firstItem="i0a-Sy-dgP" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="yKJ-Qd-ae4"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="TCM-oh-32N" secondAttribute="trailing" id="7yo-6t-qXi"/>
                 <constraint firstAttribute="bottom" secondItem="TCM-oh-32N" secondAttribute="bottom" id="TJK-FB-UJn"/>
@@ -53,6 +63,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="headerBtn" destination="bdx-o0-2Gu" id="etJ-P1-fX9"/>
                 <outlet property="sectionAmountLbl" destination="i0a-Sy-dgP" id="XtT-Ih-i81"/>
                 <outlet property="sectionImgVew" destination="lnh-gF-mll" id="BXP-bu-Ke1"/>
                 <outlet property="sectionTitleLbl" destination="AWE-fb-Yxo" id="nNW-JN-ipi"/>

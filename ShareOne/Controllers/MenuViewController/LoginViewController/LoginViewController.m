@@ -169,7 +169,7 @@
             if([[SharedUser sharedManager] isLaunchFirstTime]){
                 // if is coming after calling didFinishLaunchingWithOptions
                 
-                if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+                if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
                     
                     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
                     
@@ -199,10 +199,6 @@
                     
                     [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
                         
-//                        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-                        
-                        
-//                        [self applyConditionsForSessionValidation];
                         
                     } failureBlock:^(NSError *error) {
                         
@@ -239,7 +235,15 @@
 
                 }
                 else{
-                    [self applyConditionsForSessionValidation];
+                    // if coming from background when touch id is off
+                    
+                    if([[SharedUser sharedManager] isLogingOutFromHome]){
+                        
+                        [self applyConditionsForSessionValidation];
+                        [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
+
+
+                    }
                 }
             }
             
@@ -256,11 +260,16 @@
 
 -(void)applyConditionsForSessionValidation{
     
-    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
-        [self showTouchID];
-    else
-        [self validateSessionForTouchID_OffSession];
-
+    if([[SharedUser sharedManager] isLogingOutFromHome]){
+        
+        if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
+            [self showTouchID];
+        }
+        else{
+            [self validateSessionForTouchID_OffSession];
+        }
+        [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
+    }
 }
 -(void)validateSessionForTouchID_OffSession{
     
@@ -308,7 +317,7 @@
     
     __weak LoginViewController *weakSelf = self;
     
-    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
         
         [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
         
@@ -434,7 +443,9 @@
         
         NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
         NSString *webUrl = [dict valueForKey:WEB_URL];
-        NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
+        NSString *screenTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
+        
+        
 
         UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
 
@@ -492,7 +503,8 @@
 //    [weakSelf startApplication];
 //
 //    return;
-//    user.Password
+    
+    NSLog(@"username : %@  password: %@",user.UserName,user.Password);
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
@@ -527,13 +539,10 @@
             }
             else{
                 // Go though to thee application
-                
-                
                 //asi flow
                 [weakSelf.loadingView setHidden:FALSE];
                 [weakSelf startLoadingServices];
             }
-
         }
         
     } failureBlock:^(NSError *error) {

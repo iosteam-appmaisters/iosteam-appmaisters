@@ -245,7 +245,7 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
         if (!error) {
-//            NSLog(@"Reply JSON: %@", responseObject);
+            NSLog(@"Reply JSON: %@", responseObject);
             
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -273,6 +273,10 @@
             
             if([req.URL.absoluteString containsString:KMEMBER_DEVICES])
                 failBlock(error);
+            
+            if([req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN])
+                block(nil);
+
             
         }
     }] resume];

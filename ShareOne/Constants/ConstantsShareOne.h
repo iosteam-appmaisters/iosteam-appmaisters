@@ -111,7 +111,7 @@
 #define CHANGE_ACCOUNT_USER_NAME    @"AccountName"
 
 //#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
-//#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
+#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
 
 //#define googleApiKey               @"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"
 #define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"

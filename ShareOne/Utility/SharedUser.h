@@ -20,6 +20,8 @@
 @property BOOL skipTouchIDForJustLogOut;
 @property BOOL isLaunchFirstTime;
 @property BOOL isComingAfterTerminate;
+@property BOOL isLogingOutFromHome;
+
 
 
 

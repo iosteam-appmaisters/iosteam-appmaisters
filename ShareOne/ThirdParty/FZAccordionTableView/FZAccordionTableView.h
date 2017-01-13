@@ -28,10 +28,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FZAccordionTableViewHeaderView : UITableViewHeaderFooterView{
- 
-}
-@property (nonatomic,strong)    UITapGestureRecognizer *headerTapGesture;
+@interface FZAccordionTableViewHeaderView : UITableViewHeaderFooterView
 
 
 @end

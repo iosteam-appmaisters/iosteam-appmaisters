@@ -11,6 +11,8 @@
 		1D0309A51DD30B1B005953FA /* VertifiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0309A41DD30B1B005953FA /* VertifiObject.m */; };
 		1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C98FE1DE81A58009B60F0 /* VertifiDepositObject.m */; };
 		1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0C99011DE847CC009B60F0 /* DepositCell.m */; };
+		1D10A60E1E2606CE00BD40CD /* PaymentSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D10A60D1E2606CE00BD40CD /* PaymentSettingController.m */; };
+		1D10A6111E2606E100BD40CD /* PaymentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D10A6101E2606E100BD40CD /* PaymentController.m */; };
 		1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C091DB4BCCE000435DE /* QuickBalances.m */; };
 		1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */; };
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
@@ -34,6 +36,10 @@
 		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
 		1D3E7DEB1E1A8DD200284615 /* libVertifiImageProcessingDevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3E7DEA1E1A8DD200284615 /* libVertifiImageProcessingDevice.a */; };
 		1D3E7DED1E1A943900284615 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3E7DEC1E1A943900284615 /* libVertifiImageProcessing.a */; };
+		1D3ED8521E2662E300AE91C1 /* ContactsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ED8511E2662E300AE91C1 /* ContactsHeaderView.m */; };
+		1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ED8531E2662FF00AE91C1 /* ContactsHeaderView.xib */; };
+		1D3ED8571E2676A800AE91C1 /* ContactEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ED8561E2676A800AE91C1 /* ContactEditCell.m */; };
+		1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ED8591E2676BD00AE91C1 /* ContactDeleteCell.m */; };
 		1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F0F9E1E11484E00B57B5F /* WeblinksController.m */; };
 		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
@@ -107,6 +113,10 @@
 		1D0C98FE1DE81A58009B60F0 /* VertifiDepositObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VertifiDepositObject.m; sourceTree = "<group>"; };
 		1D0C99001DE847CC009B60F0 /* DepositCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositCell.h; sourceTree = "<group>"; };
 		1D0C99011DE847CC009B60F0 /* DepositCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositCell.m; sourceTree = "<group>"; };
+		1D10A60C1E2606CE00BD40CD /* PaymentSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSettingController.h; sourceTree = "<group>"; };
+		1D10A60D1E2606CE00BD40CD /* PaymentSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSettingController.m; sourceTree = "<group>"; };
+		1D10A60F1E2606E100BD40CD /* PaymentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentController.h; sourceTree = "<group>"; };
+		1D10A6101E2606E100BD40CD /* PaymentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentController.m; sourceTree = "<group>"; };
 		1D112C081DB4BCCE000435DE /* QuickBalances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickBalances.h; sourceTree = "<group>"; };
 		1D112C091DB4BCCE000435DE /* QuickBalances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBalances.m; sourceTree = "<group>"; };
 		1D112C0B1DB4E6C6000435DE /* SuffixInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuffixInfo.h; sourceTree = "<group>"; };
@@ -150,6 +160,13 @@
 		1D3D12791DBF353500719170 /* DeviceAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceAuth.m; sourceTree = "<group>"; };
 		1D3E7DEA1E1A8DD200284615 /* libVertifiImageProcessingDevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessingDevice.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessingDevice.a; sourceTree = "<group>"; };
 		1D3E7DEC1E1A943900284615 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
+		1D3ED8501E2662E300AE91C1 /* ContactsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsHeaderView.h; sourceTree = "<group>"; };
+		1D3ED8511E2662E300AE91C1 /* ContactsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsHeaderView.m; sourceTree = "<group>"; };
+		1D3ED8531E2662FF00AE91C1 /* ContactsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsHeaderView.xib; sourceTree = "<group>"; };
+		1D3ED8551E2676A800AE91C1 /* ContactEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactEditCell.h; sourceTree = "<group>"; };
+		1D3ED8561E2676A800AE91C1 /* ContactEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactEditCell.m; sourceTree = "<group>"; };
+		1D3ED8581E2676BD00AE91C1 /* ContactDeleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDeleteCell.h; sourceTree = "<group>"; };
+		1D3ED8591E2676BD00AE91C1 /* ContactDeleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDeleteCell.m; sourceTree = "<group>"; };
 		1D3F0F9D1E11484E00B57B5F /* WeblinksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeblinksController.h; sourceTree = "<group>"; };
 		1D3F0F9E1E11484E00B57B5F /* WeblinksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeblinksController.m; sourceTree = "<group>"; };
 		1D4245D31DCB198400A76E52 /* AdvertisementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementController.h; sourceTree = "<group>"; };
@@ -292,6 +309,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D10A6091E26061D00BD40CD /* P2PMenus */ = {
+			isa = PBXGroup;
+			children = (
+				1D10A60A1E26061D00BD40CD /* PaymentSettingViewController */,
+				1D10A60B1E26061D00BD40CD /* PaymentViewController */,
+			);
+			path = P2PMenus;
+			sourceTree = "<group>";
+		};
+		1D10A60A1E26061D00BD40CD /* PaymentSettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D10A60C1E2606CE00BD40CD /* PaymentSettingController.h */,
+				1D10A60D1E2606CE00BD40CD /* PaymentSettingController.m */,
+			);
+			path = PaymentSettingViewController;
+			sourceTree = "<group>";
+		};
+		1D10A60B1E26061D00BD40CD /* PaymentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D10A60F1E2606E100BD40CD /* PaymentController.h */,
+				1D10A6101E2606E100BD40CD /* PaymentController.m */,
+			);
+			path = PaymentViewController;
+			sourceTree = "<group>";
+		};
 		1D112C071DB4BCAF000435DE /* QuickBalances */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +607,9 @@
 				1DBD4DC01DB1053200943995 /* QBFooterView.h */,
 				1DBD4DC11DB1053200943995 /* QBFooterView.m */,
 				1DBD4DC31DB105BC00943995 /* QBFooterView.xib */,
+				1D3ED8501E2662E300AE91C1 /* ContactsHeaderView.h */,
+				1D3ED8511E2662E300AE91C1 /* ContactsHeaderView.m */,
+				1D3ED8531E2662FF00AE91C1 /* ContactsHeaderView.xib */,
 				1D2399A11D9169CF00157320 /* SideMenuCell.h */,
 				1D2399A21D9169CF00157320 /* SideMenuCell.m */,
 				1D8478E41D92949400153B19 /* QBHeaderCell.h */,
@@ -573,6 +620,10 @@
 				F20C71F11D92CF940072D405 /* BranchLocationCell.m */,
 				1D0C99001DE847CC009B60F0 /* DepositCell.h */,
 				1D0C99011DE847CC009B60F0 /* DepositCell.m */,
+				1D3ED8551E2676A800AE91C1 /* ContactEditCell.h */,
+				1D3ED8561E2676A800AE91C1 /* ContactEditCell.m */,
+				1D3ED8581E2676BD00AE91C1 /* ContactDeleteCell.h */,
+				1D3ED8591E2676BD00AE91C1 /* ContactDeleteCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -610,6 +661,7 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D10A6091E26061D00BD40CD /* P2PMenus */,
 				1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */,
 				1D3A7BDB1DF0826A00AEA159 /* SetUserNameController */,
 				1D3A7BD71DF0598000AEA159 /* PasswordChangeViewController */,
@@ -981,6 +1033,7 @@
 			files = (
 				1DBD4DC41DB105BC00943995 /* QBFooterView.xib in Resources */,
 				6BD4059A1D81B59300358036 /* LaunchScreen.storyboard in Resources */,
+				1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */,
 				6BD405971D81B59300358036 /* Assets.xcassets in Resources */,
 				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
@@ -1072,15 +1125,20 @@
 				1D3A7BDA1DF0599900AEA159 /* PasswordChangeController.m in Sources */,
 				6BD405C51D82C94300358036 /* SignInModel.m in Sources */,
 				1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */,
+				1D3ED8571E2676A800AE91C1 /* ContactEditCell.m in Sources */,
 				1D398FA41E07F73900275E4E /* Photos.m in Sources */,
+				1D10A6111E2606E100BD40CD /* PaymentController.m in Sources */,
+				1D3ED8521E2662E300AE91C1 /* ContactsHeaderView.m in Sources */,
 				6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */,
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
+				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,
 				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
 				1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */,
+				1D10A60E1E2606CE00BD40CD /* PaymentSettingController.m in Sources */,
 				1DBD4DC21DB1053200943995 /* QBFooterView.m in Sources */,
 				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
 				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
@@ -1234,8 +1292,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareOne/ShareOne.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Scott Bush (2H6BQMZMLD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Bush (G3487YQ6F8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Scott Bush (G3487YQ6F8)";
 				DEVELOPMENT_TEAM = G3487YQ6F8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
@@ -1248,8 +1306,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e2d5b634-4a3a-4b6f-844a-2f2eeab4b450";
-				PROVISIONING_PROFILE_SPECIFIER = APNS_DEV_PROFILE;
+				PROVISIONING_PROFILE = "7ccce6af-04d7-4c2e-bf13-fa5d1fa0c318";
+				PROVISIONING_PROFILE_SPECIFIER = "AppStoreIPA-PushNotifActive";
 			};
 			name = Debug;
 		};

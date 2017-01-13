@@ -107,7 +107,7 @@ NSLog(Y, Z);		\
     
     if([filteredArr count]>0){
         NSDictionary * depositControllerDict = filteredArr[0];
-        title = [[depositControllerDict valueForKey:SUB_CAT_TITLE] uppercaseString];
+        title = [[depositControllerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     }
     
     return title;
@@ -499,6 +499,8 @@ NSLog(Y, Z);		\
     
     //swap contexid
     savedUser.Contextid=newUser.Contextid;
+    savedUser.Password=newUser.Password;
+
 }
 
 
@@ -1361,5 +1363,16 @@ NSLog(Y, Z);		\
     [castParentDictWithNonNullValues setValue:arrayOfDictWithNoNullValues forKey:key];
     return castParentDictWithNonNullValues;
 }
+
++ (void)setStatusOfPasswordChanged:(BOOL)isComingFromPasswordChanged{
+    
+    [[NSUserDefaults standardUserDefaults] setBool:isComingFromPasswordChanged forKey:@"isComingFromPasswordChanged"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
++ (BOOL)isComingFromPasswordChanged{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isComingFromPasswordChanged"];
+}
+
 
 @end

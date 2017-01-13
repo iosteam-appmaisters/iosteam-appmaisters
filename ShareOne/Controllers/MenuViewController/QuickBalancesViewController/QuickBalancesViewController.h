@@ -20,4 +20,6 @@
 
 - (IBAction)dismissQuickBalances:(id)sender;
 
+-(void)HeaderButtonAction:(id)sender;
+
 @end
