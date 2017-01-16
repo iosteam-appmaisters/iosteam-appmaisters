@@ -9,8 +9,22 @@
 #import "PaymentSettingController.h"
 #import "EditContactCell.h"
 #import "DeleteContactCell.h"
+#import "IQKeyboardManager.h"
+
 
 @interface PaymentSettingController ()
+
+@property (nonatomic,weak) IBOutlet UILabel *contactsHeaderLbl;
+@property (nonatomic,weak) IBOutlet UILabel *contactsHeaderMaxLbl;
+
+@property (nonatomic,weak) IBOutlet UIView *contactsDetailsView;
+@property (nonatomic,weak) IBOutlet UITextField *profileLinkTextFeild;
+@property (nonatomic,weak) IBOutlet UITextField *profileNameTextFeild;
+@property (nonatomic,weak) IBOutlet NSLayoutConstraint *favouriteLblYConstraint;
+@property float contactViewHeight;
+
+
+-(IBAction)AddToFavouriteButtonClicked:(id)sender;
 
 @end
 
@@ -18,11 +32,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+
     // Do any additional setup after loading the view.
     self.favContactsTblView.allowMultipleSectionsOpen = NO;
     [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([ContactsHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kContactsHeaderViewReuseIdentifier];
+    //[self updateViewWithRefrenceOfContacts];
+    
+    
+}
+
+-(void)updateViewWithRefrenceOfContacts{
+    
+    _contactViewHeight = _contactsDetailsView.frame.size.height;
+    
+    if(_favouriteLblYConstraint.constant==0){
+        
+        [_contactsDetailsView setHidden:TRUE];
+        [_profileLinkTextFeild setHidden:TRUE];
+        [_profileNameTextFeild setHidden:TRUE];
+        [_contactsHeaderLbl setHidden:TRUE];
+        [_contactsHeaderMaxLbl setHidden:FALSE];
+        _favouriteLblYConstraint.constant=-_contactViewHeight;
+        
+    }
+    else{
+        [_contactsDetailsView setHidden:FALSE];
+        [_profileLinkTextFeild setHidden:FALSE];
+        [_profileNameTextFeild setHidden:FALSE];
+        [_contactsHeaderLbl setHidden:FALSE];
+        [_contactsHeaderMaxLbl setHidden:TRUE];
+        _favouriteLblYConstraint.constant=0;
+    }
+    
+    
+    
+}
+
+-(IBAction)AddToFavouriteButtonClicked:(id)sender{
+    [self updateViewWithRefrenceOfContacts];
+    
 
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -66,6 +118,10 @@
         
         DeleteContactCell *cellDelete =  (DeleteContactCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DeleteContactCell class]) forIndexPath:indexPath];
         
+        [cellDelete.delBtnNo addTarget:self action:@selector(deleteButtonNoAction:) forControlEvents:UIControlEventTouchUpInside];
+        [cellDelete.delBtnYes addTarget:self action:@selector(deleteButtonYesAction:) forControlEvents:UIControlEventTouchUpInside];
+
+        
         cell=cellDelete;
     }
     else{
@@ -75,8 +131,11 @@
         
         NSAttributedString *urlPlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new URL" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
         
+        
         editCell.nickNameTxtFeild.attributedPlaceholder = nickNamePlaceHolder;
         editCell.urlTxtFeild.attributedPlaceholder = urlPlaceHolder;
+        editCell.nickNameTxtFeild.delegate=self;
+        
 
 
         cell = editCell;
@@ -106,19 +165,39 @@
 #pragma mark - Selector Methods
 -(void)deleteButtonAction:(id)sender{
     
-    _isFromDelete = YES;
     UIButton *btnCase = (UIButton *)sender;
-    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:btnCase.tag];
-    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    int sectionSelected = (int) btnCase.tag;
 
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
+    
+    if([self.favContactsTblView isSectionOpen:sectionSelected] && !_isFromDelete){
+        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    }
+    _isFromDelete = YES;
+    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
 }
 
--(void)editButtonAction:(id)sender{
-    _isFromDelete = NO;
-    UIButton *btnCase = (UIButton *)sender;
-    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:btnCase.tag];
-    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+-(void)deleteButtonYesAction:(id)sender{
+    [self updateViewWithRefrenceOfContacts];
+}
 
+-(void)deleteButtonNoAction:(id)sender{
+    [self updateViewWithRefrenceOfContacts];
+}
+
+
+
+-(void)editButtonAction:(id)sender{
+    UIButton *btnCase = (UIButton *)sender;
+    int sectionSelected = (int) btnCase.tag;
+
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
+    
+    if([self.favContactsTblView isSectionOpen:sectionSelected] && _isFromDelete){
+        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    }
+    _isFromDelete = NO;
+    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
 }
 
 #pragma mark - <FZAccordionTableViewDelegate> -
@@ -138,6 +217,12 @@
     //        NSLog(@"didCloseSection");
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return TRUE;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+}
 
 /*
 #pragma mark - Navigation

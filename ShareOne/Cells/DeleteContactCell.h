@@ -10,5 +10,7 @@
 
 @interface DeleteContactCell : UITableViewCell
 
+@property (nonatomic,weak)IBOutlet UIButton *delBtnYes;
+@property (nonatomic,weak)IBOutlet UIButton *delBtnNo;
 
 @end
