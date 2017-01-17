@@ -12,17 +12,20 @@
 #import "IQKeyboardManager.h"
 
 
-@interface PaymentSettingController ()
+@interface PaymentSettingController ()<UITextFieldDelegate>{
+    int selected;
+    User *currentUser;
+    NSMutableArray *contactsArr;
+}
 
 @property (nonatomic,weak) IBOutlet UILabel *contactsHeaderLbl;
 @property (nonatomic,weak) IBOutlet UILabel *contactsHeaderMaxLbl;
-
 @property (nonatomic,weak) IBOutlet UIView *contactsDetailsView;
 @property (nonatomic,weak) IBOutlet UITextField *profileLinkTextFeild;
 @property (nonatomic,weak) IBOutlet UITextField *profileNameTextFeild;
 @property (nonatomic,weak) IBOutlet NSLayoutConstraint *favouriteLblYConstraint;
+@property (nonatomic,weak) IBOutlet NSLayoutConstraint *yConstriantTblView;
 @property float contactViewHeight;
-
 
 -(IBAction)AddToFavouriteButtonClicked:(id)sender;
 
@@ -32,21 +35,65 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+    
+    currentUser = [ShareOneUtility getUserObject];
+    
+    
+    
+    if(![ShareOneUtility getFavContactsForUser:currentUser]){
+        contactsArr=[[NSMutableArray alloc] init];
+    }
+    else
+        contactsArr=[ShareOneUtility getFavContactsForUser:currentUser];
+
+    
+    [_profileLinkTextFeild setText:@"paypal.me/"];
+    [_profileNameTextFeild setText:@"test"];
+
 
     // Do any additional setup after loading the view.
     self.favContactsTblView.allowMultipleSectionsOpen = NO;
     [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([ContactsHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kContactsHeaderViewReuseIdentifier];
     //[self updateViewWithRefrenceOfContacts];
     
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    _contactViewHeight = _contactsDetailsView.frame.size.height;
     
+    [_favContactsTblView setBackgroundColor:[UIColor whiteColor]];
+    
+    [self updateViewWithRefrenceOfContacts];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        CGRect f = self.view.frame;
+        f.origin.y = -keyboardSize.height;
+        self.view.frame = f;
+
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = 0.0f;
+        self.view.frame = f;
+    }];
 }
 
 -(void)updateViewWithRefrenceOfContacts{
     
-    _contactViewHeight = _contactsDetailsView.frame.size.height;
     
-    if(_favouriteLblYConstraint.constant==0){
+    if([contactsArr count]>=5){
         
         [_contactsDetailsView setHidden:TRUE];
         [_profileLinkTextFeild setHidden:TRUE];
@@ -64,15 +111,49 @@
         [_contactsHeaderMaxLbl setHidden:TRUE];
         _favouriteLblYConstraint.constant=0;
     }
+}
+
+-(void)setEditModeActive:(BOOL)isActive{
     
-    
-    
+    if(isActive){
+        
+        [_contactsDetailsView setHidden:TRUE];
+        [_profileLinkTextFeild setHidden:TRUE];
+        [_profileNameTextFeild setHidden:TRUE];
+        [_contactsHeaderLbl setHidden:TRUE];
+        [_contactsHeaderMaxLbl setHidden:FALSE];
+        _favouriteLblYConstraint.constant=-_contactViewHeight;
+    }
+    else{
+        [_contactsDetailsView setHidden:FALSE];
+        [_profileLinkTextFeild setHidden:FALSE];
+        [_profileNameTextFeild setHidden:FALSE];
+        [_contactsHeaderLbl setHidden:FALSE];
+        [_contactsHeaderMaxLbl setHidden:TRUE];
+        _favouriteLblYConstraint.constant=0;
+    }
+
 }
 
 -(IBAction)AddToFavouriteButtonClicked:(id)sender{
-    [self updateViewWithRefrenceOfContacts];
     
+    if([_profileNameTextFeild.text length]==0){
+        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Nickname can not be em pty" title:@"" delegate:self];
+        return;
+    }
+    
+    
+    NSDictionary *contactDict = [ShareOneUtility makeContactsWithProfileLink:_profileLinkTextFeild.text AndNickName:_profileNameTextFeild.text];
 
+    
+    [contactsArr addObject:contactDict];
+    
+    [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
+    [_favContactsTblView reloadData];
+    
+    [self updateViewWithRefrenceOfContacts];
+
+    //[self updateViewWithRefrenceOfContacts];
 }
 
 
@@ -87,8 +168,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return [_favouriteContactsArray count];
-    return 5;
+    return [contactsArr count];
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,6 +198,10 @@
         
         DeleteContactCell *cellDelete =  (DeleteContactCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DeleteContactCell class]) forIndexPath:indexPath];
         
+        
+        [cellDelete.delBtnNo setTag:indexPath.section];
+        [cellDelete.delBtnYes setTag:indexPath.section];
+
         [cellDelete.delBtnNo addTarget:self action:@selector(deleteButtonNoAction:) forControlEvents:UIControlEventTouchUpInside];
         [cellDelete.delBtnYes addTarget:self action:@selector(deleteButtonYesAction:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -127,16 +211,31 @@
     else{
         EditContactCell *editCell =  (EditContactCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EditContactCell class]) forIndexPath:indexPath];
         
-        NSAttributedString *nickNamePlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new Nickname" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
-        
-        NSAttributedString *urlPlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new URL" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
-        
-        
-        editCell.nickNameTxtFeild.attributedPlaceholder = nickNamePlaceHolder;
-        editCell.urlTxtFeild.attributedPlaceholder = urlPlaceHolder;
-        editCell.nickNameTxtFeild.delegate=self;
-        
+//        NSAttributedString *nickNamePlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new Nickname" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
+//        
+//        NSAttributedString *urlPlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new URL" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
+//        editCell.nickNameTxtFeild.attributedPlaceholder = nickNamePlaceHolder;
+//        editCell.urlTxtFeild.attributedPlaceholder = urlPlaceHolder;
 
+        
+        [editCell.nickNameTxtFeild setTag:indexPath.section];
+        [editCell.urlTxtFeild setTag:indexPath.section];
+        
+        NSDictionary *contactDict = contactsArr[indexPath.section];
+        NSString *profileLink = [ShareOneUtility getFavouriteContactProfileLinkWithObject:contactDict];
+        NSString *profileNickname = [ShareOneUtility getFavouriteContactNickNameWithObject:contactDict];
+
+
+        
+        [editCell.nickNameTxtFeild setText:profileNickname];
+        [editCell.urlTxtFeild setText:profileLink];
+        
+        editCell.nickNameTxtFeild.delegate=self;
+        editCell.urlTxtFeild.delegate=self;
+        [editCell.confirmContactNameBtn setTag:indexPath.section];
+        [editCell.confirmContactNameBtn addTarget:self action:@selector(confirmButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+        
 
         cell = editCell;
     }
@@ -147,10 +246,16 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     ContactsHeaderView *objFZAccordionTableViewHeaderView =(ContactsHeaderView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kContactsHeaderViewReuseIdentifier];
+    
+    NSDictionary *contactsDict = contactsArr[section];
+    NSString *profileLink = [ShareOneUtility getFavouriteContactNickNameWithObject:contactsDict];
+    
     [objFZAccordionTableViewHeaderView.editButton setTag:section];
     [objFZAccordionTableViewHeaderView.deleteButton setTag:section];
     
     [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+    [objFZAccordionTableViewHeaderView.contactNameLbl setText:profileLink];
+    
     
     [objFZAccordionTableViewHeaderView.deleteButton addTarget:self action:@selector(deleteButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [objFZAccordionTableViewHeaderView.editButton addTarget:self action:@selector(editButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -165,6 +270,8 @@
 #pragma mark - Selector Methods
 -(void)deleteButtonAction:(id)sender{
     
+//    [self setEditModeActive:TRUE];
+
     UIButton *btnCase = (UIButton *)sender;
     int sectionSelected = (int) btnCase.tag;
 
@@ -177,20 +284,13 @@
     [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
 }
 
--(void)deleteButtonYesAction:(id)sender{
-    [self updateViewWithRefrenceOfContacts];
-}
-
--(void)deleteButtonNoAction:(id)sender{
-    [self updateViewWithRefrenceOfContacts];
-}
-
-
-
 -(void)editButtonAction:(id)sender{
+//    [self setEditModeActive:TRUE];
+    
     UIButton *btnCase = (UIButton *)sender;
     int sectionSelected = (int) btnCase.tag;
-
+    
+    selected = sectionSelected;
     ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
     
     if([self.favContactsTblView isSectionOpen:sectionSelected] && _isFromDelete){
@@ -199,6 +299,71 @@
     _isFromDelete = NO;
     [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
 }
+
+-(void)deleteButtonYesAction:(id)sender{
+    //[self updateViewWithRefrenceOfContacts];
+    
+    UIButton *btn = (UIButton *)sender;
+    
+    int buttonTag = (int)btn.tag;
+    
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
+    
+    if([self.favContactsTblView isSectionOpen:buttonTag]){
+        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+    }
+    
+    [contactsArr removeObjectAtIndex:buttonTag];
+    
+    [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
+    
+    [self updateViewWithRefrenceOfContacts];
+    [_favContactsTblView reloadData];
+
+
+}
+
+-(void)deleteButtonNoAction:(id)sender{
+    //[self updateViewWithRefrenceOfContacts];
+    
+    UIButton *btn = (UIButton *)sender;
+
+    int buttonTag = (int)btn.tag;
+
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
+    
+    if([self.favContactsTblView isSectionOpen:buttonTag]){
+        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+    }
+}
+
+-(void)confirmButtonClicked:(id)sender{
+    
+    UIButton *btn = (UIButton *)sender;
+    int buttonTag = (int)btn.tag;
+    
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
+
+    EditContactCell *cell = (EditContactCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
+    
+    NSMutableDictionary *dict = [contactsArr[buttonTag] mutableCopy];
+    [dict setValue:[cell.urlTxtFeild text] forKey:@"profie_link"];
+    [dict setValue:[cell.nickNameTxtFeild text] forKey:@"nick_name"];
+    
+    [contactsArr replaceObjectAtIndex:buttonTag withObject:dict];
+    
+    [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
+    [cell.urlTxtFeild resignFirstResponder];
+    [cell.nickNameTxtFeild resignFirstResponder];
+
+    _yConstriantTblView.constant=20;
+    
+    [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+
+    [_favContactsTblView reloadData];
+
+}
+
 
 #pragma mark - <FZAccordionTableViewDelegate> -
 
@@ -218,11 +383,52 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+
+    if(![textField isEqual:_profileLinkTextFeild] && ![textField isEqual:_profileNameTextFeild]){
+        if([contactsArr count]>=5)
+            _yConstriantTblView.constant=-self.view.frame.size.height/3.5;
+        else
+            _yConstriantTblView.constant=-self.view.frame.size.height/2.5;
+    }
+    
     return TRUE;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
+    NSLog(@"textFieldDidBeginEditing");
+//    int sectionSelected = (int) textField.tag;
+//    
+//    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
+//    
+//    NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:0 inSection:sectionSelected];
+//    NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+////    [_favContactsTblView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
+//    
+//    NSIndexSet *section = [NSIndexSet indexSetWithIndex:sectionSelected];
+//    [_favContactsTblView reloadSections:section withRowAnimation:UITableViewRowAnimationTop];
+
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    int buttonTag = (int)textField.tag;
+    
+    [textField resignFirstResponder];
+
+    EditContactCell *cell = (EditContactCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
+    
+    if([textField isEqual:cell.nickNameTxtFeild]){
+        [cell.urlTxtFeild becomeFirstResponder];
+    }
+    
+    if([textField isEqual:cell.urlTxtFeild]){
+        [self confirmButtonClicked:textField];
+    }
+
+
+    return TRUE;
+}
+
 
 /*
 #pragma mark - Navigation

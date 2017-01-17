@@ -384,11 +384,12 @@ NSLog(Y, Z);		\
         // User exist in Local DB
 //        NSLog(@"USER EXIST");
         [self copySettingsOfSavedUserToNewLoginInfo:user AndOldUser:userFound];
-        
+        NSMutableArray *contactsArr = user.favouriteContactsArray;
         //swaping old to new object
         //userFound = user;
         user = userFound;
-        
+        user.favouriteContactsArray=contactsArr;
+
 //        [[SharedUser sharedManager] setUserObject:user];
 
         [self saveUserObject:user];
@@ -496,10 +497,12 @@ NSLog(Y, Z);		\
     newUser.isQBOpen=savedUser.isQBOpen;
     newUser.isShowOffersOpen=savedUser.isShowOffersOpen;
     newUser.isTouchIDOpen=savedUser.isTouchIDOpen;
+//    newUser.favouriteContactsArray=savedUser.favouriteContactsArray;
+
     
     //swap contexid
     savedUser.Contextid=newUser.Contextid;
-    savedUser.Password=newUser.Password;
+//    savedUser.favouriteContactsArray=newUser.favouriteContactsArray;
 
 }
 
@@ -1381,5 +1384,30 @@ NSLog(Y, Z);		\
     return image64;
 }
 
++(NSDictionary *)makeContactsWithProfileLink:(NSString *)link AndNickName:(NSString *)nickName{
+    
+    return [NSDictionary dictionaryWithObjectsAndKeys:link,@"profie_link",nickName,@"nick_name", nil];
+}
+
++(NSString *)getFavouriteContactProfileLinkWithObject:(NSDictionary *)dict{
+    return [dict valueForKey:@"profie_link"];
+}
+
++(NSString *)getFavouriteContactNickNameWithObject:(NSDictionary *)dict{
+    return [dict valueForKey:@"nick_name"];
+}
+
++(NSMutableArray *)getFavContactsForUser:(User *)user{
+    
+   return (NSMutableArray *) [[[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"contacts%d",[user.Account intValue]]] mutableCopy];
+}
+
++(void)saveContactsForUser:(User *)user withArray:(NSMutableArray *)array{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:array forKey:[NSString stringWithFormat:@"contacts%d",[user.Account intValue]]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+}
 
 @end

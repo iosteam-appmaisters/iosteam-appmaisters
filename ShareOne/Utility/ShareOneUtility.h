@@ -166,6 +166,16 @@
 
 +(UIImage *)getImageFromBase64String:(NSString *)base64String;
 
++(NSDictionary *)makeContactsWithProfileLink:(NSString *)link AndNickName:(NSString *)nickName;
+
++(NSString *)getFavouriteContactProfileLinkWithObject:(NSDictionary *)dict;
++(NSString *)getFavouriteContactNickNameWithObject:(NSDictionary *)dict;
+
+
+
+
+
++(NSMutableArray *)getFavContactsForUser:(User *)user;+(void)saveContactsForUser:(User *)user withArray:(NSMutableArray *)array;
 
 
 @end

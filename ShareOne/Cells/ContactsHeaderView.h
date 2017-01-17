@@ -16,5 +16,7 @@ static NSString *const kContactsHeaderViewReuseIdentifier = @"kContactsHeaderVie
 @interface ContactsHeaderView : FZAccordionTableViewHeaderView
 @property (nonatomic,strong)IBOutlet UIButton *editButton;
 @property (nonatomic,strong)IBOutlet UIButton *deleteButton;
+@property (nonatomic,strong)IBOutlet UILabel *contactNameLbl;
+
 
 @end

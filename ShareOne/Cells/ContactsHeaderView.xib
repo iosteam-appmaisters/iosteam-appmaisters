@@ -82,6 +82,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="contactNameLbl" destination="fTU-a8-bOJ" id="cZJ-6S-65x"/>
                 <outlet property="deleteButton" destination="se1-uN-7qR" id="oA0-TY-wSc"/>
                 <outlet property="editButton" destination="e3X-jL-9PY" id="k11-96-pDP"/>
             </connections>

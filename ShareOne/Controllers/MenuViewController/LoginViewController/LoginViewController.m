@@ -128,7 +128,7 @@
     if([ShareOneUtility isUserRemembered]){
         User *user = [ShareOneUtility getUserObject];
         [_userIDTxt setText:user.UserName];
-        [_passwordTxt setText:@"123"];
+//        [_passwordTxt setText:@"123"];
 
 //        [_passwordTxt setText:user.Password];
     }
@@ -477,9 +477,9 @@
     else{
         UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
         
-        UIViewController *controllerToPush =  [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSettingController"];
-
-        homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
+//        UIViewController *controllerToPush =  [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSettingController"];
+//
+//        homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
 
         homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
         
@@ -504,9 +504,9 @@
 //    [weakSelf.loadingView setHidden:FALSE];
 //    [weakSelf startLoadingServices];
 
-    [weakSelf startApplication];
-
-    return;
+//    [weakSelf startApplication];
+//
+//    return;
     
     NSLog(@"username : %@  password: %@",user.UserName,user.Password);
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {

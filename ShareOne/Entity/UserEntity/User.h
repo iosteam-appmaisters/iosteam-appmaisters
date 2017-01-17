@@ -23,7 +23,7 @@
 @property (nonatomic,strong) NSString *Name;
 @property (nonatomic,strong) NSString *Email;
 
-
+@property (nonatomic,strong) NSMutableArray *favouriteContactsArray;
 
 
 

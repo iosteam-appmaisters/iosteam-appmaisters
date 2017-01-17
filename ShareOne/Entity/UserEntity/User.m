@@ -243,8 +243,11 @@
 -(id) initWithDictionary:(NSDictionary *)userProfileDict{
     User *obj = [[User alloc] init];
     self = [super init];{
+        
+        
         [self parseUserInfoOnLoginWithObject:obj AndParsingDict:userProfileDict];
         NSDictionary *masterDict = userProfileDict[@"Master"];
+        
         [self parseUserInfoOnLoginWithObject:obj AndParsingDict:masterDict];
         
     }
@@ -299,6 +302,8 @@
         self.Accountname=[decoder decodeObjectForKey:@"Accountname"];
         self.Name=[decoder decodeObjectForKey:@"Name"];
         self.Email=[decoder decodeObjectForKey:@"Email"];
+        self.favouriteContactsArray=[decoder decodeObjectForKey:@"favouriteContactsArray"];
+
 
     }
     return self;
@@ -329,6 +334,8 @@
     [encoder encodeObject: self.Accountname forKey:@"Accountname"];
     [encoder encodeObject: self.Name forKey:@"Name"];
     [encoder encodeObject: self.Email forKey:@"Email"];
+    [encoder encodeObject: self.favouriteContactsArray forKey:@"favouriteContactsArray"];
+
 
 }
 @end
