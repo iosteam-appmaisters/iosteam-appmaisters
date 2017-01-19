@@ -207,9 +207,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int rowHeight=100;
-    return rowHeight;
+//    int rowHeight=100;
+//    return rowHeight;
+    
+    return UITableViewAutomaticDimension;
+
 }
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 110;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -218,10 +226,11 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BranchLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell"];
+//    BranchLocationCell_clone
+    BranchLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell_clone"];
     [cell setDelegate:self];
     if(!cell){
-        cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell_clone" forIndexPath:indexPath];
     }
     
     Location *objLocation = _contentArr[indexPath.row];
