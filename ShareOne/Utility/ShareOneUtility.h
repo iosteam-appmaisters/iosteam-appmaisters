@@ -171,11 +171,8 @@
 +(NSString *)getFavouriteContactProfileLinkWithObject:(NSDictionary *)dict;
 +(NSString *)getFavouriteContactNickNameWithObject:(NSDictionary *)dict;
 
-
-
-
-
 +(NSMutableArray *)getFavContactsForUser:(User *)user;+(void)saveContactsForUser:(User *)user withArray:(NSMutableArray *)array;
 
++ (void)setAccesoryViewForTextFeild:(UITextField *)textFeld WithDelegate:(id)delegate AndSelecter:(NSString *)selectorString;
 
 @end

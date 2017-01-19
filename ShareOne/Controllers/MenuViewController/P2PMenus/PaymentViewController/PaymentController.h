@@ -15,5 +15,11 @@
 
 @property (nonatomic, weak) IBOutlet FZAccordionTableView *favContactsTblView;
 @property (nonatomic, strong) NSArray *favouriteContactsArray;
+@property (nonatomic,weak) IBOutlet UIView *webViewParent;
+@property (nonatomic,weak) IBOutlet UIButton *closeBtn;
+@property (nonatomic,weak) IBOutlet UIWebView *webView;
+
+
+
 
 @end

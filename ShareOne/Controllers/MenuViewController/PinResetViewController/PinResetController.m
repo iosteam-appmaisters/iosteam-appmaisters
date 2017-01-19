@@ -11,16 +11,21 @@
 #import "ConstantsShareOne.h"
 #import "LoginViewController.h"
 #import "User.h"
+#import "IQKeyboardManager.h"
+
 @implementation PinResetController
 
 
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:TRUE];
+
     if(_isFromForgotUserName){
         _navBar.topItem.title = @"Forgot Username";
         [_accountLbl setText:@"Account No."];
         [_accountNameTxtFeild setPlaceholder:@"Enter Account No."];
+        [_accountNameTxtFeild setKeyboardType:UIKeyboardTypeNumberPad];
     }
     else{
         _navBar.topItem.title = @"Forgot Password";

@@ -83,7 +83,7 @@
     [self startUpMethod];
     [self loadDataOnPickerView];
     //[self getRegisterToVirtifi];
-    [self getListOfReviewDeposits];
+    //[self getListOfReviewDeposits];
     //[self getListOfPast6MonthsDeposits];
 }
 
@@ -185,7 +185,7 @@
     
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_LIST_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
-        [self getDetailsOfDepositWithObject:(VertifiObject *)user];
+        //[self getDetailsOfDepositWithObject:(VertifiObject *)user];
 
     } failureBlock:^(NSError *error) {
         
@@ -248,8 +248,24 @@
             else if ([obj.LoginValidation isEqualToString:@"OK"]){
                 [weakSelf vertifiPaymentInIt];
             }
-            else
+            else{
+
+                [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
                 [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+            }
+            
+        }
+        else{
+            
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
+           NSString *localizeErrorMessage=@"The service is temporarily unavailable, please try again later.";
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
+
+
+            
         }
         
     } failureBlock:^(NSError *error) {
@@ -292,8 +308,18 @@
 
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_ININT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        if(succes){
         [weakSelf vertifiComitWithObject:(VertifiObject *)user];
-        
+        }
+        else{
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            NSString *localizeErrorMessage=@"The service is temporarily unavailable, please try again later.";
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
+            
+            
+            
+        }
     } failureBlock:^(NSError *error) {
         
     }];
@@ -383,14 +409,27 @@
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
-        VertifiObject *obj = (VertifiObject *)user;
-        if(![obj.InputValidation isEqualToString:@"OK"]){
-            //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
+        if(success){
+            
+            VertifiObject *obj = (VertifiObject *)user;
+            if(![obj.InputValidation isEqualToString:@"OK"]){
+                //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
+            }
+            else if ([obj.LoginValidation isEqualToString:@"OK"]){
+                [weakSelf vertifiPaymentInIt];
+            }
         }
-        else if ([obj.LoginValidation isEqualToString:@"OK"]){
-            [weakSelf vertifiPaymentInIt];
+        else{
+            
+            NSString *localizeErrorMessage=@"The service is temporarily unavailable, please try again later.";
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
+            
+            
+            
         }
 
+        
         
 //        [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
         

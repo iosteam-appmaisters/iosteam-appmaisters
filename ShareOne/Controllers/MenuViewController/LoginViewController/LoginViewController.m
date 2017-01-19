@@ -98,7 +98,6 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -120,7 +119,7 @@
 
 -(void)updateDataByDefaultValues{
     
-    [self moveViewDown];
+    //[self moveViewDown];
     [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_rememberMeSwitch setOn:[ShareOneUtility isUserRemembered]];
@@ -129,6 +128,7 @@
         User *user = [ShareOneUtility getUserObject];
         [_userIDTxt setText:user.UserName];
 //        [_passwordTxt setText:@"123"];
+        //skipme
 
 //        [_passwordTxt setText:user.Password];
     }
@@ -477,6 +477,7 @@
     else{
         UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
         
+        //skipme
 //        UIViewController *controllerToPush =  [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSettingController"];
 //
 //        homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
@@ -505,9 +506,7 @@
 //    [weakSelf startLoadingServices];
 
 //    [weakSelf startApplication];
-//
-//    return;
-    
+//    return; //skipme
     NSLog(@"username : %@  password: %@",user.UserName,user.Password);
     [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
@@ -841,28 +840,40 @@
 
 
 -(void)moveViewUp{
-    if(_loginViewConstraintY.constant<=-20)
+    
+    float value =0.0;
+    if(APPC_IS_IPAD){
+        value=-80.0;
+    }
+    else{
+        value=-30.0;
+    }
+        
+    if(_loginViewConstraintY.constant<=value)
         _loginViewConstraintY.constant=-140;
 }
 
 -(void)moveViewDown{
-    
+    float value =0.0;
+    if(APPC_IS_IPAD){
+        value=-80.0;
+    }
+    else{
+        value=-30.0;
+    }
+
     if(_loginViewConstraintY.constant>=-140)
-        _loginViewConstraintY.constant=-20;
+        _loginViewConstraintY.constant=value;
 }
 
 #pragma mark UITextFeildDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    if([textField isEqual:_passwordTxt]){
-        [textField resignFirstResponder];
-        [self moveViewDown];
-    }
-    else{
-        [textField resignFirstResponder];
-        [_passwordTxt becomeFirstResponder];
-    }
+    [self adjustTextFeildPositionForTextFeild:textField];
     return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [self adjustTextFeildPositionForTextFeild:textField];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -871,7 +882,17 @@
     return YES;
 }
 
+-(void)adjustTextFeildPositionForTextFeild:(UITextField *)textField{
+    if([textField isEqual:_passwordTxt]){
+        [textField resignFirstResponder];
+        [self moveViewDown];
+    }
+    else{
+        [textField resignFirstResponder];
+        [_passwordTxt becomeFirstResponder];
+    }
 
+}
 - (BOOL)shouldAutorotate{
     
     return YES;

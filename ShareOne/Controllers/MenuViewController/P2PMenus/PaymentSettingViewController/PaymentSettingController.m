@@ -49,7 +49,7 @@
 
     
     [_profileLinkTextFeild setText:@"paypal.me/"];
-    [_profileNameTextFeild setText:@"test"];
+    [_profileNameTextFeild setText:@"Asd"];
 
 
     // Do any additional setup after loading the view.
@@ -135,6 +135,17 @@
 
 }
 
+-(IBAction)howDoesPaypalWorkAction:(id)sender{
+    [_webViewParent setHidden:FALSE];
+    [_closeBtn setHidden:FALSE];
+    __weak PaymentSettingController *weakSelf = self;
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    NSString *paypal_url = nil;
+    paypal_url = @"https://www.paypal.me";
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:paypal_url]]];
+}
+
 -(IBAction)AddToFavouriteButtonClicked:(id)sender{
     
     if([_profileNameTextFeild.text length]==0){
@@ -150,10 +161,25 @@
     
     [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
     [_favContactsTblView reloadData];
-    
+//    [_profileNameTextFeild setText:@""];
+    [_profileNameTextFeild resignFirstResponder];
+    [_profileLinkTextFeild resignFirstResponder];
     [self updateViewWithRefrenceOfContacts];
 
     //[self updateViewWithRefrenceOfContacts];
+}
+
+-(IBAction)closeWebView:(id)sender{
+    [_webViewParent setHidden:TRUE];
+    [_closeBtn setHidden:TRUE];
+    __weak PaymentSettingController *weakSelf = self;
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    __weak PaymentSettingController *weakSelf = self;
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 
 
@@ -411,10 +437,22 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
+    [self adjustTextFeildPositionForTextFeild:textField];
+
+    return TRUE;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [self adjustTextFeildPositionForTextFeild:textField];
+
+}
+
+-(void)adjustTextFeildPositionForTextFeild:(UITextField *)textField{
+    
     int buttonTag = (int)textField.tag;
     
     [textField resignFirstResponder];
-
+    
     EditContactCell *cell = (EditContactCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
     
     if([textField isEqual:cell.nickNameTxtFeild]){
@@ -425,8 +463,6 @@
         [self confirmButtonClicked:textField];
     }
 
-
-    return TRUE;
 }
 
 

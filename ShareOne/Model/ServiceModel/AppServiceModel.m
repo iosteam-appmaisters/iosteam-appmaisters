@@ -702,62 +702,6 @@
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
-    /*
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
-    __weak ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
-    
-    // Setting Headers for Own servers
-    if(auth_header){
-        [self setHeaderOnRequest:(NSMutableURLRequest *)requestASI withAuth:auth_header];
-    }
-    else{
-        NSLog(@"**************************************************");
-        NSLog(@"|        It Is calling for location API           ");
-        NSLog(@"**************************************************");
-        [self setHeaderForLocationApiOnRequest:(NSMutableURLRequest *)requestASI];
-    }
-
-    
-    [requestASI setCompletionBlock:^{
-        NSString *responseString = [requestASI responseString];
-        NSLog(@"Response: %@", responseString);
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-
-        NSDictionary *jsonDict = [self parseResponseToJsonWithData:[requestASI responseData]];
-
-        if([jsonDict isKindOfClass:[NSArray class]] || [jsonDict isKindOfClass:[NSDictionary class]]){
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            [self hideProgressAlert];
-            block(jsonDict);
-
-        }
-        else{
-            NSDictionary *errorInfo = [self getErrorObjectWithStatusMessage:requestASI.responseStatusMessage andStatusCode:requestASI.responseStatusCode];
-            
-            [self hideProgressAlert];
-            
-            failBlock(nil);
-            
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:[self getErrorMessageWithObject:errorInfo] title:@"" delegate:delegate];
-        }
-    }];
-    [requestASI setFailedBlock:^{
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-
-        NSError *error = [requestASI error];
-        failBlock(error);
-
-        NSLog(@"Error: %@", error.localizedDescription);
-        [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
-
-    }];
-    
-    [requestASI startAsynchronous];
-     */
     
     
      
@@ -787,7 +731,7 @@
         NSLog(@"**************************************************");
         [self setHeaderForLocationApiOnRequest:req];
     }
-    
+    NSLog(@"%@",req.URL.absoluteString);
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * response, id   responseObject, NSError * _Nullable error) {
         
         if (!error) {

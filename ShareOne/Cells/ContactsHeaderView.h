@@ -18,5 +18,10 @@ static NSString *const kContactsHeaderViewReuseIdentifier = @"kContactsHeaderVie
 @property (nonatomic,strong)IBOutlet UIButton *deleteButton;
 @property (nonatomic,strong)IBOutlet UILabel *contactNameLbl;
 
+@property (nonatomic,strong)IBOutlet UIImageView *editImageView;
+@property (nonatomic,strong)IBOutlet UIImageView *deleteImageView;
+
+
+
 
 @end

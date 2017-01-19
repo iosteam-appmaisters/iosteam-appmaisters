@@ -1406,8 +1406,23 @@ NSLog(Y, Z);		\
     
     [[NSUserDefaults standardUserDefaults] setValue:array forKey:[NSString stringWithFormat:@"contacts%d",[user.Account intValue]]];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)setAccesoryViewForTextFeild:(UITextField *)textFeld WithDelegate:(id)delegate AndSelecter:(NSString *)selectorString{
+ 
+    UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
+    [keyboardToolbar sizeToFit];
+    UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                      target:nil action:nil];
+    UIBarButtonItem *doneBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                      target:delegate action:NSSelectorFromString(selectorString)];
+
     
-    
+    keyboardToolbar.items = @[flexBarButton, doneBarButton];
+    textFeld.inputAccessoryView = keyboardToolbar;
+
 }
 
 @end

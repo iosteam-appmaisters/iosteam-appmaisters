@@ -15,6 +15,8 @@
 {
     CLLocationManager *locationManager;
     BOOL isComingFromATM;
+    NSString *lat;
+    NSString *lon;
 }
 @property (nonatomic,strong) IBOutlet GMSMapView *mapView;
 
@@ -29,6 +31,8 @@
 - (void)viewDidLoad
 {
     
+    [self createCurrentLocation];
+
     [self initLocationArray];
     [self initGoogleMap];
     [self.view layoutIfNeeded];
@@ -37,6 +41,34 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     NSLog(@"viewWillAppear");
+}
+
+-(void)createCurrentLocation
+{
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    [locationManager requestWhenInUseAuthorization];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    [locationManager startUpdatingLocation];
+    CLLocation *location = [locationManager location];
+    
+    
+    CLLocationCoordinate2D user = [location coordinate];
+    NSLog(@"longitude :%f",user.longitude);
+    NSLog(@"latitude  :%f",user.latitude);
+    //    CLLocation *location2=[[CLLocation alloc]initWithLatitude:37.785834 longitude:-122.406417];
+    CLLocation *currentLocation=[[CLLocation alloc]initWithLatitude:user.latitude longitude:user.longitude];
+    
+    lat=[NSString stringWithFormat:@"%f",user.latitude];
+    lon=[NSString stringWithFormat:@"%f",user.longitude];
+
+    
+    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",user.latitude ,user.longitude];
+    NSLog(@"CoordinateStr:%@",CoordinateStr);
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -104,13 +136,14 @@
     __weak ATMLocationViewController *weakSelf = self;
     
     
+//    http://api.co-opfs.org/locator/proximitySearch?latitude=34.104369&longitude=117.573459
     NSDictionary *searchByZipCode =[NSDictionary dictionaryWithObjectsAndKeys:@"91730",@"ZipCode", nil];
     
     NSDictionary *searchByStateNCity =[NSDictionary dictionaryWithObjectsAndKeys:@"CA",@"state",@"Hermosa Beach",@"city", nil];
     
     NSDictionary *searchByCoordinate =[NSDictionary dictionaryWithObjectsAndKeys:@"34.104369",@"latitude",@"117.573459",@"longitude", nil];
     
-    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",@"91730",@"zip", nil];
+    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",lat,@"latitude",lon,@"longitude",@"A",@"loctype", nil];
      
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];

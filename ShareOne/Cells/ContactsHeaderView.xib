@@ -35,7 +35,7 @@
                             <rect key="frame" x="20" y="22" width="16" height="16"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_icon" translatesAutoresizingMaskIntoConstraints="NO" id="gAc-W6-D46">
-                            <rect key="frame" x="376" y="22.5" width="16" height="16"/>
+                            <rect key="frame" x="376" y="23" width="16" height="16"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6xK-Tk-dZ5">
                             <rect key="frame" x="330" y="22" width="16" height="16"/>
@@ -84,7 +84,9 @@
             <connections>
                 <outlet property="contactNameLbl" destination="fTU-a8-bOJ" id="cZJ-6S-65x"/>
                 <outlet property="deleteButton" destination="se1-uN-7qR" id="oA0-TY-wSc"/>
+                <outlet property="deleteImageView" destination="gAc-W6-D46" id="XUm-q7-TUe"/>
                 <outlet property="editButton" destination="e3X-jL-9PY" id="k11-96-pDP"/>
+                <outlet property="editImageView" destination="6xK-Tk-dZ5" id="0Q2-Y0-3gI"/>
             </connections>
             <point key="canvasLocation" x="57" y="-248.5"/>
         </view>

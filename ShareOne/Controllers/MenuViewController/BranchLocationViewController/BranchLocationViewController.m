@@ -105,12 +105,6 @@
 
 -(void)createCurrentLocation
 {
-//    locationManager = [[CLLocationManager alloc] init];
-//    locationManager.delegate = self;
-//    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//    locationManager.distanceFilter = kCLDistanceFilterNone;
-//    [locationManager requestAlwaysAuthorization];
-//    [locationManager startUpdatingLocation];
     
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;

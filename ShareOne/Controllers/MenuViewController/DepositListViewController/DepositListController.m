@@ -109,6 +109,11 @@
 
         VertifiObject * obj = (VertifiObject *)user;
         weakSelf.contentArr = obj.depositArr;
+        
+        if([weakSelf.contentArr count]==0){
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
+
+        }
         [weakSelf.tblView reloadData];
         [weakSelf reloadCustomData];
         

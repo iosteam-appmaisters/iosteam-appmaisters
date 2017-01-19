@@ -47,6 +47,10 @@
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
 		1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */; };
+		1D5F34381E2F4C2700026EF2 /* PaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F34371E2F4C2700026EF2 /* PaymentCell.m */; };
+		1D5F343B1E2F4FFF00026EF2 /* MoneyTransferHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F343A1E2F4FFF00026EF2 /* MoneyTransferHeader.m */; };
+		1D5F343D1E2F50AB00026EF2 /* MoneyTransferHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5F343C1E2F50AB00026EF2 /* MoneyTransferHeader.xib */; };
+		1D5F34401E2F572500026EF2 /* TransferSomeOneElseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F343F1E2F572500026EF2 /* TransferSomeOneElseCell.m */; };
 		1D72E24D1DEC025500A054BA /* NotifSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D72E24C1DEC025500A054BA /* NotifSettingsController.m */; };
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
@@ -182,6 +186,13 @@
 		1D4245D71DCB780200A76E52 /* QuickTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickTransaction.m; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SlideMenu.plist; sourceTree = "<group>"; };
+		1D5F34361E2F4C2700026EF2 /* PaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCell.h; sourceTree = "<group>"; };
+		1D5F34371E2F4C2700026EF2 /* PaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCell.m; sourceTree = "<group>"; };
+		1D5F34391E2F4FFF00026EF2 /* MoneyTransferHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyTransferHeader.h; sourceTree = "<group>"; };
+		1D5F343A1E2F4FFF00026EF2 /* MoneyTransferHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneyTransferHeader.m; sourceTree = "<group>"; };
+		1D5F343C1E2F50AB00026EF2 /* MoneyTransferHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoneyTransferHeader.xib; sourceTree = "<group>"; };
+		1D5F343E1E2F572500026EF2 /* TransferSomeOneElseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferSomeOneElseCell.h; sourceTree = "<group>"; };
+		1D5F343F1E2F572500026EF2 /* TransferSomeOneElseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferSomeOneElseCell.m; sourceTree = "<group>"; };
 		1D72E24B1DEC025500A054BA /* NotifSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifSettingsController.h; sourceTree = "<group>"; };
 		1D72E24C1DEC025500A054BA /* NotifSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifSettingsController.m; sourceTree = "<group>"; };
 		1D8478E41D92949400153B19 /* QBHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBHeaderCell.h; sourceTree = "<group>"; };
@@ -637,6 +648,13 @@
 				1D03DD341E28B46E0025D7D0 /* DeleteContactCell.m */,
 				1D21A18C1E28CEDA005CCAB5 /* EditContactCell.h */,
 				1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */,
+				1D5F34361E2F4C2700026EF2 /* PaymentCell.h */,
+				1D5F34371E2F4C2700026EF2 /* PaymentCell.m */,
+				1D5F34391E2F4FFF00026EF2 /* MoneyTransferHeader.h */,
+				1D5F343A1E2F4FFF00026EF2 /* MoneyTransferHeader.m */,
+				1D5F343C1E2F50AB00026EF2 /* MoneyTransferHeader.xib */,
+				1D5F343E1E2F572500026EF2 /* TransferSomeOneElseCell.h */,
+				1D5F343F1E2F572500026EF2 /* TransferSomeOneElseCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1046,6 +1064,7 @@
 			files = (
 				1DBD4DC41DB105BC00943995 /* QBFooterView.xib in Resources */,
 				6BD4059A1D81B59300358036 /* LaunchScreen.storyboard in Resources */,
+				1D5F343D1E2F50AB00026EF2 /* MoneyTransferHeader.xib in Resources */,
 				1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */,
 				6BD405971D81B59300358036 /* Assets.xcassets in Resources */,
 				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
@@ -1165,6 +1184,7 @@
 				1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
+				1D5F343B1E2F4FFF00026EF2 /* MoneyTransferHeader.m in Sources */,
 				F229DB661D9E734300A705A5 /* Global.m in Sources */,
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
 				1D2887481DED517400AD7C74 /* PinResetController.m in Sources */,
@@ -1174,6 +1194,7 @@
 				1D398FA11E07F66E00275E4E /* Hours.m in Sources */,
 				1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */,
 				F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */,
+				1D5F34381E2F4C2700026EF2 /* PaymentCell.m in Sources */,
 				F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */,
 				1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */,
 				1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */,
@@ -1181,6 +1202,7 @@
 				F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
 				1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */,
+				1D5F34401E2F572500026EF2 /* TransferSomeOneElseCell.m in Sources */,
 				1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */,
 				1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */,
 				1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */,

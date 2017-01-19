@@ -9,9 +9,12 @@
 #import "PaymentController.h"
 #import "PaymentSettingController.h"
 #import "ContactsHeaderView.h"
-#import "EditContactCell.h"
+#import "TransferSomeOneElseCell.h"
+#import "PaymentCell.h"
+#import "MoneyTransferHeader.h"
+#import "IQKeyboardManager.h"
 
-@interface PaymentController (){
+@interface PaymentController ()<UITextFieldDelegate>{
     
     int selected;
     User *currentUser;
@@ -19,6 +22,15 @@
 
 }
 
+
+@property (nonatomic,weak)IBOutlet NSLayoutConstraint *addFavouriteHeightConstraint;
+@property (nonatomic,weak)IBOutlet NSLayoutConstraint *yConstriantTblView;
+
+
+-(IBAction)closeWebView:(id)sender;
+
+-(IBAction)goToAddFavouriteController:(id)sender;
+-(IBAction)howDoesPaypalWorkAction:(id)sender;
 @end
 
 @implementation PaymentController
@@ -26,9 +38,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+
+    self.favContactsTblView.allowMultipleSectionsOpen = NO;
+    
+    [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([ContactsHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kContactsHeaderViewReuseIdentifier];
+    
+    [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([MoneyTransferHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kMoneyTransferHeaderViewReuseIdentifier];
+
+    [_favContactsTblView setBackgroundColor:[UIColor whiteColor]];
+    
+
+    
+}
+
+-(IBAction)goToAddFavouriteController:(id)sender{
+    
+    PaymentSettingController* objPaymentSettingController = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSettingController"];
+    objPaymentSettingController.navigationItem.title=@"Send Money (P2P)";
+    [self.navigationController pushViewController:objPaymentSettingController animated:YES];
+
+}
+
+-(IBAction)howDoesPaypalWorkAction:(id)sender{
+    [self loadUrlWithName:@"https://www.paypal.me" AndAmount:nil];
+}
+
+
+-(IBAction)closeWebView:(id)sender{
+    [_webViewParent setHidden:TRUE];
+    [_closeBtn setHidden:TRUE];
+    __weak PaymentController *weakSelf = self;
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self updateViewWithRefrenceOfContacts];
+}
+
+-(void)updateViewWithRefrenceOfContacts{
+    
     currentUser = [ShareOneUtility getUserObject];
-    
-    
     
     if(![ShareOneUtility getFavContactsForUser:currentUser]){
         contactsArr=[[NSMutableArray alloc] init];
@@ -36,11 +90,39 @@
     else
         contactsArr=[ShareOneUtility getFavContactsForUser:currentUser];
 
-    self.favContactsTblView.allowMultipleSectionsOpen = NO;
-    [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([ContactsHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kContactsHeaderViewReuseIdentifier];
+    if([contactsArr count]>0){
+        _addFavouriteHeightConstraint.constant=0;
+        
+    }
+    else{
+        _addFavouriteHeightConstraint.constant=22;
+    }
     
-    [_favContactsTblView setBackgroundColor:[UIColor whiteColor]];
+    [_favContactsTblView reloadData];
 
+}
+
+-(void)loadUrlWithName:(NSString *)name AndAmount:(NSString *)amount{
+    
+    [_webViewParent setHidden:FALSE];
+    [_closeBtn setHidden:FALSE];
+    __weak PaymentController *weakSelf = self;
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
+    NSString *paypal_url = nil;
+    
+    if(amount)
+        paypal_url = [NSString stringWithFormat:@"https://www.%@/%.2f",name,[amount floatValue]];
+    else
+        paypal_url = name;
+    
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:paypal_url]]];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    __weak PaymentController *weakSelf = self;
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
@@ -50,7 +132,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [contactsArr count];
+    return [contactsArr count]+1;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,72 +156,162 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    __weak PaymentController *weakSelf = self;
+
     UITableViewCell *cell = nil;
     
-    EditContactCell *editCell =  (EditContactCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EditContactCell class]) forIndexPath:indexPath];
+    if(indexPath.section+1>[contactsArr count]){
+        
+        TransferSomeOneElseCell *editCell =  (TransferSomeOneElseCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TransferSomeOneElseCell class]) forIndexPath:indexPath];
+        
+        
+        [editCell.profileLinkTxtFeild setTag:indexPath.section];
+        [editCell.amountTxtFeild setTag:indexPath.section];
+        
+//        NSDictionary *contactDict = contactsArr[indexPath.section];
+//        NSString *profileLink = [ShareOneUtility getFavouriteContactProfileLinkWithObject:contactDict];
+//        NSString *profileNickname = [ShareOneUtility getFavouriteContactNickNameWithObject:contactDict];
+//        
+//        
+//        [editCell.nickNameTxtFeild setText:profileNickname];
+//        [editCell.urlTxtFeild setText:profileLink];
+        
+        editCell.profileLinkTxtFeild.delegate=self;
+        editCell.amountTxtFeild.delegate=self;
+        
+        [editCell.amountTxtFeild setText:@""];
+
+        [ShareOneUtility setAccesoryViewForTextFeild:editCell.amountTxtFeild WithDelegate:weakSelf AndSelecter:@"textViewDoneButtonPressed:"];
+        
+        [editCell.payButtonBtn setTag:indexPath.section];
+        [editCell.payButtonBtn addTarget:self action:@selector(transferMoneyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        cell = editCell;
+
+        
+    }
+    else{
+        
+        PaymentCell *paymentCell =  (PaymentCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PaymentCell class]) forIndexPath:indexPath];
+        
+        [paymentCell.amountTxtFeild setTag:indexPath.section];
+        paymentCell.amountTxtFeild.delegate=self;
+        
+        [paymentCell.amountTxtFeild setText:@""];
+        
+        [ShareOneUtility setAccesoryViewForTextFeild:paymentCell.amountTxtFeild WithDelegate:weakSelf AndSelecter:@"textViewDoneButtonPressed:"];
+
+        
+        [paymentCell.payButtonBtn setTag:indexPath.section];
+        [paymentCell.payButtonBtn addTarget:self action:@selector(sendMoney:) forControlEvents:UIControlEventTouchUpInside];
+
+
+
+        cell = paymentCell;
+
+
+        
+    }
     
-    
-    [editCell.nickNameTxtFeild setTag:indexPath.section];
-    [editCell.urlTxtFeild setTag:indexPath.section];
-    
-    NSDictionary *contactDict = contactsArr[indexPath.section];
-    NSString *profileLink = [ShareOneUtility getFavouriteContactProfileLinkWithObject:contactDict];
-    NSString *profileNickname = [ShareOneUtility getFavouriteContactNickNameWithObject:contactDict];
-    
-    
-    
-    [editCell.nickNameTxtFeild setText:profileNickname];
-    [editCell.urlTxtFeild setText:profileLink];
-    
-    editCell.nickNameTxtFeild.delegate=self;
-    editCell.urlTxtFeild.delegate=self;
-    [editCell.confirmContactNameBtn setTag:indexPath.section];
-    [editCell.confirmContactNameBtn addTarget:self action:@selector(confirmButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    cell = editCell;
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    ContactsHeaderView *objFZAccordionTableViewHeaderView =(ContactsHeaderView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kContactsHeaderViewReuseIdentifier];
+    UIView *headerView = nil;
+    if(section+1>[contactsArr count]){
+        
+        MoneyTransferHeader *objFZAccordionTableViewHeaderView =(MoneyTransferHeader *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kMoneyTransferHeaderViewReuseIdentifier];
+        
+        [objFZAccordionTableViewHeaderView.transferBtn setTag:section];
+        
+        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+        [objFZAccordionTableViewHeaderView.transferBtn addTarget:self action:@selector(transferButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        headerView = objFZAccordionTableViewHeaderView;
+
+    }
+    else{
+        
+        ContactsHeaderView *objFZAccordionTableViewHeaderView =(ContactsHeaderView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kContactsHeaderViewReuseIdentifier];
+        
+        NSDictionary *contactsDict = contactsArr[section];
+        NSString *profileName = [ShareOneUtility getFavouriteContactNickNameWithObject:contactsDict];
+        
+        [objFZAccordionTableViewHeaderView.editImageView setHidden:TRUE];
+        [objFZAccordionTableViewHeaderView.deleteButton setTag:section];
+        
+        [objFZAccordionTableViewHeaderView.deleteImageView setImage:[UIImage imageNamed:@"pay_btn_payment"]];
+        
+        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+        [objFZAccordionTableViewHeaderView.contactNameLbl setText:profileName];
+        
+        
+        [objFZAccordionTableViewHeaderView.deleteButton addTarget:self action:@selector(payButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        headerView = objFZAccordionTableViewHeaderView;
+
+    }
     
-    NSDictionary *contactsDict = contactsArr[section];
-    NSString *profileName = [ShareOneUtility getFavouriteContactNickNameWithObject:contactsDict];
-    
-    [objFZAccordionTableViewHeaderView.editButton setHidden:TRUE];
-    [objFZAccordionTableViewHeaderView.deleteButton setTag:section];
-    
-    [objFZAccordionTableViewHeaderView.deleteButton setImage:[UIImage imageNamed:@"pay_btn_payment"] forState:UIControlStateNormal];
-    
-    [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
-    [objFZAccordionTableViewHeaderView.contactNameLbl setText:profileName];
-    
-    
-    [objFZAccordionTableViewHeaderView.deleteButton addTarget:self action:@selector(deleteButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    return (UIView *)objFZAccordionTableViewHeaderView;
+    return headerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 
-#pragma mark - Selector Methods
--(void)deleteButtonAction:(id)sender{
+-(void)textViewDoneButtonPressed:(id)sender{
     
-//    UIButton *btnCase = (UIButton *)sender;
-//    int sectionSelected = (int) btnCase.tag;
-//    
-//    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
-//    
-//    if([self.favContactsTblView isSectionOpen:sectionSelected] && !_isFromDelete){
-//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
-//    }
-//    _isFromDelete = YES;
-//    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    [self.view endEditing:TRUE];
+    _yConstriantTblView.constant=0;
 }
 
+#pragma mark - Selector Methods
+-(void)payButtonAction:(id)sender{
+    
+    UIButton *btnCase = (UIButton *)sender;
+    int sectionSelected = (int) btnCase.tag;
+    
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
+    
+    if([self.favContactsTblView isSectionOpen:sectionSelected]){
+        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    }
+    else
+        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+}
+
+-(void)sendMoney:(id)sender{
+    
+    _yConstriantTblView.constant=0;
+
+    UIButton *btn = (UIButton *)sender;
+    int selectedIndex = (int)btn.tag;
+    
+    
+    PaymentCell *cell = (PaymentCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:selectedIndex]];
+
+    NSDictionary *dict = contactsArr[selectedIndex];
+    NSString *name =[dict valueForKey:@"profie_link"];
+    NSString *amount = cell.amountTxtFeild.text;
+    
+    [cell.amountTxtFeild resignFirstResponder];
+
+    [self loadUrlWithName:name AndAmount:amount];
+
+}
+-(void)transferButtonAction:(id)sender{
+    UIButton *btnCase = (UIButton *)sender;
+    int sectionSelected = (int) btnCase.tag;
+    
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
+    
+    if([self.favContactsTblView isSectionOpen:sectionSelected]){
+        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    }
+    else
+        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+
+}
 -(void)editButtonAction:(id)sender{
     
 //    UIButton *btnCase = (UIButton *)sender;
@@ -191,30 +363,22 @@
 //    }
 }
 
--(void)confirmButtonClicked:(id)sender{
+-(void)transferMoneyButtonClick:(id)sender{
     
-//    UIButton *btn = (UIButton *)sender;
-//    int buttonTag = (int)btn.tag;
-//    
-//    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
-//    
-//    EditContactCell *cell = (EditContactCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
-//    
-//    NSMutableDictionary *dict = [contactsArr[buttonTag] mutableCopy];
-//    [dict setValue:[cell.urlTxtFeild text] forKey:@"profie_link"];
-//    [dict setValue:[cell.nickNameTxtFeild text] forKey:@"nick_name"];
-//    
-//    [contactsArr replaceObjectAtIndex:buttonTag withObject:dict];
-//    
-//    [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
-//    [cell.urlTxtFeild resignFirstResponder];
-//    [cell.nickNameTxtFeild resignFirstResponder];
-//    
-//    _yConstriantTblView.constant=20;
-//    
-//    [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
-//    
-//    [_favContactsTblView reloadData];
+    _yConstriantTblView.constant=0;
+
+    UIButton *btn = (UIButton *)sender;
+    int buttonTag = (int)btn.tag;
+    
+    TransferSomeOneElseCell*cell = (TransferSomeOneElseCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
+    
+    NSString *name =cell.profileLinkTxtFeild.text;
+    NSString *amount = cell.amountTxtFeild.text;
+    
+    [cell.amountTxtFeild resignFirstResponder];
+    [cell.profileLinkTxtFeild resignFirstResponder];
+    
+    [self loadUrlWithName:name AndAmount:amount];
     
 }
 
@@ -238,13 +402,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-//    if(![textField isEqual:_profileLinkTextFeild] && ![textField isEqual:_profileNameTextFeild]){
-//        if([contactsArr count]>=5)
-//            _yConstriantTblView.constant=-self.view.frame.size.height/3.5;
-//        else
-//            _yConstriantTblView.constant=-self.view.frame.size.height/2.5;
-//    }
-    
+    _yConstriantTblView.constant=-self.view.frame.size.height/4.5;
     return TRUE;
 }
 
@@ -255,22 +413,42 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
-//    int buttonTag = (int)textField.tag;
-//    
-//    [textField resignFirstResponder];
-//    
-//    EditContactCell *cell = (EditContactCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
-//    
-//    if([textField isEqual:cell.nickNameTxtFeild]){
-//        [cell.urlTxtFeild becomeFirstResponder];
-//    }
-//    
-//    if([textField isEqual:cell.urlTxtFeild]){
-//        [self confirmButtonClicked:textField];
-//    }
-    
+    [self adjustTextFeildPositionForTextFeild:textField];
     
     return TRUE;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [self adjustTextFeildPositionForTextFeild:textField];
+}
+
+-(void)adjustTextFeildPositionForTextFeild:(UITextField *)textField{
+    int buttonTag = (int)textField.tag;
+    
+    [textField resignFirstResponder];
+    
+    UITableViewCell *cell = (UITableViewCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
+    
+    if([cell isKindOfClass:[PaymentCell class]]){
+        PaymentCell *pCell = (PaymentCell *)cell;
+        _yConstriantTblView.constant=0;
+    }
+    
+    
+    if([cell isKindOfClass:[TransferSomeOneElseCell class]]){
+        
+        TransferSomeOneElseCell *tCell = (TransferSomeOneElseCell *)cell;
+        
+        if([textField isEqual:tCell.profileLinkTxtFeild]){
+            [tCell.amountTxtFeild becomeFirstResponder];
+        }
+        
+        if([textField isEqual:tCell.amountTxtFeild]){
+            
+            _yConstriantTblView.constant=0;
+        }
+    }
+
 }
 
 
