@@ -209,6 +209,12 @@
 }
 
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return TRUE;
+}
+
 - (BOOL)shouldAutorotate{
     
     return YES;

@@ -28,6 +28,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *drivestatusLbl;
 @property (nonatomic, weak) IBOutlet UIButton *getDirectionbtn;
 @property (nonatomic, weak) IBOutlet UIButton *currentLocationBtn;
+@property (nonatomic, weak) IBOutlet UILabel *cityStateLbl;
+
 
 
 @end

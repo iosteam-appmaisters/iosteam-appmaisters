@@ -49,7 +49,7 @@
 
     
     [_profileLinkTextFeild setText:@"paypal.me/"];
-    [_profileNameTextFeild setText:@"Asd"];
+//    [_profileNameTextFeild setText:@"Asd"];
 
 
     // Do any additional setup after loading the view.
@@ -161,7 +161,7 @@
     
     [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
     [_favContactsTblView reloadData];
-//    [_profileNameTextFeild setText:@""];
+    [_profileNameTextFeild setText:@""];
     [_profileNameTextFeild resignFirstResponder];
     [_profileLinkTextFeild resignFirstResponder];
     [self updateViewWithRefrenceOfContacts];
