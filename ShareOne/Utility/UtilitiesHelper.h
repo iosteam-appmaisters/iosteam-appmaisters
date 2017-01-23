@@ -105,6 +105,8 @@
 - (void)startTimerWithCompletionBlock:(void(^)(BOOL  sucess))block;
 - (void)cancelTimer;
 
++(void)shouldHideTouchID:(id)delegate completionBlock:(void(^)(BOOL success))block;
+
 
 @end
 

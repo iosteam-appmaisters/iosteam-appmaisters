@@ -8,6 +8,7 @@
 
 #import "WeblinksController.h"
 #import "ShareOneUtility.h"
+#import "ConstantsShareOne.h"
 
 @interface WeblinksController ()
 
@@ -29,7 +30,12 @@
 
 -(void)updateWebLinks{
     _navBar.topItem.title = _navTitle;
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_webLink]]];
+    
+   NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_webLink]];
+    
+    [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+    [_webView loadRequest:request];
+
 }
 -(IBAction)backButtonClicked:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -40,6 +46,17 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
 
     [ShareOneUtility hideProgressViewOnView:self.view];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    NSLog(@"didFailLoadWithError : %@",error);
+    
+    [ShareOneUtility hideProgressViewOnView:self.view];
+
+    
+    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+    
 }
 
 - (BOOL)shouldAutorotate{

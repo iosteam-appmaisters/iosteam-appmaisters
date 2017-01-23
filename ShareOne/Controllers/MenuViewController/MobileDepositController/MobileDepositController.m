@@ -82,11 +82,24 @@
     [super viewDidLoad];
     [self startUpMethod];
     [self loadDataOnPickerView];
+    [self vertifyUserRegistrationValidation];
     //[self getRegisterToVirtifi];
     //[self getListOfReviewDeposits];
     //[self getListOfPast6MonthsDeposits];
 }
 
+-(void)vertifyUserRegistrationValidation{
+    
+    __weak MobileDepositController *weakSelf = self;
+
+    User *user = [ShareOneUtility getUserObject];
+    
+    if([user.LoginValidation isEqualToString:VERTIFY_LOGIN_VALIDATION]){
+        [_submittBtn setHidden:TRUE];
+        [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE title:@"" delegate:weakSelf];
+
+    }
+}
 -(IBAction)submittButtonClicked:(id)sender{
     
     __weak MobileDepositController *weakSelf = self;
@@ -260,7 +273,7 @@
             
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
-           NSString *localizeErrorMessage=@"The service is temporarily unavailable, please try again later.";
+           NSString *localizeErrorMessage=ERROR_MESSAGE;
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
 
@@ -313,7 +326,7 @@
         }
         else{
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            NSString *localizeErrorMessage=@"The service is temporarily unavailable, please try again later.";
+            NSString *localizeErrorMessage=ERROR_MESSAGE;
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
             
@@ -421,7 +434,7 @@
         }
         else{
             
-            NSString *localizeErrorMessage=@"The service is temporarily unavailable, please try again later.";
+            NSString *localizeErrorMessage=ERROR_MESSAGE;
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
             

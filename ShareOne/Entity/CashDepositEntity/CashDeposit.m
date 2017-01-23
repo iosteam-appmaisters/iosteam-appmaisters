@@ -53,9 +53,11 @@
             User *user = [ShareOneUtility getUserObject];
             user.vertifyEUAContents= obj.EUAContents;
             
+            if(LoginValidation)
+                user.LoginValidation=LoginValidation;
+            
             [ShareOneUtility getSavedObjectOfCurrentLoginUser:user];
 
-            
             block(obj,TRUE);
         }
         else{

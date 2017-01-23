@@ -138,7 +138,10 @@
 #define NOTIFICATION_SETTINGS_UPDATION  @"NOTIFICATION_SETTINGS_UPDATION"
 #define TOUCH_ID_SETTINGS_UPDATION      @"TOUCH_ID_SETTINGS_UPDATION"
 
-#define RESPONSE_TIME_OUT               60.0
+#define ERROR_MESSAGE                  @"The service is temporarily unavailable, please try again later."
+#define RESPONSE_TIME_OUT              60.0
+#define RESPONSE_TIME_OUT_WEB_VIEW     30.0
+
 
 
 #define ADVERTISMENT_WEBVIEW_TAG    1122334
@@ -153,6 +156,11 @@
 #define ROUTING_VALUE               @"700000465"
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+
+
+#define VERTIFY_LOGIN_VALIDATION                @"User Registration Pending Approval"
+#define VERTIFY_LOGIN_VALIDATION_MESSAGE       @"User Registration Pending For Approval"
 
 
 

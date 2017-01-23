@@ -32,6 +32,21 @@
 }
 -(void)loadSettingsLocally{
     
+    __weak SettingsViewController *weakSelf = self;
+
+    [ShareOneUtility shouldHideTouchID:weakSelf completionBlock:^(BOOL success) {
+        if(success){
+            
+            [_touchIDLable setHidden:TRUE];
+            [_touchIDSwitch setHidden:TRUE];
+        }
+        else{
+            [_touchIDLable setHidden:FALSE];
+            [_touchIDSwitch setHidden:FALSE];
+
+        }
+    }];
+
     [_quickBalanceSwitch setOn:[ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_showOffersSwitch setOn:[ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]];
     [_touchIDSwitch setOn:[ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]];

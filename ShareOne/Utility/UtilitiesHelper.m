@@ -971,65 +971,65 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     if (![myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]){
         dispatch_async(dispatch_get_main_queue(), ^{
             
-//            NSString *errorMessage = nil;
-//            
-//            switch ([authError code]) {
-//                case -1:{
-//                    NSLog(@"authenticationFailed");
-//                }
-//                    break;
-//                    
-//                case -2:{
-//                    NSLog(@"userCancel");
-//                }
-//                    break;
-//                    
-//                case -3:{
-//                    NSLog(@"userFallback");
-//                }
-//                    break;
-//                    
-//                case -4:{
-//                    NSLog(@"systemCancel");
-//                }
-//                    break;
-//                    
-//                case -5:{
-//                    NSLog(@"passcodeNotSet");
-//                }
-//                    break;
-//                    
-//                case -6:{
-//                    NSLog(@"touchIDNotAvailable");
-//                }
-//                    break;
-//                    
-//                case -7:{
-//                    NSLog(@"touchIDNotEnrolled");
-//                }
-//                    break;
-//                    
-//                case -8:{
-//                    NSLog(@"touchIDLockout");
-//                }
-//                    break;
-//                    
-//                case -9:{
-//                    NSLog(@"appCancel");
-//                }
-//                    break;
-//                    
-//                case -10:{
-//                    NSLog(@"invalidContext");
-//                }
-//                    break;
-//
-//                    
-//                default:
-//                    errorMessage = authError.localizedDescription;
-//                    break;
-//            }
+            NSString *errorMessage = nil;
+            
             flag = FALSE;
+            switch ([authError code]) {
+                case -1:{
+                    NSLog(@"authenticationFailed");
+                }
+                    break;
+                    
+                case -2:{
+                    NSLog(@"userCancel");
+                }
+                    break;
+                    
+                case -3:{
+                    NSLog(@"userFallback");
+                }
+                    break;
+                    
+                case -4:{
+                    NSLog(@"systemCancel");
+                }
+                    break;
+                    
+                case -5:{
+                    NSLog(@"passcodeNotSet");
+                }
+                    break;
+                    
+                case -6:{
+                    NSLog(@"touchIDNotAvailable");
+                }
+                    break;
+                    
+                case -7:{
+                    NSLog(@"touchIDNotEnrolled");
+                }
+                    break;
+                    
+                case -8:{
+                    NSLog(@"touchIDLockout");
+                }
+                    break;
+                    
+                case -9:{
+                    NSLog(@"appCancel");
+                }
+                    break;
+                    
+                case -10:{
+                    NSLog(@"invalidContext");
+                }
+                    break;
+
+                    
+                default:
+                    errorMessage = authError.localizedDescription;
+                    break;
+            }
             [[UtilitiesHelper shareUtitlities] showToastWithMessage:authError.localizedDescription title:@"Error" delegate:delegate];
             block(FALSE);
         });
@@ -1039,6 +1039,37 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     }
 }
 
+
++(void)shouldHideTouchID:(id)delegate completionBlock:(void(^)(BOOL success))block{
+    
+    __block BOOL flag= FALSE;
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    
+    if (![myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            flag = FALSE;
+            switch ([authError code]) {
+                    
+                case -6:{
+                    flag = TRUE;
+                    NSLog(@"touchIDNotAvailable");
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            block(flag);
+        });
+    }
+    else{
+        block(flag);
+    }
+
+}
 - (void)startTimerWithCompletionBlock:(void(^)(BOOL  sucess))block
 {
     if(!_timer){

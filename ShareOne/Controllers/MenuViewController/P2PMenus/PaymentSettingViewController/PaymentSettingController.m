@@ -143,7 +143,13 @@
     
     NSString *paypal_url = nil;
     paypal_url = @"https://www.paypal.me";
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:paypal_url]]];
+    
+    
+    NSMutableURLRequest  *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:paypal_url]];
+    
+    [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+    [_webView loadRequest:request];
+
 }
 
 -(IBAction)AddToFavouriteButtonClicked:(id)sender{
@@ -181,6 +187,17 @@
     __weak PaymentSettingController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    NSLog(@"didFailLoadWithError : %@",error);
+    
+    [ShareOneUtility hideProgressViewOnView:self.view];
+    
+    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {

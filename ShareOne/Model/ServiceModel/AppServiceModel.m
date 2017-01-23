@@ -1277,7 +1277,7 @@
     
     NSString *localizeErrorMessage = nil;
     
-    localizeErrorMessage=@"The service is temporarily unavailable, please try again later.";
+    localizeErrorMessage=ERROR_MESSAGE;
     
     return localizeErrorMessage;
 }

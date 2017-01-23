@@ -111,12 +111,18 @@
 
     NSString *paypal_url = nil;
     
+    NSMutableURLRequest *request;
     if(amount)
         paypal_url = [NSString stringWithFormat:@"https://www.%@/%.2f",name,[amount floatValue]];
     else
         paypal_url = name;
     
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:paypal_url]]];
+    request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:paypal_url]];
+    
+    [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+    [_webView loadRequest:request];
+    
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:paypal_url]]];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
@@ -124,6 +130,17 @@
     __weak PaymentController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    NSLog(@"didFailLoadWithError : %@",error);
+    
+    [ShareOneUtility hideProgressViewOnView:self.view];
+    
+    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+    
+}
+
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 

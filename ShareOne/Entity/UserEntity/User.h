@@ -86,9 +86,7 @@
 
 @property (nonatomic,strong) NSArray *Requirements;
 
-
-
-
+@property (nonatomic,strong) NSString *LoginValidation;
 
 
 +(void)getUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock;

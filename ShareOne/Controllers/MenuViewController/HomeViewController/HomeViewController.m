@@ -60,17 +60,28 @@
         _url = @"";
 
     
+    __block NSMutableURLRequest *request = nil;
     
     
     if([_url containsString:@"nsmobiledemo"]){
-        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+        
+        request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
+//        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+        
+        [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+        [weakSelf.webview loadRequest:request];
+        
     }
     
     else{
         
         [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
             
-            [weakSelf.webview loadRequest:(NSMutableURLRequest *)urlPath];
+            request =(NSMutableURLRequest *)[urlPath mutableCopy];
+            
+            [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+
+            [weakSelf.webview loadRequest:request];
             
         } failureBlock:^(NSError *error) {
             
@@ -249,6 +260,11 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
     NSLog(@"didFailLoadWithError : %@",error);
+    
+    [ShareOneUtility hideProgressViewOnView:self.view];
+    
+    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+    
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{

@@ -303,7 +303,7 @@
         self.Name=[decoder decodeObjectForKey:@"Name"];
         self.Email=[decoder decodeObjectForKey:@"Email"];
         self.favouriteContactsArray=[decoder decodeObjectForKey:@"favouriteContactsArray"];
-
+        self.LoginValidation=[decoder decodeObjectForKey:@"LoginValidation"];
 
     }
     return self;
@@ -335,6 +335,8 @@
     [encoder encodeObject: self.Name forKey:@"Name"];
     [encoder encodeObject: self.Email forKey:@"Email"];
     [encoder encodeObject: self.favouriteContactsArray forKey:@"favouriteContactsArray"];
+    [encoder encodeObject: self.LoginValidation forKey:@"LoginValidation"];
+
 
 
 }
