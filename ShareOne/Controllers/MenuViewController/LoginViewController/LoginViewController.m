@@ -127,7 +127,8 @@
     if([ShareOneUtility isUserRemembered]){
         User *user = [ShareOneUtility getUserObject];
         [_userIDTxt setText:user.UserName];
-//        [_passwordTxt setText:@"123"];
+        [_passwordTxt setText:@""];
+        //d7d6d1f8
         //skipme
 
 //        [_passwordTxt setText:user.Password];
@@ -137,25 +138,6 @@
         [_passwordTxt setText:@""];
     }
     
-    /*
-     **  Call login service auto only if touch is enabled
-     
-     if([ShareOneUtility getUserObject]  && [ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
-        //[self loginButtonClicked:nil];
-        
-        if(_isComingAfterPressedOpenUrlButton){
-            _isComingAfterPressedOpenUrlButton= FALSE;
-        }
-        else{
-            [self showTouchID];
-            [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-        }
-    }
-    */
-
-    /*
-     **  Call login service auto only if touch is enabled
-     */
     
     if([ShareOneUtility getUserObject] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
         
@@ -169,7 +151,7 @@
             if([[SharedUser sharedManager] isLaunchFirstTime]){
                 // if is coming after calling didFinishLaunchingWithOptions
                 
-                if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
+                if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
                     
                     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
                     
@@ -237,13 +219,7 @@
                 else{
                     // if coming from background when touch id is off
                     
-                    if([[SharedUser sharedManager] isLogingOutFromHome]){
-                        
                         [self applyConditionsForSessionValidation];
-                        [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
-
-
-                    }
                 }
             }
             
@@ -260,16 +236,28 @@
 
 -(void)applyConditionsForSessionValidation{
     
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
+        [self showTouchID];
+        return;
+    }
+
     if([[SharedUser sharedManager] isLogingOutFromHome]){
         
-        if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
-            [self showTouchID];
-        }
-        else{
             [self validateSessionForTouchID_OffSession];
-        }
+        
         [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
     }
+
+//    if([[SharedUser sharedManager] isLogingOutFromHome]){
+//        
+//        if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
+//            [self showTouchID];
+//        }
+//        else{
+//            [self validateSessionForTouchID_OffSession];
+//        }
+//        [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
+//    }
 }
 -(void)validateSessionForTouchID_OffSession{
     
@@ -317,7 +305,7 @@
     
     __weak LoginViewController *weakSelf = self;
     
-    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
         
         [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
         
@@ -499,7 +487,7 @@
     
 }
 
-- (void)getSignInWithUser:(User *)user{
+- (void)getSignInWithUser:(User *)local_user{
     
     __weak LoginViewController *weakSelf = self;
 //    [weakSelf.loadingView setHidden:FALSE];
@@ -507,17 +495,22 @@
 
 //    [weakSelf startApplication];
 //    return; //skipme
-    NSLog(@"username : %@  password: %@",user.UserName,user.Password);
-    [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:user.UserName,@"account",user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
+    NSLog(@"username : %@  password: %@",local_user.UserName,local_user.Password);
+    [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:local_user.UserName,@"account",local_user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
-        if(user){
+        if([user isKindOfClass:[User class]]){
             
             if(_objPinResetController){
                 [_objPinResetController dismissViewControllerAnimated:NO completion:nil];
                 _objPinResetController=nil;
-                
+            }
+            
+//            [weakSelf addPasswordChangeController:user];
+//
+//            return ;
+            // if user has any requirment like PinChange or ChangeAccountName process it before continuing.
                 if(user.Requirements){
                     if([user.Requirements count]>1){
                         NSString *status = user.Requirements[0];
@@ -539,7 +532,7 @@
                     }
                     
                 }
-            }
+            
             else{
                 // Go though to thee application
                 //asi flow
@@ -547,12 +540,68 @@
                 [weakSelf startLoadingServices];
             }
         }
+        else if([user isKindOfClass:[NSString class]]){
+            
+            NSString *errorString = (NSString *)user;
+            
+            NSString *errorCodeString = [ShareOneUtility parseCustomErrorObject:errorString forKey:@"code"];
+            NSString *errorMessage = [ShareOneUtility parseCustomErrorObject:errorString forKey:@"text"];
+
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@""
+                                          message:errorMessage
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     int errorCode = [errorCodeString intValue];
+                                     if(errorCode ==PASSWORD_EXPIRED_ERROR_CODE){
+                                         [weakSelf addPasswordChangeController:local_user];
+                                     }
+
+                                     
+                                 }];
+            [alert addAction:ok];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+
+            
+        }
+        else if (!user){
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+        }
         
     } failureBlock:^(NSError *error) {
         
     }];
     
 }
+
+#pragma mark - Status Alert Message
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
 
 
 -(void)startLoadingServicesFromChangePassword:(User *)user{
@@ -576,6 +625,12 @@
 }
 
 -(void)addPasswordChangeController:(User *)user{
+    
+    user.isTouchIDOpen=FALSE;
+    
+    [[SharedUser sharedManager] setUserObject:user];
+    [ShareOneUtility changeToExistingUser:user];
+    [ShareOneUtility saveUserObject:user];
     _isComingAfterPressedOpenUrlButton = TRUE;
 
     PasswordChangeController *objPasswordChangeController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PasswordChangeController class])];

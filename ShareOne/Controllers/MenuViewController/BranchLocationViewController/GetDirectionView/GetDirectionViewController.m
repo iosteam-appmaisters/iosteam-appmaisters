@@ -68,10 +68,9 @@
     float lon=[[latlongArr objectAtIndex:1] floatValue];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat
                                                             longitude:lon
-                                                                 zoom:13];
+                                                                 zoom:10];
     _mapView.camera=camera;
-    //_mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    _mapView.myLocationEnabled = YES;
+//    _mapView.myLocationEnabled = YES;
     
     [self createGoogleMapMarker:_mapView];
 }
@@ -117,6 +116,7 @@
     }
     [self setpolyLine];
 }
+
 -(void)setpolyLine
 {
     _routeController = [LRouteController new];

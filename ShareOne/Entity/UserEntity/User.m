@@ -74,9 +74,9 @@
     [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_LOGIN] delegate:delegate completionBlock:^(NSObject *response) {
         
         User* user;
-        if(response){
+        if([response isKindOfClass:[NSDictionary class]]){
 
-            [ShareOneUtility setStatusOfPasswordChanged:NO];
+//            [ShareOneUtility setStatusOfPasswordChanged:NO];
             user = [[User alloc]initWithDictionary:(NSDictionary *)response];
             user.UserName=[param valueForKey:@"account"];
             user.Password=[param valueForKey:@"password"];
@@ -85,16 +85,16 @@
             //[ShareOneUtility saveUserObject:user];
             
             [ShareOneUtility saveUserObjectToLocalObjects:user];
+            block(user);
             
             //[ShareOneUtility setPreferencesOnLaunch];
         }
-        
-        if(response)
-            block(user);
+       else if([response isKindOfClass:[NSString class]]){
+            block((NSString *)response);
+        }
         else
             block(nil);
 
-        
     } failureBlock:^(NSError *error) {
         failBlock(error);
     }];

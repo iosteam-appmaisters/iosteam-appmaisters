@@ -139,7 +139,7 @@
     [_webViewParent setHidden:FALSE];
     [_closeBtn setHidden:FALSE];
     __weak PaymentSettingController *weakSelf = self;
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    [ShareOneUtility showProgressViewOnView:weakSelf.webView];
     
     NSString *paypal_url = nil;
     paypal_url = @"https://www.paypal.me";
@@ -179,13 +179,13 @@
     [_webViewParent setHidden:TRUE];
     [_closeBtn setHidden:TRUE];
     __weak PaymentSettingController *weakSelf = self;
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    [ShareOneUtility hideProgressViewOnView:weakSelf.webView];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     __weak PaymentSettingController *weakSelf = self;
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    [ShareOneUtility hideProgressViewOnView:weakSelf.webView];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{

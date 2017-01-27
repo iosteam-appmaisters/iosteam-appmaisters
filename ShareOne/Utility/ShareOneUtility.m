@@ -360,7 +360,41 @@ NSLog(Y, Z);		\
     return  (User *)[NSKeyedUnarchiver unarchiveObjectWithData:archivedObject];
 }
 
-+(void)saveUserObjectToLocalObjects:(User *)user{
+
++(void)changeToExistingUser:(User *)user{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    __block User *userFound = nil;
+    
+    NSMutableArray *existingUsers = [[self getUserObjectsFromLocalObjects] mutableCopy];
+    if(!existingUsers)
+        existingUsers = [[NSMutableArray alloc] init];
+    
+    __block int indexOfFoundUser;
+    
+    [existingUsers enumerateObjectsUsingBlock:^(NSData *objArchiveData, NSUInteger idx, BOOL * stop) {
+        User *saveedUser = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:objArchiveData];
+        if([[saveedUser Account] intValue]==[[user Account] intValue])
+        {
+            indexOfFoundUser =idx;
+            userFound=saveedUser;
+            *stop=TRUE;
+        }
+    }];
+    
+    userFound = user;
+
+    NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:userFound];
+    
+    [existingUsers replaceObjectAtIndex:indexOfFoundUser withObject:archivedObject];
+    
+    [defaults setObject:existingUsers forKey:ALL_USER_OBJECTS];
+    
+    [defaults synchronize];
+
+}
++(void)saveUserObjectToLocalObjects:(User *)newUser{
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
@@ -370,9 +404,12 @@ NSLog(Y, Z);		\
     if(!existingUsers)
         existingUsers = [[NSMutableArray alloc] init];
     
+    __block int indexOfFoundUser;
+    
     [existingUsers enumerateObjectsUsingBlock:^(NSData *objArchiveData, NSUInteger idx, BOOL * stop) {
         User *saveedUser = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:objArchiveData];
-        if([[saveedUser Account] intValue]==[[user Account] intValue]){
+        if([[saveedUser Account] intValue]==[[newUser Account] intValue]){
+            indexOfFoundUser =idx;
             userFound=saveedUser;
             *stop=TRUE;
         }
@@ -383,27 +420,29 @@ NSLog(Y, Z);		\
         
         // User exist in Local DB
 //        NSLog(@"USER EXIST");
-        [self copySettingsOfSavedUserToNewLoginInfo:user AndOldUser:userFound];
-        NSMutableArray *contactsArr = user.favouriteContactsArray;
+        [self copySettingsOfSavedUserToNewLoginInfo:newUser AndOldUser:userFound];
+        NSMutableArray *contactsArr = newUser.favouriteContactsArray;
         //swaping old to new object
         //userFound = user;
-        user = userFound;
-        user.favouriteContactsArray=contactsArr;
+        newUser = userFound;
+        newUser.favouriteContactsArray=contactsArr;
 
 //        [[SharedUser sharedManager] setUserObject:user];
+        
 
-        [self saveUserObject:user];
+
+        [self saveUserObject:newUser];
         
     }
     else{
         
         // New User
         
-        [self setDefaultSettngOnUser:user];
-        NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:user];
+        [self setDefaultSettngOnUser:newUser];
+        NSData *archivedObject = [NSKeyedArchiver archivedDataWithRootObject:newUser];
         [existingUsers addObject:archivedObject];
         
-        [self saveUserObject:user];
+        [self saveUserObject:newUser];
 
     }
     
@@ -502,6 +541,8 @@ NSLog(Y, Z);		\
     
     //swap contexid
     savedUser.Contextid=newUser.Contextid;
+//    savedUser.isTouchIDOpen=newUser.isTouchIDOpen;
+
 //    savedUser.favouriteContactsArray=newUser.favouriteContactsArray;
 
 }
@@ -1423,6 +1464,23 @@ NSLog(Y, Z);		\
     keyboardToolbar.items = @[flexBarButton, doneBarButton];
     textFeld.inputAccessoryView = keyboardToolbar;
 
+}
+
+
++(NSString *)parseCustomErrorObject:(NSString *)customError forKey:(NSString *)key{
+    
+    NSString *localizeMessage = nil;
+    NSDictionary *json = nil;
+    if(customError){
+        NSData *data = [customError dataUsingEncoding:NSUTF8StringEncoding];
+        json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        
+        if(json)
+            localizeMessage = [json valueForKey:key];
+    }
+    
+    return localizeMessage;
+    
 }
 
 @end

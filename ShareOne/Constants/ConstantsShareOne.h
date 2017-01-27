@@ -160,10 +160,10 @@
 
 
 #define VERTIFY_LOGIN_VALIDATION                @"User Registration Pending Approval"
-#define VERTIFY_LOGIN_VALIDATION_MESSAGE       @"User Registration Pending For Approval"
+#define VERTIFY_LOGIN_VALIDATION_MESSAGE       @"User registration pending for approval"
 
 
-
+#define PASSWORD_EXPIRED_ERROR_CODE     5162
 
 
 #endif

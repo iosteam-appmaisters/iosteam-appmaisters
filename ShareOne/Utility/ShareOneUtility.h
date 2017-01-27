@@ -160,9 +160,9 @@
 
 +(void)showProgressOnLoginViewForReAuthentication:(UIView *)view;
 
-+ (void)setStatusOfPasswordChanged:(BOOL)isComingFromPasswordChanged;
-
-+ (BOOL)isComingFromPasswordChanged;
+//+ (void)setStatusOfPasswordChanged:(BOOL)isComingFromPasswordChanged;
+//
+//+ (BOOL)isComingFromPasswordChanged;
 
 +(UIImage *)getImageFromBase64String:(NSString *)base64String;
 
@@ -174,5 +174,9 @@
 +(NSMutableArray *)getFavContactsForUser:(User *)user;+(void)saveContactsForUser:(User *)user withArray:(NSMutableArray *)array;
 
 + (void)setAccesoryViewForTextFeild:(UITextField *)textFeld WithDelegate:(id)delegate AndSelecter:(NSString *)selectorString;
+
++(void)changeToExistingUser:(User *)user;
+
++(NSString *)parseCustomErrorObject:(NSString *)customError forKey:(NSString *)key;
 
 @end

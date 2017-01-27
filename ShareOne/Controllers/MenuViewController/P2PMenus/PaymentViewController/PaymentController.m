@@ -67,6 +67,7 @@
 
 
 -(IBAction)closeWebView:(id)sender{
+    
     [_webViewParent setHidden:TRUE];
     [_closeBtn setHidden:TRUE];
     __weak PaymentController *weakSelf = self;
@@ -107,7 +108,9 @@
     [_webViewParent setHidden:FALSE];
     [_closeBtn setHidden:FALSE];
     __weak PaymentController *weakSelf = self;
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    [ShareOneUtility showProgressViewOnView:weakSelf.webView];
+    
+    
 
     NSString *paypal_url = nil;
     
@@ -128,14 +131,14 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     __weak PaymentController *weakSelf = self;
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    [ShareOneUtility hideProgressViewOnView:weakSelf.webView];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
     NSLog(@"didFailLoadWithError : %@",error);
     
-    [ShareOneUtility hideProgressViewOnView:self.view];
+    [ShareOneUtility hideProgressViewOnView:self.webView];
     
     [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
     
@@ -307,6 +310,8 @@
     
     PaymentCell *cell = (PaymentCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:selectedIndex]];
 
+    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:selectedIndex];
+
     NSDictionary *dict = contactsArr[selectedIndex];
     NSString *name =[dict valueForKey:@"profie_link"];
     NSString *amount = cell.amountTxtFeild.text;
@@ -314,6 +319,10 @@
     [cell.amountTxtFeild resignFirstResponder];
 
     [self loadUrlWithName:name AndAmount:amount];
+    
+    [self.favContactsTblView toggleSection:selectedIndex withHeaderView:groupSectionHeaderView];
+
+    [_favContactsTblView reloadData];
 
 }
 -(void)transferButtonAction:(id)sender{

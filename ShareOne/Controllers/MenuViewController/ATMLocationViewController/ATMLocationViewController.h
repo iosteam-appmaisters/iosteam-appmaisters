@@ -13,5 +13,8 @@
 
 @property (nonatomic,strong)NSArray *locationArr;
 @property int selectedIndex;
+@property (nonatomic,weak)IBOutlet UIButton *getDirectionButton;
+
+-(IBAction)getDirectionButtonAction:(id)sender;
 
 @end

@@ -228,12 +228,7 @@
         NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
         [req setHTTPBody:httpBody];
         
-        
-        //        AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
-        //        responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
-        
         AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
-        
         manager.responseSerializer = responseSerializer;
         
     }
@@ -269,173 +264,19 @@
             
             [self hideProgressAlert];
             
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+            if(![req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN]){
+                [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+            }
             
             if([req.URL.absoluteString containsString:KMEMBER_DEVICES])
                 failBlock(error);
             
-            if([req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN])
-                block(nil);
-
-            
+            if([req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN]){
+                block(errorString);
+            }
         }
     }] resume];
     
-    
-
-    
-    /*
-    if(auth_header){
-     
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
-        __weak ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
-     
-        // Setting Headers for Own servers
-        if(auth_header){
-            [self setHeaderOnRequest:(NSMutableURLRequest *)requestASI withAuth:auth_header];
-        }
-        
-        [requestASI setRequestMethod:RequestType_POST];
-        
-        
-        if(params){
-            NSError *error;
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            NSData* requestData = [NSData dataWithBytes:[jsonString UTF8String] length:[jsonString length]];
-            [requestASI appendPostData:requestData];
-        }
-        
-        [requestASI setCompletionBlock:^{
-            NSString *responseString = [requestASI responseString];
-            NSLog(@"URL : %@ Response: %@",url, responseString);
-            
-            
-            NSDictionary *jsonDict = [self parseResponseToJsonWithData:[requestASI responseData]];
-            
-            
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            [self hideProgressAlert];
-            
-            
-            if([jsonDict isKindOfClass:[NSArray class]] || [jsonDict isKindOfClass:[NSDictionary class]]){
-                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                [self hideProgressAlert];
-                block(jsonDict);
-                            
-            }
-            else{
-                NSDictionary *errorInfo = [self getErrorObjectWithStatusMessage:requestASI.responseStatusMessage andStatusCode:requestASI.responseStatusCode];
-                
-                [self hideProgressAlert];
-                failBlock(nil);
-
-                
-                [[UtilitiesHelper shareUtitlities]showToastWithMessage:[self getErrorMessageWithObject:errorInfo] title:@"" delegate:delegate];
-            }
-            
-        }];
-        [requestASI setFailedBlock:^{
-            
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            [self hideProgressAlert];
-            
-            NSError *error = [requestASI error];
-            NSLog(@"Error: %@", error.localizedDescription);
-            failBlock(error);
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
-            
-        }];
-        
-        [requestASI startAsynchronous];
-    }
-    
-
-    else{
-        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        
-        //    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-        
-        NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
-        
-        if(params){
-            
-            NSError *error;
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-        }
-        
-        //    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
-        //    manager.responseSerializer = jsonResponseSerializer;
-        
-        
-        // if it is own server call than header must be in the request
-        if(auth_header){
-            [self setHeaderOnRequest:req withAuth:auth_header];
-            
-            [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-            
-        }
-        else{
-            // Third party server call by handling xml request
-            
-            NSString *boundary = [ShareOneUtility generateBoundaryString];
-            
-            NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-            [req setValue:contentType forHTTPHeaderField: @"Content-Type"];
-            
-            
-            // create body
-            NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
-            [req setHTTPBody:httpBody];
-            
-            
-            //        AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
-            //        responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
-            
-            AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
-            
-            manager.responseSerializer = responseSerializer;
-            
-        }
-        
-        
-        
-        [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            
-            if (!error) {
-                NSLog(@"Reply JSON: %@", responseObject);
-                
-                if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                    [self hideProgressAlert];
-                    block(responseObject);
-                    
-                }else{
-                    NSData * data = (NSData *)responseObject;
-                    
-                    NSLog(@"Response string: %@", [NSString stringWithCString:[data bytes] encoding:NSISOLatin1StringEncoding]);
-                    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                    [self hideProgressAlert];
-                    block(responseObject);
-                    
-                }
-            } else {
-                
-                if([response.URL.absoluteString containsString:KMEMBER_DEVICES])
-                    failBlock(error);
-                
-                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                [self hideProgressAlert];
-                [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
-                
-            }
-        }] resume];
-
-        
-    }
-     */
 }
 
 -(void)postRequestForSSOWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -1245,9 +1086,9 @@
     }
     
     return localizeMessage;
-    
-    
 }
+
+
 -(NSString *)getErrorMessageWithObject:(NSDictionary *)errorDict{
     
     
