@@ -111,5 +111,6 @@
 +(void)setUserName:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock;
 
 
++(void)getUserPasswordExpiredUrlDelegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock;
 
 @end

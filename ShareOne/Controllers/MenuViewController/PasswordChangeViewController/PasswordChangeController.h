@@ -17,6 +17,8 @@
 @property (nonatomic,assign) LoginViewController *loginDelegate;
 @property (nonatomic,strong) User *user;
 
+@property BOOL isComingFromPasswordExpire;
+
 
 
 

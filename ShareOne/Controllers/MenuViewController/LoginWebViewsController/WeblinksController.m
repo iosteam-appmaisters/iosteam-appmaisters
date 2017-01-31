@@ -19,9 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [ShareOneUtility showProgressViewOnView:self.view];
-
     [self updateWebLinks];
 }
 
@@ -53,11 +51,11 @@
     NSLog(@"didFailLoadWithError : %@",error);
     
     [ShareOneUtility hideProgressViewOnView:self.view];
-
-    
-    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
-    
+    [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
 }
+
+
+
 
 - (BOOL)shouldAutorotate{
     
@@ -72,6 +70,48 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Status Alert Message
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                             
+                             
+                         }];
+    [alert addAction:ok];
+    
+    
+    UIAlertAction* tryAgain = [UIAlertAction
+                               actionWithTitle:@"Try Again"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   [alert dismissViewControllerAnimated:YES completion:^{
+                                   }];
+                                   
+                                   [ShareOneUtility showProgressViewOnView:self.view];
+                                   
+                                   NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_webLink]];
+                                   
+                                   [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+                                   [_webView loadRequest:request];
+                                   
+                               }];
+    [alert addAction:tryAgain];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 /*

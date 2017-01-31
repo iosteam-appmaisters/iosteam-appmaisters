@@ -47,6 +47,9 @@
 
 #define KBRANCH_LOCATIONS                               @"organization/branches"
 
+
+#define kPASSWORD_EXPIRE_URL                            @"Credential/Rescue"
+
 #define URL_JOIN_CREDIT_UNION                           @"https://nsmobiledemo.ns3web.com/NSJoin.html?id=48b9462bd306475fa32ddc28dd603faab9"
 #define JOIN_CREDIT_UNION_TITLE                         @"Join Credit Union"
 #define URL_APPLY_FOR_LOAN                              @"https://nsmobiledemo.ns3web.com/NSLoan.html?id=48b9462bd306475fa32ddc28dd603faab9"

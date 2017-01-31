@@ -26,6 +26,7 @@
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
 		1D2887481DED517400AD7C74 /* PinResetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2887471DED517400AD7C74 /* PinResetController.m */; };
 		1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D33909C1DE5A9E900D89982 /* DepositListController.m */; };
+		1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37102A1E40B0350030D33C /* ConfigurationModel.m */; };
 		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D38BE1A1DE6F47800F37849 /* VertifiAgreemantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D38BE191DE6F47800F37849 /* VertifiAgreemantController.m */; };
@@ -149,6 +150,8 @@
 		1D33909B1DE5A9E900D89982 /* DepositListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositListController.h; sourceTree = "<group>"; };
 		1D33909C1DE5A9E900D89982 /* DepositListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositListController.m; sourceTree = "<group>"; };
 		1D34D5291E0AC16B000F6276 /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
+		1D3710291E40B0350030D33C /* ConfigurationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationModel.h; sourceTree = "<group>"; };
+		1D37102A1E40B0350030D33C /* ConfigurationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationModel.m; sourceTree = "<group>"; };
 		1D37D08E1DDC418F0076F5B6 /* FBEncryptorAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBEncryptorAES.h; sourceTree = "<group>"; };
 		1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBEncryptorAES.m; sourceTree = "<group>"; };
 		1D37D0901DDC418F0076F5B6 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -400,6 +403,15 @@
 				1D33909C1DE5A9E900D89982 /* DepositListController.m */,
 			);
 			path = DepositListViewController;
+			sourceTree = "<group>";
+		};
+		1D3710281E40B0150030D33C /* ConfigurationModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D3710291E40B0350030D33C /* ConfigurationModel.h */,
+				1D37102A1E40B0350030D33C /* ConfigurationModel.m */,
+			);
+			path = ConfigurationModel;
 			sourceTree = "<group>";
 		};
 		1D37D08D1DDC418F0076F5B6 /* FBEncryptor */ = {
@@ -737,6 +749,7 @@
 		6BD405A71D81B5FC00358036 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1D3710281E40B0150030D33C /* ConfigurationModel */,
 				6BD405A81D81B5FC00358036 /* ServiceModel */,
 				6BD405A91D81B5FC00358036 /* SignInModel */,
 			);
@@ -1130,6 +1143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */,
 				1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */,
 				1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */,
 				1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */,

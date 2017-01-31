@@ -201,6 +201,29 @@
 }
 
 
++(void)getUserPasswordExpiredUrlDelegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
+
+    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    
+    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON];
+    
+
+
+    NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+        
+        
+        block(response);
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+    
+    block(req);
+
+}
 +(void)userPinReset:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
     
     [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KPIN_RESET] delegate:delegate completionBlock:^(NSObject *response) {

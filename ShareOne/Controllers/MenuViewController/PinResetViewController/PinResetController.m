@@ -33,18 +33,21 @@
         [_accountNameTxtFeild setPlaceholder:@"Enter Account Name"];
     }
     
-    [_accountNameTxtFeild setText:@"spike"];
-//    [_accountNameTxtFeild setText:@"666"];
-    [_taxIDTxtFeild setText:@"5654"];
-    [_dateTxtFeild setText:@"01/24/1960"];
-    [_postalCodeTxtFeild setText:@"40503"];
+//    [_accountNameTxtFeild setText:@"spike"];
+////    [_accountNameTxtFeild setText:@"666"];
+//    [_taxIDTxtFeild setText:@"5654"];
+//    [_dateTxtFeild setText:@"01/24/1960"];
+//    [_postalCodeTxtFeild setText:@"40503"];
 
     
 //    [_accountNameTxtFeild setText:@"newton"];
 //    //    [_accountNameTxtFeild setText:@"666"];
 //    [_taxIDTxtFeild setText:@"9456"];
 //    [_dateTxtFeild setText:@"01/01/1980"];
-//    [_postalCodeTxtFeild setText:@"7777"];
+//    [_postalCodeTxtFeild setText:@"77777"];
+    
+    
+
 }
 
 

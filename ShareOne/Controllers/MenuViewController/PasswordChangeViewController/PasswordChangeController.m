@@ -11,6 +11,7 @@
 #import "SharedUser.h"
 #import "User.h"
 #import "LoginViewController.h"
+#import "Services.h"
 
 @implementation PasswordChangeController
 
@@ -18,19 +19,37 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    __weak PasswordChangeController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;
+    [self loadRequestOnWebView];
+}
+
+-(void)loadRequestOnWebView{
     
-    [User postContextIDForSSOWithDelegate:weakSelf withTabName:@"" completionBlock:^(id urlPath) {
-        
-        [weakSelf.webview loadRequest:(NSMutableURLRequest *)urlPath];
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
+    __weak PasswordChangeController *weakSelf = self;
+
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
+    if(_isComingFromPasswordExpire){
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,kPASSWORD_EXPIRE_URL]]];
+        [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+
+        [weakSelf.webview loadRequest:request];
+        
+    }
+    else{
+        [User postContextIDForSSOWithDelegate:weakSelf withTabName:@"" completionBlock:^(id urlPath) {
+            
+            NSMutableURLRequest *req = [(NSMutableURLRequest *)urlPath mutableCopy];
+            [req setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+
+            [weakSelf.webview loadRequest:req];
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+    }
+
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
@@ -38,6 +57,7 @@
 //    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 //    self.navigationItem.title=theTitle;
     
+    NSLog(@"%@",webView.request.URL.absoluteString);
     if([webView.request.URL.absoluteString containsString:@"Account/Summary"]){
         // disabled auto login
 //        [_loginDelegate startLoadingServicesFromChangePassword:_user];
@@ -48,6 +68,54 @@
     __weak PasswordChangeController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    NSLog(@"didFailLoadWithError : %@",error);
+    
+    [ShareOneUtility hideProgressViewOnView:self.view];
+    
+    [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+}
+
+
+#pragma mark - Status Alert Message
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                             
+                             
+                         }];
+    [alert addAction:ok];
+    
+    
+    UIAlertAction* tryAgain = [UIAlertAction
+                               actionWithTitle:@"Try Again"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   [alert dismissViewControllerAnimated:YES completion:^{
+                                   }];
+                                   
+                                   [self loadRequestOnWebView];
+                
+                               }];
+    [alert addAction:tryAgain];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
 
 - (BOOL)shouldAutorotate{
     

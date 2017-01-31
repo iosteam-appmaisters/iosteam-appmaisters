@@ -127,8 +127,8 @@
     if([ShareOneUtility isUserRemembered]){
         User *user = [ShareOneUtility getUserObject];
         [_userIDTxt setText:user.UserName];
-        [_passwordTxt setText:@""];
-        //d7d6d1f8
+//        [_userIDTxt setText:@"newton"];
+//        [_passwordTxt setText:@"d7d6d1f8"];
         //skipme
 
 //        [_passwordTxt setText:user.Password];
@@ -560,7 +560,7 @@
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                      int errorCode = [errorCodeString intValue];
                                      if(errorCode ==PASSWORD_EXPIRED_ERROR_CODE){
-                                         [weakSelf addPasswordChangeController:local_user];
+                                         [weakSelf adPasswordExpireController];
                                      }
 
                                      
@@ -962,6 +962,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)adPasswordExpireController{
+    
+    PasswordChangeController *objPasswordChangeController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PasswordChangeController class])];
+    objPasswordChangeController.loginDelegate=self;
+    objPasswordChangeController.isComingFromPasswordExpire=TRUE;
+    [self presentViewController:objPasswordChangeController animated:YES completion:nil];
 
+}
 
 @end

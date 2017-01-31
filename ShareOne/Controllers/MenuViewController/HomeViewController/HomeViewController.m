@@ -89,6 +89,7 @@
 
     }
     
+    _webViewRequest = request;
 
 }
 
@@ -263,7 +264,9 @@
     
     [ShareOneUtility hideProgressViewOnView:self.view];
     
-    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+    [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+    
+//    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
     
 }
 
@@ -362,5 +365,45 @@
     NSString *jsString = [NSString stringWithFormat:@"(function(){var originalPrintFn = window.print;window.print = function(){window.location = '%@:print';}})();",scheme];
     [self.webview stringByEvaluatingJavaScriptFromString:jsString];
 }
+
+#pragma mark - Status Alert Message
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                             
+                             
+                         }];
+    [alert addAction:ok];
+    
+    
+    UIAlertAction* tryAgain = [UIAlertAction
+                         actionWithTitle:@"Try Again"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                             
+                             [ShareOneUtility showProgressViewOnView:self.view];
+
+                             [_webview loadRequest:_webViewRequest];
+                             
+                         }];
+    [alert addAction:tryAgain];
+
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
 
 @end

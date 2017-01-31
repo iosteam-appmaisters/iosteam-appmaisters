@@ -110,6 +110,20 @@
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
+				<dict>
+					<key>title</key>
+					<string>External Transfers</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>/ACHAccount/Summary</string>
+					<key>shouldShow</key>
+					<true/>
+					<key>detailVCTitle</key>
+					<string></string>
+				</dict>
 			</array>
 		</dict>
 	</array>

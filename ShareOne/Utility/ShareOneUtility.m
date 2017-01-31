@@ -541,6 +541,7 @@ NSLog(Y, Z);		\
     
     //swap contexid
     savedUser.Contextid=newUser.Contextid;
+    savedUser.Password=newUser.Password;
 //    savedUser.isTouchIDOpen=newUser.isTouchIDOpen;
 
 //    savedUser.favouriteContactsArray=newUser.favouriteContactsArray;

@@ -11,7 +11,8 @@
 @interface HomeViewController : BaseViewController<UIWebViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *webview;
-@property (nonnull, strong) NSString *url;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic,strong) NSMutableURLRequest *webViewRequest;
 //@property BOOL isLoadedFirstTime;
 -(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue;
 
