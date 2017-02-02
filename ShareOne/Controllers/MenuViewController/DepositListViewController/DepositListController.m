@@ -207,7 +207,10 @@
 -(void)focButtonClicked:(id)sender{
     NSLog(@"focButtonClicked");
     UIButton *btn = (UIButton *)sender;
-    VertifiDepositObject  *objVertifiDepositObject = _contentArr[btn.tag];
+    int selectedIndex =(int)btn.tag;
+    NSLog(@"selectedIndex : %d",selectedIndex);
+
+    VertifiDepositObject  *objVertifiDepositObject = _contentArr[selectedIndex];
     if(objVertifiDepositObject.image_dict)
         [self showImageViewerWithSender:btn];
     else
@@ -217,7 +220,9 @@
 -(void)bocButtonClicked:(id)sender{
     NSLog(@"bocButtonClicked");
     UIButton *btn = (UIButton *)sender;
-    VertifiDepositObject  *objVertifiDepositObject = _contentArr[btn.tag];
+    int selectedIndex =(int)btn.tag;
+    NSLog(@"selectedIndex : %d",selectedIndex);
+    VertifiDepositObject  *objVertifiDepositObject = _contentArr[selectedIndex];
     
     if(objVertifiDepositObject.image_dict)
         [self showImageViewerWithSender:btn];
@@ -282,8 +287,10 @@
 -(void)getImageViewPopUpControllerWithSender:(UIButton *)button{
 
     NSIndexPath *index = [NSIndexPath indexPathForRow:button.tag inSection:0];
+    NSLog(@"index :%ld",(long)index.row);
     DepositCell *clickedCell =(DepositCell *)[self.tblView cellForRowAtIndexPath:index];
     ImageViewPopUpController* objImageViewPopUpController = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageViewPopUpController"];
+    objImageViewPopUpController.isComingFromDepositList=TRUE;
     
     VertifiDepositObject  *objVertifiDepositObject = _contentArr[button.tag];
 

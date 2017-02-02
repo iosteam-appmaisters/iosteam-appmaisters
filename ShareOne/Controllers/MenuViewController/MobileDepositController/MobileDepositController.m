@@ -19,7 +19,7 @@
 #import "SuffixInfo.h"
 #import "ConstantsShareOne.h"
 #import "VertifiObject.h"
-
+#import "HomeViewController.h"
 
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
@@ -56,7 +56,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (nonatomic, weak) NSArray *suffixArr;
 @property (nonatomic, strong) SuffixInfo *objSuffixInfo;
-
+@property (nonatomic, strong) NSString *depositLimt;
 
 
 -(IBAction)doneButtonClicked:(id)sender;
@@ -82,11 +82,58 @@
     [super viewDidLoad];
     [self startUpMethod];
     [self loadDataOnPickerView];
-    [self vertifyUserRegistrationValidation];
-    //[self getRegisterToVirtifi];
+    //[self vertifyUserRegistrationValidation];
+    [self getRegisterToVirtifiToCheckStatus];
     //[self getListOfReviewDeposits];
     //[self getListOfPast6MonthsDeposits];
 }
+
+-(void)getRegisterToVirtifiToCheckStatus{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
+        if(success){
+            VertifiObject *obj = (VertifiObject *)user;
+            _depositLimt=obj.DepositLimit;
+            if(![obj.InputValidation isEqualToString:@"OK"]){
+            }
+            
+            if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
+            }
+            else if ([obj.LoginValidation isEqualToString:@"OK"]){
+            }
+            if ([obj.LoginValidation isEqualToString:VERTIFY_LOGIN_VALIDATION]){
+                [self showAlertWithTitle:@"" AndMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE];
+            }
+            else{
+            }
+            
+        }
+        else{
+            
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            
+            NSString *localizeErrorMessage=ERROR_MESSAGE;
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
+            
+            
+            
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
 
 -(void)vertifyUserRegistrationValidation{
     
@@ -94,9 +141,12 @@
 
     User *user = [ShareOneUtility getUserObject];
     
-    if([user.LoginValidation isEqualToString:VERTIFY_LOGIN_VALIDATION]){
-        [_submittBtn setHidden:TRUE];
-        [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE title:@"" delegate:weakSelf];
+    if(![user.LoginValidation isEqualToString:VERTIFY_LOGIN_VALIDATION]){
+//        [_submittBtn setHidden:TRUE];
+        
+//        [self showAlertWithTitle:@"" AndMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE];
+
+//        [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE title:@"" delegate:weakSelf];
 
     }
 }
@@ -119,6 +169,14 @@
     
     NSString *status = nil;
     
+    if(_depositLimt){
+        
+        if([_ammountTxtFeild.text intValue]>[_depositLimt intValue]){
+            status = VERTIFI_DEPOSIT_LIMIT(_depositLimt);
+            return status;
+        }
+    }
+
     if(!_frontImage){
         status = @"Front Image is missing";
         return status;
@@ -252,7 +310,6 @@
         if(success){
             VertifiObject *obj = (VertifiObject *)user;
             if(![obj.InputValidation isEqualToString:@"OK"]){
-                //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
             }
             
             if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
@@ -403,14 +460,18 @@
             if(![obj.InputValidation isEqualToString:@"OK"]){
                 [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"Status" delegate:weakSelf];
             }
+           else if(obj.DepositIDCurrentCheck){
+             
+            
+               [self reloadMobileDepositController];
+               [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Thank You" delegate:weakSelf];
+            }
             else
-                [self showAlertWithTitle:@"Status" AndMessage:obj.DepositStatus];
-//                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Status" delegate:weakSelf];
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"" delegate:weakSelf];
             
         } failureBlock:^(NSError *error) {
             
         }];
-
     }
     
 }
@@ -929,14 +990,66 @@
                          handler:^(UIAlertAction * action)
                          {
                              [alert dismissViewControllerAnimated:YES completion:^{
-                                 [self.navigationController popViewControllerAnimated:NO];
                              }];
-                             
+                             [self navigateToLastController];
                          }];
     [alert addAction:ok];
     
     [self presentViewController:alert animated:YES completion:nil];
 
+}
+
+-(void)navigateToLastController{
+    
+    NSDictionary *cacheControlerDict = [ShareOneUtility getAccountSummaryObjectFromPlist];
+    
+    NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
+    
+    NSString *webUrl = [cacheControlerDict valueForKey:WEB_URL];
+    NSString *screenTitle = [[cacheControlerDict valueForKey:SUB_CAT_TITLE] capitalizedString];
+    NSString *navigationTitle = [[cacheControlerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
+    
+    
+    
+    if([contrlollerName isEqualToString:@"WebViewController"]){
+        
+        HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+        currentController = objHomeViewController;
+        objHomeViewController.url= webUrl;
+        //objHomeViewController.navigationItem.title=screenTitle;
+        
+        [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+        //rootview
+        self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
+        
+        
+    }
+
+}
+
+-(void)reloadMobileDepositController{
+    
+    NSDictionary *cacheControlerDict = [ShareOneUtility getMobileDepositObjectFromPlist];
+    
+    NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
+    
+    NSString *webUrl = [cacheControlerDict valueForKey:WEB_URL];
+    NSString *screenTitle = [[cacheControlerDict valueForKey:SUB_CAT_TITLE] capitalizedString];
+    NSString *navigationTitle = [[cacheControlerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
+    
+    UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+    
+    currentController = objUIViewController;
+    
+    objUIViewController.navigationItem.title=navigationTitle;
+    
+    [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+        //rootview
+    self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
+        
+        
+    
+    
 }
 
 @end

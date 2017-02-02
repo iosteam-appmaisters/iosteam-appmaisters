@@ -16,6 +16,10 @@
 
 @property (nonatomic,assign) LoginViewController *loginDelegate;
 @property (nonatomic,strong) User *user;
+@property (nonatomic,weak) IBOutlet UIButton *backButton;
+
+-(IBAction)backButtonClicked:(id)sender;
+
 
 @property BOOL isComingFromPasswordExpire;
 

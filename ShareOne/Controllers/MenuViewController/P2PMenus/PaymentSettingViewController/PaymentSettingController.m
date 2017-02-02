@@ -168,6 +168,8 @@
     [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
     [_favContactsTblView reloadData];
     [_profileNameTextFeild setText:@""];
+    [_profileLinkTextFeild setText:@"paypal.me/"];
+
     [_profileNameTextFeild resignFirstResponder];
     [_profileLinkTextFeild resignFirstResponder];
     [self updateViewWithRefrenceOfContacts];

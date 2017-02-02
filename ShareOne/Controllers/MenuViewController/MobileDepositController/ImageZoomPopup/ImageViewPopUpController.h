@@ -17,5 +17,6 @@
 }
 @property(nonatomic,strong)UIImage *img;
 @property BOOL isFront;
+@property BOOL isComingFromDepositList;
 
 @end

@@ -28,10 +28,14 @@
 
             NSString *InputValidation = [xmlDoc valueForKeyPath:@"MessageValidation.InputValidation"];
             NSString *LoginValidation = [xmlDoc valueForKeyPath:@"UserValidation.LoginValidation"];
+            NSString *DepositLimit = [xmlDoc valueForKeyPath:@"UserValidation.DepositLimit"];
+
             NSString *SSOKey = [xmlDoc valueForKeyPath:@"DepositStatus.SSOKey"];
             NSString *Deposit_ID = [xmlDoc valueForKeyPath:@"Deposit.Deposit_ID"];
             NSString *URL = [xmlDoc valueForKeyPath:@"Report.URL"];
             NSString *DepositStatus = [xmlDoc valueForKeyPath:@"DepositStatus.DepositDispositionMessage"];
+            NSString *DepositID = [xmlDoc valueForKeyPath:@"DepositStatus.DepositID"];
+
             NSString *EUAContents = [xmlDoc valueForKeyPath:@"UserValidation.EUAContents"];
 
             NSArray *DepositArray = [xmlDoc arrayValueForKeyPath:@"Deposit"];
@@ -44,7 +48,9 @@
             obj.SSOKey=SSOKey;
             obj.Deposit_ID=Deposit_ID;
             obj.URL=URL;
+            obj.DepositLimit=DepositLimit;
             obj.DepositStatus=DepositStatus;
+            obj.DepositIDCurrentCheck=DepositID;
             if(EUAContents)
                 obj.EUAContents= [ShareOneUtility decodeBase64ToStirng:EUAContents];
             obj.depositArr=[VertifiObject parseAllDepositsWithObject:DepositArray];
@@ -55,18 +61,12 @@
             
             if(LoginValidation)
                 user.LoginValidation=LoginValidation;
-            
             [ShareOneUtility getSavedObjectOfCurrentLoginUser:user];
-
             block(obj,TRUE);
         }
         else{
             block(response,FALSE);
         }
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
+    } failureBlock:^(NSError *error) {}];
 }
-
 @end

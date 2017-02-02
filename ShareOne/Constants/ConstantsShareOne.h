@@ -27,6 +27,9 @@
 #define DEFAULT_RED_COLOR [UIColor colorWithRed:168.0/255.0 green:6.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 
+//#define VERTIFI_DEPOSIT_LIMIT(value) @"Amount exceeds the limit, Deposit limit is $ %@ Only", value
+
+#define VERTIFI_DEPOSIT_LIMIT(value) [NSString stringWithFormat:@"Amount exceeds the limit. Deposit limit is $%@ Only.",value]
 
 
 
@@ -162,6 +165,8 @@
 #define VERTIFY_LOGIN_VALIDATION                @"User Registration Pending Approval"
 #define VERTIFY_LOGIN_VALIDATION_MESSAGE       @"User registration pending for approval"
 
+
+#define EXPIRED_PASSWORD_MESSAGE                @"A temporary password has been emailed"
 
 #define PASSWORD_EXPIRED_ERROR_CODE     5162
 

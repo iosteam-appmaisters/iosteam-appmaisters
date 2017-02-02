@@ -21,10 +21,9 @@
 @property (nonatomic,strong) NSString *EUAContents;
 @property (nonatomic,strong) NSString *focbase64String;
 @property (nonatomic,strong) NSString *bocbase64String;
+@property (nonatomic,strong) NSString *DepositLimit;
 @property (nonatomic,strong) NSDictionary *imageDictionary;
-
-
-
+@property (nonatomic,strong) NSString *DepositIDCurrentCheck;
 
 
 

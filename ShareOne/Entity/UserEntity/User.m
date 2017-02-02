@@ -79,7 +79,8 @@
 //            [ShareOneUtility setStatusOfPasswordChanged:NO];
             user = [[User alloc]initWithDictionary:(NSDictionary *)response];
             user.UserName=[param valueForKey:@"account"];
-            user.Password=[param valueForKey:@"password"];
+            if([user.Requirements count]==0)
+                user.Password=[param valueForKey:@"password"];
             
             [[SharedUser sharedManager] setUserObject:user];
             //[ShareOneUtility saveUserObject:user];

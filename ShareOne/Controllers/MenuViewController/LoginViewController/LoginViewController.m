@@ -94,7 +94,6 @@
 //    [weakSelf startLoadingServices];
 
 }
-
 -(void)viewDidLoad{
     [super viewDidLoad];
     
@@ -341,6 +340,8 @@
 - (IBAction)loginButtonClicked:(id)sender
 {
     NSLog(@"loginButtonClicked");
+//    [self adPasswordExpireController];
+//    return;
     [_passwordTxt resignFirstResponder];
     [_userIDTxt resignFirstResponder];
     [self moveViewDown];
@@ -778,6 +779,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    [_passwordTxt setText:@""];
     [self.loadingView setHidden:TRUE];
 }
 

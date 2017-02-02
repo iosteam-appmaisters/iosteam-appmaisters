@@ -135,7 +135,8 @@
     if(key){
         
         
-        [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
+        if(![key isEqualToString:TOUCH_ID_SETTINGS])
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
         [ShareOneUtility saveSettingsWithStatus:[sender isOn] AndKey:key];
         if([key isEqualToString:SHOW_OFFERS_SETTINGS]){
             if([sender isOn]){

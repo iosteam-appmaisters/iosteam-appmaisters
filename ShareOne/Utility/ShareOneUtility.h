@@ -179,4 +179,8 @@
 
 +(NSString *)parseCustomErrorObject:(NSString *)customError forKey:(NSString *)key;
 
++(NSDictionary *)getAccountSummaryObjectFromPlist;
+
++(NSDictionary *)getMobileDepositObjectFromPlist;
+
 @end

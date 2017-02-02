@@ -23,6 +23,11 @@
     [self loadRequestOnWebView];
 }
 
+
+-(IBAction)backButtonClicked:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)loadRequestOnWebView{
     
     __weak PasswordChangeController *weakSelf = self;
@@ -31,6 +36,7 @@
     
     if(_isComingFromPasswordExpire){
         
+        [_backButton setHidden:FALSE];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,kPASSWORD_EXPIRE_URL]]];
         [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
 
@@ -38,6 +44,9 @@
         
     }
     else{
+        
+        [_backButton setHidden:TRUE];
+
         [User postContextIDForSSOWithDelegate:weakSelf withTabName:@"" completionBlock:^(id urlPath) {
             
             NSMutableURLRequest *req = [(NSMutableURLRequest *)urlPath mutableCopy];
@@ -57,6 +66,8 @@
 //    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 //    self.navigationItem.title=theTitle;
     
+    __weak PasswordChangeController *weakSelf = self;
+
     NSLog(@"%@",webView.request.URL.absoluteString);
     if([webView.request.URL.absoluteString containsString:@"Account/Summary"]){
         // disabled auto login
@@ -65,8 +76,19 @@
         [self dismissViewControllerAnimated:NO completion:nil];
 //        [ShareOneUtility setStatusOfPasswordChanged:YES];
     }
-    __weak PasswordChangeController *weakSelf = self;
+    
+    if([webView.request.URL.absoluteString isEqualToString:@"https://nsmobilecp.ns3web.com/"]){
+        [self dismissViewControllerAnimated:NO completion:^{
+        }];
+        
+    }
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+}
+
+-(void)showAlerWithDelay{
+    __weak PasswordChangeController *weakSelf = self;
+
+    [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Password has changed" title:@"" delegate:weakSelf];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{

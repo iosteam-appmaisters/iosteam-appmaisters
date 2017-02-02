@@ -96,6 +96,23 @@ NSLog(Y, Z);		\
     return accountSummaryDict;
     
 }
+
++(NSDictionary *)getMobileDepositObjectFromPlist{
+    
+    NSDictionary *depositDict = nil;
+    NSArray * array = [self getSideMenuDataFromPlist];
+    
+    NSPredicate *depositTitlePredicate = [NSPredicate predicateWithFormat: @"SELF[%@] CONTAINS %@",CONTROLLER_NAME,NSStringFromClass([MobileDepositController class])];
+    
+    NSArray *filteredArr = [array filteredArrayUsingPredicate:depositTitlePredicate];
+    
+    if([filteredArr count]>0){
+          depositDict = filteredArr[0];
+    }
+    
+    return depositDict;
+}
+
 +(NSString *)getTitleOfMobileDeposit{
     NSString *title = nil;
     

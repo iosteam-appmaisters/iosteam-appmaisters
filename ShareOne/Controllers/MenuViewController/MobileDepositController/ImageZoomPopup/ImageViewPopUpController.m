@@ -37,8 +37,12 @@
 }
 -(void)setimageFromDocumentsDirectory
 {
+    
+    if(_isComingFromDepositList){
+        [switchColor setHidden:TRUE];
+    }
     NSString *cacheFile=[self retriveColorFileFromDocumentsDirectory];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:cacheFile])
+    if ([[NSFileManager defaultManager] fileExistsAtPath:cacheFile] && !_isComingFromDepositList)
     {
         UIImage *image = [UIImage imageWithContentsOfFile:cacheFile];
         
