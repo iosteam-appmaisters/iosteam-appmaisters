@@ -25,6 +25,8 @@
 #import "FBEncryptorAES.h"
 #import "NSData+Base64.h"
 #import "MobileDepositController.h"
+#import "SuffixInfo.h"
+
 
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -1498,7 +1500,24 @@ NSLog(Y, Z);		\
     }
     
     return localizeMessage;
+}
+
+
++(NSArray *)getFilterSuffixArray:(NSArray *)sourceSuffixArray{
     
+    NSMutableArray *filteredSuffixArray = [[NSMutableArray alloc] init];
+    
+    [sourceSuffixArray enumerateObjectsUsingBlock:^(SuffixInfo *_objSuffixInfo, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        NSRange rangeValue = [_objSuffixInfo.Access rangeOfString:@"D" options:NSCaseInsensitiveSearch];
+        
+        if([_objSuffixInfo.Type isEqualToString:@"S"]  && rangeValue.length > 0 ){
+            [filteredSuffixArray addObject:_objSuffixInfo];
+        }
+        else{
+        }
+    }];
+    return filteredSuffixArray;
 }
 
 @end

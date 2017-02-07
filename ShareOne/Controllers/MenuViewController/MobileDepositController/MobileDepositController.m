@@ -54,7 +54,7 @@
 
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
-@property (nonatomic, weak) NSArray *suffixArr;
+@property (nonatomic, strong) NSArray *suffixArr;
 @property (nonatomic, strong) SuffixInfo *objSuffixInfo;
 @property (nonatomic, strong) NSString *depositLimt;
 
@@ -366,29 +366,21 @@
     [params setValue:VERTIFI_MODE_TEST forKey:@"mode"];
     [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
     
-    
-    
-    
     NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"img.png"]);
     [params setValue:imageDataPNG forKey:@"image"];
-    
     
     NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 1.0);
     [params setValue:imageDataJPG forKey:@"imageColor"];
 
-    
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_ININT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
         if(succes){
-        [weakSelf vertifiComitWithObject:(VertifiObject *)user];
+            [weakSelf vertifiComitWithObject:(VertifiObject *)user];
         }
         else{
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             NSString *localizeErrorMessage=ERROR_MESSAGE;
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
-            
-            
-            
         }
     } failureBlock:^(NSError *error) {
         
@@ -407,8 +399,8 @@
     return [self getimageFromDocumentsDirectory:cacheFile];
 }
 
--(UIImage *)getimageFromDocumentsDirectory:(NSString *)path
-{
+-(UIImage *)getimageFromDocumentsDirectory:(NSString *)path{
+    
     NSString *cacheFile=path;
     UIImage *image;
     if ([[NSFileManager defaultManager] fileExistsAtPath:cacheFile]){
@@ -416,8 +408,6 @@
     }
     return image;
 }
-
-
 
 -(void)vertifiComitWithObject:(VertifiObject *)objVertifi{
     
@@ -517,12 +507,17 @@
 
 -(void)loadDataOnPickerView{
     
-    _suffixArr= [[SharedUser sharedManager] suffixInfoArr];
+    
+    NSArray *allSuffixArray = [[SharedUser sharedManager] suffixInfoArr];
+    _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
+//    _suffixArr = allSuffixArray;
+    
     
     if([_suffixArr count]<=0){
-        NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
-        _suffixArr=suffixArr;
-        [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
+        NSArray *allSuffixArray = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
+        _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
+//        _suffixArr = allSuffixArray;
+        [[SharedUser sharedManager] setSuffixInfoArr:allSuffixArray];
     }
 
     [self.pickerView reloadAllComponents];
@@ -530,7 +525,6 @@
         [_pickerView selectRow:0 inComponent:0 animated:YES];
         [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
     }
-    
     [self setStateOfSubmitButton];
 }
 

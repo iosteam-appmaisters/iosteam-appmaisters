@@ -21,7 +21,14 @@
     // Do any additional setup after loading the view.
     [ShareOneUtility showProgressViewOnView:self.view];
     [self updateWebLinks];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
+
+
+-(void)appGoingToBackground{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 

@@ -13,7 +13,7 @@
 #import "IQKeyboardManager.h"
 
 
-@interface BaseViewController (){
+@interface BaseViewController ()<UIWebViewDelegate>{
     LeftMenuViewController* leftMenuViewController;
     UIButton* menuButton;
 }
@@ -127,6 +127,8 @@
     float isAlreadyAdded = FALSE;
     for(UIView *view in self.navigationController.view.window.subviews){
         if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            UIWebView *webView = (UIWebView *)view;
+            webView.delegate=self;
             isAlreadyAdded=TRUE;
             break;
         }
@@ -137,6 +139,7 @@
         
         
         UIWebView *webView =[[UIWebView alloc] initWithFrame:frame];
+        webView.delegate=self;
         [webView setTag:ADVERTISMENT_WEBVIEW_TAG];
         
         NSString *url =[NSString stringWithFormat:@"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
@@ -157,6 +160,33 @@
     }
 
 }
+
+#pragma mark WEB-VIEW Delegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"Ads Url shouldStartLoadWithRequest : %@ UIWebViewNavigationType: %ld",webView.request.URL.absoluteString,(long)navigationType);
+    
+    BOOL shouldReload = TRUE;
+    if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
+        shouldReload = FALSE;
+        
+        NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+
+    return shouldReload;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    NSLog(@"Ads Url webViewDidStartLoad : %@",webView.request.URL.absoluteString);
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSLog(@"Ads Url webViewDidFinishLoad : %@",webView.request.URL.absoluteString);
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+}
+
 
 
 

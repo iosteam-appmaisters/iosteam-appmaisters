@@ -271,8 +271,6 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    
-
     NSLog(@"webViewDidStartLoad url: %@", webView.request.URL.absoluteString);
 }
 
@@ -285,29 +283,16 @@
     if ([theTitle containsString:@"Account Summary"]){
         [self trackPrintingEventWithScheme:webView.request.URL.scheme];
     }
-//
-//
-//    self.navigationItem.title=theTitle;
-//
-//    [self setTitleOnNavBar:theTitle];
-    
-
-    //NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-    //NSLog(@"yourHTMLSourceCodeString: %@",yourHTMLSourceCodeString_inner);
-    
-    
-    //NSString *yourHTMLSourceCodeString_outer = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-    //NSLog(@"yourHTMLSourceCodeString: %@",yourHTMLSourceCodeString_outer);
-
-
 
     __weak HomeViewController *weakSelf = self;
     [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 
+
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
     
     BOOL shouldReload = TRUE;
+    
     
     NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
     
@@ -319,10 +304,13 @@
         [self printIt:yourHTMLSourceCodeString_inner];
     }
     
-//    NSString* clicked = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('memberInfo').click();"];
-//    
-//    NSLog(@"CLICK %@",clicked);
-//    return TRUE;
+    if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
+        shouldReload = FALSE;
+        
+        NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    
     return shouldReload;
 }
 

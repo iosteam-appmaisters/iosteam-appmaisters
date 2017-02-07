@@ -182,5 +182,7 @@
 +(NSDictionary *)getAccountSummaryObjectFromPlist;
 
 +(NSDictionary *)getMobileDepositObjectFromPlist;
++(NSArray *)getFilterSuffixArray:(NSArray *)sourceSuffixArray;
+
 
 @end

@@ -47,7 +47,14 @@
 //    [_postalCodeTxtFeild setText:@"77777"];
     
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+
 }
+
+-(void)appGoingToBackground{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 -(void)manageKeyboard{
