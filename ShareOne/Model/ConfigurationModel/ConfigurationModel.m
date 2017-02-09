@@ -11,8 +11,6 @@
 @implementation ConfigurationModel
 
 +(void)getServicesSettings{
-
     
 }
-
 @end

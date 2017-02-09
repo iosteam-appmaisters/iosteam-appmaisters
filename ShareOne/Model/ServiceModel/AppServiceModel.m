@@ -410,7 +410,6 @@
 }
 
 
-
 -(void)postRequestForVertifiWithParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response,BOOL succes))block failureBlock:(void(^)(NSError* error))failBlock{
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
@@ -423,7 +422,6 @@
     
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
     
-
     jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     manager.responseSerializer = jsonResponseSerializer;
     
@@ -450,7 +448,6 @@
             
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
-
 
             block([self getLocalizeErrorMessageForInternetConnection:error],FALSE);
 
