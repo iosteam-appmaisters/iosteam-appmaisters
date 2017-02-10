@@ -369,6 +369,7 @@
     [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
     if([_ammountTxtFeild.text floatValue]>0.0)
         [params setValue:_ammountTxtFeild.text forKey:@"amount"];
+    
     [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
     [params setValue:VERTIFI_MODE_TEST forKey:@"mode"];
     [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
