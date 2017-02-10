@@ -30,7 +30,7 @@
 //#define VERTIFI_DEPOSIT_LIMIT(value) @"Amount exceeds the limit, Deposit limit is $ %@ Only", value
 
 #define VERTIFI_DEPOSIT_LIMIT(value) [NSString stringWithFormat:@"Amount exceeds the limit. Deposit limit is $%@ Only.",value]
-
+#define VERTIFI_AMOUNT_MISMATCH(carAmount,texFeildAmount) [NSString stringWithFormat:@"Amount return from Vertifi is $%.2f, mismatch to the input amount $%.2f",carAmount,texFeildAmount]
 
 
 #define DATE_TIME_FORMAT_FOR_ADD_MARKER @"MMMM d, YYYY"
@@ -162,8 +162,10 @@
 
 
 
-#define VERTIFY_LOGIN_VALIDATION                @"User Registration Pending Approval"
-#define VERTIFY_LOGIN_VALIDATION_MESSAGE       @"User registration pending for approval"
+#define VERTIFY_LOGIN_VALIDATION                        @"User Registration Pending Approval"
+#define VERTIFY_LOGIN_VALIDATION_MESSAGE                @"User registration pending for approval"
+#define VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE         @"VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE"
+
 
 
 #define EXPIRED_PASSWORD_MESSAGE                @"A temporary password has been emailed"

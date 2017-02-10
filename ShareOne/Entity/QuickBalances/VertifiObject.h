@@ -24,8 +24,8 @@
 @property (nonatomic,strong) NSString *DepositLimit;
 @property (nonatomic,strong) NSDictionary *imageDictionary;
 @property (nonatomic,strong) NSString *DepositIDCurrentCheck;
-
-
+@property (nonatomic,strong) NSString *CARAmount;
+@property (nonatomic,strong) NSString *CARMismatch;
 
 +(NSArray *)parseAllDepositsWithObject:(NSArray *)array;
 @end
