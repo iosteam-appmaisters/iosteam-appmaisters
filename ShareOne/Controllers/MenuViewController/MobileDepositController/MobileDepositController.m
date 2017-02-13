@@ -9,9 +9,7 @@
 #import "MobileDepositController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "ImageViewPopUpController.h"
-#import "CameraGridView.h"
 #import "VertifiImageProcessing.h"
-#import "Global.h"
 #import "CameraViewController.h"
 #import "ConstantsShareOne.h"
 #import "CashDeposit.h"
@@ -20,6 +18,18 @@
 #import "ConstantsShareOne.h"
 #import "VertifiObject.h"
 #import "HomeViewController.h"
+#import "CameraCropView.h"
+#import "TransparentToolbar.h"
+#import "CameraInstructionViewController.h"
+#import "CameraGridView.h"
+
+
+@protocol CameraViewControllerDelegate
+
+- (void) onCameraClose;
+- (void) onPictureTaken:(UIImage *)imageJPEG withBWImage:(UIImage *)imageBW results:(NSArray *)dictionary isFront:(BOOL)isFront;
+
+@end
 
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
@@ -776,6 +786,7 @@
         strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_BACK_PHOTO" value:@"Back Check Image" table:@"VIPSample"];
     
     
+    /*
     CameraViewController *cameraViewController = nil;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
@@ -788,6 +799,20 @@
         [self presentViewController:cameraViewController animated:YES completion:^{
         }];
     }
+     */
+    
+
+    
+    
+    CameraViewController *cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController" bundle:nil delegate:self title:strTitle isFront:_isFrontorBack];
+    if (cameraViewController != nil)
+    {
+        cameraViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:cameraViewController animated:YES completion:^{
+        }];
+    }
+    
+
     
     return;
 }

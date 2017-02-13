@@ -19,12 +19,67 @@
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
 		1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD79E1D9947BD0014C743 /* Security.framework */; };
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
+		1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */; };
+		1D20C25C1E4E110500D3FC93 /* AccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */; };
+		1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */; };
+		1D20C25E1E4E110500D3FC93 /* BadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FC1E4E110400D3FC93 /* BadgeBarButtonItem.m */; };
+		1D20C25F1E4E110500D3FC93 /* CameraCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FE1E4E110400D3FC93 /* CameraCropView.m */; };
+		1D20C2601E4E110500D3FC93 /* CameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2001E4E110400D3FC93 /* CameraGridView.m */; };
+		1D20C2611E4E110500D3FC93 /* CameraInstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2021E4E110400D3FC93 /* CameraInstructionViewController.m */; };
+		1D20C2621E4E110500D3FC93 /* CameraInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2031E4E110400D3FC93 /* CameraInstructionViewController.xib */; };
+		1D20C2631E4E110500D3FC93 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2051E4E110400D3FC93 /* CameraViewController.m */; };
+		1D20C2641E4E110500D3FC93 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2061E4E110400D3FC93 /* CameraViewController.xib */; };
+		1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2081E4E110400D3FC93 /* DataAccountsDelegate.m */; };
+		1D20C2661E4E110500D3FC93 /* DepositAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C20A1E4E110400D3FC93 /* DepositAccount.m */; };
+		1D20C2671E4E110500D3FC93 /* DepositInitOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C20C1E4E110400D3FC93 /* DepositInitOperation.m */; };
+		1D20C2681E4E110500D3FC93 /* DepositModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C20E1E4E110400D3FC93 /* DepositModel.m */; };
+		1D20C2691E4E110500D3FC93 /* DepositSubmitOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2101E4E110400D3FC93 /* DepositSubmitOperation.m */; };
+		1D20C26A1E4E110500D3FC93 /* DepositSubmitQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2121E4E110400D3FC93 /* DepositSubmitQueue.m */; };
+		1D20C26B1E4E110500D3FC93 /* DepositSubmitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2131E4E110400D3FC93 /* DepositSubmitView.xib */; };
+		1D20C26C1E4E110500D3FC93 /* DepositSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2151E4E110400D3FC93 /* DepositSubmitViewController.m */; };
+		1D20C26D1E4E110500D3FC93 /* DepositViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2171E4E110400D3FC93 /* DepositViewController.m */; };
+		1D20C26E1E4E110500D3FC93 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2181E4E110400D3FC93 /* DepositViewController.xib */; };
+		1D20C26F1E4E110500D3FC93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2191E4E110400D3FC93 /* InfoPlist.strings */; };
+		1D20C2701E4E110500D3FC93 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C21B1E4E110400D3FC93 /* ErrorView.xib */; };
+		1D20C2711E4E110500D3FC93 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */; };
+		1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */; };
+		1D20C2731E4E110500D3FC93 /* GoogleAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2211E4E110400D3FC93 /* GoogleAnalytics.m */; };
+		1D20C2761E4E110500D3FC93 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */; };
+		1D20C27A1E4E110500D3FC93 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2281E4E110500D3FC93 /* MainWindow.xib */; };
+		1D20C27B1E4E110500D3FC93 /* MultiPartForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */; };
+		1D20C27C1E4E110500D3FC93 /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C22C1E4E110500D3FC93 /* RegistrationView.xib */; };
+		1D20C27D1E4E110500D3FC93 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C22E1E4E110500D3FC93 /* RegistrationViewController.m */; };
+		1D20C27E1E4E110500D3FC93 /* ResponseDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2301E4E110500D3FC93 /* ResponseDictionary.m */; };
+		1D20C27F1E4E110500D3FC93 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2311E4E110500D3FC93 /* Settings.bundle */; };
+		1D20C2801E4E110500D3FC93 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2321E4E110500D3FC93 /* Settings.plist */; };
+		1D20C2811E4E110500D3FC93 /* SubmittedDeposit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2341E4E110500D3FC93 /* SubmittedDeposit.m */; };
+		1D20C2821E4E110500D3FC93 /* SubmittedDepositReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2361E4E110500D3FC93 /* SubmittedDepositReportViewController.m */; };
+		1D20C2831E4E110500D3FC93 /* SubmittedDepositReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2371E4E110500D3FC93 /* SubmittedDepositReportViewController.xib */; };
+		1D20C2841E4E110500D3FC93 /* SubmittedDepositsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2391E4E110500D3FC93 /* SubmittedDepositsViewController.m */; };
+		1D20C2851E4E110500D3FC93 /* SubmittedDepositsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C23A1E4E110500D3FC93 /* SubmittedDepositsViewController.xib */; };
+		1D20C2861E4E110500D3FC93 /* TableView_SectionFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C23C1E4E110500D3FC93 /* TableView_SectionFooter.m */; };
+		1D20C2871E4E110500D3FC93 /* TableView_SectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C23E1E4E110500D3FC93 /* TableView_SectionHeader.m */; };
+		1D20C2881E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2401E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m */; };
+		1D20C2891E4E110500D3FC93 /* TableViewCell_Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2421E4E110500D3FC93 /* TableViewCell_Button.m */; };
+		1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2441E4E110500D3FC93 /* TableViewCell_ChkPhoto.m */; };
+		1D20C28B1E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2471E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m */; };
+		1D20C28C1E4E110500D3FC93 /* TableViewCell_LblSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2491E4E110500D3FC93 /* TableViewCell_LblSubtitle.m */; };
+		1D20C28D1E4E110500D3FC93 /* TextChangeFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C24B1E4E110500D3FC93 /* TextChangeFormatters.m */; };
+		1D20C28E1E4E110500D3FC93 /* ToastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C24D1E4E110500D3FC93 /* ToastMessage.m */; };
+		1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C24F1E4E110500D3FC93 /* TransparentToolbar.m */; };
+		1D20C2901E4E110500D3FC93 /* UISchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2511E4E110500D3FC93 /* UISchema.m */; };
+		1D20C2911E4E110500D3FC93 /* VIPSample.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2541E4E110500D3FC93 /* VIPSample.strings */; };
+		1D20C2921E4E110500D3FC93 /* VIPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2561E4E110500D3FC93 /* VIPSampleAppDelegate.m */; };
+		1D20C2931E4E110500D3FC93 /* VIPViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2581E4E110500D3FC93 /* VIPViewUtility.m */; };
+		1D20C2941E4E110500D3FC93 /* XmlSimpleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C25A1E4E110500D3FC93 /* XmlSimpleParser.m */; };
 		1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */; };
 		1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999A1D9135B000157320 /* AccordionHeaderView.m */; };
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
 		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
 		1D2887481DED517400AD7C74 /* PinResetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2887471DED517400AD7C74 /* PinResetController.m */; };
+		1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */; };
+		1D32A5041E4E17820087F638 /* libVertifiImageProcessingSimulater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */; };
 		1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D33909C1DE5A9E900D89982 /* DepositListController.m */; };
 		1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37102A1E40B0350030D33C /* ConfigurationModel.m */; };
 		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -37,8 +92,6 @@
 		1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A7BDD1DF0828200AEA159 /* UserNamecontroller.m */; };
 		1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */; };
 		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
-		1D3E7DEB1E1A8DD200284615 /* libVertifiImageProcessingDevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3E7DEA1E1A8DD200284615 /* libVertifiImageProcessingDevice.a */; };
-		1D3E7DED1E1A943900284615 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3E7DEC1E1A943900284615 /* libVertifiImageProcessing.a */; };
 		1D3ED8521E2662E300AE91C1 /* ContactsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ED8511E2662E300AE91C1 /* ContactsHeaderView.m */; };
 		1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ED8531E2662FF00AE91C1 /* ContactsHeaderView.xib */; };
 		1D3ED8571E2676A800AE91C1 /* ContactEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ED8561E2676A800AE91C1 /* ContactEditCell.m */; };
@@ -48,6 +101,7 @@
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
 		1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */; };
+		1D5441361E51834F00C07072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D5441351E51834F00C07072 /* Assets.xcassets */; };
 		1D5F34381E2F4C2700026EF2 /* PaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F34371E2F4C2700026EF2 /* PaymentCell.m */; };
 		1D5F343B1E2F4FFF00026EF2 /* MoneyTransferHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F343A1E2F4FFF00026EF2 /* MoneyTransferHeader.m */; };
 		1D5F343D1E2F50AB00026EF2 /* MoneyTransferHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5F343C1E2F50AB00026EF2 /* MoneyTransferHeader.xib */; };
@@ -70,7 +124,6 @@
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
 		6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058E1D81B59300358036 /* AppDelegate.m */; };
 		6BD405951D81B59300358036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD405931D81B59300358036 /* Main.storyboard */; };
-		6BD405971D81B59300358036 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BD405961D81B59300358036 /* Assets.xcassets */; };
 		6BD4059A1D81B59300358036 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD405981D81B59300358036 /* LaunchScreen.storyboard */; };
 		6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405B11D81B92E00358036 /* LeftMenuViewController.m */; };
 		6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405B51D829FAA00358036 /* BaseViewController.m */; };
@@ -96,17 +149,11 @@
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
 		F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */; };
 		F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C71F11D92CF940072D405 /* BranchLocationCell.m */; };
-		F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB621D9E734300A705A5 /* CameraViewController.m */; };
-		F229DB661D9E734300A705A5 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB641D9E734300A705A5 /* Global.m */; };
 		F229DB6A1D9E7D6000A705A5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB691D9E7D6000A705A5 /* CoreVideo.framework */; };
 		F229DB6C1D9E7D6700A705A5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */; };
 		F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */; };
 		F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */; };
 		F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB711D9E7FEC00A705A5 /* Foundation.framework */; };
-		F229DB791D9E821C00A705A5 /* CameraCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB741D9E821C00A705A5 /* CameraCropView.m */; };
-		F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB761D9E821C00A705A5 /* CameraGridView.m */; };
-		F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F229DB781D9E821C00A705A5 /* TransparentToolbar.m */; };
-		F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */; };
 		F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26255421D94171300383B9E /* ATMLocationViewController.m */; };
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
 		F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */; };
@@ -136,6 +183,103 @@
 		1D1AD79E1D9947BD0014C743 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1D1AD7A11D9947CA0014C743 /* BBAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAES.h; sourceTree = "<group>"; };
 		1D1AD7A21D9947CA0014C743 /* BBAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAES.m; sourceTree = "<group>"; };
+		1D20C1F61E4E110400D3FC93 /* AccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsViewController.h; sourceTree = "<group>"; };
+		1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsViewController.m; sourceTree = "<group>"; };
+		1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountsViewController.xib; sourceTree = "<group>"; };
+		1D20C1F91E4E110400D3FC93 /* ActivityLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLabelView.h; sourceTree = "<group>"; };
+		1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLabelView.m; sourceTree = "<group>"; };
+		1D20C1FB1E4E110400D3FC93 /* BadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeBarButtonItem.h; sourceTree = "<group>"; };
+		1D20C1FC1E4E110400D3FC93 /* BadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeBarButtonItem.m; sourceTree = "<group>"; };
+		1D20C1FD1E4E110400D3FC93 /* CameraCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCropView.h; sourceTree = "<group>"; };
+		1D20C1FE1E4E110400D3FC93 /* CameraCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCropView.m; sourceTree = "<group>"; };
+		1D20C1FF1E4E110400D3FC93 /* CameraGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraGridView.h; sourceTree = "<group>"; };
+		1D20C2001E4E110400D3FC93 /* CameraGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraGridView.m; sourceTree = "<group>"; };
+		1D20C2011E4E110400D3FC93 /* CameraInstructionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInstructionViewController.h; sourceTree = "<group>"; };
+		1D20C2021E4E110400D3FC93 /* CameraInstructionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraInstructionViewController.m; sourceTree = "<group>"; };
+		1D20C2031E4E110400D3FC93 /* CameraInstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraInstructionViewController.xib; sourceTree = "<group>"; };
+		1D20C2041E4E110400D3FC93 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		1D20C2051E4E110400D3FC93 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		1D20C2061E4E110400D3FC93 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		1D20C2071E4E110400D3FC93 /* DataAccountsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccountsDelegate.h; sourceTree = "<group>"; };
+		1D20C2081E4E110400D3FC93 /* DataAccountsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccountsDelegate.m; sourceTree = "<group>"; };
+		1D20C2091E4E110400D3FC93 /* DepositAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositAccount.h; sourceTree = "<group>"; };
+		1D20C20A1E4E110400D3FC93 /* DepositAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositAccount.m; sourceTree = "<group>"; };
+		1D20C20B1E4E110400D3FC93 /* DepositInitOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositInitOperation.h; sourceTree = "<group>"; };
+		1D20C20C1E4E110400D3FC93 /* DepositInitOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositInitOperation.m; sourceTree = "<group>"; };
+		1D20C20D1E4E110400D3FC93 /* DepositModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositModel.h; sourceTree = "<group>"; };
+		1D20C20E1E4E110400D3FC93 /* DepositModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositModel.m; sourceTree = "<group>"; };
+		1D20C20F1E4E110400D3FC93 /* DepositSubmitOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositSubmitOperation.h; sourceTree = "<group>"; };
+		1D20C2101E4E110400D3FC93 /* DepositSubmitOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositSubmitOperation.m; sourceTree = "<group>"; };
+		1D20C2111E4E110400D3FC93 /* DepositSubmitQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositSubmitQueue.h; sourceTree = "<group>"; };
+		1D20C2121E4E110400D3FC93 /* DepositSubmitQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositSubmitQueue.m; sourceTree = "<group>"; };
+		1D20C2131E4E110400D3FC93 /* DepositSubmitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositSubmitView.xib; sourceTree = "<group>"; };
+		1D20C2141E4E110400D3FC93 /* DepositSubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositSubmitViewController.h; sourceTree = "<group>"; };
+		1D20C2151E4E110400D3FC93 /* DepositSubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositSubmitViewController.m; sourceTree = "<group>"; };
+		1D20C2161E4E110400D3FC93 /* DepositViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositViewController.h; sourceTree = "<group>"; };
+		1D20C2171E4E110400D3FC93 /* DepositViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositViewController.m; sourceTree = "<group>"; };
+		1D20C2181E4E110400D3FC93 /* DepositViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositViewController.xib; sourceTree = "<group>"; };
+		1D20C21A1E4E110400D3FC93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1D20C21B1E4E110400D3FC93 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		1D20C21C1E4E110400D3FC93 /* ErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
+		1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
+		1D20C21E1E4E110400D3FC93 /* FormPostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormPostHandler.h; sourceTree = "<group>"; };
+		1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormPostHandler.m; sourceTree = "<group>"; };
+		1D20C2201E4E110400D3FC93 /* GoogleAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalytics.h; sourceTree = "<group>"; };
+		1D20C2211E4E110400D3FC93 /* GoogleAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalytics.m; sourceTree = "<group>"; };
+		1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessing.a; sourceTree = "<group>"; };
+		1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessingSimulater.a; sourceTree = "<group>"; };
+		1D20C2281E4E110500D3FC93 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		1D20C2291E4E110500D3FC93 /* MultiPartForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPartForm.h; sourceTree = "<group>"; };
+		1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPartForm.m; sourceTree = "<group>"; };
+		1D20C22B1E4E110500D3FC93 /* PostHandlerBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostHandlerBlocks.h; sourceTree = "<group>"; };
+		1D20C22C1E4E110500D3FC93 /* RegistrationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
+		1D20C22D1E4E110500D3FC93 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		1D20C22E1E4E110500D3FC93 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		1D20C22F1E4E110500D3FC93 /* ResponseDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseDictionary.h; sourceTree = "<group>"; };
+		1D20C2301E4E110500D3FC93 /* ResponseDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseDictionary.m; sourceTree = "<group>"; };
+		1D20C2311E4E110500D3FC93 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		1D20C2321E4E110500D3FC93 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		1D20C2331E4E110500D3FC93 /* SubmittedDeposit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittedDeposit.h; sourceTree = "<group>"; };
+		1D20C2341E4E110500D3FC93 /* SubmittedDeposit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittedDeposit.m; sourceTree = "<group>"; };
+		1D20C2351E4E110500D3FC93 /* SubmittedDepositReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittedDepositReportViewController.h; sourceTree = "<group>"; };
+		1D20C2361E4E110500D3FC93 /* SubmittedDepositReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittedDepositReportViewController.m; sourceTree = "<group>"; };
+		1D20C2371E4E110500D3FC93 /* SubmittedDepositReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubmittedDepositReportViewController.xib; sourceTree = "<group>"; };
+		1D20C2381E4E110500D3FC93 /* SubmittedDepositsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittedDepositsViewController.h; sourceTree = "<group>"; };
+		1D20C2391E4E110500D3FC93 /* SubmittedDepositsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittedDepositsViewController.m; sourceTree = "<group>"; };
+		1D20C23A1E4E110500D3FC93 /* SubmittedDepositsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubmittedDepositsViewController.xib; sourceTree = "<group>"; };
+		1D20C23B1E4E110500D3FC93 /* TableView_SectionFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionFooter.h; sourceTree = "<group>"; };
+		1D20C23C1E4E110500D3FC93 /* TableView_SectionFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionFooter.m; sourceTree = "<group>"; };
+		1D20C23D1E4E110500D3FC93 /* TableView_SectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionHeader.h; sourceTree = "<group>"; };
+		1D20C23E1E4E110500D3FC93 /* TableView_SectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionHeader.m; sourceTree = "<group>"; };
+		1D20C23F1E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionHeaderChkPhoto.h; sourceTree = "<group>"; };
+		1D20C2401E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionHeaderChkPhoto.m; sourceTree = "<group>"; };
+		1D20C2411E4E110500D3FC93 /* TableViewCell_Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_Button.h; sourceTree = "<group>"; };
+		1D20C2421E4E110500D3FC93 /* TableViewCell_Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_Button.m; sourceTree = "<group>"; };
+		1D20C2431E4E110500D3FC93 /* TableViewCell_ChkPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_ChkPhoto.h; sourceTree = "<group>"; };
+		1D20C2441E4E110500D3FC93 /* TableViewCell_ChkPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_ChkPhoto.m; sourceTree = "<group>"; };
+		1D20C2451E4E110500D3FC93 /* TableViewCell_Defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_Defs.h; sourceTree = "<group>"; };
+		1D20C2461E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_ImgLblSubtitleValue.h; sourceTree = "<group>"; };
+		1D20C2471E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_ImgLblSubtitleValue.m; sourceTree = "<group>"; };
+		1D20C2481E4E110500D3FC93 /* TableViewCell_LblSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_LblSubtitle.h; sourceTree = "<group>"; };
+		1D20C2491E4E110500D3FC93 /* TableViewCell_LblSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_LblSubtitle.m; sourceTree = "<group>"; };
+		1D20C24A1E4E110500D3FC93 /* TextChangeFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextChangeFormatters.h; sourceTree = "<group>"; };
+		1D20C24B1E4E110500D3FC93 /* TextChangeFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextChangeFormatters.m; sourceTree = "<group>"; };
+		1D20C24C1E4E110500D3FC93 /* ToastMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastMessage.h; sourceTree = "<group>"; };
+		1D20C24D1E4E110500D3FC93 /* ToastMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastMessage.m; sourceTree = "<group>"; };
+		1D20C24E1E4E110500D3FC93 /* TransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentToolbar.h; sourceTree = "<group>"; };
+		1D20C24F1E4E110500D3FC93 /* TransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentToolbar.m; sourceTree = "<group>"; };
+		1D20C2501E4E110500D3FC93 /* UISchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISchema.h; sourceTree = "<group>"; };
+		1D20C2511E4E110500D3FC93 /* UISchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISchema.m; sourceTree = "<group>"; };
+		1D20C2521E4E110500D3FC93 /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
+		1D20C2531E4E110500D3FC93 /* VIPSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VIPSample-Prefix.pch"; sourceTree = "<group>"; };
+		1D20C2541E4E110500D3FC93 /* VIPSample.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = VIPSample.strings; sourceTree = "<group>"; };
+		1D20C2551E4E110500D3FC93 /* VIPSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPSampleAppDelegate.h; sourceTree = "<group>"; };
+		1D20C2561E4E110500D3FC93 /* VIPSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPSampleAppDelegate.m; sourceTree = "<group>"; };
+		1D20C2571E4E110500D3FC93 /* VIPViewUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewUtility.h; sourceTree = "<group>"; };
+		1D20C2581E4E110500D3FC93 /* VIPViewUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewUtility.m; sourceTree = "<group>"; };
+		1D20C2591E4E110500D3FC93 /* XmlSimpleParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlSimpleParser.h; sourceTree = "<group>"; };
+		1D20C25A1E4E110500D3FC93 /* XmlSimpleParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlSimpleParser.m; sourceTree = "<group>"; };
 		1D21A18C1E28CEDA005CCAB5 /* EditContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContactCell.h; sourceTree = "<group>"; };
 		1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContactCell.m; sourceTree = "<group>"; };
 		1D2399991D9135B000157320 /* AccordionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionHeaderView.h; sourceTree = "<group>"; };
@@ -172,8 +316,6 @@
 		1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDSettingsController.m; sourceTree = "<group>"; };
 		1D3D12781DBF353500719170 /* DeviceAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceAuth.h; sourceTree = "<group>"; };
 		1D3D12791DBF353500719170 /* DeviceAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceAuth.m; sourceTree = "<group>"; };
-		1D3E7DEA1E1A8DD200284615 /* libVertifiImageProcessingDevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessingDevice.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessingDevice.a; sourceTree = "<group>"; };
-		1D3E7DEC1E1A943900284615 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVertifiImageProcessing.a; path = ShareOne/ReuseableComponents/libVertifiImageProcessing.a; sourceTree = "<group>"; };
 		1D3ED8501E2662E300AE91C1 /* ContactsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsHeaderView.h; sourceTree = "<group>"; };
 		1D3ED8511E2662E300AE91C1 /* ContactsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsHeaderView.m; sourceTree = "<group>"; };
 		1D3ED8531E2662FF00AE91C1 /* ContactsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsHeaderView.xib; sourceTree = "<group>"; };
@@ -189,6 +331,7 @@
 		1D4245D71DCB780200A76E52 /* QuickTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickTransaction.m; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SlideMenu.plist; sourceTree = "<group>"; };
+		1D5441351E51834F00C07072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D5F34361E2F4C2700026EF2 /* PaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCell.h; sourceTree = "<group>"; };
 		1D5F34371E2F4C2700026EF2 /* PaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCell.m; sourceTree = "<group>"; };
 		1D5F34391E2F4FFF00026EF2 /* MoneyTransferHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyTransferHeader.h; sourceTree = "<group>"; };
@@ -229,7 +372,6 @@
 		6BD4058D1D81B59300358036 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BD4058E1D81B59300358036 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6BD405941D81B59300358036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6BD405961D81B59300358036 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BD405991D81B59300358036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BD4059B1D81B59300358036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BD405B01D81B92E00358036 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
@@ -284,23 +426,11 @@
 		F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewPopUpController.m; sourceTree = "<group>"; };
 		F20C71F01D92CF940072D405 /* BranchLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationCell.h; sourceTree = "<group>"; };
 		F20C71F11D92CF940072D405 /* BranchLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationCell.m; sourceTree = "<group>"; };
-		F229DB611D9E734300A705A5 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
-		F229DB621D9E734300A705A5 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
-		F229DB631D9E734300A705A5 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
-		F229DB641D9E734300A705A5 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
 		F229DB691D9E7D6000A705A5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F229DB711D9E7FEC00A705A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F229DB731D9E821C00A705A5 /* CameraCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCropView.h; sourceTree = "<group>"; };
-		F229DB741D9E821C00A705A5 /* CameraCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCropView.m; sourceTree = "<group>"; };
-		F229DB751D9E821C00A705A5 /* CameraGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraGridView.h; sourceTree = "<group>"; };
-		F229DB761D9E821C00A705A5 /* CameraGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraGridView.m; sourceTree = "<group>"; };
-		F229DB771D9E821C00A705A5 /* TransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentToolbar.h; sourceTree = "<group>"; };
-		F229DB781D9E821C00A705A5 /* TransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentToolbar.m; sourceTree = "<group>"; };
-		F229DB7C1D9E83FF00A705A5 /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
-		F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController_iPhone.xib; sourceTree = "<group>"; };
 		F26255411D94171300383B9E /* ATMLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATMLocationViewController.h; sourceTree = "<group>"; };
 		F26255421D94171300383B9E /* ATMLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATMLocationViewController.m; sourceTree = "<group>"; };
 		F2BFF9FA1D9BF6A000D76E0D /* GetDirectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDirectionViewController.h; sourceTree = "<group>"; };
@@ -314,8 +444,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D3E7DED1E1A943900284615 /* libVertifiImageProcessing.a in Frameworks */,
-				1D3E7DEB1E1A8DD200284615 /* libVertifiImageProcessingDevice.a in Frameworks */,
+				1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */,
+				1D32A5041E4E17820087F638 /* libVertifiImageProcessingSimulater.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -385,6 +515,118 @@
 				1D0309A11DD2F070005953FA /* NSString+MD5String.m */,
 			);
 			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */ = {
+			isa = PBXGroup;
+			children = (
+				1D20C1F51E4E110400D3FC93 /* VertifiLatestSDK */,
+			);
+			path = ReuseableComponents;
+			sourceTree = "<group>";
+		};
+		1D20C1F51E4E110400D3FC93 /* VertifiLatestSDK */ = {
+			isa = PBXGroup;
+			children = (
+				1D20C1F61E4E110400D3FC93 /* AccountsViewController.h */,
+				1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */,
+				1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */,
+				1D20C1F91E4E110400D3FC93 /* ActivityLabelView.h */,
+				1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */,
+				1D20C1FB1E4E110400D3FC93 /* BadgeBarButtonItem.h */,
+				1D20C1FC1E4E110400D3FC93 /* BadgeBarButtonItem.m */,
+				1D20C1FD1E4E110400D3FC93 /* CameraCropView.h */,
+				1D20C1FE1E4E110400D3FC93 /* CameraCropView.m */,
+				1D20C1FF1E4E110400D3FC93 /* CameraGridView.h */,
+				1D20C2001E4E110400D3FC93 /* CameraGridView.m */,
+				1D20C2011E4E110400D3FC93 /* CameraInstructionViewController.h */,
+				1D20C2021E4E110400D3FC93 /* CameraInstructionViewController.m */,
+				1D20C2031E4E110400D3FC93 /* CameraInstructionViewController.xib */,
+				1D20C2041E4E110400D3FC93 /* CameraViewController.h */,
+				1D20C2051E4E110400D3FC93 /* CameraViewController.m */,
+				1D20C2061E4E110400D3FC93 /* CameraViewController.xib */,
+				1D20C2071E4E110400D3FC93 /* DataAccountsDelegate.h */,
+				1D20C2081E4E110400D3FC93 /* DataAccountsDelegate.m */,
+				1D20C2091E4E110400D3FC93 /* DepositAccount.h */,
+				1D20C20A1E4E110400D3FC93 /* DepositAccount.m */,
+				1D20C20B1E4E110400D3FC93 /* DepositInitOperation.h */,
+				1D20C20C1E4E110400D3FC93 /* DepositInitOperation.m */,
+				1D20C20D1E4E110400D3FC93 /* DepositModel.h */,
+				1D20C20E1E4E110400D3FC93 /* DepositModel.m */,
+				1D20C20F1E4E110400D3FC93 /* DepositSubmitOperation.h */,
+				1D20C2101E4E110400D3FC93 /* DepositSubmitOperation.m */,
+				1D20C2111E4E110400D3FC93 /* DepositSubmitQueue.h */,
+				1D20C2121E4E110400D3FC93 /* DepositSubmitQueue.m */,
+				1D20C2131E4E110400D3FC93 /* DepositSubmitView.xib */,
+				1D20C2141E4E110400D3FC93 /* DepositSubmitViewController.h */,
+				1D20C2151E4E110400D3FC93 /* DepositSubmitViewController.m */,
+				1D20C2161E4E110400D3FC93 /* DepositViewController.h */,
+				1D20C2171E4E110400D3FC93 /* DepositViewController.m */,
+				1D20C2181E4E110400D3FC93 /* DepositViewController.xib */,
+				1D20C2191E4E110400D3FC93 /* InfoPlist.strings */,
+				1D20C21B1E4E110400D3FC93 /* ErrorView.xib */,
+				1D20C21C1E4E110400D3FC93 /* ErrorViewController.h */,
+				1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */,
+				1D20C21E1E4E110400D3FC93 /* FormPostHandler.h */,
+				1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */,
+				1D20C2201E4E110400D3FC93 /* GoogleAnalytics.h */,
+				1D20C2211E4E110400D3FC93 /* GoogleAnalytics.m */,
+				1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */,
+				1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */,
+				1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */,
+				1D20C2281E4E110500D3FC93 /* MainWindow.xib */,
+				1D20C2291E4E110500D3FC93 /* MultiPartForm.h */,
+				1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */,
+				1D20C22B1E4E110500D3FC93 /* PostHandlerBlocks.h */,
+				1D20C22C1E4E110500D3FC93 /* RegistrationView.xib */,
+				1D20C22D1E4E110500D3FC93 /* RegistrationViewController.h */,
+				1D20C22E1E4E110500D3FC93 /* RegistrationViewController.m */,
+				1D20C22F1E4E110500D3FC93 /* ResponseDictionary.h */,
+				1D20C2301E4E110500D3FC93 /* ResponseDictionary.m */,
+				1D20C2311E4E110500D3FC93 /* Settings.bundle */,
+				1D20C2321E4E110500D3FC93 /* Settings.plist */,
+				1D20C2331E4E110500D3FC93 /* SubmittedDeposit.h */,
+				1D20C2341E4E110500D3FC93 /* SubmittedDeposit.m */,
+				1D20C2351E4E110500D3FC93 /* SubmittedDepositReportViewController.h */,
+				1D20C2361E4E110500D3FC93 /* SubmittedDepositReportViewController.m */,
+				1D20C2371E4E110500D3FC93 /* SubmittedDepositReportViewController.xib */,
+				1D20C2381E4E110500D3FC93 /* SubmittedDepositsViewController.h */,
+				1D20C2391E4E110500D3FC93 /* SubmittedDepositsViewController.m */,
+				1D20C23A1E4E110500D3FC93 /* SubmittedDepositsViewController.xib */,
+				1D20C23B1E4E110500D3FC93 /* TableView_SectionFooter.h */,
+				1D20C23C1E4E110500D3FC93 /* TableView_SectionFooter.m */,
+				1D20C23D1E4E110500D3FC93 /* TableView_SectionHeader.h */,
+				1D20C23E1E4E110500D3FC93 /* TableView_SectionHeader.m */,
+				1D20C23F1E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.h */,
+				1D20C2401E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m */,
+				1D20C2411E4E110500D3FC93 /* TableViewCell_Button.h */,
+				1D20C2421E4E110500D3FC93 /* TableViewCell_Button.m */,
+				1D20C2431E4E110500D3FC93 /* TableViewCell_ChkPhoto.h */,
+				1D20C2441E4E110500D3FC93 /* TableViewCell_ChkPhoto.m */,
+				1D20C2451E4E110500D3FC93 /* TableViewCell_Defs.h */,
+				1D20C2461E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.h */,
+				1D20C2471E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m */,
+				1D20C2481E4E110500D3FC93 /* TableViewCell_LblSubtitle.h */,
+				1D20C2491E4E110500D3FC93 /* TableViewCell_LblSubtitle.m */,
+				1D20C24A1E4E110500D3FC93 /* TextChangeFormatters.h */,
+				1D20C24B1E4E110500D3FC93 /* TextChangeFormatters.m */,
+				1D20C24C1E4E110500D3FC93 /* ToastMessage.h */,
+				1D20C24D1E4E110500D3FC93 /* ToastMessage.m */,
+				1D20C24E1E4E110500D3FC93 /* TransparentToolbar.h */,
+				1D20C24F1E4E110500D3FC93 /* TransparentToolbar.m */,
+				1D20C2501E4E110500D3FC93 /* UISchema.h */,
+				1D20C2511E4E110500D3FC93 /* UISchema.m */,
+				1D20C2521E4E110500D3FC93 /* VertifiImageProcessing.h */,
+				1D20C2531E4E110500D3FC93 /* VIPSample-Prefix.pch */,
+				1D20C2541E4E110500D3FC93 /* VIPSample.strings */,
+				1D20C2551E4E110500D3FC93 /* VIPSampleAppDelegate.h */,
+				1D20C2561E4E110500D3FC93 /* VIPSampleAppDelegate.m */,
+				1D20C2571E4E110500D3FC93 /* VIPViewUtility.h */,
+				1D20C2581E4E110500D3FC93 /* VIPViewUtility.m */,
+				1D20C2591E4E110500D3FC93 /* XmlSimpleParser.h */,
+				1D20C25A1E4E110500D3FC93 /* XmlSimpleParser.m */,
+			);
+			path = VertifiLatestSDK;
 			sourceTree = "<group>";
 		};
 		1D2887451DED515500AD7C74 /* PinResetViewController */ = {
@@ -596,9 +838,9 @@
 		6BD405891D81B59200358036 /* ShareOne */ = {
 			isa = PBXGroup;
 			children = (
+				1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */,
 				1D34D5291E0AC16B000F6276 /* ShareOne.entitlements */,
 				1D4546DA1E093487004797FD /* Categories */,
-				F229DB601D9E730000A705A5 /* ReuseableComponents */,
 				1D1AD7A01D9947CA0014C743 /* ThirdParty */,
 				1DDC9E5B1D910BC30049DAD4 /* Delegates */,
 				6BD405A11D81B5FC00358036 /* Cells */,
@@ -613,7 +855,6 @@
 				6BD4058E1D81B59300358036 /* AppDelegate.m */,
 				1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */,
 				6BD405931D81B59300358036 /* Main.storyboard */,
-				6BD405961D81B59300358036 /* Assets.xcassets */,
 				6BD405981D81B59300358036 /* LaunchScreen.storyboard */,
 				6BD4059B1D81B59300358036 /* Info.plist */,
 				6BD4058A1D81B59200358036 /* Supporting Files */,
@@ -624,6 +865,7 @@
 		6BD4058A1D81B59200358036 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1D5441351E51834F00C07072 /* Assets.xcassets */,
 				6BD4058B1D81B59200358036 /* main.m */,
 				6BD433DA1D8C09C30067515A /* po.plist */,
 			);
@@ -920,8 +1162,6 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D3E7DEC1E1A943900284615 /* libVertifiImageProcessing.a */,
-				1D3E7DEA1E1A8DD200284615 /* libVertifiImageProcessingDevice.a */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -962,25 +1202,6 @@
 				F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */,
 			);
 			path = MJpopupView;
-			sourceTree = "<group>";
-		};
-		F229DB601D9E730000A705A5 /* ReuseableComponents */ = {
-			isa = PBXGroup;
-			children = (
-				F229DB611D9E734300A705A5 /* CameraViewController.h */,
-				F229DB621D9E734300A705A5 /* CameraViewController.m */,
-				F229DB7D1D9E93B200A705A5 /* CameraViewController_iPhone.xib */,
-				F229DB631D9E734300A705A5 /* Global.h */,
-				F229DB641D9E734300A705A5 /* Global.m */,
-				F229DB731D9E821C00A705A5 /* CameraCropView.h */,
-				F229DB741D9E821C00A705A5 /* CameraCropView.m */,
-				F229DB751D9E821C00A705A5 /* CameraGridView.h */,
-				F229DB761D9E821C00A705A5 /* CameraGridView.m */,
-				F229DB771D9E821C00A705A5 /* TransparentToolbar.h */,
-				F229DB781D9E821C00A705A5 /* TransparentToolbar.m */,
-				F229DB7C1D9E83FF00A705A5 /* VertifiImageProcessing.h */,
-			);
-			path = ReuseableComponents;
 			sourceTree = "<group>";
 		};
 		F25B15861D9BCCAE003E5E6C /* GetDirectionView */ = {
@@ -1078,12 +1299,26 @@
 				1DBD4DC41DB105BC00943995 /* QBFooterView.xib in Resources */,
 				6BD4059A1D81B59300358036 /* LaunchScreen.storyboard in Resources */,
 				1D5F343D1E2F50AB00026EF2 /* MoneyTransferHeader.xib in Resources */,
+				1D20C2701E4E110500D3FC93 /* ErrorView.xib in Resources */,
+				1D20C2831E4E110500D3FC93 /* SubmittedDepositReportViewController.xib in Resources */,
+				1D20C26B1E4E110500D3FC93 /* DepositSubmitView.xib in Resources */,
+				1D20C26F1E4E110500D3FC93 /* InfoPlist.strings in Resources */,
 				1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */,
-				6BD405971D81B59300358036 /* Assets.xcassets in Resources */,
+				1D20C2761E4E110500D3FC93 /* Launch Screen.storyboard in Resources */,
+				1D20C27C1E4E110500D3FC93 /* RegistrationView.xib in Resources */,
 				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
+				1D20C25C1E4E110500D3FC93 /* AccountsViewController.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
-				F229DB7E1D9E93B200A705A5 /* CameraViewController_iPhone.xib in Resources */,
+				1D20C26E1E4E110500D3FC93 /* DepositViewController.xib in Resources */,
+				1D20C2801E4E110500D3FC93 /* Settings.plist in Resources */,
+				1D20C2911E4E110500D3FC93 /* VIPSample.strings in Resources */,
 				6BD433DB1D8C09C30067515A /* po.plist in Resources */,
+				1D20C27A1E4E110500D3FC93 /* MainWindow.xib in Resources */,
+				1D20C2641E4E110500D3FC93 /* CameraViewController.xib in Resources */,
+				1D20C2621E4E110500D3FC93 /* CameraInstructionViewController.xib in Resources */,
+				1D20C27F1E4E110500D3FC93 /* Settings.bundle in Resources */,
+				1D20C2851E4E110500D3FC93 /* SubmittedDepositsViewController.xib in Resources */,
+				1D5441361E51834F00C07072 /* Assets.xcassets in Resources */,
 				1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1145,14 +1380,23 @@
 			files = (
 				1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */,
 				1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */,
+				1D20C2921E4E110500D3FC93 /* VIPSampleAppDelegate.m in Sources */,
+				1D20C26A1E4E110500D3FC93 /* DepositSubmitQueue.m in Sources */,
+				1D20C2841E4E110500D3FC93 /* SubmittedDepositsViewController.m in Sources */,
+				1D20C2871E4E110500D3FC93 /* TableView_SectionHeader.m in Sources */,
 				1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */,
 				1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */,
+				1D20C26D1E4E110500D3FC93 /* DepositViewController.m in Sources */,
 				1D398F9E1E07F5DE00275E4E /* Address.m in Sources */,
+				1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */,
+				1D20C2731E4E110500D3FC93 /* GoogleAnalytics.m in Sources */,
 				1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */,
 				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
-				F229DB791D9E821C00A705A5 /* CameraCropView.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
+				1D20C28C1E4E110500D3FC93 /* TableViewCell_LblSubtitle.m in Sources */,
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
+				1D20C2601E4E110500D3FC93 /* CameraGridView.m in Sources */,
+				1D20C2861E4E110500D3FC93 /* TableView_SectionFooter.m in Sources */,
 				1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */,
 				F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */,
 				1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */,
@@ -1160,6 +1404,7 @@
 				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
 				F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */,
 				F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */,
+				1D20C2891E4E110500D3FC93 /* TableViewCell_Button.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
 				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
 				F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */,
@@ -1167,63 +1412,86 @@
 				6BD405CC1D82CA7200358036 /* User.m in Sources */,
 				1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */,
 				6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */,
+				1D20C27D1E4E110500D3FC93 /* RegistrationViewController.m in Sources */,
 				F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */,
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
+				1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */,
+				1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */,
 				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
+				1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */,
+				1D20C2711E4E110500D3FC93 /* ErrorViewController.m in Sources */,
 				1D3A7BDA1DF0599900AEA159 /* PasswordChangeController.m in Sources */,
+				1D20C28D1E4E110500D3FC93 /* TextChangeFormatters.m in Sources */,
+				1D20C25F1E4E110500D3FC93 /* CameraCropView.m in Sources */,
 				6BD405C51D82C94300358036 /* SignInModel.m in Sources */,
 				1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */,
 				1D3ED8571E2676A800AE91C1 /* ContactEditCell.m in Sources */,
 				1D398FA41E07F73900275E4E /* Photos.m in Sources */,
+				1D20C2631E4E110500D3FC93 /* CameraViewController.m in Sources */,
+				1D20C28E1E4E110500D3FC93 /* ToastMessage.m in Sources */,
 				1D10A6111E2606E100BD40CD /* PaymentController.m in Sources */,
 				1D3ED8521E2662E300AE91C1 /* ContactsHeaderView.m in Sources */,
 				6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */,
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
+				1D20C26C1E4E110500D3FC93 /* DepositSubmitViewController.m in Sources */,
+				1D20C2941E4E110500D3FC93 /* XmlSimpleParser.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */,
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,
 				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
+				1D20C2931E4E110500D3FC93 /* VIPViewUtility.m in Sources */,
 				1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */,
+				1D20C27E1E4E110500D3FC93 /* ResponseDictionary.m in Sources */,
 				1D10A60E1E2606CE00BD40CD /* PaymentSettingController.m in Sources */,
 				1DBD4DC21DB1053200943995 /* QBFooterView.m in Sources */,
 				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
+				1D20C2811E4E110500D3FC93 /* SubmittedDeposit.m in Sources */,
 				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
 				6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */,
 				1D72E24D1DEC025500A054BA /* NotifSettingsController.m in Sources */,
 				1D0309A51DD30B1B005953FA /* VertifiObject.m in Sources */,
+				1D20C25E1E4E110500D3FC93 /* BadgeBarButtonItem.m in Sources */,
+				1D20C2691E4E110500D3FC93 /* DepositSubmitOperation.m in Sources */,
 				1D03DD351E28B46E0025D7D0 /* DeleteContactCell.m in Sources */,
+				1D20C2901E4E110500D3FC93 /* UISchema.m in Sources */,
 				F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */,
+				1D20C2881E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m in Sources */,
 				1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */,
+				1D20C2681E4E110500D3FC93 /* DepositModel.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
 				1D5F343B1E2F4FFF00026EF2 /* MoneyTransferHeader.m in Sources */,
-				F229DB661D9E734300A705A5 /* Global.m in Sources */,
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
+				1D20C27B1E4E110500D3FC93 /* MultiPartForm.m in Sources */,
 				1D2887481DED517400AD7C74 /* PinResetController.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
 				1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */,
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
+				1D20C2661E4E110500D3FC93 /* DepositAccount.m in Sources */,
 				1D398FA11E07F66E00275E4E /* Hours.m in Sources */,
 				1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */,
-				F229DB7A1D9E821C00A705A5 /* CameraGridView.m in Sources */,
 				1D5F34381E2F4C2700026EF2 /* PaymentCell.m in Sources */,
-				F229DB7B1D9E821C00A705A5 /* TransparentToolbar.m in Sources */,
 				1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */,
+				1D20C2821E4E110500D3FC93 /* SubmittedDepositReportViewController.m in Sources */,
 				1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */,
+				1D20C28B1E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m in Sources */,
 				1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */,
-				F229DB651D9E734300A705A5 /* CameraViewController.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
+				1D20C2611E4E110500D3FC93 /* CameraInstructionViewController.m in Sources */,
 				1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */,
 				1D5F34401E2F572500026EF2 /* TransferSomeOneElseCell.m in Sources */,
 				1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */,
+				1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */,
 				1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */,
 				1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */,
 				1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */,
 				1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
 				1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */,
+				1D20C2671E4E110500D3FC93 /* DepositInitOperation.m in Sources */,
 				1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1231,6 +1499,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1D20C2191E4E110400D3FC93 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1D20C21A1E4E110400D3FC93 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		6BD405931D81B59300358036 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1354,7 +1630,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1379,7 +1655,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
