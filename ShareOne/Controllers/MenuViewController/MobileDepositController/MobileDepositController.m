@@ -9,9 +9,7 @@
 #import "MobileDepositController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "ImageViewPopUpController.h"
-#import "CameraGridView.h"
 #import "VertifiImageProcessing.h"
-#import "Global.h"
 #import "CameraViewController.h"
 #import "ConstantsShareOne.h"
 #import "CashDeposit.h"
@@ -20,6 +18,18 @@
 #import "ConstantsShareOne.h"
 #import "VertifiObject.h"
 #import "HomeViewController.h"
+#import "CameraCropView.h"
+#import "TransparentToolbar.h"
+#import "CameraInstructionViewController.h"
+#import "CameraGridView.h"
+
+
+@protocol CameraViewControllerDelegate
+
+- (void) onCameraClose;
+- (void) onPictureTaken:(UIImage *)imageJPEG withBWImage:(UIImage *)imageBW results:(NSArray *)dictionary isFront:(BOOL)isFront;
+
+@end
 
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
@@ -57,7 +67,7 @@
 @property (nonatomic, strong) NSArray *suffixArr;
 @property (nonatomic, strong) SuffixInfo *objSuffixInfo;
 @property (nonatomic, strong) NSString *depositLimt;
-
+@property (nonatomic, strong) VertifiObject *objVertifiObject;
 
 -(IBAction)doneButtonClicked:(id)sender;
 
@@ -102,6 +112,8 @@
         if(success){
             VertifiObject *obj = (VertifiObject *)user;
             _depositLimt=obj.DepositLimit;
+            
+            [_depositLimitLbl setText:[NSString stringWithFormat:@"Deposit per limit $%.2f",[_depositLimt floatValue]]];
             if(![obj.InputValidation isEqualToString:@"OK"]){
             }
             
@@ -157,7 +169,9 @@
     if(![self getValidationStausMessage])
     {
         //[self vertifiPaymentInIt];
-        [self getRegisterToVirtifi];
+        //[self getRegisterToVirtifi];
+        [self vertifiComitWithObject:_objVertifiObject];
+
 
     }
     else{
@@ -348,6 +362,8 @@
     
     __weak MobileDepositController *weakSelf = self;
     
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
     [params setValue:REQUESTER_VALUE forKey:@"requestor"];
@@ -361,7 +377,9 @@
     [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
     
     [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
-    [params setValue:_ammountTxtFeild.text forKey:@"amount"];
+    if([_ammountTxtFeild.text floatValue]>0.0)
+        [params setValue:_ammountTxtFeild.text forKey:@"amount"];
+    
     [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
     [params setValue:VERTIFI_MODE_TEST forKey:@"mode"];
     [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
@@ -373,11 +391,33 @@
     [params setValue:imageDataJPG forKey:@"imageColor"];
 
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DEP_ININT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+
         if(succes){
-            [weakSelf vertifiComitWithObject:(VertifiObject *)user];
+            _objVertifiObject=(VertifiObject *)user;
+            
+            if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_PASSED] || [_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_FAILED]){
+                
+                float CARAmount = [_objVertifiObject.CARAmount floatValue];
+                float _ammountTxtFeild_value = [[_ammountTxtFeild text] floatValue];
+                if(_ammountTxtFeild_value >0.0){
+                    
+                    if(CARAmount!=_ammountTxtFeild_value){
+                        [self showAlertForAmountMisMatchWithTitle:@"Amount Mismatch" AndMessage:VERTIFI_AMOUNT_MISMATCH(CARAmount, _ammountTxtFeild_value)];
+                    }
+                }
+                else if (CARAmount>0)
+                    [_ammountTxtFeild setText:[NSString stringWithFormat:@"%.2f",CARAmount]];
+            }
+            
+
+            if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
+                [self reloadMobileDepositController];
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE title:@"" delegate:weakSelf];
+            }
+
         }
         else{
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             NSString *localizeErrorMessage=ERROR_MESSAGE;
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
@@ -416,6 +456,8 @@
 
     if(objVertifi.SSOKey){
         
+        [ShareOneUtility showProgressViewOnView:weakSelf.view];
+
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
         [params setValue:REQUESTER_VALUE forKey:@"requestor"];
@@ -744,6 +786,7 @@
         strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_BACK_PHOTO" value:@"Back Check Image" table:@"VIPSample"];
     
     
+    /*
     CameraViewController *cameraViewController = nil;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
@@ -756,6 +799,20 @@
         [self presentViewController:cameraViewController animated:YES completion:^{
         }];
     }
+     */
+    
+
+    
+    
+    CameraViewController *cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController" bundle:nil delegate:self title:strTitle isFront:_isFrontorBack];
+    if (cameraViewController != nil)
+    {
+        cameraViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:cameraViewController animated:YES completion:^{
+        }];
+    }
+    
+
     
     return;
 }
@@ -821,12 +878,17 @@
                                [self setSelectedImageOnButton:imageBW];
                                _showViewimgBW=imageBW;
                                _showViewimg=imageColor;
-                               if(_isFrontorBack)
+                               if(_isFrontorBack && imageErrors.count == 0)
                                {
+
                                    [self viewEnabled:_View1btn];
+                                   [self vertifiPaymentInIt];
+
                                }
                                else{
-                                   [self viewEnabled:_View2btn];
+                                   if(imageErrors.count == 0){
+                                       [self viewEnabled:_View2btn];
+                                   }
                                }
 
                                [self onShowErrors];
@@ -990,8 +1052,28 @@
     [alert addAction:ok];
     
     [self presentViewController:alert animated:YES completion:nil];
-
 }
+
+-(void)showAlertForAmountMisMatchWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                         }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
 
 -(void)navigateToLastController{
     

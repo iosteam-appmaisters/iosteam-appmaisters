@@ -842,77 +842,6 @@
 
 -(void)createBatchOfRequestsWithObject:(NSArray *)reqObjects requestCompletionBlock:(void(^)(NSObject *response,NSString *responseObj))reqBlock requestFailureBlock:(void(^)(NSError* error))failReqBlock queueCompletionBlock:(void(^)(BOOL sucess,NSString *errorString ))queueBlock queueFailureBlock:(void(^)(NSError* error))failQueueBlock{
 
-    /*
-    queueCompletionBlockClone=queueBlock;
-    
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    ASINetworkQueue *objASINetworkQueue = [[ASINetworkQueue alloc] init] ;
-    
-    objASINetworkQueue.delegate=self;
-    
-    [reqObjects enumerateObjectsUsingBlock:^(NSDictionary *objReqParam, NSUInteger idx, BOOL * _Nonnull stop) {
-       
-        // Setting Headers for Own servers
-        
-        NSString *urlString = objReqParam[REQ_URL];
-        NSString *headerString = objReqParam[REQ_HEADER];
-        NSString *requestType = objReqParam[REQ_TYPE];
-        NSDictionary *requestParamDict = objReqParam[REQ_PARAM];
-        
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",urlString]];
-        __weak ASIHTTPRequest *requestASI = [ASIHTTPRequest requestWithURL:url];
-        
-        // Setting Headers for Own servers
-        if(headerString){
-            [self setHeaderOnRequest:(NSMutableURLRequest *)requestASI withAuth:headerString];
-        }
-        
-        [requestASI setRequestMethod:requestType];
-        
-        if(requestParamDict){
-            NSError *error;
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:requestParamDict options:0 error:&error];
-            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            NSData* requestData = [NSData dataWithBytes:[jsonString UTF8String] length:[jsonString length]];
-            [requestASI appendPostData:requestData];
-        }
-        
-        [requestASI setCompletionBlock:^{
-            NSString *responseString = [requestASI responseString];
-            NSLog(@"URL : %@ Response: %@",url, responseString);
-            
-            
-            NSDictionary *jsonDict = [self parseResponseToJsonWithData:[requestASI responseData]];
-            
-            if([jsonDict isKindOfClass:[NSArray class]] || [jsonDict isKindOfClass:[NSDictionary class]]){
-                reqBlock(jsonDict,requestASI.url.absoluteString);
-            }
-            else{
-                NSDictionary *errorInfo = [self getErrorObjectWithStatusMessage:requestASI.responseStatusMessage andStatusCode:requestASI.responseStatusCode];
-                
-                [self hideProgressAlert];
-                
-                errorMessage = [self getErrorMessageWithObject:errorInfo];
-                NSLog(@"Error : %@",[self getErrorMessageWithObject:errorInfo]);
-            }
-        }];
-        [requestASI setFailedBlock:^{
-            NSError *error = [requestASI error];
-            
-            errorMessage = error.localizedDescription;
-            
-            NSLog(@"Error: %@", error.localizedDescription);
-            
-        }];
-        
-        [objASINetworkQueue addOperation:requestASI];
-    }];
-    
-    [objASINetworkQueue setQueueDidFinishSelector:@selector(queueFinished:)];
-
-    [objASINetworkQueue go];
-*/
     
     __block NSString *queueCustomError = nil;
     NSMutableArray *customReqArr= [[NSMutableArray alloc] init];
@@ -985,8 +914,6 @@
     NSLog(@"Queue finished");
     queueCompletionBlockClone(TRUE,errorMessage);
 }
-
-
 
 
 - (void)concurrentBatchOfRequestOperations:(NSArray *)operations progressBlock:(void (^)(NSUInteger, NSUInteger))progressBlock completionBlock:(void (^)(NSArray *))completionBlock {

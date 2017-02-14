@@ -97,10 +97,13 @@
 #define kVERTIFY_ALL_DEP_LIST                           @"https://www.member-data.com/rdc/sso/mobdep_reviewquery.ashx"
 #define kVERTIFY_ALL_DEP_LIST_TEST                      @"https://test.vertifi.com/rdc/sso/mobdep_reviewquery.ashx"
 
-
-
 #define VERTIFI_MODE_TEST                               @"test"
 #define VERTIFI_MODE                                    @"prod"
+
+
+#define CAR_MISMATCH_PASSED                             @"Passed"
+#define CAR_MISMATCH_FAILED                             @"Failed"
+#define CAR_MISMATCH_NOT_TESTED                         @"Not Tested"
 
 
 #define kLOCATION_API                                   @"http://api.co-opfs.org/locator/proximitySearch"

@@ -11,4 +11,6 @@
 
 @interface MobileDepositController : BaseViewController
 
+@property (nonatomic,weak) IBOutlet UILabel *depositLimitLbl;
+
 @end
