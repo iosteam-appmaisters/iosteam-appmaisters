@@ -113,7 +113,7 @@
             VertifiObject *obj = (VertifiObject *)user;
             _depositLimt=obj.DepositLimit;
             
-            [_depositLimitLbl setText:[NSString stringWithFormat:@"Deposit per limit $%.2f",[_depositLimt floatValue]]];
+            [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit per limit $%.2f)",[_depositLimt floatValue]]];
             if(![obj.InputValidation isEqualToString:@"OK"]){
             }
             
@@ -410,10 +410,9 @@
                     [_ammountTxtFeild setText:[NSString stringWithFormat:@"%.2f",CARAmount]];
             }
             
-
             if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
-                [self reloadMobileDepositController];
-                [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE title:@"" delegate:weakSelf];
+//                [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE title:@"" delegate:weakSelf];
+                [self showAlertForRescanOrIgnoreTitle:@"" AndMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE];
             }
 
         }
@@ -453,7 +452,6 @@
     
     __weak MobileDepositController *weakSelf = self;
 
-
     if(objVertifi.SSOKey){
         
         [ShareOneUtility showProgressViewOnView:weakSelf.view];
@@ -461,27 +459,19 @@
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
         [params setValue:REQUESTER_VALUE forKey:@"requestor"];
-        
         [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
-        
         [params setValue:ROUTING_VALUE forKey:@"routing"];
-        
         [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
-        
         [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
-        
         [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
         [params setValue:_ammountTxtFeild.text forKey:@"amount"];
         [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
         [params setValue:VERTIFI_MODE_TEST forKey:@"mode"];
         [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
         
-        
         NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"backimg.png"]);
         [params setValue:imageDataPNG forKey:@"image"];
-        
         [params setValue:objVertifi.SSOKey forKey:@"ssokey"];
-
         
         [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_COMMIT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
             
@@ -494,7 +484,6 @@
             }
            else if(obj.DepositIDCurrentCheck){
              
-            
                [self reloadMobileDepositController];
                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Thank You" delegate:weakSelf];
             }
@@ -1070,6 +1059,38 @@
                          }];
     [alert addAction:ok];
     
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+-(void)showAlertForRescanOrIgnoreTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ignoreBtn = [UIAlertAction
+                         actionWithTitle:@"Ignore"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                         }];
+    [alert addAction:ignoreBtn];
+
+    
+    UIAlertAction* retryBtn = [UIAlertAction
+                                actionWithTitle:@"Re Try"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:^{
+                                    }];
+                                    [self reloadMobileDepositController];
+                                }];
+    [alert addAction:retryBtn];
+
     [self presentViewController:alert animated:YES completion:nil];
 }
 
