@@ -165,6 +165,7 @@
 #define VERTIFY_LOGIN_VALIDATION                        @"User Registration Pending Approval"
 #define VERTIFY_LOGIN_VALIDATION_MESSAGE                @"User registration pending for approval"
 #define VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE         @"Vertfiti was unable to test the scanned check, Please re-scan."
+#define VERTIFY_DEL_DEP_MESSAGE                         @"Are you sure, you want to delete ?"
 
 
 

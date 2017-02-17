@@ -26,6 +26,8 @@
 @property (nonatomic,strong) NSString *DepositIDCurrentCheck;
 @property (nonatomic,strong) NSString *CARAmount;
 @property (nonatomic,strong) NSString *CARMismatch;
+@property (nonatomic,strong) NSString *deletedError;
+
 
 +(NSArray *)parseAllDepositsWithObject:(NSArray *)array;
 @end

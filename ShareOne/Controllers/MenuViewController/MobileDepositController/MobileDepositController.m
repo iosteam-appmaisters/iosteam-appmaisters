@@ -477,18 +477,26 @@
             
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
-            VertifiObject *obj =(VertifiObject *)user;
-            
-            if(![obj.InputValidation isEqualToString:@"OK"]){
-                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"Status" delegate:weakSelf];
+            if(succes){
+                VertifiObject *obj =(VertifiObject *)user;
+                
+                if(![obj.InputValidation isEqualToString:@"OK"]){
+                    [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"Status" delegate:weakSelf];
+                }
+                else if(obj.DepositIDCurrentCheck){
+                    
+                    [self reloadMobileDepositController];
+                    [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Thank You" delegate:weakSelf];
+                }
+                else
+                    [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"" delegate:weakSelf];
             }
-           else if(obj.DepositIDCurrentCheck){
-             
-               [self reloadMobileDepositController];
-               [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"Thank You" delegate:weakSelf];
+            else{
+                NSString *error =(NSString *)user;
+
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:error title:@"Error" delegate:weakSelf];
+
             }
-            else
-                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.DepositStatus title:@"" delegate:weakSelf];
             
         } failureBlock:^(NSError *error) {
             
@@ -1103,10 +1111,6 @@
     NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
     
     NSString *webUrl = [cacheControlerDict valueForKey:WEB_URL];
-    NSString *screenTitle = [[cacheControlerDict valueForKey:SUB_CAT_TITLE] capitalizedString];
-    NSString *navigationTitle = [[cacheControlerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
-    
-    
     
     if([contrlollerName isEqualToString:@"WebViewController"]){
         
@@ -1130,8 +1134,6 @@
     
     NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
     
-    NSString *webUrl = [cacheControlerDict valueForKey:WEB_URL];
-    NSString *screenTitle = [[cacheControlerDict valueForKey:SUB_CAT_TITLE] capitalizedString];
     NSString *navigationTitle = [[cacheControlerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     
     UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
