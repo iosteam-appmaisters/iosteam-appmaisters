@@ -30,7 +30,7 @@
 //#define VERTIFI_DEPOSIT_LIMIT(value) @"Amount exceeds the limit, Deposit limit is $ %@ Only", value
 
 #define VERTIFI_DEPOSIT_LIMIT(value) [NSString stringWithFormat:@"Amount exceeds the limit. Deposit limit is $%@ Only.",value]
-
+#define VERTIFI_AMOUNT_MISMATCH(carAmount,texFeildAmount) [NSString stringWithFormat:@"Amount return from Vertifi is $%.2f, mismatch to the input amount $%.2f",carAmount,texFeildAmount]
 
 
 #define DATE_TIME_FORMAT_FOR_ADD_MARKER @"MMMM d, YYYY"
@@ -79,10 +79,10 @@
 #define SECTION_BACK_IMAGE          1
 
 // control tags
-#define FRONT_BUTTON_TAG            1
-#define BACK_BUTTON_TAG             2
-#define FRONT_IMAGE_VIEW_TAG        10
-#define BACK_IMAGE_VIEW_TAG         11
+#define kFRONT_BUTTON_TAG            1
+#define kBACK_BUTTON_TAG             2
+#define kFRONT_IMAGE_VIEW_TAG        10
+#define kBACK_IMAGE_VIEW_TAG         11
 
 
 #define PUBLIC_KEY                  @"bea351786c074347a0528acf729d0b8f"
@@ -162,8 +162,11 @@
 
 
 
-#define VERTIFY_LOGIN_VALIDATION                @"User Registration Pending Approval"
-#define VERTIFY_LOGIN_VALIDATION_MESSAGE       @"User registration pending for approval"
+#define VERTIFY_LOGIN_VALIDATION                        @"User Registration Pending Approval"
+#define VERTIFY_LOGIN_VALIDATION_MESSAGE                @"User registration pending for approval"
+#define VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE         @"Vertfiti was unable to test the scanned check, Please re-scan."
+#define VERTIFY_DEL_DEP_MESSAGE                         @"Are you sure, you want to delete ?"
+
 
 
 #define EXPIRED_PASSWORD_MESSAGE                @"A temporary password has been emailed"

@@ -37,9 +37,14 @@
             NSString *DepositID = [xmlDoc valueForKeyPath:@"DepositStatus.DepositID"];
 
             NSString *EUAContents = [xmlDoc valueForKeyPath:@"UserValidation.EUAContents"];
+            
+            NSString *CARMismatch = [xmlDoc valueForKeyPath:@"ImageValidation.CARMismatch"];
+
+            NSString *CARAmount = [xmlDoc valueForKeyPath:@"ImageValidation.CARAmount"];
 
             NSArray *DepositArray = [xmlDoc arrayValueForKeyPath:@"Deposit"];
             NSDictionary *imageDictionary = [xmlDoc valueForKeyPath:@"Deposit.Deposit_Item"];
+            NSString *deletedError = [xmlDoc valueForKeyPath:@"Status.Error"];
 
 
             VertifiObject *obj = [[VertifiObject alloc] init];
@@ -51,6 +56,11 @@
             obj.DepositLimit=DepositLimit;
             obj.DepositStatus=DepositStatus;
             obj.DepositIDCurrentCheck=DepositID;
+            obj.CARAmount=CARAmount;
+            obj.CARMismatch=CARMismatch;
+            obj.deletedError=deletedError;
+
+            
             if(EUAContents)
                 obj.EUAContents= [ShareOneUtility decodeBase64ToStirng:EUAContents];
             obj.depositArr=[VertifiObject parseAllDepositsWithObject:DepositArray];

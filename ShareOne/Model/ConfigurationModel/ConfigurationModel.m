@@ -12,5 +12,7 @@
 
 +(void)getServicesSettings{
     
+
+    //
 }
 @end

@@ -69,10 +69,9 @@
     [super viewDidAppear:animated];
 }
 
--(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture
-{
-    if(gesture.state==UIGestureRecognizerStateEnded)
-    {
+-(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture{
+    
+    if(gesture.state==UIGestureRecognizerStateEnded){
         [self backgroundButtonClicked:self];
     }
 }
@@ -89,7 +88,6 @@
         if([sender isKindOfClass:[NSIndexPath class]]){
             if (_homeDelegate != nil && [_homeDelegate respondsToSelector:@selector(pushViewControllerWithObject:)]){
                 [[self homeDelegate] pushViewControllerWithObject:_controllerInfoDict];
-
             }
         }
     }];
@@ -149,12 +147,12 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     NSDictionary *dict = _contentArr[indexPath.section];
+    
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     NSDictionary *dictSubCat = subCatArr[indexPath.row];
     cell.categorytitleLbl.text = [dictSubCat valueForKey:SUB_CAT_TITLE];
     [cell.iconImageVw setImage:[UIImage imageNamed:@"slide-menu-arrow"]];
     
-
     return cell;
 }
 
@@ -173,7 +171,6 @@
     
     NSDictionary* dict = _contentArr[section];
     
-    
     /* Condtion to check whether categories has sub categories or not
      ** If(TRUE)    - Show right arrow in the section view
      **else -       - Hide right arrow view
@@ -188,12 +185,10 @@
     
     [objFZAccordionTableViewHeaderView.sectionTitle setText:[dict valueForKey:MAIN_CAT_TITLE]];
     [objFZAccordionTableViewHeaderView.sectionImageVw setImage:[UIImage imageNamed:[dict valueForKey:MAIN_CAT_IMAGE]]];
-    
     objFZAccordionTableViewHeaderView.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
 
     return (UIView *)objFZAccordionTableViewHeaderView;
 }
-
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -202,7 +197,7 @@
     NSDictionary *dict = _contentArr[indexPath.section];
     NSArray *catArr =  [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     _controllerInfoDict = catArr[indexPath.row];
-
+    
     [self backgroundButtonClicked:indexPath];
 }
 
@@ -216,12 +211,10 @@
         _controllerInfoDict = _contentArr[section];
         [self backgroundButtonClicked:[NSIndexPath indexPathForRow:0 inSection:section]];
     }
-
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
     NSLog(@"didOpenSection");
-    
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
@@ -231,7 +224,4 @@
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
     NSLog(@"didCloseSection");
 }
-
-
-
 @end

@@ -63,7 +63,7 @@
 
 -(void)initGoogleMap
 {
-    NSArray *latlongArr=[[LocationArr objectAtIndex:0] componentsSeparatedByString:@","];
+    NSArray *latlongArr=[[LocationArr objectAtIndex:1] componentsSeparatedByString:@","];
     float lat=[[latlongArr objectAtIndex:0] floatValue];
     float lon=[[latlongArr objectAtIndex:1] floatValue];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat
@@ -117,6 +117,47 @@
     [self setpolyLine];
 }
 
+-(void)noRouteFound{
+    
+    for(int count=0; count<[LocationArr count]; count++)
+    {
+        NSArray *latlongArr=[[LocationArr objectAtIndex:count] componentsSeparatedByString:@","];
+        float lat=[[latlongArr objectAtIndex:0] floatValue];
+        float lon=[[latlongArr objectAtIndex:1] floatValue];
+        if(count==0)
+        {
+            
+            tittle=@"Pickup";
+            _markerFinish = [GMSMarker new];
+            _markerFinish.position = CLLocationCoordinate2DMake(lat, lon);
+            //            _markerFinish.title = @"Pickup Point";
+            _markerFinish.snippet = @"";
+            
+            
+            _markerFinish.map = self.mapView;
+            _markerFinish.icon = [UIImage imageNamed:@"pushpin_PassengerOnBoard.png"];
+            //_markerFinish.flat = YES;
+            
+            [self.mapView setSelectedMarker:_markerFinish];
+            
+        }
+        else
+        {
+            tittle=@"Destination";
+            _markerStart = [GMSMarker new];
+            _markerStart.position = CLLocationCoordinate2DMake(lat, lon);
+            _markerStart.title = @"";
+            _markerStart.snippet = @"";
+            // _markerStart.flat = YES;
+            
+            
+            _markerStart.map = self.mapView;
+            _markerStart.icon = [UIImage imageNamed:@"Destination.png"];
+            //[mapView_ setSelectedMarker:_markerStart];
+        }
+    }
+
+}
 -(void)setpolyLine
 {
     _routeController = [LRouteController new];
@@ -146,6 +187,8 @@
                     else if (!polyline)
                     {
                         NSLog(@"No route");
+                        [self noRouteFound];
+
                         [_coordinates removeAllObjects];
                     }
                     else
