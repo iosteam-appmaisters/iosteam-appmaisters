@@ -18,6 +18,8 @@
 
 @property (nonatomic,weak)IBOutlet UIButton *bocBtn;
 @property (nonatomic,weak)IBOutlet UIButton *focBtn;
+@property (nonatomic,weak)IBOutlet UIButton *delBtn;
+
 
 
 

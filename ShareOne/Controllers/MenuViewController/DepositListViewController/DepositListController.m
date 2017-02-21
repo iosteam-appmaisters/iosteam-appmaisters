@@ -19,15 +19,13 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self loadDataOnPickerView];
-
-
 }
 
 -(void)loadDataOnPickerView{
     
     _suffixArr= [[SharedUser sharedManager] suffixInfoArr];
     
-    if([_suffixArr count]<=0){
+    if([_suffixArr count]==0){
         NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
         _suffixArr=suffixArr;
         [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
@@ -40,7 +38,6 @@
     }
     
     [self getDataFromVertifi];
-
 }
 
 
@@ -82,6 +79,65 @@
     [self getDataFromVertifi];
 }
 
+-(IBAction)deleteButtonClicked:(UIButton *)sendderButton{
+    int selectedIndex = (int)sendderButton.tag;
+    
+    [self showAlertForDeleteDepositWithTitle:@"" AndMessage:VERTIFY_DEL_DEP_MESSAGE WithIndex:selectedIndex];
+}
+
+-(void)deleteDepositAndUpdateViewWithIndex:(int)index{
+    
+    VertifiDepositObject  *objVertifiDepositObject = _contentArr[index];
+    
+    __weak DepositListController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:REQUESTER_VALUE forKey:@"requestor"];
+    
+    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    
+    [params setValue:ROUTING_VALUE forKey:@"routing"];
+    
+    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+    
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
+    
+    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+    
+    [params setValue:objVertifiDepositObject.Deposit_id forKey:@"deposit_id"];
+    
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DELETE_DEPOSIT_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+        if(succes){
+            
+            VertifiObject * obj = (VertifiObject *)user;
+            if(!obj.deletedError){
+                
+                [_contentArr removeObjectAtIndex:index];
+                [weakSelf.tblView reloadData];
+                [weakSelf reloadCustomData];
+            }
+            else{
+                [[UtilitiesHelper shareUtitlities]showToastWithMessage:obj.deletedError title:@"" delegate:weakSelf];
+            }
+        }
+        else{
+            NSString *error = (NSString *)user;
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error title:@"" delegate:weakSelf];
+        }
+        
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
+}
+
 -(void)getListOfPast6MonthsDeposits{
     
     __weak DepositListController *weakSelf = self;
@@ -108,11 +164,10 @@
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
         VertifiObject * obj = (VertifiObject *)user;
-        weakSelf.contentArr = obj.depositArr;
+        weakSelf.contentArr = [obj.depositArr mutableCopy];
         
         if([weakSelf.contentArr count]==0){
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
-
         }
         [weakSelf.tblView reloadData];
         [weakSelf reloadCustomData];
@@ -195,7 +250,7 @@
     
     [cell.bocBtn setTag:indexPath.row];
     [cell.focBtn setTag:indexPath.row];
-    
+    [cell.delBtn setTag:indexPath.row];
     [cell.bocBtn addTarget:self action:@selector(bocButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [cell.focBtn addTarget:self action:@selector(focButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -315,6 +370,36 @@
     
     [self presentViewController:objImageViewPopUpController animated:YES completion:nil];
     
+}
+
+-(void)showAlertForDeleteDepositWithTitle:(NSString *)title AndMessage:(NSString *)message WithIndex:(int)index{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                             [self deleteDepositAndUpdateViewWithIndex:index];
+                         }];
+    [alert addAction:ok];
+    
+    UIAlertAction* cancel = [UIAlertAction
+                         actionWithTitle:@"Cancel"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                         }];
+    [alert addAction:cancel];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

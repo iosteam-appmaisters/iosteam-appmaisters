@@ -1788,7 +1788,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="331.33333333333331" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdE-he-zu3" id="AWs-QG-jWE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="43.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
@@ -2212,7 +2212,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         </variation>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJm-M5-XeL">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Optional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SJm-M5-XeL">
                                         <rect key="frame" x="76" y="44" width="268" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.61568627450980395" green="0.10980392156862745" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2247,8 +2247,8 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             <constraint firstAttribute="trailing" secondItem="ug2-R4-QMn" secondAttribute="trailing" id="Lmt-Zj-auI"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposit per limit $1000.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLs-lE-vyX">
-                                        <rect key="frame" x="223" y="76" width="141" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Deposit per limit $1000.00)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLs-lE-vyX">
+                                        <rect key="frame" x="216.66666666666663" y="76" width="147.33333333333337" height="14"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2846,7 +2846,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="28" width="384" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uD2-fN-AfI" id="Q4n-an-dXz">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl6-J8-yHa">
@@ -3069,7 +3069,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="128" width="384" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XFX-Lm-RUw" id="2vB-QP-J1u">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="109.66666666666667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcC-o1-kKO">
@@ -3410,19 +3410,19 @@ Tm90ZToQIA
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aup-VG-JdQ" userLabel="HeaderViewLbl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aup-VG-JdQ" userLabel="HeaderViewLbl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blg-xL-U3l" userLabel="BOC-Button">
-                                                            <rect key="frame" x="283" y="12.5" width="72" height="11"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blg-xL-U3l" userLabel="BOC-Button">
+                                                            <rect key="frame" x="299" y="11" width="70" height="13"/>
                                                             <state key="normal" backgroundImage="boc-deposit-list"/>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTM-NY-Yge" userLabel="FOC-Button">
-                                                            <rect key="frame" x="151" y="12" width="72" height="11"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTM-NY-Yge" userLabel="FOC-Button">
+                                                            <rect key="frame" x="219" y="11" width="70" height="13"/>
                                                             <state key="normal" backgroundImage="foc-deposit-list"/>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-k0-OiJ">
-                                                            <rect key="frame" x="20" y="5" width="32" height="26"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-k0-OiJ">
+                                                            <rect key="frame" x="20" y="5" width="32" height="24"/>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                             <color key="textColor" red="0.54192370176315308" green="0.0" blue="0.0092156929895281792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -3430,22 +3430,40 @@ Tm90ZToQIA
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                             </variation>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rdc_delete_icon" translatesAutoresizingMaskIntoConstraints="NO" id="mTY-vq-de0">
+                                                            <rect key="frame" x="386.66666666666669" y="12" width="10" height="11"/>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1E8-11-lKJ">
+                                                            <rect key="frame" x="379" y="0.0" width="25" height="34"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="n6o-aM-Yep"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="deleteButtonClicked:" destination="v0j-ZO-7qH" eventType="touchUpInside" id="M0u-M3-y5g"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89722335338592529" green="0.89733350276947021" blue="0.8971480131149292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="rZj-k0-OiJ" firstAttribute="leading" secondItem="aup-VG-JdQ" secondAttribute="leading" constant="20" id="1ue-Bd-AU5"/>
+                                                        <constraint firstItem="1E8-11-lKJ" firstAttribute="top" secondItem="aup-VG-JdQ" secondAttribute="top" id="3kX-VX-AdO"/>
                                                         <constraint firstItem="blg-xL-U3l" firstAttribute="leading" secondItem="uTM-NY-Yge" secondAttribute="trailing" constant="10" id="4ci-BO-aZY"/>
                                                         <constraint firstItem="uTM-NY-Yge" firstAttribute="centerY" secondItem="blg-xL-U3l" secondAttribute="centerY" id="B1C-yl-5Q0"/>
+                                                        <constraint firstItem="1E8-11-lKJ" firstAttribute="leading" secondItem="blg-xL-U3l" secondAttribute="trailing" constant="10" id="MxA-Dh-GaG"/>
+                                                        <constraint firstItem="mTY-vq-de0" firstAttribute="centerX" secondItem="1E8-11-lKJ" secondAttribute="centerX" id="Wxh-zV-OQP"/>
+                                                        <constraint firstItem="mTY-vq-de0" firstAttribute="centerY" secondItem="aup-VG-JdQ" secondAttribute="centerY" id="Xrv-MO-Raa"/>
                                                         <constraint firstAttribute="bottom" secondItem="rZj-k0-OiJ" secondAttribute="bottom" constant="5" id="wyQ-Iw-H1s"/>
                                                         <constraint firstItem="rZj-k0-OiJ" firstAttribute="top" secondItem="aup-VG-JdQ" secondAttribute="top" constant="5" id="x84-b5-Pcz"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1E8-11-lKJ" secondAttribute="bottom" id="xcz-HI-RB3"/>
                                                         <constraint firstItem="blg-xL-U3l" firstAttribute="centerY" secondItem="aup-VG-JdQ" secondAttribute="centerY" id="yux-nx-oku"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-IE-5tl" userLabel="FooterLbl">
-                                                    <rect key="frame" x="0.0" y="36" width="375" height="24"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-IE-5tl" userLabel="FooterLbl">
+                                                    <rect key="frame" x="0.0" y="34" width="414" height="26"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brk-b1-mpS">
-                                                            <rect key="frame" x="20" y="5" width="32" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brk-b1-mpS">
+                                                            <rect key="frame" x="20" y="5" width="32" height="16"/>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -3453,8 +3471,8 @@ Tm90ZToQIA
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                             </variation>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-v9-sjz">
-                                                            <rect key="frame" x="323" y="4.5" width="32" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-v9-sjz">
+                                                            <rect key="frame" x="362" y="6" width="32" height="15"/>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -3488,7 +3506,6 @@ Tm90ZToQIA
                                                 <constraint firstAttribute="trailing" secondItem="aup-VG-JdQ" secondAttribute="trailing" id="2dx-ea-0Pm"/>
                                                 <constraint firstAttribute="bottom" secondItem="r8y-IE-5tl" secondAttribute="bottom" id="LJz-n2-jk5"/>
                                                 <constraint firstItem="aup-VG-JdQ" firstAttribute="leading" secondItem="LHW-wm-heb" secondAttribute="leading" id="WG4-rh-LMU"/>
-                                                <constraint firstItem="blg-xL-U3l" firstAttribute="trailing" secondItem="V8N-v9-sjz" secondAttribute="trailing" id="XeB-eu-3O1"/>
                                                 <constraint firstItem="r8y-IE-5tl" firstAttribute="trailing" secondItem="aup-VG-JdQ" secondAttribute="trailing" id="ZPg-uv-uCi"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="brk-b1-mpS" secondAttribute="bottom" constant="3" id="mdt-Yw-8Yr"/>
                                                 <constraint firstItem="r8y-IE-5tl" firstAttribute="top" secondItem="aup-VG-JdQ" secondAttribute="bottom" id="zSC-Di-FNk"/>
@@ -3500,10 +3517,14 @@ Tm90ZToQIA
                                             </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1E8-11-lKJ" secondAttribute="trailing" constant="10" id="nxD-cn-DbV"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="amountLbl" destination="V8N-v9-sjz" id="lmm-t5-Mld"/>
                                             <outlet property="bocBtn" destination="blg-xL-U3l" id="z9y-Wi-Qiu"/>
                                             <outlet property="dateLbl" destination="brk-b1-mpS" id="tDb-jX-PLN"/>
+                                            <outlet property="delBtn" destination="1E8-11-lKJ" id="2I2-i8-64D"/>
                                             <outlet property="focBtn" destination="uTM-NY-Yge" id="7mA-vV-H6h"/>
                                             <outlet property="headerLbl" destination="rZj-k0-OiJ" id="a4x-Gu-M7X"/>
                                         </connections>
@@ -4499,7 +4520,7 @@ Tm90ZToQIA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQs-zV-fff">
-                                <rect key="frame" x="99" y="247" width="305" height="30"/>
+                                <rect key="frame" x="99" y="248" width="305" height="30"/>
                                 <connections>
                                     <action selector="dateButtonClicked:" destination="N95-Ce-Jh2" eventType="touchUpInside" id="lKE-EH-k0V"/>
                                 </connections>
@@ -6275,6 +6296,7 @@ Tm90ZToQIA
         <image name="pin-ok-btn" width="348" height="41"/>
         <image name="pin-submit-btn" width="348" height="41"/>
         <image name="qbDownIcon" width="414" height="49"/>
+        <image name="rdc_delete_icon" width="10" height="11"/>
         <image name="setting_icon-p2p" width="111" height="111"/>
         <image name="show_button" width="127" height="18"/>
         <image name="show_map" width="53" height="10"/>

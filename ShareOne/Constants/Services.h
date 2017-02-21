@@ -97,6 +97,11 @@
 #define kVERTIFY_ALL_DEP_LIST                           @"https://www.member-data.com/rdc/sso/mobdep_reviewquery.ashx"
 #define kVERTIFY_ALL_DEP_LIST_TEST                      @"https://test.vertifi.com/rdc/sso/mobdep_reviewquery.ashx"
 
+
+#define kVERTIFI_DELETE_DEPOSIT                         @"https://www.member-data.com/rdc/sso/mobdep_reviewdelete.ashx"
+#define kVERTIFI_DELETE_DEPOSIT_TEST                    @"https://test.vertifi.com/rdc/sso/mobdep_reviewdelete.ashx"
+
+
 #define VERTIFI_MODE_TEST                               @"test"
 #define VERTIFI_MODE                                    @"prod"
 

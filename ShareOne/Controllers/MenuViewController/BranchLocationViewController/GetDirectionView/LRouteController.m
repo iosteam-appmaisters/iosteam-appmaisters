@@ -2,7 +2,7 @@
 
 
 #import "LRouteController.h"
-
+#import "AppServiceModel.h"
 
 @implementation LRouteController
 
@@ -61,48 +61,71 @@
     
     url = [NSMutableString stringWithString:[url stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     
-    _request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url] usingCache:nil andCachePolicy:ASIDoNotReadFromCacheCachePolicy | ASIDoNotWriteToCacheCachePolicy | ASIDontLoadCachePolicy];
-    
-    __weak ASIHTTPRequest *weakRequest = _request;
-    
-    [_request setCompletionBlock:^{
-        NSError *error;
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:weakRequest.responseData options:kNilOptions error:&error];
 
-        if (!error)
-        {
-            NSArray *routesArray = [json objectForKey:@"routes"];
-            NSLog(@"RoutesArr...%@",routesArray);
-            if ([routesArray count] > 0)
-            {
-                NSDictionary *routeDict = [routesArray objectAtIndex:0];
-                NSDictionary *routeOverviewPolyline = [routeDict objectForKey:@"overview_polyline"];
-                NSString *points = [routeOverviewPolyline objectForKey:@"points"];
-              
-                GMSPath *path = [GMSPath pathFromEncodedPath:points];
-                GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
-                completitionBlock(polyline, nil);
-            }
-            else
-            {
-#if DEBUG
-                if (locationsCount > 10)
-                    NSLog(@"If you're using Google API's free service you will not get the route. Free service supports up to 8 waypoints + origin + destination.");
-#endif
-                completitionBlock(nil, nil);
-            }
+    [[AppServiceModel sharedClient] getMethod:nil AndParam:nil progressMessage:nil urlString:url delegate:nil completionBlock:^(NSObject *response) {
+        
+        NSDictionary *json =(NSDictionary *)response;
+        NSArray *routesArray = [json objectForKey:@"routes"];
+        NSLog(@"RoutesArr...%@",routesArray);
+        if ([routesArray count] > 0){
+            NSDictionary *routeDict = [routesArray objectAtIndex:0];
+            NSDictionary *routeOverviewPolyline = [routeDict objectForKey:@"overview_polyline"];
+            NSString *points = [routeOverviewPolyline objectForKey:@"points"];
+            
+            GMSPath *path = [GMSPath pathFromEncodedPath:points];
+            GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+            completitionBlock(polyline, nil);
         }
-        else
-        {
-            completitionBlock(nil, error);
+        else{
+            completitionBlock(nil, nil);
         }
-    }];
+        
+        
+    } failureBlock:^(NSError *error) {}];
     
-    [_request setFailedBlock:^{
-        completitionBlock(nil, weakRequest.error);
-    }];
     
-    [_request startAsynchronous];
+//    _request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url] usingCache:nil andCachePolicy:ASIDoNotReadFromCacheCachePolicy | ASIDoNotWriteToCacheCachePolicy | ASIDontLoadCachePolicy];
+//    
+//    __weak ASIHTTPRequest *weakRequest = _request;
+//    
+//    [_request setCompletionBlock:^{
+//        NSError *error;
+//        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:weakRequest.responseData options:kNilOptions error:&error];
+//
+//        if (!error)
+//        {
+//            NSArray *routesArray = [json objectForKey:@"routes"];
+//            NSLog(@"RoutesArr...%@",routesArray);
+//            if ([routesArray count] > 0)
+//            {
+//                NSDictionary *routeDict = [routesArray objectAtIndex:0];
+//                NSDictionary *routeOverviewPolyline = [routeDict objectForKey:@"overview_polyline"];
+//                NSString *points = [routeOverviewPolyline objectForKey:@"points"];
+//              
+//                GMSPath *path = [GMSPath pathFromEncodedPath:points];
+//                GMSPolyline *polyline = [GMSPolyline polylineWithPath:path];
+//                completitionBlock(polyline, nil);
+//            }
+//            else
+//            {
+//#if DEBUG
+//                if (locationsCount > 10)
+//                    NSLog(@"If you're using Google API's free service you will not get the route. Free service supports up to 8 waypoints + origin + destination.");
+//#endif
+//                completitionBlock(nil, nil);
+//            }
+//        }
+//        else
+//        {
+//            completitionBlock(nil, error);
+//        }
+//    }];
+//    
+//    [_request setFailedBlock:^{
+//        completitionBlock(nil, weakRequest.error);
+//    }];
+//    
+//    [_request startAsynchronous];
 }
 
 

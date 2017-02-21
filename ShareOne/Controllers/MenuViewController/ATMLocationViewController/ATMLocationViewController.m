@@ -143,8 +143,8 @@
             
             
             
-            GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lon_local
-                                                                    longitude:lat_local
+            GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat_local
+                                                                    longitude:lon_local
                                                                          zoom:15];
             _mapView.camera=camera;
             _mapView.myLocationEnabled = YES;
@@ -188,7 +188,7 @@
         if(isComingFromATM){
             lat_local=[[objLocation latitude] floatValue];
             lon_local=[[objLocation longitude] floatValue];
-            marker.position = CLLocationCoordinate2DMake(lon_local, lat_local);
+            marker.position = CLLocationCoordinate2DMake(lat_local, lon_local);
             address=(NSString *)objLocation.address;
             addressDetails= objLocation.city;
 

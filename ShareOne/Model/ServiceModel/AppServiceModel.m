@@ -544,8 +544,6 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     
-    
-     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];

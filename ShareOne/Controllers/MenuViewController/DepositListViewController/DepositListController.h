@@ -13,7 +13,7 @@
 @interface DepositListController : BaseViewController
 
 @property (nonatomic,weak)IBOutlet UITableView *tblView;
-@property (nonatomic,strong) NSArray *contentArr;
+@property (nonatomic,strong) NSMutableArray *contentArr;
 
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -24,6 +24,10 @@
 
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, weak) IBOutlet UIView *pickerParentView;
+
+
+
+-(IBAction)deleteButtonClicked:(UIButton *)sendderButton;
 
 
 @end
