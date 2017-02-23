@@ -28,7 +28,6 @@
 #import "SuffixInfo.h"
 
 
-
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 #define LOGGING_FACILITY(X, Y)	\
@@ -56,7 +55,7 @@ NSLog(Y, Z);		\
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:PLIST_NAME ofType:FILE_TYPE];
     arrPlist = [NSArray arrayWithContentsOfFile:plistPath];
     return   [self manipulateArray:arrPlist];
-;
+
 }
 
 +(NSMutableArray *)manipulateArray:(NSArray *)arr{
@@ -1519,5 +1518,25 @@ NSLog(Y, Z);		\
     }];
     return filteredSuffixArray;
 }
+
+
+#pragma mark - Configuration list helper methods
+
++ (NSDictionary *)getConfigurationDataFromPlist{
+    
+    NSDictionary *dictPlist = nil;
+    NSString* plistPath = [[NSBundle mainBundle] pathForResource:CONFIGURATION_PLIST_NAME ofType:FILE_TYPE];
+    dictPlist = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    return  dictPlist;
+}
+
+
++(Configuration *)getConfigurationFile{
+    
+    NSDictionary *configDict = [self getConfigurationDataFromPlist];
+    
+    return  [[Configuration alloc] initWithDictionary:configDict];
+}
+
 
 @end

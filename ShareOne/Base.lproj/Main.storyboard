@@ -133,50 +133,42 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-xn-S6F" userLabel="View3">
                                         <rect key="frame" x="20" y="122" width="374" height="97"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p">
+                                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
                                                 <rect key="frame" x="21" y="25" width="333" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
-                                                <state key="normal" image="Login_Button"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <state key="normal" title="LOGIN" backgroundImage="Login_Button"/>
                                                 <connections>
                                                     <action selector="loginButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="7DC-z3-P8B"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htK-91-tSX">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htK-91-tSX" customClass="CustomButton">
                                                 <rect key="frame" x="26" y="68" width="151" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="htK-91-tSX" secondAttribute="height" multiplier="151:24" id="u58-RZ-PtD"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                <state key="normal" title="Forgot Username or Password?">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <state key="normal" title="Forgot Username or Password?"/>
                                                 <connections>
                                                     <action selector="forgotPasswordButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="6NN-uO-dfU"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
                                                 <rect key="frame" x="250.33333333333329" y="68" width="69.666666666666714" height="24"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                                <state key="normal" title="Remember Me">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <state key="normal" title="Remember Me"/>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
                                                 <rect key="frame" x="324" y="67" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                <state key="normal" image="Rembember_Box">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <state key="normal" image="Rembember_Box"/>
                                                 <state key="selected" image="Rembember_Box_checked"/>
                                                 <connections>
                                                     <action selector="rememberMeButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="1Nx-T7-3rZ"/>
@@ -288,12 +280,10 @@
                                                     <action selector="fingerprintButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="CtH-Z6-9jo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="111" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-XY-Cad">
+                                            <button opaque="NO" tag="111" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-XY-Cad" customClass="PlainCustomButton">
                                                 <rect key="frame" x="20" y="22" width="153" height="33"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                                                <state key="normal" title="Forgot username ?">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Forgot username ?"/>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                                 </variation>
@@ -301,12 +291,10 @@
                                                     <action selector="pinResetButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="7IH-iz-mqI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-ZN-8NF">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-ZN-8NF" customClass="PlainCustomButton">
                                                 <rect key="frame" x="298" y="22" width="150" height="33"/>
-                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                                                <state key="normal" title="Forgot password ?">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Forgot password ?"/>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                                 </variation>
@@ -391,12 +379,13 @@
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="PU8-PD-iqw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQp-OX-1do">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQp-OX-1do" customClass="CustomButton">
                                         <rect key="frame" x="0.0" y="398" width="414" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="SQp-OX-1do" secondAttribute="height" multiplier="69:8" id="e6O-lp-gb0"/>
                                         </constraints>
-                                        <state key="normal" image="QuickBalance_Button"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Quick Balances" backgroundImage="QuickBalance_Button"/>
                                         <connections>
                                             <action selector="quickBalanceButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="w07-z2-xfq"/>
                                         </connections>
@@ -609,6 +598,7 @@
                         <outlet property="forgotPasswordBtn" destination="htK-91-tSX" id="n9g-JN-KLt"/>
                         <outlet property="joinButton" destination="DZ6-QP-Jpq" id="09U-Kc-EIG"/>
                         <outlet property="loadingView" destination="2FB-WI-wE0" id="Jb3-0Z-g59"/>
+                        <outlet property="logInButton" destination="F7s-uQ-F6p" id="umn-Td-3ag"/>
                         <outlet property="loginViewConstraintY" destination="1PH-Fp-36Z" id="JEo-sE-2fz"/>
                         <outlet property="passwordTxt" destination="a22-uc-P6y" id="9qQ-rv-BBw"/>
                         <outlet property="privacyButton" destination="ECX-AC-ghJ" id="hud-aQ-LuJ"/>
@@ -636,9 +626,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61q-bp-SPv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61q-bp-SPv" customClass="CustomButton">
                                 <rect key="frame" x="0.0" y="20" width="414" height="49"/>
-                                <state key="normal" image="qbDownIcon"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Quick Balances" backgroundImage="qbDownIcon"/>
                                 <connections>
                                     <action selector="dismissQuickBalances:" destination="k5u-Wq-QWs" eventType="touchUpInside" id="hrf-an-EXu"/>
                                 </connections>
@@ -1594,7 +1585,7 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ios_settings" translatesAutoresizingMaskIntoConstraints="NO" id="WB7-Zu-meI">
                                 <rect key="frame" x="0.0" y="20" width="414" height="151"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Balances" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-eA-PPU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Balances" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-eA-PPU" customClass="PlainCustomLabel">
                                 <rect key="frame" x="20" y="60" width="118.33333333333334" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1609,7 +1600,7 @@
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="BeI-6Z-h1W"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-lg-DcX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMw-lg-DcX" customClass="PlainCustomLabel">
                                 <rect key="frame" x="19.999999999999993" y="99" width="93.333333333333314" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1624,7 +1615,7 @@
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="fyR-mX-Nbx"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-fj-Obb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-fj-Obb" customClass="PlainCustomLabel">
                                 <rect key="frame" x="20" y="138" width="67.333333333333329" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1639,7 +1630,7 @@
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="MvJ-SN-47s"/>
                                 </connections>
                             </switch>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYj-eS-w0y">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYj-eS-w0y" customClass="PlainCustomLabel">
                                 <rect key="frame" x="20" y="177" width="92" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1651,7 +1642,7 @@
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="CmT-ou-3oi"/>
                                 </connections>
                             </switch>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hns-Wh-a4n">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hns-Wh-a4n" customClass="PlainCustomLabel">
                                 <rect key="frame" x="20" y="177" width="127.66666666666666" height="20"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1788,7 +1779,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="331.33333333333331" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdE-he-zu3" id="AWs-QG-jWE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
@@ -2247,7 +2238,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             <constraint firstAttribute="trailing" secondItem="ug2-R4-QMn" secondAttribute="trailing" id="Lmt-Zj-auI"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Deposit per limit $1000.00)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLs-lE-vyX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Deposit per limit $1000.00)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLs-lE-vyX" customClass="CustomLabel">
                                         <rect key="frame" x="216.66666666666663" y="76" width="147.33333333333337" height="14"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2491,14 +2482,15 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pm-nC-Vro">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pm-nC-Vro" customClass="CustomButton">
                                 <rect key="frame" x="20" y="330" width="374" height="41"/>
-                                <state key="normal" image="submit-btn"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="SUBMIT" backgroundImage="submit-btn"/>
                                 <connections>
                                     <action selector="submittButtonClicked:" destination="Pph-eo-F38" eventType="touchUpInside" id="PGS-1S-hT0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQb-wY-8JH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQb-wY-8JH" customClass="CustomLabel">
                                 <rect key="frame" x="20" y="386" width="374" height="28"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -2617,6 +2609,7 @@ Tm90ZToQIA
                         <outlet property="accountTxtFeild" destination="EAf-sl-ahq" id="SgN-jG-EZh"/>
                         <outlet property="accountTxtFeildBtn" destination="9Eu-dB-imL" id="S2F-vC-hl7"/>
                         <outlet property="ammountTxtFeild" destination="SJm-M5-XeL" id="FjP-6L-a1e"/>
+                        <outlet property="backCamBtn" destination="Bmg-zp-nIl" id="vWM-cs-6RK"/>
                         <outlet property="bottomConstraint" destination="Zhy-Jg-Fqo" id="Pp3-pd-jCL"/>
                         <outlet property="depositLimitLbl" destination="oLs-lE-vyX" id="wi5-hD-rNR"/>
                         <outlet property="frontCamBtn" destination="fFB-48-1aX" id="7H0-cQ-pui"/>
@@ -2824,15 +2817,16 @@ Tm90ZToQIA
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_banner" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-eI-03L">
                                 <rect key="frame" x="0.0" y="20" width="414" height="151"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-oN-4PI">
-                                <rect key="frame" x="268" y="50" width="127" height="27"/>
-                                <state key="normal" image="show_button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-oN-4PI" customClass="CustomButton">
+                                <rect key="frame" x="219" y="50" width="176" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <state key="normal" title="SHOW ALL BRANCHES ON MAP" backgroundImage="show_button"/>
                                 <connections>
                                     <action selector="showAllBranchesonMapButtonClicked:" destination="p2t-aQ-tQO" eventType="touchUpInside" id="gy3-vw-xor"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFS-ob-Psc">
-                                <rect key="frame" x="268" y="50" width="127" height="34"/>
+                                <rect key="frame" x="219" y="50" width="176" height="34"/>
                                 <connections>
                                     <action selector="showAllBranchesonMapButtonClicked:" destination="p2t-aQ-tQO" eventType="touchUpInside" id="yij-SQ-kvS"/>
                                 </connections>
@@ -2846,10 +2840,10 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="28" width="384" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uD2-fN-AfI" id="Q4n-an-dXz">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl6-J8-yHa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl6-J8-yHa" customClass="CustomLabel">
                                                     <rect key="frame" x="5" y="10" width="160" height="12"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
@@ -2859,7 +2853,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office 8am - 5pm " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3f-BV-SOm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office 8am - 5pm " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3f-BV-SOm" customClass="CustomLabel">
                                                     <rect key="frame" x="5" y="24" width="160" height="12"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
@@ -2869,7 +2863,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Thru 8am - 5pm" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bl1-Od-LE3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Thru 8am - 5pm" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bl1-Od-LE3" customClass="CustomLabel">
                                                     <rect key="frame" x="5" y="38" width="160" height="12"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
@@ -2879,7 +2873,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8068 US Highway 64 Bartlett, TN 38133 " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u15-JK-ydt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8068 US Highway 64 Bartlett, TN 38133 " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u15-JK-ydt" customClass="PlainCustomLabel">
                                                     <rect key="frame" x="5" y="52" width="155" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="9"/>
                                                     <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2888,13 +2882,13 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: [901] 452-7900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKL-kl-cUF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: [901] 452-7900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKL-kl-cUF" customClass="PlainCustomLabel">
                                                     <rect key="frame" x="5" y="75.333333333333329" width="161" height="13"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.8 Miles away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6R-yB-z1A">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.8 Miles away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6R-yB-z1A" customClass="CustomLabel">
                                                     <rect key="frame" x="170" y="10" width="77" height="9"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="8"/>
                                                     <color key="textColor" red="0.55294117649999996" green="0.058823529409999999" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3069,10 +3063,10 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="128" width="384" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XFX-Lm-RUw" id="2vB-QP-J1u">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="109.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcC-o1-kKO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcC-o1-kKO" customClass="CustomLabel">
                                                     <rect key="frame" x="5" y="5" width="235" height="12"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
@@ -3082,7 +3076,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office 8am - 5pm " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwp-Uw-1xh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office 8am - 5pm " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwp-Uw-1xh" customClass="CustomLabel">
                                                     <rect key="frame" x="5" y="22" width="154" height="12"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
@@ -3092,7 +3086,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Thru 8am - 5pm" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVp-RF-Okk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Thru 8am - 5pm" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVp-RF-Okk" customClass="CustomLabel">
                                                     <rect key="frame" x="5" y="39" width="154" height="12"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="10"/>
@@ -3102,7 +3096,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="303 West Park Avenue" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2d7-Ow-L3w">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="303 West Park Avenue" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2d7-Ow-L3w" customClass="PlainCustomLabel">
                                                     <rect key="frame" x="5" y="56" width="153.66666666666666" height="10.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="9"/>
                                                     <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3111,7 +3105,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="303 West Park Avenue" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvE-hU-9AQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="303 West Park Avenue" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvE-hU-9AQ" customClass="PlainCustomLabel">
                                                     <rect key="frame" x="5" y="71.333333333333329" width="153.66666666666666" height="10.333333333333343"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="9"/>
                                                     <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3120,7 +3114,7 @@ Tm90ZToQIA
                                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Phone: [901] 452-7900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQJ-4w-WvK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Phone: [901] 452-7900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQJ-4w-WvK" customClass="PlainCustomLabel">
                                                     <rect key="frame" x="5" y="86.666666666666671" width="153.66666666666666" height="13"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="9"/>
                                                     <color key="textColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3389,7 +3383,7 @@ Tm90ZToQIA
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposits Held For Review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-5Y-2SH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposits Held For Review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-5Y-2SH" customClass="CustomLabel">
                                 <rect key="frame" x="20" y="60" width="374" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.57578426599502563" green="0.0" blue="0.010277960449457169" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3421,7 +3415,7 @@ Tm90ZToQIA
                                                             <rect key="frame" x="219" y="11" width="70" height="13"/>
                                                             <state key="normal" backgroundImage="foc-deposit-list"/>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-k0-OiJ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-k0-OiJ" customClass="CustomLabel">
                                                             <rect key="frame" x="20" y="5" width="32" height="24"/>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                             <color key="textColor" red="0.54192370176315308" green="0.0" blue="0.0092156929895281792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3430,7 +3424,7 @@ Tm90ZToQIA
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                             </variation>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rdc_delete_icon" translatesAutoresizingMaskIntoConstraints="NO" id="mTY-vq-de0">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rdc_delete_icon" translatesAutoresizingMaskIntoConstraints="NO" id="mTY-vq-de0" customClass="CustomImageView">
                                                             <rect key="frame" x="386.66666666666669" y="12" width="10" height="11"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1E8-11-lKJ">
@@ -3462,7 +3456,7 @@ Tm90ZToQIA
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-IE-5tl" userLabel="FooterLbl">
                                                     <rect key="frame" x="0.0" y="34" width="414" height="26"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brk-b1-mpS">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brk-b1-mpS" customClass="PlainCustomLabel">
                                                             <rect key="frame" x="20" y="5" width="32" height="16"/>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3471,7 +3465,7 @@ Tm90ZToQIA
                                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="25"/>
                                                             </variation>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-v9-sjz">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8N-v9-sjz" customClass="PlainCustomLabel">
                                                             <rect key="frame" x="362" y="6" width="32" height="15"/>
                                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3970,34 +3964,32 @@ Tm90ZToQIA
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal_logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Cu-99-R2T">
                                 <rect key="frame" x="144.66666666666669" y="156" width="124.00000000000006" height="30"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-HY-bnW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-HY-bnW" customClass="CustomLabel">
                                 <rect key="frame" x="20" y="225" width="70" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kt3-UL-AMF" userLabel="AddNewFavButton">
-                                <rect key="frame" x="20" y="254" width="121" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kt3-UL-AMF" userLabel="AddNewFavButton" customClass="CustomButton">
+                                <rect key="frame" x="20" y="254" width="188" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="SbP-Zx-UUN"/>
                                 </constraints>
-                                <state key="normal" image="add_new_fav_btn"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="ADD NEW FAVORITES" backgroundImage="add_new_fav_btn"/>
                                 <connections>
                                     <action selector="goToAddFavouriteController:" destination="Ddh-0z-8eC" eventType="touchUpInside" id="HMG-xr-5rG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-da-VLa">
-                                <rect key="frame" x="181" y="705" width="213" height="31"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                <state key="normal" title="How does PayPal.me work?">
-                                    <color key="titleColor" red="0.61842912439999997" green="0.020480019969999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-da-VLa" customClass="CustomButton">
+                                <rect key="frame" x="206" y="706" width="188" height="30"/>
+                                <state key="normal" title="How does PayPal.me work?"/>
                                 <connections>
                                     <action selector="howDoesPaypalWorkAction:" destination="Ddh-0z-8eC" eventType="touchUpInside" id="hK5-TN-Vft"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LvP-Ew-1oV" customClass="FZAccordionTableView">
-                                <rect key="frame" x="0.0" y="276" width="414" height="429"/>
+                                <rect key="frame" x="0.0" y="276" width="414" height="430"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -4016,7 +4008,8 @@ Tm90ZToQIA
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWo-Rc-iQX">
-                                                    <rect key="frame" x="311" y="8" width="83" height="23"/>
+                                                    <rect key="frame" x="311" y="8.3333333333333357" width="83" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <state key="normal" image="paypal_btn"/>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="732" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blw-4n-AE2">
@@ -4154,7 +4147,7 @@ Tm90ZToQIA
                                     <constraint firstItem="Jo9-hM-EUX" firstAttribute="top" secondItem="Mbk-qo-lCB" secondAttribute="top" id="gTm-xM-EId"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk0-QX-Nau" userLabel="closeButton">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk0-QX-Nau" userLabel="closeButton" customClass="CustomButton">
                                 <rect key="frame" x="10" y="30" width="23" height="23"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="crossBtnNew"/>
@@ -4520,7 +4513,7 @@ Tm90ZToQIA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQs-zV-fff">
-                                <rect key="frame" x="99" y="248" width="305" height="30"/>
+                                <rect key="frame" x="99" y="247" width="305" height="30"/>
                                 <connections>
                                     <action selector="dateButtonClicked:" destination="N95-Ce-Jh2" eventType="touchUpInside" id="lKE-EH-k0V"/>
                                 </connections>
@@ -5846,9 +5839,10 @@ Tm90ZToQIA
                                         <rect key="frame" x="155" y="25" width="209" height="1"/>
                                         <color key="backgroundColor" red="0.87444537879999995" green="0.87454748149999995" blue="0.87439841029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zh7-1f-C1T">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zh7-1f-C1T" customClass="CustomButton">
                                         <rect key="frame" x="251" y="62" width="113" height="26"/>
-                                        <state key="normal" image="add_fav_btn"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <state key="normal" title="ADD TO FAVORITES" backgroundImage="add_fav_btn"/>
                                         <connections>
                                             <action selector="AddToFavouriteButtonClicked:" destination="DHz-AG-NAT" eventType="touchUpInside" id="Bo6-93-W9K"/>
                                         </connections>
@@ -5901,7 +5895,7 @@ Tm90ZToQIA
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kx7-rc-Dwj" customClass="FZAccordionTableView">
-                                <rect key="frame" x="0.0" y="384" width="414" height="316"/>
+                                <rect key="frame" x="0.0" y="384" width="414" height="317"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -5926,9 +5920,10 @@ Tm90ZToQIA
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSC-bz-kBb">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSC-bz-kBb" customClass="CustomButton">
                                                     <rect key="frame" x="83.333333333333329" y="65" width="59" height="23"/>
-                                                    <state key="normal" image="confirm_btn"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <state key="normal" title="CONFIRM" backgroundImage="confirm_btn"/>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="730" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the new Url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSL-3T-j8p">
                                                     <rect key="frame" x="40" y="35" width="145.66666666666666" height="15"/>
@@ -5982,15 +5977,16 @@ Tm90ZToQIA
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hr-R0-aKY">
-                                                    <rect key="frame" x="149.66666666666669" y="34" width="115.00000000000006" height="0.0"/>
+                                                    <rect key="frame" x="150" y="34" width="115" height="0.0"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAg-NG-BTg" userLabel="DeleteButtonNo">
-                                                            <rect key="frame" x="55" y="-11" width="55.000000000000028" height="22"/>
+                                                            <rect key="frame" x="55" y="-11" width="55" height="22"/>
                                                             <state key="normal" image="del_no"/>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m94-8h-Ujs" userLabel="DeleteButtonYes">
+                                                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m94-8h-Ujs" userLabel="DeleteButtonYes" customClass="CustomButton">
                                                             <rect key="frame" x="0.0" y="0.0" width="55" height="0.0"/>
-                                                            <state key="normal" image="del_yes"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                            <state key="normal" title="YES" backgroundImage="del_yes"/>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -6025,12 +6021,9 @@ Tm90ZToQIA
                                     <outlet property="delegate" destination="DHz-AG-NAT" id="ZbA-X9-lB3"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyK-u9-qPo">
-                                <rect key="frame" x="181" y="705" width="213" height="31"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                <state key="normal" title="How does PayPal.me work?">
-                                    <color key="titleColor" red="0.61842912439999997" green="0.020480019969999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyK-u9-qPo">
+                                <rect key="frame" x="206" y="706" width="188" height="30"/>
+                                <state key="normal" title="How does PayPal.me work?"/>
                                 <connections>
                                     <action selector="howDoesPaypalWorkAction:" destination="DHz-AG-NAT" eventType="touchUpInside" id="T2Q-dS-ckX"/>
                                 </connections>
@@ -6054,7 +6047,7 @@ Tm90ZToQIA
                                     <constraint firstAttribute="trailing" secondItem="3eF-ku-ooT" secondAttribute="trailing" id="t7a-6p-hbo"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwc-D5-nt7" userLabel="closeButton">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwc-D5-nt7" userLabel="closeButton" customClass="CustomButton">
                                 <rect key="frame" x="0.0" y="20" width="23" height="23"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="crossBtnNew"/>
@@ -6284,7 +6277,7 @@ Tm90ZToQIA
         <image name="ios_settings" width="414" height="151"/>
         <image name="linkedin" width="225" height="65"/>
         <image name="login-bg" width="480" height="834"/>
-        <image name="logo" width="85" height="24"/>
+        <image name="logo" width="71" height="21"/>
         <image name="map_direction" width="121" height="28"/>
         <image name="menu_branch_location_icon" width="24" height="23"/>
         <image name="mobile-deposit-header" width="414" height="151"/>

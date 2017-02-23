@@ -26,6 +26,8 @@
 #import "WeblinksController.h"
 #import "SettingsViewController.h"
 #import "HomeViewController.h"
+#import "UIColor+HexColor.h"
+
 
 @interface LoginViewController ()
 
@@ -46,7 +48,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
-
+@property (weak, nonatomic) IBOutlet UIButton *logInButton;
 
 
 
@@ -100,6 +102,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    
+
+
 }
 
 -(void)appGoingToBackgroundFromLogin{
@@ -827,7 +833,7 @@
 
 - (IBAction)openUrlButtonClicked:(id)sender{
     
-    
+    Configuration *configuration = [ShareOneUtility getConfigurationFile];
     _isComingAfterPressedOpenUrlButton = TRUE;
     NSString *urlString =nil;
     NSString *screenTitle= nil;
@@ -835,23 +841,22 @@
     
     screenTitle=[btn titleForState:UIControlStateNormal];
     if([sender isEqual:_joinButton]){
-        urlString=URL_JOIN_CREDIT_UNION;
-//        screenTitle=JOIN_CREDIT_UNION_TITLE;
+        urlString=configuration.joinLink;
     }
     else if ([sender isEqual:_applyLoanButton]){
-        urlString=URL_APPLY_FOR_LOAN;
+        urlString=configuration.applyLoanLink;
 //        screenTitle=APPLY_FOR_LOAN_TITLE;
     }
     else if ([sender isEqual:_branchLocationButton]){
-        urlString=URL_BRANCH_LOCATION;
+        urlString=configuration.branchLocationLink;
 //        screenTitle=BRANCH_LOCATION_TITLE;
     }
     else if ([sender isEqual:_contactButton]){
-        urlString=URL_CONTACT_US;
+        urlString=configuration.contactLink;
 //        screenTitle=CONTACT_TITLE;
     }
     else if ([sender isEqual:_privacyButton]){
-        urlString=URL_PRIVACY_POLICY;
+        urlString=configuration.privacyPolicyLink;
 //        screenTitle=PRIVACY_POLICY_TITLE;
     }
 

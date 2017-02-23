@@ -25,10 +25,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    NSASCIIStringEncoding
 //    [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     
-
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:@"0d214628fc17621672de9113b24e97cc48c454eb"];
     

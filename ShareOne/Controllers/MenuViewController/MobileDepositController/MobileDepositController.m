@@ -47,6 +47,8 @@
 @property (nonatomic, weak) IBOutlet UIView *seperaterFrontCamView;
 @property (nonatomic, weak) IBOutlet UIView *seperaterBackCamView;
 @property (nonatomic, weak) IBOutlet UIButton *frontCamBtn;
+@property (nonatomic, weak) IBOutlet UIButton *backCamBtn;
+
 @property (nonatomic, strong)  UIImage *frontImage;
 @property (nonatomic, strong)  UIImage *backImage;
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
@@ -94,8 +96,28 @@
     [self loadDataOnPickerView];
     //[self vertifyUserRegistrationValidation];
     [self getRegisterToVirtifiToCheckStatus];
+    [self setThemeOnButtons];
     //[self getListOfReviewDeposits];
     //[self getListOfPast6MonthsDeposits];
+}
+
+-(void)setThemeOnButtons{
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    UIImage * image = [_frontCamBtn imageForState:UIControlStateSelected];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [_frontCamBtn setImage:image forState:UIControlStateSelected];
+    [_frontCamBtn setTintColor:[UIColor colorWithHexString:config.buttonColor]];
+    
+    
+    image = [_backCamBtn imageForState:UIControlStateSelected];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [_backCamBtn setImage:image forState:UIControlStateSelected];
+
+    
+    [_backCamBtn setTintColor:_frontCamBtn.tintColor];
+    
+
 }
 
 -(void)getRegisterToVirtifiToCheckStatus{

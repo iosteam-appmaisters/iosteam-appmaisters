@@ -8,6 +8,11 @@
 #import "SignInModel.h"
 #import "HomeNavigationDelegate.h"
 #import "ShareOneUtility.h"
+#import "Configuration.h"
+#import "UIColor+HexColor.h"
+#import "ShareOneUtility.h"
+#import "CustomButton.h"
+
 
 
 @class HomeViewController;

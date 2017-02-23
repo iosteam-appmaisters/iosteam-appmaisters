@@ -13,6 +13,7 @@
 #import "IQKeyboardManager.h"
 
 
+
 @interface BaseViewController ()<UIWebViewDelegate>{
     LeftMenuViewController* leftMenuViewController;
     UIButton* menuButton;
@@ -252,20 +253,30 @@
 }
 
 -(void)setTitleTextAttribute{
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+
     if(APPC_IS_IPAD){
-        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:24],NSFontAttributeName,nil];
+        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:24],NSFontAttributeName,nil];
     }
     else{
-        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0],NSForegroundColorAttributeName,[UIFont systemFontOfSize:11],NSFontAttributeName,nil];
+        self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont systemFontOfSize:11],NSFontAttributeName,nil];
     }
 }
 
 -(void)setTitleOnNavBar:(NSString *)title{
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+
     UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width/2, 40)];
     titleLabel.text = title;
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0];
+//    titleLabel.textColor = [UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0];
+    titleLabel.textColor = color;
+
     if(APPC_IS_IPAD){
         titleLabel.font=[UIFont boldSystemFontOfSize:24];
     }
@@ -294,8 +305,15 @@
 
 -(UIButton*)getMenuButton{
     
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+
+    UIImage *menuImage = [[UIImage imageNamed:@"menu_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] ;
+
      menuButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 30, 44)];
-    [menuButton setImage:[UIImage imageNamed:@"menu_icon"] forState:UIControlStateNormal];
+    [menuButton setImage:menuImage    forState:UIControlStateNormal];
+    [menuButton setTintColor:color];
+    
     
 //    if([[self.navigationController viewControllers] count]>1)
 //        [menuButton addTarget:self action:@selector(popWithOutAnimation) forControlEvents:UIControlEventTouchUpInside];

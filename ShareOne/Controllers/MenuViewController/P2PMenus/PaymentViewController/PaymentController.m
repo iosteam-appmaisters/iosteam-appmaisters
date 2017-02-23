@@ -260,11 +260,13 @@
         [objFZAccordionTableViewHeaderView.editImageView setHidden:TRUE];
         [objFZAccordionTableViewHeaderView.deleteButton setTag:section];
         
-        [objFZAccordionTableViewHeaderView.deleteImageView setImage:[UIImage imageNamed:@"pay_btn_payment"]];
+        UIImage *image =[UIImage imageNamed:@"pay_btn_payment"];
+        image= [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [objFZAccordionTableViewHeaderView.deleteImageView setImage:image];
         
         [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
         [objFZAccordionTableViewHeaderView.contactNameLbl setText:profileName];
-        
+        [objFZAccordionTableViewHeaderView.deleteButton setTitle:@"PAY" forState:UIControlStateNormal];
         
         [objFZAccordionTableViewHeaderView.deleteButton addTarget:self action:@selector(payButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         

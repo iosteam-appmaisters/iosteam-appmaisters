@@ -96,6 +96,8 @@
 
 //PLIST CONSTANT
 #define PLIST_NAME                  @"SlideMenu"
+#define CONFIGURATION_PLIST_NAME    @"ConfigurationSettings"
+
 #define FILE_TYPE                   @"plist"
 #define HAS_SECTIONS                @"isSection"
 #define MAIN_CAT_TITLE              @"title"

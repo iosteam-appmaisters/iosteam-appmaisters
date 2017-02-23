@@ -10,7 +10,7 @@
 #import "UtilitiesHelper.h"
 #import "User.h"
 #import "SuffixInfo.h"
-
+#import "Configuration.h"
 
 
 @interface ShareOneUtility : UtilitiesHelper{
@@ -184,5 +184,6 @@
 +(NSDictionary *)getMobileDepositObjectFromPlist;
 +(NSArray *)getFilterSuffixArray:(NSArray *)sourceSuffixArray;
 
++(Configuration *)getConfigurationFile;
 
 @end
