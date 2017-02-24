@@ -93,6 +93,7 @@
 		1D398F9E1E07F5DE00275E4E /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D398F9D1E07F5DE00275E4E /* Address.m */; };
 		1D398FA11E07F66E00275E4E /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D398FA01E07F66E00275E4E /* Hours.m */; };
 		1D398FA41E07F73900275E4E /* Photos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D398FA31E07F73900275E4E /* Photos.m */; };
+		1D3A02621E5F2DE6009ABC8C /* AttributedCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A02611E5F2DE6009ABC8C /* AttributedCustomLabel.m */; };
 		1D3A7BDA1DF0599900AEA159 /* PasswordChangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A7BD91DF0599900AEA159 /* PasswordChangeController.m */; };
 		1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3A7BDD1DF0828200AEA159 /* UserNamecontroller.m */; };
 		1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */; };
@@ -326,6 +327,8 @@
 		1D398FA01E07F66E00275E4E /* Hours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hours.m; sourceTree = "<group>"; };
 		1D398FA21E07F73900275E4E /* Photos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photos.h; sourceTree = "<group>"; };
 		1D398FA31E07F73900275E4E /* Photos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photos.m; sourceTree = "<group>"; };
+		1D3A02601E5F2DE6009ABC8C /* AttributedCustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedCustomLabel.h; sourceTree = "<group>"; };
+		1D3A02611E5F2DE6009ABC8C /* AttributedCustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedCustomLabel.m; sourceTree = "<group>"; };
 		1D3A7BD81DF0599900AEA159 /* PasswordChangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordChangeController.h; sourceTree = "<group>"; };
 		1D3A7BD91DF0599900AEA159 /* PasswordChangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordChangeController.m; sourceTree = "<group>"; };
 		1D3A7BDC1DF0828200AEA159 /* UserNamecontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNamecontroller.h; sourceTree = "<group>"; };
@@ -728,6 +731,8 @@
 				1D31B9B81E5EBE4300503E45 /* CustomLabel.m */,
 				1D3F46CF1E5ECC7E009E8F50 /* PlainCustomLabel.h */,
 				1D3F46D01E5ECC7E009E8F50 /* PlainCustomLabel.m */,
+				1D3A02601E5F2DE6009ABC8C /* AttributedCustomLabel.h */,
+				1D3A02611E5F2DE6009ABC8C /* AttributedCustomLabel.m */,
 			);
 			path = UILabels;
 			sourceTree = "<group>";
@@ -1531,6 +1536,7 @@
 				1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */,
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,
+				1D3A02621E5F2DE6009ABC8C /* AttributedCustomLabel.m in Sources */,
 				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
 				1D20C2931E4E110500D3FC93 /* VIPViewUtility.m in Sources */,

@@ -2490,7 +2490,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <action selector="submittButtonClicked:" destination="Pph-eo-F38" eventType="touchUpInside" id="PGS-1S-hT0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQb-wY-8JH" customClass="CustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQb-wY-8JH" customClass="AttributedCustomLabel">
                                 <rect key="frame" x="20" y="386" width="374" height="28"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -3971,11 +3971,11 @@ Tm90ZToQIA
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kt3-UL-AMF" userLabel="AddNewFavButton" customClass="CustomButton">
-                                <rect key="frame" x="20" y="254" width="188" height="22"/>
+                                <rect key="frame" x="20" y="254" width="121" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="SbP-Zx-UUN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="ADD NEW FAVORITES" backgroundImage="add_new_fav_btn"/>
                                 <connections>
                                     <action selector="goToAddFavouriteController:" destination="Ddh-0z-8eC" eventType="touchUpInside" id="HMG-xr-5rG"/>
@@ -5870,7 +5870,7 @@ Tm90ZToQIA
                                     <constraint firstItem="egZ-Rn-S6C" firstAttribute="leading" secondItem="aqi-um-1tn" secondAttribute="trailing" constant="10" id="yT1-fD-Ljb"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwv-R8-bLe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwv-R8-bLe" customClass="CustomLabel">
                                 <rect key="frame" x="20" y="345" width="70" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.65757632255554199" green="0.023454438894987106" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
