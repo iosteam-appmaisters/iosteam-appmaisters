@@ -99,6 +99,7 @@
 		1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B4EE31DEC12ED00F1D536 /* TouchIDSettingsController.m */; };
 		1D3C4D8D1E5D9AC60022AF61 /* ConfigurationSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D3C4D8C1E5D9AC60022AF61 /* ConfigurationSettings.plist */; };
 		1D3C4D921E5D9BE20022AF61 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3C4D911E5D9BE20022AF61 /* Configuration.m */; };
+		1D3D037C1E602EF300886C79 /* CustomTextFeild.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D037B1E602EF300886C79 /* CustomTextFeild.m */; };
 		1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D12791DBF353500719170 /* DeviceAuth.m */; };
 		1D3ED8521E2662E300AE91C1 /* ContactsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ED8511E2662E300AE91C1 /* ContactsHeaderView.m */; };
 		1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3ED8531E2662FF00AE91C1 /* ContactsHeaderView.xib */; };
@@ -338,6 +339,8 @@
 		1D3C4D8C1E5D9AC60022AF61 /* ConfigurationSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ConfigurationSettings.plist; sourceTree = "<group>"; };
 		1D3C4D901E5D9BE20022AF61 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		1D3C4D911E5D9BE20022AF61 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		1D3D037A1E602EF300886C79 /* CustomTextFeild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextFeild.h; sourceTree = "<group>"; };
+		1D3D037B1E602EF300886C79 /* CustomTextFeild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextFeild.m; sourceTree = "<group>"; };
 		1D3D12781DBF353500719170 /* DeviceAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceAuth.h; sourceTree = "<group>"; };
 		1D3D12791DBF353500719170 /* DeviceAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceAuth.m; sourceTree = "<group>"; };
 		1D3ED8501E2662E300AE91C1 /* ContactsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsHeaderView.h; sourceTree = "<group>"; };
@@ -705,10 +708,10 @@
 		1D38993E1E5DA75500A27358 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				1D3D03791E602EDC00886C79 /* UITextFeilds */,
 				1D0E265A1E5DD5FE005FE91F /* UIImageViews */,
 				1D38993F1E5DA75500A27358 /* UIButtons */,
 				1D3899401E5DA75500A27358 /* UILabels */,
-				1D3899411E5DA75500A27358 /* UITextFeilds */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -735,13 +738,6 @@
 				1D3A02611E5F2DE6009ABC8C /* AttributedCustomLabel.m */,
 			);
 			path = UILabels;
-			sourceTree = "<group>";
-		};
-		1D3899411E5DA75500A27358 /* UITextFeilds */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UITextFeilds;
 			sourceTree = "<group>";
 		};
 		1D38BE171DE6F45A00F37849 /* VertifiAgreemantViewController */ = {
@@ -795,6 +791,15 @@
 				1D3C4D911E5D9BE20022AF61 /* Configuration.m */,
 			);
 			path = ConfigurationPlistEntity;
+			sourceTree = "<group>";
+		};
+		1D3D03791E602EDC00886C79 /* UITextFeilds */ = {
+			isa = PBXGroup;
+			children = (
+				1D3D037A1E602EF300886C79 /* CustomTextFeild.h */,
+				1D3D037B1E602EF300886C79 /* CustomTextFeild.m */,
+			);
+			path = UITextFeilds;
 			sourceTree = "<group>";
 		};
 		1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */ = {
@@ -1510,6 +1515,7 @@
 				F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */,
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
 				1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */,
+				1D3D037C1E602EF300886C79 /* CustomTextFeild.m in Sources */,
 				1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */,
 				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
 				1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */,
