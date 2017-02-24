@@ -22,6 +22,7 @@
     static AppServiceModel *_serviceClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
         _serviceClient = [[AppServiceModel alloc] initWithBaseURL:[NSURL URLWithString:KWEB_SERVICE_BASE_URL]];
         [[AFNetworkReachabilityManager sharedManager]startMonitoring];
 

@@ -9,7 +9,14 @@
 #ifndef THISWAY_Services_h
 #define THISWAY_Services_h
 
-#define KWEB_SERVICE_BASE_URL                           @"https://nsmobile.ns3web.com"
+//#define KWEB_SERVICE_BASE_URL                           @"https://nsmobile.ns3web.com"
+
+//#define KWEB_SERVICE_BASE_URL                           @"https://coast2coast.ns3web.com"
+//
+//#define KWEB_SERVICE_BASE_URL                           @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
+
+
+#define KWEB_SERVICE_BASE_URL                           @"https://coast2coast.ns3web.org"
 
 #define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"
 
