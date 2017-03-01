@@ -14,6 +14,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *categorytitleLbl;
 @property (nonatomic, weak) IBOutlet UIView *upperSepratorView;
 @property (nonatomic, weak) IBOutlet UIView *bottomSeperatorView;
+@property (nonatomic, weak) IBOutlet UIView *cellContentView;
+
 
 
 @end

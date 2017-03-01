@@ -162,15 +162,26 @@
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFY_ALL_DEP_LIST_TEST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-
-        VertifiObject * obj = (VertifiObject *)user;
-        weakSelf.contentArr = [obj.depositArr mutableCopy];
         
-        if([weakSelf.contentArr count]==0){
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
+        if(succes){
+            
+            VertifiObject * obj = (VertifiObject *)user;
+            weakSelf.contentArr = [obj.depositArr mutableCopy];
+            
+            if([weakSelf.contentArr count]==0){
+                [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
+            }
+            [weakSelf.tblView reloadData];
+            [weakSelf reloadCustomData];
+
         }
-        [weakSelf.tblView reloadData];
-        [weakSelf reloadCustomData];
+        else{
+            
+            NSString *error = (NSString *)user;
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error title:@"" delegate:weakSelf];
+
+        }
+
         
     } failureBlock:^(NSError *error) {
         

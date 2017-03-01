@@ -18,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *retinaScanSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *pushNotifSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *touchIDLable;
+@property (weak, nonatomic) IBOutlet UILabel *showOffersLbl;
+
 
 @end

@@ -43,4 +43,6 @@
 
 -(id) initWithDictionary:(NSDictionary *)configurationDict;
 
+
++ (void)getConfiguration;
 @end

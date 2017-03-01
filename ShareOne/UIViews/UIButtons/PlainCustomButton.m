@@ -48,12 +48,7 @@
         image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [self setBackgroundImage:image forState:UIControlStateNormal];
     }
-//    [self setTintColor:[UIColor colorWithHexString:config.staticTextColor]];
-    
-    [self setTintColor:[UIColor redColor]];
-
-    
-    
+    [self setTintColor:[UIColor colorWithHexString:config.staticTextColor]];
 }
 
 

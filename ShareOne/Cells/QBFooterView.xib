@@ -63,6 +63,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="contentView" destination="TCM-oh-32N" id="VpP-bn-P8A"/>
                 <outlet property="headerBtn" destination="bdx-o0-2Gu" id="etJ-P1-fX9"/>
                 <outlet property="sectionAmountLbl" destination="i0a-Sy-dgP" id="XtT-Ih-i81"/>
                 <outlet property="sectionImgVew" destination="lnh-gF-mll" id="BXP-bu-Ke1"/>

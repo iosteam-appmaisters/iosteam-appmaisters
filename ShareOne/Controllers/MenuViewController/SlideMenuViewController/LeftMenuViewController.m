@@ -8,6 +8,8 @@
 
 @interface LeftMenuViewController ()<UIGestureRecognizerDelegate>
 
+@property (nonatomic,weak)IBOutlet UIView *parentView;
+
 @property (nonatomic, strong) NSArray *contentArr;
 @property (nonatomic, strong) NSDictionary *controllerInfoDict;
 @end
@@ -34,7 +36,7 @@
     
     _contentArr= [ShareOneUtility getSideMenuDataFromPlist];
     
-    
+    [_parentView setBackgroundColor:[UIColor colorWithHexString:[ShareOneUtility getConfigurationFile].menuBackgroundColor]];
 //    self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 //    self.fzaTblView.estimatedRowHeight = 100.0;
@@ -152,6 +154,9 @@
     NSDictionary *dictSubCat = subCatArr[indexPath.row];
     cell.categorytitleLbl.text = [dictSubCat valueForKey:SUB_CAT_TITLE];
     [cell.iconImageVw setImage:[UIImage imageNamed:@"slide-menu-arrow"]];
+    
+    [cell.cellContentView setBackgroundColor:[UIColor colorWithHexString:[ShareOneUtility getConfigurationFile].menuBackgroundColor]];
+
     
     return cell;
 }

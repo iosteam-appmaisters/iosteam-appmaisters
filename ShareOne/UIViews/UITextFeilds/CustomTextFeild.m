@@ -43,8 +43,9 @@
     
     Configuration *config = [ShareOneUtility getConfigurationFile];
     UIColor *color = [UIColor colorWithHexString:config.buttonColor];
-    
+    [self setTextColor:color];
     [self setTintColor:color];
+    
 }
 
 @end

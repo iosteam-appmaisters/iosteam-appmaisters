@@ -85,8 +85,6 @@
 #define kBACK_IMAGE_VIEW_TAG         11
 
 
-#define PUBLIC_KEY                  @"bea351786c074347a0528acf729d0b8f"
-#define PRIVATE_KEY                 @"3b185aa994d2408091714536c28e324b"
 
 #define PRIVATE_KEY_SSO             @"1c4d379e533945a8a0c23525ddd85e89"
 

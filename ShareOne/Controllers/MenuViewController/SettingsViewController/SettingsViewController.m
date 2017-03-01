@@ -18,12 +18,17 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    if([[UIApplication sharedApplication] isProtectedDataAvailable])
-        NSLog(@"appComingFromBackground: TRUE");
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    if([config.DisableShowOffers boolValue]){
+        
+        [_showOffersSwitch setHidden:TRUE];
+        [_showOffersLbl setHidden:TRUE];
+    }
+    else{
+        [_showOffersSwitch setHidden:FALSE];
+        [_showOffersLbl setHidden:FALSE];
+    }
     
-    else
-        NSLog(@"appComingFromBackground: FALSE");
-
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

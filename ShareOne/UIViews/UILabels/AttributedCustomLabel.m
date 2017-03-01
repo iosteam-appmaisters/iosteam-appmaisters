@@ -42,19 +42,14 @@
 
 - (void)initialize{
     
+    return;
     Configuration *config = [ShareOneUtility getConfigurationFile];
     UIColor *textColor = [UIColor colorWithHexString:config.variableTextColor];
     
-    NSString *string = self.text ;
-    
-    NSDictionary *attr = self.attributedText;
-    
-     NSDictionary *attrs = @{ NSForegroundColorAttributeName : [UIColor greenColor] };
-     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:string attributes:attrs];
-    
-//    [attrStr attributedSubstringFromRange:<#(NSRange)#>]
-     self.attributedText = attrStr;
-    
+    NSMutableAttributedString* mutableSelf = [[self attributedText] mutableCopy];
+    [mutableSelf addAttribute:NSForegroundColorAttributeName value:textColor range:NSMakeRange(0, mutableSelf.length)];
+
+    self.attributedText=mutableSelf;
 }
 
 @end

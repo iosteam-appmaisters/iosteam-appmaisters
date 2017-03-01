@@ -146,6 +146,8 @@
     
     QBFooterView *objFZAccordionTableViewHeaderView =(QBFooterView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kQBHeaderViewReuseIdentifier];
     
+    [objFZAccordionTableViewHeaderView.contentView setBackgroundColor:[UIColor colorWithHexString:[ShareOneUtility getConfigurationFile].menuBackgroundColor]];
+
 //    [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
     
     

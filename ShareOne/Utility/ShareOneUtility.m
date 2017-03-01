@@ -475,7 +475,14 @@ NSLog(Y, Z);		\
 +(void)setDefaultSettngOnUser:(User *)user{
     
     user.isPushNotifOpen=FALSE;
-    user.isShowOffersOpen=TRUE;
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    if([config.DisableShowOffers boolValue]){
+        user.isShowOffersOpen=FALSE;
+    }
+    else{
+        user.isShowOffersOpen=TRUE;
+    }
     user.isQBOpen=TRUE;
     
 }
