@@ -17,6 +17,8 @@
 @property (nonatomic,assign) LoginViewController *loginDelegate;
 @property (nonatomic,strong) User *user;
 @property (nonatomic,weak) IBOutlet UIButton *backButton;
+@property (nonatomic,weak) IBOutlet UINavigationBar *navBar;
+
 
 -(IBAction)backButtonClicked:(id)sender;
 

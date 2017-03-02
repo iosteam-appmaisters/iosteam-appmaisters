@@ -123,6 +123,11 @@
     
 //    float height = 50;
     
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    if([config.DisableShowOffers boolValue]){
+        return;
+    }
+    
     float height =     [UIScreen mainScreen].bounds.size.width/6.4;
 
     float isAlreadyAdded = FALSE;
@@ -438,8 +443,23 @@
         
         else if([contrlollerName isEqualToString:@"NotNative"]){
             
-            NSURL *url = [NSURL URLWithString:webUrl];
-            [[UIApplication sharedApplication] openURL:url];
+            
+            if([webUrl containsString:@"MX"]){
+                [User postContextIDForSSOWithDelegate:nil withTabName:@"/MX" completionBlock:^(id urlPath) {
+                    
+                   NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
+                    [[UIApplication sharedApplication] openURL:request.URL];
+                    
+                    
+                } failureBlock:^(NSError *error) {
+                    
+                }];
+                
+            }
+            else{
+                NSURL *url = [NSURL URLWithString:webUrl];
+                [[UIApplication sharedApplication] openURL:url];
+            }
 
         }
         

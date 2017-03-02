@@ -32,7 +32,7 @@
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:@"0d214628fc17621672de9113b24e97cc48c454eb"];
     
-    [Configuration getConfiguration];
+//    [Configuration getConfiguration];
     
     [GMSServices provideAPIKey:googleApiKey];
     

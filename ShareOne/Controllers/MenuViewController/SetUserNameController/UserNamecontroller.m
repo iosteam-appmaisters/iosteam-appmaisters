@@ -12,6 +12,18 @@
 
 @implementation UserNamecontroller
 
+
+-(void)viewDidLoad{
+    
+    [super viewDidLoad];
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+
+    self.navBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:11],NSFontAttributeName,nil];
+
+}
+
 -(IBAction)submit:(id)sender{
 
     

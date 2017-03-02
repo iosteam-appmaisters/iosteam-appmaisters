@@ -11,4 +11,6 @@
 @interface UserNamecontroller : UIViewController
 @property (nonatomic,assign) LoginViewController *loginDelegate;
 @property (nonatomic,weak)IBOutlet UITextField *userNameTxtFeild;
+@property (nonatomic,weak)IBOutlet UINavigationBar *navBar;
+
 @end

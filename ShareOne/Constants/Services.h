@@ -29,7 +29,8 @@
 #define PRIVATE_KEY                 @"1597c0dbf23647e49c6e658be7d293c9"
 
 
-#define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"
+//#define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"
+#define KWEB_SERVICE_BASE_URL_SSO                       @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
 
 #define KWEB_SERVICE_LOGIN                              @"eft/memberLogin"
 
