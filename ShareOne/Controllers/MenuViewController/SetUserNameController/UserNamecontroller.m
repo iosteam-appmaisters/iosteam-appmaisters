@@ -31,7 +31,14 @@
         NSString *context = [[[SharedUser sharedManager] userObject] Contextid];
         [User setUserName:[NSDictionary dictionaryWithObjectsAndKeys:_userNameTxtFeild.text,@"AccountName",context,@"ContextID", nil] delegate:self completionBlock:^(id response) {
             
-            [_loginDelegate startLoadingServicesFromChangePassword:nil];
+            if([response valueForKey:@"AccountName"]){
+                _user.UserName=[response valueForKey:@"AccountName"];
+            }
+            [_loginDelegate startLoadingServicesFromChangePassword:_user];
+            [self dismissViewControllerAnimated:NO completion:nil];
+
+            
+//            [_loginDelegate startLoadingServicesFromChangePassword:nil];
             
             
         } failureBlock:^(NSError *error) {
