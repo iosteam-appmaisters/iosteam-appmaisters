@@ -534,7 +534,7 @@
                             [weakSelf addPasswordChangeController:user];
                         }
                         if([status isEqualToString:CHANGE_ACCOUNT_USER_NAME]){
-                            [self addControllerToChangeUserName];
+                            [self addControllerToChangeUserName:user];
                         }
                     }
                     
@@ -613,6 +613,9 @@
 
 -(void)startLoadingServicesFromChangePassword:(User *)user{
     
+    [self startLoadingServices];
+
+    /*
     if([user.Requirements containsObject:CHANGE_ACCOUNT_USER_NAME]){
         [self addControllerToChangeUserName];
     }
@@ -620,13 +623,15 @@
         [self.loadingView setHidden:FALSE];
         [self startLoadingServices];
     }
+     */
 }
 
--(void)addControllerToChangeUserName{
+-(void)addControllerToChangeUserName:(User *)user{
  
     _isComingAfterPressedOpenUrlButton = TRUE;
 
     UserNamecontroller *objUserNamecontroller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([UserNamecontroller class])];
+    objUserNamecontroller.user=user;
     objUserNamecontroller.loginDelegate=self;
     [self presentViewController:objUserNamecontroller animated:YES completion:nil];
 }

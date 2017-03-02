@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 @class LoginViewController;
 @interface UserNamecontroller : UIViewController
 @property (nonatomic,assign) LoginViewController *loginDelegate;
 @property (nonatomic,weak)IBOutlet UITextField *userNameTxtFeild;
 @property (nonatomic,weak)IBOutlet UINavigationBar *navBar;
+@property (nonatomic,strong) User *user;
+
 
 @end
