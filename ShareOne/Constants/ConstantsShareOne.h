@@ -118,11 +118,21 @@
 //#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
 #define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
 
-//#define googleApiKey               @"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"
-#define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"
+// ShareOne
+//#define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"
 
 
-#define ADVERTISMENT_URL (AccountNumber,Width,Height) @"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%@&Channel=Mobile&Width=%@&Height=%@", AccountNumber,Width,Height
+// Coast2Coast
+//#define googleApiKey                 @"AIzaSyCZkSrAFGWnDYiSb1GTuXeQ8UcLcCRcjjY"
+
+//
+
+
+
+
+
+
+//#define ADVERTISMENT_URL (AccountNumber,Width,Height) @"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%@&Channel=Mobile&Width=%@&Height=%@", AccountNumber,Width,Height
 
 
 
@@ -150,13 +160,13 @@
 #define ADVERTISMENT_WEBVIEW_TAG    1122334
 
 
-#define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
+//#define KEY_VALUE                   @"ad4c74ff05a8d4fd5ec8674121bf745c"
 
 #define SHOW_MENU_NOTIFICATION      @"SHOW_MENU_NOTIFICATION"
 
 
-#define REQUESTER_VALUE             @"700000465-Shareone"
-#define ROUTING_VALUE               @"700000465"
+//#define REQUESTER_VALUE             @"263183117-Shareone"
+//#define ROUTING_VALUE               @"263183117"
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 

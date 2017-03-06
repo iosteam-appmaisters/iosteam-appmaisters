@@ -19,7 +19,7 @@
 
 +(void)postMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);
         
     } failureBlock:^(NSError *error) {
@@ -30,7 +30,7 @@
 
 +(void)putMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         
@@ -41,7 +41,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
         
         
     } failureBlock:^(NSError *error) {}];
@@ -55,7 +55,7 @@
     NSString *deviceID = [param valueForKey:@"ID"];
     NSString *deviceFingerPrint = [param valueForKey:@"Fingerprint"];
 
-    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/ContextID/%@/ID/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,context,deviceID] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/ContextID/%@/ID/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,context,deviceID] delegate:delegate completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         

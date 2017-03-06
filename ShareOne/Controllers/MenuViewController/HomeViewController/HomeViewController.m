@@ -63,7 +63,7 @@
     __block NSMutableURLRequest *request = nil;
     
     
-    if([_url containsString:@"nsmobiledemo"]){
+    if([_url containsString:@"nsmobiledemo"] || [_url isEqualToString:@"https://www.c2cfcu.com/rates.php"]){
         
         request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
 //        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
@@ -299,7 +299,7 @@
     NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 
     
-    if([[[request URL] absoluteString] isEqualToString:@"https://nsmobilecp.ns3web.com/Account/print"]){
+    if([[[request URL] absoluteString] containsString:@"Account/print"]){
         shouldReload = FALSE;
         [self printIt:yourHTMLSourceCodeString_inner];
     }

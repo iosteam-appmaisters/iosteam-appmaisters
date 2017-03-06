@@ -18,6 +18,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    /*
     Configuration *config = [ShareOneUtility getConfigurationFile];
     if([config.DisableShowOffers boolValue]){
         
@@ -28,6 +29,7 @@
         [_showOffersSwitch setHidden:FALSE];
         [_showOffersLbl setHidden:FALSE];
     }
+     */
     
 }
 -(void)viewWillAppear:(BOOL)animated{

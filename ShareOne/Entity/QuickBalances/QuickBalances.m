@@ -20,7 +20,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,/*@"asd"*/[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,/*@"asd"*/[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
         
         NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
         [ShareOneUtility savedQBHeaderInfo:(NSDictionary *)response];
@@ -39,7 +39,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_TRANSACTION,[param valueForKey:@"DeviceFingerprint"],[param objectForKey:@"SuffixID"] ,[param valueForKey:@"NumberOfTransactions"]];
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_TRANSACTION,[param valueForKey:@"DeviceFingerprint"],[param objectForKey:@"SuffixID"] ,[param valueForKey:@"NumberOfTransactions"]];
     
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Loading..." urlString:url delegate:delegate completionBlock:^(NSObject *response) {
         

@@ -14,9 +14,14 @@
 
 @implementation CashDeposit
 +(void)getRegisterToVirtifi:(NSDictionary*)param delegate:(id)delegate url:(NSString *)vertifiUrl AndLoadingMessage:(NSString *)message completionBlock:(void(^)(NSObject *user,BOOL succes))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSMutableDictionary *dict = [param mutableCopy];
+    [dict setValue:VERTIFI_MODE_TEST forKey:@"mode"];
+    
+//    NSLog(@"param vertify : %@",param);
 
     
-    [[AppServiceModel sharedClient] postRequestForVertifiWithParam:param progressMessage:message urlString:vertifiUrl delegate:delegate completionBlock:^(NSObject *response,BOOL success) {
+    [[AppServiceModel sharedClient] postRequestForVertifiWithParam:dict progressMessage:message urlString:vertifiUrl delegate:delegate completionBlock:^(NSObject *response,BOOL success) {
         
         if(response && success){
             NSData * data = (NSData *)response;

@@ -39,10 +39,14 @@
 
 - (void)viewDidLoad
 {
-    
     [self createCurrentLocation];
 
+
     [self initGoogleMap];
+    
+    [self.view layoutIfNeeded];
+
+
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -151,6 +155,7 @@
             _mapView.delegate=self;
 
             [self createGoogleMapMarker:_mapView];
+
         }
         
     } failureBlock:^(NSError *error) {

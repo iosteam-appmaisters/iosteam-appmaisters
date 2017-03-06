@@ -31,6 +31,8 @@
     [super viewDidLoad];
     [self initCoorindatesArray];
     [self initGoogleMap];
+    [self.view layoutIfNeeded];
+
 
 }
 

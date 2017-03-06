@@ -134,7 +134,7 @@
                                         <rect key="frame" x="20" y="92" width="280" height="72.5"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="7" width="329" height="39.5"/>
+                                                <rect key="frame" x="21" y="18" width="239" height="28.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -155,7 +155,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="263.5" y="49.5" width="52.5" height="18"/>
+                                                <rect key="frame" x="173.5" y="49.5" width="52.5" height="18"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -163,7 +163,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="320" y="46" width="25" height="25"/>
+                                                <rect key="frame" x="230" y="46" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -202,7 +202,7 @@
                                         <rect key="frame" x="20" y="138.5" width="280" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="205" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="115" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1780,7 +1780,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="256" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdE-he-zu3" id="AWs-QG-jWE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
@@ -2127,7 +2127,9 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="acceptBtn" destination="kJK-mF-eHS" id="GZ4-hL-CeD"/>
                         <outlet property="bottomAdsConstraint" destination="Sty-77-rwT" id="46a-wd-7Rp"/>
+                        <outlet property="declineBtn" destination="i3V-Zo-b6e" id="LdT-IM-fo0"/>
                         <outlet property="webView" destination="EqV-As-XVc" id="ISk-AG-jL7"/>
                     </connections>
                 </viewController>
@@ -2843,7 +2845,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="28" width="290" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uD2-fN-AfI" id="Q4n-an-dXz">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl6-J8-yHa" customClass="CustomLabel">
@@ -3066,7 +3068,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="128" width="290" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XFX-Lm-RUw" id="2vB-QP-J1u">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="109.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcC-o1-kKO" customClass="CustomLabel">
@@ -3980,7 +3982,7 @@ Tm90ZToQIA
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="SbP-Zx-UUN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="8"/>
                                 <state key="normal" title="ADD NEW FAVORITES" backgroundImage="add_new_fav_btn"/>
                                 <connections>
                                     <action selector="goToAddFavouriteController:" destination="Ddh-0z-8eC" eventType="touchUpInside" id="HMG-xr-5rG"/>
@@ -4529,7 +4531,7 @@ Tm90ZToQIA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQs-zV-fff">
-                                <rect key="frame" x="88.5" y="246.5" width="221.5" height="30"/>
+                                <rect key="frame" x="88" y="248" width="222" height="30"/>
                                 <connections>
                                     <action selector="dateButtonClicked:" destination="N95-Ce-Jh2" eventType="touchUpInside" id="lKE-EH-k0V"/>
                                 </connections>
@@ -4699,7 +4701,7 @@ Tm90ZToQIA
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Keep this information on a safe place for future use." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-qE-hhc" customClass="PlainCustomLabel">
-                                        <rect key="frame" x="20" y="300" width="280" height="29.5"/>
+                                        <rect key="frame" x="20" y="300" width="280" height="30"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

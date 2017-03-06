@@ -186,4 +186,12 @@
 
 +(Configuration *)getConfigurationFile;
 
++(NSString *)getRequesterValue;
++(NSString *)getRoutingValue;
++(NSString *)getGoogleMapKey;
++(NSString *)getCoOpID;
++(NSString *)getTestFairyID;
++(NSString *)getBaseUrl;
++(NSString *)getSSOBaseUrl;
+
 @end

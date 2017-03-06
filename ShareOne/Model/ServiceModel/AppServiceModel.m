@@ -23,7 +23,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        _serviceClient = [[AppServiceModel alloc] initWithBaseURL:[NSURL URLWithString:KWEB_SERVICE_BASE_URL]];
+        _serviceClient = [[AppServiceModel alloc] initWithBaseURL:[NSURL URLWithString:[ShareOneUtility getBaseUrl]]];
         [[AFNetworkReachabilityManager sharedManager]startMonitoring];
 
     });
@@ -912,14 +912,14 @@
         
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"1" forHTTPHeaderField:@"Version"];
-        [request setValue:kLOCATION_API_KEY forHTTPHeaderField:@"Authorization"];
+        [request setValue:[ShareOneUtility getCoOpID] forHTTPHeaderField:@"Authorization"];
 
     }
     else{
         ASIHTTPRequest *requestAsiHttp = (ASIHTTPRequest *)request;
         [requestAsiHttp addRequestHeader:@"Accept" value:@"application/json"];
         [requestAsiHttp addRequestHeader:@"Version" value:@"1"];
-        [requestAsiHttp addRequestHeader:@"Authorization" value:kLOCATION_API_KEY];
+        [requestAsiHttp addRequestHeader:@"Authorization" value:[ShareOneUtility getCoOpID]];
 
     }
 

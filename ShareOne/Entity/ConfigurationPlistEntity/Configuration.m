@@ -23,6 +23,8 @@
 #define Client_ID_value        @"nsmobile_nsconfig_read_client"
 #define Client_Secret_value    @"202E8187-94DE-4CDA-8908-7A9436B21292"
 
+//customer.read client_setting.read menu_item.read
+
 @implementation Configuration
 
 -(id) initWithDictionary:(NSDictionary *)configurationDict{

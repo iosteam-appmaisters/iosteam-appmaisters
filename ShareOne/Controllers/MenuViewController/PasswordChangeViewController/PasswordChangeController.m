@@ -45,7 +45,7 @@
     if(_isComingFromPasswordExpire){
         
         [_backButton setHidden:FALSE];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,kPASSWORD_EXPIRE_URL]]];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],kPASSWORD_EXPIRE_URL]]];
         [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
 
         [weakSelf.webview loadRequest:request];

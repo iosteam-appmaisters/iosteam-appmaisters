@@ -16,7 +16,7 @@
 //#define KWEB_SERVICE_BASE_URL                           @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
 
 
-#define KWEB_SERVICE_BASE_URL                           @"https://coast2coastpp.ns3web.com"
+//#define KWEB_SERVICE_BASE_URL                           @"https://coast2coastpp.ns3web.com"
 
 
 
@@ -30,7 +30,7 @@
 
 
 //#define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"
-#define KWEB_SERVICE_BASE_URL_SSO                       @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
+//#define KWEB_SERVICE_BASE_URL_SSO                       @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
 
 #define KWEB_SERVICE_LOGIN                              @"eft/memberLogin"
 
@@ -131,7 +131,16 @@
 
 
 #define kLOCATION_API                                   @"http://api.co-opfs.org/locator/proximitySearch"
-#define kLOCATION_API_KEY                               @"4LobSNzzwp4DKnp"
+
+// ShareOne
+//#define kLOCATION_API_KEY                               @"4LobSNzzwp4DKnp"
+
+// c2c
+//#define kLOCATION_API_KEY                               @"kDfLB3iqJzz7pBy"
+
+
+
+
 //#define kLOCATION_API_KEY                               @"7vrmEHdjhlSnMOX"
 
 

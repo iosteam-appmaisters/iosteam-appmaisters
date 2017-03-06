@@ -24,13 +24,13 @@
 +(void)setRequestOnQueueWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
     
     
-    NSDictionary *getDevicesDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KMEMBER_DEVICES,/*@"ABC"*/[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
+    NSDictionary *getDevicesDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,/*@"ABC"*/[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
     
     
-    NSDictionary *getSuffixDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KSUFFIX_INFO,/*@"ABC"*/[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
+    NSDictionary *getSuffixDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KSUFFIX_INFO,/*@"ABC"*/[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
     
     
-    NSDictionary *getQBDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KQUICK_BALANCES,[ShareOneUtility getUUID]]
+    NSDictionary *getQBDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,[ShareOneUtility getUUID]]
 ,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
 
     
@@ -83,7 +83,7 @@
     NSMutableArray *queuReqArr = [[NSMutableArray alloc] init];
     [qbArr enumerateObjectsUsingBlock:^(SuffixInfo *object, NSUInteger idx, BOOL *stop) {
         
-        NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%d/%@",KWEB_SERVICE_BASE_URL,KQUICK_TRANSACTION,[ShareOneUtility getUUID],[object.Suffixid intValue] ,kNO_OF_TRANSACTION];
+        NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%d/%@",[ShareOneUtility getBaseUrl],KQUICK_TRANSACTION,[ShareOneUtility getUUID],[object.Suffixid intValue] ,kNO_OF_TRANSACTION];
 
         [queuReqArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:url,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil]];
     }];

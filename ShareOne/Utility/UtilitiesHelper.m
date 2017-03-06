@@ -14,6 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "User.h"
+#import "ShareOneUtility.h"
 
 @implementation UtilitiesHelper
 {
@@ -259,7 +260,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 +(NSURL *)imageURLMaker :(NSString *)imgUrl
 {
     
-  return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",KWEB_SERVICE_BASE_URL,imgUrl]];
+  return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[ShareOneUtility getBaseUrl],imgUrl]];
     
 }
 

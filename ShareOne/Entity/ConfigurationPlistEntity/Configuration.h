@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) NSString *baseUrl;
 @property (nonatomic, strong) NSString *customerId;
-@property (nonatomic, strong) NSString *controllerUrl;
 @property (nonatomic, strong) NSString *buttonColor;
 @property (nonatomic, strong) NSString *staticTextColor;
 @property (nonatomic, strong) NSString *variableTextColor;
@@ -30,7 +29,7 @@
 @property (nonatomic, strong) NSString *emp2Email;
 @property (nonatomic, strong) NSString *vertifiSecretKey;
 @property (nonatomic, strong) NSString *vertifiRequestorKey;
-@property (nonatomic, strong) NSString *fiCkrouting;
+@property (nonatomic, strong) NSString *vertifiRouting;
 @property (nonatomic, strong) NSString *CoOpId;
 @property (nonatomic, strong) NSString *DeepTargetId;
 @property (nonatomic, strong) NSString *OuttageVerbiage;
@@ -39,7 +38,9 @@
 @property (nonatomic, strong) NSString *SocialTwitterLink;
 @property (nonatomic, strong) NSString *SocialLinkedinLink;
 @property (nonatomic, strong) NSString *privacyPolicyLink;
-
+@property (nonatomic, strong) NSString *googleApiKey;
+@property (nonatomic, strong) NSString *ssoBaseUrl;
+@property (nonatomic, strong) NSString *TestFairyID;
 
 -(id) initWithDictionary:(NSDictionary *)configurationDict;
 

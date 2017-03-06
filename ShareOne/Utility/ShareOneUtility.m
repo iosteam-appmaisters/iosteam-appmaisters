@@ -789,7 +789,20 @@ NSLog(Y, Z);		\
 }
 
 +(NSString *)getSecretKey{
-    return KEY_VALUE;
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.vertifiSecretKey;
+    //return KEY_VALUE;
+}
+
++(NSString *)getRequesterValue{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.vertifiRequestorKey;
+}
+
++(NSString *)getRoutingValue{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.vertifiRouting;
 }
 
 +(NSString *)getMemberValue{
@@ -797,6 +810,7 @@ NSLog(Y, Z);		\
 //    return @"546";
 
     User *obj =     [[SharedUser sharedManager] userObject];
+    NSLog(@"getMemberValue :%@",[NSString stringWithFormat:@"%d",[obj.Account intValue]]);
     return [NSString stringWithFormat:@"%d",[obj.Account intValue]];
 }
 
@@ -814,6 +828,8 @@ NSLog(Y, Z);		\
         suffixID= 55122;
     
     
+    NSLog(@"getAccountValue :%@",[NSString stringWithFormat:@"%d%d",[obj.Account intValue],suffixID]);
+
     return [NSString stringWithFormat:@"%d%d",[obj.Account intValue],suffixID];
 
     
@@ -832,6 +848,7 @@ NSLog(Y, Z);		\
         accountValue = [self getAccountValue];
     }
 
+    NSLog(@"getAccountValueWithSuffix :%@",accountValue);
     return accountValue;
 }
 
@@ -856,7 +873,7 @@ NSLog(Y, Z);		\
 +(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo{
     
 
-    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",REQUESTER_VALUE,[self getSessionnKey],[self getTimeStamp],ROUTING_VALUE,[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
+    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[ShareOneUtility getRequesterValue],[self getSessionnKey],[self getTimeStamp],[ShareOneUtility getRoutingValue],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
     
     NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -1539,11 +1556,34 @@ NSLog(Y, Z);		\
 
 
 +(Configuration *)getConfigurationFile{
-    
     NSDictionary *configDict = [self getConfigurationDataFromPlist];
-    
     return  [[Configuration alloc] initWithDictionary:configDict];
 }
 
+
++(NSString *)getGoogleMapKey{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.googleApiKey;
+}
+
++(NSString *)getCoOpID{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return  config.CoOpId;
+}
+
++(NSString *)getTestFairyID{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return  config.TestFairyID;
+}
+
++(NSString *)getBaseUrl{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.baseUrl;
+}
+
++(NSString *)getSSOBaseUrl{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.ssoBaseUrl;
+}
 
 @end

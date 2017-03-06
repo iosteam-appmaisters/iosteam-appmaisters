@@ -2,12 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>googleApiKey</key>
+	<string>AIzaSyCZkSrAFGWnDYiSb1GTuXeQ8UcLcCRcjjY</string>
+	<key>TestFairyID</key>
+	<string>0d214628fc17621672de9113b24e97cc48c454eb</string>
 	<key>baseUrl</key>
-	<string>coast2coastcp.ns3web.com</string>
+	<string>https://coast2coastpp.ns3web.com</string>
 	<key>customerId</key>
 	<string>59</string>
-	<key>controllerUrl</key>
-	<string>coast2coast.ns3web.com</string>
+	<key>ssoBaseUrl</key>
+	<string>https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome</string>
 	<key>buttonColor</key>
 	<string>#017ca3</string>
 	<key>staticTextColor</key>
@@ -41,16 +45,15 @@
 	<key>emp2Email</key>
 	<string></string>
 	<key>vertifiSecretKey</key>
-	<string>ad4c74ff05a8d4fd5ec8674121bf745c
-</string>
+	<string>ad4c74ff05a8d4fd5ec8674121bf745c</string>
 	<key>vertifiRequestorKey</key>
-	<string>263183117</string>
-	<key>fiCkrouting</key>
+	<string>263183117-Shareone</string>
+	<key>vertifiRouting</key>
 	<string>263183117</string>
 	<key>CoOpId</key>
 	<string>kDfLB3iqJzz7pBy</string>
 	<key>DeepTargetId</key>
-	<string>https://olb2.deeptarget.com/ Service1stCU</string>
+	<string>https://olb2.deeptarget.com/Service1stCU</string>
 	<key>OuttageVerbiage</key>
 	<string>Keep the same one used in demo.</string>
 	<key>DisableShowOffers</key>

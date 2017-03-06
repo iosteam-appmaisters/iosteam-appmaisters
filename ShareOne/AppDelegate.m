@@ -30,11 +30,11 @@
 //    [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-    [TestFairy begin:@"0d214628fc17621672de9113b24e97cc48c454eb"];
+    [TestFairy begin:[ShareOneUtility getTestFairyID]];
     
-//    [Configuration getConfiguration];
+    //[Configuration getConfiguration];
     
-    [GMSServices provideAPIKey:googleApiKey];
+    [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey]];
     
     [self registerForPushNotifications:application];
 

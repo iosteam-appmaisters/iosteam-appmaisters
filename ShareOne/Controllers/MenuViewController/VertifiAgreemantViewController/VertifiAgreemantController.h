@@ -12,6 +12,9 @@
 @interface VertifiAgreemantController :BaseViewController
 
 @property (nonatomic,weak)IBOutlet UIWebView *webView;
+@property (nonatomic, weak) IBOutlet UIButton *acceptBtn;
+@property (nonatomic, weak) IBOutlet UIButton *declineBtn;
+
 -(IBAction)goAcceptAgreemant:(id)sender;
 -(IBAction)goDeclineAgreemant:(id)sender;
 

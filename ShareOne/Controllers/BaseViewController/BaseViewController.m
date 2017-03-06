@@ -123,10 +123,10 @@
     
 //    float height = 50;
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    if([config.DisableShowOffers boolValue]){
-        return;
-    }
+//    Configuration *config = [ShareOneUtility getConfigurationFile];
+//    if([config.DisableShowOffers boolValue]){
+//        return;
+//    }
     
     float height =     [UIScreen mainScreen].bounds.size.width/6.4;
 
@@ -148,8 +148,14 @@
         webView.delegate=self;
         [webView setTag:ADVERTISMENT_WEBVIEW_TAG];
         
-        NSString *url =[NSString stringWithFormat:@"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
+        Configuration *config = [ShareOneUtility getConfigurationFile];
+        NSString *deepTargetUrl = config.DeepTargetId;
+//        NSString *url =[NSString stringWithFormat:@"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
         
+
+        NSString *url =[NSString stringWithFormat:@"%@/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
+        
+
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
         
         [self.navigationController.view.window addSubview:webView];
@@ -444,8 +450,8 @@
         else if([contrlollerName isEqualToString:@"NotNative"]){
             
             
-            if([webUrl containsString:@"MX"]){
-                [User postContextIDForSSOWithDelegate:nil withTabName:@"/MX" completionBlock:^(id urlPath) {
+            if([screenTitle containsString:@"MX"] ||[screenTitle containsString:@"Estatements"] ||[screenTitle containsString:@"Check Withdrawals"]){
+                [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
                     
                    NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
                     [[UIApplication sharedApplication] openURL:request.URL];

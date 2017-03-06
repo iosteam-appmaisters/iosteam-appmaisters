@@ -71,7 +71,7 @@
     [ShareOneUtility savaLogedInSignature:signature];
     
     
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_LOGIN] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KWEB_SERVICE_LOGIN] delegate:delegate completionBlock:^(NSObject *response) {
         
         User* user;
         if([response isKindOfClass:[NSDictionary class]]){
@@ -102,7 +102,7 @@
 
     return;
     
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
         
         User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];
         user.UserName=[param valueForKey:@"account"];
@@ -130,7 +130,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,KWEB_SERVICE_SIGN_OUT,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KWEB_SERVICE_SIGN_OUT,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
         
         if([response isKindOfClass:[NSDictionary class]])
             block(TRUE);
@@ -144,7 +144,7 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",KWEB_SERVICE_BASE_URL,kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] Contextid]] delegate:nil completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] Contextid]] delegate:nil completionBlock:^(NSObject *response) {
         
         if([response isKindOfClass:[NSDictionary class]])
             block(TRUE);
@@ -168,7 +168,7 @@
 
     NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:encrytedID ,@"EncryptedContextID",randomIV ,@"EncryptionIV",redirect_path  ,@"RedirectPath", nil];
     
-    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON];
+    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON];
     NSString *enquiryurl = [NSString stringWithFormat:@"%@EncryptedContextID=%@&EncryptionIV=%@&RedirectPath=%@",siteurl,encrytedID,randomIV,redirect_path];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:enquiryurl]];
@@ -178,7 +178,7 @@
     block(request);
 
     return;
-   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:nil AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:nil AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
        
        
         block(response);
@@ -193,7 +193,7 @@
     NSLog(@"req.URL : %@",req.URL.absoluteString);
     
     return;
-    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);
         
     } failureBlock:^(NSError *error) {
@@ -209,11 +209,11 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     
-    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON];
+    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON];
     
 
 
-    NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL_SSO,KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+    NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
         
         
         block(response);
@@ -227,7 +227,7 @@
 }
 +(void)userPinReset:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KPIN_RESET] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KPIN_RESET] delegate:delegate completionBlock:^(NSObject *response) {
         
         block(response);
     } failureBlock:^(NSError *error) {
@@ -238,7 +238,7 @@
 
 +(void)userAccountName:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
         
         block(response);
     } failureBlock:^(NSError *error) {
@@ -254,7 +254,7 @@
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
 
     
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",KWEB_SERVICE_BASE_URL,KSET_ACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:signature AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KSET_ACCOUNT_NAME] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);
         
     } failureBlock:^(NSError *error) {
