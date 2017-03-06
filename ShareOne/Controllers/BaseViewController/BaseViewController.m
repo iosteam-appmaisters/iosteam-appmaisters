@@ -117,7 +117,21 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
+-(void)unSetDelegeteForAdsWebView:(BOOL)shouldDisabled{
+    
+    for(UIView *view in self.navigationController.view.window.subviews){
+        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            UIWebView *webView = (UIWebView *)view;
+            if(shouldDisabled)
+                webView.delegate=nil;
+            else
+                webView.delegate=self;
 
+            break;
+        }
+    }
+
+}
 
 -(void)addAdvertismentControllerOnBottomScreen{
     
@@ -589,7 +603,7 @@
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground from Home");
-
+    [self unSetDelegeteForAdsWebView:TRUE];
     [[SharedUser sharedManager] setIsLogingOutFromHome:TRUE];
 
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
@@ -607,6 +621,8 @@
 -(void)appComingFromBackground{
     NSLog(@"appComingFromBackground from home");
     
+    [self unSetDelegeteForAdsWebView:FALSE];
+
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
 
     __weak BaseViewController *weakSelf = self;
