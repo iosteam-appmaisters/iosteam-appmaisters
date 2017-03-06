@@ -64,7 +64,7 @@
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -92,7 +92,7 @@
 					<key>webUrl</key>
 					<string>/ACH/Index</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -106,7 +106,7 @@
 					<key>webUrl</key>
 					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -120,7 +120,7 @@
 					<key>webUrl</key>
 					<string>/ACHAccount/Summary</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -282,6 +282,20 @@
 					<string>/StopPayment/Index</string>
 					<key>shouldShow</key>
 					<false/>
+					<key>detailVCTitle</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>Check Withdrawals</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>/Transfers/Check</string>
+					<key>shouldShow</key>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
