@@ -288,95 +288,17 @@
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
     
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-    
-    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
-//    [self setTimeOutIntervalOnRequest:req];
-    
-    
-    
-    if(params){
-        
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-    }
-    
-    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
-    manager.responseSerializer = jsonResponseSerializer;
-    
-    
-    
-    [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
-/*
-    // Third party server call by handling xml request
-    
-    NSString *boundary = [ShareOneUtility generateBoundaryString];
-    
-//    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-//    [req setValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    
-    // create body
-    NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
-    [req setHTTPBody:httpBody];
-    
-    AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer = responseSerializer;
-    
-    */
-    
-    
-    
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        
-        if (!error) {
-            NSLog(@"Reply JSON: %@", responseObject);
-            
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                [self hideProgressAlert];
-                block(responseObject);
-                
-            }
-            
-        } else {
-            
-            NSLog(@"Error : %@",[error localizedDescription]);
-            NSLog(@"Error : %@",error );
-            
-            NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
-            //NSLog(@"Headers : %@",headers);
-            
-            NSString *errorString = [headers valueForKey:@"ApiResponse"];
-            
-            NSString *customError = [self parseErrorObject:errorString];
-            
-            if(!customError)
-                customError = [self getLocalizeErrorMessageForInternetConnection:error];
-            
-            [self hideProgressAlert];
-            
-            if(![req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN]){
-                [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
-            }
-            
-            if([req.URL.absoluteString containsString:KMEMBER_DEVICES])
-                failBlock(error);
-            
-            if([req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN]){
-                block(errorString);
-            }
-        }
-    }] resume];
-    
+    [manager POST:urlString parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
+        NSLog(@"%@",error);
+    }];
 }
+
 
 
 -(void)postRequestForSSOWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -1147,5 +1069,28 @@
 
 -(void)setTimeOutIntervalOnRequest:(NSMutableURLRequest *)request{
     [request setTimeoutInterval:RESPONSE_TIME_OUT];
+}
+
+
+- (void)postRequestForConfigurationWithParameters:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSString *url = [NSString stringWithFormat:@"https://nsauth-extdev.ns3web.com/core/connect/token/"];
+    
+    NSDictionary* parametersDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          @"client_credentials",@"grant_type",
+                                          @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read", @"scope",@"nsmobile_nsconfig_read_client",@"client_id",@"202E8187-94DE-4CDA-8908-7A9436B21292",@"client_secret",
+                                          nil
+                                          ];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    [manager POST:url parameters:parametersDictionary progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
+        NSLog(@"%@",error);
+    }];
+    
 }
 @end

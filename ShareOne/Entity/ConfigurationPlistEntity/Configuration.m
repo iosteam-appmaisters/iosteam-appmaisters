@@ -19,9 +19,12 @@
 #define ACCESS_TOKEN           @"connect/token"
 
 #define Grant_Type_Value       @"client_credentials"
-#define Scope_value            @"customer.read cleint_application.read"
-#define Client_ID_value        @"nsmobile_nsconfig_read_client"
+#define Scope_value            @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read"
+#define Client_ID_value        @"nsmobile_nsconfig_read_client"//nsmobile_nsconfig_read_client
 #define Client_Secret_value    @"202E8187-94DE-4CDA-8908-7A9436B21292"
+
+//#define Client_Secret_value    @"0873C663-961E-4F73-B598-9333DD44EA8A"
+
 
 //customer.read client_setting.read menu_item.read
 
@@ -39,12 +42,14 @@
     
     NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:Grant_Type_Value,@"grant_type",Scope_value,@"scope",Client_ID_value,@"client_id",Client_Secret_value,@"client_secret", nil];
     
-    [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",BASE_URL_CONFIGURATION,ACCESS_TOKEN] delegate:nil completionBlock:^(NSObject *response) {
+    NSString  *urlString = [NSString stringWithFormat:@"%@/%@/",BASE_URL_CONFIGURATION,ACCESS_TOKEN];
+
+    [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:nil urlString:urlString delegate:nil completionBlock:^(NSObject *response) {
         
     } failureBlock:^(NSError *error) {
         
     }];
-    
+        
 }
 
 @end
