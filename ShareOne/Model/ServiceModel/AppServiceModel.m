@@ -294,12 +294,33 @@
     
     [manager POST:urlString parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+        block(responseObject);
     } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
         NSLog(@"%@",error);
     }];
 }
 
+-(void)getRequestForConfigAPIWithAuthHeader:(NSString *)header andProgressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    if(progressMessage)
+        [self showProgressWithMessage:progressMessage];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
 
+    [manager.requestSerializer setValue:header forHTTPHeaderField:@"Authorization"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    [manager GET:urlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+}
 
 -(void)postRequestForSSOWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
     
@@ -314,11 +335,6 @@
     
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
 
-    
-//    AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-//    jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
-//    
-//    
     manager.responseSerializer = jsonResponseSerializer;
     
     if(params){

@@ -15,6 +15,9 @@
 
 #define BASE_URL_CONFIGURATION   @"https://nsauth-extdev.ns3web.com/core"
 
+#define BASE_URL_CONFIGURATION_NS_CONGIG   @"https://nsconfig-extdev.ns3web.com/api/ClientApplications/1/MenuItems/"
+
+
 
 #define ACCESS_TOKEN           @"connect/token"
 
@@ -45,6 +48,15 @@
     NSString  *urlString = [NSString stringWithFormat:@"%@/%@/",BASE_URL_CONFIGURATION,ACCESS_TOKEN];
 
     [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:nil urlString:urlString delegate:nil completionBlock:^(NSObject *response) {
+        if(response){
+            
+            NSDictionary *dict = (NSDictionary *)response;
+            [[AppServiceModel sharedClient] getRequestForConfigAPIWithAuthHeader:[NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]] andProgressMessage:nil urlString:BASE_URL_CONFIGURATION_NS_CONGIG delegate:nil completionBlock:^(NSObject *response) {
+                
+            } failureBlock:^(NSError *error) {
+                
+            }];
+        }
         
     } failureBlock:^(NSError *error) {
         

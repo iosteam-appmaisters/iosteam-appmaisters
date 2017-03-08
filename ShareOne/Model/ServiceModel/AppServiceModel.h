@@ -56,5 +56,8 @@
 
 - (void)postRequestForConfigurationWithParameters:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock;
 
+-(void)getRequestForConfigAPIWithAuthHeader:(NSString *)header andProgressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock;
+
+
 
 @end
