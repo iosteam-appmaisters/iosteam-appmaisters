@@ -308,9 +308,9 @@
         [self showProgressWithMessage:progressMessage];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
 
     [manager.requestSerializer setValue:header forHTTPHeaderField:@"Authorization"];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
     [manager GET:urlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         

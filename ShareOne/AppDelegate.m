@@ -32,7 +32,7 @@
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:[ShareOneUtility getTestFairyID]];
     
-    [Configuration getConfiguration];
+    //[Configuration getConfiguration];
     
     [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey]];
     

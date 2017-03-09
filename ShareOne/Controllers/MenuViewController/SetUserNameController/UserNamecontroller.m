@@ -31,6 +31,7 @@
         NSString *context = [[[SharedUser sharedManager] userObject] Contextid];
         [User setUserName:[NSDictionary dictionaryWithObjectsAndKeys:_userNameTxtFeild.text,@"AccountName",context,@"ContextID", nil] delegate:self completionBlock:^(id response) {
             
+            [_userNameTxtFeild resignFirstResponder];
             if([response valueForKey:@"AccountName"]){
                 _user.UserName=[response valueForKey:@"AccountName"];
             }

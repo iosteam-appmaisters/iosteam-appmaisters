@@ -46,11 +46,10 @@
 //    [_postalCodeTxtFeild setText:@"40503"];
 
     
-//    [_accountNameTxtFeild setText:@"newton"];
-//    //    [_accountNameTxtFeild setText:@"666"];
-//    [_taxIDTxtFeild setText:@"9456"];
-//    [_dateTxtFeild setText:@"01/01/1980"];
-//    [_postalCodeTxtFeild setText:@"77777"];
+//    [_accountNameTxtFeild setText:@"75307"];
+//    [_taxIDTxtFeild setText:@"3445"];
+//    [_dateTxtFeild setText:@"01/01/1973"];
+//    [_postalCodeTxtFeild setText:@"38125"];
     
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -64,7 +63,6 @@
 
 
 -(void)manageKeyboard{
-    
     
     if([_dateTxtFeild isFirstResponder]){
         [_dateTxtFeild resignFirstResponder];
@@ -81,6 +79,10 @@
     if([_postalCodeTxtFeild isFirstResponder]){
         [_postalCodeTxtFeild resignFirstResponder];
     }
+    
+    _datePickerBottomConstraint.constant=-500;
+    [self.view layoutIfNeeded];
+
 }
 
 

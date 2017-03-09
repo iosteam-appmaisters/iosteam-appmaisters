@@ -15,7 +15,7 @@
 
 #define BASE_URL_CONFIGURATION   @"https://nsauth-extdev.ns3web.com/core"
 
-#define BASE_URL_CONFIGURATION_NS_CONGIG   @"https://nsconfig-extdev.ns3web.com/api/ClientApplications/1/MenuItems/"
+#define BASE_URL_CONFIGURATION_NS_CONGIG   @"https://nsconfig-extdev.ns3web.com/api/ClientApplications/1/MenuItems"
 
 
 

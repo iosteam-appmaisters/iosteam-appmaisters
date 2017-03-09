@@ -285,7 +285,7 @@
         else{
             // if session not validated
             //[[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
-            [self performSelector:@selector(reAuthenticateLoginWithDelay) withObject:nil afterDelay:0.2];
+            //[self performSelector:@selector(reAuthenticateLoginWithDelay) withObject:nil afterDelay:0.2];
             
         }
         
