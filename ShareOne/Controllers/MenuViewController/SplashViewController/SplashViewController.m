@@ -22,7 +22,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
     [self showNextViewController];
 }
 
@@ -34,26 +33,18 @@
         [self presentViewController:homeNavigationViewController animated:YES completion:nil];
         
     }else{
-        
         LoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//        self.objLoginViewController=loginViewController;
-        
         loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        
         [self presentViewController:loginViewController animated:YES completion:nil];
-  
     }
-        
 }
 
 - (BOOL)shouldAutorotate{
-    
     return YES;
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
-
 
 @end

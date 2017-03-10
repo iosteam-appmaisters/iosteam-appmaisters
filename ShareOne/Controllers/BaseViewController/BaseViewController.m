@@ -164,12 +164,9 @@
         
         Configuration *config = [ShareOneUtility getConfigurationFile];
         NSString *deepTargetUrl = config.DeepTargetId;
-//        NSString *url =[NSString stringWithFormat:@"https://olb2.deeptarget.com/shareone/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
         
-
         NSString *url =[NSString stringWithFormat:@"%@/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
         
-
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
         
         [self.navigationController.view.window addSubview:webView];
