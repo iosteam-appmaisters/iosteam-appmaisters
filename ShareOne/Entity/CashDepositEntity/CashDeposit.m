@@ -18,7 +18,7 @@
     NSMutableDictionary *dict = [param mutableCopy];
     [dict setValue:VERTIFI_MODE_TEST forKey:@"mode"];
     
-//    NSLog(@"param vertify : %@",param);
+    //NSLog(@"param vertify : %@",param);
 
     
     [[AppServiceModel sharedClient] postRequestForVertifiWithParam:dict progressMessage:message urlString:vertifiUrl delegate:delegate completionBlock:^(NSObject *response,BOOL success) {

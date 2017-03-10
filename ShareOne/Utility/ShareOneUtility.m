@@ -842,7 +842,8 @@ NSLog(Y, Z);		\
     NSString *accountValue = nil;
     if(suffix){
         User *obj =     [[SharedUser sharedManager] userObject];
-        accountValue= [NSString stringWithFormat:@"%d%d",[obj.Account intValue],[suffix.Suffixid intValue]];
+//        accountValue= [NSString stringWithFormat:@"%d%d",[obj.Account intValue],[suffix.Suffixid intValue]];
+        accountValue= [NSString stringWithFormat:@"%@%d",suffix.Type,[suffix.Suffixnumber intValue]];
     }
     else{
         accountValue = [self getAccountValue];
@@ -1274,6 +1275,15 @@ NSLog(Y, Z);		\
     
     NSString *accountType = @"0" ;
     
+    if([objSuffixInfo.Draft boolValue]){
+        accountType =@"2";
+    }
+    else{
+        accountType =@"1";
+    }
+    
+    /*
+    
     if([objSuffixInfo.Type isEqualToString:@"S"]){
         // Share
         accountType = @"1";
@@ -1300,6 +1310,7 @@ NSLog(Y, Z);		\
        // External Mortgage
        accountType = @"1";
    }
+     */
     return accountType;
 }
 
