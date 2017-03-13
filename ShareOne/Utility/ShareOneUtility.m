@@ -1586,4 +1586,9 @@ NSLog(Y, Z);		\
     return config.ssoBaseUrl;
 }
 
++(NSString *)getCustomerId{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.customerId;
+}
+
 @end

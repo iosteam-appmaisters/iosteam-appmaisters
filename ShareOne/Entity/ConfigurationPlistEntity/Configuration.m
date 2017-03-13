@@ -8,6 +8,7 @@
 
 #import "Configuration.h"
 #import "AppServiceModel.h"
+#import "ShareOneUtility.h"
 
 //#define BASE_URL_CONFIGURATION @"https://nsauth-dev.ns3web.com/core"
 
@@ -16,6 +17,9 @@
 #define BASE_URL_CONFIGURATION   @"https://nsauth-extdev.ns3web.com/core"
 
 #define BASE_URL_CONFIGURATION_NS_CONGIG   @"https://nsconfig-extdev.ns3web.com/api/ClientApplications/1/MenuItems"
+
+#define BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(ID,SERVICE_NAME) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/ClientApplications/%@/%@",ID,SERVICE_NAME]
+#define MENU_ITEMS_SERVICE @"MenuItems"
 
 
 
@@ -51,7 +55,7 @@
         if(response){
             
             NSDictionary *dict = (NSDictionary *)response;
-            [[AppServiceModel sharedClient] getRequestForConfigAPIWithAuthHeader:[NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]] andProgressMessage:nil urlString:BASE_URL_CONFIGURATION_NS_CONGIG delegate:nil completionBlock:^(NSObject *response) {
+            [[AppServiceModel sharedClient] getRequestForConfigAPIWithAuthHeader:[NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]] andProgressMessage:nil urlString:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],MENU_ITEMS_SERVICE) delegate:nil completionBlock:^(NSObject *response) {
                 
             } failureBlock:^(NSError *error) {
                 

@@ -193,5 +193,6 @@
 +(NSString *)getTestFairyID;
 +(NSString *)getBaseUrl;
 +(NSString *)getSSOBaseUrl;
++(NSString *)getCustomerId;
 
 @end
