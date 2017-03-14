@@ -960,16 +960,22 @@ NSLog(Y, Z);		\
 
 
 +(NSString *)getUUID{
-    
-    User * user= [self getUserObject];
+
+    //    User * user= [self getUserObject];
     NSString *Appname = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
-    NSString *deviceID = [SAMKeychain passwordForService:Appname account:[NSString stringWithFormat:@"%d",[user.Account intValue]]];
+    //    NSString *deviceID = [SAMKeychain passwordForService:Appname account:[NSString stringWithFormat:@"%d",[user.Account intValue]]];
+    NSString *deviceID = [SAMKeychain passwordForService:Appname account:@""];
+    
     if (deviceID == nil){
         deviceID  = [[[UIDevice currentDevice]identifierForVendor] UUIDString];
-        deviceID = [NSString stringWithFormat:@"%@%d",deviceID,[user.Account intValue]];
-        [SAMKeychain setPassword:deviceID forService:Appname account:[NSString stringWithFormat:@"%d",[user.Account intValue]]];
+        //        deviceID = [NSString stringWithFormat:@"%@%d",deviceID,[user.Account intValue]];
+        //        [SAMKeychain setPassword:deviceID forService:Appname account:[NSString stringWithFormat:@"%d",[user.Account intValue]]];
+        [SAMKeychain setPassword:deviceID forService:Appname account:@""];
+        
     }
+    NSLog(@"getUUID : %@",deviceID);
     return deviceID;
+
 }
 
 +(NSString *)getDeviceNotifToken{
