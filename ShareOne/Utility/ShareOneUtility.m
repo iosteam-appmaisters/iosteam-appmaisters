@@ -834,15 +834,7 @@ NSLog(Y, Z);		\
         
     }
     
-
-    
-    
-
     return [NSString stringWithFormat:@"%d%@%d",account,type,suffixID];
-
-    
-//    return @"54645432";
-//    return [self randomStringWithLength:17];
 }
 
 +(NSString *)getAccountValueWithSuffix:(SuffixInfo *)suffix{
