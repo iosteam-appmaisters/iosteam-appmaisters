@@ -820,17 +820,25 @@ NSLog(Y, Z);		\
     
     SuffixInfo *objSuffixInfo;
     int suffixID = 0;
+    int account =0;
+    NSString *type =@"s";
     if([[[SharedUser sharedManager] suffixInfoArr] count]>0){
         objSuffixInfo= (SuffixInfo *)[[SharedUser sharedManager] suffixInfoArr][0];
-        suffixID= [objSuffixInfo.Suffixid intValue];
+        suffixID= [objSuffixInfo.Suffixnumber intValue];
+        type= objSuffixInfo.Type;
+        account = [objSuffixInfo.Account intValue];
     }
-    else
-        suffixID= 55122;
+    else{
+        suffixID= 1;
+        account = [[obj Account] intValue];
+        
+    }
     
-    
-    NSLog(@"getAccountValue :%@",[NSString stringWithFormat:@"%d%d",[obj.Account intValue],suffixID]);
 
-    return [NSString stringWithFormat:@"%d%d",[obj.Account intValue],suffixID];
+    
+    
+
+    return [NSString stringWithFormat:@"%d%@%d",account,type,suffixID];
 
     
 //    return @"54645432";
@@ -841,8 +849,9 @@ NSLog(Y, Z);		\
     
     NSString *accountValue = nil;
     if(suffix){
-        User *obj =     [[SharedUser sharedManager] userObject];
-        accountValue= [NSString stringWithFormat:@"%d%d",[obj.Account intValue],[suffix.Suffixid intValue]];
+//        User *obj =     [[SharedUser sharedManager] userObject];
+        accountValue= [NSString stringWithFormat:@"%d%@%d",[suffix.Account intValue],suffix.Type,[suffix.Suffixnumber intValue]];
+
     }
     else{
         accountValue = [self getAccountValue];
