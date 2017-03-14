@@ -25,8 +25,8 @@
 //#define PRIVATE_KEY                 @"3b185aa994d2408091714536c28e324b"
 
 //C2C
-#define PUBLIC_KEY                  @"b5000c29263d4f0fa3b8115de4694f8e"
-#define PRIVATE_KEY                 @"1597c0dbf23647e49c6e658be7d293c9"
+//#define PUBLIC_KEY                  @"b5000c29263d4f0fa3b8115de4694f8e"
+//#define PRIVATE_KEY                 @"1597c0dbf23647e49c6e658be7d293c9"
 
 
 //#define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"

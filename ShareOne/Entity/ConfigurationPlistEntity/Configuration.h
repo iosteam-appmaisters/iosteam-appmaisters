@@ -41,6 +41,14 @@
 @property (nonatomic, strong) NSString *googleApiKey;
 @property (nonatomic, strong) NSString *ssoBaseUrl;
 @property (nonatomic, strong) NSString *TestFairyID;
+@property (nonatomic, strong) NSString *ssoPrivateKey;
+@property (nonatomic, strong) NSString *creditUnionPrivateKey;
+@property (nonatomic, strong) NSString *creditUnionPublicKey;
+@property (nonatomic, strong) NSString *securityVersion;
+@property (nonatomic, strong) NSString *hMacType;
+
+
+
 
 -(id) initWithDictionary:(NSDictionary *)configurationDict;
 

@@ -86,10 +86,10 @@
 
 
 
-#define PRIVATE_KEY_SSO             @"1c4d379e533945a8a0c23525ddd85e89"
+//#define PRIVATE_KEY_SSO             @"1c4d379e533945a8a0c23525ddd85e89"
 
-#define H_MAC_TYPE                  @"SHA256"
-#define SECURITY_VERSION            @"1.1"
+//#define H_MAC_TYPE                  @"SHA256"
+//#define SECURITY_VERSION            @"1.1"
 #define HOST_ADDRESS                @"nsmobile.ns3web.com"
 
 //PLIST CONSTANT

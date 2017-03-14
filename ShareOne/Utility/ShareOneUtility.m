@@ -247,9 +247,9 @@ NSLog(Y, Z);		\
 
 +(NSString *)createSignatureWithTimeStamp:(int)timestamp andRequestType:(NSString *)request_type havingEncoding:(NSStringEncoding) encoding{
     
-    NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",PUBLIC_KEY,timestamp,SECURITY_VERSION,request_type,H_MAC_TYPE];
+    NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",[ShareOneUtility getCreditUnionPublicKey],timestamp,[ShareOneUtility getSecurityVersion],request_type,[ShareOneUtility getHMACType]];
 //    NSLog(@"stringToSignIn : \n%@",stringToSignIn);
-    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding AndKey:PRIVATE_KEY];
+    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding AndKey:[ShareOneUtility getCreditUnionPrivateKey]];
 //    [self applyEncriptionWithPrivateKey:PRIVATE_KEY andPublicKey:PUBLIC_KEY];
 }
 
@@ -337,9 +337,9 @@ NSLog(Y, Z);		\
     
 //    string AuthorizationHeader = AesGeneratedIV + "|" + KeyPublic + "||" + unixTS.ToString() + "|" + Signature;
     //dcf421cc2be61068888b2b2b4dd3ca5a
-    NSString *generatedIv =[self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY];
+    NSString *generatedIv =[self getAESRandom4WithSecretKey:[ShareOneUtility getCreditUnionPrivateKey] AndPublicKey:[ShareOneUtility getCreditUnionPublicKey]];
 //    NSLog(@"generatedIv :%@",generatedIv);
-    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,PUBLIC_KEY,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:request_type havingEncoding:NSUTF8StringEncoding]];
+    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,[ShareOneUtility getCreditUnionPublicKey],[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:request_type havingEncoding:NSUTF8StringEncoding]];
     return header;
 }
 
@@ -1022,7 +1022,7 @@ NSLog(Y, Z);		\
     //eab08a6943728a37
     
     
-   return  [self applyEncriptionWithPrivateKey:PRIVATE_KEY_SSO andPublicKey:contexID];
+   return  [self applyEncriptionWithPrivateKey:[ShareOneUtility getSSOSecretKey] andPublicKey:contexID];
     
 //    return [self encryptString:contexID];
 
@@ -1032,7 +1032,7 @@ NSLog(Y, Z);		\
 
 +(NSDictionary *)getAESObjectWithGeneratedIV:(NSString *)contexID{
     
-    NSDictionary *dic =  [self applyEncriptionWithPrivateKey:PRIVATE_KEY_SSO andPublicKey:contexID];
+    NSDictionary *dic =  [self applyEncriptionWithPrivateKey:[ShareOneUtility getSSOSecretKey] andPublicKey:contexID];
     return dic;;
 }
 
@@ -1057,7 +1057,7 @@ NSLog(Y, Z);		\
     
     NSData *plainText = [NSData dataWithBytes:buffer length:[string length]];
     
-    NSData *keyData =[PRIVATE_KEY_SSO hexToBytes];
+    NSData *keyData =[[ShareOneUtility getSSOSecretKey] hexToBytes];
     
     //NSData* data = [string dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -1325,7 +1325,7 @@ NSLog(Y, Z);		\
     NSData* ivData = [FBEncryptorAES generateIv];
     NSString* hexStringIV = [FBEncryptorAES hexStringForData:ivData];
     
-    NSString *keyString = PRIVATE_KEY_SSO;
+    NSString *keyString = [ShareOneUtility getSSOSecretKey];
     NSData *keyData = [keyString hexToBytes];
     
     NSString *plaintText = contextID;
@@ -1598,6 +1598,33 @@ NSLog(Y, Z);		\
 +(NSString *)getSSOBaseUrl{
     Configuration *config = [ShareOneUtility getConfigurationFile];
     return config.ssoBaseUrl;
+}
+
++(NSString *)getSSOSecretKey{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.ssoPrivateKey;
+}
+
+
++(NSString *)getCreditUnionPublicKey{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.creditUnionPublicKey;
+}
+
++(NSString *)getCreditUnionPrivateKey{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.creditUnionPrivateKey;
+}
+
++(NSString *)getSecurityVersion{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.securityVersion;
+}
+
+
++(NSString *)getHMACType{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.hMacType;
 }
 
 @end

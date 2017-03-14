@@ -825,8 +825,8 @@
         [request setValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
         [request setValue:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0" forHTTPHeaderField:@"Cache-Control"];
         [request setValue:@"Sat, 1 Jan 2020 00:00:00 GMT" forHTTPHeaderField:@"Expires"];
-        [request setValue:H_MAC_TYPE forHTTPHeaderField:@"HmacType"];
-        [request setValue:SECURITY_VERSION forHTTPHeaderField:@"SecurityVersion"];
+        [request setValue:[ShareOneUtility getHMACType] forHTTPHeaderField:@"HmacType"];
+        [request setValue:[ShareOneUtility getSecurityVersion] forHTTPHeaderField:@"SecurityVersion"];
         [request setValue:auth forHTTPHeaderField:@"Authorization"];
     }
     else{
@@ -838,8 +838,8 @@
         [requestAsiHttp addRequestHeader:@"Pragma" value:@"no-cache"];
         [requestAsiHttp addRequestHeader:@"Cache-Control" value:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0"];
         [requestAsiHttp addRequestHeader:@"Expires" value:@"Sat, 1 Jan 2020 00:00:00 GMT"];
-        [requestAsiHttp addRequestHeader:@"HmacType" value:H_MAC_TYPE];
-        [requestAsiHttp addRequestHeader:@"SecurityVersion" value:SECURITY_VERSION];
+        [requestAsiHttp addRequestHeader:@"HmacType" value:[ShareOneUtility getHMACType]];
+        [requestAsiHttp addRequestHeader:@"SecurityVersion" value:[ShareOneUtility getSecurityVersion]];
         [requestAsiHttp addRequestHeader:@"Authorization" value:auth];
     }
 }

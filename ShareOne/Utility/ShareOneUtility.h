@@ -193,5 +193,11 @@
 +(NSString *)getTestFairyID;
 +(NSString *)getBaseUrl;
 +(NSString *)getSSOBaseUrl;
++(NSString *)getSSOSecretKey;
++(NSString *)getCreditUnionPublicKey;
++(NSString *)getCreditUnionPrivateKey;
++(NSString *)getSecurityVersion;
++(NSString *)getHMACType;
+
 
 @end
