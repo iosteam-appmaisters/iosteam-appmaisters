@@ -319,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "911"
             endingLineNumber = "911"
-            landmarkName = "+getAESEncryption:andEncoding:AndKey:"
+            landmarkName = "+calculateHMACMD5:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -831,7 +831,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1305"
             endingLineNumber = "1305"
-            landmarkName = "+getDeviceType"
+            landmarkName = "+encryptionByFBEncryptorAESWithContextID:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2203,8 +2203,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"
             endingLineNumber = "366"
-            landmarkName = "+saveUserObject:"
-            landmarkType = "7">
+            landmarkName = "@implementation ShareOneUtility"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2363,7 +2363,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1375"
             endingLineNumber = "1375"
-            landmarkName = "+saveMenuItemObjectForTouchIDAuthentication:"
+            landmarkName = "+getMenuItemForTouchIDAuthentication"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2475,7 +2475,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "959"
             endingLineNumber = "959"
-            landmarkName = "+getBytesOfString:"
+            landmarkName = "+getDeviceNotifToken"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2731,7 +2731,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "518"
             endingLineNumber = "518"
-            landmarkName = "+getSavedObjectOfCurrentLoginUser:"
+            landmarkName = "+savedQBHeaderInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2747,7 +2747,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "541"
             endingLineNumber = "541"
-            landmarkName = "+savedSuffixInfo:"
+            landmarkName = "+savedDevicesInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3769,7 +3769,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "616"
             endingLineNumber = "616"
-            landmarkName = "+getSignedINSignature"
+            landmarkName = "+getSettingsWithKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4215,7 +4215,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "876"
             endingLineNumber = "876"
-            landmarkName = "+getMacForVertifiForSuffix:"
+            landmarkName = "+getAESEncryption:andEncoding:AndKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4342,9 +4342,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1560"
-            endingLineNumber = "1560"
-            landmarkName = "+getConfigurationFile"
-            landmarkType = "7">
+            endingLineNumber = "1560">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
