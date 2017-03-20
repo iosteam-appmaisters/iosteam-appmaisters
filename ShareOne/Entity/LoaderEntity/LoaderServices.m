@@ -108,8 +108,6 @@
             obj.transArray=[qtObjects mutableCopy];
         }
         
-
-        
     } requestFailureBlock:^(NSError *error) {
         
     } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {

@@ -464,7 +464,7 @@
         else if([contrlollerName isEqualToString:@"NotNative"]){
             
             
-            if([screenTitle containsString:@"MX"] ||[screenTitle containsString:@"Estatements"] ||[screenTitle containsString:@"Check Withdrawals"]){
+            if([screenTitle containsString:@"MX"] ||[screenTitle containsString:@"E Statement"] ||[screenTitle containsString:@"Check Withdrawals"]){
                 [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
                     
                    NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];

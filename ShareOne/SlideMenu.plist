@@ -29,7 +29,7 @@
 			<key>shouldShow</key>
 			<true/>
 			<key>title</key>
-			<string>Transfers</string>
+			<string>Transfer</string>
 			<key>icon</key>
 			<string>menu_transfers_icon</string>
 			<key>detailVCIdentifier</key>
@@ -92,7 +92,7 @@
 					<key>webUrl</key>
 					<string>/ACH/Index</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -120,7 +120,7 @@
 					<key>webUrl</key>
 					<string>/ACHAccount/Summary</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -147,7 +147,7 @@
 			<array>
 				<dict>
 					<key>title</key>
-					<string>eStatements</string>
+					<string>E Statement</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
@@ -231,20 +231,6 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Tax Information</string>
-					<key>icon</key>
-					<string></string>
-					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
-					<key>shouldShow</key>
-					<true/>
-					<key>webUrl</key>
-					<string>/Account/Tax</string>
-					<key>detailVCTitle</key>
-					<string></string>
-				</dict>
-				<dict>
-					<key>title</key>
 					<string>Notices</string>
 					<key>icon</key>
 					<string></string>
@@ -273,6 +259,20 @@
 				</dict>
 				<dict>
 					<key>title</key>
+					<string>Check Withdrawals</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>WebViewController</string>
+					<key>webUrl</key>
+					<string>/Transfers/Check</string>
+					<key>shouldShow</key>
+					<true/>
+					<key>detailVCTitle</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>title</key>
 					<string>Stop Payment</string>
 					<key>icon</key>
 					<string></string>
@@ -287,15 +287,15 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Check Withdrawals</string>
+					<string>Tax Information</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
-					<key>webUrl</key>
-					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
 					<true/>
+					<key>webUrl</key>
+					<string>/Account/Tax</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -643,7 +643,7 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Presto ATMS</string>
+					<string>Presto ATMs</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
