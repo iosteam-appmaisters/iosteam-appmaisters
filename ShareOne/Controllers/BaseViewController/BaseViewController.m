@@ -439,8 +439,8 @@
 //        NSString *webUrl_cache = [cacheControlerDict valueForKey:WEB_URL];
         NSString *screenTitle_cache = [[cacheControlerDict valueForKey:SUB_CAT_TITLE] capitalizedString];
         
-        if([screenTitle isEqualToString:screenTitle_cache])
-            return;
+        //if([screenTitle isEqualToString:screenTitle_cache])
+          //  return;
 
     }
     
