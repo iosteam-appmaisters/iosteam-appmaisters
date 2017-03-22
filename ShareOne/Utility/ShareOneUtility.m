@@ -1541,7 +1541,7 @@ NSLog(Y, Z);		\
        
         NSRange rangeValue = [_objSuffixInfo.Access rangeOfString:@"D" options:NSCaseInsensitiveSearch];
         
-        if([_objSuffixInfo.Type isEqualToString:@"S"]  && rangeValue.length > 0 ){
+        if([_objSuffixInfo.Type isEqualToString:@"S"]  && rangeValue.length > 0 && ![_objSuffixInfo.Ira boolValue]){
             [filteredSuffixArray addObject:_objSuffixInfo];
         }
         else{
