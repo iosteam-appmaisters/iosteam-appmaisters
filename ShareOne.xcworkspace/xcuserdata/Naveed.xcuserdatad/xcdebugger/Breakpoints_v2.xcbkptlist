@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "347"
             endingLineNumber = "347"
-            landmarkName = "-getMenuButton"
+            landmarkName = "-showSideMenu"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -767,7 +767,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "567"
             endingLineNumber = "567"
-            landmarkName = "-pushViewControllerWithObject:"
+            landmarkName = "-appGoingToBackground"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1039,7 +1039,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "-bringAdvertismentViewToFront"
+            landmarkName = "-createLefbarButtonItems"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1055,7 +1055,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "-webViewDidStartLoad:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1070,9 +1070,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "665"
-            endingLineNumber = "665"
-            landmarkName = "-startTimerForKeepAlive"
-            landmarkType = "7">
+            endingLineNumber = "665">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1802,9 +1800,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "646"
-            endingLineNumber = "646"
-            landmarkName = "-appComingFromBackground"
-            landmarkType = "7">
+            endingLineNumber = "646">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1867,7 +1863,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
             endingLineNumber = "265"
-            landmarkName = "-createLefbarButtonItems"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1883,7 +1879,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "386"
             endingLineNumber = "386"
-            landmarkName = "-getBackButton"
+            landmarkName = "-setTitleView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1899,7 +1895,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "373"
             endingLineNumber = "373"
-            landmarkName = "-showSideMenu"
+            landmarkName = "-backButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1915,7 +1911,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "532"
             endingLineNumber = "532"
-            landmarkName = "-pushViewControllerWithObject:"
+            landmarkName = "-bringAdvertismentFront"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2358,7 +2354,7 @@
                   moduleName = "ShareOne"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Naveed/Documents/Projects/ShareOne_ios/ShareOne/Entity/UserEntity/User.m"
-                  timestampString = "511790157.770908"
+                  timestampString = "511859330.168425"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "216"
@@ -2373,7 +2369,7 @@
                   moduleName = "ShareOne"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Naveed/Documents/Projects/ShareOne_ios/ShareOne/Entity/UserEntity/User.m"
-                  timestampString = "511790157.773106"
+                  timestampString = "511859330.170649"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "216"
@@ -3435,7 +3431,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
             endingLineNumber = "174"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
