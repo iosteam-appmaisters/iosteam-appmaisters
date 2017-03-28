@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "347"
             endingLineNumber = "347"
-            landmarkName = "-menuButtonClicked:"
+            landmarkName = "-getMenuButton"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -831,7 +831,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1318"
             endingLineNumber = "1318"
-            landmarkName = "+encryptionByFBEncryptorAESWithContextID:"
+            landmarkName = "+getAccountTypeWithSuffix:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1039,7 +1039,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "-createLefbarButtonItems"
+            landmarkName = "-bringAdvertismentViewToFront"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1070,7 +1070,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "665"
-            endingLineNumber = "665">
+            endingLineNumber = "665"
+            landmarkName = "-startTimerForKeepAlive"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1675,7 +1677,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "970"
             endingLineNumber = "970"
-            landmarkName = "-adjustTextFeildPositionForTextFeild:"
+            landmarkName = "-shouldAutorotate"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2025,7 +2027,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
-            landmarkName = "-application:didReceiveRemoteNotification:"
+            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2201,7 +2203,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "929"
             endingLineNumber = "929"
-            landmarkName = "-moveViewUp"
+            landmarkName = "-moveViewDown"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2217,7 +2219,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "958"
             endingLineNumber = "958"
-            landmarkName = "-textFieldShouldBeginEditing:"
+            landmarkName = "-adjustTextFeildPositionForTextFeild:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2233,7 +2235,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1388"
             endingLineNumber = "1388"
-            landmarkName = "+getMenuItemForTouchIDAuthentication"
+            landmarkName = "+saveMenuItemObjectForTouchIDAuthentication:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2356,12 +2358,12 @@
                   moduleName = "ShareOne"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Naveed/Documents/Projects/ShareOne_ios/ShareOne/Entity/UserEntity/User.m"
-                  timestampString = "511859330.168425"
+                  timestampString = "511880296.598307"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "216"
                   endingLineNumber = "216"
-                  offsetFromSymbolStart = "378">
+                  offsetFromSymbolStart = "381">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2371,12 +2373,12 @@
                   moduleName = "ShareOne"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Naveed/Documents/Projects/ShareOne_ios/ShareOne/Entity/UserEntity/User.m"
-                  timestampString = "511859330.170649"
+                  timestampString = "511880296.600448"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "216"
                   endingLineNumber = "216"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2473,7 +2475,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
-            landmarkName = "-askAutoLoginOnEnteringBackGround"
+            landmarkName = "-appGoingToBackgroundFromLogin"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3241,7 +3243,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "941"
             endingLineNumber = "941"
-            landmarkName = "-moveViewDown"
+            landmarkName = "-textFieldShouldReturn:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3982,22 +3984,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/HomeViewController/HomeViewController.m"
-            timestampString = "510227516.706436"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -4039,7 +4025,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1573"
             endingLineNumber = "1573"
-            landmarkName = "+getGoogleMapKey"
+            landmarkName = "+getConfigurationFile"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4183,8 +4169,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "959"
             endingLineNumber = "959"
-            landmarkName = "+getBytesOfString:"
-            landmarkType = "7">
+            landmarkName = "@implementation ShareOneUtility"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
