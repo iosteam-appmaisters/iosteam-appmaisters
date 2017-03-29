@@ -120,7 +120,7 @@
 					<key>webUrl</key>
 					<string>/ACHAccount/Summary</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -263,7 +263,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>webUrl</key>
 					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
@@ -504,7 +504,7 @@
 					<key>webUrl</key>
 					<string>/Account/Preferences</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>

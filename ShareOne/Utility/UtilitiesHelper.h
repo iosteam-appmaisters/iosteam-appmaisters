@@ -107,6 +107,7 @@
 
 +(void)shouldHideTouchID:(id)delegate completionBlock:(void(^)(BOOL success))block;
 
++(void)hideViewForTestFairyVideo:(UIView *)view;
 
 @end
 

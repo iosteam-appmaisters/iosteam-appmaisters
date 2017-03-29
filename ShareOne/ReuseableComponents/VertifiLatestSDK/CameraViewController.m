@@ -26,7 +26,7 @@
 #import "CameraViewController.h"
 #import "VertifiImageProcessing.h"
 #import "GoogleAnalytics.h"
-
+#import "UtilitiesHelper.h"
 
 @interface CameraViewController ()
 
@@ -109,6 +109,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 {
     [super viewDidLoad];
 
+    [UtilitiesHelper hideViewForTestFairyVideo:self.view];
     depositModel = [DepositModel sharedInstance];
 
     // -------------------------------------------------------------------------------------

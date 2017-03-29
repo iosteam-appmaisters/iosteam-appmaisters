@@ -11,7 +11,7 @@
 #import "VertifiAgreemantController.h"
 #import "MobileDepositController.h"
 #import "IQKeyboardManager.h"
-
+#import "InAppBrowserController.h"
 
 
 @interface BaseViewController ()<UIWebViewDelegate>{
@@ -457,7 +457,6 @@
             //rootview
             self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
 
-//            [self.navigationController pushViewController:objHomeViewController animated:YES];
 
         }
         
@@ -468,7 +467,13 @@
                 [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
                     
                    NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
-                    [[UIApplication sharedApplication] openURL:request.URL];
+                    
+                    InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
+                    objInAppBrowserController.request=request;
+                    [self.navigationController pushViewController:objInAppBrowserController animated:NO];
+//                    [self presentViewController:objInAppBrowserController animated:NO completion:nil];
+                    
+                    //[[UIApplication sharedApplication] openURL:request.URL];
                     
                     
                 } failureBlock:^(NSError *error) {
@@ -478,7 +483,14 @@
             }
             else{
                 NSURL *url = [NSURL URLWithString:webUrl];
-                [[UIApplication sharedApplication] openURL:url];
+                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+                InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
+                objInAppBrowserController.request=request;
+                [self.navigationController pushViewController:objInAppBrowserController animated:NO];
+
+//                [self presentViewController:objInAppBrowserController animated:NO completion:nil];
+
+//                [[UIApplication sharedApplication] openURL:url];
             }
 
         }
@@ -524,7 +536,6 @@
             //rootview
             self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
 
-//            [self.navigationController pushViewController:objUIViewController animated:YES];
         }
     }
     else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Logout"]){

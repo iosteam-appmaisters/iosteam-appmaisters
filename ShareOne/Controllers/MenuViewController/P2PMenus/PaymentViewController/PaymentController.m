@@ -39,6 +39,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [UtilitiesHelper hideViewForTestFairyVideo:_webView];
+
+    
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
 
     self.favContactsTblView.allowMultipleSectionsOpen = NO;
@@ -105,6 +108,7 @@
 
 -(void)loadUrlWithName:(NSString *)name AndAmount:(NSString *)amount{
     
+
     [_webViewParent setHidden:FALSE];
     [_closeBtn setHidden:FALSE];
     __weak PaymentController *weakSelf = self;
@@ -184,6 +188,7 @@
         
         TransferSomeOneElseCell *editCell =  (TransferSomeOneElseCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TransferSomeOneElseCell class]) forIndexPath:indexPath];
         
+        [UtilitiesHelper hideViewForTestFairyVideo:editCell.amountTxtFeild];
         
         [editCell.profileLinkTxtFeild setTag:indexPath.section];
         [editCell.amountTxtFeild setTag:indexPath.section];
@@ -213,6 +218,8 @@
         
         PaymentCell *paymentCell =  (PaymentCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PaymentCell class]) forIndexPath:indexPath];
         
+        [UtilitiesHelper hideViewForTestFairyVideo:paymentCell.amountTxtFeild];
+
         [paymentCell.amountTxtFeild setTag:indexPath.section];
         paymentCell.amountTxtFeild.delegate=self;
         

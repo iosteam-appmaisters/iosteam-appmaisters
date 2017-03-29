@@ -18,6 +18,7 @@
 		1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C091DB4BCCE000435DE /* QuickBalances.m */; };
 		1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */; };
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
+		1D1430E41E8A40090008E843 /* InAppBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1430E31E8A40090008E843 /* InAppBrowserController.m */; };
 		1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD79E1D9947BD0014C743 /* Security.framework */; };
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
 		1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */; };
@@ -192,6 +193,8 @@
 		1D112C0C1DB4E6C6000435DE /* SuffixInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuffixInfo.m; sourceTree = "<group>"; };
 		1D1415471DA4D3710048F8B1 /* SharedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedUser.h; sourceTree = "<group>"; };
 		1D1415481DA4D3710048F8B1 /* SharedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedUser.m; sourceTree = "<group>"; };
+		1D1430E21E8A40090008E843 /* InAppBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppBrowserController.h; sourceTree = "<group>"; };
+		1D1430E31E8A40090008E843 /* InAppBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppBrowserController.m; sourceTree = "<group>"; };
 		1D1AD79E1D9947BD0014C743 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1D1AD7A11D9947CA0014C743 /* BBAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAES.h; sourceTree = "<group>"; };
 		1D1AD7A21D9947CA0014C743 /* BBAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAES.m; sourceTree = "<group>"; };
@@ -541,6 +544,15 @@
 				1D0C98FE1DE81A58009B60F0 /* VertifiDepositObject.m */,
 			);
 			path = QuickBalances;
+			sourceTree = "<group>";
+		};
+		1D1430E11E8A3FE30008E843 /* InAppBrowserController */ = {
+			isa = PBXGroup;
+			children = (
+				1D1430E21E8A40090008E843 /* InAppBrowserController.h */,
+				1D1430E31E8A40090008E843 /* InAppBrowserController.m */,
+			);
+			path = InAppBrowserController;
 			sourceTree = "<group>";
 		};
 		1D1AD7A01D9947CA0014C743 /* ThirdParty */ = {
@@ -1048,6 +1060,7 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D1430E11E8A3FE30008E843 /* InAppBrowserController */,
 				1D10A6091E26061D00BD40CD /* P2PMenus */,
 				1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */,
 				1D3A7BDB1DF0826A00AEA159 /* SetUserNameController */,
@@ -1490,6 +1503,7 @@
 				1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */,
 				1D0E265D1E5DD61A005FE91F /* CustomImageView.m in Sources */,
 				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
+				1D1430E41E8A40090008E843 /* InAppBrowserController.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
 				1D20C28C1E4E110500D3FC93 /* TableViewCell_LblSubtitle.m in Sources */,
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,

@@ -29,6 +29,8 @@
 
     __weak HomeViewController *weakSelf = self;
     
+    [UtilitiesHelper hideViewForTestFairyVideo:_webview];
+    
     
 //    if(!self.navigationItem.title){
 //        self.navigationItem.title=@"Account Summary";

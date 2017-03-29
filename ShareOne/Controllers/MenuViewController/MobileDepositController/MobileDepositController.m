@@ -97,6 +97,7 @@
     //[self vertifyUserRegistrationValidation];
     [self getRegisterToVirtifiToCheckStatus];
     [self setThemeOnButtons];
+    [UtilitiesHelper hideViewForTestFairyVideo:_ammountTxtFeild];
     //[self getListOfReviewDeposits];
     //[self getListOfPast6MonthsDeposits];
 }

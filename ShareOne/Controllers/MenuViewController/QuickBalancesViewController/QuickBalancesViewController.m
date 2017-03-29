@@ -38,6 +38,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    [UtilitiesHelper hideViewForTestFairyVideo:_qbTblView];
     __weak QuickBalancesViewController *weakSelf = self;
     
     _qbArr= [[SharedUser sharedManager] suffixInfoArr];

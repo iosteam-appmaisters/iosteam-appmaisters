@@ -15,6 +15,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "User.h"
 #import "ShareOneUtility.h"
+#import "TestFairy.h"
 
 @implementation UtilitiesHelper
 {
@@ -1102,6 +1103,11 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
         // Remove this if you are on a Deployment Target of iOS6 or OSX 10.8 and above
         _timer = nil;
     }
+}
+
++(void)hideViewForTestFairyVideo:(UIView *)view{
+    
+    [TestFairy hideView:view];
 }
 
 @end
