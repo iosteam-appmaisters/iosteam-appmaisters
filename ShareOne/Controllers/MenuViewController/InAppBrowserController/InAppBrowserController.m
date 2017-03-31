@@ -29,12 +29,22 @@
     // Do any additional setup after loading the view.
     [self loadRequestOnWebView];
     
+    self.navigationItem.rightBarButtonItem=nil;
+    
+    [NSHTTPCookieStorage sharedHTTPCookieStorage].cookieAcceptPolicy =
+    NSHTTPCookieAcceptPolicyAlways;
+
+    
     Configuration *config = [ShareOneUtility getConfigurationFile];
     UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
     
     self.navBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:11],NSFontAttributeName,nil];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self sendAdvertismentViewToBack];
 
+}
 
 -(void)loadRequestOnWebView{
  
