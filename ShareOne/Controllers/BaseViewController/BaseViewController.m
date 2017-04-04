@@ -133,6 +133,25 @@
 
 }
 
+
+-(void)removeAdsView{
+    
+    UIWebView *webView = nil;
+    float isAlreadyAdded = FALSE;
+    for(UIView *view in self.navigationController.view.window.subviews){
+        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+             webView = (UIWebView *)view;
+            isAlreadyAdded=TRUE;
+            break;
+        }
+    }
+    
+    if(isAlreadyAdded){
+        [webView removeFromSuperview];
+    }
+
+    
+}
 -(void)addAdvertismentControllerOnBottomScreen{
     
 //    float height = 50;
@@ -561,7 +580,7 @@
                                                                    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
                                                                        
                                                                        [ShareOneUtility hideProgressViewOnView:self.view];
-
+                                                                       [self removeAdsView];
                                                                        [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
                                                                            [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
                                                                        }];
@@ -614,6 +633,7 @@
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground from Home");
+    [self removeAdsView];
     [self unSetDelegeteForAdsWebView:TRUE];
     [[SharedUser sharedManager] setIsLogingOutFromHome:TRUE];
 
