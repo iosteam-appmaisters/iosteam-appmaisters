@@ -78,7 +78,9 @@
     
     [ShareOneUtility hideProgressViewOnView:self.view];
     
-    [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+    if ([error code] != NSURLErrorCancelled) {
+        [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+    }
 }
 
 
