@@ -1598,4 +1598,27 @@ NSLog(Y, Z);		\
     return config.customerId;
 }
 
++(void)saveETag:(NSString *)eTag withCustomerID:(NSString *)customerID{
+    [[NSUserDefaults standardUserDefaults] setValue:eTag forKey:[NSString stringWithFormat:@"eTage_%@",customerID]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSString *)getETagWithCustomerID:(NSString *)customerID{
+    return [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"eTage_%@",customerID]];
+}
+
++(NSString *)getDocumentsDirectoryPathWithFileName:(NSString *)plistName{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryPath = [paths objectAtIndex:0];
+    NSString *filename = plistName;
+    NSString *pathFilename = [libraryPath stringByAppendingPathComponent:filename];
+    return pathFilename;
+}
+
++(void)writeDataToPlistFileWithJSON:(NSDictionary *)jsonDict AndFileName:(NSString *)fileName{
+ 
+    NSDictionary *dictResult = jsonDict;
+    NSString *path = [self getDocumentsDirectoryPathWithFileName:fileName];
+    [dictResult writeToFile:path atomically:YES];
+}
 @end

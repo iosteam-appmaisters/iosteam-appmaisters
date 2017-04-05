@@ -29,6 +29,9 @@
     // Override point for customization after application launch.
 //    [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     
+    NSLog(@"Path : %@",[ShareOneUtility getDocumentsDirectoryPathWithFileName:@""]);
+    
+    
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:[ShareOneUtility getTestFairyID]];
     
