@@ -891,6 +891,10 @@
             [self setHeaderOnRequest:req withAuth:dict[REQ_HEADER]];
         }
         
+        if(dict[REQ_HEADER_CONFIGURATION]){
+            [req setValue:dict[REQ_HEADER_CONFIGURATION] forHTTPHeaderField:@"Authorization"];
+        }
+
         HTTPRequestOperation *operation = [[HTTPRequestOperation alloc] initWithRequest:req];
         [operation setCompletionBlock:^(NSURLResponse *response, id responseObject, NSError *error) {
             if (!error) {

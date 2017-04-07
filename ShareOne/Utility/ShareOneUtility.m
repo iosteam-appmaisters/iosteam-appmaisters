@@ -1619,6 +1619,7 @@ NSLog(Y, Z);		\
  
     NSDictionary *dictResult = jsonDict;
     NSString *path = [self getDocumentsDirectoryPathWithFileName:fileName];
+    NSLog(@"filePAth : %@",path);
     [dictResult writeToFile:path atomically:YES];
 }
 @end

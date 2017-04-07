@@ -120,4 +120,46 @@
     
 }
 
+
++ (void)setConfigurationQueueWithDelegate:(id)delegate withContentDict:(NSDictionary *)dict completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
+    
+    NSDictionary *menuItemsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_MENU_ITEMS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,nil,REQ_PARAM, nil];
+    
+    NSDictionary *clientSettingsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_CLIENT_SETTINGS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,nil,REQ_PARAM, nil];
+    
+    NSDictionary *StyleValuesServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_STYLE_VALUES_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,nil,REQ_PARAM, nil];
+
+    NSArray *reqArr = [NSArray arrayWithObjects:menuItemsServiceDict,clientSettingsServiceDict,StyleValuesServiceDict, nil];
+    
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+        
+        NSURLResponse *responseCast = (NSURLResponse *)responseObj;
+        
+        if([[responseCast.URL absoluteString] containsString:CONFIG_MENU_ITEMS_SERVICE]){
+            [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)response AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_MENU_ITEMS_SERVICE]];
+        }
+        
+        if([[responseCast.URL absoluteString] containsString:CONFIG_CLIENT_SETTINGS_SERVICE]){
+            [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)response AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_CLIENT_SETTINGS_SERVICE]];
+        }
+
+        if([[responseCast.URL absoluteString] containsString:CONFIG_STYLE_VALUES_SERVICE]){
+            [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)response AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_STYLE_VALUES_SERVICE]];
+        }
+
+    } requestFailureBlock:^(NSError *error) {
+        
+    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
+        
+        block(sucess,errorString);
+        
+    } queueFailureBlock:^(NSError *error) {
+        
+    }];
+
+
+    
+}
 @end

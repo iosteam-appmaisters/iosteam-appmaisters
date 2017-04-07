@@ -32,6 +32,17 @@
 //#define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"
 //#define KWEB_SERVICE_BASE_URL_SSO                       @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
 
+
+
+#define BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(ID,SERVICE_NAME) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/ClientApplications/%@/%@",ID,SERVICE_NAME]
+
+
+#define CONFIG_MENU_ITEMS_SERVICE          @"MenuItems"
+#define CONFIG_CLIENT_SETTINGS_SERVICE     @"ClientSettings"
+#define CONFIG_STYLE_VALUES_SERVICE        @"StyleValues"
+
+
+
 #define KWEB_SERVICE_LOGIN                              @"eft/memberLogin"
 
 #define KWEB_SERVICE_MEMBER_VALIDATE                    @"eft/memberValidate"
@@ -157,5 +168,7 @@
 #define REQ_TYPE                                        @"REQ_TYPE"
 #define REQ_HEADER                                      @"REQ_HEADER"
 #define REQ_PARAM                                       @"REQ_PARAM"
+#define REQ_HEADER_CONFIGURATION                        @"REQ_HEADER_CONFIGURATION"
+
 
 #endif
