@@ -249,6 +249,8 @@
 
 -(void)sendAdvertismentViewToBack{
     UIWebView *view = [self getAdverTismentView];
+    // reload ads
+    [view reload];
     [view setHidden:TRUE];
     [self.navigationController.view.window sendSubviewToBack:view];
 }
