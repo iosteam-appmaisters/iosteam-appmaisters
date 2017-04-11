@@ -1752,10 +1752,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.cu.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.cu.postcity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13b4bc3a-4c5c-4adb-9057-b4bf03b5018f";
-				PROVISIONING_PROFILE_SPECIFIER = "C2C DEV PROFILE";
+				PROVISIONING_PROFILE = "b4c39528-1f9e-419f-ac69-bde4c66a0b73";
+				PROVISIONING_PROFILE_SPECIFIER = PostCity_DEV_PRO;
 			};
 			name = Debug;
 		};
@@ -1777,10 +1777,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.cu.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.cu.postcity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ae13a011-0289-464d-8560-3335c3c858d0";
-				PROVISIONING_PROFILE_SPECIFIER = "C2C AD HOC PROFILE";
+				PROVISIONING_PROFILE = "25dbdd4f-e5dc-422f-ac03-7eee4f11a207";
+				PROVISIONING_PROFILE_SPECIFIER = PostCity_APPSTORE_PRO;
 			};
 			name = Release;
 		};

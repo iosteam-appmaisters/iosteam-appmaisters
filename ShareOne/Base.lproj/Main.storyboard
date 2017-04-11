@@ -349,7 +349,9 @@
                                             <constraint firstAttribute="height" constant="22" id="mS1-Sf-t9Y"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                                        <state key="normal" title="Join The Credit Union"/>
+                                        <state key="normal" title="Join The Credit Union">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="sRI-mO-fIC"/>
                                         </connections>
@@ -358,15 +360,19 @@
                                         <rect key="frame" x="20" y="257.5" width="94" height="22"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                                        <state key="normal" title="Branch Location"/>
+                                        <state key="normal" title="Branch Location">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="T1U-dd-azo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-AC-ghJ">
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-AC-ghJ">
                                         <rect key="frame" x="20" y="279.5" width="81" height="22"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                                        <state key="normal" title="Privacy Policy"/>
+                                        <state key="normal" title="Privacy Policy">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="IGs-dn-N1C"/>
                                         </connections>
@@ -374,7 +380,9 @@
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KP-5D-dKz">
                                         <rect key="frame" x="200" y="237.5" width="100" height="22"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                                        <state key="normal" title="Apply For A Loan"/>
+                                        <state key="normal" title="Apply For A Loan">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="PU8-PD-iqw"/>
                                         </connections>
@@ -385,7 +393,9 @@
                                             <constraint firstAttribute="width" secondItem="SQp-OX-1do" secondAttribute="height" multiplier="69:8" id="e6O-lp-gb0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Quick Balances" backgroundImage="QuickBalance_Button"/>
+                                        <state key="normal" title="Quick Balances" backgroundImage="QuickBalance_Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="quickBalanceButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="w07-z2-xfq"/>
                                         </connections>
@@ -393,7 +403,9 @@
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAv-Pg-6fu">
                                         <rect key="frame" x="200" y="257.5" width="45" height="22"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                                        <state key="normal" title="Contact"/>
+                                        <state key="normal" title="Contact">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="fMR-iq-Zbq"/>
                                         </connections>

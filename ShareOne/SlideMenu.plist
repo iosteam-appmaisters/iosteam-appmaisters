@@ -64,7 +64,7 @@
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -106,7 +106,7 @@
 					<key>webUrl</key>
 					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -151,7 +151,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>webUrl</key>
 					<string>/Estatements/Index</string>
 					<key>shouldShow</key>
@@ -167,7 +167,7 @@
 					<key>detailVCIdentifier</key>
 					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>https://www.webpayservice.com/5526/index.html</string>
+					<string>/BillPay/Index</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -179,11 +179,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>webUrl</key>
-					<string>https://nsmobiledemo.ns3web.com/CheckOrder.html?id=48b9462bd306475fa32ddc28dd603faab9</string>
+					<string>/CheckOrder/Index</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -237,7 +237,7 @@
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>webUrl</key>
 					<string>/Notices/List</string>
 					<key>detailVCTitle</key>
@@ -267,7 +267,7 @@
 					<key>webUrl</key>
 					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -281,7 +281,7 @@
 					<key>webUrl</key>
 					<string>/StopPayment/Index</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -307,7 +307,7 @@
 			<key>isSection</key>
 			<true/>
 			<key>shouldShow</key>
-			<true/>
+			<false/>
 			<key>title</key>
 			<string>Deposit</string>
 			<key>icon</key>
@@ -504,7 +504,7 @@
 					<key>webUrl</key>
 					<string>/Account/Preferences</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -629,13 +629,13 @@
 			<array>
 				<dict>
 					<key>title</key>
-					<string>Groove Car</string>
+					<string>CheckWorks</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>https://c2cfcu.groovecar.com/</string>
+					<string>https://www.checkworks.com</string>
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>
@@ -653,7 +653,7 @@
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 				</dict>
 			</array>
 		</dict>

@@ -451,7 +451,6 @@
     
     NSDictionary *cacheControlerDict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
     
-    // Do nothing as client said for Bill Pay & Check Order
     
     
     if(cacheControlerDict){
@@ -484,7 +483,10 @@
         else if([contrlollerName isEqualToString:@"NotNative"]){
             
             
-            if([screenTitle containsString:@"MX"] ||[screenTitle containsString:@"E Statement"] ||[screenTitle containsString:@"Check Withdrawals"]){
+//            if([screenTitle containsString:@"MX"] ||[screenTitle containsString:@"E Statement"] ||[screenTitle containsString:@"Check Withdrawals"])
+                if(![webUrl containsString:@"http"])
+            
+            {
                 [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
                     
                    NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
