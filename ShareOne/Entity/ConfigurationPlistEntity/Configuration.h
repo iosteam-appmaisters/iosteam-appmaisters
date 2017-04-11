@@ -45,5 +45,5 @@
 -(id) initWithDictionary:(NSDictionary *)configurationDict;
 
 
-+ (void)getConfiguration;
++ (void)getConfigurationWithDelegate :(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock;
 @end

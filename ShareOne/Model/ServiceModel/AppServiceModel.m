@@ -294,8 +294,14 @@
     
     [manager POST:urlString parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
         block(responseObject);
     } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
+        [self hideProgressAlert];
+
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSLog(@"%@",error);
     }];
 }
@@ -616,7 +622,8 @@
             
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                [self hideProgressAlert];
+                if(![req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT])
+                    [self hideProgressAlert];
                 block(responseObject);
             }
             
@@ -876,6 +883,8 @@
 
 -(void)createBatchOfRequestsWithObject:(NSArray *)reqObjects requestCompletionBlock:(void(^)(NSObject *response,NSString *responseObj))reqBlock requestFailureBlock:(void(^)(NSError* error))failReqBlock queueCompletionBlock:(void(^)(BOOL sucess,NSString *errorString ))queueBlock queueFailureBlock:(void(^)(NSError* error))failQueueBlock{
 
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     
     __block NSString *queueCustomError = nil;
     NSMutableArray *customReqArr= [[NSMutableArray alloc] init];
@@ -897,6 +906,8 @@
 
         HTTPRequestOperation *operation = [[HTTPRequestOperation alloc] initWithRequest:req];
         [operation setCompletionBlock:^(NSURLResponse *response, id responseObject, NSError *error) {
+//            [self hideProgressAlert];
+
             if (!error) {
                 NSLog(@"%@",responseObject);
                 reqBlock(responseObject,response);
@@ -936,10 +947,16 @@
         NSLog(@"ALL TASK DONE WITH REQ COUNT : %d ",[dataTasks count]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
+        [self hideProgressAlert];
+
         if(reqError){
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
             queueBlock(FALSE,queueCustomError);
         }
         else{
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
             queueBlock(TRUE,queueCustomError);
         }
     }];

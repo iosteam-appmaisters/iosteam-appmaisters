@@ -35,8 +35,6 @@
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:[ShareOneUtility getTestFairyID]];
     
-    [Configuration getConfiguration];
-    
     [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey]];
     
     [self registerForPushNotifications:application];
@@ -67,7 +65,20 @@
     
 //    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width/6.4);
     //[self testService];
+    
+    [self performSelector:@selector(configServiceWithDelay) withObject:nil afterDelay:0.3];
+
     return YES;
+}
+
+-(void)configServiceWithDelay{
+    
+    [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 -(void)testService{

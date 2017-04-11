@@ -46,13 +46,14 @@
     return self;
 }
 
-+ (void)getConfiguration{
++ (void)getConfigurationWithDelegate :(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:Grant_Type_Value,@"grant_type",Scope_value,@"scope",Client_ID_value,@"client_id",Client_Secret_value,@"client_secret", nil];
     
     NSString  *urlString = [NSString stringWithFormat:@"%@/%@/",BASE_URL_CONFIGURATION,ACCESS_TOKEN];
 
-    [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:nil urlString:urlString delegate:nil completionBlock:^(NSObject *response) {
+
+    [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:@"" urlString:urlString delegate:delegate completionBlock:^(NSObject *response) {
         if(response){
             
             NSDictionary *dict = (NSDictionary *)response;
