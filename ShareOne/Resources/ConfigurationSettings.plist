@@ -2,26 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>baseUrl</key>
+	<string>https://postcitypp.ns3web.com</string>
 	<key>creditUnionPrivateKey</key>
-	<string>1597c0dbf23647e49c6e658be7d293c9</string>
+	<string>11730905ace8419e8a528d6b4536cc7a </string>
+	<key>creditUnionPublicKey</key>
+	<string>c3299fb7b17d48ce935defffce46588d</string>
+	<key>ssoBaseUrl</key>
+	<string>https://preprod.ns3web.com/PostCity_439f9b9ea0b74569a93e6928f279176c/NSHome</string>
+	<key>ssoPrivateKey</key>
+	<string>1c4d379e533945a8a0c23525ddd85e89</string>
 	<key>hMacType</key>
 	<string>SHA256</string>
 	<key>securityVersion</key>
 	<string>1.1</string>
-	<key>creditUnionPublicKey</key>
-	<string>b5000c29263d4f0fa3b8115de4694f8e</string>
-	<key>ssoPrivateKey</key>
-	<string>1c4d379e533945a8a0c23525ddd85e89</string>
 	<key>googleApiKey</key>
 	<string>AIzaSyCZkSrAFGWnDYiSb1GTuXeQ8UcLcCRcjjY</string>
 	<key>TestFairyID</key>
 	<string>0d214628fc17621672de9113b24e97cc48c454eb</string>
-	<key>baseUrl</key>
-	<string>https://coast2coastpp.ns3web.com</string>
 	<key>customerId</key>
 	<string>59</string>
-	<key>ssoBaseUrl</key>
-	<string>https://coast2coast.ns3web.org</string>
 	<key>buttonColor</key>
 	<string>#017ca3</string>
 	<key>staticTextColor</key>
