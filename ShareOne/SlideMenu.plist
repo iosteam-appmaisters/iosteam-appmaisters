@@ -98,7 +98,7 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Check Withdrawals</string>
+					<string>Check Withdrawals Transfer</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
@@ -231,6 +231,20 @@
 				</dict>
 				<dict>
 					<key>title</key>
+					<string>Tax Information</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>WebViewController</string>
+					<key>shouldShow</key>
+					<true/>
+					<key>webUrl</key>
+					<string>/Account/Tax</string>
+					<key>detailVCTitle</key>
+					<string></string>
+				</dict>
+				<dict>
+					<key>title</key>
 					<string>Notices</string>
 					<key>icon</key>
 					<string></string>
@@ -282,20 +296,6 @@
 					<string>/StopPayment/Index</string>
 					<key>shouldShow</key>
 					<true/>
-					<key>detailVCTitle</key>
-					<string></string>
-				</dict>
-				<dict>
-					<key>title</key>
-					<string>Tax Information</string>
-					<key>icon</key>
-					<string></string>
-					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
-					<key>shouldShow</key>
-					<true/>
-					<key>webUrl</key>
-					<string>/Account/Tax</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
