@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "376"
             endingLineNumber = "376"
-            landmarkName = "-showSideMenu"
+            landmarkName = "-menuButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -767,7 +767,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "614"
             endingLineNumber = "614"
-            landmarkName = "-appGoingToBackground"
+            landmarkName = "-logoutOnGoingBackground"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1039,7 +1039,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "271"
             endingLineNumber = "271"
-            landmarkName = "-didReceiveMemoryWarning"
+            landmarkName = "-createLefbarButtonItems"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1055,7 +1055,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "-webViewDidFinishLoad:"
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1760,7 +1760,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
@@ -1768,7 +1768,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "694"
-            endingLineNumber = "694">
+            endingLineNumber = "694"
+            landmarkName = "-startTimerForKeepAlive"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1831,7 +1833,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "294"
             endingLineNumber = "294"
-            landmarkName = "-setTitleOnNavBar:"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1847,7 +1849,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "415"
             endingLineNumber = "415"
-            landmarkName = "-setTitleView"
+            landmarkName = "-getBackButton"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1863,7 +1865,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "402"
             endingLineNumber = "402"
-            landmarkName = "-popWithOutAnimation"
+            landmarkName = "-showSideMenu"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1879,7 +1881,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "579"
             endingLineNumber = "579"
-            landmarkName = "-logoutOnGoingBackground"
+            landmarkName = "-pushViewControllerWithObject:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3367,7 +3369,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
             endingLineNumber = "201"
-            landmarkName = "-webViewDidStartLoad:"
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4140,7 +4142,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
@@ -4156,7 +4158,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
@@ -4294,6 +4296,22 @@
             startingLineNumber = "252"
             endingLineNumber = "252"
             landmarkName = "+createSignatureWithTimeStamp:andRequestType:havingEncoding:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/InAppBrowserController/InAppBrowserController.m"
+            timestampString = "514362811.604068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-loadRequestOnWebView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
