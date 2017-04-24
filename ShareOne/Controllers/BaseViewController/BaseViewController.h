@@ -19,9 +19,12 @@
 @interface BaseViewController : UIViewController<HomeNavigationDelegate>{
     
     UIViewController *currentController;
+    BOOL hideSideMenu;
 }
 
-@property BOOL hideSideMenu;
+
+@property (nonatomic,assign) BOOL hideSideMenu ;
+
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint *bottomAdsConstraint;
 
 -(void)setBackgroundImage;
