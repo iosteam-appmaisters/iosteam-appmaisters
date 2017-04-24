@@ -29,6 +29,8 @@
     // Do any additional setup after loading the view.
     [self loadRequestOnWebView];
     
+    super.hideSideMenu=YES;
+    
     self.navigationItem.rightBarButtonItem=nil;
     
     [NSHTTPCookieStorage sharedHTTPCookieStorage].cookieAcceptPolicy =

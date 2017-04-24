@@ -21,6 +21,7 @@
     UIViewController *currentController;
 }
 
+@property BOOL hideSideMenu;
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint *bottomAdsConstraint;
 
 -(void)setBackgroundImage;
