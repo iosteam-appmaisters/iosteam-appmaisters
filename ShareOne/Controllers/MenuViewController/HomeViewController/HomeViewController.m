@@ -65,7 +65,7 @@
     __block NSMutableURLRequest *request = nil;
     
     
-    if([_url containsString:@"nsmobiledemo"] || [_url isEqualToString:@"https://www.c2cfcu.com/rates.php"]){
+    if([_url containsString:@"http"]){
         
         request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
 //        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
@@ -266,7 +266,12 @@
     
     [ShareOneUtility hideProgressViewOnView:self.view];
     
-    [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+    if ([error code] != NSURLErrorCancelled) {
+        [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+    }
+
+    
+    //[self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
     
 //    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
     
@@ -275,6 +280,9 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     NSLog(@"webViewDidStartLoad url: %@", webView.request.URL.absoluteString);
 }
+
+
+
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
