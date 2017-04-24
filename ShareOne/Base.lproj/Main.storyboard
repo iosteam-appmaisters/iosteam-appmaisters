@@ -4341,7 +4341,7 @@ Tm90ZToQIA
                                     <color key="textColor" red="0.59314095970000003" green="0.059442538769999997" blue="0.10456137359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Change Password" id="vhT-3S-q4M">
+                                    <navigationItem id="vhT-3S-q4M">
                                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="K0F-ng-nLn">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ers-gm-dlp" customClass="CustomButton">
                                                 <rect key="frame" x="16" y="11" width="25" height="22"/>
@@ -4350,13 +4350,6 @@ Tm90ZToQIA
                                                 <connections>
                                                     <action selector="backButtonClicked:" destination="3wO-a2-Ou0" eventType="touchUpInside" id="mE8-Eb-bkX"/>
                                                 </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="mVd-ge-9SF">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
-                                                <rect key="frame" x="219" y="10" width="85" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="logo"/>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>

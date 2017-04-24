@@ -871,7 +871,7 @@
     }
 
     WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
-    objWeblinksController.navTitle=screenTitle;
+//    objWeblinksController.navTitle=screenTitle;
     objWeblinksController.webLink=urlString;
     [self presentViewController:objWeblinksController animated:YES completion:nil];
 
