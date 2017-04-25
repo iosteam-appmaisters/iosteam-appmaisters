@@ -54,7 +54,6 @@
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
-
     NSMutableURLRequest *request = _request;
     [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
     [_webView loadRequest:request];
