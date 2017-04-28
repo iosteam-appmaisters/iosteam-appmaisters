@@ -223,7 +223,7 @@
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>webUrl</key>
 					<string>/LoanApplication/Index</string>
 					<key>detailVCTitle</key>
@@ -522,7 +522,7 @@
 			<key>icon</key>
 			<string>menu_rates_loan_icon</string>
 			<key>detailVCIdentifier</key>
-			<string>WebViewController</string>
+			<string>NotNative</string>
 			<key>webUrl</key>
 			<string></string>
 			<key>detailVCTitle</key>
@@ -549,7 +549,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
