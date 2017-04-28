@@ -441,6 +441,15 @@
         NSString *webUrl = [dict valueForKey:WEB_URL];
         NSString *screenTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
         
+        BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
+
+        // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
+        
+        if(isOpenInNewTab){
+            
+        }
+
+        
         
 
         UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
@@ -450,7 +459,6 @@
             HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             controllerToPush = objHomeViewController;
             objHomeViewController.url= webUrl;
-//            objHomeViewController.navigationItem.title=screenTitle;
 
         }
         else{
@@ -471,15 +479,9 @@
         [self presentViewController:homeNavigationViewController animated:YES completion:nil];
     }
     else{
+        
         UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
-        
-        //skipme
-//        UIViewController *controllerToPush =  [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSettingController"];
-//
-//        homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
-
         homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-        
         [self presentViewController:homeNavigationViewController animated:YES completion:nil];
     }
 }

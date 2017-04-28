@@ -105,6 +105,8 @@
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"
 #define WEB_URL                     @"LinkURL"
 
+#define MOBILE_DEPOSIT              @"mobileDeposit"
+
 #define HOME_WEB_VIEW_URL           @"/Account/Summary"
 
 #define SHOULD_SHOW                 @"shouldShow"

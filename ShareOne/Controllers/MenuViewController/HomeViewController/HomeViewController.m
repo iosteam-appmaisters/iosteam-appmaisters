@@ -63,7 +63,7 @@
     __block NSMutableURLRequest *request = nil;
     
     
-    if([_url containsString:@"nsmobiledemo"] || [_url isEqualToString:@"https://www.c2cfcu.com/rates.php"]){
+    if([_url containsString:@"http"]){
         
         request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
 //        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];

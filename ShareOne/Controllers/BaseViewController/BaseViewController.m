@@ -426,7 +426,8 @@
     NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     
-    
+    // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
+
     if(isOpenInNewTab){
         
         if([webUrl containsString:@"http"]){
@@ -435,7 +436,6 @@
             [[UIApplication sharedApplication] openURL:url];
         }
         else{
-            
             [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
                 
                 NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
@@ -445,106 +445,95 @@
             }];
         }
     }
-    
-    
-    if([contrlollerName length]>0){
-        
-        if([contrlollerName isEqualToString:@"WebViewController"]){
+    else{
+     
+        // If it is MOBILE_DEPOSIT screen check the vertifi status
+        if([contrlollerName isEqualToString:MOBILE_DEPOSIT]){
             
-            HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-            currentController = objHomeViewController;
-            objHomeViewController.url= webUrl;
             
-            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
-            
-            //rootview
-            self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
-
-
-        }
-        
-        else{
-            
-            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
-
-            if([contrlollerName isEqualToString:NSStringFromClass([MobileDepositController class])]){
-                
-                
-
-                // Check whether current user has Accepted Vertifi Agreemant or not
-                User *currentUser = [ShareOneUtility getUserObject];
-                if(!currentUser.vertifyEUAContents){
-                    contrlollerName= [dict valueForKey:CONTROLLER_NAME];
-                }
-                else{
-                    // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
-                    contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
-                    screenTitle= @"Register";
-                    navigationTitle = @"Register";
-                }
-                
-                /*
-                if(currentUser.hasUserAcceptedVertifiAgremant){
-                    contrlollerName= [dict valueForKey:CONTROLLER_NAME];
-                }
-                else{
-                    // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
-                    contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
-                    screenTitle= @"Register";
-                }
-                 */
+            // Check whether current user has Accepted Vertifi Agreemant or not
+            User *currentUser = [ShareOneUtility getUserObject];
+            if(!currentUser.vertifyEUAContents){
+                contrlollerName= [dict valueForKey:CONTROLLER_NAME];
+            }
+            else{
+                // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
+                contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
+                screenTitle= @"Register";
+                navigationTitle = @"Register";
             }
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-            
-            currentController = objUIViewController;
-
             objUIViewController.navigationItem.title=navigationTitle;
-            
-            //rootview
             self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
 
+
         }
-    }
-    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] capitalizedString]
-                                                                       message:@"Are you sure you want to log off?"
-                                                                preferredStyle:UIAlertControllerStyleAlert]; // 1
-        UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                              style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                                                  NSLog(@"You pressed button one");
-                                                              }]; // 2
-        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
-                                                               style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                                                   
-                                                                   [ShareOneUtility showProgressViewOnView:self.view];
-
-                                                                   [[ShareOneUtility shareUtitlities] cancelTimer];
-
-                                                                   [self sendAdvertismentViewToBack];
-                                                                   __weak BaseViewController *weakSelf = self;
-                                                                   [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
-                                                                   NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-                                                                   [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
+        else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
+            
+            // Show log out popup
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] capitalizedString]
+                                                                           message:@"Are you sure you want to log off?"
+                                                                    preferredStyle:UIAlertControllerStyleAlert]; // 1
+            UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                  style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                                                                      NSLog(@"You pressed button one");
+                                                                  }]; // 2
+            UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
+                                                                   style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                        
-                                                                       [ShareOneUtility hideProgressViewOnView:self.view];
-
-                                                                       [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
-                                                                           [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+                                                                       [ShareOneUtility showProgressViewOnView:self.view];
+                                                                       
+                                                                       [[ShareOneUtility shareUtitlities] cancelTimer];
+                                                                       
+                                                                       [self sendAdvertismentViewToBack];
+                                                                       __weak BaseViewController *weakSelf = self;
+                                                                       [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
+                                                                       NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+                                                                       [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
+                                                                           
+                                                                           [ShareOneUtility hideProgressViewOnView:self.view];
+                                                                           
+                                                                           [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
+                                                                               [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+                                                                           }];
+                                                                           
+                                                                           
+                                                                       } failureBlock:^(NSError *error) {
+                                                                           
                                                                        }];
-
                                                                        
-                                                                   } failureBlock:^(NSError *error) {
-                                                                       
-                                                                   }];
+                                                                   }]; // 3
+            
+            [alert addAction:firstAction];
+            [alert addAction:secondAction]; 
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
 
-                                                               }]; // 3
         
-        [alert addAction:firstAction];
-        [alert addAction:secondAction]; 
-        
-        [self presentViewController:alert animated:YES completion:nil];
+        else{
+            // If webUrl has a valid URL than we need to load HomeViewController with URL
+            UIViewController *controller = nil;
+            if(webUrl){
+                
+                HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+                currentController = objHomeViewController;
+                objHomeViewController.url= webUrl;
+                controller=objHomeViewController;
+            }
+            else{
+                
+                //If webUrl is empty or nil load Native UI Screen
+                UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+                objUIViewController.navigationItem.title=navigationTitle;
+                controller = objUIViewController;
+            }
+            
+            //rootview
+            self.navigationController.viewControllers = [NSArray arrayWithObject: controller];
+        }
     }
 }
 
