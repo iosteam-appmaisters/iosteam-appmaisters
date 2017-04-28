@@ -34,7 +34,12 @@
     [self.view setGestureRecognizers:[NSArray arrayWithObject:gesture]];
     
     
-    _contentArr= [ShareOneUtility getSideMenuDataFromPlist];
+//    _contentArr= [ShareOneUtility getSideMenuDataFromPlist];
+    
+    _contentArr =     [Configuration getAllMenuItemsIncludeHiddenItems:FALSE];
+
+    
+    
     
     [_parentView setBackgroundColor:[UIColor colorWithHexString:[ShareOneUtility getConfigurationFile].menuBackgroundColor]];
 //    self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -106,7 +111,8 @@
     
 
 
-    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0 && [[dict valueForKey:HAS_SECTIONS] boolValue])
+//    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0 && [[dict valueForKey:HAS_SECTIONS] boolValue])
+    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0)
         subCatCount = [subCatArr count];
     
     return subCatCount;
@@ -152,7 +158,7 @@
     
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     NSDictionary *dictSubCat = subCatArr[indexPath.row];
-    cell.categorytitleLbl.text = [dictSubCat valueForKey:SUB_CAT_TITLE];
+    cell.categorytitleLbl.text = [dictSubCat valueForKey:MAIN_CAT_TITLE];
     [cell.iconImageVw setImage:[UIImage imageNamed:@"slide-menu-arrow"]];
     
     [cell.cellContentView setBackgroundColor:[UIColor colorWithHexString:[ShareOneUtility getConfigurationFile].menuBackgroundColor]];
@@ -181,7 +187,13 @@
      **else -       - Hide right arrow view
      */
     
-    if([[dict valueForKey:HAS_SECTIONS] boolValue]){
+    
+    NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
+    //    if([subCatArr isKindOfClass:[NSArray class]] && ![[dict valueForKey:HAS_SECTIONS] boolValue])
+    if([subCatArr isKindOfClass:[NSArray class]])
+
+//    if([[dict valueForKey:HAS_SECTIONS] boolValue])
+    {
         [objFZAccordionTableViewHeaderView.arrowImageView setHidden:FALSE];
     }
     else{
@@ -212,7 +224,10 @@
 //    NSLog(@"willOpenSection");
     NSDictionary *dict = _contentArr[section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
-    if([subCatArr isKindOfClass:[NSArray class]] && ![[dict valueForKey:HAS_SECTIONS] boolValue]){
+//    if([subCatArr isKindOfClass:[NSArray class]] && ![[dict valueForKey:HAS_SECTIONS] boolValue])
+    if(![subCatArr isKindOfClass:[NSArray class]])
+
+    {
         _controllerInfoDict = _contentArr[section];
         [self backgroundButtonClicked:[NSIndexPath indexPathForRow:0 inSection:section]];
     }

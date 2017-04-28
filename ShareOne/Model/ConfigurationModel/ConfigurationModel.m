@@ -15,4 +15,12 @@
 
     //
 }
+
+
++(NSMutableArray *)parseMenuItemsWithObject:(NSMutableArray *)sourceArray{
+    
+    
+    return [NSMutableArray new];
+}
+
 @end

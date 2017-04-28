@@ -16,5 +16,5 @@
 
 
 @interface ConfigurationModel : NSObject
-+(void)getServicesSettings;
++(NSMutableArray *)parseMenuItemsWithObject:(NSMutableArray *)sourceArray;
 @end

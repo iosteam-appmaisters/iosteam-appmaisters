@@ -139,6 +139,8 @@
         
         if([[responseCast.URL absoluteString] containsString:CONFIG_MENU_ITEMS_SERVICE]){
             [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)response AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_MENU_ITEMS_SERVICE]];
+            
+            [Configuration getAllMenuItemsIncludeHiddenItems:FALSE];
         }
         
         if([[responseCast.URL absoluteString] containsString:CONFIG_CLIENT_SETTINGS_SERVICE]){

@@ -10,6 +10,8 @@
 #import "AppServiceModel.h"
 #import "ShareOneUtility.h"
 #import "LoaderServices.h"
+#import "ConfigurationModel.h"
+
 
 //#define BASE_URL_CONFIGURATION @"https://nsauth-dev.ns3web.com/core"
 
@@ -67,18 +69,73 @@
     }];
 }
 
-/*
- [[AppServiceModel sharedClient] getRequestForConfigAPIWithAuthHeader:authToken andProgressMessage:nil urlString:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_MENU_ITEMS_SERVICE) delegate:nil completionBlock:^(NSObject *response) {
- 
- NSDictionary *dict = (NSDictionary *)response;
- 
- [ShareOneUtility writeDataToPlistFileWithJSON:dict AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_MENU_ITEMS_SERVICE]];
- 
- 
- } failureBlock:^(NSError *error) {
- 
- }];
- */
++(NSArray *)getPlistFileWithName:(NSString *)filename{
+    
+    NSString *path = [ShareOneUtility getDocumentsDirectoryPathWithFileName:[NSString stringWithFormat:@"%@.plist",filename]];
+    NSArray  *arrPlist = [NSArray arrayWithContentsOfFile:path];
+    return arrPlist;
+}
+
++(NSMutableArray *)getAllMenuItemsIncludeHiddenItems:(BOOL)showHidenItems{
+    
+    NSArray *menuItemsArr = [self getPlistFileWithName:CONFIG_MENU_ITEMS_SERVICE];
+    
+    NSSortDescriptor *indexDescriptorForSections = [NSSortDescriptor sortDescriptorWithKey:@"Index"
+                                                                 ascending:YES];
+    
+
+    NSPredicate *predForParentNodeNotExist = nil;
+    NSPredicate *predForParentNodeExist = nil;
+    
+    if(showHidenItems){
+        
+        predForParentNodeNotExist = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(NOT (Parent in SELF))"]];
+        
+        predForParentNodeExist = [NSPredicate predicateWithFormat:@"(Parent in SELF)"];
+
+    }
+    else{
+        
+        predForParentNodeNotExist = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(NOT (Parent in SELF)) AND IsHidden == FALSE"]];
+        
+        predForParentNodeExist = [NSPredicate predicateWithFormat:@"(Parent in SELF AND IsHidden == FALSE)"];
+
+    }
+
+    NSMutableArray *sectionItemsArray = [[[menuItemsArr filteredArrayUsingPredicate:predForParentNodeNotExist]
+                        sortedArrayUsingDescriptors:[NSArray arrayWithObject:indexDescriptorForSections]] mutableCopy];
+    
+    NSArray *rowItemsArray = [menuItemsArr filteredArrayUsingPredicate:predForParentNodeExist];
+    
+    [sectionItemsArray enumerateObjectsUsingBlock:^(NSDictionary *sectionObject, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        int sectionID = [sectionObject[@"ID"] intValue];
+        
+//        NSString *DisplayText = sectionObject[@"DisplayText"];
+
+        NSPredicate *predForChildNodes = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"Parent.ID == %d",sectionID]];
+        
+        NSSortDescriptor *indexDescriptorForRows = [NSSortDescriptor sortDescriptorWithKey:@"Index"
+                                                                                 ascending:YES];
+
+        NSArray *rowItemsArr = [[rowItemsArray filteredArrayUsingPredicate:predForChildNodes]
+                                sortedArrayUsingDescriptors:[NSArray arrayWithObject:indexDescriptorForRows]];
+        if([rowItemsArr count]>0){
+            
+            NSMutableDictionary *mutableCloneSectionObject = [sectionObject mutableCopy];
+            [mutableCloneSectionObject setValue:rowItemsArr forKey:MAIN_CAT_SUB_CATEGORIES];
+            
+            [sectionItemsArray replaceObjectAtIndex:idx withObject:mutableCloneSectionObject];
+        }
+//        NSLog(@"Items for %@,\n %@",DisplayText,rowItemsArr);
+    }];
+    
+    return sectionItemsArray;
+}
+
+
+
+
 
 
 @end

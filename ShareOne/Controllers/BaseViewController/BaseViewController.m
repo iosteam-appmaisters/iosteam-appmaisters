@@ -424,22 +424,28 @@
     NSString *webUrl = [dict valueForKey:WEB_URL];
     NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
     NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
-    
-    NSDictionary *cacheControlerDict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
-    
-    // Do nothing as client said for Bill Pay & Check Order
+    BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     
     
-    if(cacheControlerDict){
+    if(isOpenInNewTab){
         
-//        NSString *contrlollerName_cache = [cacheControlerDict valueForKey:CONTROLLER_NAME];
-//        NSString *webUrl_cache = [cacheControlerDict valueForKey:WEB_URL];
-//        NSString *screenTitle_cache = [[cacheControlerDict valueForKey:SUB_CAT_TITLE] capitalizedString];
-//        
-//        if([screenTitle isEqualToString:screenTitle_cache])
-//            return;
-
+        if([webUrl containsString:@"http"]){
+            
+            NSURL *url = [NSURL URLWithString:webUrl];
+            [[UIApplication sharedApplication] openURL:url];
+        }
+        else{
+            
+            [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
+                
+                NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
+                [[UIApplication sharedApplication] openURL:request.URL];
+                
+            } failureBlock:^(NSError *error) {
+            }];
+        }
     }
+    
     
     if([contrlollerName length]>0){
         
@@ -448,35 +454,12 @@
             HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             currentController = objHomeViewController;
             objHomeViewController.url= webUrl;
-            //objHomeViewController.navigationItem.title=screenTitle;
             
             [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+            
             //rootview
             self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
 
-//            [self.navigationController pushViewController:objHomeViewController animated:YES];
-
-        }
-        
-        else if([contrlollerName isEqualToString:@"NotNative"]){
-            
-            
-            if([screenTitle containsString:@"MX"] ||[screenTitle containsString:@"Estatements"] ||[screenTitle containsString:@"Check Withdrawals"]){
-                [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
-                    
-                   NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
-                    [[UIApplication sharedApplication] openURL:request.URL];
-                    
-                    
-                } failureBlock:^(NSError *error) {
-                    
-                }];
-                
-            }
-            else{
-                NSURL *url = [NSURL URLWithString:webUrl];
-                [[UIApplication sharedApplication] openURL:url];
-            }
 
         }
         
@@ -521,19 +504,18 @@
             //rootview
             self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
 
-//            [self.navigationController pushViewController:objUIViewController animated:YES];
         }
     }
-    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:@"Logout"]){
+    else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] capitalizedString]
-                                                                       message:@"Are you sure you want to logout?"
+                                                                       message:@"Are you sure you want to log off?"
                                                                 preferredStyle:UIAlertControllerStyleAlert]; // 1
         UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                               style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                   NSLog(@"You pressed button one");
                                                               }]; // 2
-        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:@"Logout"
+        UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
                                                                style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
                                                                    
                                                                    [ShareOneUtility showProgressViewOnView:self.view];

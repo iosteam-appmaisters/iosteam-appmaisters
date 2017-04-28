@@ -29,7 +29,6 @@
     // Override point for customization after application launch.
 //    [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     
-    NSLog(@"Path : %@",[ShareOneUtility getDocumentsDirectoryPathWithFileName:@""]);
     
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
@@ -66,7 +65,10 @@
 //    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width/6.4);
     //[self testService];
     
-    [self performSelector:@selector(configServiceWithDelay) withObject:nil afterDelay:0.3];
+    [Configuration getAllMenuItemsIncludeHiddenItems:FALSE];
+
+
+    //[self performSelector:@selector(configServiceWithDelay) withObject:nil afterDelay:0.3];
 
     return YES;
 }

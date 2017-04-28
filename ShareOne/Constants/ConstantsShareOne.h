@@ -98,12 +98,12 @@
 
 #define FILE_TYPE                   @"plist"
 #define HAS_SECTIONS                @"isSection"
-#define MAIN_CAT_TITLE              @"title"
+#define MAIN_CAT_TITLE              @"DisplayText"
 #define MAIN_CAT_IMAGE              @"icon"
 #define CONTROLLER_NAME             @"detailVCIdentifier"
 #define CONTROLLER_TITLE            @"detailVCTitle"
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"
-#define WEB_URL                     @"webUrl"
+#define WEB_URL                     @"LinkURL"
 
 #define HOME_WEB_VIEW_URL           @"/Account/Summary"
 
@@ -116,7 +116,10 @@
 #define CHANGE_ACCOUNT_USER_NAME    @"AccountName"
 
 //#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
-#define SUB_CAT_CONTROLLER_TITLE    @"detailVCTitle"
+#define SUB_CAT_CONTROLLER_TITLE    @"DisplayText"
+#define IS_OPEN_NEW_TAB             @"OpenInNewTab"
+
+#define LOG_OFF                     @"Log Off"
 
 // ShareOne
 //#define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"
