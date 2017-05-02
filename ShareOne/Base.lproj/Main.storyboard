@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -134,7 +134,7 @@
                                         <rect key="frame" x="20" y="92" width="280" height="72.5"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="7" width="330.5" height="39.5"/>
+                                                <rect key="frame" x="21" y="7" width="329" height="39.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -155,7 +155,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="275" y="49.5" width="51.5" height="18"/>
+                                                <rect key="frame" x="263.5" y="49.5" width="52.5" height="18"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -163,7 +163,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="330.5" y="45.5" width="16" height="25"/>
+                                                <rect key="frame" x="320" y="45.5" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -202,7 +202,7 @@
                                         <rect key="frame" x="20" y="138.5" width="280" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="206.5" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="205" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1573,7 +1573,7 @@
         <!--Settings View Controller-->
         <scene sceneID="4hI-XK-7tM">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="fqa-N8-esj" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" id="fqa-N8-esj" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Fy-Og-Llq"/>
                         <viewControllerLayoutGuide type="bottom" id="hIa-e5-LkU"/>
@@ -1780,7 +1780,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="256" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdE-he-zu3" id="AWs-QG-jWE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
@@ -1942,7 +1942,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-Zo-b6e" customClass="CustomButton">
-                                <rect key="frame" x="161" y="528" width="159" height="40"/>
+                                <rect key="frame" x="160" y="528" width="160" height="40"/>
                                 <color key="backgroundColor" red="0.58884179592132568" green="0.059621315449476242" blue="0.10815258324146271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
                                 <state key="normal" title="Decline"/>
@@ -1954,7 +1954,7 @@
                                 <rect key="frame" x="20" y="50" width="280" height="478"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPL-8s-WWU">
-                                        <rect key="frame" x="0.0" y="10" width="280" height="68"/>
+                                        <rect key="frame" x="0.0" y="10" width="280" height="67.5"/>
                                         <string key="text">Share One Mobile Remote Deposit
 Services Agreement</string>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
@@ -1962,7 +1962,7 @@ Services Agreement</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTP-Y2-ILB">
-                                        <rect key="frame" x="0.0" y="108" width="280" height="185"/>
+                                        <rect key="frame" x="0.0" y="107.5" width="280" height="184.5"/>
                                         <string key="text">Mobile Deposit is designed to allow you to make deposits of checks (”original checks”) to your accounts from home or other remote locations by scanning the original checks and delivering the digital images and associated deposit information ( “images”) to us or our processor with your Mobile Device.After you login to Mobile Banking,you may apply for Mobile Deposit.
 </string>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
@@ -1970,7 +1970,7 @@ Services Agreement</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4g-cP-ALq">
-                                        <rect key="frame" x="0.0" y="303" width="280" height="185"/>
+                                        <rect key="frame" x="0.0" y="302" width="280" height="184.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Limits.">
                                                 <attributes>
@@ -2001,7 +2001,7 @@ Cg
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aR3-6Z-QHA">
-                                        <rect key="frame" x="0.0" y="498" width="280" height="102"/>
+                                        <rect key="frame" x="0.0" y="496.5" width="280" height="102"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Eligible items.">
                                                 <attributes>
@@ -2140,7 +2140,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
         <!--Mobile Deposit Controller-->
         <scene sceneID="gjM-I4-RXy">
             <objects>
-                <viewController storyboardIdentifier="MobileDepositController" id="Pph-eo-F38" customClass="MobileDepositController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mobileDeposit" id="Pph-eo-F38" customClass="MobileDepositController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="49T-gZ-5Nw"/>
                         <viewControllerLayoutGuide type="bottom" id="FoN-E8-dkH"/>
@@ -2331,7 +2331,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFB-48-1aX" userLabel="FrontButton">
-                                        <rect key="frame" x="15" y="146" width="117" height="75"/>
+                                        <rect key="frame" x="14.5" y="146" width="117" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="Os0-xv-RhH"/>
                                             <constraint firstAttribute="width" constant="117" id="s7N-EG-e7H"/>
@@ -2344,7 +2344,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP9-xF-MBM" userLabel="imagePopUpButton1">
-                                        <rect key="frame" x="56" y="224" width="36" height="30"/>
+                                        <rect key="frame" x="55.5" y="224" width="36" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="View">
                                             <color key="titleColor" red="0.63921568627450975" green="0.63921568627450975" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2354,7 +2354,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0o3-Kp-6EO" userLabel="Seperater1View">
-                                        <rect key="frame" x="56" y="254" width="36" height="1"/>
+                                        <rect key="frame" x="55.5" y="254" width="36" height="1"/>
                                         <color key="backgroundColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Uc0-W0-xDs"/>
@@ -2636,7 +2636,7 @@ Tm90ZToQIA
         <!--Social Media View Controller-->
         <scene sceneID="S3e-xX-fXW">
             <objects>
-                <viewController storyboardIdentifier="SocialMediaViewController" id="Fwj-72-jBY" customClass="SocialMediaViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="socialMedia" id="Fwj-72-jBY" customClass="SocialMediaViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZEB-ea-c5g"/>
                         <viewControllerLayoutGuide type="bottom" id="xpC-yM-WpJ"/>
@@ -2810,7 +2810,7 @@ Tm90ZToQIA
         <!--Branch Location View Controller-->
         <scene sceneID="ayF-tr-78o">
             <objects>
-                <viewController storyboardIdentifier="BranchLocationViewController" id="p2t-aQ-tQO" customClass="BranchLocationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="branchLocations" id="p2t-aQ-tQO" customClass="BranchLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AK9-dr-dY9"/>
                         <viewControllerLayoutGuide type="bottom" id="Ekw-qC-Zpi"/>
@@ -2845,7 +2845,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="28" width="290" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uD2-fN-AfI" id="Q4n-an-dXz">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl6-J8-yHa" customClass="CustomLabel">
@@ -2879,7 +2879,7 @@ Tm90ZToQIA
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8068 US Highway 64 Bartlett, TN 38133 " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u15-JK-ydt" customClass="PlainCustomLabel">
-                                                    <rect key="frame" x="5" y="52" width="127" height="21"/>
+                                                    <rect key="frame" x="5" y="52" width="127" height="20.5"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="9"/>
                                                     <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2888,7 +2888,7 @@ Tm90ZToQIA
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: [901] 452-7900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKL-kl-cUF" customClass="PlainCustomLabel">
-                                                    <rect key="frame" x="5" y="76" width="133" height="13"/>
+                                                    <rect key="frame" x="5" y="75.5" width="133" height="13"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <color key="textColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3068,7 +3068,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="128" width="290" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XFX-Lm-RUw" id="2vB-QP-J1u">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bartlett/Cordova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcC-o1-kKO" customClass="CustomLabel">
@@ -3300,7 +3300,7 @@ Tm90ZToQIA
         <!--Deposit List Controller-->
         <scene sceneID="iql-ob-wxg">
             <objects>
-                <viewController storyboardIdentifier="DepositListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v0j-ZO-7qH" customClass="DepositListController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="depositedChecksList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v0j-ZO-7qH" customClass="DepositListController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nks-DF-vay"/>
                         <viewControllerLayoutGuide type="bottom" id="2qy-SH-bX2"/>
@@ -4271,7 +4271,7 @@ Tm90ZToQIA
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWi-2b-UmY" customClass="CustomButton">
-                                <rect key="frame" x="24" y="219" width="273" height="31"/>
+                                <rect key="frame" x="24" y="219" width="273" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BWi-2b-UmY" secondAttribute="height" multiplier="367:41" id="k8b-Hr-XQG"/>
                                 </constraints>
@@ -4531,7 +4531,7 @@ Tm90ZToQIA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQs-zV-fff">
-                                <rect key="frame" x="88" y="248" width="222" height="30"/>
+                                <rect key="frame" x="88.5" y="246.5" width="221.5" height="30"/>
                                 <connections>
                                     <action selector="dateButtonClicked:" destination="N95-Ce-Jh2" eventType="touchUpInside" id="lKE-EH-k0V"/>
                                 </connections>
@@ -4701,7 +4701,7 @@ Tm90ZToQIA
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Keep this information on a safe place for future use." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-qE-hhc" customClass="PlainCustomLabel">
-                                        <rect key="frame" x="20" y="300" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="300" width="280" height="29.5"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -6158,7 +6158,7 @@ Tm90ZToQIA
         <!--Location View Controller-->
         <scene sceneID="kt0-Cr-Ih6">
             <objects>
-                <viewController storyboardIdentifier="ATMLocationViewController" id="8ab-Lt-nRm" customClass="ATMLocationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="surchargeFreeAtms" id="8ab-Lt-nRm" customClass="ATMLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gYu-dH-jti"/>
                         <viewControllerLayoutGuide type="bottom" id="sp3-u7-hdC"/>

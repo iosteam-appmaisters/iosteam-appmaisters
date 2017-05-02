@@ -100,7 +100,7 @@
 #define HAS_SECTIONS                @"isSection"
 #define MAIN_CAT_TITLE              @"DisplayText"
 #define MAIN_CAT_IMAGE              @"icon"
-#define CONTROLLER_NAME             @"detailVCIdentifier"
+#define CONTROLLER_NAME             @"Name"
 #define CONTROLLER_TITLE            @"detailVCTitle"
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"
 #define WEB_URL                     @"LinkURL"
@@ -122,6 +122,7 @@
 #define IS_OPEN_NEW_TAB             @"OpenInNewTab"
 
 #define LOG_OFF                     @"Log Off"
+#define WEB_VIEWCONTROLLER_ID       @"WebViewController"
 
 // ShareOne
 //#define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"

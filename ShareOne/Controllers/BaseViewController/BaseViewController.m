@@ -425,6 +425,7 @@
     NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
     NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
+    NSString *webViewController = WEB_VIEWCONTROLLER_ID;
     
     // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
 
@@ -450,24 +451,25 @@
         // If it is MOBILE_DEPOSIT screen check the vertifi status
         if([contrlollerName isEqualToString:MOBILE_DEPOSIT]){
             
-            
             // Check whether current user has Accepted Vertifi Agreemant or not
             User *currentUser = [ShareOneUtility getUserObject];
             if(!currentUser.vertifyEUAContents){
                 contrlollerName= [dict valueForKey:CONTROLLER_NAME];
+                [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
             }
             else{
                 // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
                 contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
                 screenTitle= @"Register";
                 navigationTitle = @"Register";
+                
+                NSDictionary *dictVertify = [NSDictionary dictionaryWithObjectsAndKeys:contrlollerName,CONTROLLER_NAME,screenTitle,SUB_CAT_TITLE,screenTitle,SUB_CAT_CONTROLLER_TITLE,[NSNumber numberWithBool:FALSE],IS_OPEN_NEW_TAB, nil];
+                [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dictVertify];
             }
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             objUIViewController.navigationItem.title=navigationTitle;
             self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
-
-
         }
         
         else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
@@ -514,11 +516,13 @@
 
         
         else{
+            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+
             // If webUrl has a valid URL than we need to load HomeViewController with URL
             UIViewController *controller = nil;
             if(webUrl){
                 
-                HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+                HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
                 currentController = objHomeViewController;
                 objHomeViewController.url= webUrl;
                 controller=objHomeViewController;

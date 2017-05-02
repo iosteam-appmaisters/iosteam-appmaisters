@@ -439,7 +439,13 @@
         
         NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
         NSString *webUrl = [dict valueForKey:WEB_URL];
-        NSString *screenTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
+        
+        NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
+        NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
+        
+        NSString *webViewController = WEB_VIEWCONTROLLER_ID;
+
+
         
         BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
 
@@ -448,35 +454,33 @@
         if(isOpenInNewTab){
             
         }
-
-        
-        
-
-        UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
-
-        if([contrlollerName isEqualToString:@"WebViewController"]){
-            
-            HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-            controllerToPush = objHomeViewController;
-            objHomeViewController.url= webUrl;
-
-        }
         else{
+            UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
             
-            UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             
-            controllerToPush = objUIViewController;
+            if(webUrl){
+                
+                HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
+                objHomeViewController.url= webUrl;
+                controllerToPush=objHomeViewController;
+            }
+            else{
+                
+                //If webUrl is empty or nil load Native UI Screen
+                UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+                objUIViewController.navigationItem.title=navigationTitle;
+                controllerToPush = objUIViewController;
+            }
+            
 
-            objUIViewController.navigationItem.title=screenTitle;
+            homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
             
+            homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+            
+            [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+
         }
-        
-        
-        homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
 
-        homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-        
-        [self presentViewController:homeNavigationViewController animated:YES completion:nil];
     }
     else{
         
