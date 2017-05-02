@@ -71,6 +71,10 @@
 
 -(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture
 {
+    if(self.hideSideMenu){
+        return ;
+    }
+
     if(gesture.state==UIGestureRecognizerStateEnded){
         [self showSideMenu];
     }
