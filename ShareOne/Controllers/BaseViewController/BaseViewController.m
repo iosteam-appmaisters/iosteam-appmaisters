@@ -11,7 +11,7 @@
 #import "VertifiAgreemantController.h"
 #import "MobileDepositController.h"
 #import "IQKeyboardManager.h"
-
+#import "InAppBrowserController.h"
 
 
 @interface BaseViewController ()<UIWebViewDelegate>{
@@ -434,13 +434,23 @@
         if([webUrl containsString:@"http"]){
             
             NSURL *url = [NSURL URLWithString:webUrl];
-            [[UIApplication sharedApplication] openURL:url];
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+            InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
+            objInAppBrowserController.request=request;
+            [self.navigationController pushViewController:objInAppBrowserController animated:NO];
+
         }
         else{
             [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
                 
                 NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
-                [[UIApplication sharedApplication] openURL:request.URL];
+                
+                InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
+                objInAppBrowserController.request=request;
+                [self.navigationController pushViewController:objInAppBrowserController animated:NO];
+                
+                
+
                 
             } failureBlock:^(NSError *error) {
             }];
@@ -466,6 +476,9 @@
                 NSDictionary *dictVertify = [NSDictionary dictionaryWithObjectsAndKeys:contrlollerName,CONTROLLER_NAME,screenTitle,SUB_CAT_TITLE,screenTitle,SUB_CAT_CONTROLLER_TITLE,[NSNumber numberWithBool:FALSE],IS_OPEN_NEW_TAB, nil];
                 [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dictVertify];
             }
+            
+            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             objUIViewController.navigationItem.title=navigationTitle;
