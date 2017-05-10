@@ -105,7 +105,7 @@
     
     [ShareOneUtility hideProgressViewOnView:self.view];
     
-    [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+    [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
 }
 
 

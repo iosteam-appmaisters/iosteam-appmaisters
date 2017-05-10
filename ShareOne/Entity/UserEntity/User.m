@@ -168,7 +168,7 @@
 
     NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:encrytedID ,@"EncryptedContextID",randomIV ,@"EncryptionIV",redirect_path  ,@"RedirectPath", nil];
     
-    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON];
+    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON];
     NSString *enquiryurl = [NSString stringWithFormat:@"%@EncryptedContextID=%@&EncryptionIV=%@&RedirectPath=%@",siteurl,encrytedID,randomIV,redirect_path];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:enquiryurl]];
@@ -178,7 +178,7 @@
     block(request);
 
     return;
-   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:nil AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:nil AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
        
        
         block(response);
@@ -193,7 +193,7 @@
     NSLog(@"req.URL : %@",req.URL.absoluteString);
     
     return;
-    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);
         
     } failureBlock:^(NSError *error) {
@@ -209,11 +209,11 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     
-    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON];
+    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON];
     
 
 
-    NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
+    NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
         
         
         block(response);

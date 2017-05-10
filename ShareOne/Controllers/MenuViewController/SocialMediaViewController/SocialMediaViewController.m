@@ -7,28 +7,29 @@
 //
 
 #import "SocialMediaViewController.h"
+#import "ClientSettingsObject.h"
 
 @implementation SocialMediaViewController
 
 -(IBAction)goToFacebook:(id)sender{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    NSURL *url = [NSURL URLWithString:config.SocialFacebookLink];
+    ClientSettingsObject *obj =     [Configuration getClientSettingsContent];
+    NSURL *url = [NSURL URLWithString:obj.sociallinkfacebook];
     [[UIApplication sharedApplication] openURL:url];
 
 }
 -(IBAction)goToLinkedIn:(id)sender{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    NSURL *url = [NSURL URLWithString:config.SocialLinkedinLink];
+    ClientSettingsObject *obj =     [Configuration getClientSettingsContent];
+    NSURL *url = [NSURL URLWithString:obj.sociallinklinkedin];
     [[UIApplication sharedApplication] openURL:url];
 
     
 }
 -(IBAction)goToTwitter:(id)sender{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    NSURL *url = [NSURL URLWithString:config.SocialTwitterLink];
+    ClientSettingsObject *obj =     [Configuration getClientSettingsContent];
+    NSURL *url = [NSURL URLWithString:obj.sociallinktwitter];
     [[UIApplication sharedApplication] openURL:url];
 
 }

@@ -140,7 +140,7 @@
     
     [ShareOneUtility hideProgressViewOnView:self.webView];
     
-    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+    [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
     
 }
 

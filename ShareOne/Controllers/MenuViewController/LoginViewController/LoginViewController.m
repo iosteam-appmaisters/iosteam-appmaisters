@@ -27,6 +27,7 @@
 #import "SettingsViewController.h"
 #import "HomeViewController.h"
 #import "UIColor+HexColor.h"
+#import "ClientSettingsObject.h"
 
 
 @interface LoginViewController ()
@@ -586,7 +587,7 @@
             
         }
         else if (!user){
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
         }
         
     } failureBlock:^(NSError *error) {
@@ -748,7 +749,7 @@
     
     
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[ShareOneUtility getRequesterValue],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[ShareOneUtility getRoutingValue],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifiForSuffix:nil],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifiForSuffix:nil],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         
         if(success){
@@ -789,7 +790,7 @@
     
     __weak LoginViewController *weakSelf = self;
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[ShareOneUtility getRequesterValue],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[ShareOneUtility getRoutingValue],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifiForSuffix:nil],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifiForSuffix:nil],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         VertifiObject *obj = (VertifiObject *)user;
         if([obj.InputValidation isEqualToString:@"OK"]){
@@ -850,7 +851,10 @@
 
 - (IBAction)openUrlButtonClicked:(id)sender{
     
-    Configuration *configuration = [ShareOneUtility getConfigurationFile];
+//    Configuration *configuration = [ShareOneUtility getConfigurationFile];
+    
+    ClientSettingsObject *objClientSettingsObject = [Configuration getClientSettingsContent];
+    
     _isComingAfterPressedOpenUrlButton = TRUE;
     NSString *urlString =nil;
     NSString *screenTitle= nil;
@@ -858,22 +862,22 @@
     
     screenTitle=[btn titleForState:UIControlStateNormal];
     if([sender isEqual:_joinButton]){
-        urlString=configuration.joinLink;
+        urlString=objClientSettingsObject.joinculink;
     }
     else if ([sender isEqual:_applyLoanButton]){
-        urlString=configuration.applyLoanLink;
+        urlString=objClientSettingsObject.applyloanlink;
 //        screenTitle=APPLY_FOR_LOAN_TITLE;
     }
     else if ([sender isEqual:_branchLocationButton]){
-        urlString=configuration.branchLocationLink;
+        urlString=objClientSettingsObject.branchlocationlink;
 //        screenTitle=BRANCH_LOCATION_TITLE;
     }
     else if ([sender isEqual:_contactButton]){
-        urlString=configuration.contactLink;
+        urlString=objClientSettingsObject.contactculink;
 //        screenTitle=CONTACT_TITLE;
     }
     else if ([sender isEqual:_privacyButton]){
-        urlString=configuration.privacyPolicyLink;
+        urlString=objClientSettingsObject.privacylink;
 //        screenTitle=PRIVACY_POLICY_TITLE;
     }
 

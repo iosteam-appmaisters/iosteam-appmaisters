@@ -65,7 +65,7 @@
 //    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width/6.4);
     //[self testService];
     
-    [Configuration getAllMenuItemsIncludeHiddenItems:FALSE];
+    //[Configuration getAllMenuItemsIncludeHiddenItems:FALSE];
 
 
     //[self performSelector:@selector(configServiceWithDelay) withObject:nil afterDelay:0.3];

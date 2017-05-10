@@ -120,6 +120,8 @@
 		1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E51D92949400153B19 /* QBHeaderCell.m */; };
 		1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478E81D9294EC00153B19 /* QBDetailsCell.m */; };
 		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
+		1D86C4B81EC1D6880036F72A /* StyleValuesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86C4B71EC1D6880036F72A /* StyleValuesObject.m */; };
+		1D86C4BB1EC204B60036F72A /* ClientSettingsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86C4BA1EC204B60036F72A /* ClientSettingsObject.m */; };
 		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
 		1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3B5F91DB7950500DB5731 /* Location.m */; };
 		1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB927371DBE193E00C08F29 /* LoadingController.m */; };
@@ -377,6 +379,10 @@
 		1D8478E81D9294EC00153B19 /* QBDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBDetailsCell.m; sourceTree = "<group>"; };
 		1D8478EC1D93D6BA00153B19 /* MobileDepositController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileDepositController.h; sourceTree = "<group>"; };
 		1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileDepositController.m; sourceTree = "<group>"; };
+		1D86C4B61EC1D6880036F72A /* StyleValuesObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleValuesObject.h; sourceTree = "<group>"; };
+		1D86C4B71EC1D6880036F72A /* StyleValuesObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleValuesObject.m; sourceTree = "<group>"; };
+		1D86C4B91EC204B60036F72A /* ClientSettingsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSettingsObject.h; sourceTree = "<group>"; };
+		1D86C4BA1EC204B60036F72A /* ClientSettingsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSettingsObject.m; sourceTree = "<group>"; };
 		1D956DC71DA3AFE2007F6D11 /* CustomNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavController.h; sourceTree = "<group>"; };
 		1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavController.m; sourceTree = "<group>"; };
 		1DA3B5F81DB7950500DB5731 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -792,6 +798,10 @@
 			children = (
 				1D3C4D901E5D9BE20022AF61 /* Configuration.h */,
 				1D3C4D911E5D9BE20022AF61 /* Configuration.m */,
+				1D86C4B61EC1D6880036F72A /* StyleValuesObject.h */,
+				1D86C4B71EC1D6880036F72A /* StyleValuesObject.m */,
+				1D86C4B91EC204B60036F72A /* ClientSettingsObject.h */,
+				1D86C4BA1EC204B60036F72A /* ClientSettingsObject.m */,
 			);
 			path = ConfigurationPlistEntity;
 			sourceTree = "<group>";
@@ -1520,6 +1530,7 @@
 				1D20C2891E4E110500D3FC93 /* TableViewCell_Button.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
 				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
+				1D86C4B81EC1D6880036F72A /* StyleValuesObject.m in Sources */,
 				F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */,
 				1D38BE1A1DE6F47800F37849 /* VertifiAgreemantController.m in Sources */,
 				6BD405CC1D82CA7200358036 /* User.m in Sources */,
@@ -1610,6 +1621,7 @@
 				1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */,
 				1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */,
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
+				1D86C4BB1EC204B60036F72A /* ClientSettingsObject.m in Sources */,
 				1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */,
 				1D20C2671E4E110500D3FC93 /* DepositInitOperation.m in Sources */,
 				1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */,

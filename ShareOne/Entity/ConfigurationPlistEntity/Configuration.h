@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StyleValuesObject.h"
+#import "ClientSettingsObject.h"
+
 
 @interface Configuration : NSObject
 
@@ -44,15 +47,28 @@
 
 -(id) initWithDictionary:(NSDictionary *)configurationDict;
 
-
 + (void)getConfigurationWithDelegate :(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock;
-
-
-
 
 +(NSArray *)getPlistFileWithName:(NSString *)filename;
 
 +(NSMutableArray *)getAllMenuItemsIncludeHiddenItems:(BOOL)showHidenItems;
+
+
++(StyleValuesObject *)getStyleValueContent;
++(ClientSettingsObject *)getClientSettingsContent;
++(NSString *)getMaintenanceVerbiage;
++(NSString *)getCoOpID;
++(NSString *)getVertifiSecretKey;
++(NSString *)getVertifiRequesterKey;
++(NSString *)getVertifiRouterKey;
++(NSString *)getSSOBaseUrl;
+
+
+
+
+
+
+
 
 
 @end

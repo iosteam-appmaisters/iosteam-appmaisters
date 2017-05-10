@@ -12,6 +12,7 @@
 #import "MobileDepositController.h"
 #import "IQKeyboardManager.h"
 #import "InAppBrowserController.h"
+#import "ClientSettingsObject.h"
 
 
 @interface BaseViewController ()<UIWebViewDelegate>{
@@ -141,10 +142,11 @@
     
 //    float height = 50;
     
-//    Configuration *config = [ShareOneUtility getConfigurationFile];
-//    if([config.DisableShowOffers boolValue]){
-//        return;
-//    }
+    ClientSettingsObject *obj = [Configuration getClientSettingsContent];
+
+    if([obj.disableadsglobally boolValue]){
+        return;
+    }
     
     float height =     [UIScreen mainScreen].bounds.size.width/6.4;
 
@@ -166,8 +168,10 @@
         webView.delegate=self;
         [webView setTag:ADVERTISMENT_WEBVIEW_TAG];
         
-        Configuration *config = [ShareOneUtility getConfigurationFile];
-        NSString *deepTargetUrl = config.DeepTargetId;
+//        Configuration *config = [ShareOneUtility getConfigurationFile];
+//        NSString *deepTargetUrl = config.DeepTargetId;
+        NSString *deepTargetUrl = obj.deeptargetid;
+
         
         NSString *url =[NSString stringWithFormat:@"%@/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
         

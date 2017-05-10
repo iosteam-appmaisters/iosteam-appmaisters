@@ -12,6 +12,10 @@
 
 // takes @"#123456"
 + (UIColor *)colorWithHexString:(NSString *)hexString {
+    
+    if(![hexString containsString:@"#"])
+        hexString= [NSString stringWithFormat:@"#%@",hexString];
+    
     const char *cStr = [hexString cStringUsingEncoding:NSASCIIStringEncoding];
     long x = strtol(cStr+1, NULL, 16);
     return [UIColor colorWithHex:(UInt32)x];

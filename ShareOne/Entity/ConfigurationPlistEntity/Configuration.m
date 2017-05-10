@@ -13,6 +13,7 @@
 #import "ConfigurationModel.h"
 
 
+
 //#define BASE_URL_CONFIGURATION @"https://nsauth-dev.ns3web.com/core"
 
 //#define BASE_URL_CONFIGURATION @"https://nsconfig-extdev.ns3web.com"
@@ -61,6 +62,7 @@
             NSDictionary *dict = (NSDictionary *)response;
             
             [LoaderServices setConfigurationQueueWithDelegate:self withContentDict:dict completionBlock:^(BOOL success, NSString *errorString) {
+                block(success,errorString);
                 
             } failureBlock:^(NSError *error) {
             }];
@@ -134,8 +136,53 @@
 }
 
 
++(StyleValuesObject *)getStyleValueContent{
+    
+    NSArray *styleItemsArray = [self getPlistFileWithName:CONFIG_STYLE_VALUES_SERVICE];
+    return  [StyleValuesObject parseStyleValues:styleItemsArray];
+}
 
 
++(ClientSettingsObject *)getClientSettingsContent{
+    
+    NSArray *cleintSettingsArray = [self getPlistFileWithName:CONFIG_CLIENT_SETTINGS_SERVICE];
+    return [ClientSettingsObject parseClientSettings:cleintSettingsArray];
+}
+
+
++(NSString *)getMaintenanceVerbiage{
+    
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.maintenanceverbiage;
+}
+
++(NSString *)getCoOpID{
+    
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.coopid;
+}
+
+
++(NSString *)getVertifiSecretKey{
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.vertifirdcsecretkey;
+}
+
++(NSString *)getVertifiRequesterKey{
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.vertifirdcrequestorkey;
+}
+
++(NSString *)getVertifiRouterKey{
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.routingnumber;
+}
+
+
++(NSString *)getSSOBaseUrl{
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.preprodbasewebviewurl;
+}
 
 
 @end

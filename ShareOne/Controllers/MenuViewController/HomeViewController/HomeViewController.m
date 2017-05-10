@@ -264,9 +264,9 @@
     
     [ShareOneUtility hideProgressViewOnView:self.view];
     
-    [self showAlertWithTitle:@"" AndMessage:ERROR_MESSAGE];
+    [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
     
-//    [[UtilitiesHelper shareUtitlities]showToastWithMessage:ERROR_MESSAGE title:@"" delegate:self];
+//    [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
     
 }
 

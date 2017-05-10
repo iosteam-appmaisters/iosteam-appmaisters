@@ -858,14 +858,14 @@
         
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"1" forHTTPHeaderField:@"Version"];
-        [request setValue:[ShareOneUtility getCoOpID] forHTTPHeaderField:@"Authorization"];
+        [request setValue:[Configuration getCoOpID] forHTTPHeaderField:@"Authorization"];
 
     }
     else{
         ASIHTTPRequest *requestAsiHttp = (ASIHTTPRequest *)request;
         [requestAsiHttp addRequestHeader:@"Accept" value:@"application/json"];
         [requestAsiHttp addRequestHeader:@"Version" value:@"1"];
-        [requestAsiHttp addRequestHeader:@"Authorization" value:[ShareOneUtility getCoOpID]];
+        [requestAsiHttp addRequestHeader:@"Authorization" value:[Configuration getCoOpID]];
 
     }
 
@@ -1100,7 +1100,7 @@
     
     NSString *localizeErrorMessage = nil;
     
-    localizeErrorMessage=ERROR_MESSAGE;
+    localizeErrorMessage=[Configuration getMaintenanceVerbiage];
     
     return localizeErrorMessage;
 }

@@ -874,7 +874,7 @@ NSLog(Y, Z);		\
 +(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo{
     
 
-    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[ShareOneUtility getRequesterValue],[self getSessionnKey],[self getTimeStamp],[ShareOneUtility getRoutingValue],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
+    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[Configuration getVertifiRequesterKey],[self getSessionnKey],[self getTimeStamp],[Configuration getVertifiRouterKey],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
     
     NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -933,7 +933,7 @@ NSLog(Y, Z);		\
 + (NSString *)calculateHMACMD5:(NSData *)data {
     NSParameterAssert(data);
     
-    NSData *keyData =[[self getSecretKey] hexToBytes];
+    NSData *keyData =[[Configuration getVertifiSecretKey] hexToBytes];
 
     NSMutableData *hMacOut = [NSMutableData dataWithLength:CC_MD5_DIGEST_LENGTH];
     

@@ -127,7 +127,7 @@
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[ShareOneUtility getRequesterValue],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[ShareOneUtility getRoutingValue],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
@@ -154,7 +154,7 @@
             
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             
-            NSString *localizeErrorMessage=ERROR_MESSAGE;
+            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
             
@@ -248,11 +248,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -278,11 +278,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -309,11 +309,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -340,7 +340,7 @@
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
 
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[ShareOneUtility getRequesterValue],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[ShareOneUtility getRoutingValue],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         
         if(success){
@@ -366,7 +366,7 @@
             
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
-           NSString *localizeErrorMessage=ERROR_MESSAGE;
+           NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
 
@@ -388,11 +388,11 @@
 
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
 
-    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
 
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -439,7 +439,7 @@
 
         }
         else{
-            NSString *localizeErrorMessage=ERROR_MESSAGE;
+            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
         }
@@ -480,9 +480,9 @@
 
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-        [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+        [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
         [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
-        [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+        [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
         [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
         [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
         [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
@@ -530,7 +530,7 @@
     
     __weak MobileDepositController *weakSelf = self;
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[ShareOneUtility getRequesterValue],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[ShareOneUtility getRoutingValue],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:kVERTIFI_ACCEPTANCE AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
@@ -546,7 +546,7 @@
         }
         else{
             
-            NSString *localizeErrorMessage=ERROR_MESSAGE;
+            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
             
