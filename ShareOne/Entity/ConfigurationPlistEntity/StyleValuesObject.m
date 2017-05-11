@@ -21,7 +21,7 @@
             id value_key = [stylesDict objectForKey:key];
             NSString *value = [stylesDict objectForKey:@"Value"];
             
-            if([value_key isKindOfClass:[NSString class]]){
+            if([value_key isKindOfClass:[NSString class]] && [value length]>0){
                 
                 SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[value_key substringToIndex:1] uppercaseString], [[value_key substringFromIndex:1] lowercaseString]]);
 //                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);

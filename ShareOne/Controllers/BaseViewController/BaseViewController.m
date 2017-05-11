@@ -235,6 +235,7 @@
 
 -(void)sendAdvertismentViewToBack{
     UIWebView *view = [self getAdverTismentView];
+    [view reload];
     [view setHidden:TRUE];
     [self.navigationController.view.window sendSubviewToBack:view];
 }
@@ -247,6 +248,24 @@
     }
 }
 
+-(void)removeAdsView{
+    
+    UIWebView *webView = nil;
+    float isAlreadyAdded = FALSE;
+    for(UIView *view in self.navigationController.view.window.subviews){
+        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            webView = (UIWebView *)view;
+            isAlreadyAdded=TRUE;
+            break;
+        }
+    }
+    
+    if(isAlreadyAdded){
+        [webView removeFromSuperview];
+    }
+    
+    
+}
 
 -(void)createLefbarButtonItems{
     UIView* leftView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
@@ -510,6 +529,8 @@
                                                                        
                                                                        [[ShareOneUtility shareUtitlities] cancelTimer];
                                                                        
+                                                                       [self removeAdsView];
+
                                                                        [self sendAdvertismentViewToBack];
                                                                        __weak BaseViewController *weakSelf = self;
                                                                        [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
@@ -596,6 +617,7 @@
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground from Home");
+    [self removeAdsView];
     [self unSetDelegeteForAdsWebView:TRUE];
     [[SharedUser sharedManager] setIsLogingOutFromHome:TRUE];
 

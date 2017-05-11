@@ -25,7 +25,7 @@
             if([value_key isKindOfClass:[NSString class]] && [value length]>0){
                 
                 SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[value_key substringToIndex:1] uppercaseString], [[value_key substringFromIndex:1] lowercaseString]]);
-                                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+                                //NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
                 if (value_key != [NSNull null]) {
                     if ([obj respondsToSelector:selector]) {
                         
