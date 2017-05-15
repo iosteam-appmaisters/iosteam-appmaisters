@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "-menuButtonClicked:"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "-showSideMenu"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -143,7 +143,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1101"
             endingLineNumber = "1101"
-            landmarkName = "-getLocalizeErrorMessageForInternetConnection:"
+            landmarkName = "-postRequestForConfigurationWithParameters:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1096"
             endingLineNumber = "1096"
-            landmarkName = "-parseResponseToJsonWithData:"
+            landmarkName = "-postRequestForConfigurationWithParameters:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
             <Locations>
                <Location
@@ -479,7 +479,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "397"
             endingLineNumber = "397"
-            landmarkName = "-postRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            landmarkName = "-getRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -655,7 +655,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "582"
             endingLineNumber = "582"
-            landmarkName = "-loadDataOnPickerView"
+            landmarkName = "-managePickerView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -666,45 +666,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Entity/CashDepositEntity/CashDeposit.m"
-            timestampString = "510217094.770581"
+            timestampString = "515577822.237291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "+getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[CashDeposit getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:]"
-                  moduleName = "ShareOne"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Naveed/Documents/Projects/ShareOne/ShareOne/Entity/CashDepositEntity/CashDeposit.m"
-                  timestampString = "510134481.604712"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "222">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__96+[CashDeposit getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:]_block_invoke"
-                  moduleName = "ShareOne"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Naveed/Documents/Projects/ShareOne/ShareOne/Entity/CashDepositEntity/CashDeposit.m"
-                  timestampString = "510134481.607426"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -719,7 +687,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "831"
             endingLineNumber = "831"
-            landmarkName = "-loadCamera:"
+            landmarkName = "-onPictureTaken:withBWImage:results:isFront:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -762,12 +730,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "622"
-            endingLineNumber = "622"
-            landmarkName = "-logoutOnGoingBackground"
+            startingLineNumber = "613"
+            endingLineNumber = "613"
+            landmarkName = "-appGoingToBackground"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1034,12 +1002,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "-createLefbarButtonItems"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-unSetDelegeteForAdsWebView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1055,7 +1023,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "-webView:didFailLoadWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1066,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "721"
-            endingLineNumber = "721">
+            startingLineNumber = "712"
+            endingLineNumber = "712">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1341,7 +1309,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
             endingLineNumber = "130"
-            landmarkName = "-submittButtonClicked:"
+            landmarkName = "-okButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1421,7 +1389,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "638"
             endingLineNumber = "638"
-            landmarkName = "-startLoadingServicesFromChangePassword:"
+            landmarkName = "-addControllerToChangeUserName:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1467,7 +1435,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1042"
             endingLineNumber = "1042"
-            landmarkName = "-getErrorObjectWithStatusMessage:andStatusCode:"
+            landmarkName = "-parseErrorObject:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1643,7 +1611,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "975"
             endingLineNumber = "975"
-            landmarkName = "-shouldAutorotate"
+            landmarkName = "-supportedInterfaceOrientations"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1764,13 +1732,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "702"
-            endingLineNumber = "702"
-            landmarkName = "-startTimerForKeepAlive"
-            landmarkType = "7">
+            startingLineNumber = "693"
+            endingLineNumber = "693">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1828,12 +1794,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
-            landmarkName = "-createLefbarButtonItems"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "-setTitleTextAttribute"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1844,12 +1810,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
-            landmarkName = "-getBackButton"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "-setTitleView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1860,27 +1826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
+            timestampString = "516015716.81395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
-            landmarkName = "-showSideMenu"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "587"
-            endingLineNumber = "587"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
             landmarkName = "-pushViewControllerWithObject:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1929,7 +1879,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "672"
             endingLineNumber = "672"
-            landmarkName = "-URLSession:dataTask:didReceiveResponse:completionHandler:"
+            landmarkName = "-deleteRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1961,7 +1911,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "-userNotificationCenter:willPresentNotification:withCompletionHandler:"
+            landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1993,7 +1943,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "-userNotificationCenter:willPresentNotification:withCompletionHandler:"
+            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2227,22 +2177,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/DepositListViewController/DepositListController.m"
-            timestampString = "506000908.902898"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-deleteDepositAndUpdateViewWithIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
             timestampString = "510235230.263553"
             startingColumnNumber = "9223372036854775807"
@@ -2281,8 +2215,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
             endingLineNumber = "94"
-            landmarkName = "@implementation PinResetController"
-            landmarkType = "3">
+            landmarkName = "-submittButtonClicked:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2425,7 +2359,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "-appGoingToBackgroundFromLogin"
+            landmarkName = "-askAutoLoginOnEnteringBackGround"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2800,22 +2734,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/DepositListViewController/DepositListController.m"
-            timestampString = "506000908.902898"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-loadDataOnPickerView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -2912,7 +2830,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/MobileDepositController/ImageZoomPopup/ImageViewPopUpController.m"
@@ -2922,38 +2840,6 @@
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "-setimageFromDocumentsDirectory"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/DepositListViewController/DepositListController.m"
-            timestampString = "509875251.000482"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "@implementation DepositListController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/DepositListViewController/DepositListController.m"
-            timestampString = "509875251.000482"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "-tableView:estimatedHeightForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3177,7 +3063,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "946"
             endingLineNumber = "946"
-            landmarkName = "-moveViewDown"
+            landmarkName = "-textFieldShouldReturn:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3193,7 +3079,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "959"
             endingLineNumber = "959"
-            landmarkName = "-textFieldShouldBeginEditing:"
+            landmarkName = "-adjustTextFeildPositionForTextFeild:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3321,7 +3207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
             endingLineNumber = "167"
-            landmarkName = "-getRegisterToVirtifiToCheckStatus"
+            landmarkName = "-submittButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3369,7 +3255,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "-webViewDidFinishLoad:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3472,7 +3358,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/ReuseableComponents/VertifiLatestSDK/CameraViewController.m"
@@ -3552,7 +3438,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/BranchLocationViewController/GetDirectionView/GetDirectionViewController.m"
@@ -3783,7 +3669,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "+getConfiguration"
+            landmarkName = "+getConfigurationWithDelegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3927,7 +3813,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
             endingLineNumber = "160"
-            landmarkName = "-dateButtonClicked:"
+            landmarkName = "-updateTextField:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3943,7 +3829,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "-doneButtonClickedOnPicker:"
+            landmarkName = "-dateButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4119,7 +4005,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "953"
             endingLineNumber = "953"
-            landmarkName = "-createBatchOfRequestsWithObject:requestCompletionBlock:requestFailureBlock:queueCompletionBlock:queueFailureBlock:"
+            landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4174,22 +4060,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/InAppBrowserController/InAppBrowserController.m"
-            timestampString = "514747504.890354"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-webView:didFailLoadWithError:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -4198,22 +4068,8 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
-            endingLineNumber = "123">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "515403169.38555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
-            landmarkName = "-pushViewControllerWithObject:"
+            endingLineNumber = "123"
+            landmarkName = "+getAllMenuItemsIncludeHiddenItems:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4223,12 +4079,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
+            timestampString = "516015716.81395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
+            landmarkName = "-pushViewControllerWithObject:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
             timestampString = "515402060.489981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
-            endingLineNumber = "75">
+            endingLineNumber = "75"
+            landmarkName = "+getPlistFileWithName:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
