@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>baseUrl</key>
-	<string>https://postcity.ns3web.com</string>
+	<string>https://alatrustpp.ns3web.com</string>
 	<key>creditUnionPrivateKey</key>
-	<string>11730905ace8419e8a528d6b4536cc7a</string>
+	<string>97320ae43d9643eea4377da0a5846b7d</string>
 	<key>creditUnionPublicKey</key>
-	<string>c3299fb7b17d48ce935defffce46588d</string>
+	<string>a84a1a1489634803a724a7167d2eb5f0</string>
 	<key>ssoBaseUrl</key>
-	<string>https://postcity.ns3web.org</string>
+	<string>https://preprod.ns3web.com/AlaTrust_4cc384f0dd31498daa50f28ae735847c/NSHome</string>
 	<key>ssoPrivateKey</key>
 	<string>1c4d379e533945a8a0c23525ddd85e89</string>
 	<key>hMacType</key>
@@ -23,7 +23,9 @@
 	<key>customerId</key>
 	<string>59</string>
 	<key>buttonColor</key>
-	<string>#017ca3</string>
+	<string>#337ab7</string>
+	<key>buttonTextColor</key>
+	<string>#ffffff</string>
 	<key>staticTextColor</key>
 	<string>#333333</string>
 	<key>variableTextColor</key>
@@ -31,19 +33,19 @@
 	<key>logoMobileMain</key>
 	<string></string>
 	<key>joinLink</key>
-	<string>https://apps-postcity.ns3web.com/NSJoin</string>
+	<string>https://apps-alatrust.ns3web.com/NSJoin</string>
 	<key>applyLoanLink</key>
-	<string>https://apps-postcity.ns3web.com/NSLoan</string>
+	<string>https://apps-alatrust.ns3web.com/NSLoan/loanapp</string>
 	<key>branchLocationLink</key>
-	<string>https://www.postcitycu.org/Locations-Hours-Holidays.aspx</string>
+	<string>http://www.alatrustcu.com/Locations-and-Hours.aspx</string>
 	<key>contactLink</key>
-	<string>https://www.postcitycu.org/Contact-Us.aspx</string>
+	<string>http://www.alatrustcu.com/Contact-Us.aspx</string>
 	<key>ratesLink</key>
-	<string>https://www.postcitycu.org/Rates-Fees.aspx</string>
+	<string>www.alatrustcu.com/Borrow/Loan-Rates.aspx</string>
 	<key>privacyPolicyLink</key>
-	<string></string>
+	<string>http://www.alatrustcu.com/Privacy-Policy.aspx</string>
 	<key>menuBackgroundColor</key>
-	<string>#025589</string>
+	<string>#222222</string>
 	<key>menuTextColor</key>
 	<string>#ffffff</string>
 	<key>loginImage</key>
@@ -63,15 +65,15 @@
 	<key>CoOpId</key>
 	<string>O9LjYj9CjBPEY3t</string>
 	<key>DeepTargetId</key>
-	<string>https://olb.deeptarget.com/PostCityFCU</string>
+	<string>https://olb.deeptarget.com/AlatrustCU</string>
 	<key>OuttageVerbiage</key>
 	<string>Keep the same one used in demo.</string>
 	<key>DisableShowOffers</key>
 	<false/>
 	<key>SocialFacebookLink</key>
-	<string>https://www.facebook.com/ShareOneInc/?ref=hl</string>
+	<string>https://www.facebook.com/AlaTrustCU</string>
 	<key>SocialTwitterLink</key>
-	<string>https://twitter.com/ShareOne_EDU</string>
+	<string>https://twitter.com/AlaTrustCU</string>
 	<key>SocialLinkedinLink</key>
 	<string>https://www.linkedin.com/company/home?report%2Efailure=97FtKHe01TXZqDCgSwRuDAgNTvtFmw4BIp13UzOz81TxIU0_mpSjJzEz71T0SxI_14ZseOdd6PTdIUg_m4RXeOXe6Ljz4r26IOv3a38J8A5UFd8h</string>
 </dict>

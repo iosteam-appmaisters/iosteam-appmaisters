@@ -46,6 +46,8 @@
 @property (nonatomic, strong) NSString *creditUnionPublicKey;
 @property (nonatomic, strong) NSString *securityVersion;
 @property (nonatomic, strong) NSString *hMacType;
+@property (nonatomic, strong) NSString *buttonTextColor;
+
 
 
 

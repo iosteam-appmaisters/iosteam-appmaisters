@@ -106,7 +106,7 @@
 					<key>webUrl</key>
 					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -189,7 +189,7 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>MX</string>
+					<string>Money Desktop</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
@@ -197,7 +197,7 @@
 					<key>webUrl</key>
 					<string>/MX</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -223,7 +223,7 @@
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>webUrl</key>
 					<string>/LoanApplication/Index</string>
 					<key>detailVCTitle</key>
@@ -281,7 +281,7 @@
 					<key>webUrl</key>
 					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
-					<false/>
+					<true/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -295,7 +295,7 @@
 					<key>webUrl</key>
 					<string>/StopPayment/Index</string>
 					<key>shouldShow</key>
-					<true/>
+					<false/>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -537,7 +537,7 @@
 					<key>detailVCIdentifier</key>
 					<string>WebViewController</string>
 					<key>webUrl</key>
-					<string>/LoanApplication/Index</string>
+					<string>https://apps-alatrust.ns3web.com/NSLoan/loanapp/disclaimer</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>detailVCTitle</key>
@@ -629,13 +629,13 @@
 			<array>
 				<dict>
 					<key>title</key>
-					<string>CheckWorks</string>
+					<string>Current Promotions</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>https://www.checkworks.com/</string>
+					<string>http://www.alatrustcu.com/Promotions</string>
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>
@@ -643,13 +643,41 @@
 				</dict>
 				<dict>
 					<key>title</key>
-					<string>Presto ATMs</string>
+					<string>View Credit Card Rewards</string>
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
 					<string>NotNative</string>
 					<key>webUrl</key>
-					<string>http://store.publix.com/publix/</string>
+					<string>https://www.dreampoints.com/alatrustcu</string>
+					<key>detailVCTitle</key>
+					<string></string>
+					<key>shouldShow</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>Order Checks Online</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>NotNative</string>
+					<key>webUrl</key>
+					<string>https://www.ordermychecks.com/login_a.jsp</string>
+					<key>detailVCTitle</key>
+					<string></string>
+					<key>shouldShow</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>title</key>
+					<string>Love My Credit Union Rewards</string>
+					<key>icon</key>
+					<string></string>
+					<key>detailVCIdentifier</key>
+					<string>NotNative</string>
+					<key>webUrl</key>
+					<string>http://www.lovemycreditunion.org</string>
 					<key>detailVCTitle</key>
 					<string></string>
 					<key>shouldShow</key>

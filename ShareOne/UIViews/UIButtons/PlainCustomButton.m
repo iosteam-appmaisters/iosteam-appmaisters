@@ -48,6 +48,9 @@
         image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [self setBackgroundImage:image forState:UIControlStateNormal];
     }
+    
+    [self setTitleColor:[UIColor colorWithHexString:config.buttonTextColor] forState:UIControlStateNormal];
+
     [self setTintColor:[UIColor colorWithHexString:config.staticTextColor]];
 }
 

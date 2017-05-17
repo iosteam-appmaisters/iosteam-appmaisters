@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "381"
             endingLineNumber = "381"
-            landmarkName = "-showSideMenu"
+            landmarkName = "-menuButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -655,7 +655,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "582"
             endingLineNumber = "582"
-            landmarkName = "-managePickerView"
+            landmarkName = "-loadDataOnPickerView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -687,7 +687,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "831"
             endingLineNumber = "831"
-            landmarkName = "-onPictureTaken:withBWImage:results:isFront:"
+            landmarkName = "-loadCamera:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -735,7 +735,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "613"
             endingLineNumber = "613"
-            landmarkName = "-appGoingToBackground"
+            landmarkName = "-bringAdvertismentFront"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1007,7 +1007,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "276"
             endingLineNumber = "276"
-            landmarkName = "-unSetDelegeteForAdsWebView:"
+            landmarkName = "-createLefbarButtonItems"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1023,7 +1023,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "-webView:didFailLoadWithError:"
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1229,8 +1229,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
             endingLineNumber = "88"
-            landmarkName = "@implementation VertifiAgreemantController"
-            landmarkType = "3">
+            landmarkName = "-webViewDidFinishLoad:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1245,7 +1245,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "-goAcceptAgreemant:"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1736,7 +1736,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "693"
-            endingLineNumber = "693">
+            endingLineNumber = "693"
+            landmarkName = "-appComingFromBackground"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1799,7 +1801,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
             endingLineNumber = "299"
-            landmarkName = "-setTitleTextAttribute"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1815,7 +1817,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "407"
             endingLineNumber = "407"
-            landmarkName = "-setTitleView"
+            landmarkName = "-showSideMenu"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3207,7 +3209,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
             endingLineNumber = "167"
-            landmarkName = "-submittButtonClicked:"
+            landmarkName = "-getRegisterToVirtifiToCheckStatus"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3255,7 +3257,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "-webViewDidFinishLoad:"
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3669,7 +3671,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "+getConfigurationWithDelegate:completionBlock:failureBlock:"
+            landmarkName = "+getConfiguration"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4068,9 +4070,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "+getAllMenuItemsIncludeHiddenItems:"
-            landmarkType = "7">
+            endingLineNumber = "123">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4100,8 +4100,22 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "+getPlistFileWithName:"
+            endingLineNumber = "75">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
+            timestampString = "516541621.090322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
