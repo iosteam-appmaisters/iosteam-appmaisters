@@ -1613,6 +1613,7 @@ NSLog(Y, Z);		\
 
 +(NSString *)getCreditUnionPrivateKey{
     Configuration *config = [ShareOneUtility getConfigurationFile];
+
     return config.creditUnionPrivateKey;
 }
 
