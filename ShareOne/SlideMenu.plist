@@ -221,11 +221,11 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>WebViewController</string>
+					<string>NotNative</string>
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>/LoanApplication/Index</string>
+					<string>https://alatrust.ns3web.org/LoanApplication/Index/Disclaimer</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
@@ -277,7 +277,7 @@
 					<key>icon</key>
 					<string></string>
 					<key>detailVCIdentifier</key>
-					<string>NotNative</string>
+					<string>WebViewController</string>
 					<key>webUrl</key>
 					<string>/Transfers/Check</string>
 					<key>shouldShow</key>
@@ -553,7 +553,7 @@
 					<key>shouldShow</key>
 					<true/>
 					<key>webUrl</key>
-					<string>https://www.postcitycu.org/Rates-Fees.aspx</string>
+					<string>http://alatrustcu.com/Borrow/Loan-Rates.aspx</string>
 					<key>detailVCTitle</key>
 					<string></string>
 				</dict>
