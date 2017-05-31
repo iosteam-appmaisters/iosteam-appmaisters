@@ -2474,9 +2474,9 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="tab-XO-0ES"/>
+                                        <exclude reference="nST-As-WZD"/>
                                         <exclude reference="80U-xP-mNb"/>
                                         <exclude reference="nSj-Re-YlA"/>
-                                        <exclude reference="nST-As-WZD"/>
                                         <exclude reference="FwA-8L-ILM"/>
                                         <exclude reference="Gzm-F9-qed"/>
                                         <exclude reference="JpI-3H-olk"/>
@@ -5275,8 +5275,8 @@ Tm90ZToQIA
                                 <exclude reference="8ta-mR-cxG"/>
                                 <exclude reference="Jvf-9m-d6d"/>
                                 <exclude reference="9T5-jf-UjA"/>
-                                <exclude reference="cBn-Uq-mtH"/>
                                 <exclude reference="qb5-RP-eFp"/>
+                                <exclude reference="cBn-Uq-mtH"/>
                                 <exclude reference="66v-hg-QhK"/>
                                 <exclude reference="ETD-f5-UsA"/>
                                 <exclude reference="UM1-TE-cTX"/>
@@ -6338,12 +6338,17 @@ Tm90ZToQIA
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swap_right" translatesAutoresizingMaskIntoConstraints="NO" id="YDC-QE-uOh">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayT-3e-7eG">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" red="0.6623249054" green="0.12095849960000001" blue="0.1431922615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swap_right" translatesAutoresizingMaskIntoConstraints="NO" id="YDC-QE-uOh">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVg-mV-O0P">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVg-mV-O0P" customClass="CustomButton">
                                 <rect key="frame" x="205" y="651" width="169" height="45"/>
-                                <state key="normal" image="next-btn-img"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Next" backgroundImage="next-btn-img"/>
                                 <connections>
                                     <action selector="actionButtonClicked:" destination="LIo-7X-fAU" eventType="touchUpInside" id="XnK-Zr-zRQ"/>
                                 </connections>
@@ -6352,8 +6357,12 @@ Tm90ZToQIA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bVg-mV-O0P" secondAttribute="trailing" constant="40" id="1q9-WA-gbE"/>
+                            <constraint firstAttribute="trailing" secondItem="ayT-3e-7eG" secondAttribute="trailing" id="9kb-W9-jMt"/>
+                            <constraint firstItem="ayT-3e-7eG" firstAttribute="leading" secondItem="0Lc-L2-lTu" secondAttribute="leading" id="IaC-3K-i7y"/>
+                            <constraint firstItem="ayT-3e-7eG" firstAttribute="top" secondItem="YDC-QE-uOh" secondAttribute="top" id="JWP-Fn-oKW"/>
                             <constraint firstItem="10D-FK-G0B" firstAttribute="top" secondItem="YDC-QE-uOh" secondAttribute="bottom" id="LuI-6I-eKA"/>
                             <constraint firstItem="YDC-QE-uOh" firstAttribute="top" secondItem="aUP-ab-E6C" secondAttribute="bottom" id="O6v-BK-73H"/>
+                            <constraint firstItem="ayT-3e-7eG" firstAttribute="bottom" secondItem="YDC-QE-uOh" secondAttribute="bottom" id="T6W-jP-YGW"/>
                             <constraint firstAttribute="trailing" secondItem="YDC-QE-uOh" secondAttribute="trailing" id="Thq-yw-MOX"/>
                             <constraint firstItem="YDC-QE-uOh" firstAttribute="leading" secondItem="0Lc-L2-lTu" secondAttribute="leading" id="lVJ-j6-tOf"/>
                             <constraint firstItem="10D-FK-G0B" firstAttribute="top" secondItem="bVg-mV-O0P" secondAttribute="bottom" constant="40" id="nP7-mZ-eAo"/>
@@ -6361,6 +6370,7 @@ Tm90ZToQIA
                     </view>
                     <connections>
                         <outlet property="imageView" destination="YDC-QE-uOh" id="7ST-7A-J9E"/>
+                        <outlet property="parentView" destination="ayT-3e-7eG" id="gBc-da-GVw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MrP-pX-u57" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,9 +7,13 @@
 //
 
 #import "DepositTutorialController.h"
+#import "UIColor+HexColor.h"
+#import "Configuration.h"
+#import "ShareOneUtility.h"
+
 
 @interface DepositTutorialController ()
-
+@property (nonatomic,weak) IBOutlet UIView *parentView;
 @end
 
 @implementation DepositTutorialController
@@ -17,10 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    [_parentView setBackgroundColor:[UIColor colorWithHexString:config.variableTextColor]];
 }
 
 -(void)animateToLeftSwap{
-    UIImage * toImage = [UIImage imageNamed:@"swap-right"];
+    UIImage * toImage = [UIImage imageNamed:@"swap-left"];
     [UIView transitionWithView:self.imageView
                       duration:0.3
                        options:UIViewAnimationOptionTransitionCrossDissolve
@@ -33,10 +41,12 @@
  
     UIButton *senderBtn = (UIButton *)sender;
     
-    if([[senderBtn imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"next-btn-img"]]){
+    if([[senderBtn titleForState:UIControlStateNormal] isEqualToString:@"Next"]){
         
+        UIImage *bgImage = [[UIImage imageNamed:@"got_it"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [self animateToLeftSwap];
-        [senderBtn setImage:[UIImage imageNamed:@"got_it"] forState:UIControlStateNormal];
+        [senderBtn setTitle:@"Got It" forState:UIControlStateNormal];
+        [senderBtn setBackgroundImage:bgImage forState:UIControlStateNormal];
     }
     else{
         [self dismissViewControllerAnimated:YES completion:nil];

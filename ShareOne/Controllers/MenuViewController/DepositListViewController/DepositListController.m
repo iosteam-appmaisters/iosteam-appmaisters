@@ -13,6 +13,7 @@
 #import "VertifiDepositObject.h"
 #import "SharedUser.h"
 #import "ImageViewPopUpController.h"
+#import "DepositTutorialController.h"
 
 
 @implementation DepositListController
@@ -38,6 +39,17 @@
     }
     
     [self getDataFromVertifi];
+}
+
+-(void)loadTutorial{
+    
+    if([ShareOneUtility hasShownTutorialsBefore]){
+        
+        DepositTutorialController *objDepositTutorialController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DepositTutorialController class])];
+        [self presentViewController:objDepositTutorialController animated:YES completion:nil];
+        
+    }
+    
 }
 
 
@@ -169,11 +181,14 @@
             weakSelf.contentArr = [obj.depositArr mutableCopy];
             
             if([weakSelf.contentArr count]==0){
-                [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
+                //[[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
+                [weakSelf loadTutorial];
+
+
             }
             else{
-                
             }
+
             [weakSelf.tblView reloadData];
             [weakSelf reloadCustomData];
 
