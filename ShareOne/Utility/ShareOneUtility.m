@@ -1628,4 +1628,15 @@ NSLog(Y, Z);		\
     return config.hMacType;
 }
 
++(BOOL)hasShownTutorialsBefore{
+    
+    BOOL flag =  [[NSUserDefaults standardUserDefaults] boolForKey:@"tutorials"];
+    if(!flag){
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"tutorials"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    return flag;
+}
+
+
 @end
