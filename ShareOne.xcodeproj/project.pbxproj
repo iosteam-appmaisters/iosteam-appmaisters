@@ -123,6 +123,7 @@
 		1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8478ED1D93D6BA00153B19 /* MobileDepositController.m */; };
 		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
 		1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3B5F91DB7950500DB5731 /* Location.m */; };
+		1DB03C841EDE98F8000B6E1E /* DepositTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB03C831EDE98F8000B6E1E /* DepositTutorialController.m */; };
 		1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB927371DBE193E00C08F29 /* LoadingController.m */; };
 		1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */; };
 		1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273E1DBE29B800C08F29 /* LoaderServices.m */; };
@@ -383,6 +384,8 @@
 		1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavController.m; sourceTree = "<group>"; };
 		1DA3B5F81DB7950500DB5731 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		1DA3B5F91DB7950500DB5731 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		1DB03C821EDE98F8000B6E1E /* DepositTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositTutorialController.h; sourceTree = "<group>"; };
+		1DB03C831EDE98F8000B6E1E /* DepositTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositTutorialController.m; sourceTree = "<group>"; };
 		1DB927361DBE193E00C08F29 /* LoadingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingController.h; sourceTree = "<group>"; };
 		1DB927371DBE193E00C08F29 /* LoadingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingController.m; sourceTree = "<group>"; };
 		1DB927391DBE267900C08F29 /* HTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -875,6 +878,15 @@
 			path = Locations;
 			sourceTree = "<group>";
 		};
+		1DB03C811EDE98F8000B6E1E /* DepositTutorialController */ = {
+			isa = PBXGroup;
+			children = (
+				1DB03C821EDE98F8000B6E1E /* DepositTutorialController.h */,
+				1DB03C831EDE98F8000B6E1E /* DepositTutorialController.m */,
+			);
+			path = DepositTutorialController;
+			sourceTree = "<group>";
+		};
 		1DB927351DBE191E00C08F29 /* LoadingController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,6 +1072,7 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1DB03C811EDE98F8000B6E1E /* DepositTutorialController */,
 				1D1430E11E8A3FE30008E843 /* InAppBrowserController */,
 				1D10A6091E26061D00BD40CD /* P2PMenus */,
 				1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */,
@@ -1521,6 +1534,7 @@
 				1D20C2891E4E110500D3FC93 /* TableViewCell_Button.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
 				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
+				1DB03C841EDE98F8000B6E1E /* DepositTutorialController.m in Sources */,
 				F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */,
 				1D38BE1A1DE6F47800F37849 /* VertifiAgreemantController.m in Sources */,
 				6BD405CC1D82CA7200358036 /* User.m in Sources */,
