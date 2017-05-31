@@ -315,7 +315,7 @@
     cell.officeHourLbl.text=officeTimeString;
     cell.driveThruHoursLbl.text=driveThruString;
     [cell.phoneNoLbl setText:[NSString stringWithFormat:@"Phone: %@",objLocation.Phonenumber]];
-    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@",objLocation.address.Address1/*,objLocation.address.City,objLocation.address.State*/];
+//    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@",objLocation.address.Address1/*,objLocation.address.City,objLocation.address.State*/];
     cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
     cell.cityStateLbl.text=[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.State];
 
