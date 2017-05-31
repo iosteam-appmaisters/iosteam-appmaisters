@@ -319,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "919"
             endingLineNumber = "919"
-            landmarkName = "+getBase64ValueWithObject:"
+            landmarkName = "+getAESEncryption:andEncoding:AndKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -799,7 +799,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1318"
             endingLineNumber = "1318"
-            landmarkName = "+encryptionByFBEncryptorAESWithContextID:"
+            landmarkName = "+getAccountTypeWithSuffix:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1991,8 +1991,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"
             endingLineNumber = "366"
-            landmarkName = "@implementation ShareOneUtility"
-            landmarkType = "3">
+            landmarkName = "+saveUserObject:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2135,7 +2135,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1388"
             endingLineNumber = "1388"
-            landmarkName = "+getMenuItemForTouchIDAuthentication"
+            landmarkName = "+saveMenuItemObjectForTouchIDAuthentication:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2407,7 +2407,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "518"
             endingLineNumber = "518"
-            landmarkName = "+savedQBHeaderInfo:"
+            landmarkName = "+getSavedObjectOfCurrentLoginUser:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2423,7 +2423,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "541"
             endingLineNumber = "541"
-            landmarkName = "+savedDevicesInfo:"
+            landmarkName = "+savedSuffixInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3303,7 +3303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "616"
             endingLineNumber = "616"
-            landmarkName = "+getSettingsWithKey:"
+            landmarkName = "+getSignedINSignature"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3685,7 +3685,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "884"
             endingLineNumber = "884"
-            landmarkName = "+getAESEncryption:andEncoding:AndKey:"
+            landmarkName = "+getHMACSHAWithSignature:andEncoding:AndKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3748,7 +3748,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1584"
-            endingLineNumber = "1584">
+            endingLineNumber = "1584"
+            landmarkName = "+getCoOpID"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3875,7 +3877,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "792"
             endingLineNumber = "792"
-            landmarkName = "+getMemberValueWithSuffix:"
+            landmarkName = "+getSecretKey"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3891,8 +3893,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "959"
             endingLineNumber = "959"
-            landmarkName = "+getUUID"
-            landmarkType = "7">
+            landmarkName = "@implementation ShareOneUtility"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

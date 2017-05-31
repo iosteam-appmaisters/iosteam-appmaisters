@@ -199,5 +199,7 @@
 +(NSString *)getSecurityVersion;
 +(NSString *)getHMACType;
 
++(BOOL)hasShownTutorialsBefore;
+
 
 @end
