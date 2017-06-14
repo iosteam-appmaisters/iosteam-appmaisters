@@ -103,20 +103,18 @@
 
 -(void)setThemeOnButtons{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
     UIImage * image = [_frontCamBtn imageForState:UIControlStateSelected];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [_frontCamBtn setImage:image forState:UIControlStateSelected];
-    [_frontCamBtn setTintColor:[UIColor colorWithHexString:config.buttonColor]];
-    
+    [_frontCamBtn setTintColor:[UIColor colorWithHexString:obj.buttoncolortop]];
     
     image = [_backCamBtn imageForState:UIControlStateSelected];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [_backCamBtn setImage:image forState:UIControlStateSelected];
-
-    
     [_backCamBtn setTintColor:_frontCamBtn.tintColor];
-    
 
 }
 

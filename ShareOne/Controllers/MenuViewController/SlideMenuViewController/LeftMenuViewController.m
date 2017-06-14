@@ -5,6 +5,7 @@
 #import "AccordionHeaderView.h"
 #import "ShareOneUtility.h"
 #import "SideMenuCell.h"
+#import "StyleValuesObject.h"
 
 @interface LeftMenuViewController ()<UIGestureRecognizerDelegate>
 
@@ -34,19 +35,13 @@
     [self.view setGestureRecognizers:[NSArray arrayWithObject:gesture]];
     
     
-//    _contentArr= [ShareOneUtility getSideMenuDataFromPlist];
     
     _contentArr =     [Configuration getAllMenuItemsIncludeHiddenItems:FALSE];
 
     
     
-    
-    [_parentView setBackgroundColor:[UIColor colorWithHexString:[ShareOneUtility getConfigurationFile].menuBackgroundColor]];
-//    self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-//    self.fzaTblView.estimatedRowHeight = 100.0;
-//    self.fzaTblView.rowHeight = UITableViewAutomaticDimension;
-//    self.fzaTblView.estimatedSectionHeaderHeight=100;
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+    [_parentView setBackgroundColor:[UIColor colorWithHexString:obj.menubackgroundcolor]];
 
     
 
@@ -159,10 +154,14 @@
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     NSDictionary *dictSubCat = subCatArr[indexPath.row];
     cell.categorytitleLbl.text = [dictSubCat valueForKey:MAIN_CAT_TITLE];
-    [cell.iconImageVw setImage:[UIImage imageNamed:@"slide-menu-arrow"]];
+    [cell.iconImageVw setImage:[[UIImage imageNamed:@"slide-menu-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    [cell.cellContentView setBackgroundColor:[UIColor colorWithHexString:[ShareOneUtility getConfigurationFile].menuBackgroundColor]];
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+    
+    [cell.categorytitleLbl setTextColor:[UIColor colorWithHexString:obj.menutextcolor]];
 
+    
+    [cell.cellContentView setBackgroundColor:[UIColor colorWithHexString:obj.menubackgroundcolor]];
     
     return cell;
 }
@@ -200,8 +199,16 @@
         [objFZAccordionTableViewHeaderView.arrowImageView setHidden:TRUE];
     }
     
+    UIImage *image = [[UIImage imageNamed:[dict valueForKey:MAIN_CAT_IMAGE]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+
+    
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+    
+    [objFZAccordionTableViewHeaderView.sectionTitle setTextColor:[UIColor colorWithHexString:obj.menutextcolor]];
+
     [objFZAccordionTableViewHeaderView.sectionTitle setText:[dict valueForKey:MAIN_CAT_TITLE]];
-    [objFZAccordionTableViewHeaderView.sectionImageVw setImage:[UIImage imageNamed:[dict valueForKey:MAIN_CAT_IMAGE]]];
+    [objFZAccordionTableViewHeaderView.sectionImageVw setImage:image];
     objFZAccordionTableViewHeaderView.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
 
     return (UIView *)objFZAccordionTableViewHeaderView;

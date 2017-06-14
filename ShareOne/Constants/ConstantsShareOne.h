@@ -88,8 +88,8 @@
 
 #define PRIVATE_KEY_SSO             @"1c4d379e533945a8a0c23525ddd85e89"
 
-#define H_MAC_TYPE                  @"SHA256"
-#define SECURITY_VERSION            @"1.1"
+//#define H_MAC_TYPE                  @"SHA256"
+//#define SECURITY_VERSION            @"1.1"
 #define HOST_ADDRESS                @"nsmobile.ns3web.com"
 
 //PLIST CONSTANT
@@ -99,7 +99,7 @@
 #define FILE_TYPE                   @"plist"
 #define HAS_SECTIONS                @"isSection"
 #define MAIN_CAT_TITLE              @"DisplayText"
-#define MAIN_CAT_IMAGE              @"icon"
+#define MAIN_CAT_IMAGE              @"Name"
 #define CONTROLLER_NAME             @"Name"
 #define CONTROLLER_TITLE            @"detailVCTitle"
 #define MAIN_CAT_SUB_CATEGORIES     @"subCategories"

@@ -64,6 +64,17 @@
 +(NSString *)getSSOBaseUrl;
 
 
++(NSDictionary *)getPlistDictFileWithName:(NSString *)filename;
+
+
+
+
++(NSString *)getBaseUrl;
++(NSString *)getBaseUrlPublicKey;
++(NSString *)getBaseUrlPrivateKey;
+
++(NSString *)getSecurityVersion;
++(NSString *)getHmacType;
 
 
 

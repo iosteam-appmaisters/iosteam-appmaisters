@@ -43,8 +43,10 @@
 
 - (void)initialize{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    UIColor *textColor = [UIColor colorWithHexString:config.variableTextColor];
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
+    UIColor *textColor = [UIColor colorWithHexString:obj.buttoncolortop];
     
     /*if(self.attributedText){
      

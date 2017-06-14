@@ -26,48 +26,82 @@
 
 -(void)showNextViewController{
     
-    
-    
-    if(![[SharedUser sharedManager] isLaunchFirstTime]){
+    if([[SharedUser sharedManager] isLaunchFirstTime]){
         
         NSLog(@"FIRST TIME LAUNCH");
-
+        [self showIndicaterView];
         [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
+            [self hideIndicaterView];
             if(success){
                 [self goToLogin];
             }
-
-        } failureBlock:^(NSError *error) {
+            else{
+                [self showAlertWithTitle:nil AndMessage:errorString];
+            }
             
+        } failureBlock:^(NSError *error) {
         }];
-
     }
     else{
         NSLog(@"SKIPPED FIRST TIME LAUNCH");
+        [self hideIndicaterView];
         [self goToLogin];
-
-
-    }
-    
-
-    return;
-    if([SignInModel checkUserData]){
-        UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
-        homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-        [self presentViewController:homeNavigationViewController animated:YES completion:nil];
-        
-    }else{
-        LoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentViewController:loginViewController animated:YES completion:nil];
     }
 }
 
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    
+    UIAlertAction* retryBtn = [UIAlertAction
+                               actionWithTitle:@"Re Try"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   [self getConfigSettings];
+                                   [alert dismissViewControllerAnimated:YES completion:^{
+                                   }];
+                               }];
+    [alert addAction:retryBtn];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)getConfigSettings{
+    
+    [self showIndicaterView];
+
+    [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
+        [self hideIndicaterView];
+        if(success){
+            [self goToLogin];
+        }
+        else{
+            [self showAlertWithTitle:nil AndMessage:errorString];
+        }
+        
+    } failureBlock:^(NSError *error) {
+    }];
+
+}
+-(void)showIndicaterView{
+    [_indicatorView setHidden:FALSE];
+    [_indicatorView startAnimating];
+}
+
+-(void)hideIndicaterView{
+    [_indicatorView setHidden:TRUE];
+    [_indicatorView stopAnimating];
+    
+}
 -(void)goToLogin{
     LoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:loginViewController animated:YES completion:nil];
-
 }
 
 - (BOOL)shouldAutorotate{

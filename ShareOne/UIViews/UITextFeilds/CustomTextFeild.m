@@ -41,8 +41,8 @@
 
 - (void)initialize{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    UIColor *color = [UIColor colorWithHexString:config.buttonColor];
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+    UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
     [self setTextColor:color];
     [self setTintColor:color];
     

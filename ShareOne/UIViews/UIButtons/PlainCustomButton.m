@@ -42,13 +42,15 @@
 }
 
 - (void)initialize{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
+    
     UIImage * image = [self backgroundImageForState:UIControlStateNormal];
     if(image){
         image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [self setBackgroundImage:image forState:UIControlStateNormal];
     }
-    [self setTintColor:[UIColor colorWithHexString:config.staticTextColor]];
+    [self setTintColor:[UIColor colorWithHexString:obj.textcolor]];
 }
 
 

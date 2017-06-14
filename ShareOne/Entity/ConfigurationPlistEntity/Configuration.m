@@ -11,6 +11,8 @@
 #import "ShareOneUtility.h"
 #import "LoaderServices.h"
 #import "ConfigurationModel.h"
+#import "ApiSettingsObject.h"
+
 
 
 
@@ -30,7 +32,7 @@
 #define ACCESS_TOKEN           @"connect/token"
 
 #define Grant_Type_Value       @"client_credentials"
-#define Scope_value            @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read"
+#define Scope_value            @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read nsapi_setting.read"
 #define Client_ID_value        @"nsmobile_nsconfig_read_client"//nsmobile_nsconfig_read_client
 #define Client_Secret_value    @"202E8187-94DE-4CDA-8908-7A9436B21292"
 
@@ -56,7 +58,7 @@
     NSString  *urlString = [NSString stringWithFormat:@"%@/%@/",BASE_URL_CONFIGURATION,ACCESS_TOKEN];
 
 
-    [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:@"" urlString:urlString delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:nil urlString:urlString delegate:delegate completionBlock:^(NSObject *response) {
         if(response){
             
             NSDictionary *dict = (NSDictionary *)response;
@@ -65,9 +67,14 @@
                 block(success,errorString);
                 
             } failureBlock:^(NSError *error) {
+                block(FALSE,[Configuration getMaintenanceVerbiage]);
             }];
         }
+        else{
+            block(FALSE,[Configuration getMaintenanceVerbiage]);
+        }
     } failureBlock:^(NSError *error) {
+        block(FALSE,[Configuration getMaintenanceVerbiage]);
     }];
 }
 
@@ -76,6 +83,13 @@
     NSString *path = [ShareOneUtility getDocumentsDirectoryPathWithFileName:[NSString stringWithFormat:@"%@.plist",filename]];
     NSArray  *arrPlist = [NSArray arrayWithContentsOfFile:path];
     return arrPlist;
+}
+
++(NSDictionary *)getPlistDictFileWithName:(NSString *)filename{
+    
+    NSString *path = [ShareOneUtility getDocumentsDirectoryPathWithFileName:[NSString stringWithFormat:@"%@.plist",filename]];
+    NSDictionary  *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    return dict;
 }
 
 +(NSMutableArray *)getAllMenuItemsIncludeHiddenItems:(BOOL)showHidenItems{
@@ -146,14 +160,61 @@
 +(ClientSettingsObject *)getClientSettingsContent{
     
     NSArray *cleintSettingsArray = [self getPlistFileWithName:CONFIG_CLIENT_SETTINGS_SERVICE];
+    
     return [ClientSettingsObject parseClientSettings:cleintSettingsArray];
 }
+
+
++(NSString *)getBaseUrl{
+    
+    NSDictionary *dict =[self getPlistDictFileWithName:CONFIG_API_SETTINGS_SERVICE];
+    ApiSettingsObject *objparseClientSettings=[[ApiSettingsObject alloc] initWithDictionary:dict];
+    NSString *hostname = objparseClientSettings.HostName;
+    if(![hostname containsString:@"https"])
+        hostname=[NSString stringWithFormat:@"https://%@",hostname];
+    return  hostname;
+}
+
+
++(NSString *)getBaseUrlPublicKey{
+    
+    NSDictionary *dict =[self getPlistDictFileWithName:CONFIG_API_SETTINGS_SERVICE];
+    ApiSettingsObject *objparseClientSettings=[[ApiSettingsObject alloc] initWithDictionary:dict];
+    return objparseClientSettings.PublicKey;
+}
+
++(NSString *)getBaseUrlPrivateKey{
+    
+    NSDictionary *dict =[self getPlistDictFileWithName:CONFIG_API_SETTINGS_SERVICE];
+    ApiSettingsObject *objparseClientSettings=[[ApiSettingsObject alloc] initWithDictionary:dict];
+    return objparseClientSettings.PrivateKey;
+}
+
++(NSString *)getSecurityVersion{
+    
+    NSDictionary *dict =[self getPlistDictFileWithName:CONFIG_API_SETTINGS_SERVICE];
+    ApiSettingsObject *objparseClientSettings=[[ApiSettingsObject alloc] initWithDictionary:dict];
+    return objparseClientSettings.SecurityVersion;
+}
++(NSString *)getHmacType{
+    
+    NSDictionary *dict =[self getPlistDictFileWithName:CONFIG_API_SETTINGS_SERVICE];
+    ApiSettingsObject *objparseClientSettings=[[ApiSettingsObject alloc] initWithDictionary:dict];
+    return objparseClientSettings.HMACType;
+}
+
+
 
 
 +(NSString *)getMaintenanceVerbiage{
     
     ClientSettingsObject *obj = [self getClientSettingsContent];
-    return  obj.maintenanceverbiage;
+    
+    NSString *message = obj.maintenanceverbiage;
+    if(!message)
+        message=[ShareOneUtility getErrorMessage];
+    
+    return  message;
 }
 
 +(NSString *)getCoOpID{
@@ -180,8 +241,16 @@
 
 
 +(NSString *)getSSOBaseUrl{
+    
+    NSString *hostname = nil;
     ClientSettingsObject *obj = [self getClientSettingsContent];
-    return  obj.preprodbasewebviewurl;
+
+    hostname = obj.preprodbasewebviewurl;
+    
+    if(![hostname containsString:@"https"])
+        hostname=[NSString stringWithFormat:@"https://%@",hostname];
+
+    return hostname;
 }
 
 

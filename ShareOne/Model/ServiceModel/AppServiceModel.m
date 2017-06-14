@@ -300,8 +300,9 @@
         block(responseObject);
     } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
         [self hideProgressAlert];
-
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        block(nil);
+
         NSLog(@"%@",error);
     }];
 }
@@ -821,8 +822,9 @@
 -(void)setHeaderOnRequest:(NSMutableURLRequest *)request withAuth:(NSString *)auth{
     
     
-    //    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    //    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    NSString *securityVersion = [Configuration getSecurityVersion];
+    NSString *hmacType = [Configuration getHmacType];
+
     
     if([request isKindOfClass:[NSMutableURLRequest class]]){
         
@@ -833,8 +835,8 @@
         [request setValue:@"no-cache" forHTTPHeaderField:@"Pragma"];
         [request setValue:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0" forHTTPHeaderField:@"Cache-Control"];
         [request setValue:@"Sat, 1 Jan 2020 00:00:00 GMT" forHTTPHeaderField:@"Expires"];
-        [request setValue:H_MAC_TYPE forHTTPHeaderField:@"HmacType"];
-        [request setValue:SECURITY_VERSION forHTTPHeaderField:@"SecurityVersion"];
+        [request setValue:hmacType forHTTPHeaderField:@"HmacType"];
+        [request setValue:securityVersion forHTTPHeaderField:@"SecurityVersion"];
         [request setValue:auth forHTTPHeaderField:@"Authorization"];
     }
     else{
@@ -846,8 +848,8 @@
         [requestAsiHttp addRequestHeader:@"Pragma" value:@"no-cache"];
         [requestAsiHttp addRequestHeader:@"Cache-Control" value:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0"];
         [requestAsiHttp addRequestHeader:@"Expires" value:@"Sat, 1 Jan 2020 00:00:00 GMT"];
-        [requestAsiHttp addRequestHeader:@"HmacType" value:H_MAC_TYPE];
-        [requestAsiHttp addRequestHeader:@"SecurityVersion" value:SECURITY_VERSION];
+        [requestAsiHttp addRequestHeader:@"HmacType" value:hmacType];
+        [requestAsiHttp addRequestHeader:@"SecurityVersion" value:securityVersion];
         [requestAsiHttp addRequestHeader:@"Authorization" value:auth];
     }
 }
@@ -890,7 +892,7 @@
     NSMutableArray *customReqArr= [[NSMutableArray alloc] init];
     __block NSError *reqError = nil;
     
-    [reqObjects enumerateObjectsUsingBlock:^(NSDictionary  *dict, NSUInteger idx, BOOL * _Nonnull stop) {
+    [reqObjects enumerateObjectsUsingBlock:^(NSDictionary  *dict, NSUInteger idx, BOOL *stop) {
         
         NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:dict[REQ_TYPE] URLString:dict[REQ_URL] parameters:dict[REQ_PARAM] error:nil];
         [self setTimeOutIntervalOnRequest:req];

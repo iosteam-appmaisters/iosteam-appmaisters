@@ -12,6 +12,7 @@
 
 @interface SplashViewController : UIViewController
 
+@property (nonatomic,weak)IBOutlet UIActivityIndicatorView *indicatorView;
 //@property (nonatomic,strong)LoginViewController *objLoginViewController;
 
 @end

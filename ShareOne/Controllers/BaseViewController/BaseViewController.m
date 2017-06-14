@@ -303,8 +303,9 @@
 
 -(void)setTitleTextAttribute{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
+    UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
 
     if(APPC_IS_IPAD){
         self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:24],NSFontAttributeName,nil];
@@ -316,8 +317,10 @@
 
 -(void)setTitleOnNavBar:(NSString *)title{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
+    UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
 
     UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width/2, 40)];
     titleLabel.text = title;
@@ -354,8 +357,10 @@
 
 -(UIButton*)getMenuButton{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
+    UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
 
     UIImage *menuImage = [[UIImage imageNamed:@"menu_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] ;
 
@@ -409,8 +414,10 @@
 
 -(UIButton*)getBackButton{
     
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
+    UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
     UIImage *back_icon = [[UIImage imageNamed:@"back_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] ;
 
     UIButton* backButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];

@@ -202,6 +202,8 @@
 
 +(void)writeDataToPlistFileWithJSON:(NSDictionary *)jsonDict AndFileName:(NSString *)fileName;
 
++(NSString *)getErrorMessage;
+
 
 
 

@@ -247,9 +247,14 @@ NSLog(Y, Z);		\
 
 +(NSString *)createSignatureWithTimeStamp:(int)timestamp andRequestType:(NSString *)request_type havingEncoding:(NSStringEncoding) encoding{
     
-    NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",PUBLIC_KEY,timestamp,SECURITY_VERSION,request_type,H_MAC_TYPE];
+    NSString *privateKey = [Configuration getBaseUrlPrivateKey];
+    NSString *publicKey = [Configuration getBaseUrlPublicKey];
+    NSString *securityVersion = [Configuration getSecurityVersion];
+    NSString *hmacType = [Configuration getHmacType];
+
+    NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",publicKey,timestamp,securityVersion,request_type,hmacType];
 //    NSLog(@"stringToSignIn : \n%@",stringToSignIn);
-    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding AndKey:PRIVATE_KEY];
+    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding AndKey:privateKey];
 //    [self applyEncriptionWithPrivateKey:PRIVATE_KEY andPublicKey:PUBLIC_KEY];
 }
 
@@ -337,9 +342,14 @@ NSLog(Y, Z);		\
     
 //    string AuthorizationHeader = AesGeneratedIV + "|" + KeyPublic + "||" + unixTS.ToString() + "|" + Signature;
     //dcf421cc2be61068888b2b2b4dd3ca5a
-    NSString *generatedIv =[self getAESRandom4WithSecretKey:PRIVATE_KEY AndPublicKey:PUBLIC_KEY];
+    
+    NSString *privateKey = [Configuration getBaseUrlPrivateKey];
+    NSString *publicKey = [Configuration getBaseUrlPublicKey];
+
+    
+    NSString *generatedIv =[self getAESRandom4WithSecretKey:privateKey AndPublicKey:publicKey];
 //    NSLog(@"generatedIv :%@",generatedIv);
-    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,PUBLIC_KEY,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:request_type havingEncoding:NSUTF8StringEncoding]];
+    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,publicKey,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:request_type havingEncoding:NSUTF8StringEncoding]];
     return header;
 }
 
@@ -1572,7 +1582,10 @@ NSLog(Y, Z);		\
     Configuration *config = [ShareOneUtility getConfigurationFile];
     return config.googleApiKey;
 }
-
++(NSString *)getErrorMessage{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.OuttageVerbiage;
+}
 +(NSString *)getCoOpID{
     Configuration *config = [ShareOneUtility getConfigurationFile];
     return  config.CoOpId;
@@ -1584,8 +1597,11 @@ NSLog(Y, Z);		\
 }
 
 +(NSString *)getBaseUrl{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.baseUrl;
+    
+
+    return [Configuration getBaseUrl];
+//    Configuration *config = [ShareOneUtility getConfigurationFile];
+//    return config.baseUrl;
 }
 
 +(NSString *)getSSOBaseUrl{

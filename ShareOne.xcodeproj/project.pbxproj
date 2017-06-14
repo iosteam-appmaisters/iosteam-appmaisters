@@ -133,6 +133,7 @@
 		1DDAC0E01EB86ACF0067D85A /* InAppBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAC0DF1EB86ACF0067D85A /* InAppBrowserController.m */; };
 		1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBD76A1D93F58600277DF6 /* PayPersonController.m */; };
 		1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6081E1DAB997900FF85E2 /* CashDeposit.m */; };
+		1DFE17251EE93D8700CDEB70 /* ApiSettingsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE17241EE93D8700CDEB70 /* ApiSettingsObject.m */; };
 		2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */; };
 		6BD4058C1D81B59200358036 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058B1D81B59200358036 /* main.m */; };
 		6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4058E1D81B59300358036 /* AppDelegate.m */; };
@@ -405,6 +406,8 @@
 		1DEBD76A1D93F58600277DF6 /* PayPersonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPersonController.m; sourceTree = "<group>"; };
 		1DF6081D1DAB997900FF85E2 /* CashDeposit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashDeposit.h; sourceTree = "<group>"; };
 		1DF6081E1DAB997900FF85E2 /* CashDeposit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashDeposit.m; sourceTree = "<group>"; };
+		1DFE17231EE93D8700CDEB70 /* ApiSettingsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiSettingsObject.h; sourceTree = "<group>"; };
+		1DFE17241EE93D8700CDEB70 /* ApiSettingsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiSettingsObject.m; sourceTree = "<group>"; };
 		6BD405871D81B59200358036 /* ShareOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD4058B1D81B59200358036 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6BD4058D1D81B59300358036 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -802,6 +805,8 @@
 				1D86C4B71EC1D6880036F72A /* StyleValuesObject.m */,
 				1D86C4B91EC204B60036F72A /* ClientSettingsObject.h */,
 				1D86C4BA1EC204B60036F72A /* ClientSettingsObject.m */,
+				1DFE17231EE93D8700CDEB70 /* ApiSettingsObject.h */,
+				1DFE17241EE93D8700CDEB70 /* ApiSettingsObject.m */,
 			);
 			path = ConfigurationPlistEntity;
 			sourceTree = "<group>";
@@ -1610,6 +1615,7 @@
 				1D20C28B1E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m in Sources */,
 				1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
+				1DFE17251EE93D8700CDEB70 /* ApiSettingsObject.m in Sources */,
 				1D20C2611E4E110500D3FC93 /* CameraInstructionViewController.m in Sources */,
 				1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */,
 				1D5F34401E2F572500026EF2 /* TransferSomeOneElseCell.m in Sources */,

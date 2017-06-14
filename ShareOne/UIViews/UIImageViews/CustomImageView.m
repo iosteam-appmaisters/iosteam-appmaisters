@@ -42,11 +42,13 @@
 }
 
 - (void)initialize{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
     UIImage * image = [self image];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self setImage:image];
-    [self setTintColor:[UIColor colorWithHexString:config.buttonColor]];
+    [self setTintColor:[UIColor colorWithHexString:obj.buttoncolortop]];
     
 }
 
