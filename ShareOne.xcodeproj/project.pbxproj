@@ -20,6 +20,11 @@
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
 		1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD79E1D9947BD0014C743 /* Security.framework */; };
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
+		1D1F21931EF3DF1100C1045F /* DepositTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F21921EF3DF1100C1045F /* DepositTutorialController.m */; };
+		1D1F21961EF3DF7900C1045F /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F21951EF3DF7900C1045F /* DepositListController.m */; };
+		1D1F21991EF3DFAD00C1045F /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F21981EF3DFAD00C1045F /* ShareOneUtility.m */; };
+		1D1F219C1EF3DFEA00C1045F /* BranchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F219B1EF3DFEA00C1045F /* BranchLocationViewController.m */; };
+		1D1F219F1EF3E02C00C1045F /* BranchLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F219E1EF3E02C00C1045F /* BranchLocationCell.m */; };
 		1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */; };
 		1D20C25C1E4E110500D3FC93 /* AccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */; };
 		1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */; };
@@ -76,14 +81,12 @@
 		1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */; };
 		1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999A1D9135B000157320 /* AccordionHeaderView.m */; };
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
-		1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999F1D913C8C00157320 /* ShareOneUtility.m */; };
 		1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2399A21D9169CF00157320 /* SideMenuCell.m */; };
 		1D2887481DED517400AD7C74 /* PinResetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2887471DED517400AD7C74 /* PinResetController.m */; };
 		1D31B9B91E5EBE4300503E45 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D31B9B81E5EBE4300503E45 /* CustomLabel.m */; };
 		1D31B9BC1E5EC44600503E45 /* PlainCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D31B9BB1E5EC44600503E45 /* PlainCustomButton.m */; };
 		1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */; };
 		1D32A5041E4E17820087F638 /* libVertifiImageProcessingSimulater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */; };
-		1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D33909C1DE5A9E900D89982 /* DepositListController.m */; };
 		1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37102A1E40B0350030D33C /* ConfigurationModel.m */; };
 		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -146,7 +149,6 @@
 		6BD405C51D82C94300358036 /* SignInModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C41D82C94300358036 /* SignInModel.m */; };
 		6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */; };
 		6BD405CC1D82CA7200358036 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405CB1D82CA7200358036 /* User.m */; };
-		6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405D61D8306AC00358036 /* BranchLocationViewController.m */; };
 		6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405D91D8306C800358036 /* LoginViewController.m */; };
 		6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405DC1D8306D900358036 /* ForgotPasswordViewController.m */; };
 		6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405DF1D8306EC00358036 /* QuickBalancesViewController.m */; };
@@ -162,7 +164,6 @@
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
 		F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */; };
-		F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C71F11D92CF940072D405 /* BranchLocationCell.m */; };
 		F229DB6A1D9E7D6000A705A5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB691D9E7D6000A705A5 /* CoreVideo.framework */; };
 		F229DB6C1D9E7D6700A705A5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */; };
 		F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */; };
@@ -199,6 +200,16 @@
 		1D1AD79E1D9947BD0014C743 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1D1AD7A11D9947CA0014C743 /* BBAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAES.h; sourceTree = "<group>"; };
 		1D1AD7A21D9947CA0014C743 /* BBAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAES.m; sourceTree = "<group>"; };
+		1D1F21911EF3DF1100C1045F /* DepositTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositTutorialController.h; sourceTree = "<group>"; };
+		1D1F21921EF3DF1100C1045F /* DepositTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositTutorialController.m; sourceTree = "<group>"; };
+		1D1F21941EF3DF7900C1045F /* DepositListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositListController.h; sourceTree = "<group>"; };
+		1D1F21951EF3DF7900C1045F /* DepositListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositListController.m; sourceTree = "<group>"; };
+		1D1F21971EF3DFAD00C1045F /* ShareOneUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareOneUtility.h; sourceTree = "<group>"; };
+		1D1F21981EF3DFAD00C1045F /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
+		1D1F219A1EF3DFEA00C1045F /* BranchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationViewController.h; sourceTree = "<group>"; };
+		1D1F219B1EF3DFEA00C1045F /* BranchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationViewController.m; sourceTree = "<group>"; };
+		1D1F219D1EF3E02C00C1045F /* BranchLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationCell.h; sourceTree = "<group>"; };
+		1D1F219E1EF3E02C00C1045F /* BranchLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationCell.m; sourceTree = "<group>"; };
 		1D20C1F61E4E110400D3FC93 /* AccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsViewController.h; sourceTree = "<group>"; };
 		1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsViewController.m; sourceTree = "<group>"; };
 		1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountsViewController.xib; sourceTree = "<group>"; };
@@ -301,8 +312,6 @@
 		1D2399991D9135B000157320 /* AccordionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionHeaderView.h; sourceTree = "<group>"; };
 		1D23999A1D9135B000157320 /* AccordionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccordionHeaderView.m; sourceTree = "<group>"; };
 		1D23999B1D9135B000157320 /* AccordionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionHeaderView.xib; sourceTree = "<group>"; };
-		1D23999E1D913C8C00157320 /* ShareOneUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareOneUtility.h; sourceTree = "<group>"; };
-		1D23999F1D913C8C00157320 /* ShareOneUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOneUtility.m; sourceTree = "<group>"; };
 		1D2399A11D9169CF00157320 /* SideMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuCell.h; sourceTree = "<group>"; };
 		1D2399A21D9169CF00157320 /* SideMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuCell.m; sourceTree = "<group>"; };
 		1D2887461DED517400AD7C74 /* PinResetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinResetController.h; sourceTree = "<group>"; };
@@ -311,8 +320,6 @@
 		1D31B9B81E5EBE4300503E45 /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 		1D31B9BA1E5EC44600503E45 /* PlainCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlainCustomButton.h; sourceTree = "<group>"; };
 		1D31B9BB1E5EC44600503E45 /* PlainCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlainCustomButton.m; sourceTree = "<group>"; };
-		1D33909B1DE5A9E900D89982 /* DepositListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositListController.h; sourceTree = "<group>"; };
-		1D33909C1DE5A9E900D89982 /* DepositListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositListController.m; sourceTree = "<group>"; };
 		1D34D5291E0AC16B000F6276 /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
 		1D3710291E40B0350030D33C /* ConfigurationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationModel.h; sourceTree = "<group>"; };
 		1D37102A1E40B0350030D33C /* ConfigurationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationModel.m; sourceTree = "<group>"; };
@@ -432,8 +439,6 @@
 		6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilitiesHelper.m; sourceTree = "<group>"; };
 		6BD405CA1D82CA7200358036 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		6BD405CB1D82CA7200358036 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		6BD405D51D8306AC00358036 /* BranchLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationViewController.h; sourceTree = "<group>"; };
-		6BD405D61D8306AC00358036 /* BranchLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationViewController.m; sourceTree = "<group>"; };
 		6BD405D81D8306C800358036 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		6BD405D91D8306C800358036 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		6BD405DB1D8306D900358036 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -465,8 +470,6 @@
 		F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
 		F2099FAA1D9D3B7D00AAA8AC /* ImageViewPopUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewPopUpController.h; sourceTree = "<group>"; };
 		F2099FAB1D9D3B7D00AAA8AC /* ImageViewPopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewPopUpController.m; sourceTree = "<group>"; };
-		F20C71F01D92CF940072D405 /* BranchLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchLocationCell.h; sourceTree = "<group>"; };
-		F20C71F11D92CF940072D405 /* BranchLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchLocationCell.m; sourceTree = "<group>"; };
 		F229DB691D9E7D6000A705A5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F229DB6B1D9E7D6700A705A5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -565,6 +568,15 @@
 				1D0309A11DD2F070005953FA /* NSString+MD5String.m */,
 			);
 			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		1D1F21901EF3DF1100C1045F /* DepositTutorialController */ = {
+			isa = PBXGroup;
+			children = (
+				1D1F21911EF3DF1100C1045F /* DepositTutorialController.h */,
+				1D1F21921EF3DF1100C1045F /* DepositTutorialController.m */,
+			);
+			path = DepositTutorialController;
 			sourceTree = "<group>";
 		};
 		1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */ = {
@@ -691,8 +703,8 @@
 		1D33909A1DE5A9C800D89982 /* DepositListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1D33909B1DE5A9E900D89982 /* DepositListController.h */,
-				1D33909C1DE5A9E900D89982 /* DepositListController.m */,
+				1D1F21941EF3DF7900C1045F /* DepositListController.h */,
+				1D1F21951EF3DF7900C1045F /* DepositListController.m */,
 			);
 			path = DepositListViewController;
 			sourceTree = "<group>";
@@ -1004,6 +1016,8 @@
 		6BD405A11D81B5FC00358036 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1D1F219D1EF3E02C00C1045F /* BranchLocationCell.h */,
+				1D1F219E1EF3E02C00C1045F /* BranchLocationCell.m */,
 				1D2399991D9135B000157320 /* AccordionHeaderView.h */,
 				1D23999A1D9135B000157320 /* AccordionHeaderView.m */,
 				1D23999B1D9135B000157320 /* AccordionHeaderView.xib */,
@@ -1019,8 +1033,6 @@
 				1D8478E51D92949400153B19 /* QBHeaderCell.m */,
 				1D8478E71D9294EC00153B19 /* QBDetailsCell.h */,
 				1D8478E81D9294EC00153B19 /* QBDetailsCell.m */,
-				F20C71F01D92CF940072D405 /* BranchLocationCell.h */,
-				F20C71F11D92CF940072D405 /* BranchLocationCell.m */,
 				1D0C99001DE847CC009B60F0 /* DepositCell.h */,
 				1D0C99011DE847CC009B60F0 /* DepositCell.m */,
 				1D3ED8551E2676A800AE91C1 /* ContactEditCell.h */,
@@ -1075,6 +1087,7 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D1F21901EF3DF1100C1045F /* DepositTutorialController */,
 				1DDAC0DD1EB86ACF0067D85A /* InAppBrowserController */,
 				1D10A6091E26061D00BD40CD /* P2PMenus */,
 				1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */,
@@ -1152,11 +1165,11 @@
 		6BD405AC1D81B5FC00358036 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				1D1F21971EF3DFAD00C1045F /* ShareOneUtility.h */,
+				1D1F21981EF3DFAD00C1045F /* ShareOneUtility.m */,
 				F2099FA31D9D3B2C00AAA8AC /* MJpopupView */,
 				6BD405C61D82CA2F00358036 /* UtilitiesHelper.h */,
 				6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */,
-				1D23999E1D913C8C00157320 /* ShareOneUtility.h */,
-				1D23999F1D913C8C00157320 /* ShareOneUtility.m */,
 				1D1415471DA4D3710048F8B1 /* SharedUser.h */,
 				1D1415481DA4D3710048F8B1 /* SharedUser.m */,
 			);
@@ -1202,8 +1215,8 @@
 		6BD405CD1D83068D00358036 /* BranchLocationViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6BD405D51D8306AC00358036 /* BranchLocationViewController.h */,
-				6BD405D61D8306AC00358036 /* BranchLocationViewController.m */,
+				1D1F219A1EF3DFEA00C1045F /* BranchLocationViewController.h */,
+				1D1F219B1EF3DFEA00C1045F /* BranchLocationViewController.m */,
 				F25B15861D9BCCAE003E5E6C /* GetDirectionView */,
 			);
 			path = BranchLocationViewController;
@@ -1510,7 +1523,6 @@
 				1D20C2841E4E110500D3FC93 /* SubmittedDepositsViewController.m in Sources */,
 				1D20C2871E4E110500D3FC93 /* TableView_SectionHeader.m in Sources */,
 				1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */,
-				1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */,
 				1D20C26D1E4E110500D3FC93 /* DepositViewController.m in Sources */,
 				1D398F9E1E07F5DE00275E4E /* Address.m in Sources */,
 				1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */,
@@ -1536,17 +1548,16 @@
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
 				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
 				1D86C4B81EC1D6880036F72A /* StyleValuesObject.m in Sources */,
-				F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */,
 				1D38BE1A1DE6F47800F37849 /* VertifiAgreemantController.m in Sources */,
 				6BD405CC1D82CA7200358036 /* User.m in Sources */,
 				1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */,
-				6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */,
 				1D20C27D1E4E110500D3FC93 /* RegistrationViewController.m in Sources */,
 				F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */,
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
 				1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */,
 				1D3D037C1E602EF300886C79 /* CustomTextFeild.m in Sources */,
 				1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */,
+				1D1F21991EF3DFAD00C1045F /* ShareOneUtility.m in Sources */,
 				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
 				1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */,
 				1D38993D1E5DA64300A27358 /* UIColor+HexColor.m in Sources */,
@@ -1566,9 +1577,9 @@
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				1D20C26C1E4E110500D3FC93 /* DepositSubmitViewController.m in Sources */,
 				1D31B9B91E5EBE4300503E45 /* CustomLabel.m in Sources */,
+				1D1F21961EF3DF7900C1045F /* DepositListController.m in Sources */,
 				1D20C2941E4E110500D3FC93 /* XmlSimpleParser.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
-				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
 				1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */,
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,
@@ -1604,6 +1615,7 @@
 				1D2887481DED517400AD7C74 /* PinResetController.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
 				1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */,
+				1D1F21931EF3DF1100C1045F /* DepositTutorialController.m in Sources */,
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
 				1D20C2661E4E110500D3FC93 /* DepositAccount.m in Sources */,
 				1D398FA11E07F66E00275E4E /* Hours.m in Sources */,
@@ -1613,6 +1625,8 @@
 				1D20C2821E4E110500D3FC93 /* SubmittedDepositReportViewController.m in Sources */,
 				1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */,
 				1D20C28B1E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m in Sources */,
+				1D1F219F1EF3E02C00C1045F /* BranchLocationCell.m in Sources */,
+				1D1F219C1EF3DFEA00C1045F /* BranchLocationViewController.m in Sources */,
 				1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
 				1DFE17251EE93D8700CDEB70 /* ApiSettingsObject.m in Sources */,
