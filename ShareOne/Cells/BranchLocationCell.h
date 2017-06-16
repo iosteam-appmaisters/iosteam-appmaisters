@@ -19,7 +19,7 @@
 @property (nonatomic, weak) id<branchLocationDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIImageView *branchlocationImgview;
 @property (nonatomic, weak) IBOutlet UILabel *addrressLbl;
-@property (nonatomic, weak) IBOutlet UILabel *streetAddressLbl;
+@property (nonatomic, weak) IBOutlet UILabel *locationNameLbl;
 @property (nonatomic, weak) IBOutlet UILabel *phoneNoLbl;
 @property (nonatomic, weak) IBOutlet UILabel *milesLbl;
 @property (nonatomic, weak) IBOutlet UILabel *officestatusLbl;

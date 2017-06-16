@@ -193,18 +193,13 @@
 +(NSString *)getTestFairyID;
 +(NSString *)getBaseUrl;
 +(NSString *)getSSOBaseUrl;
-+(NSString *)getCustomerId;
++(NSString *)getSSOSecretKey;
++(NSString *)getCreditUnionPublicKey;
++(NSString *)getCreditUnionPrivateKey;
++(NSString *)getSecurityVersion;
++(NSString *)getHMACType;
 
-
-+(void)saveETag:(NSString *)eTag withCustomerID:(NSString *)customerID;
-+(NSString *)getETagWithCustomerID:(NSString *)customerID;
-+(NSString *)getDocumentsDirectoryPathWithFileName:(NSString *)plistName;
-
-+(void)writeDataToPlistFileWithJSON:(NSDictionary *)jsonDict AndFileName:(NSString *)fileName;
-
-+(NSString *)getErrorMessage;
-
-
++(BOOL)hasShownTutorialsBefore;
 
 
 @end

@@ -20,6 +20,8 @@
 		1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1415481DA4D3710048F8B1 /* SharedUser.m */; };
 		1D1AD79F1D9947BD0014C743 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D1AD79E1D9947BD0014C743 /* Security.framework */; };
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
+		1D1F21A31EF3E77A00C1045F /* DepositTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F21A21EF3E77A00C1045F /* DepositTutorialController.m */; };
+		1D1F21A61EF3E7BF00C1045F /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F21A51EF3E7BF00C1045F /* DepositListController.m */; };
 		1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */; };
 		1D20C25C1E4E110500D3FC93 /* AccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */; };
 		1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */; };
@@ -83,7 +85,6 @@
 		1D31B9BC1E5EC44600503E45 /* PlainCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D31B9BB1E5EC44600503E45 /* PlainCustomButton.m */; };
 		1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */; };
 		1D32A5041E4E17820087F638 /* libVertifiImageProcessingSimulater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */; };
-		1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D33909C1DE5A9E900D89982 /* DepositListController.m */; };
 		1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37102A1E40B0350030D33C /* ConfigurationModel.m */; };
 		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -199,6 +200,10 @@
 		1D1AD79E1D9947BD0014C743 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1D1AD7A11D9947CA0014C743 /* BBAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAES.h; sourceTree = "<group>"; };
 		1D1AD7A21D9947CA0014C743 /* BBAES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAES.m; sourceTree = "<group>"; };
+		1D1F21A11EF3E77A00C1045F /* DepositTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositTutorialController.h; sourceTree = "<group>"; };
+		1D1F21A21EF3E77A00C1045F /* DepositTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositTutorialController.m; sourceTree = "<group>"; };
+		1D1F21A41EF3E7BF00C1045F /* DepositListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositListController.h; sourceTree = "<group>"; };
+		1D1F21A51EF3E7BF00C1045F /* DepositListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositListController.m; sourceTree = "<group>"; };
 		1D20C1F61E4E110400D3FC93 /* AccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsViewController.h; sourceTree = "<group>"; };
 		1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsViewController.m; sourceTree = "<group>"; };
 		1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountsViewController.xib; sourceTree = "<group>"; };
@@ -311,8 +316,6 @@
 		1D31B9B81E5EBE4300503E45 /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 		1D31B9BA1E5EC44600503E45 /* PlainCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlainCustomButton.h; sourceTree = "<group>"; };
 		1D31B9BB1E5EC44600503E45 /* PlainCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlainCustomButton.m; sourceTree = "<group>"; };
-		1D33909B1DE5A9E900D89982 /* DepositListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositListController.h; sourceTree = "<group>"; };
-		1D33909C1DE5A9E900D89982 /* DepositListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositListController.m; sourceTree = "<group>"; };
 		1D34D5291E0AC16B000F6276 /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
 		1D3710291E40B0350030D33C /* ConfigurationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationModel.h; sourceTree = "<group>"; };
 		1D37102A1E40B0350030D33C /* ConfigurationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationModel.m; sourceTree = "<group>"; };
@@ -567,6 +570,15 @@
 			path = ThirdParty;
 			sourceTree = "<group>";
 		};
+		1D1F21A01EF3E77A00C1045F /* DepositTutorialController */ = {
+			isa = PBXGroup;
+			children = (
+				1D1F21A11EF3E77A00C1045F /* DepositTutorialController.h */,
+				1D1F21A21EF3E77A00C1045F /* DepositTutorialController.m */,
+			);
+			path = DepositTutorialController;
+			sourceTree = "<group>";
+		};
 		1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,8 +703,8 @@
 		1D33909A1DE5A9C800D89982 /* DepositListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1D33909B1DE5A9E900D89982 /* DepositListController.h */,
-				1D33909C1DE5A9E900D89982 /* DepositListController.m */,
+				1D1F21A41EF3E7BF00C1045F /* DepositListController.h */,
+				1D1F21A51EF3E7BF00C1045F /* DepositListController.m */,
 			);
 			path = DepositListViewController;
 			sourceTree = "<group>";
@@ -1075,6 +1087,7 @@
 		6BD405A51D81B5FC00358036 /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D1F21A01EF3E77A00C1045F /* DepositTutorialController */,
 				1DDAC0DD1EB86ACF0067D85A /* InAppBrowserController */,
 				1D10A6091E26061D00BD40CD /* P2PMenus */,
 				1D3F0F9C1E11481300B57B5F /* LoginWebViewsController */,
@@ -1510,7 +1523,6 @@
 				1D20C2841E4E110500D3FC93 /* SubmittedDepositsViewController.m in Sources */,
 				1D20C2871E4E110500D3FC93 /* TableView_SectionHeader.m in Sources */,
 				1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */,
-				1D33909D1DE5A9E900D89982 /* DepositListController.m in Sources */,
 				1D20C26D1E4E110500D3FC93 /* DepositViewController.m in Sources */,
 				1D398F9E1E07F5DE00275E4E /* Address.m in Sources */,
 				1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */,
@@ -1566,6 +1578,7 @@
 				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				1D20C26C1E4E110500D3FC93 /* DepositSubmitViewController.m in Sources */,
 				1D31B9B91E5EBE4300503E45 /* CustomLabel.m in Sources */,
+				1D1F21A61EF3E7BF00C1045F /* DepositListController.m in Sources */,
 				1D20C2941E4E110500D3FC93 /* XmlSimpleParser.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
@@ -1604,6 +1617,7 @@
 				1D2887481DED517400AD7C74 /* PinResetController.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
 				1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */,
+				1D1F21A31EF3E77A00C1045F /* DepositTutorialController.m in Sources */,
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
 				1D20C2661E4E110500D3FC93 /* DepositAccount.m in Sources */,
 				1D398FA11E07F66E00275E4E /* Hours.m in Sources */,

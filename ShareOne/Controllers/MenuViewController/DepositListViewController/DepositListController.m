@@ -13,6 +13,7 @@
 #import "VertifiDepositObject.h"
 #import "SharedUser.h"
 #import "ImageViewPopUpController.h"
+#import "DepositTutorialController.h"
 
 
 @implementation DepositListController
@@ -38,6 +39,17 @@
     }
     
     [self getDataFromVertifi];
+}
+
+-(void)loadTutorial{
+    
+    if(![ShareOneUtility hasShownTutorialsBefore]){
+        
+        DepositTutorialController *objDepositTutorialController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DepositTutorialController class])];
+        [self presentViewController:objDepositTutorialController animated:YES completion:nil];
+        
+    }
+    
 }
 
 
@@ -95,11 +107,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
+    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
+    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -146,11 +158,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
+    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
+    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -169,8 +181,14 @@
             weakSelf.contentArr = [obj.depositArr mutableCopy];
             
             if([weakSelf.contentArr count]==0){
-                [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
+                //[[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
+
+
             }
+            else{
+                [weakSelf loadTutorial];
+            }
+
             [weakSelf.tblView reloadData];
             [weakSelf reloadCustomData];
 
@@ -202,6 +220,34 @@
  
     [self getListOfPast6MonthsDeposits];
 
+}
+#pragma SWTableViewCell - Buttons Array methods
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:255.0/255.0 green:140.0/255.0 blue:0.0/255.0 alpha:1.0f] icon:[UIImage imageNamed:@"trash"]];
+    
+    return rightUtilityButtons;
+}
+
+- (NSArray *)leftButtons
+{
+    
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithHexString:config.variableTextColor]
+                                                icon:[UIImage imageNamed:@"foc"]];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:70.0/255.0 green:68.0/255.0 blue:68.0/255.0 alpha:1.0]
+                                                icon:[UIImage imageNamed:@"boc"]];
+    
+    return leftUtilityButtons;
 }
 
 
@@ -264,9 +310,57 @@
     [cell.delBtn setTag:indexPath.row];
     [cell.bocBtn addTarget:self action:@selector(bocButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [cell.focBtn addTarget:self action:@selector(focButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    cell.rightUtilityButtons=[self rightButtons];
+    cell.leftUtilityButtons=[self leftButtons];
+    cell.delegate=self;
 
     return cell;
 }
+
+#pragma mark SWTableViewCell Delegate Methods
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index{
+    
+    NSIndexPath *path =  [_tblView indexPathForCell:cell];
+    DepositCell *objDepositCell = [_tblView cellForRowAtIndexPath:path];
+    
+    switch (index) {
+        case 0:{
+            [self focButtonClicked:objDepositCell.focBtn];
+        }
+            break;
+            
+        case 1:{
+            [self bocButtonClicked:objDepositCell.bocBtn];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index{
+    
+    NSIndexPath *path =  [_tblView indexPathForCell:cell];
+    DepositCell *objDepositCell = [_tblView cellForRowAtIndexPath:path];
+    
+    switch (index) {
+        case 0:{
+            [self deleteButtonClicked:objDepositCell.delBtn];
+        }
+            break;
+            
+        case 1:{
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    [_tblView reloadData];
+}
+
 
 
 #pragma mark SelectorMethods of UITableViewCell
@@ -307,11 +401,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
+    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
+    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     

@@ -226,11 +226,10 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    BranchLocationCell_clone
-    BranchLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell_clone"];
+    BranchLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell"];
     [cell setDelegate:self];
     if(!cell){
-        cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell_clone" forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell" forIndexPath:indexPath];
     }
     
     Location *objLocation = _contentArr[indexPath.row];
@@ -252,75 +251,56 @@
             Hours *objHours = [currentDayHourArr lastObject];
             
             if(objHours.Drivethruopentime &&  objHours.Drivethruclosetime)
-                driveThruString = [NSString stringWithFormat:@"Drive Thru %@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruopentime andDateFormat:@"hh:mm a"],[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruclosetime andDateFormat:@"hh:mm a"]];
+                driveThruString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruopentime andDateFormat:@"hh:mm a"],[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruclosetime andDateFormat:@"hh:mm a"]];
             else
-                driveThruString = [NSString stringWithFormat:@"Drive Thru"];
+                driveThruString = [NSString stringWithFormat:@""];
             
             
             if(objHours.Lobbyopentime && objHours.Lobbyclosetime)
-                officeTimeString = [NSString stringWithFormat:@"Office %@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyopentime andDateFormat:@"hh:mm a"] ,[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyclosetime andDateFormat:@"hh:mm a"]];
+                officeTimeString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyopentime andDateFormat:@"hh:mm a"] ,[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyclosetime andDateFormat:@"hh:mm a"]];
             else
-                officeTimeString = [NSString stringWithFormat:@"Office"];
+                officeTimeString = [NSString stringWithFormat:@""];
+            
             
             
             
             ([objHours.Drivethruisopen boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
             
-            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
             
             
             ([objHours.Lobbyisopen boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
             
-            ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
-
-
+            ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
+            
+            
         }
-
+        
     }
     
     else{
         
-        officeTimeString = [NSString stringWithFormat:@"Office"];
-        driveThruString = [NSString stringWithFormat:@"Drive Thru"];
+        officeTimeString = [NSString stringWithFormat:@""];
+        driveThruString = [NSString stringWithFormat:@""];
         
         [[cell drivestatusLbl] setText:@"CLOSED"];
         [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
         
         [[cell officestatusLbl] setText:@"CLOSED"];
         [[cell officestatusLbl] setTextColor:[UIColor redColor]];
-
+        
     }
     
-    
-    
-    
-
-/*
-    if([objLocation.mondayDriveThruOpen length]>0)
-        driveThruString = [NSString stringWithFormat:@"Drive Thru %@am - %@pm",objLocation.mondayDriveThruOpen,objLocation.mondayDriveThruClose];
-    else
-        driveThruString = [NSString stringWithFormat:@"Drive Thru %.0fam - %.0fpm",8.00,9.00];
-    
-    
-    if([objLocation.mondayOpen length]>0)
-        officeTimeString = [NSString stringWithFormat:@"Office %.0fam - %.0fpm",[objLocation.mondayOpen floatValue],[objLocation.mondayClose floatValue]];
-    else
-        officeTimeString = [NSString stringWithFormat:@"Office"];
- */
-    
-    
-    
-    
-    cell.addrressLbl.text=objLocation.Name;
+    cell.locationNameLbl.text=objLocation.Name;
     cell.officeHourLbl.text=officeTimeString;
     cell.driveThruHoursLbl.text=driveThruString;
-    [cell.phoneNoLbl setText:[NSString stringWithFormat:@"Phone: %@",objLocation.Phonenumber]];
-    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@",objLocation.address.Address1/*,objLocation.address.City,objLocation.address.State*/];
+    [cell.phoneNoLbl setText:[NSString stringWithFormat:@"%@",objLocation.Phonenumber]];
+    cell.addrressLbl.text=[NSString stringWithFormat:@"%@",objLocation.address.Address1/*,objLocation.address.City,objLocation.address.State*/];
     cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
     cell.cityStateLbl.text=[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.State];
-
+    
     if([objLocation.photos count]>0){
-
+        
         
         Photos *objPhotos = objLocation.photos[0];
         NSData *data = [[NSData alloc]initWithBase64EncodedString:objPhotos.Data options:NSDataBase64DecodingIgnoreUnknownCharacters];
@@ -331,70 +311,12 @@
         NSURL *imageURL = [NSURL URLWithString:@""];
         [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
     }
-
-    
-    /*
-    ([objLocation.driveThru boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
-    
-    ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
     
     
-    ([objLocation.open24Hours boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
-    
-    ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
-    
-    */
-    
-    
-//    NSURL *imageURL = [NSURL URLWithString:@""];
-//    [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
-
-    
-    /*
-    NSString *officeTimeString= nil;
-    NSString *driveThruString= nil;
-
-    
-    
-    if([objLocation.mondayDriveThruOpen length]>0)
-        driveThruString = [NSString stringWithFormat:@"Drive Thru %@am - %@pm",objLocation.mondayDriveThruOpen,objLocation.mondayDriveThruClose];
-    else
-        driveThruString = [NSString stringWithFormat:@"Drive Thru %.0fam - %.0fpm",8.00,9.00];
-    
-    
-    if([objLocation.mondayOpen length]>0)
-        officeTimeString = [NSString stringWithFormat:@"Office %.0fam - %.0fpm",[objLocation.mondayOpen floatValue],[objLocation.mondayClose floatValue]];
-    else
-        officeTimeString = [NSString stringWithFormat:@"Office"];
-    
-    
-    
-        
-    cell.addrressLbl.text=objLocation.institutionName;
-    cell.officeHourLbl.text=officeTimeString;
-    cell.driveThruHoursLbl.text=driveThruString;
-
-    cell.streetAddressLbl.text=[NSString stringWithFormat:@"%@",objLocation.address];
-    cell.milesLbl.text=[NSString stringWithFormat:@"%@ Miles away",objLocation.distance];
-    
-    ([objLocation.driveThru boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
-    
-    ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor greenColor]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
-    
-    
-    ([objLocation.open24Hours boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
-    
-    ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor greenColor]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
-
-
-    
-    
-    NSURL *imageURL = [NSURL URLWithString:@""];
-    [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
-*/
     
     
     return cell;
+
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(BranchLocationCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "SWTableViewCell.h"
 
 
-@interface DepositListController : BaseViewController
+@interface DepositListController : BaseViewController<SWTableViewCellDelegate>
 
 @property (nonatomic,weak)IBOutlet UITableView *tblView;
 @property (nonatomic,strong) NSMutableArray *contentArr;
