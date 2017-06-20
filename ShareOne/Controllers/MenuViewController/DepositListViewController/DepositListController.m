@@ -181,9 +181,7 @@
             weakSelf.contentArr = [obj.depositArr mutableCopy];
             
             if([weakSelf.contentArr count]==0){
-                //[[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
-
-
+                [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"No Deposits for review" title:@"" delegate:weakSelf];
             }
             else{
                 [weakSelf loadTutorial];
