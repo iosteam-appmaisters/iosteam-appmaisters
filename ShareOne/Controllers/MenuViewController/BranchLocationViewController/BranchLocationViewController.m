@@ -167,7 +167,7 @@
     UITableViewCell *clickedCell = (UITableViewCell *)[[sender superview] superview];
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
     
-    ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"surchargeFreeAtms"];
     atmNavigationViewController.showMyLocationOnly= TRUE;
     atmNavigationViewController.locationArr=_contentArr;
     atmNavigationViewController.selectedIndex=(int)clickedButtonPath.row;
