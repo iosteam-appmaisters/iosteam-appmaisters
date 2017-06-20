@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface DepositCell : UITableViewCell
+@interface DepositCell : SWTableViewCell
 
 @property (nonatomic,weak)IBOutlet UILabel *headerLbl;
 

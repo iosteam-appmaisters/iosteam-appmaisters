@@ -217,6 +217,12 @@
     return  message;
 }
 
++(NSString *)getErrorMessage{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.OuttageVerbiage;
+}
+
+
 +(NSString *)getCoOpID{
     
     ClientSettingsObject *obj = [self getClientSettingsContent];

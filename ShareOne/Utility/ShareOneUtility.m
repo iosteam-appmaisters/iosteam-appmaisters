@@ -247,14 +247,9 @@ NSLog(Y, Z);		\
 
 +(NSString *)createSignatureWithTimeStamp:(int)timestamp andRequestType:(NSString *)request_type havingEncoding:(NSStringEncoding) encoding{
     
-    NSString *privateKey = [Configuration getBaseUrlPrivateKey];
-    NSString *publicKey = [Configuration getBaseUrlPublicKey];
-    NSString *securityVersion = [Configuration getSecurityVersion];
-    NSString *hmacType = [Configuration getHmacType];
-
-    NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",publicKey,timestamp,securityVersion,request_type,hmacType];
+    NSString *stringToSignIn = [NSString stringWithFormat:@"%@\n%d\n%@\n%@\n%@",[ShareOneUtility getCreditUnionPublicKey],timestamp,[ShareOneUtility getSecurityVersion],request_type,[ShareOneUtility getHMACType]];
 //    NSLog(@"stringToSignIn : \n%@",stringToSignIn);
-    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding AndKey:privateKey];
+    return  [self getHMACSHAWithSignature:stringToSignIn andEncoding:encoding AndKey:[ShareOneUtility getCreditUnionPrivateKey]];
 //    [self applyEncriptionWithPrivateKey:PRIVATE_KEY andPublicKey:PUBLIC_KEY];
 }
 
@@ -342,14 +337,9 @@ NSLog(Y, Z);		\
     
 //    string AuthorizationHeader = AesGeneratedIV + "|" + KeyPublic + "||" + unixTS.ToString() + "|" + Signature;
     //dcf421cc2be61068888b2b2b4dd3ca5a
-    
-    NSString *privateKey = [Configuration getBaseUrlPrivateKey];
-    NSString *publicKey = [Configuration getBaseUrlPublicKey];
-
-    
-    NSString *generatedIv =[self getAESRandom4WithSecretKey:privateKey AndPublicKey:publicKey];
+    NSString *generatedIv =[self getAESRandom4WithSecretKey:[ShareOneUtility getCreditUnionPrivateKey] AndPublicKey:[ShareOneUtility getCreditUnionPublicKey]];
 //    NSLog(@"generatedIv :%@",generatedIv);
-    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,publicKey,[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:request_type havingEncoding:NSUTF8StringEncoding]];
+    NSString *header = [NSString stringWithFormat:@"%@|%@||%d|%@",generatedIv,[ShareOneUtility getCreditUnionPublicKey],[self getTimeStamp],[self createSignatureWithTimeStamp:[self getTimeStamp] andRequestType:request_type havingEncoding:NSUTF8StringEncoding]];
     return header;
 }
 
@@ -830,18 +820,17 @@ NSLog(Y, Z);		\
     
     SuffixInfo *objSuffixInfo;
     int suffixID = 0;
-    int account =0;
+    int account = 0;
     NSString *type =@"s";
     if([[[SharedUser sharedManager] suffixInfoArr] count]>0){
         objSuffixInfo= (SuffixInfo *)[[SharedUser sharedManager] suffixInfoArr][0];
         suffixID= [objSuffixInfo.Suffixnumber intValue];
-        type= objSuffixInfo.Type;
         account = [objSuffixInfo.Account intValue];
+        type = objSuffixInfo.Type;
     }
     else{
         suffixID= 1;
-        account = [[obj Account] intValue];
-        
+        account = [obj.Account intValue];
     }
     
     return [NSString stringWithFormat:@"%d%@%d",account,type,suffixID];
@@ -853,13 +842,11 @@ NSLog(Y, Z);		\
     if(suffix){
 //        User *obj =     [[SharedUser sharedManager] userObject];
         accountValue= [NSString stringWithFormat:@"%d%@%d",[suffix.Account intValue],suffix.Type,[suffix.Suffixnumber intValue]];
-
     }
     else{
         accountValue = [self getAccountValue];
     }
 
-    NSLog(@"getAccountValueWithSuffix :%@",accountValue);
     return accountValue;
 }
 
@@ -884,7 +871,7 @@ NSLog(Y, Z);		\
 +(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo{
     
 
-    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[Configuration getVertifiRequesterKey],[self getSessionnKey],[self getTimeStamp],[Configuration getVertifiRouterKey],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
+    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[ShareOneUtility getRequesterValue],[self getSessionnKey],[self getTimeStamp],[ShareOneUtility getRoutingValue],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
     
     NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -943,7 +930,7 @@ NSLog(Y, Z);		\
 + (NSString *)calculateHMACMD5:(NSData *)data {
     NSParameterAssert(data);
     
-    NSData *keyData =[[Configuration getVertifiSecretKey] hexToBytes];
+    NSData *keyData =[[self getSecretKey] hexToBytes];
 
     NSMutableData *hMacOut = [NSMutableData dataWithLength:CC_MD5_DIGEST_LENGTH];
     
@@ -1035,7 +1022,7 @@ NSLog(Y, Z);		\
     //eab08a6943728a37
     
     
-   return  [self applyEncriptionWithPrivateKey:PRIVATE_KEY_SSO andPublicKey:contexID];
+   return  [self applyEncriptionWithPrivateKey:[ShareOneUtility getSSOSecretKey] andPublicKey:contexID];
     
 //    return [self encryptString:contexID];
 
@@ -1045,7 +1032,7 @@ NSLog(Y, Z);		\
 
 +(NSDictionary *)getAESObjectWithGeneratedIV:(NSString *)contexID{
     
-    NSDictionary *dic =  [self applyEncriptionWithPrivateKey:PRIVATE_KEY_SSO andPublicKey:contexID];
+    NSDictionary *dic =  [self applyEncriptionWithPrivateKey:[ShareOneUtility getSSOSecretKey] andPublicKey:contexID];
     return dic;;
 }
 
@@ -1070,7 +1057,7 @@ NSLog(Y, Z);		\
     
     NSData *plainText = [NSData dataWithBytes:buffer length:[string length]];
     
-    NSData *keyData =[PRIVATE_KEY_SSO hexToBytes];
+    NSData *keyData =[[ShareOneUtility getSSOSecretKey] hexToBytes];
     
     //NSData* data = [string dataUsingEncoding:NSUTF8StringEncoding];
 
@@ -1291,6 +1278,15 @@ NSLog(Y, Z);		\
     
     NSString *accountType = @"0" ;
     
+    if([objSuffixInfo.Draft boolValue]){
+        accountType =@"2";
+    }
+    else{
+        accountType =@"1";
+    }
+    
+    /*
+    
     if([objSuffixInfo.Type isEqualToString:@"S"]){
         // Share
         accountType = @"1";
@@ -1317,6 +1313,7 @@ NSLog(Y, Z);		\
        // External Mortgage
        accountType = @"1";
    }
+     */
     return accountType;
 }
 
@@ -1328,7 +1325,7 @@ NSLog(Y, Z);		\
     NSData* ivData = [FBEncryptorAES generateIv];
     NSString* hexStringIV = [FBEncryptorAES hexStringForData:ivData];
     
-    NSString *keyString = PRIVATE_KEY_SSO;
+    NSString *keyString = [ShareOneUtility getSSOSecretKey];
     NSData *keyData = [keyString hexToBytes];
     
     NSString *plaintText = contextID;
@@ -1582,13 +1579,15 @@ NSLog(Y, Z);		\
     Configuration *config = [ShareOneUtility getConfigurationFile];
     return config.googleApiKey;
 }
-+(NSString *)getErrorMessage{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.OuttageVerbiage;
-}
+
 +(NSString *)getCoOpID{
     Configuration *config = [ShareOneUtility getConfigurationFile];
     return  config.CoOpId;
+}
+
++(NSString *)getCustomerId{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.customerId;
 }
 
 +(NSString *)getTestFairyID{
@@ -1597,11 +1596,8 @@ NSLog(Y, Z);		\
 }
 
 +(NSString *)getBaseUrl{
-    
-
-    return [Configuration getBaseUrl];
-//    Configuration *config = [ShareOneUtility getConfigurationFile];
-//    return config.baseUrl;
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.baseUrl;
 }
 
 +(NSString *)getSSOBaseUrl{
@@ -1609,19 +1605,44 @@ NSLog(Y, Z);		\
     return config.ssoBaseUrl;
 }
 
-+(NSString *)getCustomerId{
++(NSString *)getSSOSecretKey{
     Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.customerId;
+    return config.ssoPrivateKey;
 }
 
-+(void)saveETag:(NSString *)eTag withCustomerID:(NSString *)customerID{
-    [[NSUserDefaults standardUserDefaults] setValue:eTag forKey:[NSString stringWithFormat:@"eTage_%@",customerID]];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+
++(NSString *)getCreditUnionPublicKey{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.creditUnionPublicKey;
 }
 
-+(NSString *)getETagWithCustomerID:(NSString *)customerID{
-    return [[NSUserDefaults standardUserDefaults] valueForKey:[NSString stringWithFormat:@"eTage_%@",customerID]];
++(NSString *)getCreditUnionPrivateKey{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+
+    return config.creditUnionPrivateKey;
 }
+
++(NSString *)getSecurityVersion{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.securityVersion;
+}
+
+
++(NSString *)getHMACType{
+    Configuration *config = [ShareOneUtility getConfigurationFile];
+    return config.hMacType;
+}
+
++(BOOL)hasShownTutorialsBefore{
+    
+    BOOL flag =  [[NSUserDefaults standardUserDefaults] boolForKey:@"tutorials"];
+    if(!flag){
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"tutorials"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    return flag;
+}
+
 
 +(NSString *)getDocumentsDirectoryPathWithFileName:(NSString *)plistName{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
@@ -1632,10 +1653,11 @@ NSLog(Y, Z);		\
 }
 
 +(void)writeDataToPlistFileWithJSON:(NSDictionary *)jsonDict AndFileName:(NSString *)fileName{
- 
+    
     NSDictionary *dictResult = jsonDict;
     NSString *path = [self getDocumentsDirectoryPathWithFileName:fileName];
     NSLog(@"filePAth : %@",path);
     [dictResult writeToFile:path atomically:YES];
 }
+
 @end

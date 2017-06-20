@@ -45,6 +45,13 @@
 @property (nonatomic, strong) NSString *ssoBaseUrl;
 @property (nonatomic, strong) NSString *TestFairyID;
 
+@property (nonatomic,strong) NSString *hMacType;
+@property (nonatomic,strong) NSString *securityVersion;
+@property (nonatomic,strong) NSString *creditUnionPrivateKey;
+@property (nonatomic,strong) NSString *creditUnionPublicKey;
+@property (nonatomic,strong) NSString *ssoPrivateKey;
+
+
 -(id) initWithDictionary:(NSDictionary *)configurationDict;
 
 + (void)getConfigurationWithDelegate :(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock;
@@ -67,7 +74,7 @@
 +(NSDictionary *)getPlistDictFileWithName:(NSString *)filename;
 
 
-
++(NSString *)getErrorMessage;
 
 +(NSString *)getBaseUrl;
 +(NSString *)getBaseUrlPublicKey;
