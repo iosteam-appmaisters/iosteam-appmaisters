@@ -1150,19 +1150,19 @@
 
 -(void)reloadMobileDepositController{
     
-    NSDictionary *cacheControlerDict = [ShareOneUtility getMobileDepositObjectFromPlist];
+//    NSDictionary *cacheControlerDict = [ShareOneUtility getMobileDepositObjectFromPlist];
+//    
+//    NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
+//    
+//    NSString *navigationTitle = [[cacheControlerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     
-    NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
-    
-    NSString *navigationTitle = [[cacheControlerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
-    
-    UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+    UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mobileDeposit"];
     
     currentController = objUIViewController;
     
-    objUIViewController.navigationItem.title=navigationTitle;
+    objUIViewController.navigationItem.title=@"Mobile Deposit";
     
-    [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+    //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
         //rootview
     self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
         
