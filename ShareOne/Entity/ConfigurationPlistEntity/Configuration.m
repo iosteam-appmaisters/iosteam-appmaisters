@@ -245,6 +245,13 @@
     return  obj.routingnumber;
 }
 
++(NSString *)getPrivateKey{
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.routingnumber;
+}
+
+
+
 
 +(NSString *)getSSOBaseUrl{
     

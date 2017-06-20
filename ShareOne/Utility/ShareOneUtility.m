@@ -26,6 +26,8 @@
 #import "NSData+Base64.h"
 #import "MobileDepositController.h"
 #import "SuffixInfo.h"
+#import "ApiSettingsObject.h"
+
 
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -1576,13 +1578,13 @@ NSLog(Y, Z);		\
 
 
 +(NSString *)getGoogleMapKey{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.googleApiKey;
+    NSString *kkey = [Configuration getBaseUrlPublicKey];
+    return kkey;
 }
 
 +(NSString *)getCoOpID{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return  config.CoOpId;
+    NSString *CoOpId = [Configuration getCoOpID];
+    return  CoOpId;
 }
 
 +(NSString *)getCustomerId{
@@ -1596,13 +1598,13 @@ NSLog(Y, Z);		\
 }
 
 +(NSString *)getBaseUrl{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.baseUrl;
+    NSString *baseUrl = [Configuration getBaseUrl];
+    return baseUrl;
 }
 
 +(NSString *)getSSOBaseUrl{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.ssoBaseUrl;
+    NSString *ssoURL = [Configuration getSSOBaseUrl];
+    return ssoURL;
 }
 
 +(NSString *)getSSOSecretKey{
@@ -1612,25 +1614,24 @@ NSLog(Y, Z);		\
 
 
 +(NSString *)getCreditUnionPublicKey{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.creditUnionPublicKey;
+    NSString *publicKey = [Configuration getBaseUrlPublicKey];
+    return publicKey;
 }
 
 +(NSString *)getCreditUnionPrivateKey{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-
-    return config.creditUnionPrivateKey;
+    NSString *private = [Configuration getBaseUrlPrivateKey];
+    return private;
 }
 
 +(NSString *)getSecurityVersion{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.securityVersion;
+    NSString *security = [Configuration getSecurityVersion];
+    return security;
 }
 
 
 +(NSString *)getHMACType{
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    return config.hMacType;
+    NSString *hmacType = [Configuration getHmacType];
+    return hmacType;
 }
 
 +(BOOL)hasShownTutorialsBefore{
