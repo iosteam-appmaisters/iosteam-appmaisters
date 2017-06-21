@@ -735,7 +735,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "613"
             endingLineNumber = "613"
-            landmarkName = "-logoutOnGoingBackground"
+            landmarkName = "-bringAdvertismentFront"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1023,7 +1023,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "-webViewDidStartLoad:"
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1736,7 +1736,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "693"
-            endingLineNumber = "693">
+            endingLineNumber = "693"
+            landmarkName = "-appComingFromBackground"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3255,7 +3257,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4101,8 +4103,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "@implementation BaseViewController"
-            landmarkType = "3">
+            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4188,7 +4190,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
@@ -4357,7 +4359,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "-removeAdsView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4374,6 +4376,22 @@
             startingLineNumber = "769"
             endingLineNumber = "769"
             landmarkName = "+setPreferencesOnLaunch"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
+            timestampString = "519722548.035281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "913"
+            endingLineNumber = "913"
+            landmarkName = "-createBatchOfRequestsWithObject:requestCompletionBlock:requestFailureBlock:queueCompletionBlock:queueFailureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

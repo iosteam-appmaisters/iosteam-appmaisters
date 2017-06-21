@@ -262,9 +262,17 @@
     
     NSLog(@"didFailLoadWithError : %@",error);
     
+    
     [ShareOneUtility hideProgressViewOnView:self.view];
     
-    [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
+    if ([error code] != NSURLErrorCancelled) {
+        [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
+    }
+
+    
+    
+    
+    
     
 //    [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
     
