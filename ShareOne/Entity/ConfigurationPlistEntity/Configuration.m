@@ -212,7 +212,7 @@
     
     NSString *message = obj.maintenanceverbiage;
     if(!message)
-        message=[ShareOneUtility getErrorMessage];
+        message=[self getErrorMessage];
     
     return  message;
 }

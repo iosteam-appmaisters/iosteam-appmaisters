@@ -143,7 +143,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1103"
             endingLineNumber = "1103"
-            landmarkName = "-getLocalizeErrorMessageForInternetConnection:"
+            landmarkName = "-postRequestForConfigurationWithParameters:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1098"
             endingLineNumber = "1098"
-            landmarkName = "-parseResponseToJsonWithData:"
+            landmarkName = "-postRequestForConfigurationWithParameters:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
             <Locations>
                <Location
@@ -479,7 +479,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "398"
             endingLineNumber = "398"
-            landmarkName = "-postRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            landmarkName = "-getRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1435,7 +1435,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1044"
             endingLineNumber = "1044"
-            landmarkName = "-getErrorObjectWithStatusMessage:andStatusCode:"
+            landmarkName = "-parseErrorObject:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1881,7 +1881,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "673"
             endingLineNumber = "673"
-            landmarkName = "-URLSession:dataTask:didReceiveResponse:completionHandler:"
+            landmarkName = "-deleteRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3991,7 +3991,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "955"
             endingLineNumber = "955"
-            landmarkName = "-createBatchOfRequestsWithObject:requestCompletionBlock:requestFailureBlock:queueCompletionBlock:queueFailureBlock:"
+            landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4183,23 +4183,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
             endingLineNumber = "302"
-            landmarkName = "-postRequestForConfigAPIWithParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
-            timestampString = "519115809.999014"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "+getMaintenanceVerbiage"
+            landmarkName = "-getRequestForConfigAPIWithAuthHeader:andProgressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4376,22 +4360,6 @@
             startingLineNumber = "769"
             endingLineNumber = "769"
             landmarkName = "+setPreferencesOnLaunch"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "519722548.035281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "913"
-            endingLineNumber = "913"
-            landmarkName = "-createBatchOfRequestsWithObject:requestCompletionBlock:requestFailureBlock:queueCompletionBlock:queueFailureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
