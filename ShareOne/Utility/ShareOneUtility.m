@@ -1396,8 +1396,10 @@ NSLog(Y, Z);		\
 +(NSDictionary *)getMenuItemForTouchIDAuthentication{
     
     NSDictionary *lastSelectedItem = (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
-    if(!lastSelectedItem)
-        lastSelectedItem = [self getAccountSummaryObjectFromPlist];
+    if(!lastSelectedItem){
+        lastSelectedItem = [Configuration getAllMenuItemsIncludeHiddenItems:FALSE][0];
+//        lastSelectedItem = [self getAccountSummaryObjectFromPlist];
+    }
     
     return  lastSelectedItem;
     

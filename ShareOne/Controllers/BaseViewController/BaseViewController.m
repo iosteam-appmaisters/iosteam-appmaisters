@@ -578,10 +578,26 @@
             }
             else{
                 
+                UIViewController * objUIViewController =nil;
+
                 //If webUrl is empty or nil load Native UI Screen
-                UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-                objUIViewController.navigationItem.title=navigationTitle;
-                controller = objUIViewController;
+                @try {
+                    objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+                    objUIViewController.navigationItem.title=navigationTitle;
+                    controller = objUIViewController;
+
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"Reason %@" , exception.reason);
+                }
+                @finally {
+                    if (objUIViewController == nil) {
+                        [ShareOneUtility removeCacheControllerName];
+                        return;
+                        NSLog(@"VC %@" , objUIViewController);
+                    }
+                }
+
             }
             
             //rootview

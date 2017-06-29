@@ -18,10 +18,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9z-3k-J3L" userLabel="contentView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide-menu-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ZqC-F5-CVm" customClass="CustomImageView">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide-menu-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ZqC-F5-CVm">
                             <rect key="frame" x="20" y="19" width="4" height="7"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide-menu-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="tDx-gE-ekt" customClass="CustomImageView">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide-menu-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="tDx-gE-ekt">
                             <rect key="frame" x="586" y="19" width="4" height="7"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="529-R1-yiG">

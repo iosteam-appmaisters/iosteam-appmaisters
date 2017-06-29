@@ -45,7 +45,7 @@
 
     
 
-    self.fzaTblView.allowMultipleSectionsOpen = YES;
+    self.fzaTblView.allowMultipleSectionsOpen = NO;
     [self.fzaTblView registerNib:[UINib nibWithNibName:@"AccordionHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:kAccordionHeaderViewReuseIdentifier];
     
     self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -147,6 +147,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SideMenuCell *cell =  (SideMenuCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SideMenuCell class]) forIndexPath:indexPath];
     
+
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     NSDictionary *dict = _contentArr[indexPath.section];
@@ -156,8 +159,7 @@
     cell.categorytitleLbl.text = [dictSubCat valueForKey:MAIN_CAT_TITLE];
     [cell.iconImageVw setImage:[[UIImage imageNamed:@"slide-menu-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
-    StyleValuesObject *obj = [Configuration getStyleValueContent];
-    
+    [cell.iconImageVw setTintColor:[UIColor colorWithHexString:obj.menutextcolor]];
     [cell.categorytitleLbl setTextColor:[UIColor colorWithHexString:obj.menutextcolor]];
 
     
@@ -200,15 +202,23 @@
     }
     
     UIImage *image = [[UIImage imageNamed:[dict valueForKey:MAIN_CAT_IMAGE]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+    UIImage *image_arrow = [[UIImage imageNamed:@"slide-menu-arrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 
-    
-    
+
+
     StyleValuesObject *obj = [Configuration getStyleValueContent];
     
     [objFZAccordionTableViewHeaderView.sectionTitle setTextColor:[UIColor colorWithHexString:obj.menutextcolor]];
 
     [objFZAccordionTableViewHeaderView.sectionTitle setText:[dict valueForKey:MAIN_CAT_TITLE]];
     [objFZAccordionTableViewHeaderView.sectionImageVw setImage:image];
+    [objFZAccordionTableViewHeaderView.arrowImageView setImage:image_arrow];
+
+    [objFZAccordionTableViewHeaderView.sectionImageVw setTintColor:[UIColor colorWithHexString:obj.menutextcolor]];
+    [objFZAccordionTableViewHeaderView.arrowImageView setTintColor:[UIColor colorWithHexString:obj.menutextcolor]];
+
+    
     objFZAccordionTableViewHeaderView.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
 
     return (UIView *)objFZAccordionTableViewHeaderView;
