@@ -33,8 +33,8 @@
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:[ShareOneUtility getTestFairyID]];
-    
-    [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey]];
+//    NSLog(@"Map Key : %@",[ShareOneUtility getGoogleMapKey_old]);
+    [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey_old]];
     
     [self registerForPushNotifications:application];
 

@@ -1396,7 +1396,7 @@
 					6BD405861D81B59200358036 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = USNDVZCA3F;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 0;
@@ -1775,8 +1775,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1788,8 +1788,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "af987ef8-22b3-4e5c-877b-efe07458bea3";
+				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
 			};
 			name = Debug;
 		};
@@ -1799,8 +1799,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Bush (G3487YQ6F8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1812,8 +1812,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "af987ef8-22b3-4e5c-877b-efe07458bea3";
+				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
 			};
 			name = Release;
 		};

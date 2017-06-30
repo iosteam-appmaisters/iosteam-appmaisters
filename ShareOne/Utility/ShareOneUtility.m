@@ -1584,6 +1584,12 @@ NSLog(Y, Z);		\
     return kkey;
 }
 
++(NSString *)getGoogleMapKey_old{
+    Configuration *config = [self getConfigurationFile];
+    return  config.googleApiKey;
+}
+
+
 +(NSString *)getCoOpID{
     NSString *CoOpId = [Configuration getCoOpID];
     return  CoOpId;

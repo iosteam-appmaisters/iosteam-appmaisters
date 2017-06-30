@@ -198,6 +198,7 @@
 +(NSString *)getCreditUnionPrivateKey;
 +(NSString *)getSecurityVersion;
 +(NSString *)getHMACType;
++(NSString *)getGoogleMapKey_old;
 
 +(BOOL)hasShownTutorialsBefore;
 
