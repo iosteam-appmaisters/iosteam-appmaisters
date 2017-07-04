@@ -138,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1101"
-            endingLineNumber = "1101"
-            landmarkName = "-postRequestForConfigurationWithParameters:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            startingLineNumber = "1103"
+            endingLineNumber = "1103"
+            landmarkName = "-getLocalizeErrorMessageForInternetConnection:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1096"
-            endingLineNumber = "1096"
-            landmarkName = "-postRequestForConfigurationWithParameters:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            startingLineNumber = "1098"
+            endingLineNumber = "1098"
+            landmarkName = "-parseResponseToJsonWithData:"
             landmarkType = "7">
             <Locations>
                <Location
@@ -234,12 +234,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
-            timestampString = "514911877.493329"
+            timestampString = "518952363.94776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "-tableView:estimatedHeightForHeaderInSection:"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-tableView:estimatedHeightForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -266,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
-            timestampString = "514911877.493329"
+            timestampString = "518952363.94776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-tableView:heightForRowAtIndexPath:"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-numberOfSectionsInTableView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -314,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511176288.371471"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "919"
-            endingLineNumber = "919"
-            landmarkName = "+getAESEncryption:andEncoding:AndKey:"
+            startingLineNumber = "929"
+            endingLineNumber = "929"
+            landmarkName = "+calculateHMACMD5:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "-getRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "-postRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,12 +474,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
-            landmarkName = "-getRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "-postRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "-postRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "-getRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -602,23 +602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "510046855.167492"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "713"
-            endingLineNumber = "713"
-            landmarkName = "+createBodyWithBoundary:parameters:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "510046855.167492"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "723"
@@ -633,12 +617,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            filePath = "ShareOne/Utility/ShareOneUtility.m"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "446"
-            endingLineNumber = "446"
+            startingLineNumber = "733"
+            endingLineNumber = "733"
+            landmarkName = "+createBodyWithBoundary:parameters:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
+            timestampString = "519039773.59462"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "-getRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,12 +650,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/MobileDepositController/MobileDepositController.m"
-            timestampString = "512465138.312291"
+            timestampString = "519029303.640176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
-            landmarkName = "-managePickerView"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
+            landmarkName = "-loadDataOnPickerView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -682,12 +682,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/MobileDepositController/MobileDepositController.m"
-            timestampString = "512465138.312291"
+            timestampString = "519029303.640176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "831"
-            endingLineNumber = "831"
-            landmarkName = "-onPictureTaken:withBWImage:results:isFront:"
+            startingLineNumber = "827"
+            endingLineNumber = "827"
+            landmarkName = "-loadCamera:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -735,7 +735,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "613"
             endingLineNumber = "613"
-            landmarkName = "-bringAdvertismentFront"
+            landmarkName = "-logoutOnGoingBackground"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511178688.574087"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1150"
-            endingLineNumber = "1150"
+            startingLineNumber = "1160"
+            endingLineNumber = "1160"
             landmarkName = "+doCipher:key:context:padding:"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "+applyEncriptionWithPrivateKey:andPublicKey:"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,27 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511178688.574087"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1318"
-            endingLineNumber = "1318"
-            landmarkName = "+getAccountTypeWithSuffix:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511178688.574087"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1339"
-            endingLineNumber = "1339"
+            startingLineNumber = "1328"
+            endingLineNumber = "1328"
             landmarkName = "+encryptionByFBEncryptorAESWithContextID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -826,11 +810,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511178688.574087"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1347"
-            endingLineNumber = "1347"
+            startingLineNumber = "1349"
+            endingLineNumber = "1349"
+            landmarkName = "+encryptionByFBEncryptorAESWithContextID:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Utility/ShareOneUtility.m"
+            timestampString = "518609706.508603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1357"
+            endingLineNumber = "1357"
             landmarkName = "+encryptionByFBEncryptorAESWithContextID:"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "696"
-            endingLineNumber = "696"
+            startingLineNumber = "697"
+            endingLineNumber = "697"
             landmarkName = "-deleteRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -858,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "690"
-            endingLineNumber = "690"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
             landmarkName = "-deleteRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
-            timestampString = "514911659.360762"
+            timestampString = "518952363.94776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-backgroundButtonClicked:"
             landmarkType = "7">
             <Locations>
@@ -1023,7 +1023,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "210"
             endingLineNumber = "210"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "-webViewDidStartLoad:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1096,11 +1096,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
-            timestampString = "514912221.691036"
+            timestampString = "518955095.98369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235">
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "-tableView:didOpenSection:withHeader:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1110,12 +1112,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "+hideProgressViewOnView:"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "+saveUserObject:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1126,11 +1128,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "723"
-            endingLineNumber = "723"
+            startingLineNumber = "724"
+            endingLineNumber = "724"
             landmarkName = "-deleteRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1174,11 +1176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "510046855.167492"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "766"
-            endingLineNumber = "766"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
             landmarkName = "+setPreferencesOnLaunch"
             landmarkType = "7">
          </BreakpointContent>
@@ -1190,11 +1192,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "+saveUserObjectToLocalObjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1218,7 +1220,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/VertifiAgreemantViewController/VertifiAgreemantController.m"
@@ -1234,7 +1236,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/VertifiAgreemantViewController/VertifiAgreemantController.m"
@@ -1387,7 +1389,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "638"
             endingLineNumber = "638"
-            landmarkName = "-addControllerToChangeUserName:"
+            landmarkName = "-startLoadingServicesFromChangePassword:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1414,11 +1416,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1193"
-            endingLineNumber = "1193">
+            startingLineNumber = "1195"
+            endingLineNumber = "1195">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1428,12 +1430,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1042"
-            endingLineNumber = "1042"
-            landmarkName = "-parseErrorObject:"
+            startingLineNumber = "1044"
+            endingLineNumber = "1044"
+            landmarkName = "-getErrorObjectWithStatusMessage:andStatusCode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1444,11 +1446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1593,7 +1595,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "963"
             endingLineNumber = "963"
-            landmarkName = "-adjustTextFeildPositionForTextFeild:"
+            landmarkName = "-textFieldShouldBeginEditing:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1609,7 +1611,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "973"
             endingLineNumber = "973"
-            landmarkName = "-supportedInterfaceOrientations"
+            landmarkName = "-adjustTextFeildPositionForTextFeild:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1620,11 +1622,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1149"
-            endingLineNumber = "1149">
+            startingLineNumber = "1151"
+            endingLineNumber = "1151">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1666,11 +1668,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1012"
-            endingLineNumber = "1012"
+            startingLineNumber = "1014"
+            endingLineNumber = "1014"
             landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1682,11 +1684,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "562"
-            endingLineNumber = "562"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
             landmarkName = "-putRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1714,11 +1716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "639"
+            endingLineNumber = "639"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1734,9 +1736,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "693"
-            endingLineNumber = "693"
-            landmarkName = "-appComingFromBackground"
-            landmarkType = "7">
+            endingLineNumber = "693">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1842,11 +1842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1874,12 +1874,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "672"
-            endingLineNumber = "672"
-            landmarkName = "-deleteRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            startingLineNumber = "673"
+            endingLineNumber = "673"
+            landmarkName = "-URLSession:dataTask:didReceiveResponse:completionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1911,7 +1911,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "-userNotificationCenter:willPresentNotification:withCompletionHandler:"
+            landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1943,7 +1943,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "-userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:"
+            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1986,12 +1986,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
-            landmarkName = "+saveUserObject:"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
+            landmarkName = "+getUserObject"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2018,11 +2018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
             landmarkName = "+saveUserObjectToLocalObjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2103,7 +2103,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "932"
             endingLineNumber = "932"
-            landmarkName = "-moveViewDown"
+            landmarkName = "-moveViewUp"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2119,7 +2119,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "961"
             endingLineNumber = "961"
-            landmarkName = "-adjustTextFeildPositionForTextFeild:"
+            landmarkName = "-textFieldShouldBeginEditing:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2130,12 +2130,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511178688.574087"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1388"
-            endingLineNumber = "1388"
-            landmarkName = "+saveMenuItemObjectForTouchIDAuthentication:"
+            startingLineNumber = "1398"
+            endingLineNumber = "1398"
+            landmarkName = "+getMenuItemForTouchIDAuthentication"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2274,11 +2274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "626"
-            endingLineNumber = "626"
+            startingLineNumber = "627"
+            endingLineNumber = "627"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2359,7 +2359,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "-askAutoLoginOnEnteringBackGround"
+            landmarkName = "-appGoingToBackgroundFromLogin"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2402,12 +2402,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "510046855.167492"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "+getSavedObjectOfCurrentLoginUser:"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
+            landmarkName = "+savedQBHeaderInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2418,12 +2418,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "510046855.167492"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "541"
-            endingLineNumber = "541"
-            landmarkName = "+savedSuffixInfo:"
+            startingLineNumber = "551"
+            endingLineNumber = "551"
+            landmarkName = "+savedDevicesInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2786,11 +2786,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "+saveUserObjectToLocalObjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2930,27 +2930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
-            landmarkName = "+changeToExistingUser:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "+saveUserObjectToLocalObjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2962,11 +2946,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
+            landmarkName = "+saveUserObjectToLocalObjects:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Utility/ShareOneUtility.m"
+            timestampString = "518609706.508603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "+saveUserObjectToLocalObjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3063,7 +3063,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "944"
             endingLineNumber = "944"
-            landmarkName = "-textFieldShouldReturn:"
+            landmarkName = "-moveViewDown"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3079,7 +3079,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "957"
             endingLineNumber = "957"
-            landmarkName = "-adjustTextFeildPositionForTextFeild:"
+            landmarkName = "-textFieldDidEndEditing:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3106,11 +3106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
+            startingLineNumber = "636"
+            endingLineNumber = "636"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3122,11 +3122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "633"
-            endingLineNumber = "633"
+            startingLineNumber = "634"
+            endingLineNumber = "634"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3138,11 +3138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "640"
-            endingLineNumber = "640"
+            startingLineNumber = "641"
+            endingLineNumber = "641"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3202,12 +3202,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/MobileDepositController/MobileDepositController.m"
-            timestampString = "512465138.312291"
+            timestampString = "519029303.640176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-submittButtonClicked:"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-getRegisterToVirtifiToCheckStatus"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3255,7 +3255,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3298,12 +3298,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "510046855.167492"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "616"
-            endingLineNumber = "616"
-            landmarkName = "+getSignedINSignature"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
+            landmarkName = "+getSettingsWithKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3346,11 +3346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "+changeToExistingUser:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3522,12 +3522,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "+saveUserObject:"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "+changeToExistingUser:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3538,11 +3538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "509452235.627619"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "+saveUserObjectToLocalObjects:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3554,11 +3554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "517398033.627299"
+            timestampString = "519047262.386292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1674"
-            endingLineNumber = "1674">
+            startingLineNumber = "1690"
+            endingLineNumber = "1690">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3584,11 +3584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/UIViews/UILabels/CustomLabel.m"
-            timestampString = "509552233.917151"
+            timestampString = "518955926.349368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "-initialize"
             landmarkType = "7">
          </BreakpointContent>
@@ -3664,12 +3664,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
-            timestampString = "514911055.951969"
+            timestampString = "518602845.265141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "+getConfiguration"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-initWithDictionary:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3680,12 +3680,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511176288.371471"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "884"
-            endingLineNumber = "884"
-            landmarkName = "+getHMACSHAWithSignature:andEncoding:AndKey:"
+            startingLineNumber = "894"
+            endingLineNumber = "894"
+            landmarkName = "+getAESEncryption:andEncoding:AndKey:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3728,11 +3728,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
-            timestampString = "514912221.691036"
+            timestampString = "518955095.98369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-tableView:viewForHeaderInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3744,12 +3744,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "517398033.627299"
+            timestampString = "519047262.386292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1584"
-            endingLineNumber = "1584"
-            landmarkName = "+getCoOpID"
+            startingLineNumber = "1597"
+            endingLineNumber = "1597"
+            landmarkName = "+getSSOBaseUrl"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3776,11 +3776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "583"
-            endingLineNumber = "583"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
             landmarkName = "-getMethod:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3792,11 +3792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513514079.590517"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-getRequestForConfigAPIWithAuthHeader:andProgressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3840,11 +3840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/SplashViewController/SplashViewController.m"
-            timestampString = "510758553.212458"
+            timestampString = "519031122.979058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "-showNextViewController"
             landmarkType = "7">
          </BreakpointContent>
@@ -3872,12 +3872,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511168014.282736"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "792"
-            endingLineNumber = "792"
-            landmarkName = "+getSecretKey"
+            startingLineNumber = "802"
+            endingLineNumber = "802"
+            landmarkName = "+getRoutingValue"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3888,13 +3888,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "511178675.63942"
+            timestampString = "518609706.508603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "959"
-            endingLineNumber = "959"
-            landmarkName = "@implementation ShareOneUtility"
-            landmarkType = "3">
+            startingLineNumber = "969"
+            endingLineNumber = "969"
+            landmarkName = "+getUUID"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3952,11 +3952,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1006"
-            endingLineNumber = "1006"
+            startingLineNumber = "1008"
+            endingLineNumber = "1008"
             landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
             landmarkType = "7">
             <Locations>
@@ -4000,12 +4000,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
-            timestampString = "513515948.893083"
+            timestampString = "519039773.59462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "953"
-            endingLineNumber = "953"
-            landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
+            startingLineNumber = "955"
+            endingLineNumber = "955"
+            landmarkName = "-createBatchOfRequestsWithObject:requestCompletionBlock:requestFailureBlock:queueCompletionBlock:queueFailureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4048,12 +4048,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
-            timestampString = "514911659.360762"
+            timestampString = "518952363.94776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-backgroundButtonClicked:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-userDidSwipe:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4064,11 +4064,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
-            timestampString = "515055979.772095"
+            timestampString = "519039897.117841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123">
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "+getAllMenuItemsIncludeHiddenItems:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4078,11 +4080,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
-            timestampString = "516015716.81395"
+            timestampString = "519123763.271166"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "518"
+            endingLineNumber = "518"
             landmarkName = "-pushViewControllerWithObject:"
             landmarkType = "7">
          </BreakpointContent>
@@ -4090,15 +4092,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
-            timestampString = "515402060.489981"
+            timestampString = "519039897.117841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75">
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "+getPlistFileWithName:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4113,7 +4117,167 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "-addAdvertismentControllerOnBottomScreen"
+            landmarkName = "@implementation BaseViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/ConfigurationPlistEntity/ApiSettingsObject.m"
+            timestampString = "518603110.382482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "+parseClientSettings:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
+            timestampString = "519039897.117841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "+getBaseUrl"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
+            timestampString = "518955095.98369"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
+            timestampString = "519039399.489682"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "+getConfigurationWithDelegate:completionBlock:failureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
+            timestampString = "519039897.117841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "+getConfigurationWithDelegate:completionBlock:failureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/SplashViewController/SplashViewController.m"
+            timestampString = "519039409.313593"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-showNextViewController"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
+            timestampString = "519039799.044752"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "-postRequestForConfigAPIWithParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
+            timestampString = "519115710.257292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "914"
+            endingLineNumber = "914"
+            landmarkName = "-createBatchOfRequestsWithObject:requestCompletionBlock:requestFailureBlock:queueCompletionBlock:queueFailureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Model/ServiceModel/AppServiceModel.m"
+            timestampString = "519115716.908985"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "919"
+            endingLineNumber = "919"
+            landmarkName = "-createBatchOfRequestsWithObject:requestCompletionBlock:requestFailureBlock:queueCompletionBlock:queueFailureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/ConfigurationPlistEntity/Configuration.m"
+            timestampString = "519115809.999014"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "+getMaintenanceVerbiage"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
