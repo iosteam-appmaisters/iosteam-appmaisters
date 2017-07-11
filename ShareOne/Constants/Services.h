@@ -169,6 +169,7 @@
 #define REQ_HEADER                                      @"REQ_HEADER"
 #define REQ_PARAM                                       @"REQ_PARAM"
 #define REQ_HEADER_CONFIGURATION                        @"REQ_HEADER_CONFIGURATION"
+#define ETAG_HEADER                                     @"ETAG_HEADER"
 
 
 #endif

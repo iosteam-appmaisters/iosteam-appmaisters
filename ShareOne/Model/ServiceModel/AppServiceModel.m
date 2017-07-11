@@ -902,9 +902,13 @@
             [self setHeaderOnRequest:req withAuth:dict[REQ_HEADER]];
         }
         
+
+
         if(dict[REQ_HEADER_CONFIGURATION]){
+            [req setValue:dict[ETAG_HEADER] forHTTPHeaderField:@"If-None-Match"];
             [req setValue:dict[REQ_HEADER_CONFIGURATION] forHTTPHeaderField:@"Authorization"];
         }
+
 
         HTTPRequestOperation *operation = [[HTTPRequestOperation alloc] initWithRequest:req];
         [operation setCompletionBlock:^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -920,6 +924,8 @@
                 
                 NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
                 //NSLog(@"Headers : %@",headers);
+                
+
                     
                 NSString *errorString = [headers valueForKey:@"ApiResponse"];
                     
@@ -932,8 +938,10 @@
                 queueCustomError= customError;
                 [self hideProgressAlert];
                 
-                
-                failReqBlock(error);
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+//                NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+                if([httpResponse statusCode]!=304)
+                    failReqBlock(error);
                 NSLog(@"operation setCompletionBlock %@",[error localizedDescription]);
             }
         }];
@@ -954,7 +962,12 @@
         if(reqError){
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-            queueBlock(FALSE,queueCustomError);
+            NSLog(@"%d",[reqError code]);
+            if(![reqError.localizedDescription containsString:@"304"])
+                queueBlock(FALSE,queueCustomError);
+            else
+                queueBlock(TRUE,queueCustomError);
+
         }
         else{
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -987,7 +1000,7 @@
     }
     
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
     AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
     responseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:responseSerializer];
@@ -1006,9 +1019,20 @@
             reqError= error;
             
             if(reqError){
-                NSLog(@"Here it comes");
+                NSLog(@"Error On URL : %@",response.URL.absoluteString);
             }
             if (operation.completionBlock) {
+                
+                NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+                //NSLog(@"%@",headers);
+                if([headers valueForKey:@"Etag"]){
+                    [ShareOneUtility parseETag:[headers valueForKey:@"Etag"] WithUrl:response.URL.absoluteString];
+                }
+                NSDictionary* headersME = [(NSHTTPURLResponse *)response allHeaderFields];
+
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+//                NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
+
                 operation.completionBlock(response, responseObject, error);
             }
             

@@ -210,4 +210,10 @@
 +(NSString *)getDocumentsDirectoryPathWithFileName:(NSString *)plistName;
 +(NSString *)getErrorMessage;
 
++ (NSString *)getETagWithKey:(NSString *)key;
++ (void)saveETag:(NSString *)eTag withKey:(NSString *)key;
+
+
++(void)parseETag:(NSString *)eTag WithUrl:(NSString *)url;
+
 @end

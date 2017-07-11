@@ -155,7 +155,7 @@
 
 -(IBAction)showAllBranchesonMapButtonClicked:(id)sender
 {
-    ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ATMLocationViewController"];
+    ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"surchargeFreeAtms"];
     atmNavigationViewController.locationArr=_contentArr;
     atmNavigationViewController.navigationItem.title=self.navigationItem.title;
     [self.navigationController pushViewController:atmNavigationViewController animated:YES];

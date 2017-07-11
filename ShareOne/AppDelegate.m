@@ -30,7 +30,6 @@
 //    [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     
     
-    
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:[ShareOneUtility getTestFairyID]];
 //    NSLog(@"Map Key : %@",[ShareOneUtility getGoogleMapKey_old]);
