@@ -107,7 +107,7 @@
         for (NSString* key in locationDict) {
             id value = [locationDict objectForKey:key];
             
-//            NSLog(@"locationDict : %@",locationDict);
+            NSLog(@"locationDict : %@",locationDict);
             SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
 //                                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
             if (value != [NSNull null]) {

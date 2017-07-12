@@ -53,7 +53,7 @@
 @property(nonatomic,strong) NSString *id;
 @property(nonatomic,strong) NSString *installationType;
 @property(nonatomic,strong) NSString *installationTypeId;
-@property(nonatomic,strong) NSString *institutionName;
+@property(nonatomic,strong) NSString *institutionname;
 @property(nonatomic,strong) NSString *institutionRtn;
 @property(nonatomic,strong) NSString *latitude;
 @property(nonatomic,strong) NSString *limitedTransactions;
@@ -104,6 +104,7 @@
 @property(nonatomic,strong) NSString *wednesdayOpen;
 @property(nonatomic,strong) NSString *zip;
 @property(nonatomic,strong) NSString *zip4;
+
 
 
 

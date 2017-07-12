@@ -26,6 +26,7 @@
 
 }
 @property (nonatomic,strong) IBOutlet GMSMapView *mapView;
+@property (nonatomic,strong) NSMutableArray *markers;
 
 -(void)drawRoute;
 
@@ -166,6 +167,7 @@
 
 -(void)createGoogleMapMarker:(GMSMapView *)mapView
 {
+    _markers=[[NSMutableArray alloc] init];
     // Creates a marker in the center of the map.
     for(int count=0; count<[_locationArr count]; count++){
         
@@ -194,8 +196,8 @@
             lat_local=[[objLocation latitude] floatValue];
             lon_local=[[objLocation longitude] floatValue];
             marker.position = CLLocationCoordinate2DMake(lat_local, lon_local);
-            address=(NSString *)objLocation.address;
-            addressDetails= objLocation.city;
+            address=(NSString *)objLocation.institutionname;
+            addressDetails= [NSString stringWithFormat:@"%@, %@",objLocation.city,objLocation.state];
 
         }
         else{
@@ -203,17 +205,29 @@
             lon_local=[[objLocation Gpslongitude] floatValue];
             marker.position = CLLocationCoordinate2DMake(lat_local, lon_local);
             address=objLocation.address.Address1;
-            addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
+            addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.State];
         }
         
         marker.title = address;
         marker.snippet =addressDetails;
         marker.map = mapView;
-        
+        [_markers addObject:marker];
         if(_showMyLocationOnly)
             break;
     }
+//    [self focusMapToShowAllMarkers];
+}
+
+- (void)focusMapToShowAllMarkers
+{
     
+    CLLocationCoordinate2D myLocation = ((GMSMarker *)_markers.firstObject).position;
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:myLocation coordinate:myLocation];
+    
+    for (GMSMarker *marker in _markers)
+        bounds = [bounds includingCoordinate:marker.position];
+    
+    [_mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds withPadding:15.0f]];
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker{

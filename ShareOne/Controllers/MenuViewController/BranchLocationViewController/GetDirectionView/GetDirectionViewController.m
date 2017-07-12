@@ -10,7 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "LRouteController.h"
 #import "ShareOneUtility.h"
-
+#import "Location.h"
 @interface GetDirectionViewController ()<GMSMapViewDelegate>
 {
     LRouteController *_routeController;
@@ -87,33 +87,30 @@
         if(count==0)
         {
             
-            tittle=@"Pickup";
             _markerFinish = [GMSMarker new];
             _markerFinish.position = CLLocationCoordinate2DMake(lat, lon);
-//            _markerFinish.title = @"Pickup Point";
-            _markerFinish.snippet = @"";
-            
-            
+            Location *objLocation = _locationArr[_selectedIndex];
+           NSString *address=objLocation.address.Address1;
+           NSString *addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.State];
+
+            _markerFinish.title = address;
+            _markerFinish.snippet = addressDetails;
+
             _markerFinish.map = self.mapView;
             _markerFinish.icon = [UIImage imageNamed:@"pushpin_PassengerOnBoard.png"];
-            //_markerFinish.flat = YES;
             
             [self.mapView setSelectedMarker:_markerFinish];
             
         }
         else
         {
-            tittle=@"Destination";
             _markerStart = [GMSMarker new];
             _markerStart.position = CLLocationCoordinate2DMake(lat, lon);
-            _markerStart.title = @"";
-            _markerStart.snippet = @"";
-            // _markerStart.flat = YES;
             
-            
+            _markerStart.title = @"Current Location";
+
             _markerStart.map = self.mapView;
             _markerStart.icon = [UIImage imageNamed:@"Destination.png"];
-            //[mapView_ setSelectedMarker:_markerStart];
         }
     }
     [self setpolyLine];
@@ -121,41 +118,34 @@
 
 -(void)noRouteFound{
     
-    for(int count=0; count<[LocationArr count]; count++)
+    _markerStart.map=nil;
+    
+    for(int count=1; count<[LocationArr count]; count++)
     {
         NSArray *latlongArr=[[LocationArr objectAtIndex:count] componentsSeparatedByString:@","];
         float lat=[[latlongArr objectAtIndex:0] floatValue];
         float lon=[[latlongArr objectAtIndex:1] floatValue];
-        if(count==0)
+        if(count==1)
         {
-            
-            tittle=@"Pickup";
             _markerFinish = [GMSMarker new];
             _markerFinish.position = CLLocationCoordinate2DMake(lat, lon);
-            //            _markerFinish.title = @"Pickup Point";
-            _markerFinish.snippet = @"";
+            Location *objLocation = _locationArr[_selectedIndex];
+            NSString *address=objLocation.address.Address1;
+            NSString *addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.State];
             
+            _markerFinish.title = address;
+            _markerFinish.snippet = addressDetails;
             
             _markerFinish.map = self.mapView;
             _markerFinish.icon = [UIImage imageNamed:@"pushpin_PassengerOnBoard.png"];
-            //_markerFinish.flat = YES;
             
             [self.mapView setSelectedMarker:_markerFinish];
+
+            
             
         }
         else
         {
-            tittle=@"Destination";
-            _markerStart = [GMSMarker new];
-            _markerStart.position = CLLocationCoordinate2DMake(lat, lon);
-            _markerStart.title = @"";
-            _markerStart.snippet = @"";
-            // _markerStart.flat = YES;
-            
-            
-            _markerStart.map = self.mapView;
-            _markerStart.icon = [UIImage imageNamed:@"Destination.png"];
-            //[mapView_ setSelectedMarker:_markerStart];
         }
     }
 
@@ -164,8 +154,8 @@
 {
     _routeController = [LRouteController new];
     _polyline.map = nil;
-    _markerStart.map = nil;
-    _markerFinish.map = nil;
+//    _markerStart.map = nil;
+//    _markerFinish.map = nil;
     _coordinates=[[NSMutableArray alloc] init];
     for (int count=0; count<2; count++)
         {

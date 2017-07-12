@@ -142,9 +142,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1127"
-            endingLineNumber = "1127"
-            landmarkName = "-getLocalizeErrorMessageForInternetConnection:"
-            landmarkType = "7">
+            endingLineNumber = "1127">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,9 +156,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1122"
-            endingLineNumber = "1122"
-            landmarkName = "-parseResponseToJsonWithData:"
-            landmarkType = "7">
+            endingLineNumber = "1122">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -479,7 +475,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "398"
             endingLineNumber = "398"
-            landmarkName = "-postRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            landmarkName = "-getRequestForSSOWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1433,7 +1429,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1068"
             endingLineNumber = "1068"
-            landmarkName = "-getErrorObjectWithStatusMessage:andStatusCode:"
+            landmarkName = "-parseResponseToJsonWithData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1671,7 +1667,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1038"
             endingLineNumber = "1038"
-            landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
+            landmarkName = "-parseErrorObject:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1877,7 +1873,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "673"
             endingLineNumber = "673"
-            landmarkName = "-URLSession:dataTask:didReceiveResponse:completionHandler:"
+            landmarkName = "-deleteRequestWithAuthHeader:AndParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2143,28 +2139,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShareOne/Entity/Locations/Location.m"
-            timestampString = "504774655.16545"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-initWithDictionary:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510236457.462024"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-createGoogleMapMarker:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2176,11 +2156,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510235230.263553"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-initGoogleMap"
             landmarkType = "7">
          </BreakpointContent>
@@ -2192,11 +2172,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510236457.462024"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-createGoogleMapMarker:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2614,22 +2594,6 @@
             startingLineNumber = "128"
             endingLineNumber = "128"
             landmarkName = "-createCurrentLocation"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/BranchLocationViewController/GetDirectionView/GetDirectionViewController.m"
-            timestampString = "510236287.578653"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-createGoogleMapMarker:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3088,11 +3052,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510235230.263553"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-createCurrentLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -3376,11 +3340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510235230.263553"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-getData"
             landmarkType = "7">
          </BreakpointContent>
@@ -3392,11 +3356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510236457.462024"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-createGoogleMapMarker:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3408,27 +3372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510236457.462024"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-createGoogleMapMarker:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510236457.462024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "-createGoogleMapMarker:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3472,11 +3420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/BranchLocationViewController/GetDirectionView/GetDirectionViewController.m"
-            timestampString = "510236287.578653"
+            timestampString = "521538819.207331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-setpolyLine"
             landmarkType = "7">
          </BreakpointContent>
@@ -3488,11 +3436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510236457.462024"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "-drawRoute"
             landmarkType = "7">
          </BreakpointContent>
@@ -3694,11 +3642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
-            timestampString = "510235230.263553"
+            timestampString = "521538297.786466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-getData"
             landmarkType = "7">
          </BreakpointContent>
@@ -4163,7 +4111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
             endingLineNumber = "302"
-            landmarkName = "-postRequestForConfigAPIWithParam:progressMessage:urlString:delegate:completionBlock:failureBlock:"
+            landmarkName = "-getRequestForConfigAPIWithAuthHeader:andProgressMessage:urlString:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4243,7 +4191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1021"
             endingLineNumber = "1021"
-            landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
+            landmarkName = "-getErrorObjectWithStatusMessage:andStatusCode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4323,7 +4271,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1033"
             endingLineNumber = "1033"
-            landmarkName = "-concurrentBatchOfRequestOperations:progressBlock:completionBlock:"
+            landmarkName = "-getErrorObjectWithStatusMessage:andStatusCode:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4356,6 +4304,86 @@
             startingLineNumber = "167"
             endingLineNumber = "167"
             landmarkName = "+setConfigurationQueueWithDelegate:withContentDict:completionBlock:failureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/BranchLocationViewController/GetDirectionView/GetDirectionViewController.m"
+            timestampString = "521532957.442179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-createGoogleMapMarker:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/BranchLocationViewController/GetDirectionView/GetDirectionViewController.m"
+            timestampString = "521534958.051972"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-createGoogleMapMarker:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/ATMLocationViewController/ATMLocationViewController.m"
+            timestampString = "521538306.038635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-focusMapToShowAllMarkers"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/BranchLocationViewController/GetDirectionView/GetDirectionViewController.m"
+            timestampString = "521538617.901249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-noRouteFound"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/Locations/Location.m"
+            timestampString = "521544736.066893"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "+getAllBranchLocations:delegate:completionBlock:failureBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
