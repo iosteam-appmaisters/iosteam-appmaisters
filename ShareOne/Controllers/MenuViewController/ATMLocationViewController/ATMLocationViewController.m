@@ -197,7 +197,7 @@
             lon_local=[[objLocation longitude] floatValue];
             marker.position = CLLocationCoordinate2DMake(lat_local, lon_local);
             address=(NSString *)objLocation.institutionname;
-            addressDetails= [NSString stringWithFormat:@"%@, %@",objLocation.city,objLocation.state];
+            addressDetails= [NSString stringWithFormat:@"%@, %@, %@",objLocation.address,objLocation.city,objLocation.state];
 
         }
         else{
