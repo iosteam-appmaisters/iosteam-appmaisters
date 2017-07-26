@@ -26,9 +26,11 @@
 
 -(void)showNextViewController{
     
-    if([[SharedUser sharedManager] isLaunchFirstTime]){
+    if([ShareOneUtility isConfigDataNotExistedOrReSkinSettingIsOn] || [[SharedUser sharedManager] isCallingNSConfigServices]){
         
         NSLog(@"FIRST TIME LAUNCH");
+        [[SharedUser sharedManager] setIsCallingNSConfigServices:FALSE];
+
         [self showIndicaterView];
         [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
             [self hideIndicaterView];

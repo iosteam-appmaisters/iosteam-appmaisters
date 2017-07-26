@@ -316,6 +316,7 @@
         self.isShowOffersOpen = [decoder decodeBoolForKey:@"isShowOffersOpen"];
         self.isQBOpen = [decoder decodeBoolForKey:@"isQBOpen"];
         self.isTouchIDOpen = [decoder decodeBoolForKey:@"isTouchIDOpen"];
+        self.isReSkinOn=[decoder decodeBoolForKey:@"isReSkinOn"];
         self.hasUserAcceptedVertifiAgremant = [decoder decodeBoolForKey:@"hasUserAcceptedVertifiAgremant"];
         self.hasUserUpdatedNotificationSettings = [decoder decodeBoolForKey:@"hasUserUpdatedNotificationSettings"];
         self.hasUserUpdatedTouchIDSettings = [decoder decodeBoolForKey:@"hasUserUpdatedTouchIDSettings"];
@@ -360,6 +361,7 @@
     [encoder encodeObject: self.Email forKey:@"Email"];
     [encoder encodeObject: self.favouriteContactsArray forKey:@"favouriteContactsArray"];
     [encoder encodeObject: self.LoginValidation forKey:@"LoginValidation"];
+    [encoder encodeBool:self.isReSkinOn forKey:@"isReSkinOn"];
 
 
 

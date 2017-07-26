@@ -143,7 +143,7 @@
                                         <rect key="frame" x="20" y="121.66666666666669" width="374" height="97"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="25" width="333" height="40"/>
+                                                <rect key="frame" x="21" y="19" width="384" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -164,7 +164,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="249.66666666666671" y="68" width="70.333333333333286" height="24"/>
+                                                <rect key="frame" x="309.66666666666674" y="68" width="70.333333333333314" height="24"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -172,7 +172,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="324" y="67" width="25" height="25"/>
+                                                <rect key="frame" x="384" y="67" width="16" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -211,7 +211,7 @@
                                         <rect key="frame" x="20" y="186.66666666666669" width="374" height="45.999999999999943"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="209" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="260" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -783,7 +783,7 @@
         <scene sceneID="G2N-00-CXf">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" id="U9l-4r-dcs" customClass="CustomNavController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g2p-Tk-Tgg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g2p-Tk-Tgg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1640,19 +1640,19 @@
                                 </connections>
                             </switch>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYj-eS-w0y" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="138" width="92" height="20"/>
+                                <rect key="frame" x="20" y="138" width="92" height="99"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQB-Kf-Az2">
-                                <rect key="frame" x="345" y="133" width="51" height="31"/>
+                                <rect key="frame" x="345" y="172.66666666666666" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="CmT-ou-3oi"/>
                                 </connections>
                             </switch>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hns-Wh-a4n" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="138" width="128" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re skin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hns-Wh-a4n" customClass="PlainCustomLabel">
+                                <rect key="frame" x="20" y="178" width="57" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1660,20 +1660,20 @@
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="22"/>
                                 </variation>
                             </label>
-                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-PL-x6r">
-                                <rect key="frame" x="345" y="133" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-PL-x6r">
+                                <rect key="frame" x="345" y="172.66666666666666" width="51" height="31"/>
                                 <connections>
                                     <action selector="changeSettingsAction:" destination="fqa-N8-esj" eventType="valueChanged" id="IpX-JW-sIo"/>
                                 </connections>
                             </switch>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID will be active after you first login." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e98-J2-Pw6">
-                                <rect key="frame" x="20" y="198" width="264" height="17"/>
+                                <rect key="frame" x="20" y="237" width="264" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retina Scan will be active after your next login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN3-w5-dYq">
-                                <rect key="frame" x="20" y="235" width="289" height="17"/>
+                                <rect key="frame" x="20" y="274" width="289" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1711,7 +1711,7 @@
                             <constraint firstItem="bMw-lg-DcX" firstAttribute="top" secondItem="jMJ-fj-Obb" secondAttribute="bottom" constant="20" id="gdl-C0-D4V"/>
                             <constraint firstAttribute="trailing" secondItem="UXS-fA-tmL" secondAttribute="trailing" constant="20" id="hH0-1E-mp6"/>
                             <constraint firstItem="WB7-Zu-meI" firstAttribute="top" secondItem="5Fy-Og-Llq" secondAttribute="bottom" id="ngf-3c-UYW"/>
-                            <constraint firstItem="hns-Wh-a4n" firstAttribute="top" secondItem="jYj-eS-w0y" secondAttribute="top" id="ojL-5x-XDp"/>
+                            <constraint firstItem="hns-Wh-a4n" firstAttribute="top" secondItem="jYj-eS-w0y" secondAttribute="top" constant="40" id="ojL-5x-XDp"/>
                             <constraint firstItem="WB7-Zu-meI" firstAttribute="centerX" secondItem="v3l-J7-SAt" secondAttribute="centerX" id="uoT-38-IzN"/>
                             <constraint firstItem="LQB-Kf-Az2" firstAttribute="trailing" secondItem="UXS-fA-tmL" secondAttribute="trailing" id="xHa-pr-xJt"/>
                             <constraint firstItem="jYj-eS-w0y" firstAttribute="leading" secondItem="C9o-eA-PPU" secondAttribute="leading" id="zis-Z6-kMz"/>
@@ -1727,8 +1727,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="pushNotifSwitch" destination="NOB-PL-x6r" id="gkH-KE-sIh"/>
                         <outlet property="quickBalanceSwitch" destination="UXS-fA-tmL" id="diV-Am-FuQ"/>
+                        <outlet property="reSkinSwitch" destination="NOB-PL-x6r" id="0xc-Nd-Bl7"/>
                         <outlet property="retinaScanSwitch" destination="LQB-Kf-Az2" id="N1F-KF-wkd"/>
                         <outlet property="showOffersLbl" destination="bMw-lg-DcX" id="fId-cN-GoC"/>
                         <outlet property="showOffersSwitch" destination="Gm9-ZJ-zJ3" id="BOY-1v-flG"/>

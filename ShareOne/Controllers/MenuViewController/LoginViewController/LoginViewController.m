@@ -155,7 +155,8 @@
         }
         else{
             
-            if([[SharedUser sharedManager] isLaunchFirstTime]){
+            if([[SharedUser sharedManager] isLaunchFirstTime])
+            {
                 // if is coming after calling didFinishLaunchingWithOptions
                 
                 if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
@@ -179,8 +180,6 @@
                 else{
                     NSLog(@"isLaunchFirstTime Touch off");
                     
-//                    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-
                     
                     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
                     
@@ -208,20 +207,6 @@
                     
                     [self applyConditionsForSessionValidation];
 
-
-//                    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-//                    
-//                    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
-//                        
-//                        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-//
-//                        
-//                        [self applyConditionsForSessionValidation];
-//                        
-//                    } failureBlock:^(NSError *error) {
-//                        
-//                    }];
-
                 }
                 else{
                     // if coming from background when touch id is off
@@ -234,6 +219,7 @@
         }
     }
 
+    
     // trick : set flag when user not saved and app lauch first time
     if([[SharedUser sharedManager] isLaunchFirstTime]){
         [[SharedUser sharedManager] setIsLaunchFirstTime:FALSE];
@@ -244,28 +230,39 @@
 -(void)applyConditionsForSessionValidation{
     
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
-        [self showTouchID];
+        if([ShareOneUtility shouldCallNSConfigServices]){
+            
+            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
+            
+            
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+        else
+            [self showTouchID];
         return;
     }
 
+    // If comes from Dashboard Screen
     if([[SharedUser sharedManager] isLogingOutFromHome]){
         
-            [self validateSessionForTouchID_OffSession];
-        
+        [self validateSessionForTouchID_OffSession];
         [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
     }
+    // Coming from Login Screen
+    else{
+        
+        if([ShareOneUtility shouldCallNSConfigServices]){
+         
+            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
 
-//    if([[SharedUser sharedManager] isLogingOutFromHome]){
-//        
-//        if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![ShareOneUtility isComingFromPasswordChanged]){
-//            [self showTouchID];
-//        }
-//        else{
-//            [self validateSessionForTouchID_OffSession];
-//        }
-//        [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
-//    }
+
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+    }
 }
+
 -(void)validateSessionForTouchID_OffSession{
     
     __weak LoginViewController *weakSelf = self;
@@ -276,24 +273,31 @@
     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
 
     _isComingAfterAuthenticatingFromTouchID= TRUE;
-    // check whether session is available or not
-    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
-        NSLog(@"keepAlive from validateSessionForTouchID_OffSession");
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    if([ShareOneUtility shouldCallNSConfigServices]){
+     
+        [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+        [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
+        
+        
+        [self dismissViewControllerAnimated:NO completion:nil];
 
-        if(sucess){
-            [weakSelf startApplication];
-        }
-        else{
-            // if session not validated
-            //[[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
-            //[self performSelector:@selector(reAuthenticateLoginWithDelay) withObject:nil afterDelay:0.2];
+    }
+    else{
+        // check whether session is available or not. If its not 24 hours from NSConfig updates
+        [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+            NSLog(@"keepAlive from validateSessionForTouchID_OffSession");
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             
-        }
+            if(sucess){
+                [weakSelf startApplication];
+            }
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+
         
-    } failureBlock:^(NSError *error) {
-        
-    }];
+    }
 }
 
 -(void)reAuthenticateLoginWithDelay{
@@ -333,7 +337,6 @@
                     }
                     else{
                         // if session not validated
-                        //[[ShareOneUtility shareUtitlities] showToastWithMessage:@"Your session has been time out." title:@"" delegate:weakSelf];
                         [self performSelector:@selector(reAuthenticateLoginWithDelay) withObject:nil afterDelay:0.2];
                     }
                     

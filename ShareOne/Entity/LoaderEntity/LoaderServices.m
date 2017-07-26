@@ -123,6 +123,7 @@
 
 + (void)setConfigurationQueueWithDelegate:(id)delegate withContentDict:(NSDictionary *)dict completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
     
+    [ShareOneUtility saveDateForNSConfigAPI:nil];
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     
     
@@ -164,6 +165,7 @@
         
     } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
         
+        [ShareOneUtility configDataSaved];
         block(sucess,errorString);
         
         

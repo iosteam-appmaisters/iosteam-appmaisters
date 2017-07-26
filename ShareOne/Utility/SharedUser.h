@@ -21,6 +21,8 @@
 @property BOOL isLaunchFirstTime;
 @property BOOL isComingAfterTerminate;
 @property BOOL isLogingOutFromHome;
+@property BOOL isCallingNSConfigServices;
+
 
 
 

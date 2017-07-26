@@ -31,6 +31,8 @@
 @property (nonatomic) BOOL isShowOffersOpen;
 @property (nonatomic) BOOL isTouchIDOpen;
 @property (nonatomic) BOOL isPushNotifOpen;
+@property (nonatomic) BOOL isReSkinOn;
+
 @property (nonatomic) BOOL hasUserAcceptedVertifiAgremant;
 
 @property (nonatomic) BOOL hasUserUpdatedNotificationSettings;

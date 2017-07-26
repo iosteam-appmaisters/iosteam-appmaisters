@@ -679,19 +679,6 @@
             
         }];
     }
-
-
-//    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
-//        NSLog(@"keepAlive2");
-//        if(!sucess){
-//            [weakSelf logoutOnGoingBackground];
-//        }
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
-
-//    [self startTimerForKeepAlive];
 }
 
 -(void)startTimerForKeepAlive{

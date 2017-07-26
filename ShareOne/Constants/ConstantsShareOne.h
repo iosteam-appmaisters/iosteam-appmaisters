@@ -151,6 +151,7 @@
 #define TOUCH_ID_SETTINGS               @"TOUCH_ID_SETTINGS"
 #define RETINA_SCAN_SETTINGS            @"RETINA_SCAN_SETTINGS"
 #define PUSH_NOTIF_SETTINGS             @"PUSH_NOTIF_SETTINGS"
+#define RE_SKIN_SETTINGS                @"RE_SKIN_SETTINGS"
 #define USER_KEY                        @"USER_KEY"
 #define VERTIFI_AGREEMANT_KEY           @"VERTIFI_AGREEMANT_KEY"
 #define ALL_USER_OBJECTS                @"ALL_USER_OBJECTS"

@@ -214,6 +214,16 @@
 + (void)saveETag:(NSString *)eTag withKey:(NSString *)key;
 
 
-+(void)parseETag:(NSString *)eTag WithUrl:(NSString *)url;
++ (void)parseETag:(NSString *)eTag WithUrl:(NSString *)url;
+
++ (BOOL)shouldCallNSConfigServices;
+
++ (void)saveDateForNSConfigAPI:(NSString *)date;
+
++ (NSString *)getDateForNSConfigAPI;
+
++ (void)configDataSaved;
++ (NSString *)isConfigDataSaved;
++ (BOOL)isConfigDataNotExistedOrReSkinSettingIsOn;
 
 @end

@@ -26,13 +26,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    [GMSServices provideAPIKey:@"AIzaSyCk9jJ7SBm7NMTJNHXMxippS6LZ0MQxymw"];
     
+    
+    // Override point for customization after application launch.
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     [TestFairy begin:[ShareOneUtility getTestFairyID]];
-//    NSLog(@"Map Key : %@",[ShareOneUtility getGoogleMapKey_old]);
     [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey_old]];
     
     [self registerForPushNotifications:application];
@@ -59,38 +58,10 @@
     }
 
 
-    
-    
-//    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width/6.4);
-    //[self testService];
-    
-    //[Configuration getAllMenuItemsIncludeHiddenItems:FALSE];
-
-
-    //[self performSelector:@selector(configServiceWithDelay) withObject:nil afterDelay:0.3];
-
     return YES;
 }
 
--(void)configServiceWithDelay{
-    
-    [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
 
-}
-
--(void)testService{
-    
-//    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",REQUESTER_VALUE,@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",ROUTING_VALUE,@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValue],@"account",[ShareOneUtility  getMacForVertifi],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:nil url:kVERTIFY_MONEY_REGISTER AndLoadingMessage:@"Registering" completionBlock:^(NSObject *user) {
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
-
-}
 
 - (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application{
     NSLog(@"applicationProtectedDataWillBecomeUnavailable");
@@ -109,18 +80,6 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-//    SplashViewController* mainController = (SplashViewController*)  self.window.rootViewController;
-//    [mainController.objLoginViewController.homeNavigationViewController popToRootViewControllerAnimated:NO];
-//    [mainController.navigationController popToRootViewControllerAnimated:NO];
-//    NSLog(@"%@",mainController);
-
-//    NSString *contextId= [[[SharedUser sharedManager] userObject] ContextID];
-//    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
-//        
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

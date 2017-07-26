@@ -563,6 +563,7 @@ NSLog(Y, Z);		\
     newUser.isQBOpen=savedUser.isQBOpen;
     newUser.isShowOffersOpen=savedUser.isShowOffersOpen;
     newUser.isTouchIDOpen=savedUser.isTouchIDOpen;
+    newUser.isReSkinOn=savedUser.isReSkinOn;
 //    newUser.favouriteContactsArray=savedUser.favouriteContactsArray;
 
     
@@ -634,10 +635,12 @@ NSLog(Y, Z);		\
             flag= user.isTouchIDOpen;
         else if([key isEqualToString:SHOW_OFFERS_SETTINGS])
             flag= user.isShowOffersOpen;
+        else if([key isEqualToString:RE_SKIN_SETTINGS])
+            flag= user.isReSkinOn;
+        
     }
     return flag;
     
-//    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
 }
 
 + (void)saveSettingsWithStatus:(BOOL)flag AndKey:(NSString *)key{
@@ -659,14 +662,10 @@ NSLog(Y, Z);		\
         user.hasUserUpdatedNotificationSettings=flag;
     else if([key isEqualToString:TOUCH_ID_SETTINGS_UPDATION])
         user.hasUserUpdatedTouchIDSettings=flag;
+    else if([key isEqualToString:RE_SKIN_SETTINGS])
+        user.isReSkinOn=flag;
 
-    
-    
-    
     [self getSavedObjectOfCurrentLoginUser:user];
-
-//    [[NSUserDefaults standardUserDefaults] setBool:flag forKey:key];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSString *) randomStringWithLength: (int) len {
@@ -682,28 +681,9 @@ NSLog(Y, Z);		\
     return randomString;
 }
 
-+ (NSString *)generateBoundaryString
-{
-    return [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
++ (NSString *)generateBoundaryString{
     
-    // if supporting iOS versions prior to 6.0, you do something like:
-    //
-    // // generate boundary string
-    // //
-    // adapted from http://developer.apple.com/library/ios/#samplecode/SimpleURLConnections
-    //
-    // CFUUIDRef  uuid;
-    // NSString  *uuidStr;
-    //
-    // uuid = CFUUIDCreate(NULL);
-    // assert(uuid != NULL);
-    //
-    // uuidStr = CFBridgingRelease(CFUUIDCreateString(NULL, uuid));
-    // assert(uuidStr != NULL);
-    //
-    // CFRelease(uuid);
-    //
-    // return uuidStr;
+    return [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
 }
 
 + (NSData *)createBodyWithBoundary:(NSString *)boundary
@@ -755,9 +735,6 @@ NSLog(Y, Z);		\
     
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:QUICK_BAL_SETTINGS];
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:SHOW_OFFERS_SETTINGS];
-//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:TOUCH_ID_SETTINGS];
-//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:RETINA_SCAN_SETTINGS];
-//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:PUSH_NOTIF_SETTINGS];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
@@ -1694,7 +1671,6 @@ NSLog(Y, Z);		\
 
 +(void)parseETag:(NSString *)eTag WithUrl:(NSString *)url{
     
-    NSLog(@"%@",eTag);
     if([url containsString:CONFIG_MENU_ITEMS_SERVICE]){
         [self saveETag:eTag withKey:CONFIG_MENU_ITEMS_SERVICE];
     }
@@ -1710,7 +1686,75 @@ NSLog(Y, Z);		\
     if([url containsString:CONFIG_CLIENT_SETTINGS_SERVICE]){
         [self saveETag:eTag withKey:CONFIG_CLIENT_SETTINGS_SERVICE];
     }
-    
 }
+
++(BOOL)shouldCallNSConfigServices{
+    
+    BOOL flag = TRUE;
+    NSLog(@"getDateForNSConfigAPI : %@   getCurrentDate:%@",[self getDateForNSConfigAPI],[self getCurrentDate]);
+    if([[self getDateForNSConfigAPI] isEqualToString:[self getCurrentDate]])
+        flag = FALSE;
+    
+    return flag;
+}
+
+
++ (void)saveDateForNSConfigAPI:(NSString *)date{
+
+    [[NSUserDefaults standardUserDefaults] setValue:[self getCurrentDate] forKey:@"config_date"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString *)getDateForNSConfigAPI{
+
+    NSLog(@"getDateForNSConfigAPI : %@",[[NSUserDefaults standardUserDefaults] valueForKey:@"config_date"]);
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"config_date"];
+}
+
++(NSString *)getCurrentDate{
+    
+    NSString *date = nil;
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:[NSDate date]];
+    NSInteger hour = [dateComponents hour];
+    NSInteger minute = [dateComponents minute];
+    date = [NSString stringWithFormat:@"%d",minute];
+    return date;
+}
+
++(void)configDataSaved{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"data_saved"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(NSString *)isConfigDataSaved{
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"data_saved"];
+}
+
++(BOOL)isConfigDataNotExistedOrReSkinSettingIsOn{
+    
+    BOOL status = FALSE;
+    NSString *configDataStatus = [self isConfigDataSaved];
+    if(!configDataStatus){
+        status = TRUE;
+    }
+
+    if(!status){
+        if([ShareOneUtility getSettingsWithKey:RE_SKIN_SETTINGS]){
+            
+            status =  [[SharedUser sharedManager] isLaunchFirstTime];
+            
+        }
+    }
+    
+    if(!status){
+        status = [ShareOneUtility shouldCallNSConfigServices];
+    }
+    
+    return status;
+}
+
 
 @end

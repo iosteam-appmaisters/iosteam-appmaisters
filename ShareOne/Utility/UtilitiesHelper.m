@@ -1079,7 +1079,6 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
         double secondsToFire = 300.000f;
         
         _timer = CreateDispatchTimer(secondsToFire, queue, ^{
-            // Do something
             NSLog(@"keepAlive");
             
             [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
