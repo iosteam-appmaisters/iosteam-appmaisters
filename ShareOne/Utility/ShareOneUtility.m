@@ -1716,10 +1716,11 @@ NSLog(Y, Z);		\
     NSString *date = nil;
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:[NSDate date]];
-    NSInteger hour = [dateComponents hour];
-    NSInteger minute = [dateComponents minute];
-    date = [NSString stringWithFormat:@"%d",minute];
+    NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour | NSCalendarUnitMinute|NSCalendarUnitDay) fromDate:[NSDate date]];
+    NSInteger day = [dateComponents day];
+//    NSInteger hour = [dateComponents hour];
+//    NSInteger minute = [dateComponents minute];
+    date = [NSString stringWithFormat:@"%ld",(long)day];
     return date;
 }
 
@@ -1743,9 +1744,7 @@ NSLog(Y, Z);		\
 
     if(!status){
         if([ShareOneUtility getSettingsWithKey:RE_SKIN_SETTINGS]){
-            
             status =  [[SharedUser sharedManager] isLaunchFirstTime];
-            
         }
     }
     

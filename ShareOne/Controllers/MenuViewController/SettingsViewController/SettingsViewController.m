@@ -59,6 +59,7 @@
     [_touchIDSwitch setOn:[ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]];
     [_retinaScanSwitch setOn:[ShareOneUtility getSettingsWithKey:RETINA_SCAN_SETTINGS]];
     [_pushNotifSwitch setOn:[ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS]];
+    [_reSkinSwitch setOn:[ShareOneUtility getSettingsWithKey:RE_SKIN_SETTINGS]];
 }
 
 
@@ -88,6 +89,10 @@
         else{
             alertMesage=@"Offers will not be displayed.";
         }
+    }
+    else if([sender isEqual:_reSkinSwitch]){
+        key=RE_SKIN_SETTINGS;
+
     }
     else if([sender isEqual:_touchIDSwitch]){
         
@@ -142,7 +147,7 @@
     if(key){
         
         
-        if(![key isEqualToString:TOUCH_ID_SETTINGS])
+        if(![key isEqualToString:TOUCH_ID_SETTINGS] && ![key isEqualToString:RE_SKIN_SETTINGS])
             [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
         [ShareOneUtility saveSettingsWithStatus:[sender isOn] AndKey:key];
         if([key isEqualToString:SHOW_OFFERS_SETTINGS]){
