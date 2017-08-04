@@ -954,8 +954,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                             }];
     } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[UtilitiesHelper shareUtitlities] showToastWithMessage:authError.localizedDescription title:@"Error" delegate:delegate];
-
+            [UtilitiesHelper showTouchIDError:authError :delegate];
             block(FALSE);
 
         });
@@ -971,67 +970,8 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     
     if (![myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]){
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            NSString *errorMessage = nil;
-            
             flag = FALSE;
-            switch ([authError code]) {
-                case -1:{
-                    NSLog(@"authenticationFailed");
-                }
-                    break;
-                    
-                case -2:{
-                    NSLog(@"userCancel");
-                }
-                    break;
-                    
-                case -3:{
-                    NSLog(@"userFallback");
-                }
-                    break;
-                    
-                case -4:{
-                    NSLog(@"systemCancel");
-                }
-                    break;
-                    
-                case -5:{
-                    NSLog(@"passcodeNotSet");
-                }
-                    break;
-                    
-                case -6:{
-                    NSLog(@"touchIDNotAvailable");
-                }
-                    break;
-                    
-                case -7:{
-                    NSLog(@"touchIDNotEnrolled");
-                }
-                    break;
-                    
-                case -8:{
-                    NSLog(@"touchIDLockout");
-                }
-                    break;
-                    
-                case -9:{
-                    NSLog(@"appCancel");
-                }
-                    break;
-                    
-                case -10:{
-                    NSLog(@"invalidContext");
-                }
-                    break;
-
-                    
-                default:
-                    errorMessage = authError.localizedDescription;
-                    break;
-            }
-            [[UtilitiesHelper shareUtitlities] showToastWithMessage:authError.localizedDescription title:@"Error" delegate:delegate];
+            [UtilitiesHelper showTouchIDError:authError :delegate];
             block(FALSE);
         });
     }
@@ -1040,6 +980,68 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     }
 }
 
++(void)showTouchIDError:(NSError*)authError : (id)delegate {
+    
+    NSString *errorMessage = authError.localizedDescription;
+    
+    switch ([authError code]) {
+        case -1:{
+            NSLog(@"authenticationFailed");
+        }
+            break;
+            
+        case -2:{
+            NSLog(@"userCancel");
+        }
+            break;
+            
+        case -3:{
+            NSLog(@"userFallback");
+        }
+            break;
+            
+        case -4:{
+            NSLog(@"systemCancel");
+        }
+            break;
+            
+        case -5:{
+            NSLog(@"passcodeNotSet");
+        }
+            break;
+            
+        case -6:{
+            NSLog(@"touchIDNotAvailable");
+        }
+            break;
+            
+        case -7:{
+            NSLog(@"touchIDNotEnrolled");
+        }
+            break;
+            
+        case -8:{
+            NSLog(@"touchIDLockout");
+            errorMessage = @"Touch ID is locked out.  Please lock your device and re-enter your security code to unlock";
+        }
+            break;
+            
+        case -9:{
+            NSLog(@"appCancel");
+        }
+            break;
+            
+        case -10:{
+            NSLog(@"invalidContext");
+        }
+            break;
+            /*default:
+             errorMessage = authError.localizedDescription;
+             break;*/
+    }
+    [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorMessage title:@"Error" delegate:delegate];
+    
+}
 
 +(void)shouldHideTouchID:(id)delegate completionBlock:(void(^)(BOOL success))block{
     
