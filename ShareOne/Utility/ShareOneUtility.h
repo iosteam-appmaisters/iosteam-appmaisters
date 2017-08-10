@@ -202,6 +202,9 @@
 
 +(BOOL)hasShownTutorialsBefore;
 
++ (void)saveVersionNumber:(NSString *)version;
++(NSString*)getVersionNumber;
+
 +(NSString *)getCustomerId;
 
 

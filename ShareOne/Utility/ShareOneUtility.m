@@ -1572,6 +1572,15 @@ NSLog(Y, Z);		\
     return  CoOpId;
 }
 
++(NSString*)getVersionNumber {
+    
+    NSString * version = [[NSUserDefaults standardUserDefaults]valueForKey:@"version_number"];
+    if (version != nil){
+        return version;
+    }
+    return @"0";
+}
+
 +(NSString *)getCustomerId{
     Configuration *config = [ShareOneUtility getConfigurationFile];
     return config.customerId;
@@ -1698,6 +1707,11 @@ NSLog(Y, Z);		\
     return flag;
 }
 
++ (void)saveVersionNumber:(NSString *)version {
+    
+    [[NSUserDefaults standardUserDefaults] setValue:version forKey:@"version_number"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 + (void)saveDateForNSConfigAPI:(NSString *)date{
 

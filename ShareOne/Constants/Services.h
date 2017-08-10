@@ -33,6 +33,7 @@
 //#define KWEB_SERVICE_BASE_URL_SSO                       @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
 
 
+#define NSCONFIG_GET_MODIFIEDSERVICES(CAID,VERSION_NUMBER) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/ClientApplication/%@/ModifiedServices/%@",CAID,VERSION_NUMBER]
 
 #define BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(ID,SERVICE_NAME) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/ClientApplications/%@/%@",ID,SERVICE_NAME]
 

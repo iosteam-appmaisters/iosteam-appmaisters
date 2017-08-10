@@ -121,27 +121,45 @@
 }
 
 
-+ (void)setConfigurationQueueWithDelegate:(id)delegate withContentDict:(NSDictionary *)dict completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
++ (void)setConfigurationQueueWithDelegate:(id)delegate
+                          withContentDict:(NSDictionary *)dict
+                               queueArray:(NSArray*)requestArray
+                          completionBlock:(void(^)(BOOL success,NSString *errorString))block
+                             failureBlock:(void(^)(NSError* error))failBlock{
     
     [ShareOneUtility saveDateForNSConfigAPI:nil];
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     
-    
     NSDictionary *menuItemsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_MENU_ITEMS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
     
     NSDictionary *clientSettingsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_CLIENT_SETTINGS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_CLIENT_SETTINGS_SERVICE],ETAG_HEADER, nil,REQ_PARAM,nil];
-//
+    
     NSDictionary *StyleValuesServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_STYLE_VALUES_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_STYLE_VALUES_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
-//
+    
     NSDictionary *ApiSettingsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_API_SETTINGS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_API_SETTINGS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
-
     
-    NSArray *reqArr = [NSArray arrayWithObjects:menuItemsServiceDict,clientSettingsServiceDict,StyleValuesServiceDict,ApiSettingsServiceDict, nil];
     
-//    NSArray *reqArr = [NSArray arrayWithObjects:menuItemsServiceDict, nil];
-
+    NSMutableArray * reqArray = [NSMutableArray array];
     
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+    for (NSString * request in requestArray){
+    
+        if ([request isEqualToString:@"menu_item"]){
+            [reqArray addObject:menuItemsServiceDict];
+        }
+        else if ([request isEqualToString:@"client_setting"]){
+            [reqArray addObject:clientSettingsServiceDict];
+        }
+        else if ([request isEqualToString:@"style_value"]){
+            [reqArray addObject:StyleValuesServiceDict];
+        }
+        else if ([request isEqualToString:@"nsapi_setting"]){
+            [reqArray addObject:ApiSettingsServiceDict];
+        }
+    }
+    
+    NSLog(@"%@",reqArray);
+    
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:[reqArray copy] requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
         
         NSURLResponse *responseCast = (NSURLResponse *)responseObj;
         
@@ -173,4 +191,58 @@
         block(FALSE,[Configuration getMaintenanceVerbiage]);        
     }];
 }
+
+
++ (void)getModifiedServicesWithDelegate:(id)delegate
+                        withContentDict:(NSDictionary *)dict
+                        completionBlock:(void(^)(BOOL success,NSString *errorString))block
+                           failureBlock:(void(^)(NSError* error))failBlock {
+    
+    NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
+    
+    NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:NSCONFIG_GET_MODIFIEDSERVICES([ShareOneUtility getCustomerId],[ShareOneUtility getVersionNumber]),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
+    
+    NSArray *reqArr = [NSArray arrayWithObjects:modifiedServicesDict, nil];
+    
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+        
+        NSDictionary * responseDic = (NSDictionary*)response;
+        
+        NSString * versionNumber = [NSString stringWithFormat:@"%d", [responseDic[@"VersionNumber"]intValue]] ;
+        
+        [ShareOneUtility saveVersionNumber:versionNumber];
+        
+        NSMutableArray * modifiedServices = [responseDic[@"ModifiedServices"] mutableCopy];
+
+        NSMutableArray * validModifiedServices = [NSMutableArray array];
+        
+        for (id val in modifiedServices){
+            NSString * valueString = (NSString*)val;
+            if (![valueString isEqualToString:@"content_text_group"] && ![valueString isEqualToString:@"content_text"]) {
+                [validModifiedServices addObject:valueString];
+            }
+        }
+
+        NSLog(@"%@",validModifiedServices);
+        
+        [LoaderServices setConfigurationQueueWithDelegate:self withContentDict:dict queueArray:[validModifiedServices copy] completionBlock:^(BOOL success, NSString *errorString) {
+             block(success,errorString);
+         } failureBlock:^(NSError *error) {
+             block(FALSE,[Configuration getMaintenanceVerbiage]);
+         }];
+        
+    } requestFailureBlock:^(NSError *error) {
+        
+    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
+        
+        [ShareOneUtility configDataSaved];
+        block(sucess,errorString);
+        
+        
+    } queueFailureBlock:^(NSError *error) {
+        block(FALSE,[Configuration getMaintenanceVerbiage]);
+    }];
+}
+
+
 @end

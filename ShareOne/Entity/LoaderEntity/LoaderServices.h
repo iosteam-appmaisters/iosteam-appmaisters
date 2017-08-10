@@ -14,8 +14,15 @@
 
 +(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock;
 
-+ (void)setConfigurationQueueWithDelegate:(id)delegate withContentDict:(NSDictionary *)dict completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock;
++ (void)setConfigurationQueueWithDelegate:(id)delegate
+                          withContentDict:(NSDictionary *)dict
+                               queueArray:(NSArray*)requestArray
+                          completionBlock:(void(^)(BOOL success,NSString *errorString))block
+                             failureBlock:(void(^)(NSError* error))failBlock;
 
-
++ (void)getModifiedServicesWithDelegate:(id)delegate
+                        withContentDict:(NSDictionary *)dict
+                        completionBlock:(void(^)(BOOL success,NSString *errorString))block
+                           failureBlock:(void(^)(NSError* error))failBlock;
 
 @end

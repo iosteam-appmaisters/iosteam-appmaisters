@@ -32,7 +32,7 @@
 #define ACCESS_TOKEN           @"connect/token"
 
 #define Grant_Type_Value       @"client_credentials"
-#define Scope_value            @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read nsapi_setting.read"
+#define Scope_value            @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read nsapi_setting.read modified_service.read"
 #define Client_ID_value        @"nsmobile_nsconfig_read_client"//nsmobile_nsconfig_read_client
 #define Client_Secret_value    @"202E8187-94DE-4CDA-8908-7A9436B21292"
 
@@ -63,12 +63,13 @@
             
             NSDictionary *dict = (NSDictionary *)response;
             
-            [LoaderServices setConfigurationQueueWithDelegate:self withContentDict:dict completionBlock:^(BOOL success, NSString *errorString) {
+            [LoaderServices getModifiedServicesWithDelegate:self withContentDict:dict completionBlock:^(BOOL success, NSString *errorString) {
                 block(success,errorString);
                 
             } failureBlock:^(NSError *error) {
                 block(FALSE,[Configuration getMaintenanceVerbiage]);
             }];
+           
         }
         else{
             block(FALSE,[Configuration getMaintenanceVerbiage]);
