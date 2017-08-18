@@ -1777,31 +1777,25 @@ NSLog(Y, Z);		\
 }
 
 +(NSString *)getClientApplicationID{
+
     BOOL isProductionEnviroment = [self shouldUseProductionEnviroment];
     
     NSArray *cleintAppsArray = [Configuration getClientApplications];
     
-//    NSMutableString *name = [NSMutableString stringWithFormat:@"%@",obj[@"Name"]];
-
-    
     NSString *clientAppID = @"";
+    int CustomerEnvironmentTypeID=0;
     if(isProductionEnviroment){
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name == NSHOME AND CustomerEnvironmentTypeID == 1"];
-        NSArray *filteredArray = [cleintAppsArray filteredArrayUsingPredicate:predicate];
-        if(filteredArray.count>0){
-            ClientApplicationsObject *obj = filteredArray[0];
-            clientAppID = [NSString stringWithFormat:@"%d",[obj.ID intValue]];
-        }
+        CustomerEnvironmentTypeID=1;
     }
     else{
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name = 'NSHome_Admin' AND CustomerEnvironmentTypeID == 1"];
-        NSArray *filteredArray = [cleintAppsArray filteredArrayUsingPredicate:predicate];
-        if(filteredArray.count>0){
-            ClientApplicationsObject *obj = filteredArray[0];
-            clientAppID = [NSString stringWithFormat:@"%d",[obj.ID intValue]];
-        }
+        CustomerEnvironmentTypeID=2;
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name = 'NSHome' AND CustomerEnvironmentTypeID == %d",CustomerEnvironmentTypeID];
+    NSArray *filteredArray = [cleintAppsArray filteredArrayUsingPredicate:predicate];
+    if(filteredArray.count>0){
+        ClientApplicationsObject *obj = filteredArray[0];
+        clientAppID = [NSString stringWithFormat:@"%d",[obj.ID intValue]];
     }
     return clientAppID;
 }

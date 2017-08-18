@@ -14,7 +14,7 @@
 @property (nonatomic,strong)NSNumber *CustomerEnvironmentTypeID;
 @property (nonatomic,strong)NSNumber *CustomerID;
 @property (nonatomic,strong)NSNumber *ID;
-@property (nonatomic,strong)NSString *Name;
+@property (nonatomic,strong)NSMutableString *Name;
 
 -(id) initWithDictionary:(NSDictionary *)dict;
 
