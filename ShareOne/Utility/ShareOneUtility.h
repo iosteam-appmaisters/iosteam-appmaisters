@@ -228,5 +228,8 @@
 + (void)configDataSaved;
 + (NSString *)isConfigDataSaved;
 + (BOOL)isConfigDataNotExistedOrReSkinSettingIsOn;
++ (BOOL)shouldUseProductionEnviroment;
++ (NSString *)getClientApplicationID;
+
 
 @end

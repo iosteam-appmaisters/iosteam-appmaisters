@@ -323,10 +323,16 @@
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
+
+        if([urlString containsString:CONFIG_CLIENT_APP]){
+            [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)responseObject AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_CLIENT_APP]];
+        }
+
         block(responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
+        failBlock(error);
     }];
 }
 

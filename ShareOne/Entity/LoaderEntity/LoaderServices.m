@@ -130,13 +130,13 @@
     [ShareOneUtility saveDateForNSConfigAPI:nil];
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     
-    NSDictionary *menuItemsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_MENU_ITEMS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
+    NSDictionary *menuItemsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_MENU_ITEMS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
     
-    NSDictionary *clientSettingsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_CLIENT_SETTINGS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_CLIENT_SETTINGS_SERVICE],ETAG_HEADER, nil,REQ_PARAM,nil];
+    NSDictionary *clientSettingsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_CLIENT_SETTINGS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_CLIENT_SETTINGS_SERVICE],ETAG_HEADER, nil,REQ_PARAM,nil];
     
-    NSDictionary *StyleValuesServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_STYLE_VALUES_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_STYLE_VALUES_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
+    NSDictionary *StyleValuesServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_STYLE_VALUES_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_STYLE_VALUES_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
     
-    NSDictionary *ApiSettingsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME([ShareOneUtility getCustomerId],CONFIG_API_SETTINGS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_API_SETTINGS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
+    NSDictionary *ApiSettingsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_API_SETTINGS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_API_SETTINGS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
     
     
     NSMutableArray * reqArray = [NSMutableArray array];
@@ -157,7 +157,6 @@
         }
     }
     
-    NSLog(@"%@",reqArray);
     
     [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:[reqArray copy] requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
         
@@ -200,7 +199,9 @@
     
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     
-    NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:NSCONFIG_GET_MODIFIEDSERVICES([ShareOneUtility getCustomerId],[ShareOneUtility getVersionNumber]),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
+    
+    
+    NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:NSCONFIG_GET_MODIFIEDSERVICES([ShareOneUtility getClientApplicationID],[ShareOneUtility getVersionNumber]),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
     
     NSArray *reqArr = [NSArray arrayWithObjects:modifiedServicesDict, nil];
     
@@ -223,7 +224,7 @@
             }
         }
 
-        NSLog(@"%@",validModifiedServices);
+//        NSLog(@"%@",validModifiedServices);
         
         [LoaderServices setConfigurationQueueWithDelegate:self withContentDict:dict queueArray:[validModifiedServices copy] completionBlock:^(BOOL success, NSString *errorString) {
              block(success,errorString);

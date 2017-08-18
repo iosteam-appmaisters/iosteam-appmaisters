@@ -125,6 +125,7 @@
 		1D86C4BB1EC204B60036F72A /* ClientSettingsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86C4BA1EC204B60036F72A /* ClientSettingsObject.m */; };
 		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
 		1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3B5F91DB7950500DB5731 /* Location.m */; };
+		1DA8D2881F45E4F900FD14E1 /* ClientApplicationsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA8D2871F45E4F900FD14E1 /* ClientApplicationsObject.m */; };
 		1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB927371DBE193E00C08F29 /* LoadingController.m */; };
 		1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */; };
 		1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273E1DBE29B800C08F29 /* LoaderServices.m */; };
@@ -391,6 +392,8 @@
 		1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavController.m; sourceTree = "<group>"; };
 		1DA3B5F81DB7950500DB5731 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		1DA3B5F91DB7950500DB5731 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		1DA8D2861F45E4F900FD14E1 /* ClientApplicationsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientApplicationsObject.h; sourceTree = "<group>"; };
+		1DA8D2871F45E4F900FD14E1 /* ClientApplicationsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientApplicationsObject.m; sourceTree = "<group>"; };
 		1DB927361DBE193E00C08F29 /* LoadingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingController.h; sourceTree = "<group>"; };
 		1DB927371DBE193E00C08F29 /* LoadingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingController.m; sourceTree = "<group>"; };
 		1DB927391DBE267900C08F29 /* HTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -819,6 +822,8 @@
 				1D86C4BA1EC204B60036F72A /* ClientSettingsObject.m */,
 				1DFE17231EE93D8700CDEB70 /* ApiSettingsObject.h */,
 				1DFE17241EE93D8700CDEB70 /* ApiSettingsObject.m */,
+				1DA8D2861F45E4F900FD14E1 /* ClientApplicationsObject.h */,
+				1DA8D2871F45E4F900FD14E1 /* ClientApplicationsObject.m */,
 			);
 			path = ConfigurationPlistEntity;
 			sourceTree = "<group>";
@@ -1583,6 +1588,7 @@
 				1D20C2941E4E110500D3FC93 /* XmlSimpleParser.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				1DA8D2881F45E4F900FD14E1 /* ClientApplicationsObject.m in Sources */,
 				1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */,
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,

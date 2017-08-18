@@ -35,13 +35,16 @@
 
 #define NSCONFIG_GET_MODIFIEDSERVICES(CAID,VERSION_NUMBER) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/ClientApplication/%@/ModifiedServices/%@",CAID,VERSION_NUMBER]
 
-#define BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(ID,SERVICE_NAME) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/ClientApplications/%@/%@",ID,SERVICE_NAME]
+#define BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CONTROLLER,ID,SERVICE_NAME) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/%@/%@/%@",CONTROLLER,ID,SERVICE_NAME]
 
 
 #define CONFIG_MENU_ITEMS_SERVICE          @"MenuItems"
 #define CONFIG_CLIENT_SETTINGS_SERVICE     @"ClientSettings"
 #define CONFIG_STYLE_VALUES_SERVICE        @"StyleValues"
 #define CONFIG_API_SETTINGS_SERVICE        @"NSAPISettings"
+#define CLIENT_APP_CONTROLLER              @"ClientApplications"
+#define CUSTOMER_CONTROLLER                @"Customers"
+#define CONFIG_CLIENT_APP                  @"ClientApplications"
 
 
 #define KWEB_SERVICE_LOGIN                              @"eft/memberLogin"

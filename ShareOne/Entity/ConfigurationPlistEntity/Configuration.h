@@ -50,6 +50,7 @@
 @property (nonatomic,strong) NSString *creditUnionPrivateKey;
 @property (nonatomic,strong) NSString *creditUnionPublicKey;
 @property (nonatomic,strong) NSString *ssoPrivateKey;
+@property BOOL shouldBuildForProduction;
 
 
 -(id) initWithDictionary:(NSDictionary *)configurationDict;
@@ -85,6 +86,7 @@
 
 
 
++(NSArray *)getClientApplications;
 
 
 

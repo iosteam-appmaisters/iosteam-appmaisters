@@ -27,6 +27,7 @@
 #import "MobileDepositController.h"
 #import "SuffixInfo.h"
 #import "ApiSettingsObject.h"
+#import "ClientApplicationsObject.h"
 
 
 
@@ -1769,5 +1770,40 @@ NSLog(Y, Z);		\
     return status;
 }
 
++(BOOL)shouldUseProductionEnviroment{
+    
+    Configuration *config = [self getConfigurationFile];
+    return config.shouldBuildForProduction;
+}
+
++(NSString *)getClientApplicationID{
+    BOOL isProductionEnviroment = [self shouldUseProductionEnviroment];
+    
+    NSArray *cleintAppsArray = [Configuration getClientApplications];
+    
+//    NSMutableString *name = [NSMutableString stringWithFormat:@"%@",obj[@"Name"]];
+
+    
+    NSString *clientAppID = @"";
+    if(isProductionEnviroment){
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name == NSHOME AND CustomerEnvironmentTypeID == 1"];
+        NSArray *filteredArray = [cleintAppsArray filteredArrayUsingPredicate:predicate];
+        if(filteredArray.count>0){
+            ClientApplicationsObject *obj = filteredArray[0];
+            clientAppID = [NSString stringWithFormat:@"%d",[obj.ID intValue]];
+        }
+    }
+    else{
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name = 'NSHome_Admin' AND CustomerEnvironmentTypeID == 1"];
+        NSArray *filteredArray = [cleintAppsArray filteredArrayUsingPredicate:predicate];
+        if(filteredArray.count>0){
+            ClientApplicationsObject *obj = filteredArray[0];
+            clientAppID = [NSString stringWithFormat:@"%d",[obj.ID intValue]];
+        }
+    }
+    return clientAppID;
+}
 
 @end
