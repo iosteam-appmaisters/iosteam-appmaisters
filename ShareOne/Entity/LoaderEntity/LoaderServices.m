@@ -199,8 +199,6 @@
     
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     
-    
-    
     NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:NSCONFIG_GET_MODIFIEDSERVICES([ShareOneUtility getClientApplicationID],[ShareOneUtility getVersionNumber]),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
     
     NSArray *reqArr = [NSArray arrayWithObjects:modifiedServicesDict, nil];
@@ -235,10 +233,9 @@
     } requestFailureBlock:^(NSError *error) {
         
     } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
-        
-        [ShareOneUtility configDataSaved];
-        block(sucess,errorString);
-        
+
+        if([ShareOneUtility isConfigDataSaved])
+            block(sucess,errorString);        
         
     } queueFailureBlock:^(NSError *error) {
         block(FALSE,[Configuration getMaintenanceVerbiage]);

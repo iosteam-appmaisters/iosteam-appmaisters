@@ -1791,7 +1791,7 @@ NSLog(Y, Z);		\
         CustomerEnvironmentTypeID=2;
     }
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name = 'NSHome' AND CustomerEnvironmentTypeID == %d",CustomerEnvironmentTypeID];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name = 'NSMobile' AND CustomerEnvironmentTypeID == %d",CustomerEnvironmentTypeID];
     NSArray *filteredArray = [cleintAppsArray filteredArrayUsingPredicate:predicate];
     if(filteredArray.count>0){
         ClientApplicationsObject *obj = filteredArray[0];
