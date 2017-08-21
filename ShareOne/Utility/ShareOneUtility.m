@@ -478,6 +478,7 @@ NSLog(Y, Z);		\
 +(void)setDefaultSettngOnUser:(User *)user{
     
     user.isPushNotifOpen=FALSE;
+    user.isReSkinOn=TRUE;
     
     Configuration *config = [ShareOneUtility getConfigurationFile];
     if([config.DisableShowOffers boolValue]){
