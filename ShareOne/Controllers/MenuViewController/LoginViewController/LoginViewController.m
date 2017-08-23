@@ -936,7 +936,8 @@
     }
         
     if(_loginViewConstraintY.constant<=value)
-        _loginViewConstraintY.constant=-140;
+        if(!APPC_IS_IPAD)
+            _loginViewConstraintY.constant=-140;
 }
 
 -(void)moveViewDown{
@@ -949,7 +950,8 @@
     }
 
     if(_loginViewConstraintY.constant>=-140)
-        _loginViewConstraintY.constant=value;
+        if(!APPC_IS_IPAD)
+            _loginViewConstraintY.constant=value;
 }
 
 #pragma mark UITextFeildDelegate

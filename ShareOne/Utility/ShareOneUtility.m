@@ -450,8 +450,6 @@ NSLog(Y, Z);		\
 
 //        [[SharedUser sharedManager] setUserObject:user];
         
-
-
         [self saveUserObject:newUser];
         
     }
@@ -470,7 +468,6 @@ NSLog(Y, Z);		\
     [defaults setObject:existingUsers forKey:ALL_USER_OBJECTS];
     
     [defaults synchronize];
-
 
 }
 

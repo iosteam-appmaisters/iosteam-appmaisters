@@ -151,7 +151,7 @@
                                         <rect key="frame" x="20" y="121.66666666666669" width="374" height="97"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="19" width="384" height="46"/>
+                                                <rect key="frame" x="21" y="25" width="333" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -172,7 +172,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="300.66666666666674" y="68" width="70.333333333333314" height="24"/>
+                                                <rect key="frame" x="249.66666666666671" y="68" width="70.333333333333286" height="24"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -180,7 +180,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="375" y="67" width="25" height="25"/>
+                                                <rect key="frame" x="324" y="67" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -219,7 +219,7 @@
                                         <rect key="frame" x="20" y="186.66666666666669" width="374" height="45.999999999999943"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="260" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="209" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -599,7 +599,9 @@
                             <constraint firstItem="pBa-4E-7vZ" firstAttribute="trailing" secondItem="mah-z6-qDW" secondAttribute="trailing" id="rwE-1r-g0K"/>
                             <constraint firstItem="Jwb-Zb-xKg" firstAttribute="top" secondItem="uCA-CW-WAJ" secondAttribute="bottom" id="t8r-jn-qE7"/>
                             <constraint firstAttribute="trailing" secondItem="XMz-Ei-3Z8" secondAttribute="trailing" id="ula-jQ-4uH"/>
-                            <constraint firstItem="uCA-CW-WAJ" firstAttribute="top" secondItem="jx4-XD-MOx" secondAttribute="top" id="xQe-Cd-1Qj"/>
+                            <constraint firstItem="uCA-CW-WAJ" firstAttribute="top" secondItem="jx4-XD-MOx" secondAttribute="top" id="xQe-Cd-1Qj">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-25"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

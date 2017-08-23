@@ -173,7 +173,7 @@
         NSString *deepTargetUrl = obj.deeptargetid;
 
         
-        NSString *url =[NSString stringWithFormat:@"%@/trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
+        NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
         
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
         

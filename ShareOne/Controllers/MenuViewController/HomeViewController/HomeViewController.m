@@ -24,35 +24,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenuFromHomeView) name:SHOW_MENU_NOTIFICATION object:nil];
-
     __weak HomeViewController *weakSelf = self;
-    
-    
-//    if(!self.navigationItem.title){
-//        self.navigationItem.title=@"Account Summary";
-//    }
-    
-//    _isLoadedFirstTime= TRUE;
-    
-//    NSLog(@"UDID : %@",[ShareOneUtility getUUID]);
-
-    //[self getMemberDevices];
-    //[self putMemberDevice];
-    //[self postMemberDevices];
-    //[self deleteMemberDevices];
-    
-    //[self getQB];
-    //[self getSuffixInfo];
-    //[self postSuffixPrepherences];
-    
-    
-    //[self keepMeAlive];
-    
-    //[self getQuickTransaction];
-    
-    //[self setUserName];
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;
 
@@ -66,8 +38,6 @@
     if([_url containsString:@"http"]){
         
         request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
-//        [weakSelf.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
-        
         [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
         [weakSelf.webview loadRequest:request];
         
@@ -77,6 +47,7 @@
         
         [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
             
+
             request =(NSMutableURLRequest *)[urlPath mutableCopy];
             
             [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
@@ -262,20 +233,11 @@
     
     NSLog(@"didFailLoadWithError : %@",error);
     
-    
     [ShareOneUtility hideProgressViewOnView:self.view];
     
     if ([error code] != NSURLErrorCancelled) {
         [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
     }
-
-    
-    
-    
-    
-    
-//    [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
-    
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
@@ -283,7 +245,6 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
     
     NSLog(@"webViewDidFinishLoad url: %@", webView.request.URL.absoluteString);
 
@@ -293,7 +254,8 @@
     }
 
     __weak HomeViewController *weakSelf = self;
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    if(![webView.request.URL.absoluteString containsString:@"deeptarget"])
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 
 
