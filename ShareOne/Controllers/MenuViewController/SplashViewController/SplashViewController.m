@@ -14,6 +14,21 @@
 @implementation SplashViewController
 
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeMessageLabel:)
+                                                 name:@"MessageLabelNotification"
+                                               object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
@@ -22,6 +37,11 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self showNextViewController];
+}
+
+-(void)changeMessageLabel:(NSNotification*)notification {
+
+    _messageLabel.text = notification.userInfo[@"MESSAGE"];
 }
 
 -(void)showNextViewController{

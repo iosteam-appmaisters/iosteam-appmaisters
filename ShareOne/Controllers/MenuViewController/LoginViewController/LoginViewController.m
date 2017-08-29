@@ -81,6 +81,9 @@
     _forgotPasswordBtn.titleLabel.numberOfLines = 1;
     _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+//    _userIDTxt.text = @"Test1";
+//    _passwordTxt.text = @"testcase!";
 }
 
 

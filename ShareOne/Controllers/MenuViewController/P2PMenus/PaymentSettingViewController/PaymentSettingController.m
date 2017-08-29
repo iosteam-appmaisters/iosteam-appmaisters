@@ -484,6 +484,20 @@
 
 }
 
+#define MAXLENGTH 50
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == _profileNameTextFeild) {
+        int length = (int)[textField.text length] ;
+        if (length >= MAXLENGTH && ![string isEqualToString:@""]) {
+            textField.text = [textField.text substringToIndex:MAXLENGTH];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 
 /*
 #pragma mark - Navigation

@@ -30,8 +30,8 @@
     NSDictionary *getSuffixDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KSUFFIX_INFO,/*@"ABC"*/[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
     
     
-    NSDictionary *getQBDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,[ShareOneUtility getUUID]]
-,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
+    /*NSDictionary *getQBDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,[ShareOneUtility getUUID]]
+,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];*/
 
     
     //getSuffixDict
@@ -121,6 +121,63 @@
 }
 
 
++ (void)getModifiedServicesWithDelegate:(id)delegate
+                        withContentDict:(NSDictionary *)dict
+                        completionBlock:(void(^)(BOOL success,NSString *errorString))block
+                           failureBlock:(void(^)(NSError* error))failBlock {
+    
+    [ShareOneUtility saveDateForNSConfigAPI:nil];
+    
+    NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
+    
+    NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:NSCONFIG_GET_MODIFIEDSERVICES([ShareOneUtility getClientApplicationID],[ShareOneUtility getVersionNumber]),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
+    
+    NSArray *reqArr = [NSArray arrayWithObjects:modifiedServicesDict, nil];
+    
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+        
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"MessageLabelNotification"
+         object:self userInfo:@{@"MESSAGE":@"Please wait while we update app"}];
+        
+        NSDictionary * responseDic = (NSDictionary*)response;
+        
+        NSString * versionNumber = [NSString stringWithFormat:@"%d", [responseDic[@"VersionNumber"]intValue]] ;
+        
+        [ShareOneUtility saveVersionNumber:versionNumber];
+        
+        NSMutableArray * modifiedServices = [responseDic[@"ModifiedServices"] mutableCopy];
+        
+        NSMutableArray * validModifiedServices = [NSMutableArray array];
+        
+        for (id val in modifiedServices){
+            NSString * valueString = (NSString*)val;
+            if (![valueString isEqualToString:@"content_text_group"] && ![valueString isEqualToString:@"content_text"]) {
+                [validModifiedServices addObject:valueString];
+            }
+        }
+        
+        NSLog(@"%@",validModifiedServices);
+        
+        [LoaderServices setConfigurationQueueWithDelegate:self withContentDict:dict queueArray:[validModifiedServices copy] completionBlock:^(BOOL success, NSString *errorString) {
+            block(success,errorString);
+        } failureBlock:^(NSError *error) {
+            block(FALSE,[Configuration getMaintenanceVerbiage]);
+        }];
+        
+    } requestFailureBlock:^(NSError *error) {
+        
+    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
+        
+        if([ShareOneUtility isConfigDataSaved])
+            block(sucess,errorString);
+        
+    } queueFailureBlock:^(NSError *error) {
+        block(FALSE,[Configuration getMaintenanceVerbiage]);
+    }];
+}
+
+
 + (void)setConfigurationQueueWithDelegate:(id)delegate
                           withContentDict:(NSDictionary *)dict
                                queueArray:(NSArray*)requestArray
@@ -128,6 +185,7 @@
                              failureBlock:(void(^)(NSError* error))failBlock{
     
     [ShareOneUtility saveDateForNSConfigAPI:nil];
+    
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     
     NSDictionary *menuItemsServiceDict = [NSDictionary dictionaryWithObjectsAndKeys:BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_MENU_ITEMS_SERVICE),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
@@ -192,55 +250,7 @@
 }
 
 
-+ (void)getModifiedServicesWithDelegate:(id)delegate
-                        withContentDict:(NSDictionary *)dict
-                        completionBlock:(void(^)(BOOL success,NSString *errorString))block
-                           failureBlock:(void(^)(NSError* error))failBlock {
-    
-    NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
-    
-    NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:NSCONFIG_GET_MODIFIEDSERVICES([ShareOneUtility getClientApplicationID],[ShareOneUtility getVersionNumber]),REQ_URL,RequestType_GET,REQ_TYPE,authToken,REQ_HEADER_CONFIGURATION,[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,nil,REQ_PARAM, nil];
-    
-    NSArray *reqArr = [NSArray arrayWithObjects:modifiedServicesDict, nil];
-    
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
-        
-        NSDictionary * responseDic = (NSDictionary*)response;
-        
-        NSString * versionNumber = [NSString stringWithFormat:@"%d", [responseDic[@"VersionNumber"]intValue]] ;
-        
-        [ShareOneUtility saveVersionNumber:versionNumber];
-        
-        NSMutableArray * modifiedServices = [responseDic[@"ModifiedServices"] mutableCopy];
 
-        NSMutableArray * validModifiedServices = [NSMutableArray array];
-        
-        for (id val in modifiedServices){
-            NSString * valueString = (NSString*)val;
-            if (![valueString isEqualToString:@"content_text_group"] && ![valueString isEqualToString:@"content_text"]) {
-                [validModifiedServices addObject:valueString];
-            }
-        }
-
-//        NSLog(@"%@",validModifiedServices);
-        
-        [LoaderServices setConfigurationQueueWithDelegate:self withContentDict:dict queueArray:[validModifiedServices copy] completionBlock:^(BOOL success, NSString *errorString) {
-             block(success,errorString);
-         } failureBlock:^(NSError *error) {
-             block(FALSE,[Configuration getMaintenanceVerbiage]);
-         }];
-        
-    } requestFailureBlock:^(NSError *error) {
-        
-    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
-
-        if([ShareOneUtility isConfigDataSaved])
-            block(sucess,errorString);        
-        
-    } queueFailureBlock:^(NSError *error) {
-        block(FALSE,[Configuration getMaintenanceVerbiage]);
-    }];
-}
 
 
 @end

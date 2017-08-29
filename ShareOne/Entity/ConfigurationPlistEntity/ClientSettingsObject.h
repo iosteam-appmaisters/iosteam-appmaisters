@@ -28,6 +28,9 @@
 @property (nonatomic,strong) NSString *coopid;
 @property (nonatomic,strong) NSString *preprodbasewebviewurl;
 
+@property (nonatomic,strong) NSString *vertifiRDCTestMode;
+@property (nonatomic,strong) NSString *vertifiRDCUrl;
+
 +(ClientSettingsObject *)parseClientSettings:(NSArray *)array;
 
 @end

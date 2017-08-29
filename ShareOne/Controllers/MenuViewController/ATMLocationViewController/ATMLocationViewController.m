@@ -98,6 +98,10 @@
         return;
     }
     
+    for (Location * loc in _locationArr) {
+        NSLog(@"%f %f",[[loc Gpslatitude]floatValue], [[loc Gpslongitude]floatValue]);
+    }
+    
     Location *objLocation= nil;
 
     if(_showMyLocationOnly){
@@ -106,7 +110,7 @@
     else{
       objLocation=  [_locationArr lastObject];
     }
-    
+    NSLog(@"%f %f",[[objLocation Gpslatitude]floatValue], [[objLocation Gpslongitude]floatValue]);
     float lat_local=[[objLocation Gpslatitude] floatValue];
     float lon_local=[[objLocation Gpslongitude] floatValue];
 
@@ -117,7 +121,7 @@
     _mapView.myLocationEnabled = YES;
     _mapView.delegate=self;
     [self createGoogleMapMarker:_mapView];
-
+    
 }
 -(void)getData{
     

@@ -58,6 +58,9 @@
     
     NSString  *urlString = [NSString stringWithFormat:@"%@/%@/",BASE_URL_CONFIGURATION,ACCESS_TOKEN];
 
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"MessageLabelNotification"
+     object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates"}];
 
     [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:nil urlString:urlString delegate:delegate completionBlock:^(NSObject *response) {
         if(response){
