@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MWq-Ji-jfJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MWq-Ji-jfJ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="fSW-cw-TFA">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash2" translatesAutoresizingMaskIntoConstraints="NO" id="fSW-cw-TFA">
+                                <rect key="frame" x="0.0" y="-80" width="320" height="548"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fSW-cw-TFA" secondAttribute="trailing" id="40y-go-RJU"/>
-                            <constraint firstItem="fSW-cw-TFA" firstAttribute="top" secondItem="Ffk-w9-pG5" secondAttribute="bottom" constant="-20" id="TI4-Dj-APl"/>
+                            <constraint firstItem="fSW-cw-TFA" firstAttribute="top" secondItem="Ffk-w9-pG5" secondAttribute="bottom" constant="-100" id="TI4-Dj-APl"/>
                             <constraint firstItem="fSW-cw-TFA" firstAttribute="leading" secondItem="7lk-8f-rNT" secondAttribute="leading" id="bYo-zf-lJI"/>
-                            <constraint firstItem="Hdi-kt-iVe" firstAttribute="top" secondItem="fSW-cw-TFA" secondAttribute="bottom" id="gTX-qt-Qhk"/>
+                            <constraint firstItem="Hdi-kt-iVe" firstAttribute="top" secondItem="fSW-cw-TFA" secondAttribute="bottom" constant="100" id="gTX-qt-Qhk"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="375" height="667"/>
+        <image name="splash2" width="320" height="568"/>
     </resources>
 </document>

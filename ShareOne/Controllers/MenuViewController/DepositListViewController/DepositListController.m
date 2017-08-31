@@ -121,7 +121,7 @@
     
     [params setValue:objVertifiDepositObject.Deposit_id forKey:@"deposit_id"];
     
-    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFI_DELETE_DEPOSIT AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_DELETE_DEPOSIT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
@@ -171,7 +171,7 @@
     [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
     
     
-    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:kVERTIFY_ALL_DEP_LIST AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_ALL_DEP_LIST] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
@@ -416,7 +416,7 @@
     [params setValue:@"PNG" forKey:@"output_type"];
     
     
-    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:KVERTIFY_DEP_DETAILS AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],KVERTIFY_DEP_DETAILS] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         if(user){
             VertifiObject *obj = (VertifiObject *)user;

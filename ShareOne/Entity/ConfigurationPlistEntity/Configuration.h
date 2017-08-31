@@ -66,6 +66,8 @@
 +(ClientSettingsObject *)getClientSettingsContent;
 +(NSString *)getMaintenanceVerbiage;
 +(NSString *)getCoOpID;
++(NSString *)getVertifiRDCTestMode;
++(NSString *)getVertifiRDCURL;
 +(NSString *)getVertifiSecretKey;
 +(NSString *)getVertifiRequesterKey;
 +(NSString *)getVertifiRouterKey;

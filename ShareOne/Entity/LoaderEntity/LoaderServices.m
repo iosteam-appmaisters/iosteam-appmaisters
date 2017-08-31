@@ -136,15 +136,17 @@
     
     [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
         
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"MessageLabelNotification"
-         object:self userInfo:@{@"MESSAGE":@"Please wait while we update app"}];
-        
         NSDictionary * responseDic = (NSDictionary*)response;
         
         NSString * versionNumber = [NSString stringWithFormat:@"%d", [responseDic[@"VersionNumber"]intValue]] ;
         
         [ShareOneUtility saveVersionNumber:versionNumber];
+        
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"MessageLabelNotification"
+         object:self userInfo:@{@"MESSAGE":@"Please wait while we update app",
+                                @"VERSION":versionNumber,
+                                @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
         
         NSMutableArray * modifiedServices = [responseDic[@"ModifiedServices"] mutableCopy];
         

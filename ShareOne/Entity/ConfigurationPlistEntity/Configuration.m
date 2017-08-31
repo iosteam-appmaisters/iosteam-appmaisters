@@ -58,10 +58,6 @@
     
     NSString  *urlString = [NSString stringWithFormat:@"%@/%@/",BASE_URL_CONFIGURATION,ACCESS_TOKEN];
 
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"MessageLabelNotification"
-     object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates"}];
-
     [[AppServiceModel sharedClient] postRequestForConfigAPIWithParam:param progressMessage:nil urlString:urlString delegate:delegate completionBlock:^(NSObject *response) {
         if(response){
             
@@ -246,6 +242,7 @@
 }
 
 
+
 +(NSString *)getVertifiSecretKey{
     ClientSettingsObject *obj = [self getClientSettingsContent];
     return  obj.vertifirdcsecretkey;
@@ -255,6 +252,17 @@
     ClientSettingsObject *obj = [self getClientSettingsContent];
     return  obj.vertifirdcrequestorkey;
 }
+
++(NSString *)getVertifiRDCTestMode{
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.vertifirdctestmode;
+}
+
++(NSString *)getVertifiRDCURL{
+    ClientSettingsObject *obj = [self getClientSettingsContent];
+    return  obj.vertifirdcurl;
+}
+
 
 +(NSString *)getVertifiRouterKey{
     ClientSettingsObject *obj = [self getClientSettingsContent];

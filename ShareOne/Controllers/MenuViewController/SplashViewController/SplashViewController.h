@@ -15,5 +15,7 @@
 @property (nonatomic,weak)IBOutlet UIActivityIndicatorView *indicatorView;
 //@property (nonatomic,strong)LoginViewController *objLoginViewController;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *customerIDLabel;
 
 @end

@@ -16,7 +16,7 @@
 +(void)getRegisterToVirtifi:(NSDictionary*)param delegate:(id)delegate url:(NSString *)vertifiUrl AndLoadingMessage:(NSString *)message completionBlock:(void(^)(NSObject *user,BOOL succes))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSMutableDictionary *dict = [param mutableCopy];
-    [dict setValue:VERTIFI_MODE_TEST forKey:@"mode"];
+    [dict setValue:[Configuration getVertifiRDCTestMode] forKey:@"mode"];
     
 //    NSLog(@"param vertify : %@",param);
 

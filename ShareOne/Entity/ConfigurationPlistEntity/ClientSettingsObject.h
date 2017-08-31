@@ -23,13 +23,15 @@
 @property (nonatomic,strong) NSString *contactculink;
 @property (nonatomic,strong) NSString *rateslink;
 @property (nonatomic,strong) NSString *privacylink;
-@property (nonatomic,strong) NSString *vertifirdcsecretkey;
-@property (nonatomic,strong) NSString *vertifirdcrequestorkey;
+
 @property (nonatomic,strong) NSString *coopid;
 @property (nonatomic,strong) NSString *preprodbasewebviewurl;
 
-@property (nonatomic,strong) NSString *vertifiRDCTestMode;
-@property (nonatomic,strong) NSString *vertifiRDCUrl;
+
+@property (nonatomic,strong) NSString *vertifirdcsecretkey;
+@property (nonatomic,strong) NSString *vertifirdcrequestorkey;
+@property (nonatomic,strong) NSString *vertifirdctestmode;
+@property (nonatomic,strong) NSString *vertifirdcurl;
 
 +(ClientSettingsObject *)parseClientSettings:(NSArray *)array;
 

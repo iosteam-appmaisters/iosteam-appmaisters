@@ -40,8 +40,9 @@
 }
 
 -(void)changeMessageLabel:(NSNotification*)notification {
-
     _messageLabel.text = notification.userInfo[@"MESSAGE"];
+    _versionLabel.text = [NSString stringWithFormat:@"Version: %@",notification.userInfo[@"VERSION"]];
+    _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@",notification.userInfo[@"CUSTOMER_ID"]];
 }
 
 -(void)showNextViewController{
@@ -52,6 +53,13 @@
         [[SharedUser sharedManager] setIsCallingNSConfigServices:FALSE];
 
         [self showIndicaterView];
+        
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"MessageLabelNotification"
+         object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+                                @"VERSION":[ShareOneUtility getVersionNumber],
+                                @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
+        
         [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
             [self hideIndicaterView];
             if(success){
@@ -97,6 +105,12 @@
     
     [self showIndicaterView];
 
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"MessageLabelNotification"
+     object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+                            @"VERSION":[ShareOneUtility getVersionNumber],
+                            @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
+    
     [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
         [self hideIndicaterView];
         if(success){
