@@ -160,6 +160,10 @@
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
 		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
 		6BD433DB1D8C09C30067515A /* po.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* po.plist */; };
+		9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */; };
+		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
+		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
+		9AEB7DF81F5EEEB30027DA65 /* YALContextMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */; };
 		F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */; };
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
@@ -462,6 +466,14 @@
 		6BD405F51D8307DF00358036 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		6BD433DA1D8C09C30067515A /* po.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = po.plist; sourceTree = "<group>"; };
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
+		9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuCell.h; sourceTree = "<group>"; };
+		9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMenuCell.m; sourceTree = "<group>"; };
+		9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContextMenuCell.xib; sourceTree = "<group>"; };
+		9AEB7DF01F5EEEB30027DA65 /* UIView+YALConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YALConstraints.h"; sourceTree = "<group>"; };
+		9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YALConstraints.m"; sourceTree = "<group>"; };
+		9AEB7DF21F5EEEB30027DA65 /* YALContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALContextMenuCell.h; sourceTree = "<group>"; };
+		9AEB7DF31F5EEEB30027DA65 /* YALContextMenuTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALContextMenuTableView.h; sourceTree = "<group>"; };
+		9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALContextMenuTableView.m; sourceTree = "<group>"; };
 		B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShareOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
 		F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -585,6 +597,7 @@
 		1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				9AEB7DEA1F5EEEB30027DA65 /* ContextMenu */,
 				1D20C1F51E4E110400D3FC93 /* VertifiLatestSDK */,
 			);
 			path = ReuseableComponents;
@@ -1317,6 +1330,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9AEB7DEA1F5EEEB30027DA65 /* ContextMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB7DEB1F5EEEB30027DA65 /* ContextMenuCell */,
+				9AEB7DEF1F5EEEB30027DA65 /* YALContextMenu */,
+			);
+			path = ContextMenu;
+			sourceTree = "<group>";
+		};
+		9AEB7DEB1F5EEEB30027DA65 /* ContextMenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */,
+				9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */,
+				9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */,
+			);
+			path = ContextMenuCell;
+			sourceTree = "<group>";
+		};
+		9AEB7DEF1F5EEEB30027DA65 /* YALContextMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9AEB7DF01F5EEEB30027DA65 /* UIView+YALConstraints.h */,
+				9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */,
+				9AEB7DF21F5EEEB30027DA65 /* YALContextMenuCell.h */,
+				9AEB7DF31F5EEEB30027DA65 /* YALContextMenuTableView.h */,
+				9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */,
+			);
+			path = YALContextMenu;
+			sourceTree = "<group>";
+		};
 		DCE61F0EA6E37C18C6765C07 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1463,6 +1507,7 @@
 				1D20C27F1E4E110500D3FC93 /* Settings.bundle in Resources */,
 				1D20C2851E4E110500D3FC93 /* SubmittedDepositsViewController.xib in Resources */,
 				1D5441361E51834F00C07072 /* Assets.xcassets in Resources */,
+				9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */,
 				1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1523,6 +1568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */,
+				9AEB7DF81F5EEEB30027DA65 /* YALContextMenuTableView.m in Sources */,
 				1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */,
 				1D20C2921E4E110500D3FC93 /* VIPSampleAppDelegate.m in Sources */,
 				1D20C26A1E4E110500D3FC93 /* DepositSubmitQueue.m in Sources */,
@@ -1564,6 +1610,7 @@
 				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
 				1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */,
 				1D3D037C1E602EF300886C79 /* CustomTextFeild.m in Sources */,
+				9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */,
 				1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */,
 				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
 				1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */,
@@ -1593,6 +1640,7 @@
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,
 				1D3A02621E5F2DE6009ABC8C /* AttributedCustomLabel.m in Sources */,
+				9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */,
 				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
 				1D20C2931E4E110500D3FC93 /* VIPViewUtility.m in Sources */,

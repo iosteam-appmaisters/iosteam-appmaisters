@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *showOffersLbl;
 @property (weak, nonatomic) IBOutlet UISwitch *pushNotifSwitch;
 
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *customerIDLabel;
 
 
 

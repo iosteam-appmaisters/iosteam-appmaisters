@@ -18,6 +18,9 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    _versionLabel.text = [NSString stringWithFormat:@"Version: %@", [ShareOneUtility getVersionNumber]];
+    _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@", [ShareOneUtility getCustomerId]];
+    
     /*
     Configuration *config = [ShareOneUtility getConfigurationFile];
     if([config.DisableShowOffers boolValue]){

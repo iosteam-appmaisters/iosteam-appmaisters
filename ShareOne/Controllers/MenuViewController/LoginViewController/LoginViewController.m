@@ -29,8 +29,20 @@
 #import "UIColor+HexColor.h"
 #import "ClientSettingsObject.h"
 
+#import "ContextMenuCell.h"
+#import "YALContextMenuTableView.h"
 
-@interface LoginViewController ()
+static NSString *const menuCellIdentifier = @"rotationCell";
+
+@interface LoginViewController () <YALContextMenuTableViewDelegate,UITableViewDelegate,UITableViewDataSource>
+
+
+@property (nonatomic, strong) YALContextMenuTableView* contextMenuTableView;
+
+@property (nonatomic, strong) NSArray *menuTitles;
+@property (nonatomic, strong) NSArray *menuIcons;
+
+@property (weak, nonatomic) IBOutlet UIButton *addMenuIcon;
 
 @property (weak, nonatomic) IBOutlet UITextField *userIDTxt;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTxt;
@@ -103,7 +115,8 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-
+    [self initiateMenuOptions];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -517,7 +530,13 @@
 //    [weakSelf startApplication];
 //    return; //skipme
     NSLog(@"username : %@  password: %@",local_user.UserName,local_user.Password);
-    [User getUserWithParam:[NSDictionary dictionaryWithObjectsAndKeys:local_user.UserName,@"account",local_user.Password,@"password", nil] delegate:weakSelf completionBlock:^(User *user) {
+    
+    NSDictionary * loginParams = @{@"account":local_user.UserName,
+                                   @"password":local_user.Password,
+                                   @"IsMobile":@YES,
+                                   @"IsNsMobile":@YES};
+    
+    [User getUserWithParam:loginParams delegate:weakSelf completionBlock:^(User *user) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
@@ -1006,5 +1025,159 @@
     [self presentViewController:objPasswordChangeController animated:YES completion:nil];
 
 }
+
+
+#pragma mark - Context Menu
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    //should be called after rotation animation completed
+    [self.contextMenuTableView reloadData];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    [self.contextMenuTableView updateAlongsideRotation];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    
+    [coordinator animateAlongsideTransition:nil completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        //should be called after rotation animation completed
+        [self.contextMenuTableView reloadData];
+    }];
+    [self.contextMenuTableView updateAlongsideRotation];
+    
+}
+
+#pragma mark - IBAction
+- (IBAction)infoButtonTapped:(UIButton *)sender {
+
+    _addMenuIcon.hidden = YES;
+    
+    // init YALContextMenuTableView tableView
+    if (!self.contextMenuTableView) {
+        self.contextMenuTableView = [[YALContextMenuTableView alloc]initWithTableViewDelegateDataSource:self];
+        self.contextMenuTableView.animationDuration = 0.02;
+        //optional - implement custom YALContextMenuTableView custom protocol
+        self.contextMenuTableView.yalDelegate = self;
+        //optional - implement menu items layout
+        self.contextMenuTableView.menuItemsSide = Left;
+        self.contextMenuTableView.menuItemsAppearanceDirection = FromBottomToTop;
+        
+        //register nib
+        UINib *cellNib = [UINib nibWithNibName:@"ContextMenuCell" bundle:nil];
+        [self.contextMenuTableView registerNib:cellNib forCellReuseIdentifier:menuCellIdentifier];
+    }
+    
+    // it is better to use this method only for proper animation
+    [self.contextMenuTableView showInView:self.view withEdgeInsets:UIEdgeInsetsZero animated:YES];
+
+}
+
+
+#pragma mark - Local methods
+
+#define kJoinTheCreditUnion @"Join The Credit Union"
+#define kBranchLocation @"Branch Location"
+#define kPrivacyPolicy @"Privacy Policy"
+#define kApplyForALoan @"Apply For A Loan"
+#define kContact @"Contact"
+
+- (void)initiateMenuOptions {
+    self.menuTitles = @[@"Close",
+                        kContact,
+                        kApplyForALoan,
+                        kPrivacyPolicy,
+                        kBranchLocation,
+                        kJoinTheCreditUnion,
+                        ];
+    
+    self.menuIcons = @[[UIImage imageNamed:@"cancel_icon"],
+                       [UIImage imageNamed:@"contact"],
+                       [UIImage imageNamed:@"apply_for_loan"],
+                       [UIImage imageNamed:@"privacy_policy"],
+                       [UIImage imageNamed:@"branch_location"],
+                       [UIImage imageNamed:@"join_credit_union"]];
+}
+
+
+#pragma mark - YALContextMenuTableViewDelegate
+
+- (void)contextMenuTableView:(YALContextMenuTableView *)contextMenuTableView didDismissWithIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"Menu dismissed with indexpath = %ld", (long)indexPath.row);
+    _addMenuIcon.hidden = NO;
+    if (indexPath.row > 0){
+        [self openLinks:self.menuTitles[indexPath.row]];
+    }
+}
+
+-(void)openLinks:(NSString*)menuTitle {
+
+    ClientSettingsObject *objClientSettingsObject = [Configuration getClientSettingsContent];
+    
+    _isComingAfterPressedOpenUrlButton = TRUE;
+    NSString *urlString = nil;
+    
+    if([menuTitle isEqualToString:kJoinTheCreditUnion]){
+        urlString=objClientSettingsObject.joinculink;
+    }
+    else if ([menuTitle isEqualToString:kApplyForALoan]){
+        urlString=objClientSettingsObject.applyloanlink;
+        
+    }
+    else if ([menuTitle isEqualToString:kBranchLocation]){
+        urlString=objClientSettingsObject.branchlocationlink;
+        
+    }
+    else if ([menuTitle isEqualToString:kContact]){
+        urlString=objClientSettingsObject.contactculink;
+        
+    }
+    else if ([menuTitle isEqualToString:kPrivacyPolicy]){
+        urlString=objClientSettingsObject.privacylink;
+        
+    }
+    
+    WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
+    objWeblinksController.navTitle=menuTitle;
+    objWeblinksController.webLink=urlString;
+    [self presentViewController:objWeblinksController animated:YES completion:nil];
+    
+}
+
+#pragma mark - UITableViewDataSource, UITableViewDelegate
+
+- (void)tableView:(YALContextMenuTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView dismisWithIndexPath:indexPath];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 45;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.menuTitles.count;
+}
+
+- (UITableViewCell *)tableView:(YALContextMenuTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ContextMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCellIdentifier forIndexPath:indexPath];
+    
+    if (cell) {
+        cell.backgroundColor = [UIColor clearColor];
+        cell.menuTitleLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
+        cell.menuImageView.image = [self.menuIcons objectAtIndex:indexPath.row];
+    }
+    
+    return cell;
+}
+
+
+
 
 @end
