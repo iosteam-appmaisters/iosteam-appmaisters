@@ -160,10 +160,10 @@
                                         <rect key="frame" x="20" y="54.5" width="335" height="54"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock_icon" translatesAutoresizingMaskIntoConstraints="NO" id="qwV-Kb-rR9">
-                                                <rect key="frame" x="20" y="10" width="34.5" height="34.5"/>
+                                                <rect key="frame" x="20" y="10.5" width="34.5" height="34.5"/>
                                             </imageView>
                                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-eK-o8f">
-                                                <rect key="frame" x="67.5" y="19" width="234.5" height="17"/>
+                                                <rect key="frame" x="67.5" y="19.5" width="234.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -179,7 +179,7 @@
                                         <rect key="frame" x="20" y="109.5" width="335" height="87"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="11.5" width="384" height="46"/>
+                                                <rect key="frame" x="21" y="22" width="294" height="35.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -200,7 +200,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="308" y="60.5" width="63" height="21.5"/>
+                                                <rect key="frame" x="218" y="60.5" width="63" height="21.5"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -208,7 +208,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="375" y="58.5" width="25" height="25"/>
+                                                <rect key="frame" x="285" y="58.5" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -247,7 +247,7 @@
                                         <rect key="frame" x="20" y="167" width="335" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="260" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="170" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -459,7 +459,7 @@
                                             <constraint firstAttribute="height" constant="50" id="NyW-2X-PE5"/>
                                             <constraint firstAttribute="width" constant="50" id="eOm-Fq-ORL"/>
                                         </constraints>
-                                        <state key="normal" image="add_big_icon"/>
+                                        <state key="normal" image="dot_icon"/>
                                         <connections>
                                             <action selector="infoButtonTapped:" destination="Grc-iE-xzY" eventType="touchUpInside" id="jvi-f1-dFi"/>
                                         </connections>
@@ -549,7 +549,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a22-uc-P6y" customClass="CustomTextFeild">
-                                <rect key="frame" x="87.5" y="326" width="234.5" height="34.5"/>
+                                <rect key="frame" x="87.5" y="326.5" width="234.5" height="34.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
@@ -6222,7 +6222,6 @@ Tm90ZToQIA
         <image name="Rembember_Box" width="16" height="16"/>
         <image name="Rembember_Box_checked" width="16" height="16"/>
         <image name="UserID_icon" width="37" height="37"/>
-        <image name="add_big_icon" width="16" height="16"/>
         <image name="add_fav_btn" width="113" height="26"/>
         <image name="add_new_fav_btn" width="121" height="22"/>
         <image name="back_icon" width="25" height="17"/>
@@ -6234,6 +6233,7 @@ Tm90ZToQIA
         <image name="del_no" width="55" height="22"/>
         <image name="del_yes" width="55" height="22"/>
         <image name="direction_bttn" width="80" height="18"/>
+        <image name="dot_icon" width="16" height="16"/>
         <image name="down-arrow" width="7" height="4"/>
         <image name="fb-image" width="225" height="65"/>
         <image name="foc-deposit-list" width="70" height="13"/>
