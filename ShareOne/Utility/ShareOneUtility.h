@@ -201,7 +201,7 @@
 +(NSString *)getGoogleMapKey_old;
 
 +(BOOL)hasShownTutorialsBefore;
-
++(NSString*)getApplicationVersion;
 + (void)saveVersionNumber:(NSString *)version;
 +(NSString*)getVersionNumber;
 

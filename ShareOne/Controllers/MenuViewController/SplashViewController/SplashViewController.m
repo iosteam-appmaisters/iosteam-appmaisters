@@ -43,6 +43,7 @@
     _messageLabel.text = notification.userInfo[@"MESSAGE"];
     _versionLabel.text = [NSString stringWithFormat:@"Version: %@",notification.userInfo[@"VERSION"]];
     _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@",notification.userInfo[@"CUSTOMER_ID"]];
+    _appVersionLabel.text = [ShareOneUtility getApplicationVersion];
 }
 
 -(void)showNextViewController{

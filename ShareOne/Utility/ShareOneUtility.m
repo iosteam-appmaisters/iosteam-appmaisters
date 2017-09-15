@@ -828,6 +828,10 @@ NSLog(Y, Z);		\
     return accountValue;
 }
 
++(NSString*)getApplicationVersion {
+
+    return  [NSString stringWithFormat:@"Application Version: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+}
 
 
 +(NSString *)getMemberEmail{

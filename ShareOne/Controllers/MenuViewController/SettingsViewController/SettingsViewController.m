@@ -20,6 +20,7 @@
     
     _versionLabel.text = [NSString stringWithFormat:@"Version: %@", [ShareOneUtility getVersionNumber]];
     _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@", [ShareOneUtility getCustomerId]];
+    _appVersionLabel.text = [ShareOneUtility getApplicationVersion];
     
     /*
     Configuration *config = [ShareOneUtility getConfigurationFile];

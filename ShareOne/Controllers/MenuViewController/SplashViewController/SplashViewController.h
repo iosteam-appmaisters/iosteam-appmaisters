@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *customerIDLabel;
+@property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
 
 @end
