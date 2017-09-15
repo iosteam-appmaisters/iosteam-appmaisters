@@ -90,7 +90,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
 +(void)hideLoader:(UIView *)forView
 {
-    AppDelegate *objDele = [[UIApplication sharedApplication]delegate];
+    AppDelegate *objDele = (AppDelegate *)[[UIApplication sharedApplication]delegate];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD hideAllHUDsForView:[[objDele.window subviews] lastObject] animated:YES];

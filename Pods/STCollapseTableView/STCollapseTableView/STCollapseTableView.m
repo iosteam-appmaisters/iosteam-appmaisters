@@ -271,7 +271,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	int nbSection = [self.collapseDataSource numberOfSectionsInTableView:tableView];
+	int nbSection = (int)[self.collapseDataSource numberOfSectionsInTableView:tableView];
     
 	while (nbSection < [self.sectionsStates count])
     {

@@ -264,7 +264,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-pp-gWk">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-pp-gWk">
                                                 <rect key="frame" x="609" y="8" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="rememberMeButtonClicked:" destination="Grc-iE-xzY" eventType="valueChanged" id="aWh-u1-ryo"/>
@@ -337,7 +337,7 @@
                                                     <action selector="fingerprintButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="CtH-Z6-9jo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="111" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-XY-Cad" customClass="PlainCustomButton">
+                                            <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-XY-Cad" customClass="PlainCustomButton">
                                                 <rect key="frame" x="20" y="22" width="153" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Forgot username ?"/>
@@ -348,7 +348,7 @@
                                                     <action selector="pinResetButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="7IH-iz-mqI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-ZN-8NF" customClass="PlainCustomButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-ZN-8NF" customClass="PlainCustomButton">
                                                 <rect key="frame" x="298" y="22" width="150" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Forgot password ?"/>
@@ -2267,7 +2267,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="mobile-deposit-header" translatesAutoresizingMaskIntoConstraints="NO" id="sh7-jq-qPo">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobile-deposit-header" translatesAutoresizingMaskIntoConstraints="NO" id="sh7-jq-qPo">
                                 <rect key="frame" x="-19.5" y="20" width="414" height="151"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-ko-7uq" userLabel="ContentView">
@@ -3022,7 +3022,7 @@ Tm90ZToQIA
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-6K-AE8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-6K-AE8">
                                                     <rect key="frame" x="185" y="92" width="155" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6as-fo-C0U" userLabel="DirectionsBtn">
@@ -3994,7 +3994,7 @@ Tm90ZToQIA
                                     <outlet property="delegate" destination="Ddh-0z-8eC" id="VLg-bm-dOL"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbk-qo-lCB" userLabel="WebViewParent">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbk-qo-lCB" userLabel="WebViewParent">
                                 <rect key="frame" x="10" y="30" width="394" height="696"/>
                                 <subviews>
                                     <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jo9-hM-EUX">
@@ -4249,7 +4249,7 @@ Tm90ZToQIA
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter Required Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zH5-XB-Ndl" customClass="CustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Required Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zH5-XB-Ndl" customClass="CustomLabel">
                                 <rect key="frame" x="40" y="237" width="240" height="81"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4258,7 +4258,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Account Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cHB-et-H1P" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cHB-et-H1P" customClass="PlainCustomLabel">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4267,7 +4267,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Account Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSo-gs-Rxj" customClass="CustomTextFeild">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Account Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RSo-gs-Rxj" customClass="CustomTextFeild">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -4302,7 +4302,7 @@ Tm90ZToQIA
                                     <outlet property="delegate" destination="N95-Ce-Jh2" id="wpH-Qk-8jV"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uYd-WP-dLY" userLabel="ViewSeperaterGrey1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYd-WP-dLY" userLabel="ViewSeperaterGrey1">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.91172242164611816" green="0.91183435916900635" blue="0.91164588928222656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -4330,11 +4330,11 @@ Tm90ZToQIA
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4e3-bT-dap" userLabel="ViewSeperaterGrey2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4e3-bT-dap" userLabel="ViewSeperaterGrey2">
                                 <rect key="frame" x="0.0" y="1" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.85884594917297363" green="0.8589513897895813" blue="0.85877388715744019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Last 4 Digits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Au4-TD-eBk" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last 4 Digits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Au4-TD-eBk" customClass="PlainCustomLabel">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4343,7 +4343,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Last 4 Digits of SSN, TNN, ITIN, EIN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eeX-3v-0Dc" customClass="CustomTextFeild">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Last 4 Digits of SSN, TNN, ITIN, EIN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eeX-3v-0Dc" customClass="CustomTextFeild">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4356,15 +4356,15 @@ Tm90ZToQIA
                                     <outlet property="delegate" destination="N95-Ce-Jh2" id="aUs-7V-YSK"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VpU-ln-kwQ" userLabel="ViewSeperaterGrey1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VpU-ln-kwQ" userLabel="ViewSeperaterGrey1">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.91172242164611816" green="0.91183435916900635" blue="0.91164588928222656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8Q-J4-Nwi" userLabel="ViewSeperaterGrey2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8Q-J4-Nwi" userLabel="ViewSeperaterGrey2">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.85884594917297363" green="0.8589513897895813" blue="0.85877388715744019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date Of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-rc-cQg" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-rc-cQg" customClass="PlainCustomLabel">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4373,7 +4373,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/dd/yyyy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ul-MI-I5r" customClass="CustomTextFeild">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/dd/yyyy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ul-MI-I5r" customClass="CustomTextFeild">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4395,15 +4395,15 @@ Tm90ZToQIA
                                     <action selector="dateButtonClicked:" destination="N95-Ce-Jh2" eventType="touchUpInside" id="lKE-EH-k0V"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeT-b2-WLB" userLabel="ViewSeperaterGrey1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeT-b2-WLB" userLabel="ViewSeperaterGrey1">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.91172242164611816" green="0.91183435916900635" blue="0.91164588928222656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msy-IG-iIk" userLabel="ViewSeperaterGrey2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msy-IG-iIk" userLabel="ViewSeperaterGrey2">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.85884594917297363" green="0.8589513897895813" blue="0.85877388715744019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-R8-E64" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dkY-R8-E64" customClass="PlainCustomLabel">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4412,7 +4412,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter 5 or 9-digit ZIP or foreign coded" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqI-IC-tO9" customClass="CustomTextFeild">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter 5 or 9-digit ZIP or foreign coded" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqI-IC-tO9" customClass="CustomTextFeild">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4425,15 +4425,15 @@ Tm90ZToQIA
                                     <outlet property="delegate" destination="N95-Ce-Jh2" id="LLi-kw-Vli"/>
                                 </connections>
                             </textField>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IBb-ny-Gg8" userLabel="ViewSeperaterGrey1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBb-ny-Gg8" userLabel="ViewSeperaterGrey1">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.91172242164611816" green="0.91183435916900635" blue="0.91164588928222656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeH-pe-sJL" userLabel="ViewSeperaterGrey2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeH-pe-sJL" userLabel="ViewSeperaterGrey2">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.85884594917297363" green="0.8589513897895813" blue="0.85877388715744019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tr-nH-rnu" customClass="CustomButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tr-nH-rnu" customClass="CustomButton">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4tr-nH-rnu" secondAttribute="height" multiplier="348:41" id="bip-YD-MpT"/>
@@ -4485,7 +4485,7 @@ Tm90ZToQIA
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjz-Vu-5iQ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="New Pin Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAa-e3-F9z" customClass="CustomLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Pin Information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAa-e3-F9z" customClass="CustomLabel">
                                         <rect key="frame" x="84" y="115" width="246" height="23"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                         <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4997,13 +4997,6 @@ Tm90ZToQIA
                                 <exclude reference="bMx-zq-0B2"/>
                                 <exclude reference="bUD-UO-o1C"/>
                                 <exclude reference="qFy-w2-mh9"/>
-                                <exclude reference="HeE-Kj-TGG"/>
-                                <exclude reference="Jx2-XO-8oY"/>
-                                <exclude reference="ZiH-o4-xoc"/>
-                                <exclude reference="dJT-Lv-GoB"/>
-                                <exclude reference="hZS-0H-Rci"/>
-                                <exclude reference="tUu-LL-v21"/>
-                                <exclude reference="wCW-gH-E4U"/>
                                 <exclude reference="1nb-zZ-LqB"/>
                                 <exclude reference="3he-Xb-FTe"/>
                                 <exclude reference="7M3-1t-job"/>
@@ -5064,6 +5057,13 @@ Tm90ZToQIA
                                 <exclude reference="oRq-6G-te4"/>
                                 <exclude reference="pec-vK-AlO"/>
                                 <exclude reference="yyt-qU-FcY"/>
+                                <exclude reference="HeE-Kj-TGG"/>
+                                <exclude reference="Jx2-XO-8oY"/>
+                                <exclude reference="ZiH-o4-xoc"/>
+                                <exclude reference="dJT-Lv-GoB"/>
+                                <exclude reference="hZS-0H-Rci"/>
+                                <exclude reference="tUu-LL-v21"/>
+                                <exclude reference="wCW-gH-E4U"/>
                                 <exclude reference="3di-IO-NID"/>
                                 <exclude reference="MHH-wn-Ufa"/>
                                 <exclude reference="U4Q-An-7bO"/>
@@ -5138,10 +5138,6 @@ Tm90ZToQIA
                                 <include reference="icp-z8-0sW"/>
                                 <include reference="VZJ-dY-wSq"/>
                                 <include reference="bMx-zq-0B2"/>
-                                <include reference="HeE-Kj-TGG"/>
-                                <include reference="Jx2-XO-8oY"/>
-                                <include reference="dJT-Lv-GoB"/>
-                                <include reference="wCW-gH-E4U"/>
                                 <include reference="3he-Xb-FTe"/>
                                 <include reference="7M3-1t-job"/>
                                 <include reference="J6n-6c-gwY"/>
@@ -5173,6 +5169,10 @@ Tm90ZToQIA
                                 <include reference="oRq-6G-te4"/>
                                 <include reference="pec-vK-AlO"/>
                                 <include reference="yyt-qU-FcY"/>
+                                <include reference="HeE-Kj-TGG"/>
+                                <include reference="Jx2-XO-8oY"/>
+                                <include reference="dJT-Lv-GoB"/>
+                                <include reference="wCW-gH-E4U"/>
                                 <include reference="3di-IO-NID"/>
                                 <include reference="MHH-wn-Ufa"/>
                                 <include reference="U4Q-An-7bO"/>
@@ -5233,9 +5233,6 @@ Tm90ZToQIA
                                 <include reference="HlK-dS-0rt"/>
                                 <include reference="bUD-UO-o1C"/>
                                 <include reference="qFy-w2-mh9"/>
-                                <include reference="ZiH-o4-xoc"/>
-                                <include reference="hZS-0H-Rci"/>
-                                <include reference="tUu-LL-v21"/>
                                 <include reference="1nb-zZ-LqB"/>
                                 <include reference="DdM-nb-9BQ"/>
                                 <include reference="Yo0-Ev-k7S"/>
@@ -5265,6 +5262,9 @@ Tm90ZToQIA
                                 <include reference="Hin-kA-rua"/>
                                 <include reference="TdZ-sb-vSQ"/>
                                 <include reference="ZbZ-6I-uAg"/>
+                                <include reference="ZiH-o4-xoc"/>
+                                <include reference="hZS-0H-Rci"/>
+                                <include reference="tUu-LL-v21"/>
                                 <include reference="3R0-su-WW4"/>
                                 <include reference="3b3-gs-t0N"/>
                                 <exclude reference="8ta-mR-cxG"/>
@@ -5309,7 +5309,7 @@ Tm90ZToQIA
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touch-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="Qun-cQ-2hn" customClass="CustomImageView">
                                 <rect key="frame" x="114" y="40" width="147" height="177"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Access Mobile Banking With Touch ID ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZc-d1-0Pq" customClass="CustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Mobile Banking With Touch ID ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZc-d1-0Pq" customClass="CustomLabel">
                                 <rect key="frame" x="40" y="237" width="240" height="81"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5318,7 +5318,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Use Touch ID to quickly and easily access your account(s)." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbJ-9e-Qcw" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Touch ID to quickly and easily access your account(s)." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbJ-9e-Qcw" customClass="PlainCustomLabel">
                                 <rect key="frame" x="40" y="338" width="240" height="27"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381477356" green="0.28533178567886353" blue="0.28527271747589111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5327,7 +5327,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Turn Off Touch ID anytime from" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNH-zA-GIW" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn Off Touch ID anytime from" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNH-zA-GIW" customClass="PlainCustomLabel">
                                 <rect key="frame" x="40" y="370" width="167" height="14"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381477356" green="0.28533178567886353" blue="0.28527271747589111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5336,7 +5336,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Security Settings." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AW-Cc-tyY" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Settings." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AW-Cc-tyY" customClass="PlainCustomLabel">
                                 <rect key="frame" x="210" y="370" width="102" height="14"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381477356" green="0.28533178567886353" blue="0.28527271747589111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5345,7 +5345,7 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aho-ND-3aY" customClass="PlainCustomLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aho-ND-3aY" customClass="PlainCustomLabel">
                                 <rect key="frame" x="40" y="389" width="240" height="54"/>
                                 <string key="text">We do not recommend using Touch ID if you share your device. Anyone who has a saved fingerprint on this device can access your account(s).</string>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
@@ -5355,14 +5355,14 @@ Tm90ZToQIA
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBY-81-r2X">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBY-81-r2X">
                                 <rect key="frame" x="10" y="485" width="147" height="41"/>
                                 <state key="normal" backgroundImage="touch-no-thanks"/>
                                 <connections>
                                     <action selector="noButtonClicked:" destination="j4H-5A-mwo" eventType="touchUpInside" id="JnU-cX-la5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwu-Ac-Xhc" customClass="CustomButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwu-Ac-Xhc" customClass="CustomButton">
                                 <rect key="frame" x="162" y="485" width="147" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="YES, PLEASE" backgroundImage="touch-yes"/>
@@ -5782,37 +5782,37 @@ Tm90ZToQIA
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditContactCell" id="BG6-0b-M9f" customClass="EditContactCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="BG6-0b-M9f" id="HhT-KA-ySQ">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BG6-0b-M9f" id="HhT-KA-ySQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" verticalHuggingPriority="244" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-mA-19L" userLabel="SeeraterView1">
+                                                <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-mA-19L" userLabel="SeeraterView1">
                                                     <rect key="frame" x="40" y="30" width="145.66666666666666" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537878036499" green="0.87454748153686523" blue="0.87439841032028198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="IBJ-Sd-KOM"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="732" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the new Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fnr-Ft-Ifi" customClass="CustomTextFeild">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="732" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the new Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fnr-Ft-Ifi" customClass="CustomTextFeild">
                                                     <rect key="frame" x="40" y="10" width="145.66666666666666" height="15"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSC-bz-kBb" customClass="CustomButton">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSC-bz-kBb" customClass="CustomButton">
                                                     <rect key="frame" x="83.333333333333329" y="65" width="59" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <state key="normal" title="CONFIRM" backgroundImage="confirm_btn"/>
                                                 </button>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="730" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the new Url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSL-3T-j8p" customClass="CustomTextFeild">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="730" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the new Url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSL-3T-j8p" customClass="CustomTextFeild">
                                                     <rect key="frame" x="40" y="38" width="145.66666666666666" height="15"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                 </textField>
-                                                <view contentMode="scaleToFill" verticalHuggingPriority="242" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DL8-al-K01" userLabel="SeeraterView2">
+                                                <view contentMode="scaleToFill" verticalHuggingPriority="242" translatesAutoresizingMaskIntoConstraints="NO" id="DL8-al-K01" userLabel="SeeraterView2">
                                                     <rect key="frame" x="40" y="55" width="145.66666666666666" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537879999995" green="0.87454748149999995" blue="0.87439841029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>

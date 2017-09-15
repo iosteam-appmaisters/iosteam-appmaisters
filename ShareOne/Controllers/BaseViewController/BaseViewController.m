@@ -663,7 +663,6 @@
 
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
 
-    __weak BaseViewController *weakSelf = self;
     
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
         

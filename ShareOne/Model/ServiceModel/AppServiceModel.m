@@ -911,9 +911,9 @@
     
     [self concurrentBatchOfRequestOperations:customReqArr progressBlock:^(NSUInteger numberOfFinishedTasks, NSUInteger totalNumberOfTasks) {
         
-        NSLog(@"%d of %d process complete",numberOfFinishedTasks,totalNumberOfTasks);
+        NSLog(@"%lu of %lu process complete",(unsigned long)numberOfFinishedTasks,(unsigned long)totalNumberOfTasks);
     } completionBlock:^(NSArray *dataTasks) {
-        NSLog(@"ALL TASK DONE WITH REQ COUNT : %d ",[dataTasks count]);
+        NSLog(@"ALL TASK DONE WITH REQ COUNT : %lu ",(unsigned long)[dataTasks count]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
         [self hideProgressAlert];
@@ -921,7 +921,7 @@
         if(reqError){
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-            NSLog(@"%d",[reqError code]);
+            NSLog(@"%ld",(long)[reqError code]);
             if(![reqError.localizedDescription containsString:@"304"])
                 queueBlock(FALSE,queueCustomError);
             else
@@ -1054,13 +1054,13 @@
 -(NSString *)getErrorMessageWithObject:(NSDictionary *)errorDict{
     
     
-    NSString *errorMessage=nil;
+    NSString *errorMessageNew=nil;
     if(errorDict)
-        errorMessage = errorDict[@"text"];
+        errorMessageNew = errorDict[@"text"];
     else
-        errorMessage = @"Unknown error";
+        errorMessageNew = @"Unknown error";
 
-    return errorMessage;
+    return errorMessageNew;
 }
 
 -(NSDictionary *)parseResponseToJsonWithData:(NSData *)data{

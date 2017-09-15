@@ -163,7 +163,6 @@
 
 -(void)vertifyUserRegistrationValidation{
     
-    __weak MobileDepositController *weakSelf = self;
 
     User *user = [ShareOneUtility getUserObject];
     

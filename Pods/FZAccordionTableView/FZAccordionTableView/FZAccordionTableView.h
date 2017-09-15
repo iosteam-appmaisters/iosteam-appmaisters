@@ -31,7 +31,7 @@
 @interface FZAccordionTableViewHeaderView : UITableViewHeaderFooterView{
  
 }
-@property (nonatomic,strong)    UITapGestureRecognizer *headerTapGesture;
+@property (nonatomic,strong)    UITapGestureRecognizer * _Nullable headerTapGesture;
 
 
 @end
