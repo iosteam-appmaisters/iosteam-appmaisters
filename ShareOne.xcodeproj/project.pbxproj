@@ -1445,7 +1445,7 @@
 					6BD405861D81B59200358036 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = FF9K5R9CMR;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 0;
@@ -1828,8 +1828,8 @@
 			baseConfigurationReference = E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eglin Federal Credit Union (FF9K5R9CMR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eglin Federal Credit Union (FF9K5R9CMR)";
 				DEVELOPMENT_TEAM = FF9K5R9CMR;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
@@ -1842,8 +1842,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.eglin.fcu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "efa51045-43ca-4fde-8adf-39046575553d";
+				PROVISIONING_PROFILE_SPECIFIER = EGLIN_FCU_DIST;
 			};
 			name = Debug;
 		};
@@ -1852,8 +1852,8 @@
 			baseConfigurationReference = 814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eglin Federal Credit Union (FF9K5R9CMR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eglin Federal Credit Union (FF9K5R9CMR)";
 				DEVELOPMENT_TEAM = FF9K5R9CMR;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
@@ -1866,8 +1866,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.eglin.fcu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "efa51045-43ca-4fde-8adf-39046575553d";
+				PROVISIONING_PROFILE_SPECIFIER = EGLIN_FCU_DIST;
 			};
 			name = Release;
 		};
