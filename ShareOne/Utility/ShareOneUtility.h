@@ -211,7 +211,6 @@
 +(void)writeDataToPlistFileWithJSON:(NSDictionary *)jsonDict AndFileName:(NSString *)fileName;
 
 +(NSString *)getDocumentsDirectoryPathWithFileName:(NSString *)plistName;
-+(NSString *)getErrorMessage;
 
 + (NSString *)getETagWithKey:(NSString *)key;
 + (void)saveETag:(NSString *)eTag withKey:(NSString *)key;

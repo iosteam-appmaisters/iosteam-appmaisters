@@ -69,7 +69,7 @@
 
 -(IBAction)changeSettingsAction:(UISwitch *)sender{
     
-    User *obj = [ShareOneUtility getUserObject];
+//    User *obj = [ShareOneUtility getUserObject];
 
     __weak SettingsViewController *weakSelf = self;
 

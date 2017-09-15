@@ -275,13 +275,12 @@ NSLog(Y, Z);		\
     
     NSData *keyData =[private_key hexToBytes];
     
-    NSString* myString;
-    myString = [[NSString alloc] initWithData:keyData encoding:NSASCIIStringEncoding];
+//    NSString* myString;
+//    myString = [[NSString alloc] initWithData:keyData encoding:NSASCIIStringEncoding];
 
 
     
-    
-    
+
     
     NSData *genIV = [BBAES randomIV] ;
     
@@ -294,20 +293,7 @@ NSLog(Y, Z);		\
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:result,@"EncryptedContextID",genratedIV,@"EncryptionIV", nil];
     
     return dict;
-    
-    NSString *secretMessage = private_key;
-
-    NSData* salt = [BBAES randomDataWithLength:BBAESSaltDefaultLength];
-    NSData *key = [BBAES keyBySaltingPassword:private_key salt:salt keySize:BBAESKeySize256 numberOfIterations:BBAESPBKDF2DefaultIterationsCount];
-
-    NSLog(@"Original message: %@", secretMessage);
-    
-    NSString *encryptedString = [secretMessage bb_AESEncryptedStringForIV:[BBAES randomIV] key:key options:BBAESEncryptionOptionsIncludeIV];
-    NSLog(@"Encrypted message: %@", encryptedString);
-    
-    NSString *decryptedMessage = [encryptedString bb_AESDecryptedStringForIV:nil key:key];
-    NSLog(@"Decrypted message: %@", decryptedMessage);
-}
+    }
 
 + (NSString *)getAESRandom4WithSecretKey:(NSString *)secret_key AndPublicKey:(NSString *)public_key{
     
@@ -622,7 +608,7 @@ NSLog(Y, Z);		\
 
 + (BOOL)getSettingsWithKey:(NSString *)key{
     
-    BOOL flag ;
+    BOOL flag = false ;
     User *user = [self getUserObject];
     if(user){
         
@@ -935,8 +921,8 @@ NSLog(Y, Z);		\
 
 +(void)getBytesOfString:(NSString *)string{
     NSData* data=[string dataUsingEncoding:NSUTF8StringEncoding];
-    NSUInteger myLength = data.length;
-    NSLog(@"getBytesOfString : %d",data.length);
+//    NSUInteger myLength = data.length;
+    NSLog(@"getBytesOfString : %lu",(unsigned long)data.length);
 }
 
 
@@ -1004,7 +990,7 @@ NSLog(Y, Z);		\
     //eab08a6943728a37
     
     
-   return  [self applyEncriptionWithPrivateKey:[ShareOneUtility getSSOSecretKey] andPublicKey:contexID];
+   return  (NSString *)[self applyEncriptionWithPrivateKey:[ShareOneUtility getSSOSecretKey] andPublicKey:contexID];
     
 //    return [self encryptString:contexID];
 
@@ -1095,26 +1081,11 @@ NSLog(Y, Z);		\
     
     if(encryptOrDecrypt == kCCEncrypt)
     {
-        /*
-        if(*pkcs7 != kCCOptionECBMode)
-        {
-            if((plainTextBufferSize % kCCBlockSizeAES128) == 0)
-            {
-                *pkcs7 = 0x0000;
-            }
-            else
-            {
-                *pkcs7 = kCCOptionPKCS7Padding;
-            }
-        }
-         */
-        
-//        *pkcs7 = kCCOptionPKCS7Padding;
-
+       
     }
     else if(encryptOrDecrypt != kCCDecrypt)
     {
-        LOGGING_FACILITY1( 0, @"Invalid CCOperation parameter [%d] for cipher context.", *pkcs7 );
+//        LOGGING_FACILITY1( 0, @"Invalid CCOperation parameter [%d] for cipher context.", *pkcs7 );
     }
     
     // Create and Initialize the crypto reference.
@@ -1184,36 +1155,6 @@ NSLog(Y, Z);		\
     
     return cipherOrPlainText;
     
-    /*
-     Or the corresponding one-shot call:
-     
-     ccStatus = CCCrypt(	encryptOrDecrypt,
-     kCCAlgorithmAES128,
-     typeOfSymmetricOpts,
-     (const void *)[self getSymmetricKeyBytes],
-     kChosenCipherKeySize,
-     iv,
-     (const void *) [plainText bytes],
-     plainTextBufferSize,
-     (void *)bufferPtr,
-     bufferPtrSize,
-     &movedBytes
-     );
-     
-     ccStatus = CCCrypt(	encryptOrDecrypt,
-     kCCAlgorithmAES128,
-     0,
-     symmetricKey,
-     kCCKeySizeAES128,
-     iv,
-     (const void *) [plainText bytes],
-     plainTextBufferSize,
-     (void *)bufferPtr,
-     bufferPtrSize,
-     &movedBytes
-     );
-     
-     */
 }
 
 #pragma mark Base64 Encode/Decoder
@@ -1325,9 +1266,9 @@ NSLog(Y, Z);		\
     
     NSData *encryptedData = [FBEncryptorAES encryptData:plainTextData key:keyData iv:ivData];
     
-    NSData *decryptedData = [FBEncryptorAES decryptData:encryptedData key:keyData iv:ivData];
+//    NSData *decryptedData = [FBEncryptorAES decryptData:encryptedData key:keyData iv:ivData];
     
-    BOOL res = [decryptedData isEqualToData:plainTextData];
+//    BOOL res = [decryptedData isEqualToData:plainTextData];
 //    NSLog(@"Match: %@", res ? @"Yes" : @"No"); // Match: Yes
     
     

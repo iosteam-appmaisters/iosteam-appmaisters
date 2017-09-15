@@ -70,12 +70,8 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 +(void)showLoader:(NSString *)title forView:(UIView *)view  setMode:(MBProgressHUDMode)mode delegate:(id)vwDelegate
 {
     
-    AppDelegate *objDele = [[UIApplication sharedApplication]delegate];
-    ;
+    AppDelegate *objDele = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [MBProgressHUD hideAllHUDsForView:[[objDele.window subviews] lastObject] animated:YES];
-//    });
     
   __block  MBProgressHUD *progressHUD;
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -84,8 +80,8 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
     
     [progressHUD setMode:mode];
-    [progressHUD setDimBackground:YES];
-    [progressHUD setLabelText:title];
+//    [progressHUD setDimBackground:YES];
+//    [progressHUD setLabelText:title];
     [progressHUD setMinShowTime:1.0];
     
     
@@ -573,13 +569,13 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit| NSHourCalendarUnit| NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents* dateComponentsNow = [gregorian components:unitFlags fromDate:sourceDate toDate:currentDate options:0];
     
-    int day     = dateComponentsNow.day;
-    int weeks   = dateComponentsNow.week;
-    int hours   = dateComponentsNow.hour;
-    int minutes = dateComponentsNow.minute;
-    int second  = dateComponentsNow.second;
-    int month   = dateComponentsNow.month;
-    int year    = dateComponentsNow.year;
+    int day     = (int)dateComponentsNow.day;
+    int weeks   = (int)dateComponentsNow.week;
+    int hours   = (int)dateComponentsNow.hour;
+    int minutes = (int)dateComponentsNow.minute;
+    int second  = (int)dateComponentsNow.second;
+    int month   = (int)dateComponentsNow.month;
+    int year    = (int)dateComponentsNow.year;
     NSString *timeString = @"0 second ago";
     if (year > 0)
     {

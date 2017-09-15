@@ -1,14 +1,11 @@
 
 #import "AppServiceModel.h"
-#import "SignInModel.h"
 #import "Services.h"
 #import "UtilitiesHelper.h"
 #import "ConstantsShareOne.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
 #import "HTTPRequestOperation.h"
-#import "ASIHTTPRequest.h"
-#import "ASINetworkQueue.h"
 
 
 
@@ -381,16 +378,16 @@
         NSLog(@"Response: %@", responseObject);
         
         
-        if(error==nil){
+        if(error){
         
-            NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+//            NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
             
             //            NSLog(@"SSO URL : %@",[error.userInfo valueForKey:@"NSErrorFailingURLKey"]);
-            NSString *url =[error.userInfo valueForKey:@"NSErrorFailingURLKey"];
+//            NSString *url =[error.userInfo valueForKey:@"NSErrorFailingURLKey"];
             
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             
-            url = response.URL.absoluteString;
+//            url = response.URL.absoluteString;
             
 //            block(url);
             block(req);
@@ -431,33 +428,6 @@
     }
     
     return req;
-
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        
-        if (!error) {
-            
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-
-            NSString *string = [NSString stringWithUTF8String:[responseObject bytes]];
-
-            NSLog(@"json: %@, %@, %@", json, response, responseObject);
-            
-            NSString * url = response.URL.absoluteString;
-
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            [self hideProgressAlert];
-            block(string);
-        } else {
-            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-            block(responseObject);
-            
-            [self hideProgressAlert];
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
-            
-        }
-    }] resume];
-
 
 }
 
@@ -538,12 +508,10 @@
     if(auth_header)
         [self setHeaderOnRequest:req withAuth:auth_header];
     
-    NSString *bodyHttpString=nil;
     if(params){
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        bodyHttpString=jsonString;
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
@@ -759,7 +727,7 @@
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
     
-    NSData* imageData = [[NSData alloc]init];
+    NSData* imageData = nil;
     NSString* imageName =@"image";
     imageData = [params objectForKey:@"image"];
     if([imageData length]==0){
@@ -846,17 +814,6 @@
         [request setValue:auth forHTTPHeaderField:@"Authorization"];
     }
     else{
-        ASIHTTPRequest *requestAsiHttp = (ASIHTTPRequest *)request;
-        [requestAsiHttp addRequestHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
-        [requestAsiHttp addRequestHeader:@"Accept-Language" value:@"en,en-gb;q=0.5"];
-        [requestAsiHttp addRequestHeader:@"Cache-Control" value:@"max-age=0"];
-        [requestAsiHttp addRequestHeader:@"Accept-Charset" value:@"UTF-8;q=0.7,*;q=0.7"];
-        [requestAsiHttp addRequestHeader:@"Pragma" value:@"no-cache"];
-        [requestAsiHttp addRequestHeader:@"Cache-Control" value:@"no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0"];
-        [requestAsiHttp addRequestHeader:@"Expires" value:@"Sat, 1 Jan 2020 00:00:00 GMT"];
-        [requestAsiHttp addRequestHeader:@"HmacType" value:hmacType];
-        [requestAsiHttp addRequestHeader:@"SecurityVersion" value:securityVersion];
-        [requestAsiHttp addRequestHeader:@"Authorization" value:auth];
     }
 }
 
@@ -870,10 +827,6 @@
 
     }
     else{
-        ASIHTTPRequest *requestAsiHttp = (ASIHTTPRequest *)request;
-        [requestAsiHttp addRequestHeader:@"Accept" value:@"application/json"];
-        [requestAsiHttp addRequestHeader:@"Version" value:@"1"];
-        [requestAsiHttp addRequestHeader:@"Authorization" value:[Configuration getCoOpID]];
 
     }
 
@@ -985,11 +938,6 @@
 }
 
 
-- (void)queueFinished:(ASINetworkQueue *)queue{
-    
-    NSLog(@"Queue finished");
-    queueCompletionBlockClone(TRUE,errorMessage);
-}
 
 
 - (void)concurrentBatchOfRequestOperations:(NSArray *)operations progressBlock:(void (^)(NSUInteger, NSUInteger))progressBlock completionBlock:(void (^)(NSArray *))completionBlock {
@@ -1034,9 +982,9 @@
                 if([headers valueForKey:@"Etag"]){
                     [ShareOneUtility parseETag:[headers valueForKey:@"Etag"] WithUrl:response.URL.absoluteString];
                 }
-                NSDictionary* headersME = [(NSHTTPURLResponse *)response allHeaderFields];
+//                NSDictionary* headersME = [(NSHTTPURLResponse *)response allHeaderFields];
 
-                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+//                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
 //                NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
 
                 operation.completionBlock(response, responseObject, error);

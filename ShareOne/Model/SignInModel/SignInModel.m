@@ -17,120 +17,6 @@ static SignInModel *signInSingleton = nil;
 
 @implementation SignInModel
 
-//+(void)updateUserWithParam:(NSDictionary*)param delegate:(id)delegate image:(NSData*)imageData serviceUrl:(NSString*)serviceUrl completionBlock:(void(^)(NSString* message))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:@"Updating..." urlString:serviceUrl delegate:delegate completionBlock:^(NSObject *response) {
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        
-//        if(object){
-//            NSDictionary *userDicionary = [object objectAtIndex:0];
-//            [SignInModel saveUserInformation:userDicionary];
-//            block(@"User updated successfully!");
-//        }
-//        
-//    } failureBlock:^(NSError *error) {
-//        
-//    }];
-//    
-//}
-//+(void)loginOrRegisterUserWithParam:(NSDictionary*)param serviceUrl:(NSString*)serviceUrl progressMessage:(NSString*)progressMessage delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:progressMessage urlString:serviceUrl delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            [SignInModel saveUserInformation:[object objectAtIndex:0]];
-//            block([SignInModel getUserData]);
-//        }
-//        else{
-//            NSDictionary* dict=(NSDictionary*)response;
-//            [[UtilitiesHelper shareUtitlities]showAlertWithMessage:[dict objectForKey:@"message"] title:@"" delegate:delegate];
-//            //            block([SignInModel getUserData]);
-//            failBlock(object);
-//            
-//        }
-//    } failureBlock:^(NSError *error) {
-//        failBlock(error);
-//    }];
-//}
-//
-//+(void)forgotPasswordWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:@"Waiting..." urlString:KWEB_SERVICE_FORGOT_PASSWORD delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            block(object);
-//        }
-//        else{
-//            NSDictionary* dict=(NSDictionary*)response;
-//            [[UtilitiesHelper shareUtitlities]showAlertWithMessage:[dict objectForKey:@"message"] title:@"" delegate:delegate];
-//            failBlock(object);
-//            
-//        }
-//    } failureBlock:^(NSError *error) {
-//        failBlock(error);
-//    }];
-//    
-//}
-//
-//+(void)saveDistanceWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:@"Updating..." urlString:KWEB_SERVICE_EDIT_DISTANCE_RANGE delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            block(object);
-//        }
-//        else{
-//            NSDictionary* dict=(NSDictionary*)response;
-//            [[UtilitiesHelper shareUtitlities]showAlertWithMessage:[dict objectForKey:@"message"] title:@"" delegate:delegate];
-//            failBlock(object);
-//            
-//        }
-//    } failureBlock:^(NSError *error) {
-//        failBlock(error);
-//    }];
-//}
-//
-//+(void)saveLocationithParam:(NSDictionary*)param  delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:nil urlString:KWEB_SERVICE_UPDATE_USER_LOCATION delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            block(object);
-//        }
-//        else{
-//            NSDictionary* dict=(NSDictionary*)response;
-//            [[UtilitiesHelper shareUtitlities]showAlertWithMessage:[dict objectForKey:@"message"] title:@"" delegate:delegate];
-//            failBlock(object);
-//            
-//        }
-//    } failureBlock:^(NSError *error) {
-//        failBlock(error);
-//    }];
-//}
-//
-//+(void)updateData:(NSDictionary*)param serviceUrl:(NSString*)serviceUrl progressMessage:(NSString*)progressMessage delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
-//    
-//    [[AppServiceModel sharedClient]postImageRequestWithParameters:param progressMessage:progressMessage urlString:serviceUrl delegate:delegate completionBlock:^(NSObject *response) {
-//        
-//        id object=[[AppServiceModel sharedClient] getParseDataForUserModule:(NSDictionary*)response];
-//        if(object){
-//            block(object);
-//        }
-//        else{
-//            NSDictionary* dict=(NSDictionary*)response;
-//            [[UtilitiesHelper shareUtitlities]showAlertWithMessage:[dict objectForKey:@"message"] title:@"" delegate:delegate];
-//            failBlock(object);
-//            
-//        }
-//    } failureBlock:^(NSError *error) {
-//        failBlock(error);
-//    }];
-//}
-
 
 + (SignInModel*)signIn{
    	@synchronized(self) {
@@ -246,16 +132,13 @@ static SignInModel *signInSingleton = nil;
     if([self checkUserData]){
         [self removeUserData];
     }
+    
     User *ui = [[User alloc]init];
     
     ui.userImage = [NSURL URLWithString:[result valueForKey:@"photo"]];
-    ui.userImage=[UtilitiesHelper getStringFromObject:[result valueForKey:@"email" ]];
-//    ui.userId=[result valueForKey:@"id"];
-//    ui.userName=[result valueForKey:@"name"];
-//    ui.userPhoneNo=[UtilitiesHelper getStringFromObject:[result valueForKey:@"phone"]];
     ui.dob=[result valueForKey:@"age"];
-    ui.gender=[result valueForKey:@"gender"];
-    ui.race=[result valueForKey:@"race"];
+    ui.Gender=[result valueForKey:@"gender"];
+    ui.Race=[result valueForKey:@"race"];
     ui.userStatus=[UtilitiesHelper getEmptyStringFromObjectIfNull:[result valueForKey:@"status_message"]];
     ui.isPushOn=[result valueForKey:@"notification"];
     ui.distanceRange=[NSNumber numberWithDouble:[[UtilitiesHelper getStringFromObject:[result valueForKey:@"distance"]] doubleValue]];
@@ -263,54 +146,11 @@ static SignInModel *signInSingleton = nil;
     ui.longitude=[NSNumber numberWithDouble:[[UtilitiesHelper getStringFromObject:[result valueForKey:@"longitude"]]doubleValue]];
     ui.isOnline=[UtilitiesHelper getStringFromObject:[result valueForKey:@"presence"]];
     ui.userThumbImage = [NSURL URLWithString:[result valueForKey:@"photo_thumb"]];
-    
-    
-    //    auth-key (abc-123), full_name,phone,email,password,country,city,type(user,driver),platform,device_type(android,ios), device_token
-    
+
     [self saveUserInfo:ui];
-    
-    //    [self addUserNotificationSetting];
-    
     
     return ui;
 }
-
-
-
-//+(void)addUserNotificationSetting
-//{
-//    [[AppServiceModel sharedClient]addUpadateUserNotificationSettingWithUserId:[SignInModel getUserData].userId DeviceToken:@"abc" DeviceType:@"ios" MessageNotification:[NSNumber numberWithInt:1] EmailNotification:[NSNumber numberWithInt:1]  completionBlock:^(NSObject *response) {
-//        NSLog(@"%@",response);
-//
-//    } failureBlock:^(NSError *error) {
-//
-//    }];
-//}
-
-
-
-//+(void)updateUserLanguage:(NSString*)userLanguage
-//{
-//    User *ui = [self getUserData];
-//    ui.userLanguage = userLanguage;
-//    [self saveUserInfo:ui];
-//
-//}
-//
-//+(void)updatePromoCode
-//{
-//    User *ui = [self getUserData];
-//    ui.userPromoCode = @"NA";
-//    [self saveUserInfo:ui];
-//
-//}
-//
-//+(void)saveCurrency:(NSString*)currency
-//{
-//    User *ui = [self getUserData];
-//    ui.userCurrency = currency;
-//    [self saveUserInfo:ui];
-//}
 
 + (void)saveUserInfo:(User *)userinfo{
     

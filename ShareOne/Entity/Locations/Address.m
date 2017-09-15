@@ -13,25 +13,23 @@
 -(id) initWithDictionary:(NSDictionary *)hoursDict{
     
     Address *obj = [[Address alloc] init];
-    self = [super init];{
-        //        [self setValuesForKeysWithDictionary:hoursDict];
+    
+    for (NSString* key in hoursDict) {
+        id value = [hoursDict objectForKey:key];
         
-        for (NSString* key in hoursDict) {
-            id value = [hoursDict objectForKey:key];
-            
-            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-//            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
-            if (value != [NSNull null]) {
-                if ([obj respondsToSelector:selector]) {
-                    
+        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
+        //            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+        if (value != [NSNull null]) {
+            if ([obj respondsToSelector:selector]) {
+                
 #       pragma clang diagnostic push
 #       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    [obj performSelector:selector withObject:value];
+                [obj performSelector:selector withObject:value];
 #       pragma clang diagnostic pop
-                }
             }
         }
     }
+    
     
     return obj;
     

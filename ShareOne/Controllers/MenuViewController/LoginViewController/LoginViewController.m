@@ -460,7 +460,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
         NSString *webUrl = [dict valueForKey:WEB_URL];
         
-        NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
+//        NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
         NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
         
         NSString *webViewController = WEB_VIEWCONTROLLER_ID;
@@ -547,9 +547,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 _objPinResetController=nil;
             }
             
-//            [weakSelf addPasswordChangeController:user];
-//
-//            return ;
             // if user has any requirment like PinChange or ChangeAccountName process it before continuing.
                 if(user.Requirements){
                     if([user.Requirements count]>1){
@@ -1168,13 +1165,14 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     ContextMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCellIdentifier forIndexPath:indexPath];
     
-    if (cell) {
-        cell.backgroundColor = [UIColor clearColor];
-        cell.menuTitleLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
-        cell.menuImageView.image = [self.menuIcons objectAtIndex:indexPath.row];
+    if(cell!=nil){
+    cell.backgroundColor = [UIColor clearColor];
+    cell.menuTitleLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
+    cell.menuImageView.image = [self.menuIcons objectAtIndex:indexPath.row];
+        return cell;
     }
     
-    return cell;
+    return [[UITableViewCell alloc]init];
 }
 
 

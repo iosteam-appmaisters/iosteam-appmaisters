@@ -102,27 +102,23 @@
 -(id) initWithDictionary:(NSDictionary *)locationDict{
     
     Location *obj = [[Location alloc] init];
-    self = [super init];{
+    
+    for (NSString* key in locationDict) {
+        id value = [locationDict objectForKey:key];
         
-        for (NSString* key in locationDict) {
-            id value = [locationDict objectForKey:key];
-            
-//            NSLog(@"locationDict : %@",locationDict);
-            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-//                                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
-            if (value != [NSNull null]) {
-                if ([obj respondsToSelector:selector]) {
-                    
+        //            NSLog(@"locationDict : %@",locationDict);
+        SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
+        //                                NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+        if (value != [NSNull null]) {
+            if ([obj respondsToSelector:selector]) {
+                
 #       pragma clang diagnostic push
 #       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    [obj performSelector:selector withObject:value];
+                [obj performSelector:selector withObject:value];
 #       pragma clang diagnostic pop
-                }
             }
         }
     }
-
-//        [self setValuesForKeysWithDictionary:locationDict];
     
     return obj;
 }

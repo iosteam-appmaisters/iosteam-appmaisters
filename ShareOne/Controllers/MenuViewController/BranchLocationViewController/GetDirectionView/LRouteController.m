@@ -19,8 +19,6 @@
 
     if (locationsCount < 2) return;
     
-    if ([_request inProgress])
-        [_request clearDelegatesAndCancel];
     
     NSMutableArray *locationStrings = [NSMutableArray new];
 
@@ -129,10 +127,7 @@
 }
 
 
-- (void)abortRequest
-{
-    if (_request && [_request inProgress])
-        [_request clearDelegatesAndCancel];
+- (void)abortRequest{
 }
 
 

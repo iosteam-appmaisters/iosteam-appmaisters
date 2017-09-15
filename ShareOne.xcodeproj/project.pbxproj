@@ -145,7 +145,6 @@
 		6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405B51D829FAA00358036 /* BaseViewController.m */; };
 		6BD405BC1D82B08900358036 /* Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405BB1D82B08900358036 /* Validation.m */; };
 		6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C11D82C93700358036 /* AppServiceModel.m */; };
-		6BD405C51D82C94300358036 /* SignInModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C41D82C94300358036 /* SignInModel.m */; };
 		6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */; };
 		6BD405CC1D82CA7200358036 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405CB1D82CA7200358036 /* User.m */; };
 		6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405D61D8306AC00358036 /* BranchLocationViewController.m */; };
@@ -436,8 +435,6 @@
 		6BD405BF1D82B09700358036 /* SignInModuleConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInModuleConstants.h; sourceTree = "<group>"; };
 		6BD405C01D82C93700358036 /* AppServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppServiceModel.h; sourceTree = "<group>"; };
 		6BD405C11D82C93700358036 /* AppServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppServiceModel.m; sourceTree = "<group>"; };
-		6BD405C31D82C94300358036 /* SignInModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInModel.h; sourceTree = "<group>"; };
-		6BD405C41D82C94300358036 /* SignInModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInModel.m; sourceTree = "<group>"; };
 		6BD405C61D82CA2F00358036 /* UtilitiesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilitiesHelper.h; sourceTree = "<group>"; };
 		6BD405C71D82CA2F00358036 /* UtilitiesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilitiesHelper.m; sourceTree = "<group>"; };
 		6BD405CA1D82CA7200358036 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -1155,7 +1152,6 @@
 			children = (
 				1D3710281E40B0150030D33C /* ConfigurationModel */,
 				6BD405A81D81B5FC00358036 /* ServiceModel */,
-				6BD405A91D81B5FC00358036 /* SignInModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1169,15 +1165,6 @@
 				1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */,
 			);
 			path = ServiceModel;
-			sourceTree = "<group>";
-		};
-		6BD405A91D81B5FC00358036 /* SignInModel */ = {
-			isa = PBXGroup;
-			children = (
-				6BD405C31D82C94300358036 /* SignInModel.h */,
-				6BD405C41D82C94300358036 /* SignInModel.m */,
-			);
-			path = SignInModel;
 			sourceTree = "<group>";
 		};
 		6BD405AC1D81B5FC00358036 /* Utility */ = {
@@ -1439,7 +1426,7 @@
 		6BD4057F1D81B59200358036 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Ali Akbar";
 				TargetAttributes = {
 					6BD405861D81B59200358036 = {
@@ -1557,7 +1544,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1619,7 +1606,6 @@
 				1D3A7BDA1DF0599900AEA159 /* PasswordChangeController.m in Sources */,
 				1D20C28D1E4E110500D3FC93 /* TextChangeFormatters.m in Sources */,
 				1D20C25F1E4E110500D3FC93 /* CameraCropView.m in Sources */,
-				6BD405C51D82C94300358036 /* SignInModel.m in Sources */,
 				1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */,
 				1D3ED8571E2676A800AE91C1 /* ContactEditCell.m in Sources */,
 				1D398FA41E07F73900275E4E /* Photos.m in Sources */,
@@ -1747,8 +1733,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Bush (G3487YQ6F8)";
@@ -1795,8 +1783,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Scott Bush (G3487YQ6F8)";

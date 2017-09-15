@@ -47,22 +47,4 @@ typedef enum{
 +(void)saveDistanceRange:(NSNumber*)range;
 
 
-+(NSString*)getImage;
-+(void)updateUserLanguage:(NSString*)userLanguage;
-
-
-+(void)loginOrRegisterUserWithParam:(NSDictionary*)param serviceUrl:(NSString*)serviceUrl progressMessage:(NSString*)progressMessage delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock;
-
-+(void)forgotPasswordWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock;
-
-
-+(void)updateUserWithParam:(NSDictionary*)param delegate:(id)delegate image:(NSData*)imageData serviceUrl:(NSString*)serviceUrl completionBlock:(void(^)(NSString* message))block failureBlock:(void(^)(NSError* error))failBlock;
-
-
-+(void)saveDistanceWithParam:(NSDictionary*)param  delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock;
-
-+(void)saveLocationithParam:(NSDictionary*)param  delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock;
-
-+(void)updateData:(NSDictionary*)param serviceUrl:(NSString*)serviceUrl progressMessage:(NSString*)progressMessage delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock;
-
 @end

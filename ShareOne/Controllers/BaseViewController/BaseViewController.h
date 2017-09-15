@@ -5,7 +5,6 @@
 #import "Services.h"
 #import "ConstantsShareOne.h"
 #import "AppServiceModel.h"
-#import "SignInModel.h"
 #import "HomeNavigationDelegate.h"
 #import "ShareOneUtility.h"
 #import "Configuration.h"
@@ -19,7 +18,7 @@
 @interface BaseViewController : UIViewController<HomeNavigationDelegate>{
     
     UIViewController *currentController;
-    BOOL hideSideMenu ;
+//    BOOL hideSideMenu ;
 
 }
 

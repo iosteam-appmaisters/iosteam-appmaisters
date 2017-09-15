@@ -24,12 +24,6 @@
 #import "CameraGridView.h"
 
 
-@protocol CameraViewControllerDelegate
-
-- (void) onCameraClose;
-- (void) onPictureTaken:(UIImage *)imageJPEG withBWImage:(UIImage *)imageBW results:(NSArray *)dictionary isFront:(BOOL)isFront;
-
-@end
 
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
@@ -651,7 +645,7 @@
 // The number of rows of data
 - (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return _suffixArr.count;
+    return (int)_suffixArr.count;
 }
 
 // The data to return for the row and component (column) that's being passed in

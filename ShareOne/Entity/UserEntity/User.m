@@ -91,7 +91,9 @@
             //[ShareOneUtility setPreferencesOnLaunch];
         }
        else if([response isKindOfClass:[NSString class]]){
-            block((NSString *)response);
+           
+           NSString *responseString = (NSString *)response;
+            block(responseString);
         }
         else
             block(nil);
@@ -100,29 +102,6 @@
         failBlock(error);
     }];
 
-    return;
-    
-    [[AppServiceModel sharedClient] putRequestWithAuthHeader:signature AndParam:param progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KWEB_SERVICE_MEMBER_VALIDATE] delegate:delegate completionBlock:^(NSObject *response) {
-        
-        User* user = [[User alloc]initWithDictionary:(NSDictionary *)response];
-        user.UserName=[param valueForKey:@"account"];
-        user.Password=[param valueForKey:@"password"];
-
-        [[SharedUser sharedManager] setUserObject:user];
-        //[ShareOneUtility saveUserObject:user];
-        
-        
-        [ShareOneUtility saveUserObjectToLocalObjects:user];
-        
-        //[ShareOneUtility setPreferencesOnLaunch];
-        
-        if(response)
-            block(user);
-        else
-            block(nil);
-
-        
-    } failureBlock:^(NSError *error) {}];
 }
 
 
@@ -158,7 +137,7 @@
     
     NSString *contexID = [[[SharedUser sharedManager] userObject] Contextid];
     
-    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
+//    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
 
     NSDictionary *object = [ShareOneUtility encryptionByFBEncryptorAESWithContextID:contexID];
     
@@ -166,7 +145,7 @@
     NSString *randomIV = [[object valueForKey:@"EncryptionIV"] URLEncodedString_ch];
     NSString *redirect_path = [url URLEncodedString_ch] ;
 
-    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:encrytedID ,@"EncryptedContextID",randomIV ,@"EncryptionIV",redirect_path  ,@"RedirectPath", nil];
+//    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:encrytedID ,@"EncryptedContextID",randomIV ,@"EncryptionIV",redirect_path  ,@"RedirectPath", nil];
     
     NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON];
     NSString *enquiryurl = [NSString stringWithFormat:@"%@EncryptedContextID=%@&EncryptionIV=%@&RedirectPath=%@",siteurl,encrytedID,randomIV,redirect_path];
@@ -176,29 +155,6 @@
 
 
     block(request);
-
-    return;
-   NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:nil AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
-       
-       
-        block(response);
-    } failureBlock:^(NSError *error) {
-        
-    }];
-    
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-
-    block(req);
-    
-    NSLog(@"req.URL : %@",req.URL.absoluteString);
-    
-    return;
-    [[AppServiceModel sharedClient] postRequestForSSOWithAuthHeader:signature AndParam:dict progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
-        block(response);
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
 }
 
 
@@ -209,9 +165,8 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     
     
-    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON];
+//    NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON];
     
-
 
     NSMutableURLRequest *req = [[AppServiceModel sharedClient] getRequestForSSOWithAuthHeader:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON] delegate:delegate completionBlock:^(NSObject *response) {
         

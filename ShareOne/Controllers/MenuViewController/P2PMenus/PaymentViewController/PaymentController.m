@@ -458,7 +458,7 @@
     UITableViewCell *cell = (UITableViewCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
     
     if([cell isKindOfClass:[PaymentCell class]]){
-        PaymentCell *pCell = (PaymentCell *)cell;
+//        PaymentCell *pCell = (PaymentCell *)cell;
         _yConstriantTblView.constant=0;
     }
     

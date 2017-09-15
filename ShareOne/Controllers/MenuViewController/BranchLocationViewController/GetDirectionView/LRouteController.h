@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import "ASIHTTPRequest.h"
 
 
 typedef enum tagTravelMode
@@ -14,7 +13,6 @@ typedef enum tagTravelMode
 
 @interface LRouteController : NSObject
 {
-    ASIHTTPRequest *_request;
 }
 
 

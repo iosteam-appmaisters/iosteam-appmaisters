@@ -48,7 +48,7 @@
 
 -(id) initWithDictionary:(NSDictionary *)dict;
 
--(id) init;
+//-(id) init;
 
 
 +(NSMutableArray *)getSuffixArrayWithObject:(NSDictionary *)dict;

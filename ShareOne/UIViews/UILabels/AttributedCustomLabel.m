@@ -35,14 +35,12 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if(self){
-        [self initialize];
     }
     return self;
 }
 
 - (void)initialize{
     
-    return;
     Configuration *config = [ShareOneUtility getConfigurationFile];
     UIColor *textColor = [UIColor colorWithHexString:config.variableTextColor];
     
