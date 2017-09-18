@@ -25,7 +25,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "MultipartForm.h"
+#import "MultiPartForm.h"
 #import "DepositModel.h"
 #import "PostHandlerBlocks.h"
 

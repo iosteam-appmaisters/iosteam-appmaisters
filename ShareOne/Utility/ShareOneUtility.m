@@ -384,7 +384,7 @@ NSLog(Y, Z);		\
         User *saveedUser = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:objArchiveData];
         if([[saveedUser Account] intValue]==[[user Account] intValue])
         {
-            indexOfFoundUser =idx;
+            indexOfFoundUser =(int)idx;
             userFound=saveedUser;
             *stop=TRUE;
         }
@@ -416,7 +416,7 @@ NSLog(Y, Z);		\
     [existingUsers enumerateObjectsUsingBlock:^(NSData *objArchiveData, NSUInteger idx, BOOL * stop) {
         User *saveedUser = (User *)[NSKeyedUnarchiver unarchiveObjectWithData:objArchiveData];
         if([[saveedUser Account] intValue]==[[newUser Account] intValue]){
-            indexOfFoundUser =idx;
+            indexOfFoundUser =(int)idx;
             userFound=saveedUser;
             *stop=TRUE;
         }
@@ -660,7 +660,7 @@ NSLog(Y, Z);		\
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
     for (int i=0; i<len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((int)[letters length])]];
     }
     
     return randomString;

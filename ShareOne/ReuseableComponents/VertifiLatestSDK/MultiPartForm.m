@@ -8,7 +8,7 @@
 //
 // Modified by Vertifi Software, LLC, 10/9/2009
 
-#import "MultipartForm.h"
+#import "MultiPartForm.h"
 
 @implementation MultipartForm
 

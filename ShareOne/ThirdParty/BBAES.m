@@ -170,7 +170,7 @@ NSUInteger const BBAESSaltDefaultLength = 16; //recommandations suggest at least
 
 + (NSData *)randomDataWithLength:(NSUInteger)length {
 	NSMutableData *data = [NSMutableData dataWithLength:length];
-    SecRandomCopyBytes(kSecRandomDefault, length, data.mutableBytes);
+//    SecRandomCopyBytes(kSecRandomDefault, length, data.mutableBytes);
     return data;
 }
 

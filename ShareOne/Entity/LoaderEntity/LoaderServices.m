@@ -38,7 +38,7 @@
     NSArray *reqArr = [NSArray arrayWithObjects:getDevicesDict,getSuffixDict, nil];
     
     
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response,id responseObj) {
         
         NSURLResponse *responseCast = (NSURLResponse *)responseObj;
 
@@ -88,7 +88,7 @@
         [queuReqArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:url,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil]];
     }];
     
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:queuReqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:queuReqArr requestCompletionBlock:^(NSObject *response,id responseObj) {
         
         
         NSURLResponse *responseCast = (NSURLResponse *)responseObj;
@@ -134,7 +134,7 @@
     
     NSArray *reqArr = [NSArray arrayWithObjects:modifiedServicesDict, nil];
     
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response,id responseObj) {
         
         NSDictionary * responseDic = (NSDictionary*)response;
         
@@ -218,7 +218,7 @@
     }
     
     
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:[reqArray copy] requestCompletionBlock:^(NSObject *response, NSString *responseObj) {
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:[reqArray copy] requestCompletionBlock:^(NSObject *response,id responseObj) {
         
         NSURLResponse *responseCast = (NSURLResponse *)responseObj;
         

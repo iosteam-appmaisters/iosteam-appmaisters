@@ -50,7 +50,6 @@
 +(BOOL) validateEmail:(NSString *)checkEmail;
 +(BOOL)validateURL:(NSString *)checkURL;
 +(NSURL *)imageURLMaker :(NSString *)imgUrl;
-+(BOOL)isReachable;
 +(BOOL) checkForEmptySpaces:(UITextField *)textField;
 +(void)writeJsonToFile:(id)responseString withFileName:(NSString*)fileName;
 //+(id)writeJsonToFile:(NSString*)fileName;

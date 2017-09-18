@@ -33,6 +33,7 @@
 #import "TransparentToolbar.h"
 #import "CameraInstructionViewController.h"
 
+
 @protocol CameraViewControllerDelegate
 
 - (void) onCameraClose;

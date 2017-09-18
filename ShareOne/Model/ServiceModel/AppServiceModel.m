@@ -99,13 +99,16 @@
 //        progressHud.mode=MBProgressHUDModeAnnularDeterminate;
         [window addSubview:progressHud];
     }
-    [progressHud show:NO];
-    [progressHud setLabelText:message];
+    [progressHud showAnimated:NO];
+//    [progressHud setLabelText:message];
+    
+    
+    progressHud.label.text=message;
 }
 
 
 -(void) hideProgressAlert{
-    [progressHud hide:NO];
+    [progressHud hideAnimated:NO];
     progressHud=nil;
 }
 
@@ -842,7 +845,7 @@
 
 }
 
--(void)createBatchOfRequestsWithObject:(NSArray *)reqObjects requestCompletionBlock:(void(^)(NSObject *response,NSString *responseObj))reqBlock requestFailureBlock:(void(^)(NSError* error))failReqBlock queueCompletionBlock:(void(^)(BOOL sucess,NSString *errorString ))queueBlock queueFailureBlock:(void(^)(NSError* error))failQueueBlock{
+-(void)createBatchOfRequestsWithObject:(NSArray *)reqObjects requestCompletionBlock:(void(^)(NSObject *response,id responseObj))reqBlock requestFailureBlock:(void(^)(NSError* error))failReqBlock queueCompletionBlock:(void(^)(BOOL sucess,NSString *errorString ))queueBlock queueFailureBlock:(void(^)(NSError* error))failQueueBlock{
 
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 

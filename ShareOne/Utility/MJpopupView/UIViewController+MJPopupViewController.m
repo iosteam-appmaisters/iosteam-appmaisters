@@ -314,8 +314,7 @@ static void * const keypath = (void*)&keypath;
                                      popupSize.width,
                                      popupSize.height);
     }
-    else if (result.height==480)
-    {
+    else {
          popupEndRect = CGRectMake((sourceSize.width - popupSize.width) / 2,
                                          (sourceSize.height - popupSize.height) / 2-40,
                                          popupSize.width,

@@ -23,6 +23,12 @@
 #import "CameraInstructionViewController.h"
 #import "CameraGridView.h"
 
+//@protocol CameraViewControllerDelegate
+//
+//- (void) onCameraClose;
+//- (void) onPictureTaken:(UIImage *)imageJPEG withBWImage:(UIImage *)imageBW results:(NSArray *)dictionary isFront:(BOOL)isFront;
+//
+//@end
 
 
 

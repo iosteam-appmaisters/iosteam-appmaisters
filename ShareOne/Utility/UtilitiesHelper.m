@@ -84,19 +84,19 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 //    [progressHUD setLabelText:title];
     [progressHUD setMinShowTime:1.0];
     
-    
-    
+
 }
 
 +(void)hideLoader:(UIView *)forView
 {
+    /*
     AppDelegate *objDele = (AppDelegate *)[[UIApplication sharedApplication]delegate];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD hideAllHUDsForView:[[objDele.window subviews] lastObject] animated:YES];
     });
-    
-    
+     */
+
 }
 
 
@@ -554,6 +554,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
 +(NSString *) getDurationFromTime:(NSString *) source
 {
+    /*
     NSDate *sourceDate;
     NSDate *currentDate = [NSDate date];
     NSDateFormatter *foramtter = [[NSDateFormatter alloc] init];
@@ -608,6 +609,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     foramtter = nil;
     gregorian = nil;
     return [timeString lowercaseString];
+     */
+    return @"";
+     
 }
 
 +(NSString *) timeStringByCheck:(int)time timeString:(NSString *)timeName

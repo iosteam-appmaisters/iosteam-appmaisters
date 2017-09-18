@@ -76,7 +76,7 @@ static float kVIP_CORNER_ANGLE_OPTIMAL_MAX = 95.0f;
         tTimerDeferredTakePicture = -1;
         tTimerDeferredDraw = CACurrentMediaTime() + 3.0f;                   // current time + 3 seconds
 
-        [UIView animateWithDuration:0.4f delay:3.0f options:UIViewAnimationCurveEaseIn animations:^
+        [UIView animateWithDuration:0.4f delay:3.0f options:UIViewAnimationOptionCurveEaseIn animations:^
         {
              self.alpha = 1.0f;
         } completion:^(BOOL finished)

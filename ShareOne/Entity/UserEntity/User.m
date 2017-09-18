@@ -64,7 +64,7 @@
     return self;
 }
 
-+(void)getUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(User* user))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)getUserWithParam:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(id user))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST];
     NSLog(@"param logeed in : %@",param);
