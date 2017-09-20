@@ -31,7 +31,7 @@
     // Override point for customization after application launch.
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-    [TestFairy begin:[ShareOneUtility getTestFairyID]];
+    //[TestFairy begin:[ShareOneUtility getTestFairyID]];
     [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey_old]];
     
     [self registerForPushNotifications:application];

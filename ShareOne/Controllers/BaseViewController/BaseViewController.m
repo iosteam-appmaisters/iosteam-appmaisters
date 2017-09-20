@@ -443,7 +443,7 @@
 
 -(void)setTitleView{
     
-    UIImage* logoImage = [UIImage imageNamed:@"logo2"];
+    UIImage* logoImage = [UIImage imageNamed:@"top_logo"];
 //    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[UIImageView alloc] initWithImage:logoImage]];
 
