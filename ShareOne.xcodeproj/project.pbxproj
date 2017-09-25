@@ -1820,6 +1820,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
@@ -1844,6 +1845,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
