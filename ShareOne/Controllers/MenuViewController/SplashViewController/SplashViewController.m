@@ -48,7 +48,7 @@
 
 -(void)showNextViewController{
     
-    if([ShareOneUtility isConfigDataNotExistedOrReSkinSettingIsOn] || [[SharedUser sharedManager] isCallingNSConfigServices]){
+    //if([ShareOneUtility isConfigDataNotExistedOrReSkinSettingIsOn] || [[SharedUser sharedManager] isCallingNSConfigServices]){
         
         NSLog(@"FIRST TIME LAUNCH");
         [[SharedUser sharedManager] setIsCallingNSConfigServices:FALSE];
@@ -72,12 +72,12 @@
             
         } failureBlock:^(NSError *error) {
         }];
-    }
+   /* }
     else{
         NSLog(@"SKIPPED FIRST TIME LAUNCH");
         [self hideIndicaterView];
         [self goToLogin];
-    }
+    }*/
 }
 
 -(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
