@@ -230,5 +230,5 @@
 + (BOOL)shouldUseProductionEnviroment;
 + (NSString *)getClientApplicationID;
 
-
++(NSString*)getNavBarTitle:(NSString*)title;
 @end

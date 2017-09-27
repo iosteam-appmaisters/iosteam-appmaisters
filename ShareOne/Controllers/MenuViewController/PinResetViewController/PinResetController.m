@@ -28,28 +28,22 @@
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:TRUE];
 
     if(_isFromForgotUserName){
-        _navBar.topItem.title = @"Forgot Username";
+        _navBar.topItem.title = [ShareOneUtility getNavBarTitle: @"Forgot Username"];
         [_accountLbl setText:@"Account No."];
         [_accountNameTxtFeild setPlaceholder:@"Enter Account No."];
         [_accountNameTxtFeild setKeyboardType:UIKeyboardTypeNumberPad];
     }
     else{
-        _navBar.topItem.title = @"Forgot Password";
+        _navBar.topItem.title = [ShareOneUtility getNavBarTitle:@"Forgot Password"];
         [_accountLbl setText:@"Account Name"];
         [_accountNameTxtFeild setPlaceholder:@"Enter Account Name"];
     }
     
-//    [_accountNameTxtFeild setText:@"spike"];
-////    [_accountNameTxtFeild setText:@"666"];
-//    [_taxIDTxtFeild setText:@"5654"];
-//    [_dateTxtFeild setText:@"01/24/1960"];
-//    [_postalCodeTxtFeild setText:@"40503"];
-
-    
-//    [_accountNameTxtFeild setText:@"75307"];
-//    [_taxIDTxtFeild setText:@"3445"];
-//    [_dateTxtFeild setText:@"01/01/1973"];
-//    [_postalCodeTxtFeild setText:@"38125"];
+    UIButton *topRight = [UIButton buttonWithType:UIButtonTypeCustom];
+    [topRight setImage:[UIImage imageNamed:@"top_logo"] forState:UIControlStateNormal];
+    topRight.frame = CGRectMake(100, 100, topRight.currentImage.size.width, topRight.currentImage.size.height);
+    UIBarButtonItem *topRightButtonItem =[[UIBarButtonItem alloc] initWithCustomView:topRight];
+    _navBar.topItem.rightBarButtonItem = topRightButtonItem;
     
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];

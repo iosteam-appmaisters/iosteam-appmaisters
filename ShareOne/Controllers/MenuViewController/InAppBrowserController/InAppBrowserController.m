@@ -42,7 +42,7 @@
     
     self.navBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:11],NSFontAttributeName,nil];
     
-    
+    self.title = [ShareOneUtility getNavBarTitle:@""];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
