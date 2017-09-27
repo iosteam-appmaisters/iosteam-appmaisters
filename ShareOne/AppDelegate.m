@@ -57,7 +57,8 @@
         }
     }
 
-
+    [self showSplash];
+    
     return YES;
 }
 
@@ -84,16 +85,55 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self showSplash];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [ShareOneUtility setTerminateState:TRUE];
 
+}
+
+-(void)showSplash {
+    NSLog(@"TopVC :: %@",[[self topViewController]class]);
+    
+    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController * splash = [storyBoard instantiateViewControllerWithIdentifier:@"SplashViewController"];
+    
+    if ([self topViewController] != nil && ![[self topViewController]isKindOfClass:[SplashViewController class]]){
+        [[self topViewController] presentViewController:splash animated:YES completion:nil];
+    }
+    else {
+        self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        self.window.rootViewController = splash;
+        [self.window makeKeyAndVisible];
+    }
+    
+}
+
+- (UIViewController *)topViewController{
+    return [self topViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+}
+
+- (UIViewController *)topViewController:(UIViewController *)rootViewController
+{
+    if (rootViewController.presentedViewController == nil) {
+        return rootViewController;
+    }
+    
+    if ([rootViewController.presentedViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
+        UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
+        return [self topViewController:lastViewController];
+    }
+    
+    UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
+    return [self topViewController:presentedViewController];
 }
 
 #pragma mark Push Notification
