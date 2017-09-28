@@ -488,7 +488,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 
                 //If webUrl is empty or nil load Native UI Screen
                 UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-                objUIViewController.navigationItem.title=navigationTitle;
+                objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: navigationTitle];
                 controllerToPush = objUIViewController;
             }
             
@@ -1109,7 +1109,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     NSLog(@"Menu dismissed with indexpath = %ld", (long)indexPath.row);
     _addMenuIcon.hidden = NO;
     if (indexPath.row > 0){
-        [self openLinks:self.menuTitles[indexPath.row]];
+        [self openLinks:[ShareOneUtility getNavBarTitle: self.menuTitles[indexPath.row]]];
     }
 }
 

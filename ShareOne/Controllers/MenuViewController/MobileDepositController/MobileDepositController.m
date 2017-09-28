@@ -1159,7 +1159,7 @@
     
     currentController = objUIViewController;
     
-    objUIViewController.navigationItem.title=@"Mobile Deposit";
+    objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: @"Mobile Deposit"];
     
     //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
         //rootview

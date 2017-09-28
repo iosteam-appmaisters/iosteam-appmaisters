@@ -515,7 +515,7 @@
 
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-            objUIViewController.navigationItem.title=navigationTitle;
+            objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle:navigationTitle];
             self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
         }
         
@@ -583,7 +583,7 @@
                 //If webUrl is empty or nil load Native UI Screen
                 @try {
                     objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-                    objUIViewController.navigationItem.title=navigationTitle;
+                    objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle:navigationTitle];
                     controller = objUIViewController;
 
                 }

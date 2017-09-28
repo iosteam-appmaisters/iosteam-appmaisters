@@ -1744,4 +1744,15 @@ NSLog(Y, Z);		\
     return clientAppID;
 }
 
++(NSString*)getNavBarTitle:(NSString*)title {
+    
+    if (![ShareOneUtility shouldUseProductionEnviroment]) {
+        if (title.length <= 0){
+            return @"Pre-Production";
+        }
+        return [NSString stringWithFormat:@"PreProd-%@",title];
+    }
+    return title;
+}
+
 @end

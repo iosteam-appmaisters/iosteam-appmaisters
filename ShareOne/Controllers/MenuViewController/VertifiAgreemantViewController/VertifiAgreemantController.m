@@ -63,7 +63,7 @@
     [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:VERTIFI_AGREEMANT_KEY];
     
     MobileDepositController *objMobileDepositController = [obj.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([MobileDepositController class])];
-    objMobileDepositController.navigationItem.title=[ShareOneUtility getTitleOfMobileDeposit];
+    objMobileDepositController.navigationItem.title=[ShareOneUtility getNavBarTitle:[ShareOneUtility getTitleOfMobileDeposit]];
     [obj.navigationController pushViewController:objMobileDepositController animated:YES];
 }
 
