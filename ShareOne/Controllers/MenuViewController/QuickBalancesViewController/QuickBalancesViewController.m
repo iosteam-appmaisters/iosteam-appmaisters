@@ -48,11 +48,19 @@
         [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
     }
 
-//    _qbArr = [QuickBalances getQBObjects:[ShareOneUtility getQBHeaderInfo]];
+    NSMutableArray * temp = [NSMutableArray array];
+    
+    for (SuffixInfo * info in _qbArr){
+        if (![[info Hidden]boolValue]) {
+            NSLog(@"%@",[info Defaultdescr]);
+            [temp addObject:info];
+        }
+    }
+
+    _qbArr = temp;
+    
     [ShareOneUtility showProgressViewOnView:self.view];
-//    [self getQTForSelectedSection:0];
-//    
-//    return;
+
     [LoaderServices setQTRequestOnQueueWithDelegate:weakSelf AndQuickBalanceArr:weakSelf.qbArr completionBlock:^(BOOL success,NSString *errorString) {
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 

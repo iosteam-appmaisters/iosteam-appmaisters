@@ -1831,10 +1831,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eglin.fcu-preprod";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eglin.fcu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a55a0c50-d059-473f-b8df-e23dc11e5570";
-				PROVISIONING_PROFILE_SPECIFIER = EGLIN_FCU_PREPROD_DIST;
+				PROVISIONING_PROFILE = "efa51045-43ca-4fde-8adf-39046575553d";
+				PROVISIONING_PROFILE_SPECIFIER = EGLIN_FCU_DIST;
 			};
 			name = Debug;
 		};
@@ -1856,10 +1856,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.eglin.fcu-preprod";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eglin.fcu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a55a0c50-d059-473f-b8df-e23dc11e5570";
-				PROVISIONING_PROFILE_SPECIFIER = EGLIN_FCU_PREPROD_DIST;
+				PROVISIONING_PROFILE = "efa51045-43ca-4fde-8adf-39046575553d";
+				PROVISIONING_PROFILE_SPECIFIER = EGLIN_FCU_DIST;
 			};
 			name = Release;
 		};
