@@ -39,8 +39,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 @property (nonatomic, strong) YALContextMenuTableView* contextMenuTableView;
 
-@property (nonatomic, strong) NSArray *menuTitles;
-@property (nonatomic, strong) NSArray *menuIcons;
+@property (nonatomic, strong) NSMutableArray *menuTitles;
+@property (nonatomic, strong) NSMutableArray *menuIcons;
 
 @property (weak, nonatomic) IBOutlet UIButton *addMenuIcon;
 
@@ -1086,20 +1086,35 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 #define kContact @"Contact"
 
 - (void)initiateMenuOptions {
-    self.menuTitles = @[@"Close",
-                        kContact,
-                        kApplyForALoan,
-                        kPrivacyPolicy,
-                        kBranchLocation,
-                        kJoinTheCreditUnion,
-                        ];
     
-    self.menuIcons = @[[UIImage imageNamed:@"cancel_icon"],
-                       [UIImage imageNamed:@"contact"],
-                       [UIImage imageNamed:@"apply_for_loan"],
-                       [UIImage imageNamed:@"privacy_policy"],
-                       [UIImage imageNamed:@"branch_location"],
-                       [UIImage imageNamed:@"join_credit_union"]];
+    _menuTitles = [NSMutableArray array];
+    [_menuTitles addObject:@"Close"];
+    
+    _menuIcons = [NSMutableArray array];
+    [_menuIcons addObject:[UIImage imageNamed:@"cancel_icon"]];
+    
+    ClientSettingsObject *objClientSettingsObject = [Configuration getClientSettingsContent];
+    if (objClientSettingsObject.contactculink.length > 0){
+        [_menuTitles addObject:kContact];
+        [_menuIcons addObject:[UIImage imageNamed:@"contact"]];
+    }
+    if (objClientSettingsObject.applyloanlink.length > 0){
+        [_menuTitles addObject:kApplyForALoan];
+        [_menuIcons addObject:[UIImage imageNamed:@"apply_for_loan"]];
+    }
+    if (objClientSettingsObject.privacylink.length > 0){
+        [_menuTitles addObject:kPrivacyPolicy];
+        [_menuIcons addObject:[UIImage imageNamed:@"privacy_policy"]];
+    }
+    if (objClientSettingsObject.branchlocationlink.length > 0){
+        [_menuTitles addObject:kBranchLocation];
+        [_menuIcons addObject:[UIImage imageNamed:@"branch_location"]];
+    }
+    if (objClientSettingsObject.joinculink.length > 0){
+        [_menuTitles addObject:kJoinTheCreditUnion];
+        [_menuIcons addObject:[UIImage imageNamed:@"join_credit_union"]];
+    }
+  
 }
 
 
@@ -1120,24 +1135,25 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     _isComingAfterPressedOpenUrlButton = TRUE;
     NSString *urlString = nil;
     
-    if([menuTitle isEqualToString:kJoinTheCreditUnion]){
+    NSString * menuHeading = menuTitle;
+    if (![ShareOneUtility shouldUseProductionEnviroment]){
+       menuHeading = [menuTitle stringByReplacingOccurrencesOfString:@"PreProd-" withString:@""];
+    }
+    
+    if([menuHeading isEqualToString:kJoinTheCreditUnion]){
         urlString=objClientSettingsObject.joinculink;
     }
-    else if ([menuTitle isEqualToString:kApplyForALoan]){
+    else if ([menuHeading isEqualToString:kApplyForALoan]){
         urlString=objClientSettingsObject.applyloanlink;
-        
     }
-    else if ([menuTitle isEqualToString:kBranchLocation]){
+    else if ([menuHeading isEqualToString:kBranchLocation]){
         urlString=objClientSettingsObject.branchlocationlink;
-        
     }
-    else if ([menuTitle isEqualToString:kContact]){
+    else if ([menuHeading isEqualToString:kContact]){
         urlString=objClientSettingsObject.contactculink;
-        
     }
-    else if ([menuTitle isEqualToString:kPrivacyPolicy]){
+    else if ([menuHeading isEqualToString:kPrivacyPolicy]){
         urlString=objClientSettingsObject.privacylink;
-        
     }
     
     WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
