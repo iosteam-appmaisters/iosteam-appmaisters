@@ -172,6 +172,9 @@
 //        NSString *deepTargetUrl = config.DeepTargetId;
         NSString *deepTargetUrl = obj.deeptargetid;
 
+        if (![[deepTargetUrl substringFromIndex:deepTargetUrl.length] isEqualToString: @"/"]){
+            deepTargetUrl = [deepTargetUrl stringByAppendingString:@"/"];
+        }
         
         NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
         

@@ -1643,6 +1643,9 @@ NSLog(Y, Z);		\
 
 +(BOOL)shouldCallNSConfigServices{
     
+    
+    return NO ;
+    
     BOOL flag = TRUE;
     NSLog(@"getDateForNSConfigAPI : %@   getCurrentDate:%@",[self getDateForNSConfigAPI],[self getCurrentDate]);
     if([[self getDateForNSConfigAPI] isEqualToString:[self getCurrentDate]]){

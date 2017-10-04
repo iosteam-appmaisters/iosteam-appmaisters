@@ -14,6 +14,10 @@
 @implementation SplashViewController
 
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -136,6 +140,11 @@
     
 }
 -(void)goToLogin{
+    
+    if (_isComingFromBackground){
+        [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+    }
+    
     LoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:loginViewController animated:YES completion:nil];

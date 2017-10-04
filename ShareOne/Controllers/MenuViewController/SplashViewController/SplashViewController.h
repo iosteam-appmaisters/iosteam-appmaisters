@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *customerIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
 
+@property (nonatomic) BOOL isComingFromBackground;
+
 @end

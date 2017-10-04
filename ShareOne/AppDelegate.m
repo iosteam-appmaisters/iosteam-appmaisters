@@ -105,12 +105,14 @@
     NSLog(@"TopVC :: %@",[[self topViewController]class]);
     
     UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController * splash = [storyBoard instantiateViewControllerWithIdentifier:@"SplashViewController"];
+    SplashViewController * splash = (SplashViewController*)[storyBoard instantiateViewControllerWithIdentifier:@"SplashViewController"];
     
     if ([self topViewController] != nil && ![[self topViewController]isKindOfClass:[SplashViewController class]]){
+        splash.isComingFromBackground = YES;
         [[self topViewController] presentViewController:splash animated:YES completion:nil];
     }
     else {
+        splash.isComingFromBackground = NO;
         self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
         self.window.rootViewController = splash;
         [self.window makeKeyAndVisible];
