@@ -521,7 +521,15 @@ NSLog(Y, Z);		\
 }
 
 +(void)savedSuffixInfo:(NSDictionary *)dict{
-    
+    /*NSArray * suffixDic = dict[@"Suffixes"];
+    for (NSDictionary * info in suffixDic) {
+        for (NSString * key in info.allKeys) {
+            if ([key isEqualToString:@"Blocked"]){
+                NSLog(@"Found");
+            }
+            NSLog(@"%@,%@",key,info[key]);
+        }
+    }*/
     NSDictionary *notNullValuesDict = [self eliminateNullValuesFromDictionary:dict parentDictionaryKey:@"Suffixes"];
     [[NSUserDefaults standardUserDefaults] setValue:notNullValuesDict forKey:@"suffix_info"];
     [[NSUserDefaults standardUserDefaults] synchronize];
