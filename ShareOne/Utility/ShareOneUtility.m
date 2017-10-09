@@ -1766,4 +1766,24 @@ NSLog(Y, Z);		\
     return title;
 }
 
++(NSString *)checkHTTPComponentInURL:(NSString*)url {
+    
+    if(![url containsString:@"https"])
+        url=[NSString stringWithFormat:@"https://%@",url];
+    
+    NSLog(@"%@",url);
+    return url;
+}
+
++(NSString*)checkLastSlashInURL:(NSString*)url {
+    
+    if (![url hasSuffix: @"/"]){
+        url = [url stringByAppendingString:@"/"];
+    }
+    NSLog(@"%@",url);
+    return url;
+}
+
+
+
 @end
