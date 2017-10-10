@@ -147,20 +147,11 @@
     
     if (_isComingFromBackground){
         [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//        return;
     }
     
     UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
     homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:homeNavigationViewController animated:YES completion:nil];
-
-    
-    /*
-    LoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:loginViewController animated:YES completion:nil];
-     */
 }
 
 - (BOOL)shouldAutorotate{
