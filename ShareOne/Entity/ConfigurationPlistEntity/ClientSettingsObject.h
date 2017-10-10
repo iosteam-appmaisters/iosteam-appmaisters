@@ -25,7 +25,10 @@
 @property (nonatomic,strong) NSString *privacylink;
 
 @property (nonatomic,strong) NSString *coopid;
-@property (nonatomic,strong) NSString *preprodbasewebviewurl;
+//@property (nonatomic,strong) NSString *preprodbasewebviewurl;
+
+@property (nonatomic,strong) NSString *basewebviewurl;
+
 
 
 @property (nonatomic,strong) NSString *vertifirdcsecretkey;

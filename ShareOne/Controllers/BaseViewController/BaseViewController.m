@@ -96,13 +96,15 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    [[self navigationController] setNavigationBarHidden:NO animated:NO];
+
     [self setTitleOnNavBar:self.navigationItem.title];
 
     [self addAdvertismentControllerOnBottomScreen];
     [self manageAds];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)manageAds{
@@ -118,8 +120,9 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[self navigationController] setNavigationBarHidden:YES animated:NO];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)unSetDelegeteForAdsWebView:(BOOL)shouldDisabled{
@@ -266,8 +269,6 @@
     if(isAlreadyAdded){
         [webView removeFromSuperview];
     }
-    
-    
 }
 
 -(void)createLefbarButtonItems{
@@ -275,27 +276,16 @@
     [leftView setBackgroundColor:[UIColor clearColor]];
 
     //rootview
-    
-    if([[self.navigationController viewControllers] count]>1){
+    if([[self.navigationController viewControllers] count]>2 && ![self.navigationController.viewControllers.lastObject isKindOfClass:[HomeViewController class]]){
         [leftView addSubview:[self getBackButton]];
-//        [leftView addSubview:[self getMenuButton]];
+        
     }
-    else
-    {
+    else{
         UIButton* menuBtn=[self getMenuButton];
         [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
         [leftView addSubview:menuBtn];
     }
-     
-    
-    
-//    UIButton* menuBtn=[self getMenuButton];
-//    [menuBtn setFrame:CGRectMake(0, 0, 30, 44)];
-//    [leftView addSubview:menuBtn];
-
-    
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftView];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -360,7 +350,6 @@
 
 -(UIButton*)getMenuButton{
     
-    
     StyleValuesObject *obj = [Configuration getStyleValueContent];
 
     UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
@@ -370,30 +359,12 @@
      menuButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 30, 44)];
     [menuButton setImage:menuImage    forState:UIControlStateNormal];
     [menuButton setTintColor:color];
-    
-    
-//    if([[self.navigationController viewControllers] count]>1)
-//        [menuButton addTarget:self action:@selector(popWithOutAnimation) forControlEvents:UIControlEventTouchUpInside];
-//    else
-        [menuButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [menuButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     return menuButton;
 }
 
 -(void)menuButtonClicked:(id)sender{
-    
-
-    if([[self.navigationController viewControllers] count]>1){
-        
-        [self showSideMenu];
-
-//        [self popWithOutAnimation];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOTIFICATION object:nil];
-
-    }
-    else{
-        [self showSideMenu];
-    }
+    [self showSideMenu];
 }
 
 -(void)showSideMenu{
@@ -445,11 +416,8 @@
 
 
 -(void)setTitleView{
-    
     UIImage* logoImage = [UIImage imageNamed:@"top_logo"];
-//    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[UIImageView alloc] initWithImage:logoImage]];
-
 }
 
 
@@ -519,7 +487,7 @@
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle:navigationTitle];
-            self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
+            self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],objUIViewController, nil];
         }
         
         else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
@@ -548,10 +516,13 @@
                                                                        [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
                                                                            
                                                                            [ShareOneUtility hideProgressViewOnView:self.view];
+                                                                           [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+
+                                                                           [self.navigationController popToRootViewControllerAnimated:NO];
                                                                            
-                                                                           [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
-                                                                               [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-                                                                           }];
+//                                                                           [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
+//                                                                               [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+//                                                                           }];
                                                                            
                                                                            
                                                                        } failureBlock:^(NSError *error) {
@@ -600,62 +571,39 @@
                         NSLog(@"VC %@" , objUIViewController);
                     }
                 }
-
             }
             
             //rootview
-            self.navigationController.viewControllers = [NSArray arrayWithObject: controller];
+            self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],controller, nil];
         }
     }
 }
 
 -(void)bringAdvertismentFront{
-    
-//    if(![[self.navigationController.viewControllers lastObject] isKindOfClass:[HomeViewController class]])
-        [self bringAdvertismentViewToFront];
+    [self bringAdvertismentViewToFront];
 }
 
 -(void)logoutOnGoingBackground{
     
-    
-    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-    
-    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-        
-
-
-    [self sendAdvertismentViewToBack];
-
-    [[ShareOneUtility shareUtitlities] cancelTimer];
-    
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    [self appGoingToBackground];
+//    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+//
+//    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
+//
+//    } failureBlock:^(NSError *error) {
+//
+//    }];
+//
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)goBackToLoginView{
-    
-    [self sendAdvertismentViewToBack];
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground from Home");
     [self removeAdsView];
     [self unSetDelegeteForAdsWebView:TRUE];
     [[SharedUser sharedManager] setIsLogingOutFromHome:TRUE];
-
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
-
-    [self goBackToLoginView];
-
-//    if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
-//        [self logoutOnGoingBackground];
-//    else
-//        [self goBackToLoginView];
-
     [[ShareOneUtility shareUtitlities] cancelTimer];
 }
 
@@ -691,4 +639,12 @@
     }];
 }
 
+-(UIViewController *)getLoginViewForRootView{
+    
+    UIViewController *loginController = nil;
+    if(self.navigationController.viewControllers.count>1){
+        loginController=self.navigationController.viewControllers[0];
+    }
+    return loginController;
+}
 @end

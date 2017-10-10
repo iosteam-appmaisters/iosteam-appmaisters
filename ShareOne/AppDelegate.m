@@ -27,7 +27,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
     // Override point for customization after application launch.
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
@@ -59,8 +58,7 @@
         }
     }
 
-    [self showSplash];
-    
+    //[self showSplash];
     return YES;
 }
 
@@ -82,12 +80,28 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
+    if([self topViewController]){
+        // get current rootViewController object
+        UIViewController *controller = [self topViewController];
+        if([controller isKindOfClass:[BaseViewController class]]){
+            // handling in-app events like ads handling/keep alive service session
+            [(BaseViewController *)controller appGoingToBackground];
+        }
+
+        // dismiss current rootViewController
+        [controller dismissViewControllerAnimated:NO completion:^{
+            // dismiss controller till SplashViewController appears to be rootViewController
+            UIViewController *controller = [self topViewController];
+            if(![controller isKindOfClass:[SplashViewController class]]){
+                [controller dismissViewControllerAnimated:NO completion:nil];
+            }
+        }];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [self showSplash];
+    //[self showSplash];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -109,7 +123,10 @@
     
     if ([self topViewController] != nil && ![[self topViewController]isKindOfClass:[SplashViewController class]]){
         splash.isComingFromBackground = YES;
-        [[self topViewController] presentViewController:splash animated:YES completion:nil];
+        //[[self topViewController] presentViewController:splash animated:YES completion:nil];
+        [[UIApplication sharedApplication].keyWindow setRootViewController:splash];
+        NSLog(@"TopVC :: %@",[[self topViewController]class]);
+
     }
     else {
         splash.isComingFromBackground = NO;

@@ -44,16 +44,7 @@
     topRight.frame = CGRectMake(100, 100, topRight.currentImage.size.width, topRight.currentImage.size.height);
     UIBarButtonItem *topRightButtonItem =[[UIBarButtonItem alloc] initWithCustomView:topRight];
     _navBar.topItem.rightBarButtonItem = topRightButtonItem;
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
-
 }
-
--(void)appGoingToBackground{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
-
-
 
 -(void)manageKeyboard{
     

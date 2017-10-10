@@ -1319,12 +1319,8 @@ NSLog(Y, Z);		\
     NSDictionary *lastSelectedItem = (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
     if(!lastSelectedItem){
         lastSelectedItem = [Configuration getAllMenuItemsIncludeHiddenItems:FALSE][0];
-//        lastSelectedItem = [self getAccountSummaryObjectFromPlist];
     }
-    
     return  lastSelectedItem;
-    
-//    return  (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
 }
 
 +(void)removeCacheControllerName{

@@ -282,7 +282,7 @@
     NSString *hostname = nil;
     ClientSettingsObject *obj = [self getClientSettingsContent];
 
-    hostname = obj.preprodbasewebviewurl;
+    hostname = obj.basewebviewurl;
     
     if(![hostname containsString:@"https"])
         hostname=[NSString stringWithFormat:@"https://%@",hostname];

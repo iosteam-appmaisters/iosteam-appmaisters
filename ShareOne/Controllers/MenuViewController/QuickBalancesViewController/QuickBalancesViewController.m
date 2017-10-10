@@ -81,13 +81,8 @@
     
     self.qbTblView.allowMultipleSectionsOpen = NO;
     [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
--(void)appGoingToBackground{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -

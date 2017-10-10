@@ -15,32 +15,36 @@
 
 
 -(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MessageLabelNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(changeMessageLabel:)
-                                                 name:@"MessageLabelNotification"
-                                               object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MessageLabelNotification" object:nil];
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeMessageLabel:)
+                                                 name:@"MessageLabelNotification"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNextViewController) name:UIApplicationWillEnterForegroundNotification object:nil];
+//
+    [self showNextViewController];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self showNextViewController];
+    //[self showNextViewController];
 }
 
 -(void)changeMessageLabel:(NSNotification*)notification {
@@ -143,11 +147,20 @@
     
     if (_isComingFromBackground){
         [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//        return;
     }
     
+    UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+    homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:homeNavigationViewController animated:YES completion:nil];
+
+    
+    /*
     LoginViewController* loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:loginViewController animated:YES completion:nil];
+     */
 }
 
 - (BOOL)shouldAutorotate{

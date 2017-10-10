@@ -28,17 +28,7 @@
 
     [ShareOneUtility showProgressViewOnView:self.view];
     [self updateWebLinks];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
-
-
--(void)appGoingToBackground{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-
-
 
 -(void)updateWebLinks{
     _navBar.topItem.title = _navTitle;

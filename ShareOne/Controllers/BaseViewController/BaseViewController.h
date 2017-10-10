@@ -40,6 +40,9 @@
 
 -(void)showSideMenu;
 
+-(void)appGoingToBackground;
+
+
 
 
 
