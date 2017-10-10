@@ -57,6 +57,21 @@
         }
     }
 
+    
+    
+    NSMutableArray * temp = [NSMutableArray array];
+    
+    for (SuffixInfo * info in _qbArr){
+        
+        if (![[info Hidden]boolValue] && ([info Closed] == nil || ![[info Closed] boolValue])) {
+            [temp addObject:info];
+            NSLog(@"Showing:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
+        }
+        else {
+            NSLog(@"Hiding:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
+        }
+    }
+    
     _qbArr = temp;
     
     [ShareOneUtility showProgressViewOnView:self.view];
@@ -79,13 +94,8 @@
     
     self.qbTblView.allowMultipleSectionsOpen = NO;
     [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
--(void)appGoingToBackground{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -

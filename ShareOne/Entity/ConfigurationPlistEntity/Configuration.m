@@ -260,7 +260,7 @@
 
 +(NSString *)getVertifiRDCURL{
     ClientSettingsObject *obj = [self getClientSettingsContent];
-    return  obj.vertifirdcurl;
+    return  [ShareOneUtility checkLastSlashInURL:obj.vertifirdcurl];
 }
 
 
@@ -282,7 +282,7 @@
     NSString *hostname = nil;
     ClientSettingsObject *obj = [self getClientSettingsContent];
 
-    hostname = obj.preprodbasewebviewurl;
+    hostname = obj.basewebviewurl;
     
     if(![hostname containsString:@"https"])
         hostname=[NSString stringWithFormat:@"https://%@",hostname];

@@ -229,6 +229,9 @@
 + (BOOL)isConfigDataNotExistedOrReSkinSettingIsOn;
 + (BOOL)shouldUseProductionEnviroment;
 + (NSString *)getClientApplicationID;
++(NSString*)getNavBarTitle:(NSString*)title;
++(NSString *)checkHTTPComponentInURL:(NSString*)url;
++(NSString*)checkLastSlashInURL:(NSString*)url;
 
 +(NSString*)getNavBarTitle:(NSString*)title;
 @end

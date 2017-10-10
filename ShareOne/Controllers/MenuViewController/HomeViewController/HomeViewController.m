@@ -63,6 +63,7 @@
     _webViewRequest = request;
     self.title = [ShareOneUtility getNavBarTitle:@""];
 
+    self.title = [ShareOneUtility getNavBarTitle:@""];
 }
 
 -(void)showMenuFromHomeView{

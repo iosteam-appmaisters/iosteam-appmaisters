@@ -50,12 +50,6 @@
 
 }
 
--(void)appGoingToBackground{
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-
 -(void)manageKeyboard{
     
     if([_dateTxtFeild isFirstResponder]){

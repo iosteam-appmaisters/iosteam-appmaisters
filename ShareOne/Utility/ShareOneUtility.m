@@ -521,7 +521,15 @@ NSLog(Y, Z);		\
 }
 
 +(void)savedSuffixInfo:(NSDictionary *)dict{
-    
+    /*NSArray * suffixDic = dict[@"Suffixes"];
+    for (NSDictionary * info in suffixDic) {
+        for (NSString * key in info.allKeys) {
+            if ([key isEqualToString:@"Blocked"]){
+                NSLog(@"Found");
+            }
+            NSLog(@"%@,%@",key,info[key]);
+        }
+    }*/
     NSDictionary *notNullValuesDict = [self eliminateNullValuesFromDictionary:dict parentDictionaryKey:@"Suffixes"];
     [[NSUserDefaults standardUserDefaults] setValue:notNullValuesDict forKey:@"suffix_info"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -1319,12 +1327,8 @@ NSLog(Y, Z);		\
     NSDictionary *lastSelectedItem = (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
     if(!lastSelectedItem){
         lastSelectedItem = [Configuration getAllMenuItemsIncludeHiddenItems:FALSE][0];
-//        lastSelectedItem = [self getAccountSummaryObjectFromPlist];
     }
-    
     return  lastSelectedItem;
-    
-//    return  (NSDictionary *)[[NSUserDefaults standardUserDefaults] valueForKey:@"menu_item"];
 }
 
 +(void)removeCacheControllerName{
@@ -1643,6 +1647,9 @@ NSLog(Y, Z);		\
 
 +(BOOL)shouldCallNSConfigServices{
     
+    
+    return NO ;
+    
     BOOL flag = TRUE;
     NSLog(@"getDateForNSConfigAPI : %@   getCurrentDate:%@",[self getDateForNSConfigAPI],[self getCurrentDate]);
     if([[self getDateForNSConfigAPI] isEqualToString:[self getCurrentDate]]){
@@ -1754,5 +1761,25 @@ NSLog(Y, Z);		\
     }
     return title;
 }
+
++(NSString *)checkHTTPComponentInURL:(NSString*)url {
+    
+    if(![url containsString:@"https"])
+        url=[NSString stringWithFormat:@"https://%@",url];
+    
+    NSLog(@"%@",url);
+    return url;
+}
+
++(NSString*)checkLastSlashInURL:(NSString*)url {
+    
+    if (![url hasSuffix: @"/"]){
+        url = [url stringByAppendingString:@"/"];
+    }
+    NSLog(@"%@",url);
+    return url;
+}
+
+
 
 @end

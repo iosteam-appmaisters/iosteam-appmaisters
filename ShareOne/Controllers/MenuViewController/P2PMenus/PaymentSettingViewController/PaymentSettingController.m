@@ -55,11 +55,7 @@
     // Do any additional setup after loading the view.
     self.favContactsTblView.allowMultipleSectionsOpen = NO;
     [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([ContactsHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kContactsHeaderViewReuseIdentifier];
-    //[self updateViewWithRefrenceOfContacts];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-
     _contactViewHeight = _contactsDetailsView.frame.size.height;
     
     [_favContactsTblView setBackgroundColor:[UIColor whiteColor]];

@@ -445,7 +445,7 @@
     
     AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
     
-    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:[ShareOneUtility checkHTTPComponentInURL: urlString] parameters:nil error:nil];
     
     jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
     manager.responseSerializer = jsonResponseSerializer;
