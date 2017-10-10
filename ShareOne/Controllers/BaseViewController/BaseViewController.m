@@ -175,7 +175,7 @@
 //        NSString *deepTargetUrl = config.DeepTargetId;
         NSString *deepTargetUrl = obj.deeptargetid;
 
-        if (![[deepTargetUrl substringFromIndex:deepTargetUrl.length] isEqualToString: @"/"]){
+        if (![deepTargetUrl hasSuffix: @"/"]){
             deepTargetUrl = [deepTargetUrl stringByAppendingString:@"/"];
         }
         

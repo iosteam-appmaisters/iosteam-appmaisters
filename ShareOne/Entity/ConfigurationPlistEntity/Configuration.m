@@ -260,7 +260,7 @@
 
 +(NSString *)getVertifiRDCURL{
     ClientSettingsObject *obj = [self getClientSettingsContent];
-    return  obj.vertifirdcurl;
+    return  [ShareOneUtility checkLastSlashInURL:obj.vertifirdcurl];
 }
 
 

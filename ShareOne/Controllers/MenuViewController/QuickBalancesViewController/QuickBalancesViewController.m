@@ -53,9 +53,13 @@
     NSMutableArray * temp = [NSMutableArray array];
     
     for (SuffixInfo * info in _qbArr){
-        if (![[info Hidden]boolValue]) {
-            NSLog(@"%@",[info Defaultdescr]);
+        
+        if (![[info Hidden]boolValue] && ([info Closed] == nil || ![[info Closed] boolValue])) {
             [temp addObject:info];
+            NSLog(@"Showing:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
+        }
+        else {
+            NSLog(@"Hiding:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
         }
     }
     
