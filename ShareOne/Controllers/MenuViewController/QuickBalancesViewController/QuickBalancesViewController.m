@@ -47,17 +47,6 @@
         _qbArr=suffixArr;
         [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
     }
-
-    NSMutableArray * temp = [NSMutableArray array];
-    
-    for (SuffixInfo * info in _qbArr){
-        if (![[info Hidden]boolValue]) {
-            NSLog(@"%@",[info Defaultdescr]);
-            [temp addObject:info];
-        }
-    }
-
-    
     
     NSMutableArray * temp = [NSMutableArray array];
     
