@@ -87,7 +87,7 @@
 
 +(NSString *)getAccountValue;
 
-+(NSString *)getSecretKey;
+//+(NSString *)getSecretKey;
 
 +(NSString *)getMemberEmail;
 
@@ -186,8 +186,8 @@
 
 +(Configuration *)getConfigurationFile;
 
-+(NSString *)getRequesterValue;
-+(NSString *)getRoutingValue;
+//+(NSString *)getRequesterValue;
+//+(NSString *)getRoutingValue;
 +(NSString *)getGoogleMapKey;
 +(NSString *)getCoOpID;
 +(NSString *)getTestFairyID;

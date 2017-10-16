@@ -489,7 +489,7 @@
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
-            self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
+            self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
         }
         
         else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){

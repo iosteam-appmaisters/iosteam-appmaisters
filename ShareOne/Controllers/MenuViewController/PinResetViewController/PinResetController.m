@@ -35,8 +35,8 @@
     }
     else{
         _navBar.topItem.title = [ShareOneUtility getNavBarTitle:@"Forgot Password"];
-        [_accountLbl setText:@"Account Name"];
-        [_accountNameTxtFeild setPlaceholder:@"Enter Account Name"];
+        [_accountLbl setText:@"User Name"];
+        [_accountNameTxtFeild setPlaceholder:@"Enter User Name"];
     }
     
     UIButton *topRight = [UIButton buttonWithType:UIButtonTypeCustom];
