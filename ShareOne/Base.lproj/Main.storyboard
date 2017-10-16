@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="v7T-ao-uvA">
-                                <rect key="frame" x="0.0" y="-80" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IxT-UC-qh6">
                                 <rect key="frame" x="197" y="358" width="20" height="20"/>
@@ -76,12 +76,10 @@
                         <constraints>
                             <constraint firstItem="6kw-fK-Fqv" firstAttribute="centerX" secondItem="q3G-wS-hLk" secondAttribute="centerX" id="3vg-vd-tQW"/>
                             <constraint firstItem="G2S-E0-AFc" firstAttribute="centerX" secondItem="6kw-fK-Fqv" secondAttribute="centerX" id="Ada-16-nPi"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v7T-ao-uvA" secondAttribute="bottom" constant="100" id="AoT-bh-Cjh"/>
-                            <constraint firstItem="v7T-ao-uvA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-100" id="Ewq-Kv-e8B"/>
-                            <constraint firstAttribute="trailing" secondItem="v7T-ao-uvA" secondAttribute="trailing" id="Fej-Ye-I3O"/>
+                            <constraint firstAttribute="trailing" secondItem="v7T-ao-uvA" secondAttribute="trailing" id="Gd8-Vu-pSZ"/>
                             <constraint firstItem="6kw-fK-Fqv" firstAttribute="width" secondItem="q3G-wS-hLk" secondAttribute="width" id="Go3-7q-8aa"/>
                             <constraint firstItem="pML-4B-CzQ" firstAttribute="leading" secondItem="G2S-E0-AFc" secondAttribute="leading" id="HHo-xO-igk"/>
-                            <constraint firstItem="v7T-ao-uvA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LDL-NH-zzF"/>
+                            <constraint firstItem="v7T-ao-uvA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HR1-KG-eNn"/>
                             <constraint firstItem="pML-4B-CzQ" firstAttribute="width" secondItem="G2S-E0-AFc" secondAttribute="width" id="M1I-yX-z01"/>
                             <constraint firstItem="q3G-wS-hLk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="WoK-b9-oOv"/>
                             <constraint firstItem="G2S-E0-AFc" firstAttribute="width" secondItem="6kw-fK-Fqv" secondAttribute="width" id="ccz-Nb-vnd"/>
@@ -92,9 +90,11 @@
                             <constraint firstItem="pML-4B-CzQ" firstAttribute="top" secondItem="G2S-E0-AFc" secondAttribute="bottom" id="oGa-49-2B3"/>
                             <constraint firstItem="pML-4B-CzQ" firstAttribute="height" secondItem="G2S-E0-AFc" secondAttribute="height" id="qK6-H5-Z7r"/>
                             <constraint firstItem="q3G-wS-hLk" firstAttribute="top" secondItem="IxT-UC-qh6" secondAttribute="bottom" constant="30" id="qkI-O9-vwY"/>
+                            <constraint firstItem="v7T-ao-uvA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="sPv-gw-bYO"/>
                             <constraint firstItem="pML-4B-CzQ" firstAttribute="trailing" secondItem="G2S-E0-AFc" secondAttribute="trailing" id="sXu-Nx-qB5"/>
                             <constraint firstItem="IxT-UC-qh6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vVc-WI-jBm"/>
                             <constraint firstItem="6kw-fK-Fqv" firstAttribute="top" secondItem="q3G-wS-hLk" secondAttribute="bottom" id="xpS-Ic-aX7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v7T-ao-uvA" secondAttribute="bottom" id="ymy-pQ-Icm"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -202,7 +202,7 @@
                                         <rect key="frame" x="20" y="122" width="374" height="97"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="25" width="333" height="40"/>
+                                                <rect key="frame" x="21" y="7" width="483" height="58"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -223,7 +223,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="250" y="68" width="70" height="24"/>
+                                                <rect key="frame" x="400" y="68" width="70" height="24"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -231,7 +231,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="324" y="67" width="25" height="25"/>
+                                                <rect key="frame" x="474" y="67" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -270,13 +270,13 @@
                                         <rect key="frame" x="20" y="187" width="374" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="209" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="359" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-pp-gWk">
-                                                <rect key="frame" x="305" y="8" width="51" height="31"/>
+                                                <rect key="frame" x="455" y="8" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="rememberMeButtonClicked:" destination="Grc-iE-xzY" eventType="valueChanged" id="aWh-u1-ryo"/>
                                                 </connections>
@@ -583,7 +583,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="Q8r-7b-Bux">
-                                        <rect key="frame" x="0.0" y="-100" width="414" height="736"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfl-1D-8YN">
                                         <rect key="frame" x="161.33333333333334" y="388" width="92" height="26"/>
@@ -597,16 +597,16 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Q8r-7b-Bux" firstAttribute="top" secondItem="2FB-WI-wE0" secondAttribute="top" id="6tq-uy-lGc"/>
                                     <constraint firstItem="qRY-Qf-hUb" firstAttribute="centerX" secondItem="2FB-WI-wE0" secondAttribute="centerX" id="7uj-TS-agK"/>
-                                    <constraint firstAttribute="bottom" secondItem="Q8r-7b-Bux" secondAttribute="bottom" constant="100" id="Ihe-0W-upO"/>
-                                    <constraint firstAttribute="trailing" secondItem="Q8r-7b-Bux" secondAttribute="trailing" id="KDh-FB-8eC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q8r-7b-Bux" secondAttribute="bottom" id="Nik-EI-6Gu"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="top" secondItem="qRY-Qf-hUb" secondAttribute="bottom" constant="10" id="OfN-xj-o8R"/>
-                                    <constraint firstItem="Q8r-7b-Bux" firstAttribute="top" secondItem="2FB-WI-wE0" secondAttribute="top" constant="-100" id="QrD-jY-7nv"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="centerX" secondItem="2FB-WI-wE0" secondAttribute="centerX" id="Sfb-RK-XUM"/>
+                                    <constraint firstItem="Q8r-7b-Bux" firstAttribute="leading" secondItem="2FB-WI-wE0" secondAttribute="leading" id="TSf-Rn-T16"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="top" secondItem="qRY-Qf-hUb" secondAttribute="bottom" id="ayv-uG-QYP"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="centerY" secondItem="2FB-WI-wE0" secondAttribute="centerY" id="m5t-sT-zDj"/>
                                     <constraint firstItem="Wfl-1D-8YN" firstAttribute="top" secondItem="2FB-WI-wE0" secondAttribute="top" constant="60" id="mqw-yL-JRX"/>
-                                    <constraint firstItem="Q8r-7b-Bux" firstAttribute="leading" secondItem="2FB-WI-wE0" secondAttribute="leading" id="scw-TL-ocU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q8r-7b-Bux" secondAttribute="trailing" id="vhE-Bx-SCn"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -3742,8 +3742,8 @@ Tm90ZToQIA
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="S7J-jj-etD">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
-                                                <rect key="frame" x="323" y="10.666666666666664" width="71" height="23"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
+                                                <rect key="frame" x="309" y="10" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -4125,8 +4125,8 @@ Tm90ZToQIA
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="eyx-yh-2M5">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1n4-cV-EJh">
-                                                <rect key="frame" x="323" y="10.666666666666664" width="71" height="23"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1n4-cV-EJh">
+                                                <rect key="frame" x="309" y="10" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -4213,8 +4213,8 @@ Tm90ZToQIA
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="mVd-ge-9SF">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
-                                                <rect key="frame" x="323" y="10.666666666666664" width="71" height="23"/>
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
+                                                <rect key="frame" x="309" y="10" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -4486,8 +4486,8 @@ Tm90ZToQIA
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="zLz-gn-VQb">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
-                                                <rect key="frame" x="323" y="10.666666666666664" width="71" height="23"/>
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
+                                                <rect key="frame" x="309" y="10" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -6282,7 +6282,7 @@ Tm90ZToQIA
         <image name="icon-dollar" width="20" height="20"/>
         <image name="ios_settings" width="414" height="151"/>
         <image name="linkedin" width="225" height="65"/>
-        <image name="login_bg" width="414" height="736"/>
+        <image name="login_bg" width="480" height="834"/>
         <image name="map_direction" width="121" height="28"/>
         <image name="menu_branch_location_icon" width="24" height="23"/>
         <image name="mobile-deposit-header" width="414" height="151"/>
@@ -6305,7 +6305,7 @@ Tm90ZToQIA
         <image name="swap_right" width="414" height="736"/>
         <image name="top_Banner" width="414" height="299"/>
         <image name="top_banner" width="414" height="151"/>
-        <image name="top_logo" width="71" height="23"/>
+        <image name="top_logo" width="85" height="24"/>
         <image name="touch-no-thanks" width="174" height="41"/>
         <image name="touch-thumb" width="147" height="177"/>
         <image name="touch-yes" width="174" height="41"/>
