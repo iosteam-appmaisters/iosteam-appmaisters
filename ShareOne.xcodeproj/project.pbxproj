@@ -1831,10 +1831,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "af987ef8-22b3-4e5c-877b-efe07458bea3";
-				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
+				PROVISIONING_PROFILE = "d0da5743-8274-4e47-8f5c-f2c8b9f02a0f";
+				PROVISIONING_PROFILE_SPECIFIER = NSCONFIG_APPSTORE;
 			};
 			name = Debug;
 		};
@@ -1856,10 +1856,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "af987ef8-22b3-4e5c-877b-efe07458bea3";
-				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
+				PROVISIONING_PROFILE = "d0da5743-8274-4e47-8f5c-f2c8b9f02a0f";
+				PROVISIONING_PROFILE_SPECIFIER = NSCONFIG_APPSTORE;
 			};
 			name = Release;
 		};
