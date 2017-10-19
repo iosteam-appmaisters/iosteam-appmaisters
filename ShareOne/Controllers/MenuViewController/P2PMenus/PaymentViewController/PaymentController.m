@@ -56,7 +56,7 @@
 -(IBAction)goToAddFavouriteController:(id)sender{
     
     PaymentSettingController* objPaymentSettingController = [self.storyboard instantiateViewControllerWithIdentifier:@"p2psettings"];
-    objPaymentSettingController.navigationItem.title=[ShareOneUtility getNavBarTitle: @"Send Money (P2P)"];
+    objPaymentSettingController.navigationItem.title= [ShareOneUtility getNavBarTitle:@"Send Money (P2P)"];
     [self.navigationController pushViewController:objPaymentSettingController animated:YES];
 
 }

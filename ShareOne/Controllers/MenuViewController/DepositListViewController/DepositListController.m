@@ -107,11 +107,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -158,11 +158,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     
@@ -399,11 +399,11 @@
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[ShareOneUtility getRequesterValue] forKey:@"requestor"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
     
-    [params setValue:[ShareOneUtility getRoutingValue] forKey:@"routing"];
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
     [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
     

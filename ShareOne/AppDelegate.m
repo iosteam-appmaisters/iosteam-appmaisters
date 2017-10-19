@@ -31,6 +31,7 @@
     // Override point for customization after application launch.
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+    
     if (![ShareOneUtility shouldUseProductionEnviroment]){
         [TestFairy begin:[ShareOneUtility getTestFairyID]];
     }
@@ -64,8 +65,7 @@
 }
 
 
-
-- (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application{
+- (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application {
     NSLog(@"applicationProtectedDataWillBecomeUnavailable");
 }
 

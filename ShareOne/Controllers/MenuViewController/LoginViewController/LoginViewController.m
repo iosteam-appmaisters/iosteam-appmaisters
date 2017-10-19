@@ -568,7 +568,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 
                 //If webUrl is empty or nil load Native UI Screen
                 UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-                objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: navigationTitle];
+                objUIViewController.navigationItem.title = [ShareOneUtility getNavBarTitle:navigationTitle];
                 controllerToPush = objUIViewController;
             }
             
@@ -1165,6 +1165,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 #define kContact @"Contact"
 
 - (void)initiateMenuOptions {
+    
     _menuTitles = [NSMutableArray array];
     [_menuTitles addObject:@"Close"];
     
@@ -1192,6 +1193,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         [_menuTitles addObject:kJoinTheCreditUnion];
         [_menuIcons addObject:[UIImage imageNamed:@"join_credit_union"]];
     }
+  
 }
 
 
@@ -1201,7 +1203,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     NSLog(@"Menu dismissed with indexpath = %ld", (long)indexPath.row);
     _addMenuIcon.hidden = NO;
     if (indexPath.row > 0){
-        [self openLinks:[ShareOneUtility getNavBarTitle: self.menuTitles[indexPath.row]]];
+        [self openLinks: [ShareOneUtility getNavBarTitle: self.menuTitles[indexPath.row]]];
     }
 }
 
@@ -1214,7 +1216,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     NSString * menuHeading = menuTitle;
     if (![ShareOneUtility shouldUseProductionEnviroment]){
-        menuHeading = [menuTitle stringByReplacingOccurrencesOfString:@"PreProd-" withString:@""];
+       menuHeading = [menuTitle stringByReplacingOccurrencesOfString:@"PreProd-" withString:@""];
     }
     
     if([menuHeading isEqualToString:kJoinTheCreditUnion]){

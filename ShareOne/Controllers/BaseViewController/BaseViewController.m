@@ -416,7 +416,9 @@
 
 
 -(void)setTitleView{
+    
     UIImage* logoImage = [UIImage imageNamed:@"top_logo"];
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[UIImageView alloc] initWithImage:logoImage]];
 }
 
@@ -486,8 +488,8 @@
 
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-            objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle:navigationTitle];
-            self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],objUIViewController, nil];
+            objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
+            self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
         }
         
         else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
@@ -557,7 +559,7 @@
                 //If webUrl is empty or nil load Native UI Screen
                 @try {
                     objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-                    objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle:navigationTitle];
+                    objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: navigationTitle];
                     controller = objUIViewController;
 
                 }

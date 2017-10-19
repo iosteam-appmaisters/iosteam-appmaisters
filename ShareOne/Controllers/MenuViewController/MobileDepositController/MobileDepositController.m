@@ -133,7 +133,7 @@
             VertifiObject *obj = (VertifiObject *)user;
             _depositLimt=obj.DepositLimit;
             
-            [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit per limit $%.2f)",[_depositLimt floatValue]]];
+            [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit Limit $%.2f)",[_depositLimt floatValue]]];
             if(![obj.InputValidation isEqualToString:@"OK"]){
             }
             

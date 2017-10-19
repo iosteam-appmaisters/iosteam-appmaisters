@@ -47,8 +47,6 @@
         _qbArr=suffixArr;
         [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
     }
-
-    
     
     NSMutableArray * temp = [NSMutableArray array];
     

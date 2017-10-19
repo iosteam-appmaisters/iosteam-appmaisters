@@ -80,8 +80,8 @@
             
         } failureBlock:^(NSError *error) {
         }];
-    //}
-    /*else{
+   /* }
+    else{
         NSLog(@"SKIPPED FIRST TIME LAUNCH");
         [self hideIndicaterView];
         [self goToLogin];
