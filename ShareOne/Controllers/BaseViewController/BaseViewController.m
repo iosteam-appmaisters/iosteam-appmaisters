@@ -100,6 +100,11 @@
 
     [self setTitleOnNavBar:self.navigationItem.title];
 
+    ClientSettingsObject *obj = [Configuration getClientSettingsContent];
+    if ([obj.disableadsglobally boolValue]) {
+        [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+    }
+    
     [self addAdvertismentControllerOnBottomScreen];
     [self manageAds];
 
@@ -143,13 +148,7 @@
 
 -(void)addAdvertismentControllerOnBottomScreen{
     
-//    float height = 50;
-    
     ClientSettingsObject *obj = [Configuration getClientSettingsContent];
-
-    if([obj.disableadsglobally boolValue]){
-        return;
-    }
     
     float height =     [UIScreen mainScreen].bounds.size.width/6.4;
 
@@ -170,9 +169,7 @@
         UIWebView *webView =[[UIWebView alloc] initWithFrame:frame];
         webView.delegate=self;
         [webView setTag:ADVERTISMENT_WEBVIEW_TAG];
-        
-//        Configuration *config = [ShareOneUtility getConfigurationFile];
-//        NSString *deepTargetUrl = config.DeepTargetId;
+
         NSString *deepTargetUrl = obj.deeptargetid;
 
         if (![deepTargetUrl hasSuffix: @"/"]){
@@ -188,14 +185,15 @@
         if(![ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
             [self sendAdvertismentViewToBack];
         }
-        else
+        else{
             [self bringAdvertismentViewToFront];
-
+        }
+        
     }
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
         [self bringAdvertismentViewToFront];
     }
-
+    
 }
 
 #pragma mark WEB-VIEW Delegate
