@@ -1431,8 +1431,8 @@
 				TargetAttributes = {
 					6BD405861D81B59200358036 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = USNDVZCA3F;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 8UP8FM3SAR;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 0;
@@ -1819,9 +1819,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8UP8FM3SAR;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1831,10 +1831,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.excel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.excel.fcu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1f302357-973b-450c-add3-639b8500bc6d";
+				PROVISIONING_PROFILE_SPECIFIER = EXCEL_FCU_DIST;
 			};
 			name = Debug;
 		};
@@ -1844,9 +1844,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 8UP8FM3SAR;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1856,10 +1856,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.excel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.excel.fcu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1f302357-973b-450c-add3-639b8500bc6d";
+				PROVISIONING_PROFILE_SPECIFIER = EXCEL_FCU_DIST;
 			};
 			name = Release;
 		};
