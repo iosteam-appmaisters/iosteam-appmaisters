@@ -431,7 +431,7 @@
             
             if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
 //                [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE title:@"" delegate:weakSelf];
-                [self showAlertForRescanOrIgnoreTitle:@"" AndMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE];
+                //[self showAlertForRescanOrIgnoreTitle:@"" AndMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE];
             }
 
         }

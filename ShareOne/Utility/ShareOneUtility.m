@@ -1764,6 +1764,7 @@ NSLog(Y, Z);		\
 
 +(NSString *)checkHTTPComponentInURL:(NSString*)url {
     
+    url = [url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if(![url containsString:@"https"])
         url=[NSString stringWithFormat:@"https://%@",url];
     
@@ -1773,6 +1774,7 @@ NSLog(Y, Z);		\
 
 +(NSString*)checkLastSlashInURL:(NSString*)url {
     
+    url = [url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (![url hasSuffix: @"/"]){
         url = [url stringByAppendingString:@"/"];
     }

@@ -27,7 +27,6 @@
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MessageLabelNotification" object:nil];
 }
 
 -(void)viewDidLoad{
@@ -37,9 +36,9 @@
                                                  name:@"MessageLabelNotification"
                                                object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNextViewController) name:UIApplicationWillEnterForegroundNotification object:nil];
-//
-    [self showNextViewController];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNSConfigData) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [self getNSConfigData];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -54,66 +53,10 @@
     _appVersionLabel.text = [ShareOneUtility getApplicationVersion];
 }
 
--(void)showNextViewController{
-    
-    //if([ShareOneUtility isConfigDataNotExistedOrReSkinSettingIsOn] || [[SharedUser sharedManager] isCallingNSConfigServices]){
-        
-        NSLog(@"FIRST TIME LAUNCH");
-        [[SharedUser sharedManager] setIsCallingNSConfigServices:FALSE];
+-(void)getNSConfigData{
 
-        [self showIndicaterView];
-        
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"MessageLabelNotification"
-         object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
-                                @"VERSION":[ShareOneUtility getVersionNumber],
-                                @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
-        
-        [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
-            [self hideIndicaterView];
-            if(success){
-                [self goToLogin];
-            }
-            else{
-                [self showAlertWithTitle:nil AndMessage:errorString];
-            }
-            
-        } failureBlock:^(NSError *error) {
-        }];
-   /* }
-    else{
-        NSLog(@"SKIPPED FIRST TIME LAUNCH");
-        [self hideIndicaterView];
-        [self goToLogin];
-    }*/
-}
-
--(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:title
-                                  message:message
-                                  preferredStyle:UIAlertControllerStyleAlert];
-    
-    
-    
-    UIAlertAction* retryBtn = [UIAlertAction
-                               actionWithTitle:@"Re Try"
-                               style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction * action)
-                               {
-                                   [self getConfigSettings];
-                                   [alert dismissViewControllerAnimated:YES completion:^{
-                                   }];
-                               }];
-    [alert addAction:retryBtn];
-    
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
--(void)getConfigSettings{
-    
     [self showIndicaterView];
-
+        
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"MessageLabelNotification"
      object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
@@ -124,6 +67,9 @@
         [self hideIndicaterView];
         if(success){
             [self goToLogin];
+            
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"nconfig_called"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
         }
         else{
             [self showAlertWithTitle:nil AndMessage:errorString];
@@ -131,8 +77,43 @@
         
     } failureBlock:^(NSError *error) {
     }];
-
+   
 }
+
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:@"nconfig_called"]){
+        UIAlertAction* ignoreBtn = [UIAlertAction
+                                   actionWithTitle:@"Ignore"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       [self goToLogin];
+                                       [alert dismissViewControllerAnimated:YES completion:^{
+                                       }];
+                                   }];
+        [alert addAction:ignoreBtn];
+    }
+    
+    
+    UIAlertAction* retryBtn = [UIAlertAction
+                               actionWithTitle:@"Re Try"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   [self getNSConfigData];
+                                   [alert dismissViewControllerAnimated:YES completion:^{
+                                   }];
+                               }];
+    [alert addAction:retryBtn];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 -(void)showIndicaterView{
     [_indicatorView setHidden:FALSE];
     [_indicatorView startAnimating];

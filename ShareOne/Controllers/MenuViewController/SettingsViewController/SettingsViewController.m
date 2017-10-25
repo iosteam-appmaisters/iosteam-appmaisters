@@ -22,10 +22,9 @@
     _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@", [ShareOneUtility getCustomerId]];
     _appVersionLabel.text = [ShareOneUtility getApplicationVersion];
     
-    /*
-    Configuration *config = [ShareOneUtility getConfigurationFile];
-    if([config.DisableShowOffers boolValue]){
-        
+    
+    ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+    if([config.disableadsglobally boolValue]){
         [_showOffersSwitch setHidden:TRUE];
         [_showOffersLbl setHidden:TRUE];
     }
@@ -33,7 +32,7 @@
         [_showOffersSwitch setHidden:FALSE];
         [_showOffersLbl setHidden:FALSE];
     }
-     */
+     
     
 }
 -(void)viewWillAppear:(BOOL)animated{
