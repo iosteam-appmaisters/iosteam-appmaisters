@@ -42,7 +42,7 @@
 
 -(void)appGoingToBackground;
 
-
+-(UIViewController *)getLoginViewForRootView;
 
 
 
