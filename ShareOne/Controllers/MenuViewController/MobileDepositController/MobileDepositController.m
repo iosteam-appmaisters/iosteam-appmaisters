@@ -148,10 +148,8 @@
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             
             NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
             
-            
+            [self showAlertWithTitle:@"" AndMessage:localizeErrorMessage];
             
         }
         
