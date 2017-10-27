@@ -875,10 +875,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         }
         else{
             
-            [weakSelf.loadingView setHidden:TRUE];
+            [weakSelf startApplication];
+            
+            /*[weakSelf.loadingView setHidden:TRUE];
 
             NSString *message = (NSString *)user;
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"" delegate:weakSelf];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"" delegate:weakSelf];*/
         }
         
     } failureBlock:^(NSError *error) {

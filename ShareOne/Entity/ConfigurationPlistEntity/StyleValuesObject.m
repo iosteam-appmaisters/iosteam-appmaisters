@@ -19,7 +19,7 @@
        
         for (NSString* key in stylesDict) {
             id value_key = [stylesDict objectForKey:key];
-            NSString *value = [stylesDict objectForKey:@"Value"];
+            NSString *value = [[stylesDict objectForKey:@"Value"]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             
             if([value_key isKindOfClass:[NSString class]] && [value length]>0){
                 

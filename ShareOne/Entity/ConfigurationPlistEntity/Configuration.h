@@ -89,7 +89,7 @@
 
 
 +(NSArray *)getClientApplications;
-
++(NSString*)getMenuItemDisplayName:(NSString*)name;
 
 
 

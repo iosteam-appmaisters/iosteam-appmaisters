@@ -94,7 +94,7 @@
     [super viewDidLoad];
     [self startUpMethod];
     [self loadDataOnPickerView];
-    //[self vertifyUserRegistrationValidation];
+    
     [self getRegisterToVirtifiToCheckStatus];
     [self setThemeOnButtons];
     //[self getListOfReviewDeposits];
@@ -134,17 +134,12 @@
             _depositLimt=obj.DepositLimit;
             
             [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit Limit $%.2f)",[_depositLimt floatValue]]];
-            if(![obj.InputValidation isEqualToString:@"OK"]){
-            }
             
-            if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
+            if(![obj.InputValidation isEqualToString:@"OK"]){
+                [self showAlertWithTitle:@"Error" AndMessage:obj.InputValidation];
             }
-            else if ([obj.LoginValidation isEqualToString:@"OK"]){
-            }
-            if ([obj.LoginValidation isEqualToString:VERTIFY_LOGIN_VALIDATION]){
-                [self showAlertWithTitle:@"" AndMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE];
-            }
-            else{
+            if(![obj.LoginValidation isEqualToString:@"OK"]){
+                [self showAlertWithTitle:@"Error" AndMessage:obj.LoginValidation];
             }
             
         }
@@ -153,10 +148,8 @@
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
             
             NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
             
-            
+            [self showAlertWithTitle:@"" AndMessage:localizeErrorMessage];
             
         }
         
@@ -167,20 +160,6 @@
 }
 
 
--(void)vertifyUserRegistrationValidation{
-    
-
-    User *user = [ShareOneUtility getUserObject];
-    
-    if(![user.LoginValidation isEqualToString:VERTIFY_LOGIN_VALIDATION]){
-//        [_submittBtn setHidden:TRUE];
-        
-//        [self showAlertWithTitle:@"" AndMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE];
-
-//        [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_LOGIN_VALIDATION_MESSAGE title:@"" delegate:weakSelf];
-
-    }
-}
 -(IBAction)submittButtonClicked:(id)sender{
     
     __weak MobileDepositController *weakSelf = self;
@@ -429,10 +408,10 @@
                     [_ammountTxtFeild setText:[NSString stringWithFormat:@"%.2f",CARAmount]];
             }
             
-            if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
-//                [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE title:@"" delegate:weakSelf];
-                //[self showAlertForRescanOrIgnoreTitle:@"" AndMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE];
-            }
+            /*if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE title:@"" delegate:weakSelf];
+                [self showAlertForRescanOrIgnoreTitle:@"" AndMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE];
+            }*/
 
         }
         else{
@@ -1125,35 +1104,21 @@
 
 -(void)navigateToLastController{
     
-    NSDictionary *cacheControlerDict = [ShareOneUtility getAccountSummaryObjectFromPlist];
-    
-    NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
+    NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
     
     NSString *webUrl = [cacheControlerDict valueForKey:WEB_URL];
     
-    if([contrlollerName isEqualToString:@"WebViewController"]){
-        
-        HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-        currentController = objHomeViewController;
-        objHomeViewController.url= webUrl;
-        //objHomeViewController.navigationItem.title=screenTitle;
-        
-        [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
-        //rootview
-        self.navigationController.viewControllers = [NSArray arrayWithObject: objHomeViewController];
-        
-        
-    }
-
+    HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    currentController = objHomeViewController;
+    objHomeViewController.url= webUrl;
+    
+    [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+    //rootview
+    self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objHomeViewController,nil];
+    
 }
 
 -(void)reloadMobileDepositController{
-    
-//    NSDictionary *cacheControlerDict = [ShareOneUtility getMobileDepositObjectFromPlist];
-//    
-//    NSString *contrlollerName = [cacheControlerDict valueForKey:CONTROLLER_NAME];
-//    
-//    NSString *navigationTitle = [[cacheControlerDict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     
     UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mobileDeposit"];
     
@@ -1161,12 +1126,8 @@
     
     objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: @"Mobile Deposit"];
     
-    //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
-        //rootview
-    self.navigationController.viewControllers = [NSArray arrayWithObject: objUIViewController];
-        
-        
-    
+    //rootview
+    self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController, nil];
     
 }
 

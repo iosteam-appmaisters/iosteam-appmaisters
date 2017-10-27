@@ -233,5 +233,5 @@
 +(NSString *)checkHTTPComponentInURL:(NSString*)url;
 +(NSString*)checkLastSlashInURL:(NSString*)url;
 
-+(NSString*)getNavBarTitle:(NSString*)title;
+
 @end
