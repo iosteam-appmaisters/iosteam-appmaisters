@@ -9,34 +9,21 @@
 #ifndef THISWAY_Services_h
 #define THISWAY_Services_h
 
-//#define KWEB_SERVICE_BASE_URL                           @"https://nsmobile.ns3web.com"
 
-//#define KWEB_SERVICE_BASE_URL                           @"https://coast2coast.ns3web.com"
-//
-//#define KWEB_SERVICE_BASE_URL                           @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
+#define BASE_URL_CONFIGURATION   @"https://nsauth-extdev.ns3web.com/core"
 
+#define BASE_URL_NSCONFIG @"https://nsconfig-extdev.ns3web.com"
 
-//#define KWEB_SERVICE_BASE_URL                           @"https://coast2coastpp.ns3web.com"
+#define NSCONFIG_GET_MODIFIEDSERVICES(CAID,VERSION_NUMBER) [NSString stringWithFormat:@"%@/api/ClientApplication/%@/ModifiedServices/%@",BASE_URL_NSCONFIG,CAID,VERSION_NUMBER]
 
+#define BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CONTROLLER,ID,SERVICE_NAME) [NSString stringWithFormat:@"%@/api/%@/%@/%@",BASE_URL_NSCONFIG,CONTROLLER,ID,SERVICE_NAME]
 
+#define ACCESS_TOKEN           @"connect/token"
 
-//ShareOne
-//#define PUBLIC_KEY                  @"bea351786c074347a0528acf729d0b8f"
-//#define PRIVATE_KEY                 @"3b185aa994d2408091714536c28e324b"
-
-//C2C
-//#define PUBLIC_KEY                  @"b5000c29263d4f0fa3b8115de4694f8e"
-//#define PRIVATE_KEY                 @"1597c0dbf23647e49c6e658be7d293c9"
-
-
-//#define KWEB_SERVICE_BASE_URL_SSO                       @"https://nsmobilecp.ns3web.com"
-//#define KWEB_SERVICE_BASE_URL_SSO                       @"https://preprod.ns3web.com/Coast2Coast_5a6a434123b1409293e4da1a8dac4cb9/NSHome"
-
-
-#define NSCONFIG_GET_MODIFIEDSERVICES(CAID,VERSION_NUMBER) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/ClientApplication/%@/ModifiedServices/%@",CAID,VERSION_NUMBER]
-
-#define BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CONTROLLER,ID,SERVICE_NAME) [NSString stringWithFormat:@"https://nsconfig-extdev.ns3web.com/api/%@/%@/%@",CONTROLLER,ID,SERVICE_NAME]
-
+#define Grant_Type_Value       @"client_credentials"
+#define Scope_value            @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read nsapi_setting.read modified_service.read client_application.read"
+#define Client_ID_value        @"nsmobile_nsconfig_read_client"
+#define Client_Secret_value    @"202E8187-94DE-4CDA-8908-7A9436B21292"
 
 #define CONFIG_MENU_ITEMS_SERVICE          @"MenuItems"
 #define CONFIG_CLIENT_SETTINGS_SERVICE     @"ClientSettings"
@@ -45,6 +32,7 @@
 #define CLIENT_APP_CONTROLLER              @"ClientApplications"
 #define CUSTOMER_CONTROLLER                @"Customers"
 #define CONFIG_CLIENT_APP                  @"ClientApplications"
+
 
 
 #define KWEB_SERVICE_LOGIN                              @"eft/memberLogin"
