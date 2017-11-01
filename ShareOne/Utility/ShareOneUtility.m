@@ -1603,7 +1603,7 @@ NSLog(Y, Z);		\
     [dictResult writeToFile:path atomically:YES];
 }
 
-+ (NSString *)getETagWithKey:(NSString *)key{
+/*+ (NSString *)getETagWithKey:(NSString *)key{
     NSString *eTag = @"";
     if([[NSUserDefaults standardUserDefaults] valueForKey:key]){
         eTag= [[NSUserDefaults standardUserDefaults] valueForKey:key];
@@ -1643,7 +1643,7 @@ NSLog(Y, Z);		\
     if([url containsString:CONFIG_CLIENT_SETTINGS_SERVICE]){
         [self saveETag:eTag withKey:CONFIG_CLIENT_SETTINGS_SERVICE];
     }
-}
+}*/
 
 +(BOOL)shouldCallNSConfigServices{
     
