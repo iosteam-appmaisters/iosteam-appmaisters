@@ -867,7 +867,6 @@
 
 
         if(dict[REQ_HEADER_CONFIGURATION]){
-            [req setValue:dict[ETAG_HEADER] forHTTPHeaderField:@"If-None-Match"];
             [req setValue:dict[REQ_HEADER_CONFIGURATION] forHTTPHeaderField:@"Authorization"];
         }
 
@@ -979,17 +978,6 @@
                 NSLog(@"Error On URL : %@",response.URL.absoluteString);
             }
             if (operation.completionBlock) {
-                
-                NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
-                //NSLog(@"%@",headers);
-                if([headers valueForKey:@"Etag"]){
-                    [ShareOneUtility parseETag:[headers valueForKey:@"Etag"] WithUrl:response.URL.absoluteString];
-                }
-//                NSDictionary* headersME = [(NSHTTPURLResponse *)response allHeaderFields];
-
-//                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-//                NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
-
                 operation.completionBlock(response, responseObject, error);
             }
             

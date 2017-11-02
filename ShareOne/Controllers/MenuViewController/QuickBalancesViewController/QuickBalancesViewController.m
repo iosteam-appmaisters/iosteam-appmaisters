@@ -71,8 +71,9 @@
         if(success && !errorString){
             [weakSelf.qbTblView reloadData];
         }
-        else
-            [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
+        else{
+          //  [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
+        }
 
         
     } failureBlock:^(NSError *error) {

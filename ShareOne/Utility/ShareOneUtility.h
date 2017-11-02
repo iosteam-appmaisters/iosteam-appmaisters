@@ -212,12 +212,6 @@
 
 +(NSString *)getDocumentsDirectoryPathWithFileName:(NSString *)plistName;
 
-+ (NSString *)getETagWithKey:(NSString *)key;
-+ (void)saveETag:(NSString *)eTag withKey:(NSString *)key;
-
-
-+ (void)parseETag:(NSString *)eTag WithUrl:(NSString *)url;
-
 + (BOOL)shouldCallNSConfigServices;
 
 + (void)saveDateForNSConfigAPI:(NSString *)date;

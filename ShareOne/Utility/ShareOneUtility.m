@@ -1603,48 +1603,6 @@ NSLog(Y, Z);		\
     [dictResult writeToFile:path atomically:YES];
 }
 
-+ (NSString *)getETagWithKey:(NSString *)key{
-    NSString *eTag = @"";
-    if([[NSUserDefaults standardUserDefaults] valueForKey:key]){
-        eTag= [[NSUserDefaults standardUserDefaults] valueForKey:key];
-    }
-    
-    NSString *eTagConcatenatedString = [NSString stringWithFormat:@"\"%@\"", eTag ];
-//    NSLog(@"getETagWithKey::%@:%@",key,eTagConcatenatedString);
-
-    return eTagConcatenatedString;
-}
-
-+ (void)saveETag:(NSString *)eTag withKey:(NSString *)key{
-    
-    NSCharacterSet *quoteCharset = [NSCharacterSet characterSetWithCharactersInString:@"\""];
-    NSString *trimmedString = [eTag stringByTrimmingCharactersInSet:quoteCharset];
-
-    NSLog(@"saveETag::%@:%@",key,trimmedString);
-
-    [[NSUserDefaults standardUserDefaults] setValue:trimmedString forKey:key];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-+(void)parseETag:(NSString *)eTag WithUrl:(NSString *)url{
-    
-    if([url containsString:CONFIG_MENU_ITEMS_SERVICE]){
-        [self saveETag:eTag withKey:CONFIG_MENU_ITEMS_SERVICE];
-    }
-
-    if([url containsString:CONFIG_API_SETTINGS_SERVICE]){
-        [self saveETag:eTag withKey:CONFIG_API_SETTINGS_SERVICE];
-    }
-
-    if([url containsString:CONFIG_STYLE_VALUES_SERVICE]){
-        [self saveETag:eTag withKey:CONFIG_STYLE_VALUES_SERVICE];
-    }
-
-    if([url containsString:CONFIG_CLIENT_SETTINGS_SERVICE]){
-        [self saveETag:eTag withKey:CONFIG_CLIENT_SETTINGS_SERVICE];
-    }
-}
-
 +(BOOL)shouldCallNSConfigServices{
     
     
