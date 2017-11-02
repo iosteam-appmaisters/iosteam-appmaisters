@@ -135,7 +135,6 @@
                                            [ShareOneUtility getVersionNumber]),REQ_URL,
                                           RequestType_GET,REQ_TYPE,
                                           authToken,REQ_HEADER_CONFIGURATION,
-                                          //[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,
                                           nil,REQ_PARAM,
                                           nil];
     
@@ -201,7 +200,6 @@
                                      BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_MENU_ITEMS_SERVICE),REQ_URL,
                                           RequestType_GET,REQ_TYPE,
                                           authToken,REQ_HEADER_CONFIGURATION,
-                                          //[ShareOneUtility getETagWithKey:CONFIG_MENU_ITEMS_SERVICE],ETAG_HEADER,
                                           nil,REQ_PARAM,
                                           nil];
     
@@ -209,7 +207,6 @@
                                    BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_CLIENT_SETTINGS_SERVICE),REQ_URL,
                                            RequestType_GET,REQ_TYPE,
                                            authToken,REQ_HEADER_CONFIGURATION,
-                                           //[ShareOneUtility getETagWithKey:CONFIG_CLIENT_SETTINGS_SERVICE],ETAG_HEADER,
                                            nil,REQ_PARAM,
                                            nil];
     
@@ -217,7 +214,6 @@
                                     BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_STYLE_VALUES_SERVICE),REQ_URL,
                                         RequestType_GET,REQ_TYPE,
                                         authToken,REQ_HEADER_CONFIGURATION,
-                                        //[ShareOneUtility getETagWithKey:CONFIG_STYLE_VALUES_SERVICE],ETAG_HEADER,
                                         nil,REQ_PARAM,
                                         nil];
     
@@ -225,7 +221,6 @@
                                     BASE_URL_CONFIGURATION_NS_CONGIG_WITH_CLIENT_ID_AND_SERVICE_NAME(CLIENT_APP_CONTROLLER,[ShareOneUtility getClientApplicationID],CONFIG_API_SETTINGS_SERVICE),REQ_URL,
                                         RequestType_GET,REQ_TYPE,
                                         authToken,REQ_HEADER_CONFIGURATION,
-                                        //[ShareOneUtility getETagWithKey:CONFIG_API_SETTINGS_SERVICE],ETAG_HEADER,
                                         nil,REQ_PARAM,
                                         nil];
     
