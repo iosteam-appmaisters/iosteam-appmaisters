@@ -209,7 +209,7 @@
             address=objLocation.address.Address1;
             addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
         }
-        
+        NSLog(@"Location Coordinates:: %f,%f",lat_local,lon_local);
         marker.title = address;
         marker.snippet =addressDetails;
         marker.map = mapView;
