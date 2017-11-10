@@ -246,6 +246,7 @@
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self hideProgressAlert];
+                [self endSession:manager.session];
                 block(responseObject);
                 
             }
@@ -271,10 +272,13 @@
                 [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
             }
             
-            if([req.URL.absoluteString containsString:KMEMBER_DEVICES])
+            if([req.URL.absoluteString containsString:KMEMBER_DEVICES]){
+                [self endSession:manager.session];
                 failBlock(error);
+            }
             
             if([req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN]){
+                [self endSession:manager.session];
                 block(errorString);
             }
         }
@@ -296,11 +300,12 @@
         NSLog(@"%@",responseObject);
 
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-
+        [self endSession:manager.session];
         block(responseObject);
     } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
         [self hideProgressAlert];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self endSession:manager.session];
         block(nil);
 
         NSLog(@"%@",error);
@@ -327,11 +332,14 @@
         if([urlString containsString:CONFIG_CLIENT_APP]){
             [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)responseObject AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_CLIENT_APP]];
         }
+        [self endSession:manager.session];
 
         block(responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
+        [self endSession:manager.session];
+
         failBlock(error);
     }];
 }
@@ -468,12 +476,13 @@
         if (!error) {
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             [self hideProgressAlert];
+            [self endSession:manager.session];
             block(responseObject,TRUE);
 //            NSLog(@"Reply JSON: %@", responseObject);
             
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
-
+            [self endSession:manager.session];
             block([self getLocalizeErrorMessageForInternetConnection:error],FALSE);
 
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -527,6 +536,7 @@
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self hideProgressAlert];
+                [self endSession:manager.session];
                 block(responseObject);
             }
         } else {
@@ -543,9 +553,10 @@
             if(!customError)
                 customError = [self getLocalizeErrorMessageForInternetConnection:error];
             
-            if([req.URL.absoluteString containsString:KWEB_SERVICE_MEMBER_VALIDATE])
+            if([req.URL.absoluteString containsString:KWEB_SERVICE_MEMBER_VALIDATE]){
+                [self endSession:manager.session];
                 block(nil);
-
+            }
             
             [self hideProgressAlert];
             
@@ -602,6 +613,7 @@
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 if(![req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT])
                     [self hideProgressAlert];
+                [self endSession:manager.session];
                 block(responseObject);
             }
             
@@ -628,14 +640,21 @@
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
             
             
-            if([req.URL.absoluteString containsString:kKEEP_ALIVE])
+            if([req.URL.absoluteString containsString:kKEEP_ALIVE]){
+                [self endSession:manager.session];
                 block(responseObject);
-
-            if([req.URL.absoluteString containsString:KQUICK_BALANCES])
-                failBlock(error);
+            }
             
-            if([req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT])
+
+            if([req.URL.absoluteString containsString:KQUICK_BALANCES]){
+                [self endSession:manager.session];
+                failBlock(error);
+            }
+            
+            if([req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT]){
+                [self endSession:manager.session];
                 block(responseObject);
+            }
 
 
         }
@@ -956,7 +975,7 @@
     }
     
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:configuration];
     AFJSONResponseSerializer *responseSerializer = [AFJSONResponseSerializer serializer];
     responseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:responseSerializer];
@@ -1005,6 +1024,7 @@
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         if (completionBlock) {
+            [self endSession:manager.session];
             completionBlock(tasks);
         }
     });
@@ -1102,4 +1122,10 @@
     }];
     
 }
+
+-(void)endSession:(NSURLSession*)aSession {
+    [aSession finishTasksAndInvalidate];
+    [aSession invalidateAndCancel];
+}
+
 @end

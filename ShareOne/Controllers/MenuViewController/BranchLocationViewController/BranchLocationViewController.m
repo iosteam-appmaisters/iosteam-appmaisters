@@ -166,8 +166,16 @@
 
 -(IBAction)showCurrentLocationMapButtonClicked:(id)sender{
     
+    __weak BranchLocationViewController *weakSelf = self;
+    
     UITableViewCell *clickedCell = (UITableViewCell *)[[sender superview] superview];
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
+    Location *objLocation = self.contentArr[clickedButtonPath.row];
+    
+    if ([self checkIfLatLongZero:objLocation]) {
+        [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"The latitude and longitude are 0,0" title:@"Error" delegate:weakSelf];
+        return;
+    }
     
     ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"surchargeFreeAtms"];
     atmNavigationViewController.showMyLocationOnly= TRUE;
@@ -183,25 +191,83 @@
                                     #pragma mark - BranchLocation Cell Delegate Method
 /*********************************************************************************************************/
 
--(void)getDirectionButtonClicked:(id)sender
-{
-
+-(void)getDirectionButtonClicked:(id)sender {
+    
+    __weak BranchLocationViewController *weakSelf = self;
+    
     UITableViewCell *clickedCell = (UITableViewCell *)sender  ;
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
     Location *objLocation = self.contentArr[clickedButtonPath.row];
     
-    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",[objLocation.Gpslatitude floatValue],[objLocation.Gpslongitude floatValue]];
+    if ([self checkIfLatLongZero:objLocation]) {
+        [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"The latitude and longitude are 0,0" title:@"Error" delegate:weakSelf];
+        return;
+    }
+    
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Branch Direction" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [self showDirectionInsideApp:clickedButtonPath];
+        
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Outside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [self showDirectionOutsideApp:clickedButtonPath];
+        
+    }]];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
 
+-(void)showDirectionInsideApp:(NSIndexPath*)clickedIndex
+{
+    Location *objLocation = self.contentArr[clickedIndex.row];
+    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",[objLocation.Gpslatitude floatValue],[objLocation.Gpslongitude floatValue]];
+    
     GetDirectionViewController* getdirectionNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GetDirectionViewController"];
     getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     getdirectionNavigationViewController.sourceAddress=sourceaddress;
     getdirectionNavigationViewController.DestinationAddress=CoordinateStr;
     getdirectionNavigationViewController.locationArr=_contentArr;
-    getdirectionNavigationViewController.selectedIndex=(int)clickedButtonPath.row;
-
+    getdirectionNavigationViewController.selectedIndex=(int)clickedIndex.row;
+    
     getdirectionNavigationViewController.navigationItem.title=self.navigationItem.title;
     [self.navigationController pushViewController:getdirectionNavigationViewController animated:YES];
 }
+
+
+- (void)showDirectionOutsideApp:(NSIndexPath*)clickedIndex {
+    
+    CLLocation *sourceLocation = [locationManager location];
+    Location *objLocation = self.contentArr[clickedIndex.row];
+    
+    
+    
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%f,%f&daddr=%f,%f",[sourceLocation coordinate].latitude, [sourceLocation coordinate].longitude, [objLocation.Gpslatitude floatValue], [objLocation.Gpslongitude floatValue]];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL] options:@{} completionHandler:^(BOOL success) {}];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL]];
+    }
+}
+
+-(BOOL)checkIfLatLongZero:(Location*)objLocation{
+    NSString * lat = [NSString stringWithFormat:@"%.1f",[objLocation.Gpslatitude floatValue]];
+    NSString * lng = [NSString stringWithFormat:@"%.1f",[objLocation.Gpslongitude floatValue]];
+    
+    if ([lat isEqualToString: @"0.0"] || [lng isEqualToString:@"0.0"] ){
+        return YES;
+    }
+    return NO;
+}
+
+
 
 /*********************************************************************************************************/
                         #pragma mark - Table view delagte and data source Method

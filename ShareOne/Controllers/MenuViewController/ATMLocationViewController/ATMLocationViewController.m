@@ -210,10 +210,12 @@
             addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
         }
         NSLog(@"Location Coordinates:: %f,%f",lat_local,lon_local);
-        marker.title = address;
-        marker.snippet =addressDetails;
-        marker.map = mapView;
         
+        if (!(lat_local == 0.0) || !(lon_local == 0.0)){
+            marker.title = address;
+            marker.snippet =addressDetails;
+            marker.map = mapView;
+        }
         if(_showMyLocationOnly)
             break;
     }
@@ -230,9 +232,44 @@
 }
 
 -(IBAction)getDirectionButtonAction:(id)sender{
-    __weak ATMLocationViewController *weakSelf = self;
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    [self showCurrentLocationWithRefrenceMarker];
+    
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Branch Direction" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        __weak ATMLocationViewController *weakSelf = self;
+        [ShareOneUtility showProgressViewOnView:weakSelf.view];
+        [self showCurrentLocationWithRefrenceMarker];
+        
+    }]];
+    
+    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Outside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [self showDirectionOutsideApp];
+        
+    }]];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
+    
+}
+
+- (void)showDirectionOutsideApp {
+    
+    CLLocation *sourceLocation = [[CLLocation alloc]initWithLatitude:[lat floatValue] longitude:[lon floatValue]];
+    CLLocation * destinationLocation = [[CLLocation alloc]initWithLatitude:selectedMarker.position.latitude longitude:selectedMarker.position.longitude];
+    
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%f,%f&daddr=%f,%f",
+                               [sourceLocation coordinate].latitude, [sourceLocation coordinate].longitude,
+                               [destinationLocation coordinate].latitude, [destinationLocation coordinate].longitude];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL] options:@{} completionHandler:^(BOOL success) {}];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL]];
+    }
 }
 
 -(void)showCurrentLocationWithRefrenceMarker{
