@@ -190,7 +190,16 @@
             return status;
         }
     }
-
+    if([_accountTxtFeild.text length]<=0){
+        status = @"Select Suffix";
+        return status;
+    }
+    
+    if([_ammountTxtFeild.text length]<=0){
+        status = @"Amount can not be empty";
+        return status;
+    }
+    
     if(!_frontImage){
         status = @"Front Image is missing";
         return status;
@@ -200,15 +209,7 @@
         status = @"Back Image is missing";
         return status;
     }
-    if([_ammountTxtFeild.text length]<=0){
-        status = @"Amount can not be empty";
-        return status;
-    }
-
-    if([_accountTxtFeild.text length]<=0){
-        status = @"Select Suffix";
-        return status;
-    }
+    
 
     return status;
 }
@@ -561,8 +562,8 @@
 
     [self.pickerView reloadAllComponents];
     if(!_objSuffixInfo){
-        [_pickerView selectRow:0 inComponent:0 animated:YES];
-        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+//        [_pickerView selectRow:0 inComponent:0 animated:YES];
+//        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
     }
     [self setStateOfSubmitButton];
 }

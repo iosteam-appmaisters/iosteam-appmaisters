@@ -204,7 +204,9 @@
         return;
     }
     
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Branch Direction" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    [self showDirectionOutsideApp:clickedButtonPath];
+    
+    /*UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Branch Direction" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     
     [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         
@@ -222,7 +224,19 @@
         
     }]];
     
-    [self presentViewController:actionSheet animated:YES completion:nil];
+    if (IS_IPAD) {
+        
+        UIPopoverPresentationController *popPresenter = [actionSheet
+                                                         popoverPresentationController];
+        //provide source view to actionsheet as popover presentation
+        
+        popPresenter.sourceView = sender;
+        //popPresenter.sourceRect = sender.bounds;
+        [self presentViewController:actionSheet animated:YES completion:nil];
+        
+    }else{
+        [self presentViewController:actionSheet animated:YES completion:nil];
+    }*/
 }
 
 -(void)showDirectionInsideApp:(NSIndexPath*)clickedIndex

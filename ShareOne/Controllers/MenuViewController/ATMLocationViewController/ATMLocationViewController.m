@@ -134,8 +134,9 @@
 //    
 //    NSDictionary *searchByCoordinate =[NSDictionary dictionaryWithObjectsAndKeys:@"34.104369",@"latitude",@"117.573459",@"longitude", nil];
 //    
-    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",lat,@"latitude",lon,@"longitude",@"A",@"loctype", nil];
+    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",lat,@"latitude",lon,@"longitude", nil];
      
+//    @"A",@"loctype"
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
@@ -188,7 +189,17 @@
 
         GMSMarker *marker = [[GMSMarker alloc] init];
         
-
+        if (objLocation.locatortype == nil) {
+            marker.icon = [UIImage imageNamed:@"bank_icon.png"];
+        }
+        else {
+            if ([objLocation.locatortype isEqualToString:@"A"]){
+                marker.icon = [UIImage imageNamed:@"atm_icon.png"];
+            }
+            else if ([objLocation.locatortype isEqualToString:@"S"]){
+                marker.icon = [UIImage imageNamed:@"bank_icon.png"];
+            }
+        }
         
         float lat_local ,lon_local;
         NSString *address;
@@ -224,6 +235,7 @@
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker{
     [_getDirectionButton setHidden:FALSE];
+    //[self showDirectionMenu:mapView];
     selectedMarker=marker;
     return FALSE;
 }
@@ -231,29 +243,48 @@
     [_getDirectionButton setHidden:[selectedMarker isEqual:marker]];
 }
 
+-(void)showDirectionMenu:(id)sender {
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+     
+     [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+     
+     }]];
+     
+     /*[actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+     
+     __weak ATMLocationViewController *weakSelf = self;
+     [ShareOneUtility showProgressViewOnView:weakSelf.view];
+     [self showCurrentLocationWithRefrenceMarker];
+     
+     }]];*/
+     
+     [actionSheet addAction:[UIAlertAction actionWithTitle:@"Get Directions" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+     
+     [self showDirectionOutsideApp];
+     
+     }]];
+     
+     if (IS_IPAD) {
+     
+     UIPopoverPresentationController *popPresenter = [actionSheet
+     popoverPresentationController];
+     //provide source view to actionsheet as popover presentation
+     
+     popPresenter.sourceView = sender;
+     //popPresenter.sourceRect = sender.bounds;
+     [self presentViewController:actionSheet animated:YES completion:nil];
+     
+     }else{
+         [self presentViewController:actionSheet animated:YES completion:nil];
+     }
+    
+}
+
 -(IBAction)getDirectionButtonAction:(id)sender{
     
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Branch Direction" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    [self showDirectionOutsideApp];
     
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        
-    }]];
     
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        __weak ATMLocationViewController *weakSelf = self;
-        [ShareOneUtility showProgressViewOnView:weakSelf.view];
-        [self showCurrentLocationWithRefrenceMarker];
-        
-    }]];
-    
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Outside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        [self showDirectionOutsideApp];
-        
-    }]];
-    
-    [self presentViewController:actionSheet animated:YES completion:nil];
     
 }
 
