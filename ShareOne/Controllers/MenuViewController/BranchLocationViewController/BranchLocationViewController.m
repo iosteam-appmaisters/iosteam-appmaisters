@@ -332,23 +332,43 @@
             
             Hours *objHours = [currentDayHourArr lastObject];
             
-            if(objHours.Drivethruopentime &&  objHours.Drivethruclosetime)
+            if(objHours.Drivethruopentime &&  objHours.Drivethruclosetime) {
                 driveThruString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruopentime andDateFormat:@"hh:mm a"],[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruclosetime andDateFormat:@"hh:mm a"]];
-            else
+            }
+            else {
                 driveThruString = [NSString stringWithFormat:@""];
+            }
             
             
-            if(objHours.Lobbyopentime && objHours.Lobbyclosetime)
+            if(objHours.Lobbyopentime && objHours.Lobbyclosetime) {
                 officeTimeString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyopentime andDateFormat:@"hh:mm a"] ,[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyclosetime andDateFormat:@"hh:mm a"]];
-            else
+            }
+            else {
                 officeTimeString = [NSString stringWithFormat:@""];
+            }
             
             
+            if ([objHours.Drivethruisopen boolValue]) {
+                [[cell drivestatusLbl] setText:@"OPEN"];
+                [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]];
+                
+            }
+            else {
+                [[cell drivestatusLbl] setText:@"CLOSED"];
+                [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+                
+                if (objHours.Drivethruopentime == nil && objHours.Drivethruclosetime == nil){
+                    cell.drivestatusLbl.hidden = YES;
+                    cell.driveThruHoursLbl.hidden = YES;
+                    cell.driveThruHeadingLabel.hidden = YES;
+                    cell.timeTopConstraint.constant = 5;
+                    [cell layoutIfNeeded];
+                }
+            }
             
+            /*([objHours.Drivethruisopen boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
             
-            ([objHours.Drivethruisopen boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
-            
-            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];*/
             
             
             ([objHours.Lobbyisopen boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];

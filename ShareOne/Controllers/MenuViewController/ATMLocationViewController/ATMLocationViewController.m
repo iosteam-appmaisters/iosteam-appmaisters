@@ -201,6 +201,8 @@
             }
         }
         
+        marker.groundAnchor = CGPointMake(0.5, 0.5);
+        
         float lat_local ,lon_local;
         NSString *address;
         NSString *addressDetails;

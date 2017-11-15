@@ -16,6 +16,8 @@
     __weak id<branchLocationDelegate> delegate;
 
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeTopConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *driveThruHeadingLabel;
 @property (nonatomic, weak) id<branchLocationDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIImageView *branchlocationImgview;
 @property (nonatomic, weak) IBOutlet UILabel *addrressLbl;

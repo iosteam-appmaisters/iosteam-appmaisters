@@ -3071,23 +3071,23 @@ Tm90ZToQIA
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjg-qU-URD" customClass="CustomLabel">
-                                                    <rect key="frame" x="5" y="86.666666666666671" width="35" height="12.333333333333329"/>
+                                                    <rect key="frame" x="5" y="88" width="35" height="12.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <color key="textColor" red="0.6623249054" green="0.12095849960000001" blue="0.1431922615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" layoutMarginsFollowReadableWidth="YES" text="(091) 452-7900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIL-A8-K4K" userLabel="PhoneValue">
-                                                    <rect key="frame" x="43" y="86.666666666666671" width="163.33333333333334" height="12.333333333333329"/>
+                                                    <rect key="frame" x="43" y="88" width="163.33333333333334" height="12.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="8058 US Highway 64" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv7-z4-HDO" userLabel="Address">
-                                                    <rect key="frame" x="5" y="102" width="201.33333333333334" height="12.666666666666671"/>
+                                                    <rect key="frame" x="5" y="103.33333333333333" width="201.33333333333334" height="12.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Bartlett, TN 38133" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLo-TN-fTB" userLabel="State">
-                                                    <rect key="frame" x="5" y="117.66666666666667" width="201.33333333333334" height="12.000000000000014"/>
+                                                    <rect key="frame" x="5" y="119" width="201.33333333333334" height="12"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -3095,11 +3095,11 @@ Tm90ZToQIA
                                                     <rect key="frame" x="206.33333333333337" y="79.666666666666671" width="172.66666666666663" height="41"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6as-fo-C0U" userLabel="DirectionsBtn">
-                                                    <rect key="frame" x="5" y="135.66666666666666" width="80" height="59"/>
+                                                    <rect key="frame" x="5" y="137" width="80" height="57.666666666666657"/>
                                                     <state key="normal" image="direction_bttn"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7M-Qc-7TL" userLabel="MapBtn">
-                                                    <rect key="frame" x="95" y="154.66666666666666" width="80" height="22"/>
+                                                    <rect key="frame" x="95" y="155.66666666666666" width="80" height="22"/>
                                                     <state key="normal" image="show_on_map_bttn"/>
                                                     <connections>
                                                         <action selector="showCurrentLocationMapButtonClicked:" destination="p2t-aQ-tQO" eventType="touchUpInside" id="OBo-GA-eds"/>
@@ -3130,7 +3130,7 @@ Tm90ZToQIA
                                                 <constraint firstAttribute="bottom" secondItem="6as-fo-C0U" secondAttribute="bottom" constant="5" id="QiN-A1-uBG"/>
                                                 <constraint firstItem="jCk-31-5em" firstAttribute="leading" secondItem="v1N-bV-Y0J" secondAttribute="trailing" constant="3" id="T0Q-b2-8od"/>
                                                 <constraint firstItem="bv7-z4-HDO" firstAttribute="trailing" secondItem="Rpi-qm-P3q" secondAttribute="trailing" id="Tub-KP-1rG"/>
-                                                <constraint firstItem="jjg-qU-URD" firstAttribute="top" secondItem="kZh-pO-fyO" secondAttribute="bottom" constant="3" id="U0h-R4-TAL"/>
+                                                <constraint firstItem="jjg-qU-URD" firstAttribute="top" secondItem="qLx-1A-7cY" secondAttribute="bottom" constant="35" id="WD6-Wm-ISK"/>
                                                 <constraint firstItem="RLo-TN-fTB" firstAttribute="leading" secondItem="Rpi-qm-P3q" secondAttribute="leading" id="X95-Kc-sUb"/>
                                                 <constraint firstItem="RLo-TN-fTB" firstAttribute="top" secondItem="bv7-z4-HDO" secondAttribute="bottom" constant="3" id="bHK-h1-rzF"/>
                                                 <constraint firstItem="RLo-TN-fTB" firstAttribute="trailing" secondItem="bv7-z4-HDO" secondAttribute="trailing" id="bMo-sf-x7T"/>
@@ -3154,6 +3154,7 @@ Tm90ZToQIA
                                             <outlet property="addrressLbl" destination="bv7-z4-HDO" id="LIu-cW-eI9"/>
                                             <outlet property="branchlocationImgview" destination="RXp-6K-AE8" id="hR6-2r-nej"/>
                                             <outlet property="cityStateLbl" destination="RLo-TN-fTB" id="csh-M9-dYz"/>
+                                            <outlet property="driveThruHeadingLabel" destination="Xwf-bF-Vep" id="vPu-3k-bqk"/>
                                             <outlet property="driveThruHoursLbl" destination="kZh-pO-fyO" id="UAb-zH-uoR"/>
                                             <outlet property="drivestatusLbl" destination="KTa-4e-dcl" id="so0-iV-hzJ"/>
                                             <outlet property="getDirectionbtn" destination="6as-fo-C0U" id="Zh0-vC-DB3"/>
@@ -3161,6 +3162,7 @@ Tm90ZToQIA
                                             <outlet property="officeHourLbl" destination="qLx-1A-7cY" id="wtB-L1-qQf"/>
                                             <outlet property="officestatusLbl" destination="jCk-31-5em" id="WQg-bB-I1U"/>
                                             <outlet property="phoneNoLbl" destination="sIL-A8-K4K" id="1vF-2k-RYG"/>
+                                            <outlet property="timeTopConstraint" destination="WD6-Wm-ISK" id="NbI-jo-WPR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
