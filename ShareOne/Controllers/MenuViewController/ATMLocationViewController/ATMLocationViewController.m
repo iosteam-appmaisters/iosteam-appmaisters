@@ -236,20 +236,26 @@
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker{
-    [_getDirectionButton setHidden:FALSE];
-    //[self showDirectionMenu:mapView];
+//    [_getDirectionButton setHidden:FALSE];
     selectedMarker=marker;
+    [self showDirectionMenu:mapView];
+    
     return FALSE;
 }
 - (void)mapView:(GMSMapView *)mapView didCloseInfoWindowOfMarker:(GMSMarker *)marker{
-    [_getDirectionButton setHidden:[selectedMarker isEqual:marker]];
+   // [_getDirectionButton setHidden:[selectedMarker isEqual:marker]];
 }
 
 -(void)showDirectionMenu:(id)sender {
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    GMSMapView * mapV = (GMSMapView*)sender;
+    
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:selectedMarker.title message:selectedMarker.snippet preferredStyle:UIAlertControllerStyleActionSheet];
      
      [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-     
+         
+         mapV.selectedMarker = nil;
+         
      }]];
      
      /*[actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -270,10 +276,13 @@
      
      UIPopoverPresentationController *popPresenter = [actionSheet
      popoverPresentationController];
-     //provide source view to actionsheet as popover presentation
      
-     popPresenter.sourceView = sender;
-     //popPresenter.sourceRect = sender.bounds;
+     popPresenter.sourceView = mapV;
+    
+    CGPoint pos =   [mapV.projection pointForCoordinate:selectedMarker.position];
+    CGRect vFrame = CGRectMake(pos.x, pos.y, 0, 0);
+    popPresenter.sourceRect = vFrame;
+         
      [self presentViewController:actionSheet animated:YES completion:nil];
      
      }else{
