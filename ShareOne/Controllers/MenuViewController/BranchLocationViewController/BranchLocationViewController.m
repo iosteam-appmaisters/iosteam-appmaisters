@@ -166,16 +166,8 @@
 
 -(IBAction)showCurrentLocationMapButtonClicked:(id)sender{
     
-    __weak BranchLocationViewController *weakSelf = self;
-    
     UITableViewCell *clickedCell = (UITableViewCell *)[[sender superview] superview];
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
-    Location *objLocation = self.contentArr[clickedButtonPath.row];
-    
-    if ([self checkIfLatLongZero:objLocation]) {
-        [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"The latitude and longitude are 0,0" title:@"Error" delegate:weakSelf];
-        return;
-    }
     
     ATMLocationViewController* atmNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"surchargeFreeAtms"];
     atmNavigationViewController.showMyLocationOnly= TRUE;
@@ -193,75 +185,16 @@
 
 -(void)getDirectionButtonClicked:(id)sender {
     
-    __weak BranchLocationViewController *weakSelf = self;
-    
     UITableViewCell *clickedCell = (UITableViewCell *)sender  ;
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
-    Location *objLocation = self.contentArr[clickedButtonPath.row];
-    
-    if ([self checkIfLatLongZero:objLocation]) {
-        [[UtilitiesHelper shareUtitlities] showToastWithMessage:@"The latitude and longitude are 0,0" title:@"Error" delegate:weakSelf];
-        return;
-    }
     
     [self showDirectionOutsideApp:clickedButtonPath];
-    
-    /*UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"Branch Direction" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        
-    }]];
-    
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        [self showDirectionInsideApp:clickedButtonPath];
-        
-    }]];
-    
-    [actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Outside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        [self showDirectionOutsideApp:clickedButtonPath];
-        
-    }]];
-    
-    if (IS_IPAD) {
-        
-        UIPopoverPresentationController *popPresenter = [actionSheet
-                                                         popoverPresentationController];
-        //provide source view to actionsheet as popover presentation
-        
-        popPresenter.sourceView = sender;
-        //popPresenter.sourceRect = sender.bounds;
-        [self presentViewController:actionSheet animated:YES completion:nil];
-        
-    }else{
-        [self presentViewController:actionSheet animated:YES completion:nil];
-    }*/
 }
-
--(void)showDirectionInsideApp:(NSIndexPath*)clickedIndex
-{
-    Location *objLocation = self.contentArr[clickedIndex.row];
-    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",[objLocation.Gpslatitude floatValue],[objLocation.Gpslongitude floatValue]];
-    
-    GetDirectionViewController* getdirectionNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GetDirectionViewController"];
-    getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-    getdirectionNavigationViewController.sourceAddress=sourceaddress;
-    getdirectionNavigationViewController.DestinationAddress=CoordinateStr;
-    getdirectionNavigationViewController.locationArr=_contentArr;
-    getdirectionNavigationViewController.selectedIndex=(int)clickedIndex.row;
-    
-    getdirectionNavigationViewController.navigationItem.title=self.navigationItem.title;
-    [self.navigationController pushViewController:getdirectionNavigationViewController animated:YES];
-}
-
 
 - (void)showDirectionOutsideApp:(NSIndexPath*)clickedIndex {
     
     CLLocation *sourceLocation = [locationManager location];
     Location *objLocation = self.contentArr[clickedIndex.row];
-    
-    
     
     NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%f,%f&daddr=%f,%f",[sourceLocation coordinate].latitude, [sourceLocation coordinate].longitude, [objLocation.Gpslatitude floatValue], [objLocation.Gpslongitude floatValue]];
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
@@ -315,6 +248,12 @@
     }
     
     Location *objLocation = _contentArr[indexPath.row];
+    
+    if ([self checkIfLatLongZero:objLocation]) {
+        cell.getDirectionbtn.hidden = YES;
+        cell.showOnMapBtn.hidden = YES;
+    }
+    
     [cell.currentLocationBtn setTag:indexPath.row];
     [cell.getDirectionbtn setTag:indexPath.row];
     NSString *officeTimeString= nil;

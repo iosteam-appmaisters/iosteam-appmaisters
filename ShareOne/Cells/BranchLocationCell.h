@@ -16,6 +16,7 @@
     __weak id<branchLocationDelegate> delegate;
 
 }
+@property (weak, nonatomic) IBOutlet UIButton *showOnMapBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeTopConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *driveThruHeadingLabel;
 @property (nonatomic, weak) id<branchLocationDelegate> delegate;
