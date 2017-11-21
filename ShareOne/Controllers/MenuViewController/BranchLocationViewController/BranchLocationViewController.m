@@ -183,25 +183,38 @@
                                     #pragma mark - BranchLocation Cell Delegate Method
 /*********************************************************************************************************/
 
--(void)getDirectionButtonClicked:(id)sender
-{
-
+-(void)getDirectionButtonClicked:(id)sender {
+    
     UITableViewCell *clickedCell = (UITableViewCell *)sender  ;
     NSIndexPath *clickedButtonPath = [self.tableView indexPathForCell:clickedCell];
-    Location *objLocation = self.contentArr[clickedButtonPath.row];
     
-    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",[objLocation.Gpslatitude floatValue],[objLocation.Gpslongitude floatValue]];
-
-    GetDirectionViewController* getdirectionNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GetDirectionViewController"];
-    getdirectionNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-    getdirectionNavigationViewController.sourceAddress=sourceaddress;
-    getdirectionNavigationViewController.DestinationAddress=CoordinateStr;
-    getdirectionNavigationViewController.locationArr=_contentArr;
-    getdirectionNavigationViewController.selectedIndex=(int)clickedButtonPath.row;
-
-    getdirectionNavigationViewController.navigationItem.title=self.navigationItem.title;
-    [self.navigationController pushViewController:getdirectionNavigationViewController animated:YES];
+    [self showDirectionOutsideApp:clickedButtonPath];
 }
+
+- (void)showDirectionOutsideApp:(NSIndexPath*)clickedIndex {
+    
+    CLLocation *sourceLocation = [locationManager location];
+    Location *objLocation = self.contentArr[clickedIndex.row];
+    
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%f,%f&daddr=%f,%f",[sourceLocation coordinate].latitude, [sourceLocation coordinate].longitude, [objLocation.Gpslatitude floatValue], [objLocation.Gpslongitude floatValue]];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL] options:@{} completionHandler:^(BOOL success) {}];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL]];
+    }
+}
+
+-(BOOL)checkIfLatLongZero:(Location*)objLocation{
+    NSString * lat = [NSString stringWithFormat:@"%.1f",[objLocation.Gpslatitude floatValue]];
+    NSString * lng = [NSString stringWithFormat:@"%.1f",[objLocation.Gpslongitude floatValue]];
+    
+    if ([lat isEqualToString: @"0.0"] || [lng isEqualToString:@"0.0"] ){
+        return YES;
+    }
+    return NO;
+}
+
+
 
 /*********************************************************************************************************/
                         #pragma mark - Table view delagte and data source Method
@@ -235,6 +248,12 @@
     }
     
     Location *objLocation = _contentArr[indexPath.row];
+    
+    if ([self checkIfLatLongZero:objLocation]) {
+        cell.getDirectionbtn.hidden = YES;
+        cell.showOnMapBtn.hidden = YES;
+    }
+    
     [cell.currentLocationBtn setTag:indexPath.row];
     [cell.getDirectionbtn setTag:indexPath.row];
     NSString *officeTimeString= nil;
@@ -252,26 +271,45 @@
             
             Hours *objHours = [currentDayHourArr lastObject];
             
-            if(objHours.Drivethruopentime &&  objHours.Drivethruclosetime)
+            if(objHours.Drivethruopentime &&  objHours.Drivethruclosetime) {
                 driveThruString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruopentime andDateFormat:@"hh:mm a"],[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruclosetime andDateFormat:@"hh:mm a"]];
-            else
+            }
+            else {
                 driveThruString = [NSString stringWithFormat:@""];
+            }
             
             
-            if(objHours.Lobbyopentime && objHours.Lobbyclosetime)
+            if(objHours.Lobbyopentime && objHours.Lobbyclosetime) {
                 officeTimeString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyopentime andDateFormat:@"hh:mm a"] ,[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyclosetime andDateFormat:@"hh:mm a"]];
-            else
+            }
+            else {
                 officeTimeString = [NSString stringWithFormat:@""];
+            }
             
             
+            if ([objLocation.Drivethruisopen boolValue]) {
+                [[cell drivestatusLbl] setText:@"OPEN"];
+                [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]];
+                
+            }
+            else {
+                [[cell drivestatusLbl] setText:@"CLOSED"];
+                [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+                
+                if (objHours.Drivethruopentime == nil && objHours.Drivethruclosetime == nil){
+                    cell.drivestatusLbl.hidden = YES;
+                    cell.driveThruHoursLbl.hidden = YES;
+                    cell.driveThruHeadingLabel.hidden = YES;
+                    cell.timeTopConstraint.constant = 5;
+                    [cell layoutIfNeeded];
+                }
+            }
             
+            /*([objHours.Drivethruisopen boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
             
-            ([objHours.Drivethruisopen boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
+            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];*/
             
-            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
-            
-            
-            ([objHours.Lobbyisopen boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
+            ([objLocation.Lobbyisopen boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
             
             ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
             

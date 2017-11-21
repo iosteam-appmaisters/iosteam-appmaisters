@@ -134,8 +134,9 @@
 //    
 //    NSDictionary *searchByCoordinate =[NSDictionary dictionaryWithObjectsAndKeys:@"34.104369",@"latitude",@"117.573459",@"longitude", nil];
 //    
-    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",lat,@"latitude",lon,@"longitude",@"A",@"loctype", nil];
+    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"20",@"maxResults",lat,@"latitude",lon,@"longitude", nil];
      
+//    @"A",@"loctype"
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
@@ -188,7 +189,19 @@
 
         GMSMarker *marker = [[GMSMarker alloc] init];
         
-
+        if (objLocation.locatortype == nil) {
+            marker.icon = [UIImage imageNamed:@"bank_icon.png"];
+        }
+        else {
+            if ([objLocation.locatortype isEqualToString:@"A"]){
+                marker.icon = [UIImage imageNamed:@"atm_icon.png"];
+            }
+            else if ([objLocation.locatortype isEqualToString:@"S"]){
+                marker.icon = [UIImage imageNamed:@"bank_icon.png"];
+            }
+        }
+        
+        marker.groundAnchor = CGPointMake(0.5, 0.5);
         
         float lat_local ,lon_local;
         NSString *address;
@@ -209,11 +222,13 @@
             address=objLocation.address.Address1;
             addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
         }
+        NSLog(@"Location Coordinates:: %f,%f",lat_local,lon_local);
         
-        marker.title = address;
-        marker.snippet =addressDetails;
-        marker.map = mapView;
-        
+        if (!(lat_local == 0.0) || !(lon_local == 0.0)){
+            marker.title = address;
+            marker.snippet =addressDetails;
+            marker.map = mapView;
+        }
         if(_showMyLocationOnly)
             break;
     }
@@ -221,18 +236,82 @@
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker{
-    [_getDirectionButton setHidden:FALSE];
+//    [_getDirectionButton setHidden:FALSE];
     selectedMarker=marker;
+    [self showDirectionMenu:mapView];
+    
     return FALSE;
 }
 - (void)mapView:(GMSMapView *)mapView didCloseInfoWindowOfMarker:(GMSMarker *)marker{
-    [_getDirectionButton setHidden:[selectedMarker isEqual:marker]];
+   // [_getDirectionButton setHidden:[selectedMarker isEqual:marker]];
+}
+
+-(void)showDirectionMenu:(id)sender {
+    
+    GMSMapView * mapV = (GMSMapView*)sender;
+    
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:selectedMarker.title message:selectedMarker.snippet preferredStyle:UIAlertControllerStyleActionSheet];
+     
+     [actionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+         
+         mapV.selectedMarker = nil;
+         
+     }]];
+     
+     /*[actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+     
+     __weak ATMLocationViewController *weakSelf = self;
+     [ShareOneUtility showProgressViewOnView:weakSelf.view];
+     [self showCurrentLocationWithRefrenceMarker];
+     
+     }]];*/
+     
+     [actionSheet addAction:[UIAlertAction actionWithTitle:@"Get Directions" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+     
+     [self showDirectionOutsideApp];
+     
+     }]];
+     
+     if (IS_IPAD) {
+     
+     UIPopoverPresentationController *popPresenter = [actionSheet
+     popoverPresentationController];
+     
+     popPresenter.sourceView = mapV;
+    
+    CGPoint pos =   [mapV.projection pointForCoordinate:selectedMarker.position];
+    CGRect vFrame = CGRectMake(pos.x, pos.y, 0, 0);
+    popPresenter.sourceRect = vFrame;
+         
+     [self presentViewController:actionSheet animated:YES completion:nil];
+     
+     }else{
+         [self presentViewController:actionSheet animated:YES completion:nil];
+     }
+    
 }
 
 -(IBAction)getDirectionButtonAction:(id)sender{
-    __weak ATMLocationViewController *weakSelf = self;
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    [self showCurrentLocationWithRefrenceMarker];
+    
+    [self showDirectionOutsideApp];
+    
+    
+    
+}
+
+- (void)showDirectionOutsideApp {
+    
+    CLLocation *sourceLocation = [[CLLocation alloc]initWithLatitude:[lat floatValue] longitude:[lon floatValue]];
+    CLLocation * destinationLocation = [[CLLocation alloc]initWithLatitude:selectedMarker.position.latitude longitude:selectedMarker.position.longitude];
+    
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%f,%f&daddr=%f,%f",
+                               [sourceLocation coordinate].latitude, [sourceLocation coordinate].longitude,
+                               [destinationLocation coordinate].latitude, [destinationLocation coordinate].longitude];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL] options:@{} completionHandler:^(BOOL success) {}];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL]];
+    }
 }
 
 -(void)showCurrentLocationWithRefrenceMarker{

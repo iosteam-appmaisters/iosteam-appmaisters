@@ -63,6 +63,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *suffixNumberLbl;
 @property (nonatomic, weak) IBOutlet UILabel *suffixTypeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *accountNumber;
 
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -70,6 +71,7 @@
 @property (nonatomic, strong) SuffixInfo *objSuffixInfo;
 @property (nonatomic, strong) NSString *depositLimt;
 @property (nonatomic, strong) VertifiObject *objVertifiObject;
+
 
 -(IBAction)doneButtonClicked:(id)sender;
 
@@ -136,10 +138,10 @@
             [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit Limit $%.2f)",[_depositLimt floatValue]]];
             
             if(![obj.InputValidation isEqualToString:@"OK"]){
-                [self showAlertWithTitle:@"Error" AndMessage:obj.InputValidation];
+                [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
             }
             if(![obj.LoginValidation isEqualToString:@"OK"]){
-                [self showAlertWithTitle:@"Error" AndMessage:obj.LoginValidation];
+                [self showAlertWithTitle:@"" AndMessage:obj.LoginValidation];
             }
             
         }
@@ -188,7 +190,16 @@
             return status;
         }
     }
-
+    if([_accountTxtFeild.text length]<=0){
+        status = @"Select Suffix";
+        return status;
+    }
+    
+    if([_ammountTxtFeild.text length]<=0){
+        status = @"Amount can not be empty";
+        return status;
+    }
+    
     if(!_frontImage){
         status = @"Front Image is missing";
         return status;
@@ -198,15 +209,7 @@
         status = @"Back Image is missing";
         return status;
     }
-    if([_ammountTxtFeild.text length]<=0){
-        status = @"Amount can not be empty";
-        return status;
-    }
-
-    if([_accountTxtFeild.text length]<=0){
-        status = @"Select Suffix";
-        return status;
-    }
+    
 
     return status;
 }
@@ -559,8 +562,8 @@
 
     [self.pickerView reloadAllComponents];
     if(!_objSuffixInfo){
-        [_pickerView selectRow:0 inComponent:0 animated:YES];
-        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+//        [_pickerView selectRow:0 inComponent:0 animated:YES];
+//        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
     }
     [self setStateOfSubmitButton];
 }
@@ -642,6 +645,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
  
      _objSuffixInfo = _suffixArr[row];
+    [_accountNumber setText:_objSuffixInfo.Account.stringValue];
     [_accountTxtFeild setText:_objSuffixInfo.Descr];
     [_suffixNumberLbl setText:[NSString stringWithFormat:@"%d",[_objSuffixInfo.Suffixnumber intValue]]];
     [_suffixTypeLbl setText:[NSString stringWithFormat:@"%@",[ShareOneUtility getSectionTitleByCode:_objSuffixInfo.Type] ]];
@@ -743,9 +747,11 @@
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Camera Use Not Authorized!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
             
-            // for iOS8, this code snippet is a nice alternative to the UIAlertView, as it allows for user to launch to the App Settings screen to enable the camera
-            /*
-             NSString *strTitle = [NSString stringWithFormat:@"Give Permission for %@ to Use Your Camera",@"yourProductName"];
+            /* for iOS8, this code snippet is a nice alternative to the UIAlertView, as it allows for user to launch to the App Settings screen to enable the camera
+            
+            NSString *prodName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+            
+             NSString *strTitle = [NSString stringWithFormat:@"Give Permission for %@ to Use Your Camera",prodName];
              UIAlertController *sheet = [UIAlertController alertControllerWithTitle:@"" message:strTitle preferredStyle:UIAlertControllerStyleAlert];
              [sheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
              [sheet addAction:[UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -754,8 +760,8 @@
              
              }]];
              
-             [self presentViewController:sheet animated:YES completion:nil];
-             */
+             [self presentViewController:sheet animated:YES completion:nil]; */
+            
             
             return;
         }

@@ -74,7 +74,7 @@
     
     
     NSArray *rawDataArr = dictionary[@"Branches"];
-    
+//    NSLog(@"%@",rawDataArr);
     [rawDataArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         Location *objLocation = [[Location alloc] initWithDictionary:obj];
         

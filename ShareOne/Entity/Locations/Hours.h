@@ -11,10 +11,10 @@
 @interface Hours : NSObject
 
 @property(nonatomic,strong) NSNumber *Daynumber;
-@property(nonatomic,strong) NSNumber *Lobbyisopen;
+
 @property(nonatomic,strong) NSString *Lobbyopentime;
 @property(nonatomic,strong) NSString *Lobbyclosetime;
-@property(nonatomic,strong) NSNumber *Drivethruisopen;
+
 @property(nonatomic,strong) NSString *Drivethruopentime;
 @property(nonatomic,strong) NSString *Drivethruclosetime;
 

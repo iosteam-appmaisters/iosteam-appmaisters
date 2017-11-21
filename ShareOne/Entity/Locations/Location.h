@@ -57,7 +57,7 @@
 @property(nonatomic,strong) NSString *institutionRtn;
 @property(nonatomic,strong) NSString *latitude;
 @property(nonatomic,strong) NSString *limitedTransactions;
-@property(nonatomic,strong) NSString *locationType;
+@property(nonatomic,strong) NSString *locatortype;
 @property(nonatomic,strong) NSString *longitude;
 @property(nonatomic,strong) NSString *militaryIdRequired;
 @property(nonatomic,strong) NSString *mondayClose;
@@ -120,8 +120,8 @@
 @property(nonatomic,strong) NSMutableArray *photos;
 
 
-
-
+@property(nonatomic,strong) NSNumber *Drivethruisopen;
+@property(nonatomic,strong) NSNumber *Lobbyisopen;
 
 
 @end
