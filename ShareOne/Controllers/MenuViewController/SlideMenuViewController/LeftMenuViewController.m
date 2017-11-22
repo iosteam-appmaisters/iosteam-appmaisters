@@ -220,7 +220,9 @@
 
     
     objFZAccordionTableViewHeaderView.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
-
+    
+    [objFZAccordionTableViewHeaderView.contentView setBackgroundColor:[UIColor colorWithHexString:obj.menubackgroundcolor]];
+    
     return (UIView *)objFZAccordionTableViewHeaderView;
 }
 
