@@ -42,8 +42,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 @property (nonatomic, strong) NSMutableArray *menuTitles;
 @property (nonatomic, strong) NSMutableArray *menuIcons;
 
-@property (weak, nonatomic) IBOutlet UIButton *addMenuIcon;
-
+@property (weak, nonatomic) IBOutlet CustomButton *addMenuIcon;
+@property (weak, nonatomic) IBOutlet UIButton *addMenuBulletIcon;
+    
 @property (weak, nonatomic) IBOutlet UITextField *userIDTxt;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTxt;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordBtn;
@@ -1136,6 +1137,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 - (IBAction)infoButtonTapped:(UIButton *)sender {
 
     _addMenuIcon.hidden = YES;
+    _addMenuBulletIcon.hidden = YES;
     
     // init YALContextMenuTableView tableView
     if (!self.contextMenuTableView) {
@@ -1172,7 +1174,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [_menuTitles addObject:@"Close"];
     
     _menuIcons = [NSMutableArray array];
-    [_menuIcons addObject:[UIImage imageNamed:@"cancel_icon"]];
+    [_menuIcons addObject:[UIImage imageNamed:@"cross_image"]];
     
     ClientSettingsObject *objClientSettingsObject = [Configuration getClientSettingsContent];
     if (objClientSettingsObject.contactculink.length > 0){
@@ -1204,6 +1206,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 - (void)contextMenuTableView:(YALContextMenuTableView *)contextMenuTableView didDismissWithIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"Menu dismissed with indexpath = %ld", (long)indexPath.row);
     _addMenuIcon.hidden = NO;
+    _addMenuBulletIcon.hidden = NO;
     if (indexPath.row > 0){
         [self openLinks: [ShareOneUtility getNavBarTitle: self.menuTitles[indexPath.row]]];
     }
@@ -1263,9 +1266,14 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     ContextMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCellIdentifier forIndexPath:indexPath];
     
     if(cell!=nil){
-    cell.backgroundColor = [UIColor clearColor];
-    cell.menuTitleLabel.text = [self.menuTitles objectAtIndex:indexPath.row];
-    cell.menuImageView.image = [self.menuIcons objectAtIndex:indexPath.row];
+        
+        NSString * menuHeading = [self.menuTitles objectAtIndex:indexPath.row];
+        if ([menuHeading isEqualToString:@"Close"]){
+            cell.crossButton.hidden = NO;
+        }
+        cell.menuImageView.image = [self.menuIcons objectAtIndex:indexPath.row];
+        cell.menuTitleLabel.text = menuHeading;
+        cell.backgroundColor = [UIColor clearColor];
         return cell;
     }
     

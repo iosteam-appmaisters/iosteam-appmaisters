@@ -481,15 +481,22 @@
                                             <action selector="openUrlButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="fMR-iq-Zbq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ns-f6-mqM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ns-f6-mqM" customClass="CustomButton">
                                         <rect key="frame" x="250" y="346" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="NyW-2X-PE5"/>
                                             <constraint firstAttribute="width" constant="50" id="eOm-Fq-ORL"/>
                                         </constraints>
-                                        <state key="normal" image="dot_icon"/>
+                                        <state key="normal" backgroundImage="dot_circle"/>
                                         <connections>
                                             <action selector="infoButtonTapped:" destination="Grc-iE-xzY" eventType="touchUpInside" id="jvi-f1-dFi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BS-sd-5gL">
+                                        <rect key="frame" x="269.66666666666669" y="357.66666666666663" width="11" height="27"/>
+                                        <state key="normal" backgroundImage="dot_bullets"/>
+                                        <connections>
+                                            <action selector="infoButtonTapped:" destination="Grc-iE-xzY" eventType="touchUpInside" id="wLf-nn-9X4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -517,6 +524,7 @@
                                     <constraint firstItem="ECX-AC-ghJ" firstAttribute="top" secondItem="mG7-Ba-Ey9" secondAttribute="bottom" id="Ibc-ET-HgI"/>
                                     <constraint firstItem="nZA-zR-XcZ" firstAttribute="leading" secondItem="J2R-fr-ibL" secondAttribute="leading" id="JKf-bE-Nuv"/>
                                     <constraint firstItem="mG7-Ba-Ey9" firstAttribute="leading" secondItem="DZ6-QP-Jpq" secondAttribute="leading" id="KBN-Gl-CCc"/>
+                                    <constraint firstItem="0BS-sd-5gL" firstAttribute="centerX" secondItem="4ns-f6-mqM" secondAttribute="centerX" id="KIf-Qg-qyC"/>
                                     <constraint firstItem="J2R-fr-ibL" firstAttribute="leading" secondItem="7Am-NF-euc" secondAttribute="leading" constant="20" id="LTi-yQ-5Wh">
                                         <variation key="heightClass=regular-widthClass=regular" constant="150"/>
                                     </constraint>
@@ -534,6 +542,7 @@
                                     <constraint firstItem="AUa-t5-lxc" firstAttribute="leading" secondItem="oaW-xn-S6F" secondAttribute="leading" id="WE6-cZ-Xlv"/>
                                     <constraint firstItem="4ns-f6-mqM" firstAttribute="trailing" secondItem="AUa-t5-lxc" secondAttribute="trailing" id="Xhy-Aq-ewJ"/>
                                     <constraint firstItem="AUa-t5-lxc" firstAttribute="top" secondItem="8u9-YS-oWe" secondAttribute="bottom" constant="1" id="Yv6-Ui-1B8"/>
+                                    <constraint firstItem="0BS-sd-5gL" firstAttribute="centerY" secondItem="4ns-f6-mqM" secondAttribute="centerY" id="bG0-Pz-JyA"/>
                                     <constraint firstItem="vKM-to-ya1" firstAttribute="leading" secondItem="mN0-OE-4gt" secondAttribute="leading" id="cuD-k5-3Zd"/>
                                     <constraint firstItem="9hV-j4-ex4" firstAttribute="height" secondItem="mN0-OE-4gt" secondAttribute="height" id="dSM-gt-IOL"/>
                                     <constraint firstItem="8u9-YS-oWe" firstAttribute="leading" secondItem="oaW-xn-S6F" secondAttribute="leading" id="gFk-Hc-ohL"/>
@@ -690,7 +699,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="M5r-kt-B9t"/>
                     <connections>
-                        <outlet property="addMenuIcon" destination="4ns-f6-mqM" id="AzT-dd-LYX"/>
+                        <outlet property="addMenuBulletIcon" destination="0BS-sd-5gL" id="W6n-vA-dfL"/>
+                        <outlet property="addMenuIcon" destination="4ns-f6-mqM" id="6V4-oP-b1j"/>
                         <outlet property="applyLoanButton" destination="1KP-5D-dKz" id="Tqe-x9-fdT"/>
                         <outlet property="branchLocationButton" destination="mG7-Ba-Ey9" id="Zgl-e4-aKC"/>
                         <outlet property="contactButton" destination="uAv-Pg-6fu" id="2Fa-9d-Fyd"/>
@@ -3791,7 +3801,7 @@ Tm90ZToQIA
                                 <items>
                                     <navigationItem title="Change Password" id="OAy-mg-OXT">
                                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="Fkg-t4-hzv">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4aq-NJ-aNJ" customClass="CustomButton">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4aq-NJ-aNJ" customClass="CustomButton">
                                                 <rect key="frame" x="20" y="13.666666666666664" width="25" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" backgroundImage="back_icon"/>
@@ -3801,7 +3811,7 @@ Tm90ZToQIA
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="S7J-jj-etD">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
                                                 <rect key="frame" x="309" y="10" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
@@ -4262,7 +4272,7 @@ Tm90ZToQIA
                                 <items>
                                     <navigationItem title="Change Password" id="vhT-3S-q4M">
                                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="K0F-ng-nLn">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ers-gm-dlp" customClass="CustomButton">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ers-gm-dlp" customClass="CustomButton">
                                                 <rect key="frame" x="20" y="13.666666666666664" width="25" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" backgroundImage="back_icon"/>
@@ -4272,7 +4282,7 @@ Tm90ZToQIA
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="mVd-ge-9SF">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
                                                 <rect key="frame" x="309" y="10" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
@@ -4535,7 +4545,7 @@ Tm90ZToQIA
                                 <items>
                                     <navigationItem title="Forgot Password" id="ges-Es-Vde">
                                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="Q9p-en-rSq">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BKD-za-uZd" customClass="CustomButton">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BKD-za-uZd" customClass="CustomButton">
                                                 <rect key="frame" x="20" y="13.666666666666664" width="25" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" backgroundImage="back_icon"/>
@@ -4545,7 +4555,7 @@ Tm90ZToQIA
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="zLz-gn-VQb">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
                                                 <rect key="frame" x="309" y="10" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
@@ -6217,7 +6227,7 @@ Tm90ZToQIA
                                 <items>
                                     <navigationItem id="hW6-JQ-vHL">
                                         <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="sN7-M3-GNV">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WxJ-jX-v6Y" customClass="CustomButton">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WxJ-jX-v6Y" customClass="CustomButton">
                                                 <rect key="frame" x="20" y="13.666666666666664" width="25" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" backgroundImage="back_icon"/>
@@ -6330,7 +6340,8 @@ Tm90ZToQIA
         <image name="del_no" width="55" height="22"/>
         <image name="del_yes" width="55" height="22"/>
         <image name="direction_bttn" width="80" height="18"/>
-        <image name="dot_icon" width="48" height="49"/>
+        <image name="dot_bullets" width="11" height="27"/>
+        <image name="dot_circle" width="48" height="49"/>
         <image name="down-arrow" width="7" height="4"/>
         <image name="fb-image" width="225" height="65"/>
         <image name="foc-deposit-list" width="70" height="13"/>
