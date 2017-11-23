@@ -25,6 +25,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HS-g8-MCP" customClass="CustomButton">
+                        <rect key="frame" x="275" y="21" width="24" height="24"/>
+                        <state key="normal" backgroundImage="cross_circle"/>
+                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LikeIcn" translatesAutoresizingMaskIntoConstraints="NO" id="x5n-ji-Tg4">
                         <rect key="frame" x="254" y="0.0" width="66" height="66"/>
                         <constraints>
@@ -39,6 +43,8 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="6HS-g8-MCP" firstAttribute="centerX" secondItem="x5n-ji-Tg4" secondAttribute="centerX" id="2oH-Cx-jB6"/>
+                    <constraint firstItem="6HS-g8-MCP" firstAttribute="centerY" secondItem="x5n-ji-Tg4" secondAttribute="centerY" id="45y-bZ-o4F"/>
                     <constraint firstItem="x5n-ji-Tg4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RVZ-Bf-vpn"/>
                     <constraint firstItem="x5n-ji-Tg4" firstAttribute="leading" secondItem="JxD-XJ-YMF" secondAttribute="trailing" constant="20" id="Ukn-lx-XUA"/>
                     <constraint firstItem="JxD-XJ-YMF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="V3l-El-ITM"/>
@@ -50,6 +56,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="crossButton" destination="6HS-g8-MCP" id="q50-c0-m0f"/>
                 <outlet property="menuImageView" destination="x5n-ji-Tg4" id="oIt-h1-n3F"/>
                 <outlet property="menuTitleLabel" destination="JxD-XJ-YMF" id="3VC-ug-UhC"/>
             </connections>
@@ -58,5 +65,6 @@
     </objects>
     <resources>
         <image name="LikeIcn" width="32" height="32"/>
+        <image name="cross_circle" width="24" height="24"/>
     </resources>
 </document>

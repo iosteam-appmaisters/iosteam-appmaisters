@@ -9,10 +9,13 @@
 
 @import UIKit;
 
+#import "CustomButton.h"
 #import "YALContextMenuCell.h"
 
 @interface ContextMenuCell : UITableViewCell <YALContextMenuCell>
-
+    
+@property (weak, nonatomic) IBOutlet CustomButton *crossButton;
+    
 @property (strong, nonatomic) IBOutlet UIImageView *menuImageView;
 @property (strong, nonatomic) IBOutlet UILabel *menuTitleLabel;
 
