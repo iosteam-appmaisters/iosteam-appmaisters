@@ -212,17 +212,21 @@
     return [contactsArr count];
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 25.0;
-//}
-//
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+   
+    if (!_isFromDelete){
+        return 120.0f;
+    }
+    return 44.0f;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 35.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
-    return UITableViewAutomaticDimension;
+    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
+//    return UITableViewAutomaticDimension;
 
 }
 
