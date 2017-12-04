@@ -602,7 +602,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfl-1D-8YN">
                                         <rect key="frame" x="114.33333333333331" y="353.66666666666669" width="92" height="26"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                        <color key="textColor" red="0.085108153519999993" green="0.56928300860000003" blue="0.5745016932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qRY-Qf-hUb">
@@ -3813,7 +3813,7 @@ Tm90ZToQIA
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="S7J-jj-etD">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
-                                                <rect key="frame" x="327" y="0.66666666666666785" width="67" height="43"/>
+                                                <rect key="frame" x="309" y="0.66666666666666785" width="85" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -4196,7 +4196,7 @@ Tm90ZToQIA
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="eyx-yh-2M5">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1n4-cV-EJh">
-                                                <rect key="frame" x="327" y="0.66666666666666785" width="67" height="43"/>
+                                                <rect key="frame" x="309" y="0.66666666666666785" width="85" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -4284,7 +4284,7 @@ Tm90ZToQIA
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="mVd-ge-9SF">
                                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
-                                                <rect key="frame" x="327" y="0.66666666666666785" width="67" height="43"/>
+                                                <rect key="frame" x="309" y="0.66666666666666785" width="85" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -4557,7 +4557,7 @@ Tm90ZToQIA
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="zLz-gn-VQb">
                                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
-                                                <rect key="frame" x="327" y="0.66666666666666785" width="67" height="43"/>
+                                                <rect key="frame" x="309" y="0.66666666666666785" width="85" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -6353,7 +6353,7 @@ Tm90ZToQIA
         <image name="icon-dollar" width="20" height="20"/>
         <image name="ios_settings" width="414" height="151"/>
         <image name="linkedin" width="225" height="65"/>
-        <image name="login_bg" width="480" height="852"/>
+        <image name="login_bg" width="480" height="834"/>
         <image name="map_direction" width="121" height="28"/>
         <image name="menu_branch_location_icon" width="24" height="23"/>
         <image name="mobile-deposit-header" width="414" height="151"/>
@@ -6376,7 +6376,7 @@ Tm90ZToQIA
         <image name="swap_right" width="414" height="736"/>
         <image name="top_Banner" width="414" height="299"/>
         <image name="top_banner" width="414" height="151"/>
-        <image name="top_logo" width="67" height="43"/>
+        <image name="top_logo" width="85" height="24"/>
         <image name="touch-no-thanks" width="174" height="41"/>
         <image name="touch-thumb" width="147" height="177"/>
         <image name="touch-yes" width="174" height="41"/>
