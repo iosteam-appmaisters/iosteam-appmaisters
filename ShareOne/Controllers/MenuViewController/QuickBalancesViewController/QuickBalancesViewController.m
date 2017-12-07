@@ -131,7 +131,7 @@
     
     [cell.tranTitleLbl setText:objQuickTransaction.Tran];
     [cell.tranDateLbl setText:objQuickTransaction.Eff];
-    [cell.tranAmountLbl setText:[NSString stringWithFormat:@"$ %@",objQuickTransaction.Amt]];
+    [cell.tranAmountLbl setText:[self getFormattedAmount:@([objQuickTransaction.Amt floatValue])]];
     
     return cell;
 }
@@ -188,7 +188,9 @@
         [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:objQuickBalances.Type]];
     
     
-    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"$ %.02f",[objQuickBalances.Balance floatValue]]];
+    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:
+     [self getFormattedAmount:objQuickBalances.Balance]
+     ];
     
     [objFZAccordionTableViewHeaderView.headerBtn setTag:section];
     
@@ -203,6 +205,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+}
+
+-(NSString *)getFormattedAmount:(NSNumber*)value {
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
+    [formatter setGroupingSeparator:groupingSeparator];
+    [formatter setGroupingSize:3];
+    [formatter setAlwaysShowsDecimalSeparator:NO];
+    [formatter setUsesGroupingSeparator:YES];
+
+    NSString *formattedString = [formatter stringFromNumber:@((int)(value.floatValue*100)/100.0)];
+
+    return formattedString;
+    
 }
 
 

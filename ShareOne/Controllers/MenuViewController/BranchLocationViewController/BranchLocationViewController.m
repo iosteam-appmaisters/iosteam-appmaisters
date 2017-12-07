@@ -193,6 +193,10 @@
 
 - (void)showDirectionOutsideApp:(NSIndexPath*)clickedIndex {
     
+    if (![self currentLocationEnabled]){
+        return;
+    }
+    
     CLLocation *sourceLocation = [locationManager location];
     Location *objLocation = self.contentArr[clickedIndex.row];
     
@@ -214,7 +218,47 @@
     return NO;
 }
 
-
+-(BOOL)currentLocationEnabled {
+    
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied){
+        
+        NSString * appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+        NSString * messageStr = [NSString stringWithFormat:@"We would like to use your location.  Please enable location services from Settings-->%@-->Location",appName];
+        
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Location Permission"
+                                      message:messageStr
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okButton = [UIAlertAction
+                                    actionWithTitle:@"YES"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                        [alert dismissViewControllerAnimated:YES completion:^{
+                                        }];
+                                    }];
+        [alert addAction:okButton];
+        
+        
+        
+        UIAlertAction* retryBtn = [UIAlertAction
+                                   actionWithTitle:@"NO"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       [alert dismissViewControllerAnimated:YES completion:^{
+                                       }];
+                                   }];
+        [alert addAction:retryBtn];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        return NO;
+    }
+    return YES;
+}
 
 /*********************************************************************************************************/
                         #pragma mark - Table view delagte and data source Method

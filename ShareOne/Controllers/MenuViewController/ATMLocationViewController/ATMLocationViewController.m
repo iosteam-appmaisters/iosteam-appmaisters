@@ -12,6 +12,8 @@
 #import "ShareOneUtility.h"
 #import "Location.h"
 #import "LRouteController.h"
+#import "HomeViewController.h"
+
 @interface ATMLocationViewController ()<CLLocationManagerDelegate,GMSMapViewDelegate>
 {
     CLLocationManager *locationManager;
@@ -94,6 +96,11 @@
 {
     if(!self.locationArr){
         isComingFromATM=TRUE;
+        
+        if (![self currentLocationEnabled]){
+            return;
+        }
+        
         [self getData];
         return;
     }
@@ -204,29 +211,30 @@
         marker.groundAnchor = CGPointMake(0.5, 0.5);
         
         float lat_local ,lon_local;
-        NSString *address;
-        NSString *addressDetails;
+        NSString *markerTitle;
+        NSString *markerSnippet;
         
         if(isComingFromATM){
             lat_local=[[objLocation latitude] floatValue];
             lon_local=[[objLocation longitude] floatValue];
             marker.position = CLLocationCoordinate2DMake(lat_local, lon_local);
-            address=(NSString *)objLocation.address;
-            addressDetails= objLocation.city;
+            markerTitle=objLocation.institutionName;
+            markerSnippet= [NSString stringWithFormat:@"%@, %@, %@",(NSString*)objLocation.address, objLocation.city,objLocation.country];
 
         }
         else{
             lat_local=[[objLocation Gpslatitude] floatValue];
             lon_local=[[objLocation Gpslongitude] floatValue];
             marker.position = CLLocationCoordinate2DMake(lat_local, lon_local);
-            address=objLocation.address.Address1;
-            addressDetails =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
+            markerTitle=objLocation.address.Address1;
+            markerSnippet =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
         }
-        NSLog(@"Location Coordinates:: %f,%f",lat_local,lon_local);
         
         if (!(lat_local == 0.0) || !(lon_local == 0.0)){
-            marker.title = address;
-            marker.snippet =addressDetails;
+            
+            
+            marker.title = markerTitle;
+            marker.snippet = markerSnippet;
             marker.map = mapView;
         }
         if(_showMyLocationOnly)
@@ -301,6 +309,10 @@
 
 - (void)showDirectionOutsideApp {
     
+    if (![self currentLocationEnabled]){
+        return;
+    }
+    
     CLLocation *sourceLocation = [[CLLocation alloc]initWithLatitude:[lat floatValue] longitude:[lon floatValue]];
     CLLocation * destinationLocation = [[CLLocation alloc]initWithLatitude:selectedMarker.position.latitude longitude:selectedMarker.position.longitude];
     
@@ -365,6 +377,65 @@
             _polyline.map = self.mapView;
         }
     }];
+}
+
+-(BOOL)currentLocationEnabled {
+    
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied){
+        
+        NSString * appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+        NSString * messageStr = [NSString stringWithFormat:@"We would like to use your location.  Please enable location services from Settings-->%@-->Location",appName];
+        
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Location Permission"
+                                      message:messageStr
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okButton = [UIAlertAction
+                                   actionWithTitle:@"YES"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                       [alert dismissViewControllerAnimated:YES completion:^{
+                                       }];
+                                   }];
+        [alert addAction:okButton];
+        
+        
+        
+        UIAlertAction* retryBtn = [UIAlertAction
+                                   actionWithTitle:@"NO"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       if (isComingFromATM) {
+                                           [self navigateToLastController];
+                                       }
+                                       [alert dismissViewControllerAnimated:YES completion:^{
+                                       }];
+                                   }];
+        [alert addAction:retryBtn];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        return NO;
+    }
+    return YES;
+}
+
+-(void)navigateToLastController{
+    
+    NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
+    
+    NSString *webUrl = [cacheControlerDict valueForKey:WEB_URL];
+    
+    HomeViewController *objHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    objHomeViewController.url= webUrl;
+    
+    [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+    
+    self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objHomeViewController,nil];
 }
 
 @end
