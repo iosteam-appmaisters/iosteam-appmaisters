@@ -48,13 +48,13 @@
                     </subviews>
                     <color key="backgroundColor" red="0.61568627450000002" green="0.08235294118" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="i0a-Sy-dgP" firstAttribute="leading" secondItem="AWE-fb-Yxo" secondAttribute="trailing" constant="10" id="2Ux-Bs-860"/>
                         <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerX" secondItem="TCM-oh-32N" secondAttribute="centerX" id="3Ln-fl-fNC"/>
                         <constraint firstAttribute="trailing" secondItem="i0a-Sy-dgP" secondAttribute="trailing" constant="20" id="Tp0-6z-FeY"/>
                         <constraint firstItem="AWE-fb-Yxo" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="V4m-lA-Zsv"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="leading" secondItem="TCM-oh-32N" secondAttribute="leading" constant="20" id="WBa-gO-FBB"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="aOP-mf-BEJ"/>
                         <constraint firstItem="AWE-fb-Yxo" firstAttribute="leading" secondItem="lnh-gF-mll" secondAttribute="trailing" constant="5" id="bx4-gP-LFz"/>
+                        <constraint firstItem="i0a-Sy-dgP" firstAttribute="leading" secondItem="AWE-fb-Yxo" secondAttribute="trailing" constant="10" id="dmR-Se-bDq"/>
                         <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="oLq-Eg-JC7"/>
                         <constraint firstItem="i0a-Sy-dgP" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="yKJ-Qd-ae4"/>
                     </constraints>
@@ -81,3 +81,4 @@
         <image name="icon-dollar" width="20" height="20"/>
     </resources>
 </document>
+
