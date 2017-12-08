@@ -390,7 +390,7 @@
     
     NSLog(@"%@",[Configuration getCoOpID]);
     
-    if ([Configuration getCoOpID] == nil || [[Configuration getCoOpID] isEqualToString:@""]){
+    if ([Configuration getCoOpID] == nil || [[Configuration getCoOpID] isEqualToString:@""] || [Configuration getCoOpID].length == 0){
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"Error"
                                       message:@"Co-op ID Not Configured"
