@@ -223,7 +223,7 @@
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied){
         
         NSString * appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
-        NSString * messageStr = [NSString stringWithFormat:@"We would like to use your location.  Please enable location services from Settings-->%@-->Location",appName];
+        NSString * messageStr = [NSString stringWithFormat:@"We would like to use your location to show convenient locations near and around you. Please enable location services from Settings-->%@-->Location",appName];
         
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"Location Permission"
