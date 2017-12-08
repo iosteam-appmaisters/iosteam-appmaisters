@@ -52,6 +52,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 @property (weak, nonatomic) IBOutlet UIButton *userFingerprintBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rememberMetxtBtn;
 @property (weak, nonatomic) IBOutlet UIButton *quickBalanceBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *quickBalanceArrowIcon;
 @property (weak, nonatomic) IBOutlet UISwitch *rememberMeSwitch;
 
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
@@ -119,6 +120,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 -(void)loadLocalCacheOnView{
     
+    [_quickBalanceArrowIcon setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_rememberMeSwitch setOn:[ShareOneUtility isUserRemembered]];

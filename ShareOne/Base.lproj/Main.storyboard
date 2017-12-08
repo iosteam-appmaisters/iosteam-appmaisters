@@ -466,6 +466,7 @@
                                             <constraint firstAttribute="width" secondItem="SQp-OX-1do" secondAttribute="height" multiplier="69:8" id="e6O-lp-gb0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Quick Balances" backgroundImage="QuickBalance_Button"/>
                                         <connections>
                                             <action selector="quickBalanceButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="w07-z2-xfq"/>
@@ -499,6 +500,9 @@
                                             <action selector="infoButtonTapped:" destination="Grc-iE-xzY" eventType="touchUpInside" id="wLf-nn-9X4"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up_arrow_white" translatesAutoresizingMaskIntoConstraints="NO" id="eyf-Eg-j9B">
+                                        <rect key="frame" x="154.66666666666666" y="411" width="11" height="9"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -514,10 +518,14 @@
                                     <constraint firstItem="vKM-to-ya1" firstAttribute="top" secondItem="nZA-zR-XcZ" secondAttribute="bottom" id="7xD-A0-Swi"/>
                                     <constraint firstItem="1KP-5D-dKz" firstAttribute="top" secondItem="DZ6-QP-Jpq" secondAttribute="top" id="8JK-E3-W1w"/>
                                     <constraint firstItem="9hV-j4-ex4" firstAttribute="top" secondItem="8u9-YS-oWe" secondAttribute="bottom" id="8KK-I4-ktB"/>
+                                    <constraint firstItem="eyf-Eg-j9B" firstAttribute="top" secondItem="SQp-OX-1do" secondAttribute="top" constant="3" id="9f7-Ms-Co0">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                                    </constraint>
                                     <constraint firstItem="uAv-Pg-6fu" firstAttribute="leading" secondItem="1KP-5D-dKz" secondAttribute="leading" id="9oY-ga-bS9"/>
                                     <constraint firstItem="oaW-xn-S6F" firstAttribute="top" secondItem="nZA-zR-XcZ" secondAttribute="bottom" constant="1" id="Ah6-qD-A6G"/>
                                     <constraint firstItem="DZ6-QP-Jpq" firstAttribute="top" secondItem="AUa-t5-lxc" secondAttribute="bottom" constant="7" id="BEb-6M-bJb"/>
                                     <constraint firstItem="qwV-Kb-rR9" firstAttribute="height" secondItem="Lx4-Z6-gEr" secondAttribute="height" id="Fb4-L5-4uh"/>
+                                    <constraint firstItem="eyf-Eg-j9B" firstAttribute="centerX" secondItem="SQp-OX-1do" secondAttribute="centerX" id="GCW-ca-P1b"/>
                                     <constraint firstItem="DZ6-QP-Jpq" firstAttribute="leading" secondItem="AUa-t5-lxc" secondAttribute="leading" id="HXH-HL-rHp"/>
                                     <constraint firstItem="1KP-5D-dKz" firstAttribute="height" secondItem="DZ6-QP-Jpq" secondAttribute="height" id="HeC-2G-w2u"/>
                                     <constraint firstItem="uAv-Pg-6fu" firstAttribute="top" secondItem="mG7-Ba-Ey9" secondAttribute="top" id="IPm-KO-j6L"/>
@@ -712,6 +720,7 @@
                         <outlet property="loginViewConstraintY" destination="1PH-Fp-36Z" id="JEo-sE-2fz"/>
                         <outlet property="passwordTxt" destination="a22-uc-P6y" id="9qQ-rv-BBw"/>
                         <outlet property="privacyButton" destination="ECX-AC-ghJ" id="hud-aQ-LuJ"/>
+                        <outlet property="quickBalanceArrowIcon" destination="eyf-Eg-j9B" id="acq-jZ-ahP"/>
                         <outlet property="quickBalanceBtn" destination="SQp-OX-1do" id="bPl-LA-Rjc"/>
                         <outlet property="rememberMeBtn" destination="TFX-Rm-OI0" id="iXe-Sx-LBd"/>
                         <outlet property="rememberMeSwitch" destination="X9W-pp-gWk" id="Neh-qa-DiR"/>
@@ -739,11 +748,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61q-bp-SPv" customClass="CustomButton">
                                 <rect key="frame" x="0.0" y="20" width="414" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Quick Balances" backgroundImage="qbDownIcon"/>
                                 <connections>
                                     <action selector="dismissQuickBalances:" destination="k5u-Wq-QWs" eventType="touchUpInside" id="hrf-an-EXu"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow_white" translatesAutoresizingMaskIntoConstraints="NO" id="KTb-Ba-BEO">
+                                <rect key="frame" x="201.66666666666666" y="25" width="11" height="9"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ii0-5V-DRE" customClass="FZAccordionTableView">
                                 <rect key="frame" x="0.0" y="120" width="414" height="616"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -864,12 +877,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ii0-5V-DRE" firstAttribute="leading" secondItem="Zs7-ky-beG" secondAttribute="leading" id="6hE-Up-Yj4"/>
+                            <constraint firstItem="KTb-Ba-BEO" firstAttribute="top" secondItem="61q-bp-SPv" secondAttribute="top" constant="5" id="7gb-1r-fdK">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
                             <constraint firstItem="Dxg-iw-aOG" firstAttribute="top" secondItem="ii0-5V-DRE" secondAttribute="bottom" id="FFH-pw-rOm"/>
                             <constraint firstItem="61q-bp-SPv" firstAttribute="leading" secondItem="Zs7-ky-beG" secondAttribute="leading" id="GjO-r6-7PJ"/>
                             <constraint firstAttribute="trailing" secondItem="61q-bp-SPv" secondAttribute="trailing" id="Gki-0b-jCV"/>
                             <constraint firstAttribute="trailing" secondItem="ii0-5V-DRE" secondAttribute="trailing" id="Nz1-pI-g6p"/>
                             <constraint firstItem="61q-bp-SPv" firstAttribute="top" secondItem="Orl-Qi-BKk" secondAttribute="bottom" id="UHg-Ws-SGt"/>
                             <constraint firstItem="ii0-5V-DRE" firstAttribute="top" secondItem="Orl-Qi-BKk" secondAttribute="bottom" constant="100" id="eOo-Bv-LPr"/>
+                            <constraint firstItem="KTb-Ba-BEO" firstAttribute="centerX" secondItem="61q-bp-SPv" secondAttribute="centerX" id="q7s-Yg-OrY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3043,7 +3060,7 @@ Tm90ZToQIA
                                         <rect key="frame" x="0.0" y="28" width="384" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oh1-uY-gGa" id="tLI-MI-gi7">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="199.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Greenwood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpi-qm-P3q" customClass="CustomLabel">
@@ -6344,6 +6361,7 @@ Tm90ZToQIA
         <image name="dot_bullets" width="11" height="27"/>
         <image name="dot_circle" width="48" height="49"/>
         <image name="down-arrow" width="7" height="4"/>
+        <image name="down_arrow_white" width="11" height="9"/>
         <image name="fb-image" width="225" height="65"/>
         <image name="foc-deposit-list" width="70" height="13"/>
         <image name="foc-icon" width="99" height="75"/>
@@ -6381,5 +6399,6 @@ Tm90ZToQIA
         <image name="touch-thumb" width="147" height="177"/>
         <image name="touch-yes" width="174" height="41"/>
         <image name="twitter" width="225" height="65"/>
+        <image name="up_arrow_white" width="11" height="9"/>
     </resources>
 </document>

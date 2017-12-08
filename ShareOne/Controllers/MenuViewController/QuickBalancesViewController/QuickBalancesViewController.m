@@ -210,16 +210,19 @@
 -(NSString *)getFormattedAmount:(NSNumber*)value {
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
     [formatter setGroupingSeparator:groupingSeparator];
     [formatter setGroupingSize:3];
-    [formatter setAlwaysShowsDecimalSeparator:NO];
+    [formatter setAlwaysShowsDecimalSeparator:YES];
     [formatter setUsesGroupingSeparator:YES];
 
-    NSString *formattedString = [formatter stringFromNumber:@((int)(value.floatValue*100)/100.0)];
+    NSString *formattedString = [formatter stringFromNumber:value];
 
-    return formattedString;
+    NSString * last = [[[NSString stringWithFormat:@"%.02f",value.floatValue] componentsSeparatedByString:@"."]lastObject];
+    
+    NSString * final = [NSString stringWithFormat:@"$ %@%@",formattedString,last];
+    
+    return final;
     
 }
 

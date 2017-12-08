@@ -101,6 +101,10 @@
             return;
         }
         
+        if (![self checkIfCoopIDExist]){
+            return;
+        }
+        
         [self getData];
         return;
     }
@@ -218,9 +222,11 @@
             lat_local=[[objLocation latitude] floatValue];
             lon_local=[[objLocation longitude] floatValue];
             marker.position = CLLocationCoordinate2DMake(lat_local, lon_local);
-            markerTitle=objLocation.institutionName;
-            markerSnippet= [NSString stringWithFormat:@"%@, %@, %@",(NSString*)objLocation.address, objLocation.city,objLocation.country];
+            markerTitle=objLocation.institutionname;
+            markerSnippet= [NSString stringWithFormat:@"%@, %@, %@",(NSString*)objLocation.address, objLocation.city,objLocation.countryabbreviation];
 
+            NSLog(@"%@",markerTitle);
+            NSLog(@"%@",markerSnippet);
         }
         else{
             lat_local=[[objLocation Gpslatitude] floatValue];
@@ -377,6 +383,34 @@
             _polyline.map = self.mapView;
         }
     }];
+}
+
+
+-(BOOL)checkIfCoopIDExist {
+    
+    NSLog(@"%@",[Configuration getCoOpID]);
+    
+    if ([Configuration getCoOpID] == nil || [[Configuration getCoOpID] isEqualToString:@""]){
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Error"
+                                      message:@"Co-op ID Not Configured"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okButton = [UIAlertAction
+                                   actionWithTitle:@"OK"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       [self navigateToLastController];
+                                       [alert dismissViewControllerAnimated:YES completion:^{
+                                       }];
+                                   }];
+        [alert addAction:okButton];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        return NO;
+    }
+    return YES;
 }
 
 -(BOOL)currentLocationEnabled {

@@ -31,7 +31,7 @@
 @property(nonatomic,strong) NSString *city;
 @property(nonatomic,strong) NSString *comment;
 @property(nonatomic,strong) NSString *country;
-@property(nonatomic,strong) NSString *countryAbbreviation;
+@property(nonatomic,strong) NSString *countryabbreviation;
 @property(nonatomic,strong) NSString *countryId;
 @property(nonatomic,strong) NSString *countryname;
 @property(nonatomic,strong) NSString *county;
@@ -53,7 +53,7 @@
 @property(nonatomic,strong) NSString *id;
 @property(nonatomic,strong) NSString *installationType;
 @property(nonatomic,strong) NSString *installationTypeId;
-@property(nonatomic,strong) NSString *institutionName;
+@property(nonatomic,strong) NSString *institutionname;
 @property(nonatomic,strong) NSString *institutionRtn;
 @property(nonatomic,strong) NSString *latitude;
 @property(nonatomic,strong) NSString *limitedTransactions;
