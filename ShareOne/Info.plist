@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
@@ -41,9 +41,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) take photos</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This application requires to access your current location in order to work correctly.</string>
+	<string>This application requires to access your current location in order to show convienent locations near and around you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This application requires to access your current location in order to work correctly.</string>
+	<string>This application requires to access your current location in order to show convienent locations near and around you</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) use photos</string>
 	<key>UILaunchStoryboardName</key>
