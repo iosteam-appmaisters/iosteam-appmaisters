@@ -53,8 +53,10 @@
     for (SuffixInfo * info in _qbArr){
         
         if (![[info Hidden]boolValue] && ([info Closed] == nil || ![[info Closed] boolValue])) {
-            [temp addObject:info];
-            NSLog(@"Showing:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
+            if ([info.Access containsString:@"Q"]){
+                NSLog(@"=== %@",info.Access);
+                [temp addObject:info];
+            }
         }
         else {
             NSLog(@"Hiding:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
