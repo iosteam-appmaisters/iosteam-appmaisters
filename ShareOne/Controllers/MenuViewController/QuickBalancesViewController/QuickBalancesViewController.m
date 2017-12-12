@@ -55,11 +55,9 @@
         if (![[info Hidden]boolValue] && ([info Closed] == nil || ![[info Closed] boolValue])) {
             if ([info.Access containsString:@"Q"]){
                 NSLog(@"=== %@",info.Access);
+                NSLog(@"Showing:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
                 [temp addObject:info];
             }
-        }
-        else {
-            NSLog(@"Hiding:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
         }
     }
     
@@ -210,6 +208,10 @@
 }
 
 -(NSString *)getFormattedAmount:(NSNumber*)value {
+    
+    if (value == nil){
+        return @"$ 0.00";
+    }
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
