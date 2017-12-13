@@ -48,7 +48,7 @@
         contactsArr=[ShareOneUtility getFavContactsForUser:currentUser];
 
     
-    [_profileLinkTextFeild setText:@"paypal.me/"];
+    //[_profileLinkTextFeild setText:@"paypal.me/"];
 //    [_profileNameTextFeild setText:@"Asd"];
 
 
@@ -151,7 +151,7 @@
 -(IBAction)AddToFavouriteButtonClicked:(id)sender{
     
     if([_profileNameTextFeild.text length]==0){
-        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Nickname can not be em pty" title:@"" delegate:self];
+        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Nickname can not be empty" title:@"" delegate:self];
         return;
     }
     
@@ -164,7 +164,7 @@
     [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
     [_favContactsTblView reloadData];
     [_profileNameTextFeild setText:@""];
-    [_profileLinkTextFeild setText:@"paypal.me/"];
+    //[_profileLinkTextFeild setText:@"paypal.me/"];
 
     [_profileNameTextFeild resignFirstResponder];
     [_profileLinkTextFeild resignFirstResponder];
@@ -270,7 +270,7 @@
         NSString *profileLink = [ShareOneUtility getFavouriteContactProfileLinkWithObject:contactDict];
         NSString *profileNickname = [ShareOneUtility getFavouriteContactNickNameWithObject:contactDict];
 
-
+        profileLink = [profileLink stringByReplacingOccurrencesOfString:@"paypal.me/" withString:@""];
         
         [editCell.nickNameTxtFeild setText:profileNickname];
         [editCell.urlTxtFeild setText:profileLink];

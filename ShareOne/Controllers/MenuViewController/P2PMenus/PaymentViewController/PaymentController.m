@@ -116,7 +116,7 @@
     
     NSMutableURLRequest *request;
     if(amount)
-        paypal_url = [NSString stringWithFormat:@"https://www.%@/%.2f",name,[amount floatValue]];
+        paypal_url = [NSString stringWithFormat:@"https://www.paypal.me/%@/%.2f",name,[amount floatValue]];
     else
         paypal_url = name;
     
