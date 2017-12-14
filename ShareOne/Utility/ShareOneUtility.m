@@ -562,6 +562,8 @@ NSLog(Y, Z);		\
     
     //swap contexid
     savedUser.Contextid=newUser.Contextid;
+    savedUser.UserName = newUser.UserName;
+    savedUser.Accountname = newUser.Accountname;
     savedUser.Password=newUser.Password;
 //    savedUser.isTouchIDOpen=newUser.isTouchIDOpen;
 
