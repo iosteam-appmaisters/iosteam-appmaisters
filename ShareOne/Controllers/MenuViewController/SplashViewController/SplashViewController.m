@@ -48,6 +48,16 @@
 
 -(void)changeMessageLabel:(NSNotification*)notification {
     _messageLabel.text = notification.userInfo[@"MESSAGE"];
+    if ([notification.userInfo[@"STATUS"] isEqualToString:@"0"]){
+        _messageLabel.textColor = [UIColor whiteColor];
+    }
+    else if ([notification.userInfo[@"STATUS"] isEqualToString:@"1"]){
+        _messageLabel.textColor = [UIColor greenColor];
+    }
+    else if ([notification.userInfo[@"STATUS"] isEqualToString:@"2"]){
+        _messageLabel.textColor = [UIColor redColor];
+    }
+    
     _versionLabel.text = [NSString stringWithFormat:@"Version: %@",notification.userInfo[@"VERSION"]];
     _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@",notification.userInfo[@"CUSTOMER_ID"]];
     _appVersionLabel.text = [ShareOneUtility getApplicationVersion];
@@ -60,19 +70,49 @@
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"MessageLabelNotification"
      object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+                            @"STATUS":@"0",
                             @"VERSION":[ShareOneUtility getVersionNumber],
                             @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
     
     [Configuration getConfigurationWithDelegate:self completionBlock:^(BOOL success, NSString *errorString) {
         [self hideIndicaterView];
         if(success){
-            [self goToLogin];
             
             [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"nconfig_called"];
             [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"MessageLabelNotification"
+             object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+                                    @"STATUS":@"1",
+                                    @"VERSION":[ShareOneUtility getVersionNumber],
+                                    @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            
+                [self goToLogin];
+            });
+ 
         }
         else{
-            [self showAlertWithTitle:nil AndMessage:errorString];
+            
+            if ([[NSUserDefaults standardUserDefaults]boolForKey:@"nconfig_called"]){
+                
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"MessageLabelNotification"
+                 object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+                                        @"STATUS":@"2",
+                                        @"VERSION":[ShareOneUtility getVersionNumber],
+                                        @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                    
+                    [self goToLogin];
+                });
+            }
+            else {
+                [self showAlertWithTitle:nil AndMessage:errorString];
+            }
         }
         
     } failureBlock:^(NSError *error) {
@@ -101,7 +141,7 @@
     
     
     UIAlertAction* retryBtn = [UIAlertAction
-                               actionWithTitle:@"Re Try"
+                               actionWithTitle:@"Try Again"
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action)
                                {

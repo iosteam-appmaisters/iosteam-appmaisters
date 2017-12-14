@@ -78,6 +78,32 @@
     }];
 }
 
++(void)refreshSuffixInfo:(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
+    
+    NSDictionary *getSuffixDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KSUFFIX_INFO,[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
+    
+    NSArray *reqArr = [NSArray arrayWithObjects:getSuffixDict, nil];
+    
+    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response,id responseObj) {
+        
+        NSURLResponse *responseCast = (NSURLResponse *)responseObj;
+        
+        if([[responseCast.URL absoluteString] containsString:KSUFFIX_INFO]) {
+            NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:(NSDictionary *)response];
+            [ShareOneUtility savedSuffixInfo:(NSDictionary *)response];
+            [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
+        }
+        
+    } requestFailureBlock:^(NSError *error) {
+        failBlock(error);
+    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
+        block(sucess,errorString);
+    } queueFailureBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+
 +(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSMutableArray *queuReqArr = [[NSMutableArray alloc] init];
@@ -151,6 +177,7 @@
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"MessageLabelNotification"
          object:self userInfo:@{@"MESSAGE":@"Please wait while we update app",
+                                @"STATUS":@"0",
                                 @"VERSION":versionNumber,
                                 @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
         

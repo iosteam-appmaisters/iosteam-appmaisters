@@ -13,7 +13,7 @@
 #import "IQKeyboardManager.h"
 #import "InAppBrowserController.h"
 #import "ClientSettingsObject.h"
-
+#import "LoaderServices.h"
 
 @interface BaseViewController ()<UIWebViewDelegate>{
     LeftMenuViewController* leftMenuViewController;
@@ -432,6 +432,8 @@
     BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     NSString *webViewController = WEB_VIEWCONTROLLER_ID;
     
+    __weak BaseViewController *weakSelf = self;
+    
     // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
 
     if(isOpenInNewTab){
@@ -490,10 +492,13 @@
             self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
         }
         
+        
+        
         else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
             
             // Show log out popup
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[[dict valueForKey:MAIN_CAT_TITLE] capitalizedString]
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:
+                                        [[dict valueForKey:MAIN_CAT_TITLE] capitalizedString]
                                                                            message:@"Are you sure you want to log off?"
                                                                     preferredStyle:UIAlertControllerStyleAlert]; // 1
             UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Cancel"
@@ -502,34 +507,22 @@
                                                                   }]; // 2
             UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
                                                                    style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                                                       
-                                                                       [ShareOneUtility showProgressViewOnView:self.view];
-                                                                       
-                                                                       [[ShareOneUtility shareUtitlities] cancelTimer];
-                                                                       
-                                                                       [self removeAdsView];
-
-                                                                       [self sendAdvertismentViewToBack];
-                                                                       __weak BaseViewController *weakSelf = self;
-                                                                       [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
-                                                                       NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-                                                                       [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
-                                                                           
-                                                                           [ShareOneUtility hideProgressViewOnView:self.view];
-                                                                           [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-
-                                                                           [self.navigationController popToRootViewControllerAnimated:NO];
-                                                                           
-//                                                                           [[self presentingViewController] dismissViewControllerAnimated:YES completion:^{
-//                                                                               [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-//                                                                           }];
-                                                                           
-                                                                           
-                                                                       } failureBlock:^(NSError *error) {
-                                                                           
-                                                                       }];
-                                                                       
-                                                                   }]; // 3
+            
+               [ShareOneUtility showProgressViewOnView:self.view];
+               [LoaderServices refreshSuffixInfo:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
+                   [ShareOneUtility hideProgressViewOnView:self.view];
+                   if(success && !errorString) {
+                       [self logoutActions];
+                   }
+                   else {
+                       [self logoutActions];
+                   }
+                } failureBlock:^(NSError *error) {
+                    [ShareOneUtility hideProgressViewOnView:self.view];
+                    [self logoutActions];
+                }];
+                   
+               }];
             
             [alert addAction:firstAction];
             [alert addAction:secondAction]; 
@@ -578,6 +571,32 @@
         }
     }
 }
+
+-(void)logoutActions {
+    
+    [ShareOneUtility showProgressViewOnView:self.view];
+    
+    [[ShareOneUtility shareUtitlities] cancelTimer];
+    
+    [self removeAdsView];
+    
+    [self sendAdvertismentViewToBack];
+    __weak BaseViewController *weakSelf = self;
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
+    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+    
+    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
+        
+        [ShareOneUtility hideProgressViewOnView:self.view];
+        [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+        
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
 
 -(void)bringAdvertismentFront{
     [self bringAdvertismentViewToFront];
