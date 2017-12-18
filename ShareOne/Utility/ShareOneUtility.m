@@ -826,7 +826,12 @@ NSLog(Y, Z);		\
 
 +(NSString*)getApplicationVersion {
 
-    return  [NSString stringWithFormat:@"Application Version: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSString *minorVersion = [infoDictionary objectForKey:@"CFBundleVersion"];
+    
+    return [NSString stringWithFormat:@"Application Version: %@ (%@)", majorVersion,minorVersion];
+    
 }
 
 
