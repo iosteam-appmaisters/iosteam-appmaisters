@@ -155,25 +155,47 @@
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
-        if([locations count]>0){
-            weakSelf.locationArr=locations;
-            Location *objLocation= _locationArr[0];
-            float lat_local=[[objLocation latitude] floatValue];
-            float lon_local=[[objLocation longitude] floatValue];
+        if ([locations count] == 0){
             
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@""
+                                          message:@"CO-Op not returning any locations for plotting on Map."
+                                          preferredStyle:UIAlertControllerStyleAlert];
             
+            UIAlertAction* okButton = [UIAlertAction
+                                       actionWithTitle:@"Ok"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action)
+                                       {
+                                           [self navigateToLastController];
+                                           [alert dismissViewControllerAnimated:YES completion:^{
+                                           }];
+                                       }];
+            [alert addAction:okButton];
             
-            GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat_local
-                                                                    longitude:lon_local
-                                                                         zoom:15];
-            _mapView.camera=camera;
-            _mapView.myLocationEnabled = YES;
-            _mapView.delegate=self;
-
-            [self createGoogleMapMarker:_mapView];
-
+            [self presentViewController:alert animated:YES completion:nil];
+            
         }
-        
+        else {
+            if([locations count]>0){
+                weakSelf.locationArr=locations;
+                Location *objLocation= _locationArr[0];
+                float lat_local=[[objLocation latitude] floatValue];
+                float lon_local=[[objLocation longitude] floatValue];
+                
+                
+                
+                GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat_local
+                                                                        longitude:lon_local
+                                                                             zoom:15];
+                _mapView.camera=camera;
+                _mapView.myLocationEnabled = YES;
+                _mapView.delegate=self;
+
+                [self createGoogleMapMarker:_mapView];
+
+            }
+        }
     } failureBlock:^(NSError *error) {
         
     }];
