@@ -191,6 +191,12 @@
 
 #define PASSWORD_EXPIRED_ERROR_CODE     5162
 
+#define CO_OP_API_KEY_INVALID_ERROR_CODE     1006
+#define CO_OP_API_KEY_INVALID_ERROR_MSG     @"The Co-Op API key is not valid."
+#define CO_OP_NO_DATA_MSG     @"The Co-Op is not returning any locations."
+#define CO_OP_GENERAL_ERROR_MSG     @"The Co-Op is not returning correct data."
+
+
 
 #endif
 

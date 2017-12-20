@@ -11,6 +11,7 @@
 #import "Services.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
+#import "ConstantsShareOne.h"
 
 
 @implementation Location
@@ -60,13 +61,38 @@
     
     
     NSArray *rawDataArr = dictionary[@"response"][@"locations"];
+    NSDictionary *rawErrorDict ;
+    BOOL statusFailed = NO ;
+    if(dictionary[@"response"][@"exceptions"]) {
+        rawErrorDict  = dictionary[@"response"][@"exceptions"][0];
+        statusFailed = ([dictionary[@"response"][@"status"] isEqualToString:@"FAILED"]);
+    }
     
-    [rawDataArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        Location *objLocation = [[Location alloc] initWithDictionary:obj];
-        [locationArr addObject:objLocation];
+    
+    if(statusFailed==NO){
+        [rawDataArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            Location *objLocation = [[Location alloc] initWithDictionary:obj];
+            [locationArr addObject:objLocation];
+            
+        }];
         
-    }];
-    return locationArr;
+        return locationArr ;
+    }
+    else {
+        NSMutableArray *errArr ;
+        errArr = [[NSMutableArray alloc] init];
+        NSNumber *errorCode = [NSNumber numberWithInt:[rawErrorDict[@"errorCode"] intValue]];
+        [errArr addObject:errorCode];
+        if([errorCode intValue]==CO_OP_API_KEY_INVALID_ERROR_CODE){
+            [errArr addObject:CO_OP_API_KEY_INVALID_ERROR_MSG];
+         }
+        else {
+            [errArr addObject:rawErrorDict[@"detail"]];
+        }
+        
+        return errArr ;
+    }
+    return [NSMutableArray new];
 }
 
 +(NSMutableArray *)parseAllShareOneLocationsWithObject:(NSDictionary *)dictionary{

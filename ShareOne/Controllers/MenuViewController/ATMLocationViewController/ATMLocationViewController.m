@@ -155,11 +155,34 @@
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
-        if ([locations count] == 0){
+        if([locations count]==0){
             
             UIAlertController * alert=   [UIAlertController
                                           alertControllerWithTitle:@""
-                                          message:@"CO-Op not returning any locations for plotting on Map."
+                                          message:CO_OP_NO_DATA_MSG
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* okButton = [UIAlertAction
+                                       actionWithTitle:@"Ok"
+                                       style:UIAlertActionStyleDefault
+                                       handler:^(UIAlertAction * action)
+                                       {
+                                           [self navigateToLastController];
+                                           [alert dismissViewControllerAnimated:YES completion:^{
+                                           }];
+                                       }];
+            [alert addAction:okButton];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else if ([locations[0] isKindOfClass:[NSNumber class]]){
+            
+            NSString *errorMsg = locations[1] ;
+            
+            
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@""
+                                          message:errorMsg
                                           preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* okButton = [UIAlertAction
