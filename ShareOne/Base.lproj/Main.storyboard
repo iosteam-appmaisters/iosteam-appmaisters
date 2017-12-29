@@ -207,7 +207,7 @@
                                         <rect key="frame" x="20" y="92" width="280" height="72.5"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="7" width="330" height="39.5"/>
+                                                <rect key="frame" x="21" y="18" width="239" height="28.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -228,7 +228,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="264.5" y="49.5" width="52.5" height="18"/>
+                                                <rect key="frame" x="173.5" y="49.5" width="52.5" height="18"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -236,7 +236,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="321" y="45.5" width="25" height="25"/>
+                                                <rect key="frame" x="230" y="45.5" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -275,13 +275,13 @@
                                         <rect key="frame" x="20" y="138.5" width="280" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="206" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="115" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-pp-gWk">
-                                                <rect key="frame" x="302" y="8" width="51" height="31"/>
+                                                <rect key="frame" x="211" y="8" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="rememberMeButtonClicked:" destination="Grc-iE-xzY" eventType="valueChanged" id="aWh-u1-ryo"/>
                                                 </connections>
@@ -762,7 +762,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBHeaderCell" id="b4Y-Me-nIs" customClass="QBHeaderCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBHeaderCell" id="b4Y-Me-nIs" customClass="QBHeaderCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b4Y-Me-nIs" id="D93-Da-rgD">
@@ -808,7 +808,7 @@
                                             <outlet property="sectionTitleLbl" destination="mbd-VS-cZz" id="Snn-z3-Xn8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBDetailsCell" id="buQ-l2-5k5" customClass="QBDetailsCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBDetailsCell" id="buQ-l2-5k5" customClass="QBDetailsCell">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buQ-l2-5k5" id="19o-db-txP">
@@ -1947,7 +1947,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
-                                                            <rect key="frame" x="0.0" y="11" width="468" height="22"/>
+                                                            <rect key="frame" x="0.0" y="11" width="300" height="22"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_branch_location_icon" translatesAutoresizingMaskIntoConstraints="NO" id="svk-Uw-Glz">
                                                                     <rect key="frame" x="50" y="-0.5" width="24" height="23"/>
@@ -3056,7 +3056,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BranchLocationCell" rowHeight="200" id="oh1-uY-gGa" customClass="BranchLocationCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BranchLocationCell" rowHeight="200" id="oh1-uY-gGa" customClass="BranchLocationCell">
                                         <rect key="frame" x="0.0" y="28" width="345" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oh1-uY-gGa" id="tLI-MI-gi7">
@@ -3064,7 +3064,7 @@ Tm90ZToQIA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Greenwood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpi-qm-P3q" customClass="CustomLabel">
-                                                    <rect key="frame" x="5" y="10" width="31.5" height="12.5"/>
+                                                    <rect key="frame" x="5" y="10" width="180" height="12.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="11"/>
                                                     <color key="textColor" red="0.6623249054" green="0.12095849960000001" blue="0.1431922615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3099,28 +3099,28 @@ Tm90ZToQIA
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjg-qU-URD" customClass="CustomLabel">
-                                                    <rect key="frame" x="5" y="88" width="0.0" height="12.5"/>
+                                                    <rect key="frame" x="5" y="88" width="35" height="12.5"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <color key="textColor" red="0.6623249054" green="0.12095849960000001" blue="0.1431922615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" layoutMarginsFollowReadableWidth="YES" text="(091) 452-7900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIL-A8-K4K" userLabel="PhoneValue">
-                                                    <rect key="frame" x="8" y="88" width="28.5" height="12.5"/>
+                                                    <rect key="frame" x="43" y="88" width="142" height="12.5"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="8058 US Highway 64" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bv7-z4-HDO" userLabel="Address">
-                                                    <rect key="frame" x="5" y="103.5" width="31.5" height="12.5"/>
+                                                    <rect key="frame" x="5" y="103.5" width="180" height="12.5"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Bartlett, TN 38133" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLo-TN-fTB" userLabel="State">
-                                                    <rect key="frame" x="5" y="119" width="31.5" height="12"/>
+                                                    <rect key="frame" x="5" y="119" width="180" height="12"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_marker.png" translatesAutoresizingMaskIntoConstraints="NO" id="RXp-6K-AE8">
-                                                    <rect key="frame" x="36.5" y="81" width="33.5" height="38"/>
+                                                    <rect key="frame" x="185" y="81" width="155" height="38"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6as-fo-C0U" userLabel="DirectionsBtn">
                                                     <rect key="frame" x="5" y="137" width="80" height="57.5"/>
@@ -3361,7 +3361,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepositCell" id="bfX-m0-Ume" customClass="DepositCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepositCell" id="bfX-m0-Ume" customClass="DepositCell">
                                         <rect key="frame" x="0.0" y="20" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bfX-m0-Ume" id="LHW-wm-heb">
@@ -3959,7 +3959,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCell" id="ddb-iY-A6D" customClass="PaymentCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCell" id="ddb-iY-A6D" customClass="PaymentCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ddb-iY-A6D" id="KQT-kx-iaY">
@@ -3967,19 +3967,19 @@ Tm90ZToQIA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="YW5-ot-GJZ" userLabel="SeeraterView1">
-                                                    <rect key="frame" x="-142" y="33" width="197" height="1"/>
+                                                    <rect key="frame" x="158" y="33" width="197" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537879999995" green="0.87454748149999995" blue="0.87439841029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="oBu-fp-mpd"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWo-Rc-iQX">
-                                                    <rect key="frame" x="-28" y="8" width="83" height="23"/>
+                                                    <rect key="frame" x="272" y="8" width="83" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <state key="normal" image="paypal_btn"/>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="732" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blw-4n-AE2" customClass="CustomTextFeild">
-                                                    <rect key="frame" x="-142" y="10" width="104" height="18"/>
+                                                    <rect key="frame" x="158" y="10" width="104" height="18"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
@@ -4008,7 +4008,7 @@ Tm90ZToQIA
                                             <outlet property="payButtonBtn" destination="KWo-Rc-iQX" id="HGh-Hn-MNS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransferSomeOneElseCell" id="LEf-P7-0lh" customClass="TransferSomeOneElseCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransferSomeOneElseCell" id="LEf-P7-0lh" customClass="TransferSomeOneElseCell">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LEf-P7-0lh" id="U4U-Fw-Gxj">
@@ -4031,14 +4031,14 @@ Tm90ZToQIA
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="732" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYI-ns-bfn" customClass="CustomTextFeild">
-                                                    <rect key="frame" x="186" y="2" width="70" height="15"/>
+                                                    <rect key="frame" x="186" y="2" width="56.5" height="15"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="mmq-rp-njD" userLabel="SeeraterView1">
-                                                    <rect key="frame" x="122" y="20" width="134" height="1"/>
+                                                    <rect key="frame" x="122" y="20" width="120.5" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537879999995" green="0.87454748149999995" blue="0.87439841029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="q1c-Zj-q1Q"/>
@@ -4051,18 +4051,18 @@ Tm90ZToQIA
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="732" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VFw-bb-rfn" customClass="CustomTextFeild">
-                                                    <rect key="frame" x="122" y="22" width="134" height="15"/>
+                                                    <rect key="frame" x="122" y="22" width="120.5" height="15"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0H-br-O7t">
-                                                    <rect key="frame" x="375" y="10.5" width="83" height="23"/>
+                                                    <rect key="frame" x="282" y="10.5" width="83" height="23"/>
                                                     <state key="normal" image="paypal_btn"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="2hf-S1-Ox1" userLabel="SeeraterView2">
-                                                    <rect key="frame" x="122" y="40" width="134" height="1"/>
+                                                    <rect key="frame" x="122" y="40" width="120.5" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537879999995" green="0.87454748149999995" blue="0.87439841029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="w5s-OI-RfP"/>
@@ -4743,9 +4743,9 @@ Tm90ZToQIA
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
+                                        <include reference="CKY-JC-zEk"/>
                                         <include reference="R5h-eV-cCS"/>
                                         <include reference="eim-Ae-yNF"/>
-                                        <include reference="CKY-JC-zEk"/>
                                         <include reference="BSl-EB-8eX"/>
                                         <include reference="PBg-Kr-Qec"/>
                                         <include reference="3Y0-0t-fte"/>
@@ -5158,6 +5158,8 @@ Tm90ZToQIA
                                 <exclude reference="g0i-Sj-JtG"/>
                                 <exclude reference="oZS-Vv-avf"/>
                                 <exclude reference="oty-Ls-h9j"/>
+                                <exclude reference="9T5-jf-UjA"/>
+                                <exclude reference="cBn-Uq-mtH"/>
                                 <exclude reference="GdE-8g-w8B"/>
                                 <exclude reference="HlK-dS-0rt"/>
                                 <exclude reference="iCK-6K-tLW"/>
@@ -5188,8 +5190,6 @@ Tm90ZToQIA
                                 <exclude reference="hnd-de-enO"/>
                                 <exclude reference="o29-MJ-NhQ"/>
                                 <exclude reference="wTE-9P-fUo"/>
-                                <exclude reference="9T5-jf-UjA"/>
-                                <exclude reference="cBn-Uq-mtH"/>
                                 <exclude reference="F2k-AR-6CB"/>
                                 <exclude reference="Lw2-PI-86V"/>
                                 <exclude reference="Qo4-lM-C5o"/>
@@ -5908,7 +5908,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditContactCell" rowHeight="150" id="BG6-0b-M9f" customClass="EditContactCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditContactCell" rowHeight="150" id="BG6-0b-M9f" customClass="EditContactCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BG6-0b-M9f" id="HhT-KA-ySQ">
@@ -5916,37 +5916,37 @@ Tm90ZToQIA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-mA-19L" userLabel="SeeraterView1">
-                                                    <rect key="frame" x="150" y="30" width="168.5" height="1"/>
+                                                    <rect key="frame" x="103.5" y="30" width="168.5" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537878036499" green="0.87454748153686523" blue="0.87439841032028198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="IBJ-Sd-KOM"/>
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="732" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the new Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fnr-Ft-Ifi" customClass="CustomTextFeild">
-                                                    <rect key="frame" x="150" y="10" width="168.5" height="15"/>
+                                                    <rect key="frame" x="103.5" y="10" width="168.5" height="15"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSC-bz-kBb" customClass="CustomButton">
-                                                    <rect key="frame" x="204.5" y="71" width="59" height="23"/>
+                                                    <rect key="frame" x="158" y="71" width="59" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <state key="normal" image="confirm_btn"/>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the new Url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSL-3T-j8p" customClass="CustomTextFeild">
-                                                    <rect key="frame" x="214" y="35" width="104.5" height="15"/>
+                                                    <rect key="frame" x="167.5" y="35" width="104.5" height="15"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="242" translatesAutoresizingMaskIntoConstraints="NO" id="DL8-al-K01" userLabel="SeeraterView2">
-                                                    <rect key="frame" x="150" y="55" width="168.5" height="1"/>
+                                                    <rect key="frame" x="103.5" y="55" width="168.5" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537879999995" green="0.87454748149999995" blue="0.87439841029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="paypal.me/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4J-H9-L6b" customClass="CustomLabel">
-                                                    <rect key="frame" x="150" y="33" width="64" height="19"/>
+                                                    <rect key="frame" x="103.5" y="33" width="64" height="19"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -5980,7 +5980,7 @@ Tm90ZToQIA
                                             <outlet property="urlTxtFeild" destination="bSL-3T-j8p" id="Cko-bm-fNY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteContactCell" id="SHn-JH-Ukv" customClass="DeleteContactCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteContactCell" id="SHn-JH-Ukv" customClass="DeleteContactCell">
                                         <rect key="frame" x="0.0" y="178" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SHn-JH-Ukv" id="33P-EH-ZsK">
@@ -5988,16 +5988,16 @@ Tm90ZToQIA
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Are you sure want to delete this favourite?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tou-5b-Fae">
-                                                    <rect key="frame" x="93.5" y="0.0" width="281" height="17"/>
+                                                    <rect key="frame" x="47" y="0.0" width="281" height="17"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hr-R0-aKY">
-                                                    <rect key="frame" x="152" y="22" width="164" height="22"/>
+                                                    <rect key="frame" x="122" y="22" width="131" height="22"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAg-NG-BTg" userLabel="DeleteButtonNo">
-                                                            <rect key="frame" x="109" y="0.0" width="55" height="22"/>
+                                                            <rect key="frame" x="76" y="0.0" width="55" height="22"/>
                                                             <state key="normal" image="del_no"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m94-8h-Ujs" userLabel="DeleteButtonYes" customClass="CustomButton">
@@ -6372,6 +6372,8 @@ Tm90ZToQIA
                         <outlet property="locationSearchByBranch" destination="2x7-GY-JtX" id="gp1-o6-44Y"/>
                         <outlet property="mapMenuView" destination="lET-XQ-bju" id="P1W-fn-OBu"/>
                         <outlet property="mapView" destination="uTt-OZ-eIk" id="8MH-WN-oxh"/>
+                        <outlet property="myLocBtn" destination="bcc-2Y-n91" id="cX5-r5-LzO"/>
+                        <outlet property="searchView" destination="5sr-kO-cON" id="BFI-f9-hx9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39U-Pl-Fij" userLabel="First Responder" sceneMemberID="firstResponder"/>

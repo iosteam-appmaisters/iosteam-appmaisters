@@ -33,6 +33,8 @@
 @property (nonatomic,strong) IBOutlet GMSMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *mapMenuView;
 @property (weak, nonatomic) IBOutlet UITextField *MapTextFld;
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+@property (weak, nonatomic) IBOutlet UIButton *myLocBtn;
 
 #pragma mark - Select location from Menu
 @property (weak, nonatomic) IBOutlet UIButton *locationSearchByBranch;
@@ -51,6 +53,8 @@
 
 - (void)viewDidLoad
 {
+
+    
     [self createCurrentLocation];
 
 
@@ -64,6 +68,10 @@
     [super viewDidLoad];
 }
 -(void)viewWillAppear:(BOOL)animated{
+    if(isComingFromATM==NO){
+        self.searchView.hidden = YES ;
+        self.myLocBtn.hidden = YES ;
+    }
     [super viewWillAppear:animated];
 }
 
