@@ -106,6 +106,8 @@
 
 +(void)shouldHideTouchID:(id)delegate completionBlock:(void(^)(BOOL success))block;
 
++ (NSString *)GetOurIpAddress ;
++ (NSString *)deviceModel ;
 
 @end
 

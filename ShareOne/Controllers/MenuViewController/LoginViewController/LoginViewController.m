@@ -31,6 +31,8 @@
 
 #import "ContextMenuCell.h"
 #import "YALContextMenuTableView.h"
+#import "UtilitiesHelper.h"
+#import "DeviceUtil.h"
 
 static NSString *const menuCellIdentifier = @"rotationCell";
 
@@ -613,10 +615,19 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 //    return; //skipme
     NSLog(@"username : %@  password: %@",local_user.UserName,local_user.Password);
     
+    
+    NSString *deviceName = [NSString stringWithFormat:@"%@ (%@)",
+                            [DeviceUtil hardwareString], [[UIDevice currentDevice] systemVersion]];
+    
+    NSDictionary *memberAnalytics = @{@"AbsoluteUri": [Configuration getSSOBaseUrl],
+                                      @"IsMobile":@YES,
+                                      @"IsNsMobile":@YES,
+                                      @"UserHostAddress":[UtilitiesHelper GetOurIpAddress],
+                                      @"DeviceName":deviceName};
+    
     NSDictionary * loginParams = @{@"account":local_user.UserName,
                                    @"password":local_user.Password,
-                                   @"IsMobile":@YES,
-                                   @"IsNsMobile":@YES};
+                                   @"MemberAnalytics":memberAnalytics};
     
     [User getUserWithParam:loginParams delegate:weakSelf completionBlock:^(User *user) {
         

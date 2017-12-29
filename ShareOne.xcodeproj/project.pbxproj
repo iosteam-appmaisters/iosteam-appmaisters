@@ -159,6 +159,7 @@
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
 		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
 		6BD433DB1D8C09C30067515A /* po.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* po.plist */; };
+		8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */; };
 		9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */; };
 		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
 		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
@@ -463,6 +464,8 @@
 		6BD405F51D8307DF00358036 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		6BD433DA1D8C09C30067515A /* po.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = po.plist; sourceTree = "<group>"; };
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
+		8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
+		8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
 		9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuCell.h; sourceTree = "<group>"; };
 		9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMenuCell.m; sourceTree = "<group>"; };
 		9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContextMenuCell.xib; sourceTree = "<group>"; };
@@ -1177,6 +1180,8 @@
 				1D23999F1D913C8C00157320 /* ShareOneUtility.m */,
 				1D1415471DA4D3710048F8B1 /* SharedUser.h */,
 				1D1415481DA4D3710048F8B1 /* SharedUser.m */,
+				8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */,
+				8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1676,6 +1681,7 @@
 				1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */,
 				1D20C2821E4E110500D3FC93 /* SubmittedDepositReportViewController.m in Sources */,
 				1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */,
+				8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */,
 				1D20C28B1E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m in Sources */,
 				1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,

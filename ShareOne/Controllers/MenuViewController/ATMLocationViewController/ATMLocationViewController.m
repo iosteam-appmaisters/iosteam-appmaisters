@@ -27,7 +27,17 @@
 
 
 }
+
+@property (nonatomic,strong) NSArray *LocCopyArray ;
+
 @property (nonatomic,strong) IBOutlet GMSMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIView *mapMenuView;
+@property (weak, nonatomic) IBOutlet UITextField *MapTextFld;
+
+#pragma mark - Select location from Menu
+@property (weak, nonatomic) IBOutlet UIButton *locationSearchByBranch;
+@property (weak, nonatomic) IBOutlet UIButton *locationByAllBtn;
+@property (weak, nonatomic) IBOutlet UIButton *locationSearchByAtm;
 
 -(void)drawRoute;
 
@@ -48,6 +58,8 @@
     
     [self.view layoutIfNeeded];
 
+    _locationByAllBtn.selected = YES;
+   
 
     [super viewDidLoad];
 }
@@ -105,9 +117,11 @@
             return;
         }
         
-        [self getData];
+        [self getDataWithCurrentLocation];
         return;
     }
+    
+    
     
     for (Location * loc in _locationArr) {
         NSLog(@"%f %f",[[loc Gpslatitude]floatValue], [[loc Gpslongitude]floatValue]);
@@ -134,7 +148,21 @@
     [self createGoogleMapMarker:_mapView];
     
 }
--(void)getData{
+
+#pragma mark - Web Requests
+
+-(void)getDataWithZip:(NSString *)zip {
+    NSDictionary *resultsWithZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"50",@"maxResults",zip, @"zip", nil];
+    [self getData:resultsWithZip];
+}
+
+-(void)getDataWithCurrentLocation {
+    NSDictionary *resultsWithLatLon =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"50",@"maxResults",lat,@"latitude",lon,@"longitude", nil];
+    
+    [self getData:resultsWithLatLon];
+}
+
+-(void)getData:(NSDictionary *)dict{
     
     __weak ATMLocationViewController *weakSelf = self;
     
@@ -145,7 +173,7 @@
 //    
 //    NSDictionary *searchByCoordinate =[NSDictionary dictionaryWithObjectsAndKeys:@"34.104369",@"latitude",@"117.573459",@"longitude", nil];
 //    
-    NSDictionary *maxResultsNRadiousNZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"50",@"maxResults",lat,@"latitude",lon,@"longitude", nil];
+    NSDictionary *maxResultsNRadiousNZip = dict ;
      
 //    @"A",@"loctype"
     
@@ -202,6 +230,9 @@
         else {
             if([locations count]>0){
                 weakSelf.locationArr=locations;
+                
+                self.LocCopyArray = [[NSArray alloc] initWithArray:self.locationArr];
+                
                 Location *objLocation= _locationArr[0];
                 float lat_local=[[objLocation latitude] floatValue];
                 float lon_local=[[objLocation longitude] floatValue];
@@ -225,9 +256,14 @@
  
 }
 
+#pragma mark - Drawing Methods
+
 -(void)createGoogleMapMarker:(GMSMapView *)mapView
 {
     // Creates a marker in the center of the map.
+    
+    GMSMutablePath *path = [GMSMutablePath path];
+
     for(int count=0; count<[_locationArr count]; count++){
         
 //        NSArray *latlongArr=[[_locationArr objectAtIndex:count] componentsSeparatedByString:@","];
@@ -281,6 +317,8 @@
             markerSnippet =[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.Country];
         }
         
+        [path addCoordinate: marker.position];
+        
         if (!(lat_local == 0.0) || !(lon_local == 0.0)){
             
             
@@ -291,6 +329,10 @@
         if(_showMyLocationOnly)
             break;
     }
+    
+    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
+    [mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds]];
+
     
 }
 
@@ -515,6 +557,86 @@
     [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
     
     self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objHomeViewController,nil];
+}
+
+
+#pragma mark - IBActions for Zip Search
+
+- (IBAction)mapMenuButtonAction:(id)sender {
+    
+    if (_mapMenuView.isHidden) {
+        _mapMenuView.hidden = false;
+    }
+    else
+    {
+        _mapMenuView.hidden = YES;
+    }
+}
+
+
+- (IBAction)searchLocationButtonAction:(id)sender {
+    NSString *inputZip = self.MapTextFld.text ;
+    [self getDataWithZip:inputZip];
+    
+    [self.MapTextFld resignFirstResponder];
+    
+}
+
+-(IBAction)SelectLocationTypeFromMenu:(id)sender
+{
+    UIButton* selectedBtn = sender;
+    NSString *filterInput = @"" ;
+    
+    // All Branches & ATMS
+    if (selectedBtn.tag == 1) {
+        _locationByAllBtn.selected = YES;
+        _locationSearchByBranch.selected = false;
+        _locationSearchByAtm.selected = false;
+        filterInput = @"" ;
+    }
+    // Only Branches
+    else  if (selectedBtn.tag == 2) {
+        
+        _locationByAllBtn.selected = false;
+        _locationSearchByBranch.selected = YES;
+        _locationSearchByAtm.selected = false;
+        filterInput = @"S" ;
+       
+        
+    }
+    // Only ATMS
+    else if (selectedBtn.tag == 3) {
+        
+        _locationByAllBtn.selected = false;
+        _locationSearchByBranch.selected = false;
+        _locationSearchByAtm.selected = YES;
+        filterInput = @"A" ;
+    }
+    
+    
+    if([filterInput isEqualToString:@""]==NO){
+        NSString *predString = [NSString stringWithFormat:@"(locatortype == '%@')", filterInput];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predString];
+        //NSPredicate *predicate = [NSPredicate predicateWithFormat:predString, filterInput];
+        self.locationArr = nil ;
+        
+        NSArray *tmpArr = [self.LocCopyArray filteredArrayUsingPredicate:predicate];
+        self.locationArr = [[NSArray alloc] initWithArray:tmpArr];
+    }
+    else {
+        self.locationArr = nil ;
+        self.locationArr = [[NSArray alloc] initWithArray:self.LocCopyArray];
+    }
+
+    
+    [self.mapView clear];
+    [self initGoogleMap];
+    
+    _mapMenuView.hidden = YES;
+}
+
+- (IBAction)currentLocationBtnTapped:(id)sender {
+    [self getDataWithCurrentLocation];
 }
 
 @end

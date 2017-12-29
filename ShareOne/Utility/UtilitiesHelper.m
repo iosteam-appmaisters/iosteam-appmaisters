@@ -5,6 +5,8 @@
 //
 //
 
+
+
 #import "UtilitiesHelper.h"
 #import "Services.h"
 #import "ConstantsShareOne.h"
@@ -15,6 +17,20 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "User.h"
 #import "ShareOneUtility.h"
+
+
+#include <ifaddrs.h>
+#include <arpa/inet.h>
+#include <net/if.h>
+
+#import <sys/utsname.h>
+
+#define IOS_CELLULAR    @"pdp_ip0"
+#define IOS_WIFI        @"en0"
+//#define IOS_VPN       @"utun0"
+#define IP_ADDR_IPv4    @"ipv4"
+#define IP_ADDR_IPv6    @"ipv6"
+
 
 @implementation UtilitiesHelper
 {
@@ -1103,6 +1119,41 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
         // Remove this if you are on a Deployment Target of iOS6 or OSX 10.8 and above
         _timer = nil;
     }
+}
+
+
+// Get IP Address
++ (NSString *)GetOurIpAddress {
+    NSString *address = @"error";
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    int success = 0;
+    // retrieve the current interfaces - returns 0 on success
+    success = getifaddrs(&interfaces);
+    if (success == 0) {
+        // Loop through linked list of interfaces
+        temp_addr = interfaces;
+        while(temp_addr != NULL) {
+            if(temp_addr->ifa_addr->sa_family == AF_INET) {
+                // Check if interface is en0 which is the wifi connection on the iPhone
+                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+                    // Get NSString from C String
+                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+                }
+            }
+            temp_addr = temp_addr->ifa_next;
+        }
+    }
+    // Free memory
+    freeifaddrs(interfaces);
+    return address;
+}
+
++ (NSString *)deviceModel {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    
+    return [NSString stringWithCString: systemInfo.machine encoding: NSUTF8StringEncoding];
 }
 
 @end
