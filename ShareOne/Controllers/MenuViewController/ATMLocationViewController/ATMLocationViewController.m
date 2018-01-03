@@ -160,12 +160,12 @@
 #pragma mark - Web Requests
 
 -(void)getDataWithZip:(NSString *)zip {
-    NSDictionary *resultsWithZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"50",@"maxResults",zip, @"zip", nil];
+    NSDictionary *resultsWithZip =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"100",@"maxResults",zip, @"zip", nil];
     [self getData:resultsWithZip];
 }
 
 -(void)getDataWithCurrentLocation {
-    NSDictionary *resultsWithLatLon =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"50",@"maxResults",lat,@"latitude",lon,@"longitude", nil];
+    NSDictionary *resultsWithLatLon =[NSDictionary dictionaryWithObjectsAndKeys:@"20",@"maxRadius",@"100",@"maxResults",lat,@"latitude",lon,@"longitude", nil];
     
     [self getData:resultsWithLatLon];
 }
