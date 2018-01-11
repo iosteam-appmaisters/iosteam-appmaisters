@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -28,7 +28,7 @@
                             <state key="normal" title="Button"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-fb-Yxo">
-                            <rect key="frame" x="45" y="6" width="488" height="18"/>
+                            <rect key="frame" x="45" y="6" width="468" height="18"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0a-Sy-dgP">
-                            <rect key="frame" x="543" y="6" width="37" height="18"/>
+                            <rect key="frame" x="523" y="6" width="37" height="18"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -45,11 +45,20 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-dollar" translatesAutoresizingMaskIntoConstraints="NO" id="lnh-gF-mll">
                             <rect key="frame" x="20" y="5" width="20" height="20"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4m-CO-wog">
+                            <rect key="frame" x="573" y="4" width="19" height="22"/>
+                            <state key="normal" image="qb_white_circle"/>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qb_plus_icon" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-fo-OLd" customClass="CustomImageView">
+                            <rect key="frame" x="577.5" y="10.5" width="9" height="9"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.61568627450000002" green="0.08235294118" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerX" secondItem="TCM-oh-32N" secondAttribute="centerX" id="3Ln-fl-fNC"/>
-                        <constraint firstAttribute="trailing" secondItem="i0a-Sy-dgP" secondAttribute="trailing" constant="20" id="Tp0-6z-FeY"/>
+                        <constraint firstItem="WO8-fo-OLd" firstAttribute="centerX" secondItem="i4m-CO-wog" secondAttribute="centerX" id="C4V-D0-uEd"/>
+                        <constraint firstItem="i4m-CO-wog" firstAttribute="centerY" secondItem="i0a-Sy-dgP" secondAttribute="centerY" id="IKo-jo-nbZ"/>
+                        <constraint firstAttribute="trailing" secondItem="i0a-Sy-dgP" secondAttribute="trailing" constant="40" id="Tp0-6z-FeY"/>
                         <constraint firstItem="AWE-fb-Yxo" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="V4m-lA-Zsv"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="leading" secondItem="TCM-oh-32N" secondAttribute="leading" constant="20" id="WBa-gO-FBB"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="aOP-mf-BEJ"/>
@@ -57,6 +66,8 @@
                         <constraint firstItem="i0a-Sy-dgP" firstAttribute="leading" secondItem="AWE-fb-Yxo" secondAttribute="trailing" constant="10" id="dmR-Se-bDq"/>
                         <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="oLq-Eg-JC7"/>
                         <constraint firstItem="i0a-Sy-dgP" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="yKJ-Qd-ae4"/>
+                        <constraint firstItem="WO8-fo-OLd" firstAttribute="centerY" secondItem="i4m-CO-wog" secondAttribute="centerY" id="yoq-ig-AyP"/>
+                        <constraint firstAttribute="trailing" secondItem="i4m-CO-wog" secondAttribute="trailing" constant="8" id="z30-DB-6Jz"/>
                     </constraints>
                 </view>
             </subviews>
@@ -71,6 +82,9 @@
             <connections>
                 <outlet property="contentView" destination="TCM-oh-32N" id="VpP-bn-P8A"/>
                 <outlet property="headerBtn" destination="bdx-o0-2Gu" id="etJ-P1-fX9"/>
+                <outlet property="labelTrailing" destination="Tp0-6z-FeY" id="fHp-LY-Stp"/>
+                <outlet property="plusMinusIcon" destination="WO8-fo-OLd" id="dno-AP-eLa"/>
+                <outlet property="plusMinusIconBg" destination="i4m-CO-wog" id="ZAZ-JK-1vf"/>
                 <outlet property="sectionAmountLbl" destination="i0a-Sy-dgP" id="XtT-Ih-i81"/>
                 <outlet property="sectionImgVew" destination="lnh-gF-mll" id="BXP-bu-Ke1"/>
                 <outlet property="sectionTitleLbl" destination="AWE-fb-Yxo" id="nNW-JN-ipi"/>
@@ -79,6 +93,7 @@
     </objects>
     <resources>
         <image name="icon-dollar" width="20" height="20"/>
+        <image name="qb_plus_icon" width="9" height="9"/>
+        <image name="qb_white_circle" width="19" height="19"/>
     </resources>
 </document>
-

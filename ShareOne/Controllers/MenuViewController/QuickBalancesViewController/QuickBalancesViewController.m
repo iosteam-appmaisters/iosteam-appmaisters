@@ -80,8 +80,6 @@
         
     }];
 
-//    _qbArr = [ShareOneUtility getDummyDataForQB];
-    
     self.qbTblView.allowMultipleSectionsOpen = NO;
     [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
 }
@@ -139,48 +137,29 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     SuffixInfo *objQuickBalances =_qbArr[section];
-//    NSDictionary *objSuffixInfo =_qbArr[section];
-
-    
-    /*
-    
-    QBHeaderCell *objQBHeaderCell = (QBHeaderCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([QBHeaderCell class])];
-    [objQBHeaderCell.sectionTitleLbl setText:[dict valueForKey:@"section_title"]];
-    [objQBHeaderCell.sectionAmountLbl setText:[dict valueForKey:@"section_amt"]];
-    return (UIView *)objQBHeaderCell;
-     */
-    
-
     
     QBFooterView *objFZAccordionTableViewHeaderView =(QBFooterView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kQBHeaderViewReuseIdentifier];
+    
+    SuffixInfo *obj = _qbArr[section];
+    
+    if([obj.transArray count]<=0){
+        objFZAccordionTableViewHeaderView.plusMinusIcon.hidden = YES;
+        objFZAccordionTableViewHeaderView.plusMinusIconBg.hidden = YES;
+        objFZAccordionTableViewHeaderView.labelTrailing.constant = 10;
+        [objFZAccordionTableViewHeaderView layoutIfNeeded];
+    }
+    else {
+        objFZAccordionTableViewHeaderView.plusMinusIcon.hidden = NO;
+        objFZAccordionTableViewHeaderView.plusMinusIconBg.hidden = NO;
+        objFZAccordionTableViewHeaderView.labelTrailing.constant = 40;
+        [objFZAccordionTableViewHeaderView layoutIfNeeded];
+    }
     
     StyleValuesObject *objStyleValuesObject= [Configuration getStyleValueContent];
 
     
     [objFZAccordionTableViewHeaderView.contentView setBackgroundColor:[UIColor colorWithHexString:objStyleValuesObject.buttoncolortop]];
 
-//    [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
-    
-    
-    /* Condtion to check whether top septator view appears or not
-     ** If(section==0) - Show seperator view as it shows in mockup
-     **else -          - Hide seperator view
-     */
-    
-    /*
-    if(section==0)
-        [objFZAccordionTableViewHeaderView.topSeperatorView setHidden:FALSE];
-    else
-        [objFZAccordionTableViewHeaderView.topSeperatorView setHidden:TRUE];
-     */
-    
-    
-    /* Condtion to check whether categories has sub categories or not
-     ** If(TRUE)    - Show right arrow in the section view
-     **else -       - Hide right arrow view
-     */
-    
-    
     if(objQuickBalances.Descr)
         [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:objQuickBalances.Descr];
     else
@@ -194,12 +173,6 @@
     
     [objFZAccordionTableViewHeaderView.headerBtn setTag:section];
     
-//    [objFZAccordionTableViewHeaderView.headerBtn addTarget:self action:@selector(HeaderButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-//    [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[objSuffixInfo valueForKey:@"section_title"]];
-//    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[NSString stringWithFormat:@"%@",[objSuffixInfo valueForKey:@"section_amt"]]];
-
-
     [objFZAccordionTableViewHeaderView.sectionImgVew setImage:[UIImage imageNamed:@"icon-dollar"]];
     return (UIView *)objFZAccordionTableViewHeaderView;
 }
@@ -234,17 +207,13 @@
 #pragma mark - <FZAccordionTableViewDelegate> -
 
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    NSLog(@"willOpenSection");
-//    QuickBalances *obj = _qbArr[section];
-//    
-//    if([obj.transArr count]<=0){
-//        [self noTransaction];
-//    }
+
+    QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
+    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_minus_icon"]];
 
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//        NSLog(@"didOpenSection");
     SuffixInfo *obj = _qbArr[section];
     
     if([obj.transArray count]<=0){
@@ -252,58 +221,34 @@
     }
 }
 
+
+
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//        NSLog(@"willCloseSection");
-//    QuickBalances *obj = _qbArr[section];
-//    
-//    if([obj.transArr count]<=0){
-//        [self noTransaction];
-//    }
+
+    QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
+    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_plus_icon"]];
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//        NSLog(@"didCloseSection");
+    
 }
 
 - (void)getQTForSelectedSection:(int)section{
     
-//    QuickBalances *obj = _qbArr[section];
-    
     __weak QuickBalancesViewController *weakSelf = self;
-//    NSString *SuffixID = [NSString stringWithFormat:@"%d",[obj.SuffixID intValue]];
     NSString *SuffixID = [NSString stringWithFormat:@"%d",0];
 
-    
-//    if(!obj.transArr)
     {
         
         [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",@"0",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
             
-//            [self applyURLSessionOnReq:(NSMutableURLRequest *)user];
-            
-//            if(!obj.transArr){
-//                obj.transArr= [[NSMutableArray alloc] init];
-//                
-//                obj.transArr=[(NSMutableArray *)user mutableCopy];
-//                
-//                if([obj.transArr count]>0){
-//                    [_qbTblView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
-//                    
-//                }
-//                else{
-//                    [self noTransaction];
-//                }
-//                
-//            }
+
             
         } failureBlock:^(NSError *error) {
             
         }];
     }
     
-//    else if ([obj.transArr count]<=0){
-//        [self noTransaction];
-//    }
     
 }
 -(void)noTransaction{
@@ -316,11 +261,6 @@
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: self delegateQueue: nil];
     NSURLSessionDataTask * task = [defaultSession dataTaskWithRequest:req];
 
-    
-//    NSURLSessionDataTask *task = [defaultSession dataTaskWithRequest:req completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-//        NSLog(@"response status code: %ld", (long)[httpResponse statusCode]);
-//    }];
     [task resume];
 
 }
@@ -338,14 +278,6 @@
     NSLog(@"%@",ErrorResponse);
 
 }
-
-//- (void) URLSession:(NSURLSession *)session
-//           dataTask:(NSURLSessionDataTask *)dataTask
-// didReceiveResponse:(NSURLResponse *)response
-//  completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
-//{
-//    completionHandler(NSURLSessionResponseAllow);
-//}
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
     NSLog(@"didCompleteWithError");

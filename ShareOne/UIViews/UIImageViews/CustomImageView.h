@@ -10,4 +10,6 @@
 
 @interface CustomImageView : UIImageView
 
+-(void)setCustomImage:(UIImage*)theImage;
+
 @end

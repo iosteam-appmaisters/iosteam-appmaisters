@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "FZAccordionTableView.h"
+#import "CustomImageView.h"
 
 static const CGFloat kDefaultAccordionHeaderViewHeight = 25.0;
 static NSString *const kQBHeaderViewReuseIdentifier = @"kQBHeaderViewReuseIdentifier";
 
 
 @interface QBFooterView : FZAccordionTableViewHeaderView
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelTrailing;
 
+@property (weak, nonatomic) IBOutlet CustomImageView *plusMinusIcon;
+
+@property (weak, nonatomic) IBOutlet UIButton *plusMinusIconBg;
 
 @property (nonatomic,weak)IBOutlet UIImageView *sectionImgVew;
 

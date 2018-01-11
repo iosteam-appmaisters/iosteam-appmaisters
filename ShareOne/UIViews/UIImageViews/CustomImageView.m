@@ -52,5 +52,15 @@
     
 }
 
+-(void)setCustomImage:(UIImage*)theImage {
+    
+    StyleValuesObject *obj = [Configuration getStyleValueContent];
+    
+    UIImage * image = theImage;
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self setImage:image];
+    [self setTintColor:[UIColor colorWithHexString:obj.buttoncolortop]];
+}
+
 
 @end

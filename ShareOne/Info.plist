@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>12</string>
+	<string>13</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
@@ -48,13 +48,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) has the feature of check submission. We are using mobile camera to take a picture of check for deposit via OCR technology.</string>
+	<string>This application has the feature of check submission. We are using mobile camera to take a picture of check for deposit via OCR technology.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This application requires access to your current location to show nearby ATMs and Branch Locations.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires access to your current location to show nearby ATMs and Branch Locations.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) has the feature of check submission. We are using photo gallery to send a picture of check for deposit via OCR technology.</string>
+	<string>This application has the feature of check submission. We are using photo gallery to send a picture of check for deposit via OCR technology.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
