@@ -17,28 +17,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="QBFooterView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="35"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCM-oh-32N">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="35"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9di-dU-KAL">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
+                            <color key="backgroundColor" red="0.65838378667831421" green="0.12611868977546692" blue="0.14819619059562683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdx-o0-2Gu">
                             <rect key="frame" x="277" y="0.0" width="46" height="30"/>
                             <state key="normal" title="Button"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-fb-Yxo">
-                            <rect key="frame" x="45" y="6" width="468" height="18"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <rect key="frame" x="20" y="10" width="500.5" height="14"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular-widthClass=regular">
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0a-Sy-dgP">
-                            <rect key="frame" x="523" y="6" width="37" height="18"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <rect key="frame" x="530.5" y="10" width="29.5" height="14"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -46,26 +50,30 @@
                             <rect key="frame" x="20" y="5" width="20" height="20"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4m-CO-wog">
-                            <rect key="frame" x="573" y="4" width="19" height="22"/>
+                            <rect key="frame" x="573" y="5.5" width="19" height="22"/>
                             <state key="normal" image="qb_white_circle"/>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qb_plus_icon" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-fo-OLd" customClass="CustomImageView">
-                            <rect key="frame" x="577.5" y="10.5" width="9" height="9"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qb_down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-fo-OLd" customClass="CustomImageView">
+                            <rect key="frame" x="577.5" y="14" width="9" height="5"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.61568627450000002" green="0.08235294118" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerX" secondItem="TCM-oh-32N" secondAttribute="centerX" id="3Ln-fl-fNC"/>
+                        <constraint firstItem="9di-dU-KAL" firstAttribute="centerX" secondItem="TCM-oh-32N" secondAttribute="centerX" id="3fL-OY-4Gc"/>
+                        <constraint firstItem="AWE-fb-Yxo" firstAttribute="centerY" secondItem="9di-dU-KAL" secondAttribute="centerY" id="5I9-1f-xYT"/>
                         <constraint firstItem="WO8-fo-OLd" firstAttribute="centerX" secondItem="i4m-CO-wog" secondAttribute="centerX" id="C4V-D0-uEd"/>
+                        <constraint firstItem="9di-dU-KAL" firstAttribute="top" secondItem="TCM-oh-32N" secondAttribute="top" id="CxN-yb-0A7"/>
                         <constraint firstItem="i4m-CO-wog" firstAttribute="centerY" secondItem="i0a-Sy-dgP" secondAttribute="centerY" id="IKo-jo-nbZ"/>
+                        <constraint firstAttribute="bottom" secondItem="9di-dU-KAL" secondAttribute="bottom" constant="1" id="OwX-iV-dzk"/>
                         <constraint firstAttribute="trailing" secondItem="i0a-Sy-dgP" secondAttribute="trailing" constant="40" id="Tp0-6z-FeY"/>
-                        <constraint firstItem="AWE-fb-Yxo" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="V4m-lA-Zsv"/>
+                        <constraint firstItem="9di-dU-KAL" firstAttribute="width" secondItem="TCM-oh-32N" secondAttribute="width" id="Vdy-zB-InK"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="leading" secondItem="TCM-oh-32N" secondAttribute="leading" constant="20" id="WBa-gO-FBB"/>
-                        <constraint firstItem="lnh-gF-mll" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="aOP-mf-BEJ"/>
-                        <constraint firstItem="AWE-fb-Yxo" firstAttribute="leading" secondItem="lnh-gF-mll" secondAttribute="trailing" constant="5" id="bx4-gP-LFz"/>
+                        <constraint firstItem="lnh-gF-mll" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" constant="-2.5" id="aOP-mf-BEJ"/>
                         <constraint firstItem="i0a-Sy-dgP" firstAttribute="leading" secondItem="AWE-fb-Yxo" secondAttribute="trailing" constant="10" id="dmR-Se-bDq"/>
-                        <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="oLq-Eg-JC7"/>
-                        <constraint firstItem="i0a-Sy-dgP" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" id="yKJ-Qd-ae4"/>
+                        <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" constant="-2.5" id="oLq-Eg-JC7"/>
+                        <constraint firstItem="i0a-Sy-dgP" firstAttribute="centerY" secondItem="9di-dU-KAL" secondAttribute="centerY" id="quB-jj-11b"/>
+                        <constraint firstItem="AWE-fb-Yxo" firstAttribute="leading" secondItem="TCM-oh-32N" secondAttribute="leading" constant="20" id="rP5-eQ-xsN"/>
                         <constraint firstItem="WO8-fo-OLd" firstAttribute="centerY" secondItem="i4m-CO-wog" secondAttribute="centerY" id="yoq-ig-AyP"/>
                         <constraint firstAttribute="trailing" secondItem="i4m-CO-wog" secondAttribute="trailing" constant="8" id="z30-DB-6Jz"/>
                     </constraints>
@@ -80,6 +88,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bgView" destination="9di-dU-KAL" id="r6O-XJ-1Dh"/>
                 <outlet property="contentView" destination="TCM-oh-32N" id="VpP-bn-P8A"/>
                 <outlet property="headerBtn" destination="bdx-o0-2Gu" id="etJ-P1-fX9"/>
                 <outlet property="labelTrailing" destination="Tp0-6z-FeY" id="fHp-LY-Stp"/>
@@ -93,7 +102,7 @@
     </objects>
     <resources>
         <image name="icon-dollar" width="20" height="20"/>
-        <image name="qb_plus_icon" width="9" height="9"/>
+        <image name="qb_down_arrow" width="9" height="5"/>
         <image name="qb_white_circle" width="19" height="19"/>
     </resources>
 </document>

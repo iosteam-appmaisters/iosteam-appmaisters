@@ -116,6 +116,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QBDetailsCell *cell =  (QBDetailsCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([QBDetailsCell class]) forIndexPath:indexPath];
+    cell.iconImageVew.hidden = YES;
     if(indexPath.row%2==0){
         [cell.contentView setBackgroundColor:DEFAULT_COLOR_WHITE];
     }
@@ -155,10 +156,14 @@
         [objFZAccordionTableViewHeaderView layoutIfNeeded];
     }
     
+    objFZAccordionTableViewHeaderView.plusMinusIconBg.tag = section;
+    [objFZAccordionTableViewHeaderView.plusMinusIconBg addTarget:self action:@selector(plusMinusTapped:) forControlEvents:UIControlEventTouchUpInside];
+    objFZAccordionTableViewHeaderView.sectionImgVew.hidden = YES;
+    
     StyleValuesObject *objStyleValuesObject= [Configuration getStyleValueContent];
 
     
-    [objFZAccordionTableViewHeaderView.contentView setBackgroundColor:[UIColor colorWithHexString:objStyleValuesObject.buttoncolortop]];
+    [objFZAccordionTableViewHeaderView.bgView setBackgroundColor:[UIColor colorWithHexString:objStyleValuesObject.buttoncolortop]];
 
     if(objQuickBalances.Descr)
         [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:objQuickBalances.Descr];
@@ -180,10 +185,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
+-(void)plusMinusTapped:(UIButton*)sender {
+    
+    [_qbTblView toggleSection:sender.tag];
+}
+
 -(NSString *)getFormattedAmount:(NSNumber*)value {
     
     if (value == nil){
-        return @"$ 0.00";
+        return @"$0.00";
     }
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -197,7 +207,7 @@
 
     NSString * last = [[[NSString stringWithFormat:@"%.02f",value.floatValue] componentsSeparatedByString:@"."]lastObject];
     
-    NSString * final = [NSString stringWithFormat:@"$ %@%@",formattedString,last];
+    NSString * final = [NSString stringWithFormat:@"$%@%@",formattedString,last];
     
     return final;
     
@@ -209,7 +219,7 @@
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 
     QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
-    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_minus_icon"]];
+    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_up_arrow"]];
 
 }
 
@@ -226,7 +236,7 @@
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 
     QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
-    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_plus_icon"]];
+    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_down_arrow"]];
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {

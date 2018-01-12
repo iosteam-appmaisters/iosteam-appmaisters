@@ -15,6 +15,7 @@ static NSString *const kQBHeaderViewReuseIdentifier = @"kQBHeaderViewReuseIdenti
 
 
 @interface QBFooterView : FZAccordionTableViewHeaderView
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelTrailing;
 
 @property (weak, nonatomic) IBOutlet CustomImageView *plusMinusIcon;
@@ -31,6 +32,7 @@ static NSString *const kQBHeaderViewReuseIdentifier = @"kQBHeaderViewReuseIdenti
 
 @property (nonatomic,weak)IBOutlet UIView *contentView;
 
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
 
 
