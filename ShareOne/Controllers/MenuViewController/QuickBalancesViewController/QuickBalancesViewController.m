@@ -173,7 +173,7 @@
     
     
     [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:
-     [self getFormattedAmount:objQuickBalances.Balance]
+     [self getFormattedAmount:objQuickBalances.Available]
      ];
     
     [objFZAccordionTableViewHeaderView.headerBtn setTag:section];
