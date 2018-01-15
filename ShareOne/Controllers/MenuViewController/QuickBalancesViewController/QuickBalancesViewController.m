@@ -130,7 +130,18 @@
     
     [cell.tranTitleLbl setText:objQuickTransaction.Tran];
     [cell.tranDateLbl setText:objQuickTransaction.Eff];
-    [cell.tranAmountLbl setText:[self getFormattedAmount:@([objQuickTransaction.Amt floatValue])]];
+    
+    NSString * amount = [self getFormattedAmount:@([objQuickTransaction.Amt floatValue])];
+    
+    [cell.tranAmountLbl setText:amount];
+    
+    NSString * dollarRemovedString = [amount stringByReplacingOccurrencesOfString:@"$" withString:@""];
+    if (dollarRemovedString.floatValue < 0.00){
+        cell.tranAmountLbl.textColor = [UIColor redColor];
+    }
+    else {
+        cell.tranAmountLbl.textColor = [UIColor blackColor];
+    }
     
     return cell;
 }
