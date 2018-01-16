@@ -1018,8 +1018,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 -(IBAction)pinResetButtonClicked:(id)sender{
     
-//    _isComingAfterPressedOpenUrlButton = TRUE;
-
     BOOL isFromForgotUserName =FALSE;
     UIButton *btn = (UIButton *)sender;
     if(btn.tag==111){
@@ -1027,7 +1025,10 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     }
     else{
         isFromForgotUserName=FALSE;
+//        [self openForgotPasswordInWebView];
+//        return;
     }
+    
     if(!_objPinResetController){
         
         _objPinResetController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PinResetController class])];
@@ -1036,8 +1037,17 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         _objPinResetController.loginDelegate=self;
         [self presentViewController:_objPinResetController animated:YES completion:nil];
     }
+    
 }
 
+-(void)openForgotPasswordInWebView {
+    
+    WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
+    objWeblinksController.navTitle=@"Forgot Password";
+    NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:@"/Password/Forgot"];
+    objWeblinksController.webLink= urlString;
+    [self presentViewController:objWeblinksController animated:YES completion:nil];
+}
 
 -(void)moveViewUp{
     
