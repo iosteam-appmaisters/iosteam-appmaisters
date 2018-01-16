@@ -207,13 +207,16 @@
         return @"$0.00";
     }
     
+    NSLog(@"VALUE:: %@",value);
+    
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     NSString *groupingSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator];
     [formatter setGroupingSeparator:groupingSeparator];
     [formatter setGroupingSize:3];
     [formatter setAlwaysShowsDecimalSeparator:YES];
     [formatter setUsesGroupingSeparator:YES];
-
+    [formatter setRoundingMode:NSNumberFormatterRoundDown];
+    
     NSString *formattedString = [formatter stringFromNumber:value];
 
     NSString * last = [[[NSString stringWithFormat:@"%.02f",value.floatValue] componentsSeparatedByString:@"."]lastObject];
