@@ -1044,7 +1044,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
     objWeblinksController.navTitle=@"Forgot Password";
-    NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:@"/Password/Forgot"];
+    NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:[Configuration getClientSettingsContent].forgotpassword];
     objWeblinksController.webLink= urlString;
     [self presentViewController:objWeblinksController animated:YES completion:nil];
 }

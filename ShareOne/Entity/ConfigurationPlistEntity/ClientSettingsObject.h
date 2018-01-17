@@ -28,6 +28,7 @@
 //@property (nonatomic,strong) NSString *preprodbasewebviewurl;
 
 @property (nonatomic,strong) NSString *basewebviewurl;
+@property (nonatomic,strong) NSString *forgotpassword;
 
 
 
