@@ -1025,8 +1025,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     }
     else{
         isFromForgotUserName=FALSE;
-        [self openForgotPasswordInWebView];
-        return;
+//        [self openForgotPasswordInWebView];
+//        return;
     }
     
     if(!_objPinResetController){
@@ -1047,11 +1047,15 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     if ([Configuration getClientSettingsContent].forgotpassword != nil){
         NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:[Configuration getClientSettingsContent].forgotpassword];
         objWeblinksController.webLink= urlString;
+        NSLog(@"Forgot Password URL: %@",urlString);
     }
     else {
         NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:@"/Password/Forgot"];
         objWeblinksController.webLink= urlString;
+        NSLog(@"Forgot Password URL: %@",urlString);
+
     }
+    
     [self presentViewController:objWeblinksController animated:YES completion:nil];
 }
 
