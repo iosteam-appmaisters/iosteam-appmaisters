@@ -126,8 +126,15 @@
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
@@ -225,11 +232,19 @@
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
     [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
-    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
     
     [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
@@ -237,7 +252,7 @@
     
     [params setValue:[ShareOneUtility getAccountValueWithSuffix:nil] forKey:@"account"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:nil] forKey:@"MAC"];
+    [params setValue:calculatedMac forKey:@"MAC"];
     
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_ALL_DEP_LIST] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
@@ -255,11 +270,19 @@
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
     [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
-    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
     
     [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
@@ -267,7 +290,7 @@
     
     [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+    [params setValue:calculatedMac forKey:@"MAC"];
     
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_DEP_LIST] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
@@ -286,11 +309,19 @@
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
     [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
-    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
     
     [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
     
@@ -298,7 +329,7 @@
     
     [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+    [params setValue:calculatedMac forKey:@"MAC"];
     
     [params setValue:@"124958" forKey:@"deposit_id"];
     
@@ -318,8 +349,15 @@
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
 
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         
         if(success){
@@ -365,11 +403,19 @@
     
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
     [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
-    [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
 
     [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
 
@@ -381,7 +427,7 @@
     if([_ammountTxtFeild.text floatValue]>0.0)
         [params setValue:_ammountTxtFeild.text forKey:@"amount"];
     
-    [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+    [params setValue:calculatedMac forKey:@"MAC"];
     [params setValue:[Configuration getVertifiRDCTestMode] forKey:@"mode"];
     [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
     
@@ -457,16 +503,24 @@
         
         [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
+        int currentTimeStamp = [ShareOneUtility getTimeStamp];
+        
+        NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+        
+        NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+        
+        NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+        
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
         [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
-        [params setValue:[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]] forKey:@"timestamp"];
+        [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
         [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
         [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
         [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
         [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
         [params setValue:_ammountTxtFeild.text forKey:@"amount"];
-        [params setValue:[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo] forKey:@"MAC"];
+        [params setValue:calculatedMac forKey:@"MAC"];
         [params setValue:[Configuration getVertifiRDCTestMode] forKey:@"mode"];
         [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
         
@@ -509,7 +563,15 @@
     
     __weak MobileDepositController *weakSelf = self;
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",[ShareOneUtility getTimeStamp]],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",[ShareOneUtility  getMacForVertifiForSuffix:_objSuffixInfo],@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_ACCEPTANCE] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_ACCEPTANCE] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         

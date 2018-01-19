@@ -851,14 +851,29 @@ NSLog(Y, Z);		\
 //    return @"Louis Uncommon";
 }
 
-+(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo{
-    
 
++(NSString*)getMacWithSuffix:(SuffixInfo*)objSuffixInfo currentTimeStamp:(int)timeStamp {
+    
+    NSLog(@"Current Timestamp (During): %d",timeStamp);
+    
+    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[Configuration getVertifiRequesterKey],[self getSessionnKey],timeStamp,[Configuration getVertifiRouterKey],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
+    
+    NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString * macAdd = [self calculateHMACMD5:data];
+    NSLog(@"==== CALCULATED MAC ==== %@",macAdd);
+    return macAdd;
+    
+}
+
++(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo{
     NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[Configuration getVertifiRequesterKey],[self getSessionnKey],[self getTimeStamp],[Configuration getVertifiRouterKey],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
     
     NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
     
-    return  [self calculateHMACMD5:data];
+    NSString * macAdd = [self calculateHMACMD5:data];
+    NSLog(@"==== MAC ==== %@",macAdd);
+    return macAdd;
 }
 
 +(NSString *)getHMACSHAWithSignature:(NSString *)signature andEncoding:(NSStringEncoding )encoding AndKey:(NSString *)key{

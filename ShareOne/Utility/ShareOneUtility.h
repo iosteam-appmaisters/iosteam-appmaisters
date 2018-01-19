@@ -76,6 +76,8 @@
 
 //+(NSString *)getMacForVertifi;
 
++(NSString*)getMacWithSuffix:(SuffixInfo*)objSuffixInfo currentTimeStamp:(int)timeStamp;
+
 +(NSString *)getMacForVertifiForSuffix:(SuffixInfo *)objSuffixInfo;
 
 
