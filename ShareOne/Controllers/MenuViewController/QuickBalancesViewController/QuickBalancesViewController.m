@@ -103,7 +103,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30.0;
+    float height = 0.0;
+    if(APPC_IS_IPAD){
+        height = 50.0;
+    }
+    else{
+        height = 30.0;
+    }
+    return height;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
