@@ -30,7 +30,7 @@
 @property (nonatomic,strong) NSString *basewebviewurl;
 @property (nonatomic,strong) NSString *forgotpassword;
 
-
+@property (nonatomic,strong) NSString *allownotifications;
 
 @property (nonatomic,strong) NSString *vertifirdcsecretkey;
 @property (nonatomic,strong) NSString *vertifirdcrequestorkey;

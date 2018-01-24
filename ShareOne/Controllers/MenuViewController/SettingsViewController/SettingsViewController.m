@@ -32,6 +32,14 @@
         [_showOffersSwitch setHidden:FALSE];
         [_showOffersLbl setHidden:FALSE];
     }
+    
+    if ([config.allownotifications boolValue]) {
+        [_pushNotifSwitch setHidden:FALSE];
+    }
+    else {
+        [_pushNotifSwitch setHidden:TRUE];
+        
+    }
      
     
 }

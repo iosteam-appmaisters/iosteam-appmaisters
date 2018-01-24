@@ -310,7 +310,7 @@
     else
     {
         // 30% lossy!
-        [UIImageJPEGRepresentation(imageColor,0.3f) writeToFile:cacheFileColor atomically:NO];
+        [UIImageJPEGRepresentation(imageColor,0.6f) writeToFile:cacheFileColor atomically:NO];
     }
     return;
 }
