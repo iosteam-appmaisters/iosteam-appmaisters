@@ -106,18 +106,25 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
     [self loadLocalCacheOnView];
-//    [self updateDataByDefaultValues];
+    [self updateDataByDefaultValues];
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     [self initiateMenuOptions];
     
-    [self updateDataByDefaultValues];
+//    [self updateDataByDefaultValues];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)appGoingToBackgroundFromLogin{
+    NSLog(@"appGoingToBackgroundFromLogin");
+    [[ShareOneUtility shareUtitlities] cancelTimer];
+    
+    
 }
 
 -(void)loadLocalCacheOnView{
@@ -150,7 +157,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     [self loadLocalCacheOnView];
     
-    if(![ShareOneUtility getUserObject]){
+   /* if(![ShareOneUtility getUserObject]){
         
         NSLog(@"RETURN FROM USER OBJECT NOT SAVED");
         if([[SharedUser sharedManager] isLaunchFirstTime]){
@@ -202,8 +209,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     if([[SharedUser sharedManager] isLaunchFirstTime]){
         [[SharedUser sharedManager] setIsLaunchFirstTime:FALSE];
     }
+    */
     
-    /*
     if([ShareOneUtility getUserObject] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
         
         __weak LoginViewController *weakSelf = self;
@@ -282,7 +289,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     if([[SharedUser sharedManager] isLaunchFirstTime]){
         [[SharedUser sharedManager] setIsLaunchFirstTime:FALSE];
     }
-*/
+
 }
 
 

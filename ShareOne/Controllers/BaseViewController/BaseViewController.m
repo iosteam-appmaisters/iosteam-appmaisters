@@ -108,8 +108,8 @@
     [self addAdvertismentControllerOnBottomScreen];
     [self manageAds];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)manageAds{
@@ -126,8 +126,8 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)unSetDelegeteForAdsWebView:(BOOL)shouldDisabled{
@@ -605,14 +605,14 @@
 -(void)logoutOnGoingBackground{
     
     [self appGoingToBackground];
-//    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-//
-//    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
-//
-//    } failureBlock:^(NSError *error) {
-//
-//    }];
-//
+    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+
+    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
+
+    } failureBlock:^(NSError *error) {
+
+    }];
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
