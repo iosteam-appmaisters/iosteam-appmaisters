@@ -46,9 +46,9 @@
     _navBar.topItem.rightBarButtonItem = topRightButtonItem;
     
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
-
 }
+
+
 
 -(void)manageKeyboard{
     

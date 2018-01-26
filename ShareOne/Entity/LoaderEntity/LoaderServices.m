@@ -152,8 +152,6 @@
                         completionBlock:(void(^)(BOOL success,NSString *errorString))block
                            failureBlock:(void(^)(NSError* error))failBlock {
     
-    [ShareOneUtility saveDateForNSConfigAPI:nil];
-    
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     
     NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -218,8 +216,6 @@
                                queueArray:(NSArray*)requestArray
                           completionBlock:(void(^)(BOOL success,NSString *errorString))block
                              failureBlock:(void(^)(NSError* error))failBlock{
-    
-    [ShareOneUtility saveDateForNSConfigAPI:nil];
     
     NSString *authToken = [NSString stringWithFormat:@"%@ %@",dict[@"token_type"],dict[@"access_token"]];
     

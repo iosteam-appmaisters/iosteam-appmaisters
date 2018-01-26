@@ -105,15 +105,16 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [super viewWillAppear:animated];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+    
     [self loadLocalCacheOnView];
+    
     [self updateDataByDefaultValues];
+    
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     [self initiateMenuOptions];
-    
-//    [self updateDataByDefaultValues];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     

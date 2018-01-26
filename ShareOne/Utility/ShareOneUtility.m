@@ -1627,9 +1627,9 @@ NSLog(Y, Z);		\
 
 +(BOOL)shouldCallNSConfigServices{
     
-    
-    return NO ;
-    
+    if ([self getDateForNSConfigAPI] == nil){
+        return TRUE;
+    }
     BOOL flag = TRUE;
     NSLog(@"getDateForNSConfigAPI : %@   getCurrentDate:%@",[self getDateForNSConfigAPI],[self getCurrentDate]);
     if([[self getDateForNSConfigAPI] isEqualToString:[self getCurrentDate]]){
@@ -1645,7 +1645,7 @@ NSLog(Y, Z);		\
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+ (void)saveDateForNSConfigAPI:(NSString *)date{
++ (void)saveDateForNSConfigAPI {
 
     [[NSUserDefaults standardUserDefaults] setValue:[self getCurrentDate] forKey:@"config_date"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -1664,8 +1664,8 @@ NSLog(Y, Z);		\
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour | NSCalendarUnitMinute|NSCalendarUnitDay) fromDate:[NSDate date]];
     NSInteger day = [dateComponents day];
-//    NSInteger hour = [dateComponents hour];
-//    NSInteger minute = [dateComponents minute];
+    NSInteger hour = [dateComponents hour];
+    NSInteger minute = [dateComponents minute];
     date = [NSString stringWithFormat:@"%ld",(long)day];
     return date;
 }

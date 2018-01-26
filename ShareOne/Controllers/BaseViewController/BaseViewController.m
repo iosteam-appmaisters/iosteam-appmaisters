@@ -619,11 +619,16 @@
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground from Home");
+    
+    [self sendAdvertismentViewToBack];
+    
     [self removeAdsView];
     [self unSetDelegeteForAdsWebView:TRUE];
     [[SharedUser sharedManager] setIsLogingOutFromHome:TRUE];
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
     [[ShareOneUtility shareUtitlities] cancelTimer];
+    
+     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)appComingFromBackground{

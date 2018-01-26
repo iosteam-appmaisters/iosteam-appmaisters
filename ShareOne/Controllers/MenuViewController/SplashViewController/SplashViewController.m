@@ -16,17 +16,6 @@
 
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MessageLabelNotification" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-}
-
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
 }
 
 -(void)viewDidLoad{
@@ -36,15 +25,28 @@
                                                  name:@"MessageLabelNotification"
                                                object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNSConfigData) name:UIApplicationWillEnterForegroundNotification object:nil];
-    
-    [self getNSConfigData];
+    if ([ShareOneUtility shouldCallNSConfigServices]){
+        [self getNSConfigData];
+    }
+    else {
+        
+        [self hideIndicaterView];
+        [self shouldShowSplashInfo:NO];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self goToLogin];
+        });
+    }
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    //[self showNextViewController];
+-(void)shouldShowSplashInfo:(BOOL)value {
+    
+    _versionLabel.hidden = !value;
+    _customerIDLabel.hidden = !value;
+    _appVersionLabel.hidden = !value;
+    _messageLabel.hidden = !value;
 }
+
 
 -(void)changeMessageLabel:(NSNotification*)notification {
     _messageLabel.text = notification.userInfo[@"MESSAGE"];
@@ -78,12 +80,14 @@
         [self hideIndicaterView];
         if(success){
             
+            [ShareOneUtility saveDateForNSConfigAPI];
+            
             [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"nconfig_called"];
             [[NSUserDefaults standardUserDefaults]synchronize];
             
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"MessageLabelNotification"
-             object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+             object:self userInfo:@{@"MESSAGE":@"Please wait while we update app",
                                     @"STATUS":@"1",
                                     @"VERSION":[ShareOneUtility getVersionNumber],
                                     @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
@@ -100,12 +104,12 @@
                 
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"MessageLabelNotification"
-                 object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+                 object:self userInfo:@{@"MESSAGE":@"Please wait while we update app",
                                         @"STATUS":@"2",
                                         @"VERSION":[ShareOneUtility getVersionNumber],
                                         @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
                 
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                     
                     [self goToLogin];
                 });

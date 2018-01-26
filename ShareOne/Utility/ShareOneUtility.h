@@ -216,7 +216,7 @@
 
 + (BOOL)shouldCallNSConfigServices;
 
-+ (void)saveDateForNSConfigAPI:(NSString *)date;
++ (void)saveDateForNSConfigAPI;
 
 + (NSString *)getDateForNSConfigAPI;
 
