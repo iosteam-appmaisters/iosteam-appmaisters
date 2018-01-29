@@ -130,8 +130,18 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 -(void)loadLocalCacheOnView{
     
-    [_quickBalanceArrowIcon setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
-    [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
+    ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+    
+    if (![config.enablequickview boolValue]){
+        [_quickBalanceArrowIcon setHidden:TRUE];
+        [_quickBalanceBtn setHidden:TRUE];
+    }
+    else {
+        [_quickBalanceArrowIcon setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
+        [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
+    }
+    
+    
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_rememberMeSwitch setOn:[ShareOneUtility isUserRemembered]];
     [_userFingerprintBtn setSelected:[ShareOneUtility isTouchIDEnabled]];
@@ -835,7 +845,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 
                 NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
                 
-                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getDeviceNotifToken],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
                     
                     
                     [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
@@ -1219,7 +1229,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 #pragma mark - Local methods
 
 #define kJoinTheCreditUnion @"Join The Credit Union"
-#define kBranchLocation @"Branch Location"
+#define kBranchLocation @"Branch Locations"
 #define kPrivacyPolicy @"Privacy Policy"
 #define kApplyForALoan @"Apply For A Loan"
 #define kContact @"Contact"

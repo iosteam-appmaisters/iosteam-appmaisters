@@ -508,7 +508,7 @@
             UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
                                                                    style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             
-               [ShareOneUtility showProgressViewOnView:self.view];
+               /*[ShareOneUtility showProgressViewOnView:self.view];
                [LoaderServices refreshSuffixInfo:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
                    [ShareOneUtility hideProgressViewOnView:self.view];
                    if(success && !errorString) {
@@ -520,8 +520,8 @@
                 } failureBlock:^(NSError *error) {
                     [ShareOneUtility hideProgressViewOnView:self.view];
                     [self logoutActions];
-                }];
-                   
+                }];*/
+                   [self logoutActions];
                }];
             
             [alert addAction:firstAction];

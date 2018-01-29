@@ -31,6 +31,8 @@
 @property (nonatomic,strong) NSString *forgotpassword;
 
 @property (nonatomic,strong) NSString *allownotifications;
+@property (nonatomic,strong) NSString *quickviewnumoftransactions;
+@property (nonatomic,strong) NSString *enablequickview;
 
 @property (nonatomic,strong) NSString *vertifirdcsecretkey;
 @property (nonatomic,strong) NSString *vertifirdcrequestorkey;

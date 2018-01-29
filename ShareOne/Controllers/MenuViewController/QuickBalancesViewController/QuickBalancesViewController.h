@@ -18,6 +18,8 @@
 @property (nonatomic, weak) IBOutlet FZAccordionTableView *qbTblView;
 @property (nonatomic, strong) NSArray *qbArr;
 
+@property(nonatomic,strong) NSMutableArray * currentQTArray;
+
 - (IBAction)dismissQuickBalances:(id)sender;
 
 -(void)HeaderButtonAction:(id)sender;
