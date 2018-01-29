@@ -282,12 +282,21 @@
     SuffixInfo *obj = _qbArr[section];
     ClientSettingsObject  *config = [Configuration getClientSettingsContent];
     
+    NSString * quickNum = @"5";
+    if (config.quickviewnumoftransactions == nil){
+        quickNum = @"5";
+    }
+    else {
+        quickNum = config.quickviewnumoftransactions;
+    }
+    
+    
     __weak QuickBalancesViewController *weakSelf = self;
     NSString *SuffixID = [NSString stringWithFormat:@"%d",obj.Suffixid.intValue];
 
     {
         
-        [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:/*@"HomeBank",@"ServiceType",*/[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",config.quickviewnumoftransactions,@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:/*@"HomeBank",@"ServiceType",*/[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",quickNum,@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
             
             _currentQTArray = [(NSArray*)user mutableCopy];
             

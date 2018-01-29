@@ -1232,7 +1232,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 #define kBranchLocation @"Branch Locations"
 #define kPrivacyPolicy @"Privacy Policy"
 #define kApplyForALoan @"Apply For A Loan"
-#define kContact @"Contact"
+#define kContact @"Contact Us"
 
 - (void)initiateMenuOptions {
     
