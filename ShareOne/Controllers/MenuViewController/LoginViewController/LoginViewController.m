@@ -822,10 +822,10 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                     
                     
                     // Register Logged In User with Virtifi
-                    [self registerToVertify];
+                    //[self registerToVertify];
                     
                     //Skip vertifi reg on login screen
-                    //  [weakSelf startApplication];
+                      [weakSelf startApplication];
                     
                 } failureBlock:^(NSError *error) {
                     
@@ -852,10 +852,10 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                         
                         
                         // Register Logged In User with Virtifi
-                        [self registerToVertify];
+                        //[self registerToVertify];
                         
                         //Skip vertifi reg on login screen
-                        //  [weakSelf startApplication];
+                          [weakSelf startApplication];
                         
                     } failureBlock:^(NSError *error) {
                         [weakSelf.loadingView setHidden:TRUE];
@@ -1054,39 +1054,43 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     UIButton *btn = (UIButton *)sender;
     if(btn.tag==111){
         isFromForgotUserName=TRUE;
+        
+        [self openForgotPasswordInWebView:YES];
+        return;
     }
     else{
         isFromForgotUserName=FALSE;
-        [self openForgotPasswordInWebView];
+        [self openForgotPasswordInWebView:NO];
         return;
     }
     
-    if(!_objPinResetController){
+    /*if(!_objPinResetController){
         
         _objPinResetController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PinResetController class])];
         
         _objPinResetController.isFromForgotUserName=isFromForgotUserName;
         _objPinResetController.loginDelegate=self;
         [self presentViewController:_objPinResetController animated:YES completion:nil];
-    }
+    }*/
     
 }
 
--(void)openForgotPasswordInWebView {
+-(void)openForgotPasswordInWebView:(BOOL)isUsername {
+    
+    NSString * connectingURL = [Configuration getClientSettingsContent].forgotpassword;
+    if (isUsername){
+        connectingURL =[Configuration getClientSettingsContent].forgotusername;
+    }
     
     WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
-    objWeblinksController.navTitle = [ShareOneUtility getNavBarTitle:@"Forgot Password"];
-    if ([Configuration getClientSettingsContent].forgotpassword != nil){
-        NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:[Configuration getClientSettingsContent].forgotpassword];
+    objWeblinksController.navTitle = [ShareOneUtility getNavBarTitle:isUsername ? @"Forgot Username" : @"Forgot Password"];
+    if (connectingURL != nil){
+        NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:connectingURL];
         objWeblinksController.webLink= urlString;
         NSLog(@"Forgot Password URL: %@",urlString);
     }
     else {
-        /*NSString * urlString = [[Configuration getClientSettingsContent].basewebviewurl stringByAppendingString:@"/Password/Forgot"];
-        objWeblinksController.webLink= urlString;
-        NSLog(@"Forgot Password URL: %@",urlString);*/
         return;
-
     }
     
     [self presentViewController:objWeblinksController animated:YES completion:nil];

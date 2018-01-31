@@ -29,7 +29,7 @@
 
 @property (nonatomic,strong) NSString *basewebviewurl;
 @property (nonatomic,strong) NSString *forgotpassword;
-
+@property (nonatomic,strong) NSString *forgotusername;
 @property (nonatomic,strong) NSString *allownotifications;
 @property (nonatomic,strong) NSString *quickviewnumoftransactions;
 @property (nonatomic,strong) NSString *enablequickview;
