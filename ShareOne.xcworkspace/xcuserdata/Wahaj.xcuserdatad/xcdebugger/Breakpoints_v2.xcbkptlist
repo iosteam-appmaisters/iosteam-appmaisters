@@ -2,4 +2,70 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
+            timestampString = "529936632.372928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
+            landmarkName = "-pushViewControllerWithObject:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/QuickBalancesViewController/QuickBalancesViewController.m"
+            timestampString = "538317961.359427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "-tableView:viewForHeaderInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/LoaderEntity/LoaderServices.m"
+            timestampString = "538317961.35982"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "+setQTRequestOnQueueWithDelegate:AndQuickBalanceArr:completionBlock:failureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/ReuseableComponents/VertifiLatestSDK/DepositViewController.m"
+            timestampString = "539176516.574711"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "742"
+            endingLineNumber = "742"
+            landmarkName = "-onPictureTaken:withBWImage:results:isFront:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
