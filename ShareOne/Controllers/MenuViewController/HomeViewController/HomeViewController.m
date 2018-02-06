@@ -270,6 +270,13 @@
     
     NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 
+    if([[[request URL] absoluteString] containsString:@"/log/out"]){
+        shouldReload = FALSE;
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [self logoutActions];
+    }
     
     if([[[request URL] absoluteString] containsString:@"Account/print"]){
         shouldReload = FALSE;

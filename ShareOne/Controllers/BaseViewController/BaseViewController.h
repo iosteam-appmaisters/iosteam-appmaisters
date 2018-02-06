@@ -37,7 +37,7 @@
 
 -(void)logoutOnGoingBackground;
 -(void)setTitleOnNavBar:(NSString *)title;
-
+-(void)logoutActions;
 -(void)showSideMenu;
 
 -(void)appGoingToBackground;

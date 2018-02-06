@@ -28,6 +28,14 @@
 
     [ShareOneUtility showProgressViewOnView:self.view];
     [self updateWebLinks];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromWebLink) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)appGoingToBackgroundFromWebLink{
+   
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 -(void)updateWebLinks{
@@ -43,7 +51,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    NSLog(@"%@",[[request URL] absoluteString]);
+    
+    /*if([[[request URL] absoluteString] containsString:@"/log/out"]){
+        
+    }*/
+    
+    return YES;
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
 

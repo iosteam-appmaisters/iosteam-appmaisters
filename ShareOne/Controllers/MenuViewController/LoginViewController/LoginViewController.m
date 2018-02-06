@@ -98,6 +98,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
     
+    BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
+    
+    if (isTechnicalLogout) {
+        [[UtilitiesHelper shareUtitlities]showAlertWithMessage:@"The application has experienced a service issue that required it to log out. Please log back in to continue." title:@"" delegate:self];
+    }
+    
 }
 
 
@@ -537,6 +543,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 //    BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     
     // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
+    
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     
     if(webUrl){
         HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
@@ -1077,11 +1086,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 -(void)openForgotPasswordInWebView:(BOOL)isUsername {
     
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
     NSString * connectingURL = [Configuration getClientSettingsContent].forgotpassword;
     if (isUsername){
         connectingURL =[Configuration getClientSettingsContent].forgotusername;
     }
-    
     WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
     objWeblinksController.navTitle = [ShareOneUtility getNavBarTitle:isUsername ? @"Forgot Username" : @"Forgot Password"];
     if (connectingURL != nil){
