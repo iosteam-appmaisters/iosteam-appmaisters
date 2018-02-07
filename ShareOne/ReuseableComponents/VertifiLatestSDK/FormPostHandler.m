@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -91,8 +91,10 @@
     NSLog(@"%@ postBackgroundFormWithRequst %@ : %@", self.class, url, form);       // log
 #endif
     
-    VIPSampleAppDelegate *app = [UIApplication sharedApplication].delegate;
-    [app sessionOpen];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        VIPSampleAppDelegate *app = [UIApplication sharedApplication].delegate;
+        [app sessionOpen];
+    });
     
     self.task = [self.urlSession dataTaskWithRequest:postRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -100,7 +102,10 @@
         NSLog(@"%@ postBackgroundFormWithRequest response %@",self.class, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 #endif
         
-        [app sessionClose];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            VIPSampleAppDelegate *app = [UIApplication sharedApplication].delegate;
+            [app sessionClose];
+        });
         
         if (error == nil)
         {

@@ -2,14 +2,14 @@
 //  CameraCropView.m
 //  VIPSample
 //
-//  This UIView draws the corner detectors on the preview window
+//  This UIView draws the edge detectors on the preview window
 //
 //  Created by Vertifi Software on 10/2/12.
 //
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -56,12 +56,14 @@ static float kVIP_CORNER_ANGLE_OPTIMAL_MAX = 95.0f;
         
         // save frame rectangle for drawing, set inner bounds rectangle
         rectFrame = CGRectMake(0, 0, aRect.size.width, aRect.size.height);
-        rectInnerBounds = CGRectMake(depositModel.rectViewPort.origin.x + (depositModel.rectViewPort.size.width * 0.225), depositModel.rectViewPort.origin.y + (depositModel.rectViewPort.size.height * 0.25), depositModel.rectViewPort.size.width * 0.55, depositModel.rectViewPort.size.height * 0.50);
+        
+        // v7.0, narrower inner bounds horizontally (.20)
+        rectInnerBounds = CGRectMake(depositModel.rectViewPort.origin.x + (depositModel.rectViewPort.size.width * 0.2), depositModel.rectViewPort.origin.y + (depositModel.rectViewPort.size.height * 0.25), depositModel.rectViewPort.size.width * 0.6, depositModel.rectViewPort.size.height * 0.50);
 
         // Colors
-        self.fillColor = [schema.colorTint colorWithAlphaComponent:0.175f]; // [UIColor colorWithRed:0.0f green:1.0f blue:0.0f alpha:0.175f];
-        self.strokeColor = schema.colorTint; //[UIColor colorWithRed:0.0f green:1.0f blue:0.0f alpha:1.0f];
-
+        self.fillColor = [schema.colorTint colorWithAlphaComponent:0.175f];
+        self.strokeColor = schema.colorTint;
+        
         // transparent background, initially hidden
 		self.backgroundColor = schema.colorClear;
         self.autoresizingMask = UIViewAutoresizingNone;
@@ -76,7 +78,7 @@ static float kVIP_CORNER_ANGLE_OPTIMAL_MAX = 95.0f;
         tTimerDeferredTakePicture = -1;
         tTimerDeferredDraw = CACurrentMediaTime() + 3.0f;                   // current time + 3 seconds
 
-        [UIView animateWithDuration:0.4f delay:3.0f options:UIViewAnimationOptionCurveEaseIn animations:^
+        [UIView animateWithDuration:0.4f delay:3.0f options:UIViewAnimationCurveEaseIn animations:^
         {
              self.alpha = 1.0f;
         } completion:^(BOOL finished)

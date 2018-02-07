@@ -46,7 +46,6 @@
 		1D20C2701E4E110500D3FC93 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C21B1E4E110400D3FC93 /* ErrorView.xib */; };
 		1D20C2711E4E110500D3FC93 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */; };
 		1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */; };
-		1D20C2731E4E110500D3FC93 /* GoogleAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2211E4E110400D3FC93 /* GoogleAnalytics.m */; };
 		1D20C2761E4E110500D3FC93 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */; };
 		1D20C27A1E4E110500D3FC93 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2281E4E110500D3FC93 /* MainWindow.xib */; };
 		1D20C27B1E4E110500D3FC93 /* MultiPartForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */; };
@@ -84,7 +83,6 @@
 		1D31B9B91E5EBE4300503E45 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D31B9B81E5EBE4300503E45 /* CustomLabel.m */; };
 		1D31B9BC1E5EC44600503E45 /* PlainCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D31B9BB1E5EC44600503E45 /* PlainCustomButton.m */; };
 		1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */; };
-		1D32A5041E4E17820087F638 /* libVertifiImageProcessingSimulater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */; };
 		1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37102A1E40B0350030D33C /* ConfigurationModel.m */; };
 		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -160,6 +158,7 @@
 		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
 		6BD433DB1D8C09C30067515A /* po.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* po.plist */; };
 		8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */; };
+		9AC5BB59202B0301007EBF93 /* libVertifiImageProcessingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */; };
 		9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */; };
 		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
 		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
@@ -250,11 +249,8 @@
 		1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
 		1D20C21E1E4E110400D3FC93 /* FormPostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormPostHandler.h; sourceTree = "<group>"; };
 		1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormPostHandler.m; sourceTree = "<group>"; };
-		1D20C2201E4E110400D3FC93 /* GoogleAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalytics.h; sourceTree = "<group>"; };
-		1D20C2211E4E110400D3FC93 /* GoogleAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalytics.m; sourceTree = "<group>"; };
 		1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessing.a; sourceTree = "<group>"; };
-		1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessingSimulater.a; sourceTree = "<group>"; };
 		1D20C2281E4E110500D3FC93 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		1D20C2291E4E110500D3FC93 /* MultiPartForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPartForm.h; sourceTree = "<group>"; };
 		1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPartForm.m; sourceTree = "<group>"; };
@@ -466,6 +462,7 @@
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
 		8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
+		9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessingSimulator.a; sourceTree = "<group>"; };
 		9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuCell.h; sourceTree = "<group>"; };
 		9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMenuCell.m; sourceTree = "<group>"; };
 		9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContextMenuCell.xib; sourceTree = "<group>"; };
@@ -503,8 +500,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AC5BB59202B0301007EBF93 /* libVertifiImageProcessingSimulator.a in Frameworks */,
 				1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */,
-				1D32A5041E4E17820087F638 /* libVertifiImageProcessingSimulater.a in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -606,6 +603,7 @@
 		1D20C1F51E4E110400D3FC93 /* VertifiLatestSDK */ = {
 			isa = PBXGroup;
 			children = (
+				9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */,
 				1D20C1F61E4E110400D3FC93 /* AccountsViewController.h */,
 				1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */,
 				1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */,
@@ -647,11 +645,8 @@
 				1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */,
 				1D20C21E1E4E110400D3FC93 /* FormPostHandler.h */,
 				1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */,
-				1D20C2201E4E110400D3FC93 /* GoogleAnalytics.h */,
-				1D20C2211E4E110400D3FC93 /* GoogleAnalytics.m */,
 				1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */,
 				1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */,
-				1D20C2261E4E110500D3FC93 /* libVertifiImageProcessingSimulater.a */,
 				1D20C2281E4E110500D3FC93 /* MainWindow.xib */,
 				1D20C2291E4E110500D3FC93 /* MultiPartForm.h */,
 				1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */,
@@ -1579,7 +1574,6 @@
 				1D20C26D1E4E110500D3FC93 /* DepositViewController.m in Sources */,
 				1D398F9E1E07F5DE00275E4E /* Address.m in Sources */,
 				1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */,
-				1D20C2731E4E110500D3FC93 /* GoogleAnalytics.m in Sources */,
 				1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */,
 				1D0E265D1E5DD61A005FE91F /* CustomImageView.m in Sources */,
 				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
@@ -1775,7 +1769,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "7ccce6af-04d7-4c2e-bf13-fa5d1fa0c318";
@@ -1819,7 +1813,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "7ccce6af-04d7-4c2e-bf13-fa5d1fa0c318";
 				SDKROOT = iphoneos;
@@ -1837,20 +1831,25 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/Wahaj/Developer/ShareOne/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
 				INFOPLIST_FILE = ShareOne/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1863,20 +1862,25 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/Wahaj/Developer/ShareOne/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
 				INFOPLIST_FILE = ShareOne/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

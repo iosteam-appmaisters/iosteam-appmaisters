@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -66,9 +66,10 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
     nSectionBackImage = -1;
     nSectionSubmit = -1;
 
-    // show color setting in App Settings
+    // show color & deposit limit settings in App Settings
     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
     bShowColor = [defaults boolForKey:kVIP_PREFERENCE_SHOW_COLOR];
+    depositModel.allowDepositsExceedingLimit = [defaults boolForKey:kVIP_PREFERENCE_ALLOW_DEPOSITS_EXCEEDING_LIMIT];
     
     return (self);
 }
@@ -102,7 +103,7 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
     buttonTrash.enabled = NO;
     
     // Terms & Conditions button
-    self.buttonTerms = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info"] style:UIBarButtonItemStylePlain target:self action:@selector(onTerms:)];
+    self.buttonTerms = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info"] style:UIBarButtonItemStylePlain target:self action:depositModel.debugMode ? @selector(onDebug:) : @selector(onTerms:)];
     self.navigationItem.rightBarButtonItems = @[buttonTerms];
     
     //--------------------------------------------------------------------------------------------------
@@ -203,7 +204,8 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
     // read "show color" setting in App Settings
     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
     bShowColor = [defaults boolForKey:kVIP_PREFERENCE_SHOW_COLOR];
-
+    depositModel.allowDepositsExceedingLimit = [defaults boolForKey:kVIP_PREFERENCE_ALLOW_DEPOSITS_EXCEEDING_LIMIT];
+    
     [self.tableView reloadData];
 }
 
@@ -439,10 +441,11 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
                 cellImage.thumb.tag = (indexPath.section == nSectionFrontImage ? kFRONT_IMAGE_VIEW_TAG : kBACK_IMAGE_VIEW_TAG);
                 [cellImage.label setText:(indexPath.section == nSectionFrontImage ? @"Front Image" : @"Back Image")];
                 
-                UIButton *buttonCamera = [[UIButton alloc] init];
+                UIButton *buttonCamera = [[UIButton alloc] initWithFrame:CGRectMake(0,0,44,44)];
                 [buttonCamera setImage:[[UIImage imageNamed:@"camera"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
                 [buttonCamera setShowsTouchWhenHighlighted:YES];
-                [buttonCamera sizeToFit];
+                //[buttonCamera sizeToFit];
+                
                 [buttonCamera setTag:(indexPath.section == nSectionFrontImage ? kFRONT_BUTTON_TAG : kBACK_BUTTON_TAG)];
                 [buttonCamera addTarget:self action:@selector(onCameraClick:) forControlEvents:UIControlEventTouchUpInside];
                 
@@ -554,7 +557,7 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
                 
                 [cell.textLabel setText:@"Amount:"];
                 
-                if ((depositModel.depositLimit.doubleValue > 0) && (depositModel.registrationStatus == kVIP_REGSTATUS_REGISTERED))
+                if ((!depositModel.allowDepositsExceedingLimit) && (depositModel.depositLimit.doubleValue > 0) && (depositModel.registrationStatus == kVIP_REGSTATUS_REGISTERED))
                     [cell.detailTextLabel setText:[NSString stringWithFormat:@"Deposit limit: %@",[schema.currencyFormat stringFromNumber:depositModel.depositLimit]]];
                 
                 // create a UITextField edit control as accessoryView
@@ -577,7 +580,7 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
                     [textFieldDepositAmount setText:@""];
                 
                 // and update edit control
-                if (depositModel.depositAmount.doubleValue > depositModel.depositLimit.doubleValue)
+                if ((!depositModel.allowDepositsExceedingLimit) && (depositModel.depositAmount.doubleValue > depositModel.depositLimit.doubleValue))
                     textFieldDepositAmount.textColor = schema.colorWarning;
                 else
                     textFieldDepositAmount.textColor = schema.colorValue;
@@ -718,6 +721,10 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
             {
                 [depositModel setFrontImage:imageBW];
                 [depositModel setFrontImageColor:imageColor];
+                
+                // add this code
+                NSData *frontImageColor = [depositModel frontImageData];
+                NSLog(@"frontImageColor file size %d",(int)frontImageColor.length);
                 
                 // if rear image already taken, check for dimension mismatch on rear image
                 if ([depositModel backImagePresent])
@@ -938,7 +945,8 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
         return;
     }
  
-    if (depositModel.depositAmount.doubleValue > depositModel.depositLimit.doubleValue)
+    // Deposit limit check
+    if ((!depositModel.allowDepositsExceedingLimit) && (depositModel.depositAmount.doubleValue > depositModel.depositLimit.doubleValue))
     {
         [self showDepositLimit:sender];
         return;
@@ -1171,13 +1179,37 @@ static NSString *kButtonCellID = @"TableViewCell_Button";
         [self showNoCredentials];
         return;
     }
-
+    
     RegistrationViewController *registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
     if (registrationViewController != nil)
     {
         VIPNavigationController *navController = [[VIPNavigationController alloc] initWithRootViewController:registrationViewController];
         [navController.navigationBar setTranslucent:NO];
         [self.navigationController presentViewController:navController animated:YES completion:nil];
+    }
+}
+
+
+#pragma mark Debug
+
+//-----------------------------------------------------------------------------
+// Debug
+//-----------------------------------------------------------------------------
+
+- (IBAction) onDebug:(UIBarButtonItem *)sender
+{
+    if (self.presentedViewController != nil)
+    {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
+    
+    if (depositModel.debugMode)
+    {
+        UIAlertController *sheet = [UIAlertController alertControllerWithTitle:nil message:depositModel.debugString preferredStyle:UIAlertControllerStyleActionSheet];
+        [sheet addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:sheet animated:YES completion:nil];
+        return;
     }
 }
 

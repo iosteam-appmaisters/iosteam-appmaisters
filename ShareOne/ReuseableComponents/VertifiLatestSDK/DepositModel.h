@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -54,6 +54,8 @@ static NSString *kVIP_PREFERENCE_PASSWORD = @"preferences.password";
 static NSString *kVIP_PREFERENCE_CAMERA_MODE = @"preferences.cameraMode";
 static NSString *kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_FRONT = @"preferences.cameraInstructionFront";
 static NSString *kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_BACK = @"preferences.cameraInstructionBack";
+static NSString *kVIP_PREFERENCE_ALLOW_DEPOSITS_EXCEEDING_LIMIT = @"preferences.allowDepositExceedingLimit";
+static NSString *kVIP_PREFERENCE_DEBUG = @"preferences.debug";
 
 // networking
 static const int kVIP_MESSAGE_STATUS_SUCCESS = 0;
@@ -95,7 +97,8 @@ static NSString *kVIP_NOTIFICATION_DEPOSIT_SUBMIT_COMPLETE = @"VIPDepositSubmitC
     NSInteger depositAccountSelected;               // selected account
     BOOL testMode;                                  // test mode
     BOOL loginProcessing;							// login processing flag
-
+    BOOL isSmartScaled;                             // smart scaled
+    
     // deposit submission
     DepositSubmitQueue *depositSubmitQueue;         // deposit submit queue
     NSString *ssoKey;                               // SSO key for images
@@ -108,6 +111,9 @@ static NSString *kVIP_NOTIFICATION_DEPOSIT_SUBMIT_COMPLETE = @"VIPDepositSubmitC
     NSMutableDictionary *dictResultsFrontImage;		// results - front image
     NSMutableDictionary *dictResultsBackImage;		// results - back image
 
+    // DEBUG
+    BOOL bDebugMode;
+    NSMutableString *debugString;
 }
 
 // Properties
@@ -131,6 +137,17 @@ static NSString *kVIP_NOTIFICATION_DEPOSIT_SUBMIT_COMPLETE = @"VIPDepositSubmitC
 @property (assign) NSInteger depositAccountSelected;
 @property (assign) BOOL testMode;
 
+//===================================================================================
+// IMPORTANT NOTE
+// Allow Deposits Exceeding Limit is read from App Settings in this sample app.
+// A Production app should NEVER make this a User settings!
+// It might be something that is a build-time configuration enabled
+// for a Financial Institution ... but don't allow a user to fiddle with this.
+// Over limit deposits, even if allowed by the app, will always get held for
+// review at the Vertifi back-end.
+@property (assign) BOOL allowDepositsExceedingLimit;
+//===================================================================================
+
 // image properties
 @property UIImage *frontImage;
 @property (readonly) NSData *frontImageData;
@@ -148,6 +165,7 @@ static NSString *kVIP_NOTIFICATION_DEPOSIT_SUBMIT_COMPLETE = @"VIPDepositSubmitC
 @property (readonly) BOOL backImagePresent;
 
 @property (assign) BOOL loginProcessing;
+@property (assign) BOOL isSmartScaled;
 
 @property (nonatomic, readonly) DepositSubmitQueue *depositSubmitQueue;
 @property (nonatomic, strong) NSString *ssoKey;
@@ -159,6 +177,14 @@ static NSString *kVIP_NOTIFICATION_DEPOSIT_SUBMIT_COMPLETE = @"VIPDepositSubmitC
 @property (strong) NSMutableDictionary *dictResultsGeneral;
 @property (strong) NSMutableDictionary *dictResultsFrontImage;
 @property (strong) NSMutableDictionary *dictResultsBackImage;
+
+//===================================================================================
+// IMPORTANT NOTE
+// Debug properties are included in this sample app as an aid to help new integrators.
+// This should NEVER be included in a Production app.
+@property (assign) BOOL debugMode;
+@property (strong) NSMutableString *debugString;
+//===================================================================================
 
 // Methods
 + (DepositModel *) sharedInstance;

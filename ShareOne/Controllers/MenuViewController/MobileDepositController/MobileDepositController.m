@@ -72,6 +72,7 @@
 @property (nonatomic, strong) NSString *depositLimt;
 @property (nonatomic, strong) VertifiObject *objVertifiObject;
 
+@property (weak, nonatomic) IBOutlet UILabel *noteLabel;
 
 -(IBAction)doneButtonClicked:(id)sender;
 
@@ -101,6 +102,8 @@
     [self setThemeOnButtons];
     //[self getListOfReviewDeposits];
     //[self getListOfPast6MonthsDeposits];
+    _noteLabel.text = @"";
+    _noteLabel.text = [Configuration getClientSettingsContent].rdcpostingmsg;
 }
 
 -(void)setThemeOnButtons{
@@ -929,10 +932,22 @@
     // save files on background thread
     dispatch_group_async(group, queue, ^{
         
-        if (cacheFileColor != nil)
+        if (cacheFileColor != nil) {
             [UIImageJPEGRepresentation(imageColor,0.3f) writeToFile:cacheFileColor atomically:NO];
             [UIImagePNGRepresentation(imageBW) writeToFile:cacheFile atomically:NO];
         
+            NSError* error;
+            NSDictionary *fileDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:cacheFileColor error: &error];
+            NSNumber *size = [fileDictionary objectForKey:NSFileSize];
+            
+            NSLog(@"%@",size);
+            
+            NSError* error2;
+            NSDictionary *fileDictionary2 = [[NSFileManager defaultManager] attributesOfItemAtPath:cacheFile error: &error2];
+            NSNumber *size2 = [fileDictionary2 objectForKey:NSFileSize];
+            
+            NSLog(@"%@",size2);
+        }
         // UI updates
         dispatch_async(dispatch_get_main_queue(), ^(void)
                        {

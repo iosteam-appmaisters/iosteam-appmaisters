@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -25,7 +25,6 @@
 #import "DepositModel.h"
 #import "CameraViewController.h"
 #import "VertifiImageProcessing.h"
-#import "GoogleAnalytics.h"
 
 
 @interface CameraViewController ()
@@ -59,6 +58,8 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 @synthesize sliderBrightness;
 @synthesize titleString;
 @synthesize itemsToolbarPreview;
+
+@synthesize tapRecognizer;
 
 @synthesize overlayView;
 @synthesize cropView;
@@ -152,9 +153,10 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     spinnerPreview.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     spinnerPreview.hidesWhenStopped = YES;
     [self.view addSubview:spinnerPreview];
-    
+
+    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTakePicture:)];
     [self setupToolbarForPhoto];
-    
+
     // VIP library queue initialization
     imageProcessingQueue = dispatch_queue_create("com.Vertifi.ImageProcessing.Queue", DISPATCH_QUEUE_SERIAL);
     
@@ -319,6 +321,8 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
         
         // mode
         self.switchMode = [[UISegmentedControl alloc] initWithItems:@[ @"Auto", @"Manual"]];
+        [self.switchMode setFrame:CGRectMake(0,0,switchMode.frame.size.width, 32)];       // slightly increase frame height of segment switch
+        
         NSInteger nPreference = kVIP_MODE_MANUAL;
 
         // get preference
@@ -336,7 +340,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
         self.buttonFlash =  [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"flash_off"] style:UIBarButtonItemStylePlain target:self action:@selector(onFlashButton:)];
         buttonFlash.tag = kVIP_FLASH_OFF;
 
-        [toolbarTop setItems:[NSMutableArray arrayWithObjects:fixBarButtonItem,buttonTitleLabel,flexBarButtonItem,switchModeButton,fixBarButtonItem,buttonFlash,fixBarButtonItem,nil] animated:YES];
+        [toolbarTop setItems:[NSMutableArray arrayWithObjects:fixBarButtonItem,buttonTitleLabel,flexBarButtonItem,switchModeButton,fixBarButtonItem, buttonFlash,fixBarButtonItem,nil] animated:YES];
     }
     
     // help label
@@ -352,7 +356,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     
     // close button
     if (buttonClose == nil)
-        self.buttonClose = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCameraClose:)];
+        self.buttonClose = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(onCameraClose:)];
     
     // set the toolbar buttons
     if (itemsToolbarPhoto == nil)
@@ -366,6 +370,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     [[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:YES];
     
     spinnerPreview.color = schema.colorLightText;
+    
 }
 
 //------------------------------------------------------------------------------------------
@@ -442,7 +447,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
                            
                            // Create cropped/scaled color image
                            self.imageColor = [mVIP onProcessImageCrop:dictResults crop:rectReference viewport:&rectViewport];
-                           
+ 
                            dispatch_async(dispatch_get_main_queue(), ^(void)
                                           {
                                               imageViewPreview.image = imageColor;                      // set Color image into ImageView
@@ -468,34 +473,27 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
                    {
                        @autoreleasepool
                        {
-                           // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                           // Google Analytics
-//                           @try
-//                           {
-//                               GAIDictionaryBuilder *gaiDictionary = [GAIDictionaryBuilder createEventWithCategory:(isFront ? @"Front" : @"Back")
-//                                                                                                            action:@"Photo"
-//                                                                                                             label:(dictResults.count == 0 ? @"Success" : dictResults.firstObject)
-//                                                                                                             value:nil];
-//                               id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-//                               [tracker set:[GAIFields customDimensionForIndex:2] value:[VertifiImageProcessing getVersion]];
-//                               [tracker send:[gaiDictionary build]];
-//                           }
-//                           @catch (NSException *exception)
-//                           {
-//                               NSLog(@"Google Analytics exception %@",exception.reason);
-//                           }
-//                           @finally
-//                           {
-//                           }
-                           // End Google Analytics
-                           // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                           
                            if (dictResults.count == 0)
                            {
                                [mVIP onProcessImageBWBindImage:imageColor];
                                
                                // Convert to Black/White in auto-brightness mode
                                self.imageBW = [mVIP onProcessImageBWDrawImageAuto:dictResults];
+                               if (isFront)
+                               {
+                                   depositModel.isSmartScaled = mVIP.isSmartScaled;                       // set smart scaling flag on front image
+                               }
+                               
+                               if ([dictResults containsObject:@"UpsideDown"])
+                               {
+#ifdef _DEBUG
+                                   NSLog(@"%@ rotate upside-down Color image", self.class);
+#endif
+                                   // rotate the image
+                                   [dictResults removeObject:@"UpsideDown"];
+                                   self.imageColor = [mVIP onRotateImage180:imageColor];
+                               }
+                               
                                
                                // main thread update UI
                                dispatch_async(dispatch_get_main_queue(), ^
@@ -585,6 +583,8 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 
     spinnerPreview.color = schema.colorBlack;
     [spinnerPreview startAnimating];
+
+    [dictResults removeAllObjects];
     
     dispatch_async(imageProcessingQueue, ^
                    {
@@ -633,12 +633,11 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     switch (sender.selectedSegmentIndex)
     {
         case kVIP_MODE_AUTOMATIC:
-            [previewView removeGestureRecognizer:[previewView.gestureRecognizers firstObject]];
+            [previewView removeGestureRecognizer:tapRecognizer];
             break;
         case kVIP_MODE_MANUAL:
         {
             // taps
-            UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTakePicture:)];
             [previewView addGestureRecognizer:tapRecognizer];
             break;
         }
@@ -719,12 +718,16 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
     if ( (device.isAdjustingFocus) || (device.isAdjustingExposure) || (device.isAdjustingWhiteBalance) || (isCapturingStillImage))
         return;
     
+    isCapturingStillImage = YES;
+    
     // Find out the current orientation and tell the still image output.
 	AVCaptureConnection *stillImageConnection = [stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
 	
     // Jpeg output
     [stillImageOutput setOutputSettings:[NSDictionary dictionaryWithObject:AVVideoCodecJPEG	forKey:AVVideoCodecKey]];
 	
+    __block UIInterfaceOrientation statusBarOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
 	[stillImageOutput captureStillImageAsynchronouslyFromConnection:stillImageConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
     {
 
@@ -781,7 +784,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
              UIImage *imageJPG = [UIImage imageWithData:[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer]];
              
              // landscape left will take an upside-down picture!
-             if ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft)
+             if (statusBarOrientation == UIInterfaceOrientationLandscapeLeft)
                  imageJPG = [self onRotateImage180:imageJPG];
              
              // VIP Library - bind image for cropping
@@ -794,6 +797,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
                                 [self setupToolbarForPreview];               // switch to photo preview!
                             });
              
+             isCapturingStillImage = NO;
          }
     }];
     
@@ -1075,16 +1079,16 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
         [mVIP onProcessImageGetCropCorners:rawPixels viewport:&rectViewport BPP:4 width:width height:height stride:stride toPointTL:&pointTL toPointTR:&pointTR toPointBL:&pointBL toPointBR:&pointBR];
         
         //NSLog(@"didOutputSampleBuffer onProcessImageGetCropCorners %.3f", CACurrentMediaTime() - tNow);
-        
-        // landscape left will take an upside-down picture!
-        if ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft)
-        {
-            // rotate 180 degrees
-            [self rotateCorners180:&pointTL tr:&pointTR bl:&pointBL br:&pointBR width:width height:height];
-        }
-        
+       
         dispatch_async(dispatch_get_main_queue(), ^(void)
         {
+            // landscape left will take an upside-down picture!
+            if ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft)
+            {
+                // rotate 180 degrees
+                [self rotateCorners180:&pointTL tr:&pointTR bl:&pointBL br:&pointBR width:width height:height];
+            }
+
             // convert corner points into percentages
             weakSelf.cropView->pointTL.x = pointTL.x / width;
             weakSelf.cropView->pointTL.y = pointTL.y / height;

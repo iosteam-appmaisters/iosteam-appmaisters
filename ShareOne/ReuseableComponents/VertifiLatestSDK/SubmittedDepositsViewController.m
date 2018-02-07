@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -176,6 +176,9 @@ static NSString *kDepositCellID = @"TableViewCell_ILSV";
              
              if (success)
              {
+                 if (depositModel.debugMode)
+                     depositModel.debugString = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
                  NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:data];
                  if (xmlParser != nil)
                  {
@@ -202,9 +205,9 @@ static NSString *kDepositCellID = @"TableViewCell_ILSV";
 
 #pragma mark delete deposit
 
-- (void) deleteDeposit:(NSInteger)idx
+- (void) deleteDeposit:(NSIndexPath *)indexPath
 {
-    SubmittedDeposit *deposit = [self.submittedDeposits objectAtIndex:idx];
+    SubmittedDeposit *deposit = [self.submittedDeposits objectAtIndex:indexPath.row];
     DepositAccount *account = (DepositAccount *)[depositModel.depositAccounts objectAtIndex:depositModel.depositAccountSelected];
 
     // perform server call
@@ -232,6 +235,9 @@ static NSString *kDepositCellID = @"TableViewCell_ILSV";
         {
              if (success)
              {
+                 if (depositModel.debugMode)
+                     depositModel.debugString = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
                  XmlSimpleParser *parser = [[XmlSimpleParser alloc] initXmlParser];
                  NSXMLParser *xml = [[NSXMLParser alloc] initWithData:data];
                  
@@ -242,14 +248,16 @@ static NSString *kDepositCellID = @"TableViewCell_ILSV";
                      NSString *strValue = (NSString *)[parser.dictElements valueForKey:@"Deleted"];
                      if ((strValue != nil) && ([strValue longLongValue] == [deposit.deposit_ID longLongValue]))
                      {
-                         [self.submittedDeposits removeObjectAtIndex:idx];
+                         [self.submittedDeposits removeObjectAtIndex:indexPath.row];
                          depositModel.submittedDeposits--;
                      }
                  }
                  
                  // update UI on main thread
                  dispatch_async(dispatch_get_main_queue(), ^{
-                     [tableDeposits reloadData];
+                     [tableDeposits deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                     //[tableDeposits reloadData];
+                     //[tableDeposits setEditing:NO animated:YES];
                  });
              }
              else
@@ -457,7 +465,7 @@ static NSString *kDepositCellID = @"TableViewCell_ILSV";
     // Handle a row delete
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [self deleteDeposit:indexPath.row];
+        [self deleteDeposit:indexPath];
     }
 }
 

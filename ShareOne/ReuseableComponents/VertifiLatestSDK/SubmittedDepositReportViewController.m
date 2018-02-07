@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -119,6 +119,9 @@
         {
              if (success)
              {
+                 if (depositModel.debugMode)
+                     depositModel.debugString = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
                  XmlSimpleParser *parser = [[XmlSimpleParser alloc] initXmlParser];
                  NSXMLParser *xml = [[NSXMLParser alloc] initWithData:data];
                  

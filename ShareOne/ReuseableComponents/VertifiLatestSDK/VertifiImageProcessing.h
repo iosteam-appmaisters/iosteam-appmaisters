@@ -6,7 +6,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -21,7 +21,7 @@
 //
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface VertifiImageProcessing : NSObject
 {
@@ -40,7 +40,11 @@
 - (UIImage *) onProcessImageBWDrawImage:(NSMutableArray *)dictResultsImage brightness:(double)brightness;
 - (UIImage *) onProcessImageBWDrawImageAuto:(NSMutableArray *)dictResultsImage;
 
-- (CGFloat) brightness;
+- (UIImage *) onRotateImage180:(UIImage *)image;
+- (UIImage *) onScaleImage:(UIImage *)image toWidth:(int)width;
+
+- (CGFloat) brightness;                 // brightness/contrast
+- (BOOL) isSmartScaled;                 // smart-scaled image?
 
 // Static methods
 

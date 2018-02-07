@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -25,12 +25,6 @@
 #import "DepositModel.h"
 #import "FormPostHandler.h"
 #import "XmlSimpleParser.h"
-
-#define REQUESTER_VALUE             @"700000465-Shareone"
-#define ROUTING_VALUE               @"700000465"
-#define ACCOUNT                     @"666"
-#define KEY_VALUE                   @"f481c1cf086a89dd9018b515525021f5"
-
 
 @implementation DepositModel
 
@@ -55,8 +49,10 @@
 @synthesize depositAccountSelected;
 @synthesize ssoKey;
 @synthesize testMode;
+@synthesize allowDepositsExceedingLimit;
 
 @synthesize loginProcessing;
+@synthesize isSmartScaled;
 
 @synthesize dictMasterGeneral;
 @synthesize dictMasterFrontImage;
@@ -65,6 +61,9 @@
 @synthesize dictResultsGeneral;
 @synthesize dictResultsFrontImage;
 @synthesize dictResultsBackImage;
+
+@synthesize debugMode;
+@synthesize debugString;
 
 //--------------------------------------------------------------------------------------------
 // Singleton model object
@@ -101,15 +100,17 @@
         NSString *pathSettings = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
         dictSettings = [[NSDictionary alloc] initWithContentsOfFile:pathSettings];
 
+        NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+
         self.rectViewPort = CGRectMake (0.005, 0.16, 0.99, 0.65);	// left: 0.5%, top: 16%, width: 99%, height: 65%
         self.rectFront = CGRectZero;
         self.rectBack = CGRectZero;
 
         // deposit model
-        self.routing = ROUTING_VALUE;                                         // comes from account enumeration
-        self.requestor = REQUESTER_VALUE;
-        self.userName = @"spike";
-        self.userEmail = @"ggwyn@shareone.com";
+        self.routing = nil;                                         // comes from account enumeration
+        self.requestor = nil;
+        self.userName = @"Joe User";
+        self.userEmail = @"joe_user@gmail.com";
 
         // some defaults to allow the program to work without credentials
         self.depositLimit = [NSNumber numberWithDouble:5000.00];    // should be 0
@@ -122,9 +123,9 @@
         // create an initial default account to allow the program to partially function without credentials
         DepositAccount *accountDefault = [[DepositAccount alloc] init];
         accountDefault.name = @"Primary Checking";
-        accountDefault.member = ACCOUNT;
-        accountDefault.account = @"666";
-        accountDefault.session = @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
+        accountDefault.member = @"123456";
+        accountDefault.account = @"123456-01";
+        accountDefault.session = nil;
         accountDefault.timestamp = nil;
         accountDefault.accountType = @"1";
         accountDefault.MAC = nil;
@@ -135,6 +136,7 @@
         depositSubmitQueue = nil;                                   // instantiate on demand
         self.ssoKey = nil;
         self.testMode = YES;                                        // test mode!
+        self.allowDepositsExceedingLimit = [defaults boolForKey:kVIP_PREFERENCE_ALLOW_DEPOSITS_EXCEEDING_LIMIT];    // allow deposits exceedinglimit
         
         // create and initialize master IQ/IU dictionaries
         self.dictMasterGeneral = [[ResponseDictionary alloc] init];
@@ -168,12 +170,13 @@
         [dictMasterFrontImage addValues:@"SpotNoise" value:@"Excess Spot Noise" help:@"The front image has excess spot noise." style:UITableViewCellAccessoryDetailButton];
         [dictMasterFrontImage addValues:@"CropError" value:@"Cropping Error" help:@"The front image is not properly cropped. Use a solid colored contrasting surface for best results." style:UITableViewCellAccessoryDetailButton];
         [dictMasterFrontImage addValues:@"OutOfFocus" value:@"Out of Focus" help:@"The front image is out of focus." style:UITableViewCellAccessoryDetailButton];
+        [dictMasterFrontImage addValues:@"MICRLocate" value:@"MICR Codeline Not Found" help:@"The MICR numbers along the bottom of the check image could not be located." style:UITableViewCellAccessoryDetailButton];
         
         [dictMasterFrontImage addValues:@"DateUsability" value:@"Date Missing" help:@"The check date could not be located on the image." style:UITableViewCellAccessoryDetailButton];
         [dictMasterFrontImage addValues:@"SignatureUsability" value:@"Signature Missing" help:@"The signature could not be located on the image." style:UITableViewCellAccessoryDetailButton];
         [dictMasterFrontImage addValues:@"PayeeUsability" value:@"Payee Name Missing" help:@"The payee name could not be located on the image." style:UITableViewCellAccessoryDetailButton];
         [dictMasterFrontImage addValues:@"PayorUsability" value:@"Payor Name Missing" help:@"The payor name could not be located on the image." style:UITableViewCellAccessoryDetailButton];
-        [dictMasterFrontImage addValues:@"MICRUsability" value:@"MICR Codeline Unreadable" help:@"The MICR numbers along the bottom of the check image could not be read." style:UITableViewCellAccessoryDetailButton];
+        [dictMasterFrontImage addValues:@"MICRUsability" value:@"MICR Codeline Unreadable" help:@"All or some of the MICR numbers along the bottom of the check image could not be read." style:UITableViewCellAccessoryDetailButton];
         
         self.dictMasterBackImage = [[ResponseDictionary alloc] init];
         [dictMasterBackImage addValues:@"NoError" value:@"No Errors" help:@"" style:UITableViewCellAccessoryCheckmark];
@@ -191,11 +194,14 @@
         [dictMasterBackImage addValues:@"OutOfScale" value:@"Back Image Not in Scale" help:@"The back image is a different size than the front. One or the other is improperly cropped. Please review the front photo and re-take if it appears improperly cropped." style:UITableViewCellAccessoryDetailButton];
         [dictMasterBackImage addValues:@"CropError" value:@"Cropping Error" help:@"The back image is not properly cropped. Use a solid colored contrasting surface for best results." style:UITableViewCellAccessoryDetailButton];
         [dictMasterBackImage addValues:@"OutOfFocus" value:@"Out of Focus" help:@"The back image is out of focus." style:UITableViewCellAccessoryDetailButton];
+        [dictMasterBackImage addValues:@"MICRLocate" value:@"Wrong Side" help:@"This appears to be a front check image, please flip the check over." style:UITableViewCellAccessoryDetailButton];
         
         self.dictResultsGeneral = [[NSMutableDictionary alloc] initWithCapacity:2];
         self.dictResultsFrontImage = [[NSMutableDictionary alloc] initWithCapacity:10];
         self.dictResultsBackImage = [[NSMutableDictionary alloc] initWithCapacity:10];
-        
+     
+        // Debug
+        self.debugMode = [defaults boolForKey:kVIP_PREFERENCE_DEBUG];
 	}
 	return (self);
 }
@@ -310,7 +316,7 @@
     else
     {
         // 30% lossy!
-        [UIImageJPEGRepresentation(imageColor,0.5f) writeToFile:cacheFileColor atomically:NO];
+        [UIImageJPEGRepresentation(imageColor,0.3f) writeToFile:cacheFileColor atomically:NO];
     }
     return;
 }
@@ -574,6 +580,9 @@
              
              if (success)
              {
+                 if (self.debugMode)
+                     self.debugString = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                 
                  NSXMLParser *xml = [[NSXMLParser alloc] initWithData:data];
                  [self parseRegistration:xml];
              }

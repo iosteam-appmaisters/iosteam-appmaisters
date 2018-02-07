@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -24,7 +24,6 @@
 
 #import "VIPSampleAppDelegate.h"
 #import "UISchema.h"
-#import "GoogleAnalytics.h"
 #import "AccountsViewController.h"
 #import <libkern/OSAtomic.h>
 
@@ -61,8 +60,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
-    [GoogleAnalytics init];                     // initialize Google Analytics
     
     [self setColorScheme];                      // color scheme
     uploadSessions = 0;                         // upload sessions

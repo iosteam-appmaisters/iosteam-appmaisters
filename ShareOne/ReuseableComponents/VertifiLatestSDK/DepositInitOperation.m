@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -90,8 +90,8 @@
 	[form addFormField:@"MAC" withStringData:account.MAC];
 	[form addFormField:@"mode" withStringData:depositModel.testMode ? @"test" : @"prod"];
     [form addFormField:@"amount" withStringData:[NSString stringWithFormat:@"%.2f", depositModel.depositAmount.doubleValue]];
-    [form addFormField:@"membername" withStringData:depositModel.userName];
-	[form addFormField:@"email" withStringData:depositModel.userEmail];
+    [form addFormField:@"scaled" withStringData:depositModel.isSmartScaled ? @"true" : @"false"];                                       // VIPLibrary v7.0+, scaled=true
+    [form addFormField:@"ignoreLimit" withStringData:depositModel.allowDepositsExceedingLimit ? @"true" : @"false"];                    // allow over-limit deposits
     [form addFormField:@"source" withStringData:[UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? @"4" : @"2"];  // source 2 = iPhone, 4 = iPad
 
 	// image
@@ -100,6 +100,8 @@
     if (imageColor != nil)
     {
 #ifdef DEBUG
+        NSLog(@"%@ Ignore limit %@ amount %@ limit %.2f",self.class, depositModel.allowDepositsExceedingLimit ? @"true" : @"false", [NSString stringWithFormat:@"%.2f", depositModel.depositAmount.doubleValue], depositModel.depositLimit.doubleValue);
+        NSLog(@"%@ Scaled %@",self.class,depositModel.isSmartScaled ? @"true" : @"false");
         NSLog(@"%@ PNG b/w %lu",self.class,(unsigned long)image.length);
         NSLog(@"%@ JPEG color %lu",self.class,(unsigned long)imageColor.length);
 #endif
@@ -133,6 +135,9 @@
 
          if (success)
          {
+             if (depositModel.debugMode)
+                 depositModel.debugString = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+             
              XmlSimpleParser *parser = [[XmlSimpleParser alloc] initXmlParser];
              NSXMLParser *xml = [[NSXMLParser alloc] initWithData:data];
              [xml setDelegate:parser];

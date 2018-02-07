@@ -7,7 +7,7 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 // License:
 //
-// Copyright (c) 2016 Vertifi Software, LLC
+// Copyright (c) 2017 Vertifi Software, LLC
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
 // to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -168,14 +168,11 @@ static NSString *kLblSubtitleCellID = @"TableViewCell_LblSubtitle";
     FormPostHandler *postHandler = [[FormPostHandler alloc] init];
     NSURL *postURL = [NSURL URLWithString:[depositModel.dictSettings valueForKey:@"URL_AccountEnumeration"]];
     
-    NSLog(@"postURL : %@",postURL.absoluteString);
     MultipartForm *form = [[MultipartForm alloc] initWithURL:postURL];
     
     // password in App Settings, use the Settings app to configure a password to send to your handler
     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
     NSString *password = [defaults stringForKey:kVIP_PREFERENCE_PASSWORD];
-
-    NSLog(@"Password : %@",password);
 
     // fields
     [form addFormField:@"Password" withStringData:password];

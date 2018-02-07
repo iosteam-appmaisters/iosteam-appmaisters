@@ -38,6 +38,7 @@
 @property (nonatomic,strong) NSString *vertifirdcrequestorkey;
 @property (nonatomic,strong) NSString *vertifirdctestmode;
 @property (nonatomic,strong) NSString *vertifirdcurl;
+@property (nonatomic,strong) NSString *rdcpostingmsg;
 
 +(ClientSettingsObject *)parseClientSettings:(NSArray *)array;
 
