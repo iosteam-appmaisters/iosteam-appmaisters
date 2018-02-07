@@ -72,6 +72,10 @@
 @property (nonatomic, strong) NSString *depositLimt;
 @property (nonatomic, strong) VertifiObject *objVertifiObject;
 
+@property (weak, nonatomic) IBOutlet UIImageView *frontCheckImage;
+
+@property (weak, nonatomic) IBOutlet UIImageView *backCheckImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
 
 -(IBAction)doneButtonClicked:(id)sender;
@@ -201,7 +205,7 @@
         }
     }
     if([_accountTxtFeild.text length]<=0){
-        status = @"Select Suffix";
+        status = @"Select Account";
         return status;
     }
     
@@ -720,12 +724,26 @@
 #pragma mark - IBAction Methods
 
 -(IBAction)captureFrontCardAction:(id)sender{
+    
+     __weak MobileDepositController *weakSelf = self;
+    if([_accountTxtFeild.text length]<=0){
+        [[ShareOneUtility shareUtitlities] showToastWithMessage:@"Select Account" title:@"" delegate:weakSelf];
+        return;
+    }
+    
     _isFrontorBack=TRUE;
     _objSender=sender;
     // [self showPicker];  // IOS Camera
     [self onCameraClick:_objSender]; //Vertify Camera
 }
 -(IBAction)captureBackCardAction:(id)sender{
+    
+    __weak MobileDepositController *weakSelf = self;
+    if([_accountTxtFeild.text length]<=0){
+        [[ShareOneUtility shareUtitlities] showToastWithMessage:@"Select Account" title:@"" delegate:weakSelf];
+        return;
+    }
+    
     _isFrontorBack=FALSE;
 
     _objSender=sender;
@@ -961,11 +979,12 @@
 
                                    [self viewEnabled:_View1btn];
                                    [self vertifiPaymentInIt];
-
+                                   _frontCheckImage.image = _frontImage;
                                }
                                else{
                                    if(imageErrors.count == 0){
                                        [self viewEnabled:_View2btn];
+                                       _backCheckImage.image = _backImage;
                                    }
                                }
 
@@ -1011,6 +1030,7 @@
 
 -(void)viewEnabled:(UIButton *)viewBtn
 {
+    viewBtn.hidden = NO;
     viewBtn.userInteractionEnabled=TRUE;
     [viewBtn setTitleColor:_frontCamBtn.tintColor forState:UIControlStateNormal];
     if([_objSender isEqual:_frontCamBtn]){
@@ -1022,6 +1042,7 @@
 }
 -(void)viewDisabled:(UIButton *)viewBtn
 {
+    viewBtn.hidden = YES;
     viewBtn.userInteractionEnabled=FALSE;
 //    viewBtn.titleLabel.textColor=[UIColor colorWithRed:163/255.0 green:163/255.0 blue:163/255.0 alpha:1];
 

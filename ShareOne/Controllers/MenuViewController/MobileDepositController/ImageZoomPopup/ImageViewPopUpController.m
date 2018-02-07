@@ -82,9 +82,9 @@
     }
     else
     {       if (switchColor.selectedSegmentIndex == 1)
-                cacheFile = [NSString stringWithFormat:@"%@/backimg.png", cacheDirectory];
-            else
                 cacheFile = [NSString stringWithFormat:@"%@/backimg_color.jpg", cacheDirectory];
+            else
+                cacheFile = [NSString stringWithFormat:@"%@/backimg.png", cacheDirectory];
     }
 
     return cacheFile;
