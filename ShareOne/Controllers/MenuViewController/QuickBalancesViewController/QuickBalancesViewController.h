@@ -20,6 +20,8 @@
 
 @property(nonatomic,strong) NSMutableArray * currentQTArray;
 
+@property(nonatomic,strong) NSString * numOfQuickViewTransactions;
+
 - (IBAction)dismissQuickBalances:(id)sender;
 
 -(void)HeaderButtonAction:(id)sender;

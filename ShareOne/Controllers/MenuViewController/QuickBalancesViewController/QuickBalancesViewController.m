@@ -20,6 +20,7 @@
 #import "SharedUser.h"
 
 
+
 @implementation QuickBalancesViewController
 
 - (IBAction)dismissQuickBalances:(id)sender{
@@ -86,6 +87,16 @@
 
     self.qbTblView.allowMultipleSectionsOpen = NO;
     [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
+    
+    ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+    
+    _numOfQuickViewTransactions = @"5";
+    if (config.quickviewnumoftransactions == nil){
+        _numOfQuickViewTransactions = @"5";
+    }
+    else {
+        _numOfQuickViewTransactions = config.quickviewnumoftransactions;
+    }
 }
 
 
@@ -93,10 +104,7 @@
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    //SuffixInfo *qb = _qbArr[section];
-    
-    return _currentQTArray.count ; //[qb.transArray count];
+    return _currentQTArray.count ;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -135,11 +143,8 @@
     else{
         [cell.contentView setBackgroundColor:DEFAULT_COLOR_GRAY];
     }
-    
-    
-//    SuffixInfo  *objQuickBalances = _qbArr[indexPath.section];
+
     QuickTransaction *objQuickTransaction   =  _currentQTArray[indexPath.row];
-    //objQuickBalances.transArray[indexPath.row];
     
     [cell.tranTitleLbl setText:objQuickTransaction.Tran];
     [cell.tranDateLbl setText:objQuickTransaction.Eff];
@@ -195,24 +200,56 @@
         
         [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:objQuickBalances.Type]];
     
+    NSNumber * price = objQuickBalances.Balance;
+    if ([objQuickBalances.Type isEqualToString:@"C"] || [objQuickBalances.Type isEqualToString:@"c"] ||
+        [objQuickBalances.Type isEqualToString:@"S"] || [objQuickBalances.Type isEqualToString:@"s"]) {
+        price = objQuickBalances.Available;
+    }
     
-    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:
-     [self getFormattedAmount:objQuickBalances.Available]
-     ];
+    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[self getFormattedAmount:price]];
     
     [objFZAccordionTableViewHeaderView.headerBtn setTag:section];
     
     [objFZAccordionTableViewHeaderView.sectionImgVew setImage:[UIImage imageNamed:@"icon-dollar"]];
-    return (UIView *)objFZAccordionTableViewHeaderView;
+    
+    UIView * sectionHeaderView = (UIView *)objFZAccordionTableViewHeaderView;
+    sectionHeaderView.tag = section;
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleSectionTap:)];
+    
+    [sectionHeaderView addGestureRecognizer:singleFingerTap];
+    
+    return sectionHeaderView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
 
--(void)plusMinusTapped:(UIButton*)sender {
+#pragma mark - <FZAccordionTableViewDelegate> -
+
+- (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+
+    QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
+    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_up_arrow"]];
+
+    [self getQTForSelectedSection:(int)section];
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+  
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+
+    QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
+    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_down_arrow"]];
+}
+
+- (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
     
-    [_qbTblView toggleSection:sender.tag];
 }
 
 -(NSString *)getFormattedAmount:(NSNumber*)value {
@@ -232,7 +269,7 @@
     [formatter setRoundingMode:NSNumberFormatterRoundDown];
     
     NSString *formattedString = [formatter stringFromNumber:value];
-
+    
     NSString * last = [[[NSString stringWithFormat:@"%.02f",value.floatValue] componentsSeparatedByString:@"."]lastObject];
     
     NSString * final = [NSString stringWithFormat:@"$%@%@",formattedString,last];
@@ -241,85 +278,55 @@
     
 }
 
-
-#pragma mark - <FZAccordionTableViewDelegate> -
-
-- (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-
-    QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
-    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_up_arrow"]];
-
-    [self getQTForSelectedSection:(int)section];
-    
+- (void)handleSectionTap:(UITapGestureRecognizer *)recognizer {
+    [self sectionTapped:(int)recognizer.view.tag];
 }
 
-- (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    SuffixInfo *obj = _qbArr[section];
-//
-//    if([obj.transArray count]<=0){
-//        [self noTransaction];
-//    }
-    
-    
+-(void)plusMinusTapped:(UIButton*)sender {
+    [self sectionTapped:(int)sender.tag];
 }
 
-
-
-- (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-
-    QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
-    [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_down_arrow"]];
-}
-
-- (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
+-(void) sectionTapped:(int)section {
     
+    SuffixInfo *obj = _qbArr[section];
+    if([obj.transArray count]<=0) {
+        [self noTransaction];
+        return;
+    }
+    if ([_numOfQuickViewTransactions intValue] > 0){
+        [_qbTblView toggleSection:section];
+    }
 }
 
-- (void)getQTForSelectedSection:(int)section{
+- (void)getQTForSelectedSection:(int)section {
     
     [ShareOneUtility showProgressViewOnView:self.view];
     
     SuffixInfo *obj = _qbArr[section];
-    ClientSettingsObject  *config = [Configuration getClientSettingsContent];
-    
-    NSString * quickNum = @"5";
-    if (config.quickviewnumoftransactions == nil){
-        quickNum = @"5";
-    }
-    else {
-        quickNum = config.quickviewnumoftransactions;
-    }
-    
     
     __weak QuickBalancesViewController *weakSelf = self;
     NSString *SuffixID = [NSString stringWithFormat:@"%d",obj.Suffixid.intValue];
-
-    {
-        
-        [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:/*@"HomeBank",@"ServiceType",*/[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",quickNum,@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
-            
-            _currentQTArray = [(NSArray*)user mutableCopy];
-            
-            if([_currentQTArray count]<=0){
-                [self noTransaction];
-            }
-            
-            [weakSelf.qbTblView reloadData];
-            
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            
-        } failureBlock:^(NSError *error) {
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-        }];
-    }
     
+    [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:/*@"HomeBank",@"ServiceType",*/[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",_numOfQuickViewTransactions,@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
+        _currentQTArray = [(NSArray*)user mutableCopy];
+        
+        [weakSelf.qbTblView reloadData];
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+    } failureBlock:^(NSError *error) {
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    }];
     
 }
+
 -(void)noTransaction{
     __weak QuickBalancesViewController *weakSelf = self;
     
     [[ShareOneUtility shareUtitlities] showToastWithMessage:@"No Transaction " title:@"" delegate:weakSelf];
 }
+
 -(void)applyURLSessionOnReq:(NSMutableURLRequest *)req{
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: self delegateQueue: nil];
