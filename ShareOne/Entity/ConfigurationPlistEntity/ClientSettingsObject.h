@@ -39,6 +39,7 @@
 @property (nonatomic,strong) NSString *vertifirdctestmode;
 @property (nonatomic,strong) NSString *vertifirdcurl;
 @property (nonatomic,strong) NSString *rdcpostingmsg;
+@property (nonatomic,strong) NSString *enablencualogo;
 
 +(ClientSettingsObject *)parseClientSettings:(NSArray *)array;
 

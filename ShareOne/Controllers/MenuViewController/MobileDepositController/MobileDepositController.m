@@ -64,6 +64,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *suffixNumberLbl;
 @property (nonatomic, weak) IBOutlet UILabel *suffixTypeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *accountNumber;
+@property (weak, nonatomic) IBOutlet UIImageView *ncuaLogo;
 
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -77,6 +78,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backCheckImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *submitLeading;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *noteLeading;
 
 -(IBAction)doneButtonClicked:(id)sender;
 
@@ -108,6 +111,21 @@
     //[self getListOfPast6MonthsDeposits];
     _noteLabel.text = @"";
     _noteLabel.text = [Configuration getClientSettingsContent].rdcpostingmsg;
+    
+    NSLog(@"%@",[Configuration getClientSettingsContent].enablencualogo);
+    
+    if ([[Configuration getClientSettingsContent].enablencualogo boolValue]){
+        _ncuaLogo.hidden = NO;
+        _submitLeading.constant = 140.0;
+        _noteLeading.constant = 120.0;
+        [self.view layoutSubviews];
+    }
+    else {
+        _ncuaLogo.hidden = YES;
+        _submitLeading.constant = 20.0;
+        _noteLeading.constant = 20.0;
+        [self.view layoutSubviews];
+    }
 }
 
 -(void)setThemeOnButtons{
