@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define TF_DEPRECATED(x)  __attribute__ ((deprecated(x)))
+
 @interface TestFairy: NSObject
 
 /**
@@ -93,7 +95,7 @@
  *
  * @param correlationId Id for the current session
  */
-+ (void)setCorrelationId:(NSString *)correlationId;
++ (void)setCorrelationId:(NSString *)correlationId TF_DEPRECATED("Please refer to setUser:");
 
 /**
  * Sets a correlation identifier for this session. This value can
@@ -103,7 +105,7 @@
  *
  * @param correlationId Id for the current session
  */
-+ (void)identify:(NSString *)correlationId;
++ (void)identify:(NSString *)correlationId TF_DEPRECATED("Please refer to setAttribute: and setUser:");
 
 /**
  * Sets a correlation identifier for this session. This value can
@@ -114,7 +116,7 @@
  * @param correlationId Id for the current session
  * @param traits Attributes and custom attributes to be associated with this session
  */
-+ (void)identify:(NSString *)correlationId traits:(NSDictionary *)traits;
++ (void)identify:(NSString *)correlationId traits:(NSDictionary *)traits TF_DEPRECATED("Please refer to setAttribute:");
 
 /**
  * Pauses the current session. This method stops recoding of
@@ -153,6 +155,54 @@
  * @param name logic name of current screen
  */
 + (void)setScreenName:(NSString *)name;
+
+/**
+ * Stops the current session recording. Unlike 'pause', when
+ * calling 'resume', a new session will be created and will be
+ * linked to the previous recording. Useful if you want short
+ * session recordings of specific use-cases of the app. Hidden 
+ * views and user identity will be applied to the new session 
+ * as well, if started. 
+ */
++ (void)stop;
+
+/**
+ * Records a session level attribute which can be looked up via web dashboard.
+ *
+ * @param key The name of the attribute. Cannot be nil.
+ * @param value The value associated with the attribute. Cannot be nil.
+ * @return YES if successfully set attribute value, NO if failed with error in log.
+ *
+ * @note The SDK limits you to storing 64 named attributes. Adding more than 64 will fail and return NO.
+ */
++ (BOOL)setAttribute:(NSString *)key withValue:(NSString *)value;
+
+/**
+ * Records a user identified as an attribute. We recommend passing values such as
+ * email, phone number, or user id that your app may use.
+ *
+ * @param userId The identifying user. Cannot be nil.
+ *
+ */
++ (void)setUserId:(NSString *)userId;
+
+/**
+ * Remote logging. These logs will be sent to the server,
+ * but will not appear in the console.
+ */
+
++ (void)log:(NSString *)message;
+
+/**
+ * Attach a file to the session. A maximum of 5 files may be attached. Each file cannot be more
+ * than 15 mb in size. In order to see if the file successfully uploads or fails, please view
+ * the logs.
+ *
+ * @param file path to file on disk.
+ *
+ */
++ (void)attachFile:(NSURL *)file;
+
 @end
 
 #if __cplusplus
@@ -193,4 +243,3 @@ extern NSString *const TestFairyDidShakeDevice;
 extern NSString *const TestFairyWillProvideFeedback;
 extern NSString *const TestFairyDidCancelFeedback;
 extern NSString *const TestFairyDidSendFeedback;
-

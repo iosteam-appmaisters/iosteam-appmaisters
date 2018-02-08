@@ -1,4 +1,4 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'ShareOne' do
 
@@ -12,7 +12,7 @@ pod 'GoogleMaps'
 pod 'AES256Encrypter', '~> 0.0'
 pod 'SAMKeychain', '~> 1.5'
 pod 'XMLDictionary', '~> 1.4'
-pod 'TestFairy', '~> 1.8'
+pod 'TestFairy'
 pod 'SWTableViewCell', '~> 0.3.7'
 
 end
