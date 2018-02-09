@@ -11,6 +11,7 @@
 #import "User.h"
 #import "CashDeposit.h"
 #import "VertifiObject.h"
+#import "HomeViewController.h"
 
 @implementation VertifiAgreemantController
 
@@ -57,8 +58,9 @@
             user.vertifyEUAContents=nil;
             [ShareOneUtility saveUserObject:user];
         }
-        else
+        else{
             [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
+        }
         
     } failureBlock:^(NSError *error) {
         
@@ -67,6 +69,9 @@
 }
 
 -(void)proceedToVertifyWithObject:(VertifiAgreemantController *)obj{
+    
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:VERTIFI_AGREEMENT_DECLINED];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     
     [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:VERTIFI_AGREEMANT_KEY];
     
@@ -78,11 +83,30 @@
 
 
 -(IBAction)goDeclineAgreemant:(id)sender{
-
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:VERTIFI_AGREEMENT_DECLINED];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    [self navigateToLastController];
+    
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)navigateToLastController{
+    
+    NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
+    
+    NSString *webUrl = [cacheControlerDict valueForKey:WEB_URL];
+    
+    HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    currentController = objHomeViewController;
+    objHomeViewController.url= webUrl;
+    
+    [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+    //rootview
+    self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objHomeViewController,nil];
+    
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

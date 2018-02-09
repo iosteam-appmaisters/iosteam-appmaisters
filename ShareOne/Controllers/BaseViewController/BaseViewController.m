@@ -469,11 +469,15 @@
         if([contrlollerName isEqualToString:MOBILE_DEPOSIT]){
             
             // Check whether current user has Accepted Vertifi Agreemant or not
-            User *currentUser = [ShareOneUtility getUserObject];
-            if(!currentUser.vertifyEUAContents){
+            //User *currentUser = [ShareOneUtility getUserObject];
+            //if(!currentUser.vertifyEUAContents){
                 contrlollerName= [dict valueForKey:CONTROLLER_NAME];
-                [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
-            }
+            
+            NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
+            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+            
+                //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+            /*}
             else{
                 // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
                 contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
@@ -482,9 +486,9 @@
                 
                 NSDictionary *dictVertify = [NSDictionary dictionaryWithObjectsAndKeys:contrlollerName,CONTROLLER_NAME,screenTitle,SUB_CAT_TITLE,screenTitle,SUB_CAT_CONTROLLER_TITLE,[NSNumber numberWithBool:FALSE],IS_OPEN_NEW_TAB, nil];
                 [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dictVertify];
-            }
+            }*/
             
-            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+            //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
 
             
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
@@ -619,6 +623,10 @@
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground from Home");
+    
+    if ([self.presentedViewController isKindOfClass:[UIAlertController class]]){
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    }
     
     [self sendAdvertismentViewToBack];
     

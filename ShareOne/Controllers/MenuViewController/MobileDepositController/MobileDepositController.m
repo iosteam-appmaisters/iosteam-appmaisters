@@ -22,6 +22,7 @@
 #import "TransparentToolbar.h"
 #import "CameraInstructionViewController.h"
 #import "CameraGridView.h"
+#import "VertifiAgreemantController.h"
 
 //@protocol CameraViewControllerDelegate
 //
@@ -36,6 +37,8 @@
 {
     NSMutableArray *imageErrors;
 }
+
+@property(nonatomic) BOOL isUserRegisterationChecked;
 
 @property (nonatomic,strong) id objSender;
 @property (nonatomic,strong) IBOutlet UIButton *View1btn;
@@ -105,14 +108,16 @@
     [self startUpMethod];
     [self loadDataOnPickerView];
     
-    [self getRegisterToVirtifiToCheckStatus];
     [self setThemeOnButtons];
-    //[self getListOfReviewDeposits];
-    //[self getListOfPast6MonthsDeposits];
+    
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:VERTIFI_AGREEMENT_DECLINED]){
+        [self showVertifyAgreementVC];
+    }
+    
+    _isUserRegisterationChecked = NO;
+    
     _noteLabel.text = @"";
     _noteLabel.text = [Configuration getClientSettingsContent].rdcpostingmsg;
-    
-    NSLog(@"%@",[Configuration getClientSettingsContent].enablencualogo);
     
     if ([[Configuration getClientSettingsContent].enablencualogo boolValue]){
         _ncuaLogo.hidden = NO;
@@ -129,8 +134,7 @@
 }
 
 -(void)setThemeOnButtons{
-    
-    
+
     StyleValuesObject *obj = [Configuration getStyleValueContent];
 
     UIImage * image = [_frontCamBtn imageForState:UIControlStateSelected];
@@ -172,8 +176,13 @@
             if(![obj.InputValidation isEqualToString:@"OK"]){
                 [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
             }
-            if(![obj.LoginValidation isEqualToString:@"OK"]){
-                [self showAlertWithTitle:@"" AndMessage:obj.LoginValidation];
+            if ([obj.LoginValidation isEqualToString:@"User Not Registered"]){
+                [self showVertifyAgreementVC];
+            }
+            else {
+                if(![obj.LoginValidation isEqualToString:@"OK"]){
+                    [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
+                }
             }
             
         }
@@ -190,6 +199,21 @@
     } failureBlock:^(NSError *error) {
         
     }];
+    
+}
+
+-(void)showVertifyAgreementVC {
+    
+    NSString * contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
+    //NSString * screenTitle= @"Register";
+    NSString * navigationTitle = @"Register";
+    
+    //NSDictionary *dictVertify = [NSDictionary dictionaryWithObjectsAndKeys:contrlollerName,CONTROLLER_NAME,screenTitle,SUB_CAT_TITLE,screenTitle,SUB_CAT_CONTROLLER_TITLE,[NSNumber numberWithBool:FALSE],IS_OPEN_NEW_TAB, nil];
+    //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dictVertify];
+    
+    UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+    objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
+    self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
     
 }
 
@@ -683,6 +707,11 @@
 
 }
 -(IBAction)doneButtonClicked:(id)sender{
+
+    if (!_isUserRegisterationChecked){
+        [self getRegisterToVirtifiToCheckStatus];
+        _isUserRegisterationChecked = YES;
+    }
     
     if(!_objSuffixInfo){
         [_pickerView selectRow:0 inComponent:0 animated:YES];
@@ -709,7 +738,8 @@
 }
 
 
-#pragma PickerView - Delegate
+#pragma mark - PickerView - Delegate
+
 // The number of columns of data
 - (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -736,6 +766,8 @@
     [_accountTxtFeild setText:_objSuffixInfo.Descr];
     [_suffixNumberLbl setText:[NSString stringWithFormat:@"%d",[_objSuffixInfo.Suffixnumber intValue]]];
     [_suffixTypeLbl setText:[NSString stringWithFormat:@"%@",[ShareOneUtility getSectionTitleByCode:_objSuffixInfo.Type] ]];
+    
+    
 }
 
 
