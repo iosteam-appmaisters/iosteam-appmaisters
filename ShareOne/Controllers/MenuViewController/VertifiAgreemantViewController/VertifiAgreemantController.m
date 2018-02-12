@@ -29,7 +29,6 @@
 
 -(IBAction)goAcceptAgreemant:(id)sender{
 
-    
     [self VertifiRegAcceptance];
 }
 

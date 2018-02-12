@@ -109,7 +109,7 @@
     
     NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
     
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:_objSuffixInfo currentTimeStamp:currentTimeStamp];
     
     NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
     
@@ -168,7 +168,7 @@
     
     NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
     
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:_objSuffixInfo currentTimeStamp:currentTimeStamp];
     
     NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
     
@@ -417,7 +417,7 @@
     
     NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
     
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:_objSuffixInfo currentTimeStamp:currentTimeStamp];
     
     NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
     

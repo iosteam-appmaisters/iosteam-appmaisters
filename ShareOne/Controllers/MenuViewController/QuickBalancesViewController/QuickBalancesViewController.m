@@ -97,9 +97,14 @@
     else {
         _numOfQuickViewTransactions = config.quickviewnumoftransactions;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
-
+-(void)appGoingToBackground{
+    
+    [self dismissQuickBalances:nil];
+}
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 

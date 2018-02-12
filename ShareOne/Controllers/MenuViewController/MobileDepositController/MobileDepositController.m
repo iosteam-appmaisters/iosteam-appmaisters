@@ -38,8 +38,6 @@
     NSMutableArray *imageErrors;
 }
 
-@property(nonatomic) BOOL isUserRegisterationChecked;
-
 @property (nonatomic,strong) id objSender;
 @property (nonatomic,strong) IBOutlet UIButton *View1btn;
 @property (nonatomic,strong) IBOutlet UIButton *View2btn;
@@ -90,9 +88,6 @@
 
 -(IBAction)submittButtonClicked:(id)sender;
 
-
-
-
 -(IBAction)captureFrontCardAction:(id)sender;
 -(IBAction)captureBackCardAction:(id)sender;
 
@@ -105,6 +100,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self startUpMethod];
     [self loadDataOnPickerView];
     
@@ -114,10 +110,13 @@
         [self showVertifyAgreementVC];
     }
     
-    _isUserRegisterationChecked = NO;
-    
     _noteLabel.text = @"";
     _noteLabel.text = [Configuration getClientSettingsContent].rdcpostingmsg;
+    
+    BOOL forcedInstructions = [[Configuration getClientSettingsContent].rdcforceinstruction boolValue];
+    [[NSUserDefaults standardUserDefaults]setBool:forcedInstructions forKey:kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_FRONT];
+    [[NSUserDefaults standardUserDefaults]setBool:forcedInstructions forKey:kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_BACK];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     
     if ([[Configuration getClientSettingsContent].enablencualogo boolValue]){
         _ncuaLogo.hidden = NO;
@@ -131,6 +130,12 @@
         _noteLeading.constant = 20.0;
         [self.view layoutSubviews];
     }
+    
+    [self checkVertifiStatus];
+}
+
+-(void)backButtonClicked:(id)sender{
+    [self performSegueWithIdentifier:@"goToHome" sender:self];
 }
 
 -(void)setThemeOnButtons{
@@ -149,59 +154,6 @@
 
 }
 
--(void)getRegisterToVirtifiToCheckStatus{
-    
-    __weak MobileDepositController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    
-    int currentTimeStamp = [ShareOneUtility getTimeStamp];
-    
-    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
-    
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
-    
-    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
-    
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
-        
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-
-        if(success){
-            VertifiObject *obj = (VertifiObject *)user;
-            _depositLimt=obj.DepositLimit;
-            
-            [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit Limit $%.2f)",[_depositLimt floatValue]]];
-            
-            if(![obj.InputValidation isEqualToString:@"OK"]){
-                [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
-            }
-            if ([obj.LoginValidation isEqualToString:@"User Not Registered"]){
-                [self showVertifyAgreementVC];
-            }
-            else {
-                if(![obj.LoginValidation isEqualToString:@"OK"]){
-                    [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
-                }
-            }
-            
-        }
-        else{
-            
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            
-            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
-            
-            [self showAlertWithTitle:@"" AndMessage:localizeErrorMessage];
-            
-        }
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-    
-}
-
 -(void)showVertifyAgreementVC {
     
     NSString * contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
@@ -215,24 +167,6 @@
     objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
     self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
     
-}
-
-
--(IBAction)submittButtonClicked:(id)sender{
-    
-    __weak MobileDepositController *weakSelf = self;
-
-    if(![self getValidationStausMessage])
-    {
-        //[self vertifiPaymentInIt];
-        //[self getRegisterToVirtifi];
-        [self vertifiComitWithObject:_objVertifiObject];
-
-
-    }
-    else{
-        [[ShareOneUtility shareUtitlities] showToastWithMessage:[self getValidationStausMessage] title:@"" delegate:weakSelf];
-    }
 }
 
 -(NSString *)getValidationStausMessage{
@@ -270,258 +204,6 @@
     return status;
 }
 
--(void)backButtonClicked:(id)sender{
-    [self performSegueWithIdentifier:@"goToHome" sender:self];
-}
-
-
--(void)getListOfPast6MonthsDeposits{
-    
-    __weak MobileDepositController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    
-    int currentTimeStamp = [ShareOneUtility getTimeStamp];
-    
-    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
-    
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
-    
-    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
-    
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
-    
-    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
-    
-    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
-    
-    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
-    
-    [params setValue:[ShareOneUtility getAccountValueWithSuffix:nil] forKey:@"account"];
-    
-    [params setValue:calculatedMac forKey:@"MAC"];
-    
-    
-    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_ALL_DEP_LIST] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-    
-
-}
-
--(void)getListOfReviewDeposits{
-    
-    __weak MobileDepositController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    
-    int currentTimeStamp = [ShareOneUtility getTimeStamp];
-    
-    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
-    
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
-    
-    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
-    
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
-    
-    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
-    
-    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
-    
-    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
-    
-    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
-    
-    [params setValue:calculatedMac forKey:@"MAC"];
-    
-    
-    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_DEP_LIST] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
-        //[self getDetailsOfDepositWithObject:(VertifiObject *)user];
-
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-}
-
-
--(void)getDetailsOfDepositWithObject:(VertifiObject *)vertify{
-    
-    __weak MobileDepositController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    
-    int currentTimeStamp = [ShareOneUtility getTimeStamp];
-    
-    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
-    
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
-    
-    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
-    
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
-    
-    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
-    
-    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
-    
-    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
-    
-    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
-    
-    [params setValue:calculatedMac forKey:@"MAC"];
-    
-    [params setValue:@"124958" forKey:@"deposit_id"];
-    
-    [params setValue:@"PNG" forKey:@"output_type"];
-
-
-    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],KVERTIFY_DEP_DETAILS] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-}
--(void)getRegisterToVirtifi{
-    
-    __weak MobileDepositController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-
-    int currentTimeStamp = [ShareOneUtility getTimeStamp];
-    
-    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
-    
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
-    
-    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
-
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
-        
-        
-        if(success){
-            VertifiObject *obj = (VertifiObject *)user;
-            if(![obj.InputValidation isEqualToString:@"OK"]){
-            }
-            
-            if([obj.LoginValidation isEqualToString:@"User Not Registered"]){
-                [weakSelf VertifiRegAcceptance];
-            }
-            else if ([obj.LoginValidation isEqualToString:@"OK"]){
-                [weakSelf vertifiPaymentInIt];
-            }
-            else{
-
-                [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-
-                [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
-            }
-            
-        }
-        else{
-            
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-
-           NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
-
-
-            
-        }
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-    
-}
-
--(void)vertifiPaymentInIt{
-    
-    __weak MobileDepositController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-
-    int currentTimeStamp = [ShareOneUtility getTimeStamp];
-    
-    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
-    
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
-    
-    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
-    
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
-    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
-    
-    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
-
-    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
-
-    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
-    
-    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
-    
-    [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
-    if([_ammountTxtFeild.text floatValue]>0.0)
-        [params setValue:_ammountTxtFeild.text forKey:@"amount"];
-    
-    [params setValue:calculatedMac forKey:@"MAC"];
-    [params setValue:[Configuration getVertifiRDCTestMode] forKey:@"mode"];
-    [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
-    
-    NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"img.png"]);
-    [params setValue:imageDataPNG forKey:@"image"];
-    
-    NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 1.0);
-    [params setValue:imageDataJPG forKey:@"imageColor"];
-
-    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:  [NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_DEP_ININT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-
-        if(succes){
-            _objVertifiObject=(VertifiObject *)user;
-            
-            if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_PASSED] || [_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_FAILED]){
-                
-                float CARAmount = [_objVertifiObject.CARAmount floatValue];
-                float _ammountTxtFeild_value = [[_ammountTxtFeild text] floatValue];
-                if(_ammountTxtFeild_value >0.0){
-                    
-                    if(CARAmount!=_ammountTxtFeild_value){
-                        [self showAlertForAmountMisMatchWithTitle:@"Amount Mismatch" AndMessage:VERTIFI_AMOUNT_MISMATCH(CARAmount, _ammountTxtFeild_value)];
-                    }
-                }
-                else if (CARAmount>0)
-                    [_ammountTxtFeild setText:[NSString stringWithFormat:@"%.2f",CARAmount]];
-            }
-            
-            /*if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
-                [[ShareOneUtility shareUtitlities] showToastWithMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE title:@"" delegate:weakSelf];
-                [self showAlertForRescanOrIgnoreTitle:@"" AndMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE];
-            }*/
-
-        }
-        else{
-            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
-        }
-    } failureBlock:^(NSError *error) {
-        
-    }];
-}
-
 -(UIImage *)getBWImagePath:(NSString *)filename
 {
     // load the image into the UIImageView - creating a scaled down thumbnail image would be more memory efficient here!
@@ -544,19 +226,213 @@
     return image;
 }
 
+-(void)loadDataOnPickerView{
+    
+    NSArray *allSuffixArray = [[SharedUser sharedManager] suffixInfoArr];
+    _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
+//    _suffixArr = allSuffixArray;
+    
+    if([_suffixArr count]<=0){
+        NSArray *allSuffixArray = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
+        _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
+//        _suffixArr = allSuffixArray;
+        [[SharedUser sharedManager] setSuffixInfoArr:allSuffixArray];
+    }
+
+    [self.pickerView reloadAllComponents];
+    if(!_objSuffixInfo){
+//        [_pickerView selectRow:0 inComponent:0 animated:YES];
+//        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+    }
+    [self setStateOfSubmitButton];
+}
+
+-(void)managePickerView{
+    
+    float height =     [UIScreen mainScreen].bounds.size.width/6.4;
+    
+    [_ammountTxtFeild resignFirstResponder];
+    if (_bottomConstraint.constant<0){
+        if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+            _bottomConstraint.constant=height;
+        }
+        else{
+            _bottomConstraint.constant=0;
+        }
+        
+        [self.view layoutIfNeeded];
+    }
+    else{
+        
+        _bottomConstraint.constant=-500;
+        [self.view layoutIfNeeded];
+    }
+    
+}
+
+-(void)setStateOfSubmitButton{
+    
+    NSRange rangeValue = [_objSuffixInfo.Access rangeOfString:@"D" options:NSCaseInsensitiveSearch];
+    
+    if(![_objSuffixInfo.Type isEqualToString:@"S"] && rangeValue.length > 0 ){
+        //        [_submittBtn setHidden:FALSE];
+        [_accountStatusLbl setHidden:TRUE];
+    }
+    else{
+        //        [_submittBtn setHidden:TRUE];
+        [_accountStatusLbl setHidden:FALSE];
+        
+    }
+}
+
+
+#pragma mark - Vertifi Calls
+
+-(void)checkVertifiStatus{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:_objSuffixInfo currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+        if(success){
+            VertifiObject *obj = (VertifiObject *)user;
+            _depositLimt=obj.DepositLimit;
+            
+            [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit Limit $%.2f)",[_depositLimt floatValue]]];
+            
+            if(![obj.InputValidation isEqualToString:@"OK"]){
+                [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
+            }
+            if ([obj.LoginValidation isEqualToString:@"User Not Registered"]){
+                [self showVertifyAgreementVC];
+            }
+            else {
+                if(![obj.LoginValidation isEqualToString:@"OK"]){
+                    [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
+                }
+            }
+            
+        }
+        else{
+            
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            
+            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
+            
+            [self showAlertWithTitle:@"" AndMessage:localizeErrorMessage];
+            
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
+-(void)vertifiPaymentInIt{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    
+    int currentTimeStamp = [ShareOneUtility getTimeStamp];
+    
+    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
+    
+    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:_objSuffixInfo currentTimeStamp:currentTimeStamp];
+    
+    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
+    
+    [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
+    
+    [params setValue:[Configuration getVertifiRouterKey] forKey:@"routing"];
+    
+    [params setValue:[ShareOneUtility getMemberValue] forKey:@"member"];
+    
+    [params setValue:[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo] forKey:@"account"];
+    
+    [params setValue:[ShareOneUtility getAccountTypeWithSuffix:_objSuffixInfo] forKey:@"accounttype"];
+    if([_ammountTxtFeild.text floatValue]>0.0)
+        [params setValue:_ammountTxtFeild.text forKey:@"amount"];
+    
+    [params setValue:calculatedMac forKey:@"MAC"];
+    [params setValue:[Configuration getVertifiRDCTestMode] forKey:@"mode"];
+    [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
+    
+    NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"img.png"]);
+    [params setValue:imageDataPNG forKey:@"image"];
+    
+    NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 1.0);
+    [params setValue:imageDataJPG forKey:@"imageColor"];
+    
+    [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:  [NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_DEP_ININT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+        if(succes){
+            _objVertifiObject=(VertifiObject *)user;
+            
+            if(![_objVertifiObject.InputValidation isEqualToString:@"OK"]){
+                [self showAlertWithTitle:@"" AndMessage:_objVertifiObject.InputValidation];
+            }
+            
+            if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_PASSED] || [_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_FAILED]){
+                
+                float CARAmount = [_objVertifiObject.CARAmount floatValue];
+                float _ammountTxtFeild_value = [[_ammountTxtFeild text] floatValue];
+                if(_ammountTxtFeild_value >0.0){
+                    
+                    if(CARAmount!=_ammountTxtFeild_value){
+                        [self showOKAlertWithTitle:@"Amount Mismatch" AndMessage:VERTIFI_AMOUNT_MISMATCH(CARAmount, _ammountTxtFeild_value)];
+                    }
+                }
+                else if (CARAmount>0)
+                    [_ammountTxtFeild setText:[NSString stringWithFormat:@"%.2f",CARAmount]];
+            }
+            
+            /*if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
+                [self showAlertForRescanOrIgnoreTitle:@"" AndMessage:VERTIFY_CAR_MISMATCH_NOT_TESTED_MESSAGE];
+            }*/
+            
+        }
+        else{
+            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
+            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
+        }
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
 -(void)vertifiComitWithObject:(VertifiObject *)objVertifi{
     
     __weak MobileDepositController *weakSelf = self;
-
+    
     if(objVertifi.SSOKey){
         
         [ShareOneUtility showProgressViewOnView:weakSelf.view];
-
+        
         int currentTimeStamp = [ShareOneUtility getTimeStamp];
         
         NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
         
-        NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
+        NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:_objSuffixInfo currentTimeStamp:currentTimeStamp];
         
         NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
         
@@ -580,7 +456,7 @@
         [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_COMMIT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
             
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-
+            
             if(succes){
                 VertifiObject *obj =(VertifiObject *)user;
                 
@@ -597,9 +473,9 @@
             }
             else{
                 NSString *error =(NSString *)user;
-
+                
                 [[ShareOneUtility shareUtitlities] showToastWithMessage:error title:@"Error" delegate:weakSelf];
-
+                
             }
             
         } failureBlock:^(NSError *error) {
@@ -607,134 +483,6 @@
         }];
     }
     
-}
--(void)VertifiRegAcceptance{
-    
-    __weak MobileDepositController *weakSelf = self;
-    
-    int currentTimeStamp = [ShareOneUtility getTimeStamp];
-    
-    NSLog(@"Current Timestamp (Before): %d",currentTimeStamp);
-    
-    NSString * calculatedMac = [ShareOneUtility  getMacWithSuffix:nil currentTimeStamp:currentTimeStamp];
-    
-    NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
-    
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getSessionnKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_ACCEPTANCE] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
-        
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-        
-        if(success){
-            
-            VertifiObject *obj = (VertifiObject *)user;
-            if(![obj.InputValidation isEqualToString:@"OK"]){
-                //[[ShareOneUtility shareUtitlities] showToastWithMessage:obj.InputValidation title:@"" delegate:weakSelf completion:nil];
-            }
-            else if ([obj.LoginValidation isEqualToString:@"OK"]){
-                [weakSelf vertifiPaymentInIt];
-            }
-        }
-        else{
-            
-            NSString *localizeErrorMessage=[Configuration getMaintenanceVerbiage];
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:localizeErrorMessage title:@"" delegate:weakSelf];
-            
-            
-            
-        }
-
-        
-        
-//        [[ShareOneUtility shareUtitlities] showToastWithMessage:obj.LoginValidation title:@"Status" delegate:weakSelf];
-        
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-}
-
-
--(void)loadDataOnPickerView{
-    
-    
-    NSArray *allSuffixArray = [[SharedUser sharedManager] suffixInfoArr];
-    _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
-//    _suffixArr = allSuffixArray;
-    
-    
-    if([_suffixArr count]<=0){
-        NSArray *allSuffixArray = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
-        _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
-//        _suffixArr = allSuffixArray;
-        [[SharedUser sharedManager] setSuffixInfoArr:allSuffixArray];
-    }
-
-    [self.pickerView reloadAllComponents];
-    if(!_objSuffixInfo){
-//        [_pickerView selectRow:0 inComponent:0 animated:YES];
-//        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
-    }
-    [self setStateOfSubmitButton];
-}
-
--(IBAction)accountButtonClicked:(id)sender{
-    [self managePickerView];
-}
-
-
--(void)managePickerView{
-
-    float height =     [UIScreen mainScreen].bounds.size.width/6.4;
-
-    [_ammountTxtFeild resignFirstResponder];
-    if (_bottomConstraint.constant<0){
-        if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
-            _bottomConstraint.constant=height;
-        }
-        else{
-            _bottomConstraint.constant=0;
-        }
-
-        [self.view layoutIfNeeded];
-    }
-    else{
-        
-        _bottomConstraint.constant=-500;
-        [self.view layoutIfNeeded];
-    }
-
-}
--(IBAction)doneButtonClicked:(id)sender{
-
-    if (!_isUserRegisterationChecked){
-        [self getRegisterToVirtifiToCheckStatus];
-        _isUserRegisterationChecked = YES;
-    }
-    
-    if(!_objSuffixInfo){
-        [_pickerView selectRow:0 inComponent:0 animated:YES];
-        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
-    }
-    
-    [self managePickerView];
-    [self setStateOfSubmitButton];
-}
-
--(void)setStateOfSubmitButton{
- 
-    NSRange rangeValue = [_objSuffixInfo.Access rangeOfString:@"D" options:NSCaseInsensitiveSearch];
-
-    if(![_objSuffixInfo.Type isEqualToString:@"S"] && rangeValue.length > 0 ){
-//        [_submittBtn setHidden:FALSE];
-        [_accountStatusLbl setHidden:TRUE];
-    }
-    else{
-//        [_submittBtn setHidden:TRUE];
-        [_accountStatusLbl setHidden:FALSE];
-
-    }
 }
 
 
@@ -767,7 +515,6 @@
     [_suffixNumberLbl setText:[NSString stringWithFormat:@"%d",[_objSuffixInfo.Suffixnumber intValue]]];
     [_suffixTypeLbl setText:[NSString stringWithFormat:@"%@",[ShareOneUtility getSectionTitleByCode:_objSuffixInfo.Type] ]];
     
-    
 }
 
 
@@ -786,6 +533,7 @@
     // [self showPicker];  // IOS Camera
     [self onCameraClick:_objSender]; //Vertify Camera
 }
+
 -(IBAction)captureBackCardAction:(id)sender{
     
     __weak MobileDepositController *weakSelf = self;
@@ -800,12 +548,42 @@
     //[self showPicker];  // IOS Camera
     [self onCameraClick:_objSender]; //Vertify Camera
 }
+
 -(IBAction)viewButtonClicked:(id)sender{
     
     UIButton *btn=(UIButton *)sender;
     [self getImageViewPopUpControllerWithSender:btn];
 
 }
+
+-(IBAction)accountButtonClicked:(id)sender{
+    [self managePickerView];
+}
+
+-(IBAction)doneButtonClicked:(id)sender{
+    
+    if(!_objSuffixInfo){
+        [_pickerView selectRow:0 inComponent:0 animated:YES];
+        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+    }
+    
+    [self managePickerView];
+    [self setStateOfSubmitButton];
+}
+
+-(IBAction)submittButtonClicked:(id)sender{
+    
+    __weak MobileDepositController *weakSelf = self;
+    
+    if(![self getValidationStausMessage])
+    {
+        [self vertifiComitWithObject:_objVertifiObject];
+    }
+    else{
+        [[ShareOneUtility shareUtitlities] showToastWithMessage:[self getValidationStausMessage] title:@"" delegate:weakSelf];
+    }
+}
+
 /*********************************************************************************************************/
                         #pragma mark - CameraButton Selected Method
 /*********************************************************************************************************/
@@ -850,8 +628,7 @@
 {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No Camera Detected!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
+        [self showOKAlertWithTitle:@"Error" AndMessage:@"No Camera Detected!"];
         return;
     }
     
@@ -877,11 +654,6 @@
             break;
         case AVAuthorizationStatusDenied:
         {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Camera Use Not Authorized!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alertView show];
-            
-            /* for iOS8, this code snippet is a nice alternative to the UIAlertView, as it allows for user to launch to the App Settings screen to enable the camera
-            
             NSString *prodName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
             
              NSString *strTitle = [NSString stringWithFormat:@"Give Permission for %@ to Use Your Camera",prodName];
@@ -893,7 +665,7 @@
              
              }]];
              
-             [self presentViewController:sheet animated:YES completion:nil]; */
+             [self presentViewController:sheet animated:YES completion:nil];
             
             
             return;
@@ -1047,22 +819,7 @@
     return;
 }
 
-#pragma mark Utility functions
 
-//-----------------------------------------------------------------------------
-// Show Errors
-//-----------------------------------------------------------------------------
-
-- (void) onShowErrors
-{
-    if (imageErrors.count > 0)
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Image Errors:\n\n%@",[imageErrors componentsJoinedByString:@"\n"]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        [imageErrors removeAllObjects];
-    }
-    
-}
 
 /*********************************************************************************************************/
                     #pragma mark - Startup Method
@@ -1167,15 +924,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (BOOL)shouldAutorotate{
     
@@ -1183,6 +931,26 @@
 }
 
 #pragma mark - Status Alert Message
+
+-(void)showOKAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                             }];
+                         }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 -(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:title
@@ -1202,26 +970,6 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
-
--(void)showAlertForAmountMisMatchWithTitle:(NSString *)title AndMessage:(NSString *)message{
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:title
-                                  message:message
-                                  preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:^{
-                             }];
-                         }];
-    [alert addAction:ok];
-    
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 
 -(void)showAlertForRescanOrIgnoreTitle:(NSString *)title AndMessage:(NSString *)message{
     UIAlertController * alert=   [UIAlertController
@@ -1255,6 +1003,16 @@
 }
 
 
+#pragma mark Utility functions
+
+- (void) onShowErrors {
+    if (imageErrors.count > 0)
+    {
+        [self showOKAlertWithTitle:@"Error" AndMessage:[NSString stringWithFormat:@"Image Errors:\n\n%@",[imageErrors componentsJoinedByString:@"\n"]]];
+        [imageErrors removeAllObjects];
+    }
+    
+}
 
 -(void)navigateToLastController{
     
