@@ -55,7 +55,7 @@
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, weak) IBOutlet UIView *pickerParentView;
 
-@property (nonatomic, weak) IBOutlet UIButton *submittBtn;
+@property (nonatomic, weak) IBOutlet CustomButton *submittBtn;
 @property (nonatomic, weak) IBOutlet UITextField *accountTxtFeild;
 @property (nonatomic, weak) IBOutlet UITextField *ammountTxtFeild;
 @property (nonatomic, weak) IBOutlet UIButton *accountTxtFeildBtn;
@@ -79,8 +79,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backCheckImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *submitLeading;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *noteLeading;
 
 -(IBAction)doneButtonClicked:(id)sender;
 
@@ -120,15 +118,9 @@
     
     if ([[Configuration getClientSettingsContent].enablencualogo boolValue]){
         _ncuaLogo.hidden = NO;
-        _submitLeading.constant = 140.0;
-        _noteLeading.constant = 120.0;
-        [self.view layoutSubviews];
     }
     else {
         _ncuaLogo.hidden = YES;
-        _submitLeading.constant = 20.0;
-        _noteLeading.constant = 20.0;
-        [self.view layoutSubviews];
     }
     
     [self checkVertifiStatus];
@@ -264,7 +256,7 @@
     }
     else{
         
-        _bottomConstraint.constant=-500;
+        _bottomConstraint.constant=-250;
         [self.view layoutIfNeeded];
     }
     
@@ -914,7 +906,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
     if([textField isEqual:_ammountTxtFeild]){
-        _bottomConstraint.constant=-500;
+        _bottomConstraint.constant=-250;
         [self.view layoutIfNeeded];    }
     return TRUE;
 }

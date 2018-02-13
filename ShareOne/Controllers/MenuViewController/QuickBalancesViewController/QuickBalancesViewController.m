@@ -126,7 +126,7 @@
         height = 50.0;
     }
     else{
-        height = 30.0;
+        height = 50.0;
     }
     return height;
 }
@@ -210,6 +210,7 @@
         [objQuickBalances.Type isEqualToString:@"S"] || [objQuickBalances.Type isEqualToString:@"s"]) {
         price = objQuickBalances.Available;
     }
+    
     
     [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[self getFormattedAmount:price]];
     
