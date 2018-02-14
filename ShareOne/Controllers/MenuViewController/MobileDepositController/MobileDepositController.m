@@ -31,7 +31,7 @@
 }
 
 @property (nonatomic,strong) id objSender;
-
+@property (nonatomic) BOOL isRecapturing;
 @property (nonatomic) BOOL isFrontorBack;
 
 @property (nonatomic, strong)  UIImage *frontImage;
@@ -82,13 +82,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _isRecapturing = NO;
     [self startUpMethod];
     [self loadDataOnPickerView];
-    
-    if ([[NSUserDefaults standardUserDefaults]boolForKey:VERTIFI_AGREEMENT_DECLINED]){
-        [self showVertifyAgreementVC];
-    }
     
     _noteLabel.text = @"";
     _noteLabel.text = [Configuration getClientSettingsContent].rdcpostingmsg;
@@ -530,6 +526,7 @@
 }
 
 - (IBAction)recaptureFrontCheckButtonTapped:(CustomButton *)sender {
+    _isRecapturing = YES;
     [self captureFrontCardAction:_frontCheckOverlayButton];
 }
 
@@ -683,6 +680,7 @@
 
 - (void) onCameraClose
 {
+    _isRecapturing = NO;
     [self dismissViewControllerAnimated:YES completion:^(void){
     } ];
     return;
@@ -747,6 +745,13 @@
                                
                                if(_isFrontorBack && imageErrors.count == 0)
                                {
+                                   if (_isRecapturing){
+                                       _isRecapturing = NO;
+                                       _ammountTxtFeild.text = @"";
+                                       _backCheckImage.image = [UIImage imageNamed:@"back_check_placeholder"];;
+                                       [self viewDisabled:_recaptureBackCheckButton];
+                                       [_backCheckOverlayButton setTitle:@"Scan Back Of Check" forState:UIControlStateNormal];
+                                   }
                                    [self viewEnabled:_recaptureFrontCheckButton];
                                    _frontCheckImage.image = _frontImage;
                                    [_frontCheckOverlayButton setTitle:@"View" forState:UIControlStateNormal];
@@ -769,7 +774,23 @@
     return;
 }
 
-
+-(void)deleteFile:(NSString*) strFileName {
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSArray *contents = [fileManager contentsOfDirectoryAtPath:documentsDirectory error:NULL];
+    NSEnumerator *enumerator = [contents objectEnumerator];
+    NSString *filename;
+    while ((filename = [enumerator nextObject])) {
+        NSLog(@"The file name is - %@",[filename pathExtension]);
+        if ([[filename pathExtension] isEqualToString:strFileName]) {
+            [fileManager removeItemAtPath:[documentsDirectory stringByAppendingPathComponent:filename] error:NULL];
+            NSLog(@"The sqlite is deleted successfully");
+        }
+    }
+}
 
 /*********************************************************************************************************/
                     #pragma mark - Startup Method

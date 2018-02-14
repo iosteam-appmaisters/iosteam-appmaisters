@@ -104,6 +104,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         [[UtilitiesHelper shareUtitlities]showAlertWithMessage:@"The application has experienced a service issue that required it to log out. Please log back in to continue." title:@"" delegate:self];
     }
     
+    
+    
 }
 
 

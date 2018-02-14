@@ -12,7 +12,6 @@
 #import "CashDeposit.h"
 #import "SharedUser.h"
 #import "ConstantsShareOne.h"
-#import "TestFairy.h"
 #import "SplashViewController.h"
 #import "Configuration.h"
 
@@ -34,7 +33,7 @@
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
     
     if (![ShareOneUtility shouldUseProductionEnviroment]){
-        [TestFairy begin:[ShareOneUtility getTestFairyID]];
+        //[TestFairy begin:[ShareOneUtility getTestFairyID]];
     }
     [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey_old]];
     

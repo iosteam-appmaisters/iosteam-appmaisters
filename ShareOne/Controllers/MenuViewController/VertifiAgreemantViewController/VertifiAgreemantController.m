@@ -69,9 +69,6 @@
 
 -(void)proceedToVertifyWithObject:(VertifiAgreemantController *)obj{
     
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:VERTIFI_AGREEMENT_DECLINED];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    
     [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:VERTIFI_AGREEMANT_KEY];
     
     MobileDepositController *objMobileDepositController = [obj.storyboard instantiateViewControllerWithIdentifier:MOBILE_DEPOSIT];
@@ -82,9 +79,6 @@
 
 
 -(IBAction)goDeclineAgreemant:(id)sender{
-    
-    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:VERTIFI_AGREEMENT_DECLINED];
-    [[NSUserDefaults standardUserDefaults]synchronize];
     
     [self navigateToLastController];
     
