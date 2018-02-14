@@ -753,7 +753,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                                           preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                               actionWithTitle:NSLocalizedString(@"Yes", @"OK action")
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action)
                                {
@@ -768,7 +768,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     [alertController addAction:okAction];
     
     UIAlertAction *cancelAction = [UIAlertAction
-                               actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                               actionWithTitle:NSLocalizedString(@"No", @"Cancel action")
                                style:UIAlertActionStyleCancel
                                handler:^(UIAlertAction *action)
                                {

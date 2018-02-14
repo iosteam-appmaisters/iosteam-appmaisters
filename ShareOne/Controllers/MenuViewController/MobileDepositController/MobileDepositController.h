@@ -13,6 +13,8 @@
 
 @property (nonatomic,weak) IBOutlet UILabel *depositLimitLbl;
 
+@property(nonatomic,strong) NSNumber* loadAccountIndex;
+
 @end
 
 

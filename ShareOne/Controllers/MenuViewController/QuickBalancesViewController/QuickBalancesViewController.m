@@ -103,6 +103,10 @@
 
 -(void)appGoingToBackground{
     
+    if ([self.presentedViewController isKindOfClass:[UIAlertController class]]){
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
     [self dismissQuickBalances:nil];
 }
 

@@ -208,7 +208,7 @@
                                         <rect key="frame" x="20" y="92" width="280" height="72.666666666666686"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="7" width="329" height="39.666666666666664"/>
+                                                <rect key="frame" x="21" y="18" width="239" height="28.666666666666671"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -229,7 +229,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="272.33333333333331" y="49.666666666666686" width="52.666666666666686" height="18"/>
+                                                <rect key="frame" x="173.33333333333334" y="49.666666666666686" width="52.666666666666657" height="18"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -237,7 +237,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="329" y="45.666666666666686" width="16" height="25"/>
+                                                <rect key="frame" x="230" y="45.666666666666686" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -276,13 +276,13 @@
                                         <rect key="frame" x="20" y="138.66666666666669" width="280" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="205" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="115" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-pp-gWk">
-                                                <rect key="frame" x="301" y="8" width="51" height="31"/>
+                                                <rect key="frame" x="211" y="8" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="rememberMeButtonClicked:" destination="Grc-iE-xzY" eventType="valueChanged" id="aWh-u1-ryo"/>
                                                 </connections>
@@ -763,7 +763,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBHeaderCell" id="b4Y-Me-nIs" customClass="QBHeaderCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBHeaderCell" id="b4Y-Me-nIs" customClass="QBHeaderCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b4Y-Me-nIs" id="D93-Da-rgD">
@@ -809,7 +809,7 @@
                                             <outlet property="sectionTitleLbl" destination="mbd-VS-cZz" id="Snn-z3-Xn8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBDetailsCell" id="buQ-l2-5k5" customClass="QBDetailsCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QBDetailsCell" id="buQ-l2-5k5" customClass="QBDetailsCell">
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buQ-l2-5k5" id="19o-db-txP">
@@ -1936,7 +1936,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-fu-p6t">
-                                                            <rect key="frame" x="0.0" y="11" width="256" height="22"/>
+                                                            <rect key="frame" x="0.0" y="11" width="331.33333333333331" height="22"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_branch_location_icon" translatesAutoresizingMaskIntoConstraints="NO" id="svk-Uw-Glz">
                                                                     <rect key="frame" x="50" y="-0.33333333333333393" width="24" height="23"/>
@@ -2129,11 +2129,17 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="170"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                         <state key="normal" title="Scan Front Of Check" backgroundImage="grey_overlay"/>
+                                                        <connections>
+                                                            <action selector="frontCheckOverlayTapped:" destination="Zg1-KF-CNc" eventType="touchUpInside" id="XjY-Ye-GPZ"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg5-ym-ekD" customClass="CustomButton">
                                                         <rect key="frame" x="8" y="128" width="112" height="34"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                                         <state key="normal" title="RECAPTURE" backgroundImage="recapture_btn"/>
+                                                        <connections>
+                                                            <action selector="recaptureFrontCheckButtonTapped:" destination="Zg1-KF-CNc" eventType="touchUpInside" id="WQL-jD-vMC"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -2162,11 +2168,17 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="170"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                         <state key="normal" title="Scan Back Of Check" backgroundImage="grey_overlay"/>
+                                                        <connections>
+                                                            <action selector="backCheckOverlayTapped:" destination="Zg1-KF-CNc" eventType="touchUpInside" id="582-EA-TaN"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG2-UI-4z4" customClass="CustomButton">
                                                         <rect key="frame" x="8" y="128" width="112" height="34"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                                                         <state key="normal" title="RECAPTURE" backgroundImage="recapture_btn"/>
+                                                        <connections>
+                                                            <action selector="recaptureBackCheckButtonTapped:" destination="Zg1-KF-CNc" eventType="touchUpInside" id="hi1-1s-grK"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -2193,7 +2205,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="Zg1-KF-CNc" id="A2W-qo-7Wn"/>
                                                 </connections>
@@ -2223,6 +2235,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <state key="normal" title="SUBMIT" backgroundImage="submit-btn"/>
+                                                <connections>
+                                                    <action selector="submittButtonClicked:" destination="Zg1-KF-CNc" eventType="touchUpInside" id="Fq4-Hp-gee"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAF-W7-IVv" customClass="AttributedCustomLabel">
                                                 <rect key="frame" x="20" y="555" width="374" height="28"/>
@@ -2357,12 +2372,18 @@ Tm90ZToQIA
                         <outlet property="accountTxtFeild" destination="6NG-dx-K1o" id="Yu0-HI-ALy"/>
                         <outlet property="accountTxtFeildBtn" destination="Gw4-T7-Muf" id="I67-4n-Xxj"/>
                         <outlet property="ammountTxtFeild" destination="tAw-A0-Xjs" id="UZw-Eo-XUX"/>
+                        <outlet property="backCheckImage" destination="Wyh-4a-8Y4" id="UxK-bp-lzJ"/>
+                        <outlet property="backCheckOverlayButton" destination="VWD-m3-R2z" id="FEe-eT-v32"/>
                         <outlet property="bottomConstraint" destination="saB-hV-UnF" id="bQQ-ko-x3H"/>
                         <outlet property="depositLimitLbl" destination="b6t-fr-ZEL" id="qKX-zs-epp"/>
+                        <outlet property="frontCheckImage" destination="vJC-rC-mud" id="t42-dp-dZp"/>
+                        <outlet property="frontCheckOverlayButton" destination="Fc7-ea-oVW" id="TIA-f9-rWg"/>
                         <outlet property="ncuaLogo" destination="7be-5D-FJW" id="8iA-lt-dUc"/>
                         <outlet property="noteLabel" destination="WAF-W7-IVv" id="wvn-Z8-jaD"/>
                         <outlet property="pickerParentView" destination="6e9-5c-16w" id="Ri0-xi-ROe"/>
                         <outlet property="pickerView" destination="m57-IN-CPV" id="24v-ph-aMP"/>
+                        <outlet property="recaptureBackCheckButton" destination="xG2-UI-4z4" id="bls-Of-gG4"/>
+                        <outlet property="recaptureFrontCheckButton" destination="dg5-ym-ekD" id="v3o-wA-u2N"/>
                         <outlet property="submittBtn" destination="AOK-Px-5L2" id="Mfi-cz-zm9"/>
                     </connections>
                 </viewController>
@@ -2970,9 +2991,9 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="tab-XO-0ES"/>
+                                        <exclude reference="nST-As-WZD"/>
                                         <exclude reference="80U-xP-mNb"/>
                                         <exclude reference="nSj-Re-YlA"/>
-                                        <exclude reference="nST-As-WZD"/>
                                         <exclude reference="FwA-8L-ILM"/>
                                         <exclude reference="Gzm-F9-qed"/>
                                         <exclude reference="JpI-3H-olk"/>
@@ -3347,7 +3368,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BranchLocationCell" rowHeight="200" id="oh1-uY-gGa" customClass="BranchLocationCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BranchLocationCell" rowHeight="200" id="oh1-uY-gGa" customClass="BranchLocationCell">
                                         <rect key="frame" x="0.0" y="28" width="384" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oh1-uY-gGa" id="tLI-MI-gi7">
@@ -3652,7 +3673,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepositCell" id="bfX-m0-Ume" customClass="DepositCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DepositCell" id="bfX-m0-Ume" customClass="DepositCell">
                                         <rect key="frame" x="0.0" y="20" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bfX-m0-Ume" id="LHW-wm-heb">
@@ -4250,7 +4271,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCell" id="ddb-iY-A6D" customClass="PaymentCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCell" id="ddb-iY-A6D" customClass="PaymentCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ddb-iY-A6D" id="KQT-kx-iaY">
@@ -4299,7 +4320,7 @@ Tm90ZToQIA
                                             <outlet property="payButtonBtn" destination="KWo-Rc-iQX" id="HGh-Hn-MNS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransferSomeOneElseCell" id="LEf-P7-0lh" customClass="TransferSomeOneElseCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransferSomeOneElseCell" id="LEf-P7-0lh" customClass="TransferSomeOneElseCell">
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LEf-P7-0lh" id="U4U-Fw-Gxj">
@@ -5034,9 +5055,9 @@ Tm90ZToQIA
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
-                                        <include reference="CKY-JC-zEk"/>
                                         <include reference="R5h-eV-cCS"/>
                                         <include reference="eim-Ae-yNF"/>
+                                        <include reference="CKY-JC-zEk"/>
                                         <include reference="BSl-EB-8eX"/>
                                         <include reference="PBg-Kr-Qec"/>
                                         <include reference="3Y0-0t-fte"/>
@@ -5416,8 +5437,6 @@ Tm90ZToQIA
                                 <exclude reference="bMx-zq-0B2"/>
                                 <exclude reference="bUD-UO-o1C"/>
                                 <exclude reference="qFy-w2-mh9"/>
-                                <exclude reference="9T5-jf-UjA"/>
-                                <exclude reference="cBn-Uq-mtH"/>
                                 <exclude reference="CqM-fo-CIO"/>
                                 <exclude reference="EMa-pE-OHA"/>
                                 <exclude reference="JhI-rm-AHZ"/>
@@ -5481,6 +5500,8 @@ Tm90ZToQIA
                                 <exclude reference="hnd-de-enO"/>
                                 <exclude reference="o29-MJ-NhQ"/>
                                 <exclude reference="wTE-9P-fUo"/>
+                                <exclude reference="9T5-jf-UjA"/>
+                                <exclude reference="cBn-Uq-mtH"/>
                                 <exclude reference="F2k-AR-6CB"/>
                                 <exclude reference="Lw2-PI-86V"/>
                                 <exclude reference="Qo4-lM-C5o"/>
@@ -6199,7 +6220,7 @@ Tm90ZToQIA
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditContactCell" rowHeight="150" id="BG6-0b-M9f" customClass="EditContactCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditContactCell" rowHeight="150" id="BG6-0b-M9f" customClass="EditContactCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BG6-0b-M9f" id="HhT-KA-ySQ">
@@ -6271,7 +6292,7 @@ Tm90ZToQIA
                                             <outlet property="urlTxtFeild" destination="bSL-3T-j8p" id="Cko-bm-fNY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteContactCell" id="SHn-JH-Ukv" customClass="DeleteContactCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteContactCell" id="SHn-JH-Ukv" customClass="DeleteContactCell">
                                         <rect key="frame" x="0.0" y="178" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SHn-JH-Ukv" id="33P-EH-ZsK">

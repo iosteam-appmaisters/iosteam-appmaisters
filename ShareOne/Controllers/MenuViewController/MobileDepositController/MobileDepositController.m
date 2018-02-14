@@ -24,14 +24,6 @@
 #import "CameraGridView.h"
 #import "VertifiAgreemantController.h"
 
-//@protocol CameraViewControllerDelegate
-//
-//- (void) onCameraClose;
-//- (void) onPictureTaken:(UIImage *)imageJPEG withBWImage:(UIImage *)imageBW results:(NSArray *)dictionary isFront:(BOOL)isFront;
-//
-//@end
-
-
 
 @interface MobileDepositController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePopUpDelegate,CameraViewControllerDelegate>
 {
@@ -39,19 +31,18 @@
 }
 
 @property (nonatomic,strong) id objSender;
-@property (nonatomic,strong) IBOutlet UIButton *View1btn;
-@property (nonatomic,strong) IBOutlet UIButton *View2btn;
-@property (nonatomic) BOOL isFrontorBack;
-@property (nonatomic,strong) UIImage *showViewimg;
-@property (nonatomic,strong) UIImage *showViewimgBW;
 
-@property (nonatomic, weak) IBOutlet UIView *seperaterFrontCamView;
-@property (nonatomic, weak) IBOutlet UIView *seperaterBackCamView;
-@property (nonatomic, weak) IBOutlet UIButton *frontCamBtn;
-@property (nonatomic, weak) IBOutlet UIButton *backCamBtn;
+@property (nonatomic) BOOL isFrontorBack;
 
 @property (nonatomic, strong)  UIImage *frontImage;
 @property (nonatomic, strong)  UIImage *backImage;
+@property (nonatomic, strong) NSArray *suffixArr;
+@property (nonatomic, strong) NSString *depositLimt;
+
+@property (nonatomic, strong) SuffixInfo *objSuffixInfo;
+@property (nonatomic, strong) VertifiObject *objVertifiObject;
+
+
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, weak) IBOutlet UIView *pickerParentView;
 
@@ -59,26 +50,19 @@
 @property (nonatomic, weak) IBOutlet UITextField *accountTxtFeild;
 @property (nonatomic, weak) IBOutlet UITextField *ammountTxtFeild;
 @property (nonatomic, weak) IBOutlet UIButton *accountTxtFeildBtn;
-@property (nonatomic, weak) IBOutlet UILabel *accountStatusLbl;
 
-
-@property (nonatomic, weak) IBOutlet UILabel *suffixNumberLbl;
-@property (nonatomic, weak) IBOutlet UILabel *suffixTypeLbl;
-@property (weak, nonatomic) IBOutlet UILabel *accountNumber;
 @property (weak, nonatomic) IBOutlet UIImageView *ncuaLogo;
 
-
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomConstraint;
-@property (nonatomic, strong) NSArray *suffixArr;
-@property (nonatomic, strong) SuffixInfo *objSuffixInfo;
-@property (nonatomic, strong) NSString *depositLimt;
-@property (nonatomic, strong) VertifiObject *objVertifiObject;
 
 @property (weak, nonatomic) IBOutlet UIImageView *frontCheckImage;
-
 @property (weak, nonatomic) IBOutlet UIImageView *backCheckImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+@property (weak, nonatomic) IBOutlet CustomButton *recaptureFrontCheckButton;
+@property (weak, nonatomic) IBOutlet CustomButton *recaptureBackCheckButton;
+@property (weak, nonatomic) IBOutlet UIButton *frontCheckOverlayButton;
+@property (weak, nonatomic) IBOutlet UIButton *backCheckOverlayButton;
 
 -(IBAction)doneButtonClicked:(id)sender;
 
@@ -102,8 +86,6 @@
     [self startUpMethod];
     [self loadDataOnPickerView];
     
-    [self setThemeOnButtons];
-    
     if ([[NSUserDefaults standardUserDefaults]boolForKey:VERTIFI_AGREEMENT_DECLINED]){
         [self showVertifyAgreementVC];
     }
@@ -116,44 +98,21 @@
     [[NSUserDefaults standardUserDefaults]setBool:forcedInstructions forKey:kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_BACK];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
-    if ([[Configuration getClientSettingsContent].enablencualogo boolValue]){
-        _ncuaLogo.hidden = NO;
-    }
-    else {
-        _ncuaLogo.hidden = YES;
-    }
+    _ncuaLogo.hidden = ![[Configuration getClientSettingsContent].enablencualogo boolValue];
     
     [self checkVertifiStatus];
+    
 }
 
 -(void)backButtonClicked:(id)sender{
     [self performSegueWithIdentifier:@"goToHome" sender:self];
 }
 
--(void)setThemeOnButtons{
-
-    StyleValuesObject *obj = [Configuration getStyleValueContent];
-
-    UIImage * image = [_frontCamBtn imageForState:UIControlStateSelected];
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [_frontCamBtn setImage:image forState:UIControlStateSelected];
-    [_frontCamBtn setTintColor:[UIColor colorWithHexString:obj.buttoncolortop]];
-    
-    image = [_backCamBtn imageForState:UIControlStateSelected];
-    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [_backCamBtn setImage:image forState:UIControlStateSelected];
-    [_backCamBtn setTintColor:_frontCamBtn.tintColor];
-
-}
 
 -(void)showVertifyAgreementVC {
     
     NSString * contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
-    //NSString * screenTitle= @"Register";
     NSString * navigationTitle = @"Register";
-    
-    //NSDictionary *dictVertify = [NSDictionary dictionaryWithObjectsAndKeys:contrlollerName,CONTROLLER_NAME,screenTitle,SUB_CAT_TITLE,screenTitle,SUB_CAT_CONTROLLER_TITLE,[NSNumber numberWithBool:FALSE],IS_OPEN_NEW_TAB, nil];
-    //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dictVertify];
     
     UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
     objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
@@ -222,21 +181,21 @@
     
     NSArray *allSuffixArray = [[SharedUser sharedManager] suffixInfoArr];
     _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
-//    _suffixArr = allSuffixArray;
+
     
     if([_suffixArr count]<=0){
         NSArray *allSuffixArray = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
         _suffixArr = [ShareOneUtility getFilterSuffixArray:allSuffixArray];
-//        _suffixArr = allSuffixArray;
         [[SharedUser sharedManager] setSuffixInfoArr:allSuffixArray];
     }
 
-    [self.pickerView reloadAllComponents];
-    if(!_objSuffixInfo){
-//        [_pickerView selectRow:0 inComponent:0 animated:YES];
-//        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+    if (_loadAccountIndex != nil){
+        [_pickerView selectRow:_loadAccountIndex.intValue inComponent:0 animated:YES];
+        [self pickerView:self.pickerView didSelectRow:_loadAccountIndex.intValue inComponent:0];
     }
-    [self setStateOfSubmitButton];
+    
+    [self.pickerView reloadAllComponents];
+   
 }
 
 -(void)managePickerView{
@@ -262,20 +221,26 @@
     
 }
 
--(void)setStateOfSubmitButton{
+-(BOOL)checkIfTransactionInProgress {
     
-    NSRange rangeValue = [_objSuffixInfo.Access rangeOfString:@"D" options:NSCaseInsensitiveSearch];
-    
-    if(![_objSuffixInfo.Type isEqualToString:@"S"] && rangeValue.length > 0 ){
-        //        [_submittBtn setHidden:FALSE];
-        [_accountStatusLbl setHidden:TRUE];
+    if ([_frontCheckOverlayButton.currentTitle isEqualToString:@"View"] || [_backCheckOverlayButton.currentTitle isEqualToString:@"View"] || ([_ammountTxtFeild.text intValue] > 0)) {
+        return YES;
     }
-    else{
-        //        [_submittBtn setHidden:TRUE];
-        [_accountStatusLbl setHidden:FALSE];
-        
-    }
+    return NO;
 }
+
+-(void)askForScreenClearWithIndex:(NSNumber*)selectedIndex {
+    
+    [[UtilitiesHelper shareUtitlities]showOptionWithMessage:@"Do you want to clear current Check Details?" title:@"" delegate:self completion:^(BOOL success){
+        if (success) {
+            [self reloadMobileDepositControllerWithIndex:selectedIndex];
+        }
+        else {
+            [self managePickerView];
+        }
+    }];
+}
+
 
 
 #pragma mark - Vertifi Calls
@@ -480,19 +445,16 @@
 
 #pragma mark - PickerView - Delegate
 
-// The number of columns of data
 - (int)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
 }
 
-// The number of rows of data
 - (int)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     return (int)_suffixArr.count;
 }
 
-// The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     SuffixInfo *obj = _suffixArr[row];
@@ -501,12 +463,13 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
  
-     _objSuffixInfo = _suffixArr[row];
-    [_accountNumber setText:_objSuffixInfo.Account.stringValue];
-    [_accountTxtFeild setText:_objSuffixInfo.Descr];
-    [_suffixNumberLbl setText:[NSString stringWithFormat:@"%d",[_objSuffixInfo.Suffixnumber intValue]]];
-    [_suffixTypeLbl setText:[NSString stringWithFormat:@"%@",[ShareOneUtility getSectionTitleByCode:_objSuffixInfo.Type] ]];
-    
+    if ([self checkIfTransactionInProgress]){
+        [self askForScreenClearWithIndex: [NSNumber numberWithInteger:row]];
+    }
+    else {
+         _objSuffixInfo = _suffixArr[row];
+        [_accountTxtFeild setText:_objSuffixInfo.Descr];
+    }
 }
 
 
@@ -522,8 +485,7 @@
     
     _isFrontorBack=TRUE;
     _objSender=sender;
-    // [self showPicker];  // IOS Camera
-    [self onCameraClick:_objSender]; //Vertify Camera
+    [self onCameraClick:_objSender];
 }
 
 -(IBAction)captureBackCardAction:(id)sender{
@@ -537,15 +499,7 @@
     _isFrontorBack=FALSE;
 
     _objSender=sender;
-    //[self showPicker];  // IOS Camera
-    [self onCameraClick:_objSender]; //Vertify Camera
-}
-
--(IBAction)viewButtonClicked:(id)sender{
-    
-    UIButton *btn=(UIButton *)sender;
-    [self getImageViewPopUpControllerWithSender:btn];
-
+    [self onCameraClick:_objSender];
 }
 
 -(IBAction)accountButtonClicked:(id)sender{
@@ -560,7 +514,6 @@
     }
     
     [self managePickerView];
-    [self setStateOfSubmitButton];
 }
 
 -(IBAction)submittButtonClicked:(id)sender{
@@ -576,6 +529,36 @@
     }
 }
 
+- (IBAction)recaptureFrontCheckButtonTapped:(CustomButton *)sender {
+    [self captureFrontCardAction:_frontCheckOverlayButton];
+}
+
+- (IBAction)recaptureBackCheckButtonTapped:(CustomButton *)sender {
+    [self captureBackCardAction:_backCheckOverlayButton];
+}
+
+- (IBAction)frontCheckOverlayTapped:(UIButton *)sender {
+    
+    if ([_frontCheckOverlayButton.currentTitle isEqualToString:@"Scan Front Of Check"]){
+        [self captureFrontCardAction:sender];
+    }
+    if ([_frontCheckOverlayButton.currentTitle isEqualToString:@"View"]){
+        [self getImageViewPopUpControllerWithSender:sender];
+    }
+    
+}
+
+- (IBAction)backCheckOverlayTapped:(UIButton *)sender {
+    
+    if ([_backCheckOverlayButton.currentTitle isEqualToString:@"Scan Back Of Check"]){
+        [self captureBackCardAction:sender];
+    }
+    if ([_backCheckOverlayButton.currentTitle isEqualToString:@"View"]){
+        [self getImageViewPopUpControllerWithSender:sender];
+    }
+}
+
+
 /*********************************************************************************************************/
                         #pragma mark - CameraButton Selected Method
 /*********************************************************************************************************/
@@ -584,13 +567,12 @@
     
     UIButton *castSenderButton = (UIButton *)_objSender;
     [castSenderButton setSelected:TRUE];
-    if([castSenderButton isEqual:_frontCamBtn]){
+    if([castSenderButton isEqual:_frontCheckOverlayButton]){
         _frontImage = image;
     }
     else{
         _backImage = image;
     }
-//    [castSenderButton setImage:image forState:UIControlStateNormal];
 }
 /*********************************************************************************************************/
                             #pragma mark - Show IOS Camera Picker
@@ -675,33 +657,12 @@
 
 - (void) loadCamera:(UIButton *)sender
 {
-    //CameraViewController_iPad
     NSString *strTitle = nil;
     
     if (_isFrontorBack)
         strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_FRONT_PHOTO" value:@"Front Check Image" table:@"VIPSample"];
     else
         strTitle = [[NSBundle mainBundle] localizedStringForKey:@"VIP_TITLE_BACK_PHOTO" value:@"Back Check Image" table:@"VIPSample"];
-    
-    
-    /*
-    CameraViewController *cameraViewController = nil;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
-    
-    else  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController_iPhone" bundle:nil delegate:self title:strTitle isFront:(_isFrontorBack == FRONT_BUTTON_TAG ? YES: NO)];
-    
-    if (cameraViewController != nil)
-    {
-        [self presentViewController:cameraViewController animated:YES completion:^{
-        }];
-    }
-     */
-    
-
-    
-    
     CameraViewController *cameraViewController = [[CameraViewController alloc] initWithNibName:@"CameraViewController" bundle:nil delegate:self title:strTitle isFront:_isFrontorBack];
     if (cameraViewController != nil)
     {
@@ -709,9 +670,6 @@
         [self presentViewController:cameraViewController animated:YES completion:^{
         }];
     }
-    
-
-    
     return;
 }
 
@@ -786,19 +744,19 @@
                            if (imageBW != nil && imageColor!=nil)
                            {
                                [self setSelectedImageOnButton:imageBW];
-                               _showViewimgBW=imageBW;
-                               _showViewimg=imageColor;
+                               
                                if(_isFrontorBack && imageErrors.count == 0)
                                {
-
-                                   [self viewEnabled:_View1btn];
-                                   [self vertifiPaymentInIt];
+                                   [self viewEnabled:_recaptureFrontCheckButton];
                                    _frontCheckImage.image = _frontImage;
+                                   [_frontCheckOverlayButton setTitle:@"View" forState:UIControlStateNormal];
+                                   [self vertifiPaymentInIt];
                                }
                                else{
                                    if(imageErrors.count == 0){
-                                       [self viewEnabled:_View2btn];
+                                       [self viewEnabled:_recaptureBackCheckButton];
                                        _backCheckImage.image = _backImage;
+                                       [_backCheckOverlayButton setTitle:@"View" forState:UIControlStateNormal];
                                    }
                                }
 
@@ -820,8 +778,8 @@
 -(void)startUpMethod
 {
     imageErrors=[[NSMutableArray alloc] init];
-    [self viewDisabled:_View1btn];
-    [self viewDisabled:_View2btn];
+    [self viewDisabled:_recaptureFrontCheckButton];
+    [self viewDisabled:_recaptureBackCheckButton];
 }
 /*********************************************************************************************************/
                         #pragma mark - View Buttons Enabled and Disabled State Method
@@ -831,19 +789,12 @@
 {
     viewBtn.hidden = NO;
     viewBtn.userInteractionEnabled=TRUE;
-    [viewBtn setTitleColor:_frontCamBtn.tintColor forState:UIControlStateNormal];
-    if([_objSender isEqual:_frontCamBtn]){
-        [_seperaterFrontCamView setBackgroundColor:_frontCamBtn.tintColor];
-    }
-    else{
-        [_seperaterBackCamView setBackgroundColor:_frontCamBtn.tintColor];
-    }
+    
 }
 -(void)viewDisabled:(UIButton *)viewBtn
 {
     viewBtn.hidden = YES;
     viewBtn.userInteractionEnabled=FALSE;
-//    viewBtn.titleLabel.textColor=[UIColor colorWithRed:163/255.0 green:163/255.0 blue:163/255.0 alpha:1];
 
 }
 
@@ -856,7 +807,7 @@
     ImageViewPopUpController* objImageViewPopUpController = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageViewPopUpController"];
 
     UIImage *imageToPass = nil;
-    if([button isEqual:_View1btn])
+    if([button isEqual:_frontCheckOverlayButton])
     {
         imageToPass = _frontImage;
         objImageViewPopUpController.isFront=TRUE;
@@ -887,12 +838,12 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     [self setSelectedImageOnButton:chosenImage];
-    _showViewimg=chosenImage;
+   
     if(_isFrontorBack){
-        [self viewEnabled:_View1btn];
+        [self viewEnabled:_recaptureFrontCheckButton];
     }
     else{
-        [self viewEnabled:_View2btn];
+        [self viewEnabled:_recaptureBackCheckButton];
     }
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -1025,14 +976,18 @@
 -(void)reloadMobileDepositController{
     
     UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mobileDeposit"];
-    
     currentController = objUIViewController;
-    
     objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: @"Mobile Deposit"];
-    
-    //rootview
     self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController, nil];
+}
+
+-(void)reloadMobileDepositControllerWithIndex:(NSNumber*)loadedIndex{
     
+    MobileDepositController * mobileDepositVC = [self.storyboard instantiateViewControllerWithIdentifier:@"mobileDeposit"];
+    mobileDepositVC.loadAccountIndex = loadedIndex;
+    currentController = mobileDepositVC;
+    mobileDepositVC.navigationItem.title=[ShareOneUtility getNavBarTitle: @"Mobile Deposit"];
+    self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], mobileDepositVC, nil];
 }
 
 @end
