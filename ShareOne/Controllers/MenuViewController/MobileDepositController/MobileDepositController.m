@@ -227,7 +227,7 @@
 
 -(void)askForScreenClearWithIndex:(NSNumber*)selectedIndex {
     
-    [[UtilitiesHelper shareUtitlities]showOptionWithMessage:@"Do you want to clear current Check Details?" title:@"" delegate:self completion:^(BOOL success){
+    [[UtilitiesHelper shareUtitlities]showOptionWithMessage:@"Do you want to clear current Check Details?" title:@"" delegate:self completion:^(bool success){
         if (success) {
             [self reloadMobileDepositControllerWithIndex:selectedIndex];
         }
