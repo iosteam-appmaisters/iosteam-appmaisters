@@ -42,6 +42,10 @@
 @property (nonatomic, strong) SuffixInfo *objSuffixInfo;
 @property (nonatomic, strong) VertifiObject *objVertifiObject;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *parentView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *noteBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *parentViewHeight;
 
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, weak) IBOutlet UIView *pickerParentView;
@@ -94,9 +98,49 @@
     [[NSUserDefaults standardUserDefaults]setBool:forcedInstructions forKey:kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_BACK];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
-    _ncuaLogo.hidden = ![[Configuration getClientSettingsContent].enablencualogo boolValue];
-    
+//    _ncuaLogo.hidden = ![[Configuration getClientSettingsContent].enablencualogo boolValue];
+    _ncuaLogo.hidden = YES;
     [self checkVertifiStatus];
+    
+    float adHeight = [UIScreen mainScreen].bounds.size.width/6.4;
+    NSLog(@"%f",adHeight);
+    float noteY = _noteLabel.frame.origin.y;
+    NSLog(@"%f",noteY);
+    float noteHeight = _noteLabel.frame.size.height;
+    NSLog(@"%f",noteHeight);
+    float scrollHeight =   noteY + noteHeight;
+    NSLog(@"%f",scrollHeight);
+//    [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width,scrollHeight+100)];
+//
+//    _parentViewHeight.constant = scrollHeight+100;
+//    [self.view layoutIfNeeded];
+    float new = scrollHeight+(self.view.frame.size.height-scrollHeight)+205;
+    NSLog(@"%f",new);
+    
+    if (APPC_IS_IPAD){
+        
+    }
+    else {
+        if (IS_IPHONE_5){
+            
+        }
+        else {
+            if (IS_IPHONE_6){
+                _noteBottom.constant = 530;
+            
+            }
+            else if (IS_IPHONE_6P){
+                _noteBottom.constant = 500;
+            }
+            else if (IS_IPHONE_X){
+                
+            }
+            //_scrollView.scrollEnabled = NO;
+        }
+    }
+    [self.view layoutIfNeeded];
+    
+    // [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width,scrollHeight-100)];
     
 }
 
