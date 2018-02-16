@@ -6,49 +6,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShareOne/Entity/UserEntity/User.m"
-            timestampString = "531044326.365195"
+            filePath = "ShareOne/ReuseableComponents/VertifiLatestSDK/DepositInitOperation.m"
+            timestampString = "540120576.088747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "+getUserWithParam:delegate:completionBlock:failureBlock:"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-main"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[User getUserWithParam:delegate:completionBlock:failureBlock:]"
-                  moduleName = "ShareOne"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Wahaj/Developer/ShareOne/ShareOne-NSConfig/ShareOne/Entity/UserEntity/User.m"
-                  timestampString = "531325098.734401"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "250">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__63+[User getUserWithParam:delegate:completionBlock:failureBlock:]_block_invoke"
-                  moduleName = "ShareOne"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Wahaj/Developer/ShareOne/ShareOne-NSConfig/ShareOne/Entity/UserEntity/User.m"
-                  timestampString = "531325098.737347"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "47">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/ReuseableComponents/VertifiLatestSDK/DepositInitOperation.m"
+            timestampString = "540120576.0888619"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-main"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

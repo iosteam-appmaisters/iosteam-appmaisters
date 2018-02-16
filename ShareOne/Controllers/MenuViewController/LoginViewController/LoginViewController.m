@@ -831,11 +831,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 
                 [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
                     
-                    
-                    // Register Logged In User with Virtifi
-                    //[self registerToVertify];
-                    
-                    //Skip vertifi reg on login screen
                       [weakSelf startApplication];
                     
                 } failureBlock:^(NSError *error) {
@@ -861,12 +856,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                     
                     [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
                         
-                        
-                        // Register Logged In User with Virtifi
-                        //[self registerToVertify];
-                        
-                        //Skip vertifi reg on login screen
-                          [weakSelf startApplication];
+                        [weakSelf startApplication];
                         
                     } failureBlock:^(NSError *error) {
                         [weakSelf.loadingView setHidden:TRUE];
