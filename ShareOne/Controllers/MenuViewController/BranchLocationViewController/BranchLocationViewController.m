@@ -287,6 +287,7 @@
 {
     BranchLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell"];
     [cell setDelegate:self];
+    
     if(!cell){
         cell = [tableView dequeueReusableCellWithIdentifier:@"BranchLocationCell" forIndexPath:indexPath];
     }
@@ -300,10 +301,11 @@
     
     [cell.currentLocationBtn setTag:indexPath.row];
     [cell.getDirectionbtn setTag:indexPath.row];
-    NSString *officeTimeString= nil;
-    NSString *driveThruString= nil;
     
+    NSString *officeTimeString = nil;
+    NSString *driveThruString = nil;
     NSArray *hoursArr = nil;
+    
     if([objLocation.hours count]>0){
         
         hoursArr= objLocation.hours;
@@ -331,7 +333,16 @@
             }
             
             
-            if ([objLocation.Drivethruisopen boolValue]) {
+            if (objHours.Drivethruopentime == nil && objHours.Drivethruclosetime == nil){
+                cell.drivestatusLbl.hidden = YES;
+                cell.driveThruHoursLbl.hidden = YES;
+                cell.driveThruHeadingLabel.hidden = YES;
+                cell.timeTopConstraint.constant = 5;
+                [cell layoutIfNeeded];
+            }
+            
+            // Set Drive Thru Is Open Or Closed
+            if ([objHours.Drivethruisopen boolValue]) {
                 [[cell drivestatusLbl] setText:@"OPEN"];
                 [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]];
                 
@@ -339,27 +350,19 @@
             else {
                 [[cell drivestatusLbl] setText:@"CLOSED"];
                 [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
-                
-                if (objHours.Drivethruopentime == nil && objHours.Drivethruclosetime == nil){
-                    cell.drivestatusLbl.hidden = YES;
-                    cell.driveThruHoursLbl.hidden = YES;
-                    cell.driveThruHeadingLabel.hidden = YES;
-                    cell.timeTopConstraint.constant = 5;
-                    [cell layoutIfNeeded];
-                }
             }
             
-            /*([objHours.Drivethruisopen boolValue]) ? [[cell drivestatusLbl] setText:@"OPEN"] : [[cell drivestatusLbl] setText:@"CLOSED"];
-            
-            ([[[cell drivestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell drivestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell drivestatusLbl] setTextColor:[UIColor redColor]];*/
-            
-            ([objLocation.Lobbyisopen boolValue]) ? [[cell officestatusLbl] setText:@"OPEN"] : [[cell officestatusLbl] setText:@"CLOSED"];
-            
-            ([[[cell officestatusLbl] text] isEqualToString:@"OPEN"]) ? [[cell officestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]] : [[cell officestatusLbl] setTextColor:[UIColor redColor]];
-            
+            // Set Lobby Is Open Or Closed
+            if ([objHours.Lobbyisopen boolValue]){
+                [[cell officestatusLbl] setText:@"OPEN"];
+                [[cell officestatusLbl] setTextColor:[UIColor colorWithRed:0.0/255.0 green:172.0/255.0 blue:19.0/255.0 alpha:1.0]];
+            }
+            else {
+                [[cell officestatusLbl] setText:@"CLOSED"];
+                [[cell officestatusLbl] setTextColor:[UIColor redColor]];
+            }
             
         }
-        
     }
     
     else{
@@ -375,6 +378,8 @@
         
     }
     
+    
+    
     cell.locationNameLbl.text=objLocation.Name;
     cell.officeHourLbl.text=officeTimeString;
     cell.driveThruHoursLbl.text=driveThruString;
@@ -384,8 +389,6 @@
     cell.cityStateLbl.text=[NSString stringWithFormat:@"%@, %@",objLocation.address.City,objLocation.address.State];
     
     if([objLocation.photos count]>0){
-        
-        
         Photos *objPhotos = objLocation.photos[0];
         NSData *data = [[NSData alloc]initWithBase64EncodedString:objPhotos.Data options:NSDataBase64DecodingIgnoreUnknownCharacters];
         UIImage *image64 = [UIImage imageWithData:data];
@@ -395,9 +398,6 @@
         NSURL *imageURL = [NSURL URLWithString:@""];
         [cell.branchlocationImgview setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"image_placeholder"]];
     }
-    
-    
-    
     
     return cell;
 

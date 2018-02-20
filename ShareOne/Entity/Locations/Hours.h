@@ -18,6 +18,9 @@
 @property(nonatomic,strong) NSString *Drivethruopentime;
 @property(nonatomic,strong) NSString *Drivethruclosetime;
 
+@property(nonatomic,strong) NSNumber *Drivethruisopen;
+@property(nonatomic,strong) NSNumber *Lobbyisopen;
+
 +(NSMutableArray *) parseHours:(NSArray *)hoursArr;
 
 @end

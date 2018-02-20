@@ -120,8 +120,7 @@
 @property(nonatomic,strong) NSMutableArray *photos;
 
 
-@property(nonatomic,strong) NSNumber *Drivethruisopen;
-@property(nonatomic,strong) NSNumber *Lobbyisopen;
+
 
 
 @end

@@ -169,6 +169,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         [_passwordTxt setText:@""];
     }
 
+    _passwordTxt.returnKeyType = UIReturnKeyGo;
 }
 
 -(void)askAutoLoginOnEnteringBackGround{

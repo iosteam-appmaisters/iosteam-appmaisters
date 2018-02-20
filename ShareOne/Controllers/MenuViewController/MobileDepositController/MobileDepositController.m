@@ -118,6 +118,7 @@
         _scrollView.scrollEnabled = NO;
     }
     
+//    _submittBtn.enabled = NO;
 }
 
 -(void)backButtonClicked:(id)sender{
