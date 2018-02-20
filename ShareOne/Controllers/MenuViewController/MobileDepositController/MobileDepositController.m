@@ -67,6 +67,7 @@
 @property (weak, nonatomic) IBOutlet CustomButton *recaptureBackCheckButton;
 @property (weak, nonatomic) IBOutlet UIButton *frontCheckOverlayButton;
 @property (weak, nonatomic) IBOutlet UIButton *backCheckOverlayButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *submitTop;
 
 -(IBAction)doneButtonClicked:(id)sender;
 
@@ -90,7 +91,6 @@
     [self startUpMethod];
     [self loadDataOnPickerView];
     
-    _noteLabel.text = @"";
     _noteLabel.text = [Configuration getClientSettingsContent].rdcpostingmsg;
     
     BOOL forcedInstructions = [[Configuration getClientSettingsContent].rdcforceinstruction boolValue];
@@ -102,45 +102,21 @@
     _ncuaLogo.hidden = YES;
     [self checkVertifiStatus];
     
-    float adHeight = [UIScreen mainScreen].bounds.size.width/6.4;
-    NSLog(@"%f",adHeight);
-    float noteY = _noteLabel.frame.origin.y;
-    NSLog(@"%f",noteY);
-    float noteHeight = _noteLabel.frame.size.height;
-    NSLog(@"%f",noteHeight);
-    float scrollHeight =   noteY + noteHeight;
-    NSLog(@"%f",scrollHeight);
-//    [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width,scrollHeight+100)];
-//
-//    _parentViewHeight.constant = scrollHeight+100;
-//    [self.view layoutIfNeeded];
-    float new = scrollHeight+(self.view.frame.size.height-scrollHeight)+205;
-    NSLog(@"%f",new);
-    
-    if (APPC_IS_IPAD){
-        
+    if (IS_IPHONE_5){
+        _scrollView.scrollEnabled = YES;
     }
     else {
-        if (IS_IPHONE_5){
+        if (IS_IPHONE_6){
             
         }
-        else {
-            if (IS_IPHONE_6){
-                _noteBottom.constant = 530;
-            
-            }
-            else if (IS_IPHONE_6P){
-                _noteBottom.constant = 500;
-            }
-            else if (IS_IPHONE_X){
-                
-            }
-            //_scrollView.scrollEnabled = NO;
+        else if (IS_IPHONE_6P){
+            _submitTop.constant = 40;
         }
+        else if (IS_IPHONE_X){
+            
+        }
+        _scrollView.scrollEnabled = NO;
     }
-    [self.view layoutIfNeeded];
-    
-    // [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width,scrollHeight-100)];
     
 }
 
@@ -154,9 +130,12 @@
     NSString * contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
     NSString * navigationTitle = @"Register";
     
+
+    
     UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
     objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
     self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
+
     
 }
 
@@ -317,7 +296,7 @@
             }
             else {
                 if(![obj.LoginValidation isEqualToString:@"OK"]){
-                    [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
+                    [self showAlertWithTitle:@"" AndMessage:obj.LoginValidation];
                 }
             }
             

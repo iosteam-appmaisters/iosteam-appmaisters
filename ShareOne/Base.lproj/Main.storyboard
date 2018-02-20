@@ -208,7 +208,7 @@
                                         <rect key="frame" x="20" y="92" width="280" height="72.5"/>
                                         <subviews>
                                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7s-uQ-F6p" customClass="CustomButton">
-                                                <rect key="frame" x="21" y="7" width="329" height="39.5"/>
+                                                <rect key="frame" x="21" y="18" width="239" height="28.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="F7s-uQ-F6p" secondAttribute="height" multiplier="333:40" id="Ron-D3-h0F"/>
                                                 </constraints>
@@ -229,7 +229,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
-                                                <rect key="frame" x="263.5" y="49.5" width="52.5" height="18"/>
+                                                <rect key="frame" x="173.5" y="49.5" width="52.5" height="18"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="dmc-6B-Ssh" secondAttribute="height" multiplier="35:12" id="Udi-wn-CSR"/>
@@ -237,7 +237,7 @@
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
-                                                <rect key="frame" x="320" y="45.5" width="25" height="25"/>
+                                                <rect key="frame" x="230" y="45.5" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
                                                     <constraint firstAttribute="height" constant="25" id="aZE-35-lZz"/>
@@ -276,13 +276,13 @@
                                         <rect key="frame" x="20" y="138.5" width="280" height="46"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edQ-yo-nMS" customClass="PlainCustomLabel">
-                                                <rect key="frame" x="205" y="16" width="86" height="16"/>
+                                                <rect key="frame" x="115" y="16" width="86" height="16"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-pp-gWk">
-                                                <rect key="frame" x="301" y="8" width="51" height="31"/>
+                                                <rect key="frame" x="211" y="8" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="rememberMeButtonClicked:" destination="Grc-iE-xzY" eventType="valueChanged" id="aWh-u1-ryo"/>
                                                 </connections>
@@ -2228,7 +2228,7 @@
                                                 </variation>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOK-Px-5L2" customClass="CustomButton">
-                                                <rect key="frame" x="20" y="449" width="335" height="41"/>
+                                                <rect key="frame" x="20" y="439" width="335" height="41"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="41" id="p0T-3c-LHk"/>
                                                 </constraints>
@@ -2239,7 +2239,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAF-W7-IVv" customClass="AttributedCustomLabel">
-                                                <rect key="frame" x="20" y="500" width="335" height="70"/>
+                                                <rect key="frame" x="20" y="488" width="335" height="70"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content" base64-UTF8="YES">
@@ -2285,6 +2285,7 @@ Tm90ZToQIA
                                             <constraint firstAttribute="trailing" secondItem="tAw-A0-Xjs" secondAttribute="trailing" constant="20" id="86O-Da-vFJ"/>
                                             <constraint firstItem="6NG-dx-K1o" firstAttribute="leading" secondItem="Gw4-T7-Muf" secondAttribute="leading" id="996-0l-LNw"/>
                                             <constraint firstItem="ybV-Xc-Ad5" firstAttribute="top" secondItem="Rvg-Pz-ZXp" secondAttribute="bottom" constant="10" id="FYR-kn-0xy"/>
+                                            <constraint firstItem="AOK-Px-5L2" firstAttribute="top" secondItem="b6t-fr-ZEL" secondAttribute="bottom" constant="10" id="HC4-o5-bPN"/>
                                             <constraint firstItem="6NG-dx-K1o" firstAttribute="centerY" secondItem="Gw4-T7-Muf" secondAttribute="centerY" id="JIb-he-Ok0"/>
                                             <constraint firstAttribute="trailing" secondItem="Gw4-T7-Muf" secondAttribute="trailing" constant="20" id="NcR-M3-vlq"/>
                                             <constraint firstItem="Suz-W7-aIw" firstAttribute="leading" secondItem="2jM-i2-9S9" secondAttribute="leading" constant="20" id="SYv-KF-yQV"/>
@@ -2293,8 +2294,7 @@ Tm90ZToQIA
                                             <constraint firstItem="Gw4-T7-Muf" firstAttribute="leading" secondItem="Suz-W7-aIw" secondAttribute="trailing" constant="15" id="WD7-dy-khS"/>
                                             <constraint firstItem="WAF-W7-IVv" firstAttribute="leading" secondItem="2jM-i2-9S9" secondAttribute="leading" constant="20" id="XCM-ns-pB6"/>
                                             <constraint firstAttribute="trailing" secondItem="ybV-Xc-Ad5" secondAttribute="trailing" constant="20" id="XcK-5I-Etz"/>
-                                            <constraint firstAttribute="bottom" secondItem="WAF-W7-IVv" secondAttribute="bottom" constant="530" id="YeA-lj-Ega"/>
-                                            <constraint firstItem="WAF-W7-IVv" firstAttribute="top" secondItem="AOK-Px-5L2" secondAttribute="bottom" constant="10" id="Zxz-W3-vCG"/>
+                                            <constraint firstItem="WAF-W7-IVv" firstAttribute="top" secondItem="AOK-Px-5L2" secondAttribute="bottom" constant="8" id="Zxz-W3-vCG"/>
                                             <constraint firstItem="jOk-0R-yFY" firstAttribute="top" secondItem="ybV-Xc-Ad5" secondAttribute="bottom" constant="15" id="aHG-bV-PcW"/>
                                             <constraint firstItem="tAw-A0-Xjs" firstAttribute="centerY" secondItem="jOk-0R-yFY" secondAttribute="centerY" id="g49-Wk-s0i"/>
                                             <constraint firstAttribute="trailing" secondItem="Rvg-Pz-ZXp" secondAttribute="trailing" constant="20" id="gL0-d8-jCw"/>
@@ -2388,7 +2388,6 @@ Tm90ZToQIA
                         <outlet property="frontCheckImage" destination="vJC-rC-mud" id="t42-dp-dZp"/>
                         <outlet property="frontCheckOverlayButton" destination="Fc7-ea-oVW" id="TIA-f9-rWg"/>
                         <outlet property="ncuaLogo" destination="7be-5D-FJW" id="8iA-lt-dUc"/>
-                        <outlet property="noteBottom" destination="YeA-lj-Ega" id="OTV-rV-yWa"/>
                         <outlet property="noteLabel" destination="WAF-W7-IVv" id="wvn-Z8-jaD"/>
                         <outlet property="parentView" destination="2jM-i2-9S9" id="Hcv-BO-imO"/>
                         <outlet property="parentViewHeight" destination="2oS-AS-Q44" id="156-Ko-b67"/>
@@ -2397,6 +2396,7 @@ Tm90ZToQIA
                         <outlet property="recaptureBackCheckButton" destination="xG2-UI-4z4" id="bls-Of-gG4"/>
                         <outlet property="recaptureFrontCheckButton" destination="dg5-ym-ekD" id="v3o-wA-u2N"/>
                         <outlet property="scrollView" destination="8Ta-sk-02f" id="gaI-D4-B2c"/>
+                        <outlet property="submitTop" destination="HC4-o5-bPN" id="qDs-u5-pz3"/>
                         <outlet property="submittBtn" destination="AOK-Px-5L2" id="Mfi-cz-zm9"/>
                     </connections>
                 </viewController>

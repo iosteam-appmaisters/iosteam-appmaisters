@@ -118,7 +118,14 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     [self updateDataByDefaultValues];
     
+    self.navigationController.navigationBarHidden = YES;
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
@@ -524,6 +531,11 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         [ShareOneUtility removeCacheControllerName];
         [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
+        if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]) {
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:OVERRIDE_TOUCH_ID];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
+        
     }
 
     [self getSignInWithUser:savedUser];

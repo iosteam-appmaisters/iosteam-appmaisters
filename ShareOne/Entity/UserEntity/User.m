@@ -14,7 +14,7 @@
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
 #import "NSString+MD5String.h"
-
+#import "ConstantsShareOne.h"
 
 
 
@@ -86,6 +86,13 @@
             //[ShareOneUtility saveUserObject:user];
             
             [ShareOneUtility saveUserObjectToLocalObjects:user];
+            
+            if ([[NSUserDefaults standardUserDefaults]boolForKey:OVERRIDE_TOUCH_ID]){
+                [[NSUserDefaults standardUserDefaults]setBool:NO forKey:OVERRIDE_TOUCH_ID];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                
+                [ShareOneUtility saveSettingsWithStatus:NO AndKey:TOUCH_ID_SETTINGS];
+            }
             block(user);
             
             //[ShareOneUtility setPreferencesOnLaunch];

@@ -27,9 +27,15 @@
 #import "VertifiImageProcessing.h"
 
 
-@interface CameraViewController ()
+@interface CameraViewController () {
+    
+}
+
+@property (nonatomic)BOOL isImageCapturingStart ;
 
 @end
+
+
 
 // used for KVO observation of the @"capturingStillImage" property to perform flash bulb animation
 static const NSString *kAVCaptureStillImageIsCapturing = @"AVCaptureStillImageIsCapturing";
@@ -39,6 +45,8 @@ static const float VIP_VIEWPORT_ASPECT_WIDE = 2.4f;
 static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 
 @implementation CameraViewController
+
+
 
 @synthesize previewView;
 @synthesize toolbarTop;
@@ -110,6 +118,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 {
     [super viewDidLoad];
 
+    _isImageCapturingStart = NO;
     depositModel = [DepositModel sharedInstance];
 
     // -------------------------------------------------------------------------------------
@@ -275,6 +284,8 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 
 - (void) setupToolbarForPhoto
 {
+    
+    _isImageCapturingStart = NO ;
     //toolbarTop.hidden = NO;
     [UIView animateWithDuration:0.4f animations:^
      {
@@ -473,6 +484,9 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
                    {
                        @autoreleasepool
                        {
+                           if (imageColor == nil){
+                               return ;
+                           }
                            if (dictResults.count == 0)
                            {
                                [mVIP onProcessImageBWBindImage:imageColor];
@@ -542,6 +556,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
                                               }
                                               else
                                               {
+                                                  
                                                   BOOL bNoRetry = NO;
                                                   NSMutableString *strContent = [[NSMutableString alloc] initWithString:@""];
                                                   for (id key in dictResults)
@@ -625,6 +640,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 
 - (void) onCameraModeChange:(UISegmentedControl *)sender
 {
+    
     // set preference
     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
     [defaults setInteger:sender.selectedSegmentIndex forKey:kVIP_PREFERENCE_CAMERA_MODE];
@@ -692,6 +708,8 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 {
     mVIP = nil;
     
+    _isImageCapturingStart = NO ;
+    
     if (delegate != nil)
     {
         [self teardownAVCapture];
@@ -705,7 +723,9 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 
 - (IBAction)onPhotoReject:(id)sender
 {
+
     [self setupToolbarForPhoto];
+    
 }
 
 //------------------------------------------------------------------------------------------
@@ -714,6 +734,11 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
 
 - (void) onTakePicture:(UITapGestureRecognizer *)sender
 {
+//    if (_isImageCapturingStart){
+//        return;
+//    }
+    
+    
     // don't take picture during focus/exposure/white-balance adjustments
     if ( (device.isAdjustingFocus) || (device.isAdjustingExposure) || (device.isAdjustingWhiteBalance) || (isCapturingStillImage))
         return;
@@ -795,6 +820,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
              dispatch_async(dispatch_get_main_queue(), ^(void)
                             {
                                 [self setupToolbarForPreview];               // switch to photo preview!
+                                _isImageCapturingStart = YES ;
                             });
              
              isCapturingStillImage = NO;

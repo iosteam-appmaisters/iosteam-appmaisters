@@ -14,4 +14,5 @@
 
 @property (nonatomic, weak) id <HomeNavigationDelegate> homeDelegate;
 
+-(IBAction)backgroundButtonClicked:(id)sender;
 @end

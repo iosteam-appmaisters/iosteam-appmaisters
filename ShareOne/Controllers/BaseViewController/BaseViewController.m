@@ -473,10 +473,10 @@
             //if(!currentUser.vertifyEUAContents){
                 contrlollerName= [dict valueForKey:CONTROLLER_NAME];
             
-            NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
-            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
-            
-                //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+//            NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
+//            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
+//            
+//                [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
             /*}
             else{
                 // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
@@ -623,6 +623,9 @@
 
 -(void)appGoingToBackground{
     NSLog(@"appGoingToBackground from Home");
+    
+    [leftMenuViewController backgroundButtonClicked:nil];
+    [menuButton setEnabled:YES];
     
     if ([self.presentedViewController isKindOfClass:[UIAlertController class]]){
         [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
