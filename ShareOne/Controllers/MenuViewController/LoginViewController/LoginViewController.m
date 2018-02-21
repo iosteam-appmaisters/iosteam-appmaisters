@@ -67,7 +67,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 @property (weak, nonatomic) IBOutlet UIButton *logInButton;
 
-
+@property(nonatomic,strong) UITextField * currentTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *loginBG;
 
 - (IBAction)scanTouchID:(id)sender ;
 
@@ -134,6 +135,21 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    _loginBG.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [_loginBG addGestureRecognizer:tap];
+}
+
+-(void)dismissKeyboard {
+    if (_currentTextField == _userIDTxt){
+        [_userIDTxt resignFirstResponder];
+    }
+    else if (_currentTextField == _passwordTxt){
+        [_passwordTxt resignFirstResponder];
+    }
 }
 
 -(void)appGoingToBackgroundFromLogin{
@@ -1071,7 +1087,16 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 #pragma mark UITextFeildDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self adjustTextFeildPositionForTextFeild:textField];
+    
+    if (textField == _passwordTxt){
+        [self loginButtonClicked:[UIButton buttonWithType:UIButtonTypeCustom]];
+    }
+    
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    _currentTextField = textField;
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{

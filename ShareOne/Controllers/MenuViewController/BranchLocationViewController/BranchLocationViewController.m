@@ -302,8 +302,8 @@
     [cell.currentLocationBtn setTag:indexPath.row];
     [cell.getDirectionbtn setTag:indexPath.row];
     
-    NSString *officeTimeString = nil;
-    NSString *driveThruString = nil;
+    NSString *officeTimeString = @"";
+    NSString *driveThruString = @"";
     NSArray *hoursArr = nil;
     
     if([objLocation.hours count]>0){
@@ -320,16 +320,10 @@
             if(objHours.Drivethruopentime &&  objHours.Drivethruclosetime) {
                 driveThruString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruopentime andDateFormat:@"hh:mm a"],[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Drivethruclosetime andDateFormat:@"hh:mm a"]];
             }
-            else {
-                driveThruString = [NSString stringWithFormat:@""];
-            }
             
             
             if(objHours.Lobbyopentime && objHours.Lobbyclosetime) {
                 officeTimeString = [NSString stringWithFormat:@"%@ - %@",[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyopentime andDateFormat:@"hh:mm a"] ,[ShareOneUtility getDateInCustomeFormatWithSourceDate:objHours.Lobbyclosetime andDateFormat:@"hh:mm a"]];
-            }
-            else {
-                officeTimeString = [NSString stringWithFormat:@""];
             }
             
             
@@ -363,12 +357,17 @@
             }
             
         }
+        else {
+            
+            [[cell drivestatusLbl] setText:@"CLOSED"];
+            [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
+            
+            [[cell officestatusLbl] setText:@"CLOSED"];
+            [[cell officestatusLbl] setTextColor:[UIColor redColor]];
+        }
     }
     
     else{
-        
-        officeTimeString = [NSString stringWithFormat:@""];
-        driveThruString = [NSString stringWithFormat:@""];
         
         [[cell drivestatusLbl] setText:@"CLOSED"];
         [[cell drivestatusLbl] setTextColor:[UIColor redColor]];
@@ -377,8 +376,6 @@
         [[cell officestatusLbl] setTextColor:[UIColor redColor]];
         
     }
-    
-    
     
     cell.locationNameLbl.text=objLocation.Name;
     cell.officeHourLbl.text=officeTimeString;

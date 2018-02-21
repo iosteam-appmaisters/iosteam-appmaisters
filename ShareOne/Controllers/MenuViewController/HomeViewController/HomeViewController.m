@@ -265,12 +265,11 @@
     
     BOOL shouldReload = TRUE;
     
-    
     NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
     
     NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 
-    if([[[request URL] absoluteString] containsString:@"/log/out"]){
+    if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL]absoluteString] isEqualToString: [Configuration getClientSettingsContent].basewebviewurl]){
         shouldReload = FALSE;
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
