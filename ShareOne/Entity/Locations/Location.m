@@ -46,7 +46,7 @@
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
 
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KBRANCH_LOCATIONS,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
-        NSLog(@"%@",response);
+        //[ShareOneUtility convertDicToJSON:(NSDictionary*)response];
         if([response isKindOfClass:[NSDictionary class]]){
             block([self parseAllShareOneLocationsWithObject:(NSDictionary *)response]);
         }

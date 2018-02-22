@@ -1762,6 +1762,21 @@ NSLog(Y, Z);		\
     return url;
 }
 
-
++(void)convertDicToJSON:(NSDictionary*)contentDictionary {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:contentDictionary // Here you can pass array or dictionary
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    NSString *jsonString;
+    if (jsonData) {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        //This is your JSON String
+        //NSUTF8StringEncoding encodes special characters using an escaping scheme
+    } else {
+        NSLog(@"Got an error: %@", error);
+        jsonString = @"";
+    }
+    NSLog(@"Your JSON String is %@", jsonString);
+}
 
 @end

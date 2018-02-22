@@ -229,5 +229,6 @@
 +(NSString *)checkHTTPComponentInURL:(NSString*)url;
 +(NSString*)checkLastSlashInURL:(NSString*)url;
 
++(void)convertDicToJSON:(NSDictionary*)contentDictionary;
 
 @end
