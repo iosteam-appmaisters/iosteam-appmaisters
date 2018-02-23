@@ -102,11 +102,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
     
     if (isTechnicalLogout) {
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
         [[UtilitiesHelper shareUtitlities]showAlertWithMessage:@"The application has experienced a service issue that required it to log out. Please log back in to continue." title:@"" delegate:self];
     }
-    
-    
-    
 }
 
 
@@ -120,6 +118,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [self updateDataByDefaultValues];
     
     self.navigationController.navigationBarHidden = YES;
+    
+   
 }
 
 -(void)viewWillDisappear:(BOOL)animated {

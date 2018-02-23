@@ -269,8 +269,8 @@
     
     NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
 
-    if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL]absoluteString] isEqualToString: [Configuration getClientSettingsContent].basewebviewurl]){
-        shouldReload = FALSE;
+    if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/log/in"]){
+        shouldReload = TRUE;
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
         [[NSUserDefaults standardUserDefaults]synchronize];
