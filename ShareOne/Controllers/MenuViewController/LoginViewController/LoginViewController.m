@@ -881,13 +881,14 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
                     
                     
-                    [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+                    /*[QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
                         
                         [weakSelf startApplication];
                         
                     } failureBlock:^(NSError *error) {
                         [weakSelf.loadingView setHidden:TRUE];
-                    }];
+                    }];*/
+                    [weakSelf startApplication];
                     
                 } failureBlock:^(NSError *error) {
                     [weakSelf.loadingView setHidden:TRUE];
@@ -906,13 +907,14 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
                     
                     
-                    [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+                    /*[QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
                         
                         [weakSelf startApplication];
                         
                     } failureBlock:^(NSError *error) {
                         [weakSelf.loadingView setHidden:TRUE];
-                    }];
+                    }];*/
+                    [weakSelf startApplication];
                     
                 } failureBlock:^(NSError *error) {
                     [weakSelf.loadingView setHidden:TRUE];
