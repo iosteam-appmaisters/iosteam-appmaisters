@@ -858,17 +858,40 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 // Device Exist : No need to call PostDevices Api
                 // Register Logged In User with Virtifi
                 
-                [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
-                    
-                      [weakSelf startApplication];
-                    
-                } failureBlock:^(NSError *error) {
-                    
-                    [weakSelf.loadingView setHidden:TRUE];
-                }];
+//                [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+//
+//                      [weakSelf startApplication];
+//
+//                } failureBlock:^(NSError *error) {
+//
+//                    [weakSelf.loadingView setHidden:TRUE];
+//                }];
                 
                 //Skip vertifi reg on login screen
                 //[weakSelf startApplication];
+                
+                // Device not exist : We need to call PostDevices Api with QuickBalance & QuickTransaction permissions
+                __weak LoginViewController *weakSelf = self;
+                
+                NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+                NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+                
+                NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
+                
+                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                    
+                    
+                    [QuickBalances getAllBalances:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+                        
+                        [weakSelf startApplication];
+                        
+                    } failureBlock:^(NSError *error) {
+                        [weakSelf.loadingView setHidden:TRUE];
+                    }];
+                    
+                } failureBlock:^(NSError *error) {
+                    [weakSelf.loadingView setHidden:TRUE];
+                }];
                 
             }
             else{
