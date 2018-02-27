@@ -30,7 +30,6 @@
     }
     else {
         
-//        [self hideIndicaterView];
         [self shouldShowSplashInfo:NO];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -44,8 +43,7 @@
     _versionLabel.hidden = !value;
     _customerIDLabel.hidden = !value;
     _appVersionLabel.hidden = !value;
-    _messageLabel.text = @"We are working on app update";
-   // _messageLabel.hidden = !value;
+    _messageLabel.hidden = !value;
 }
 
 

@@ -99,12 +99,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
     
-    BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
-    
-    if (isTechnicalLogout) {
-        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
-        [[UtilitiesHelper shareUtitlities]showAlertWithMessage:@"The application has experienced a service issue that required it to log out. Please log back in to continue." title:@"" delegate:self];
-    }
 }
 
 
@@ -119,7 +113,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     self.navigationController.navigationBarHidden = YES;
     
-   
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -574,9 +567,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 //    BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     
     // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
-    
-    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
-    [[NSUserDefaults standardUserDefaults]synchronize];
     
     if(webUrl){
         HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];

@@ -1432,7 +1432,7 @@
 					6BD405861D81B59200358036 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = USNDVZCA3F;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 0;
@@ -1830,10 +1830,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareOne/ShareOne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
@@ -1848,8 +1848,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4db5b13a-6a8b-4c6d-bd68-7f9d2b0b2160";
+				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1861,10 +1861,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareOne/ShareOne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
@@ -1879,8 +1879,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4db5b13a-6a8b-4c6d-bd68-7f9d2b0b2160";
+				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

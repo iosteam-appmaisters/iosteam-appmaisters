@@ -511,21 +511,7 @@
                                                                   }]; // 2
             UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
                                                                    style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-            
-               /*[ShareOneUtility showProgressViewOnView:self.view];
-               [LoaderServices refreshSuffixInfo:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
-                   [ShareOneUtility hideProgressViewOnView:self.view];
-                   if(success && !errorString) {
-                       [self logoutActions];
-                   }
-                   else {
-                       [self logoutActions];
-                   }
-                } failureBlock:^(NSError *error) {
-                    [ShareOneUtility hideProgressViewOnView:self.view];
-                    [self logoutActions];
-                }];*/
-                   [self logoutActions];
+                [self logoutActions];
                }];
             
             [alert addAction:firstAction];
@@ -596,6 +582,20 @@
         
         [self.navigationController popToRootViewControllerAnimated:NO];
         
+        BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
+    
+        if (isTechnicalLogout) {
+            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"The application has experienced a service issue that required it to log out. Please log back in to continue." preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
     } failureBlock:^(NSError *error) {
         
     }];
