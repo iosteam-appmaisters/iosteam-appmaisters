@@ -511,7 +511,12 @@
                                                                   }]; // 2
             UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
                                                                    style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                [self logoutActions];
+                                                                       
+                   if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]) {
+                       [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TEMP_DISABLE_TOUCH_ID];
+                       [[NSUserDefaults standardUserDefaults]synchronize];
+                   }
+                   [self logoutActions];
                }];
             
             [alert addAction:firstAction];
@@ -585,12 +590,18 @@
         BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
     
         if (isTechnicalLogout) {
-            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-        
+            
+            if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+                [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+            
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"The application has experienced a service issue that required it to log out. Please log back in to continue." preferredStyle:UIAlertControllerStyleAlert];
             
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
+                [[NSUserDefaults standardUserDefaults]synchronize];
                 
             }]];
             

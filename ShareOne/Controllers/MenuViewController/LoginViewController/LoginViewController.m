@@ -277,6 +277,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                             [self loginButtonClicked:nil];
                         }
                     }];
+                    
+                    
                 }
                 else{
                     NSLog(@"isLaunchFirstTime Touch off");
@@ -453,6 +455,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 }
 -(void)showTouchID{
     
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT] && ![[NSUserDefaults standardUserDefaults]boolForKey:TEMP_DISABLE_TOUCH_ID]){
+
     __weak LoginViewController *weakSelf = self;
     
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
@@ -485,6 +489,13 @@ static NSString *const menuCellIdentifier = @"rotationCell";
             }
         }];
     }
+    }
+    else {
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TEMP_DISABLE_TOUCH_ID];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    
 }
 
 - (IBAction)loginButtonClicked:(id)sender
