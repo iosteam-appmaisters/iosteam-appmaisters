@@ -843,40 +843,18 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 -(void)startLoadingServices{
     
     __weak LoginViewController *weakSelf = self;
-
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
+    
+    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    
+    NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
+    
+    [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
+        [weakSelf startApplication];
         
-        if(success && !errorString){
-            /*NSArray *devicesArr = [[SharedUser sharedManager] memberDevicesArr];
-            
-            NSPredicate *devicePredicate = [NSPredicate predicateWithFormat:@"Fingerprint == %@",[ShareOneUtility getUUID]];
-            
-            NSArray *deveiceExistArr = [devicesArr filteredArrayUsingPredicate:devicePredicate];*/
-            
-            __weak LoginViewController *weakSelf = self;
-            
-            NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-            NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-            
-            NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
-            
-            [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
-                
-                [weakSelf startApplication];
-                
-            } failureBlock:^(NSError *error) {
-                [weakSelf.loadingView setHidden:TRUE];
-            }];
-        }
-        else{
-            [weakSelf.loadingView setHidden:TRUE];
-
-            [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
-        }
     } failureBlock:^(NSError *error) {
-        
+        [weakSelf.loadingView setHidden:TRUE];
     }];
 }
 

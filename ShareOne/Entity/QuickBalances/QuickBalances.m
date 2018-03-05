@@ -49,7 +49,9 @@
 
         block((NSArray *)qtObjects);
         
-    } failureBlock:^(NSError *error) {}];
+    } failureBlock:^(NSError *error) {
+        failBlock(error);
+    }];
 }
 
 -(id) initWithDictionary:(NSDictionary *)dict{

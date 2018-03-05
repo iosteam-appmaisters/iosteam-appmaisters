@@ -109,7 +109,7 @@
     NSMutableArray *queuReqArr = [[NSMutableArray alloc] init];
     [qbArr enumerateObjectsUsingBlock:^(SuffixInfo *object, NSUInteger idx, BOOL *stop) {
         
-        NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%d/%@",[ShareOneUtility getBaseUrl],KQUICK_TRANSACTION,[ShareOneUtility getUUID],[object.Suffixid intValue] ,kNO_OF_TRANSACTION];
+        NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%d/%@",[ShareOneUtility getBaseUrl],KQUICK_TRANSACTION,[ShareOneUtility getUUID],[object.Suffixid intValue] ,[ShareOneUtility getNumberOfQuickViewTransactions]];
 
         [queuReqArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:url,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil]];
     }];

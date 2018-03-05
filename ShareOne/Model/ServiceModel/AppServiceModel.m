@@ -903,7 +903,7 @@
                 reqError=error;
                 
                 NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
-                //NSLog(@"Headers : %@",headers);
+                NSLog(@"Headers : %@",headers);
                 
 
                     

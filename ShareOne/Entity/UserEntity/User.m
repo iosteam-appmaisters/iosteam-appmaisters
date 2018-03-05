@@ -76,6 +76,12 @@
         User* user;
         if([response isKindOfClass:[NSDictionary class]]){
 
+            NSDictionary * responseDic = @{@"Suffixes":[(NSDictionary*)response valueForKey:@"Suffixes"]};
+            
+            NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:responseDic];
+            [ShareOneUtility savedSuffixInfo:responseDic];
+            [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
+            
 //            [ShareOneUtility setStatusOfPasswordChanged:NO];
             user = [[User alloc]initWithDictionary:(NSDictionary *)response];
             user.UserName=[param valueForKey:@"account"];

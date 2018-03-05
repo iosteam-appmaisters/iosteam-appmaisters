@@ -77,7 +77,7 @@
             [weakSelf.qbTblView reloadData];
         }
         else{
-          //  [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
+            [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
         }
 
         
@@ -88,15 +88,7 @@
     self.qbTblView.allowMultipleSectionsOpen = NO;
     [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
     
-    ClientSettingsObject  *config = [Configuration getClientSettingsContent];
-    
-    _numOfQuickViewTransactions = @"5";
-    if (config.quickviewnumoftransactions == nil){
-        _numOfQuickViewTransactions = @"5";
-    }
-    else {
-        _numOfQuickViewTransactions = config.quickviewnumoftransactions;
-    }
+    _numOfQuickViewTransactions = [ShareOneUtility getNumberOfQuickViewTransactions];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
@@ -175,8 +167,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    SuffixInfo *objQuickBalances =_qbArr[section];
-    
     QBFooterView *objFZAccordionTableViewHeaderView =(QBFooterView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kQBHeaderViewReuseIdentifier];
     
     SuffixInfo *obj = _qbArr[section];
@@ -203,16 +193,16 @@
     
     [objFZAccordionTableViewHeaderView.bgView setBackgroundColor:[UIColor colorWithHexString:objStyleValuesObject.buttoncolortop]];
 
-    if(objQuickBalances.Descr)
-        [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:objQuickBalances.Descr];
+    if(obj.Descr)
+        [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:obj.Descr];
     else
         
-        [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:objQuickBalances.Type]];
+        [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:obj.Type]];
     
-    NSNumber * price = objQuickBalances.Balance;
-    if ([objQuickBalances.Type isEqualToString:@"C"] || [objQuickBalances.Type isEqualToString:@"c"] ||
-        [objQuickBalances.Type isEqualToString:@"S"] || [objQuickBalances.Type isEqualToString:@"s"]) {
-        price = objQuickBalances.Available;
+    NSNumber * price = obj.Balance;
+    if ([obj.Type isEqualToString:@"C"] || [obj.Type isEqualToString:@"c"] ||
+        [obj.Type isEqualToString:@"S"] || [obj.Type isEqualToString:@"s"]) {
+        price = obj.Available;
     }
     
     

@@ -1779,4 +1779,19 @@ NSLog(Y, Z);		\
     NSLog(@"Your JSON String is %@", jsonString);
 }
 
++(NSString*)getNumberOfQuickViewTransactions {
+    
+    NSString * numOfQuickViewTransactions = @"5";
+    
+    ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+    
+    if (config.quickviewnumoftransactions == nil){
+        numOfQuickViewTransactions = @"5";
+    }
+    else {
+        numOfQuickViewTransactions = config.quickviewnumoftransactions;
+    }
+    return numOfQuickViewTransactions;
+}
+
 @end

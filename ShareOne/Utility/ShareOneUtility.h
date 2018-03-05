@@ -230,5 +230,5 @@
 +(NSString*)checkLastSlashInURL:(NSString*)url;
 
 +(void)convertDicToJSON:(NSDictionary*)contentDictionary;
-
++(NSString*)getNumberOfQuickViewTransactions;
 @end
