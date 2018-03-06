@@ -170,7 +170,7 @@
     QuickTransaction *objQuickTransaction   =  obj.transArray[indexPath.row];
     
     [cell.tranTitleLbl setText:objQuickTransaction.Tran];
-    [cell.tranDateLbl setText:objQuickTransaction.Eff];
+    [cell.tranDateLbl setText:objQuickTransaction.Post];
     
     NSString * amount = [self getFormattedAmount:@([objQuickTransaction.Amt floatValue])];
     
