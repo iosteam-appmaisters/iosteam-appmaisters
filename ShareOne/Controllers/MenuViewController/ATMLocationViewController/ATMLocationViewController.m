@@ -149,10 +149,11 @@
 
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat_local
                                                             longitude:lon_local
-                                                                 zoom:10];
+                                                                 zoom:15];
     _mapView.camera=camera;
     _mapView.myLocationEnabled = YES;
     _mapView.delegate=self;
+    
     [self createGoogleMapMarker:_mapView];
     
 }
@@ -268,16 +269,10 @@
 
 -(void)createGoogleMapMarker:(GMSMapView *)mapView
 {
-    // Creates a marker in the center of the map.
-    
     GMSMutablePath *path = [GMSMutablePath path];
 
     for(int count=0; count<[_locationArr count]; count++){
         
-//        NSArray *latlongArr=[[_locationArr objectAtIndex:count] componentsSeparatedByString:@","];
-//        float lat=[[latlongArr objectAtIndex:0] floatValue];
-//        float lon=[[latlongArr objectAtIndex:1] floatValue];
-
         Location *objLocation= nil;
 
         if(_showMyLocationOnly){
@@ -338,9 +333,20 @@
             break;
     }
     
-    GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithPath:path];
-    [mapView animateWithCameraUpdate:[GMSCameraUpdate fitBounds:bounds]];
-
+    Location * lastLoc;
+    if(_showMyLocationOnly){
+        lastLoc=  _locationArr[_selectedIndex];
+        
+        [mapView animateToLocation:CLLocationCoordinate2DMake([[lastLoc Gpslatitude]floatValue], [[lastLoc Gpslongitude]floatValue])];
+    }
+    else{
+        lastLoc=  [_locationArr lastObject];
+        
+        GMSCameraPosition *sydney = [GMSCameraPosition cameraWithLatitude:[[lastLoc Gpslatitude]floatValue]
+                                                                longitude:[[lastLoc Gpslongitude]floatValue]
+                                                                     zoom:10];
+        [mapView setCamera:sydney];
+    }
     
 }
 

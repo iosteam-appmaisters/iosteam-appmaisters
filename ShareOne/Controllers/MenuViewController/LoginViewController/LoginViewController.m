@@ -667,11 +667,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 - (void)getSignInWithUser:(User *)local_user{
     
     __weak LoginViewController *weakSelf = self;
-//    [weakSelf.loadingView setHidden:FALSE];
-//    [weakSelf startLoadingServices];
 
-//    [weakSelf startApplication];
-//    return; //skipme
     NSLog(@"username : %@  password: %@",local_user.UserName,local_user.Password);
     
     
@@ -802,15 +798,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [self.loadingView setHidden:FALSE];
     [self startLoadingServices];
 
-    /*
-    if([user.Requirements containsObject:CHANGE_ACCOUNT_USER_NAME]){
-        [self addControllerToChangeUserName];
-    }
-    else{
-        [self.loadingView setHidden:FALSE];
-        [self startLoadingServices];
-    }
-     */
 }
 
 -(void)addControllerToChangeUserName:(User *)user{
@@ -844,8 +831,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     __weak LoginViewController *weakSelf = self;
     
-    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",@"true",@"Status", nil];
+    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",@"true",@"Status", nil];
     
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
@@ -857,7 +844,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         [weakSelf.loadingView setHidden:TRUE];
     }];
 }
-
 
 
 -(void)viewDidDisappear:(BOOL)animated{

@@ -42,10 +42,31 @@
     
     __weak QuickBalancesViewController *weakSelf = self;
     
-    _currentQTArray = [NSMutableArray array];
+    self.qbTblView.allowMultipleSectionsOpen = NO;
+    
+    [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
+    
+    [ShareOneUtility showProgressViewOnView:self.view];
+    
+    [QuickBalances getAllBalances:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getUUID],@"DeviceFingerprint",@"HomeBank",@"ServiceType", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
+        [ShareOneUtility hideProgressViewOnView:self.view];
+        
+        [self refreshData];
+        
+    } failureBlock:^(NSError *error) {
+        
+        [ShareOneUtility hideProgressViewOnView:self.view];
+        
+        [self refreshData];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+-(void)refreshData {
     
     _qbArr= [[SharedUser sharedManager] suffixInfoArr];
-    
     
     if([_qbArr count]<=0){
         NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
@@ -68,9 +89,13 @@
     
     _qbArr = temp;
     
+    __weak QuickBalancesViewController *weakSelf = self;
+    [weakSelf.qbTblView reloadData];
+    
     [ShareOneUtility showProgressViewOnView:self.view];
-
+    
     [LoaderServices setQTRequestOnQueueWithDelegate:weakSelf AndQuickBalanceArr:weakSelf.qbArr completionBlock:^(BOOL success,NSString *errorString) {
+
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 
         if(success && !errorString){
@@ -79,18 +104,12 @@
         else{
             [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
         }
-
         
     } failureBlock:^(NSError *error) {
-        
-    }];
 
-    self.qbTblView.allowMultipleSectionsOpen = NO;
-    [self.qbTblView registerNib:[UINib nibWithNibName:@"QBFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:kQBHeaderViewReuseIdentifier];
+        [ShareOneUtility hideProgressViewOnView:self.view];
+    }];
     
-    _numOfQuickViewTransactions = [ShareOneUtility getNumberOfQuickViewTransactions];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 -(void)appGoingToBackground{
@@ -105,7 +124,8 @@
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _currentQTArray.count ;
+    SuffixInfo *obj = _qbArr[section];
+    return obj.transArray.count ;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -145,7 +165,9 @@
         [cell.contentView setBackgroundColor:DEFAULT_COLOR_GRAY];
     }
 
-    QuickTransaction *objQuickTransaction   =  _currentQTArray[indexPath.row];
+    SuffixInfo *obj = _qbArr[indexPath.section];
+    
+    QuickTransaction *objQuickTransaction   =  obj.transArray[indexPath.row];
     
     [cell.tranTitleLbl setText:objQuickTransaction.Tran];
     [cell.tranDateLbl setText:objQuickTransaction.Eff];
@@ -235,7 +257,6 @@
     QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
     [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_up_arrow"]];
 
-    [self getQTForSelectedSection:(int)section];
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
@@ -293,65 +314,15 @@
         [self noTransaction];
         return;
     }
-    if ([_numOfQuickViewTransactions intValue] > 0){
+    else {
         [_qbTblView toggleSection:section];
     }
-}
-
-- (void)getQTForSelectedSection:(int)section {
-    
-    [ShareOneUtility showProgressViewOnView:self.view];
-    
-    SuffixInfo *obj = _qbArr[section];
-    
-    __weak QuickBalancesViewController *weakSelf = self;
-    NSString *SuffixID = [NSString stringWithFormat:@"%d",obj.Suffixid.intValue];
-    
-    [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:/*@"HomeBank",@"ServiceType",*/[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",_numOfQuickViewTransactions,@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
-        
-        _currentQTArray = [(NSArray*)user mutableCopy];
-        
-        [weakSelf.qbTblView reloadData];
-        
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-        
-    } failureBlock:^(NSError *error) {
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-    }];
-    
 }
 
 -(void)noTransaction{
     __weak QuickBalancesViewController *weakSelf = self;
     
-    [[ShareOneUtility shareUtitlities] showToastWithMessage:@"No Transaction " title:@"" delegate:weakSelf];
-}
-
--(void)applyURLSessionOnReq:(NSMutableURLRequest *)req{
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: self delegateQueue: nil];
-    NSURLSessionDataTask * task = [defaultSession dataTaskWithRequest:req];
-
-    [task resume];
-
-}
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
-    NSLog(@"%lld",[response expectedContentLength]);
-    dataToDownload=[[NSMutableData alloc]init];
-    completionHandler(NSURLSessionResponseAllow);
-}
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    NSLog(@"didReceiveData");
-    [dataToDownload appendData:data];
-    NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)dataToDownload encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",ErrorResponse);
-
-}
-
--(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
-    NSLog(@"didCompleteWithError");
+    [[ShareOneUtility shareUtitlities] showToastWithMessage:@"No Transaction" title:@"" delegate:weakSelf];
 }
 
 - (BOOL)shouldAutorotate{
