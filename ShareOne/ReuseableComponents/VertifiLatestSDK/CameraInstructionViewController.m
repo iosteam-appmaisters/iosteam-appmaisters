@@ -24,6 +24,7 @@
 #import "CameraInstructionViewController.h"
 #import "UISchema.h"
 #import "DepositModel.h"
+#import "Configuration.h"
 
 @interface CameraInstructionViewController ()
 @end
@@ -60,7 +61,7 @@
     
     UILabel *labelShowAgain = [[UILabel alloc] init];
     [labelShowAgain setText:@"Do not show this again"];
-    [labelShowAgain setTextColor:schema.colorLightText];
+    [labelShowAgain setTextColor:schema.colorDarkText];
 
     [labelShowAgain setFont:schema.fontFootnote];
     [labelShowAgain sizeToFit];
@@ -72,7 +73,14 @@
     
     UIBarButtonItem *buttonFlexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *buttonContinue = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStyleDone target:self action:@selector(onDone:)];
-    [toolbar setItems:@[buttonLabelShowAgain,buttonShowAgain,buttonFlexSpace,buttonContinue]];
+    
+    BOOL forcedInstructions = [[Configuration getClientSettingsContent].rdcforceinstruction boolValue];
+    if (forcedInstructions){
+        [toolbar setItems:@[buttonFlexSpace,buttonContinue]];
+    }
+    else {
+        [toolbar setItems:@[buttonLabelShowAgain,buttonShowAgain,buttonFlexSpace,buttonContinue]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

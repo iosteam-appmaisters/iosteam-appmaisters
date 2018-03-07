@@ -24,14 +24,16 @@
 @property (nonatomic,strong) NSString *Descr;
 
 
++(void)getAllBalances:(NSDictionary*)param
+             delegate:(id)delegate
+      completionBlock:(void(^)(NSArray* qbObjects))block
+         failureBlock:(void(^)(NSError* error))failBlock;
 
 
-
-
-+(void)getAllBalances:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock;
-
-
-+(void)getAllQuickTransaction:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock;
++(void)getAllQuickTransaction:(NSDictionary*)param
+                     delegate:(id)delegate
+              completionBlock:(void(^)(NSObject *user))block
+                 failureBlock:(void(^)(NSError* error))failBlock;
 
 -(id) initWithDictionary:(NSDictionary *)dict;
 

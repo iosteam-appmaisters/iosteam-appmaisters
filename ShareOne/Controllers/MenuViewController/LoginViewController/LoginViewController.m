@@ -33,6 +33,7 @@
 #import "YALContextMenuTableView.h"
 #import "UtilitiesHelper.h"
 #import "DeviceUtil.h"
+#import "SAMKeychain.h"
 
 static NSString *const menuCellIdentifier = @"rotationCell";
 
@@ -134,6 +135,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [_loginBG addGestureRecognizer:tap];
+    
+//    NSString *Appname = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+//    [SAMKeychain deletePasswordForService:Appname account:@""];
 }
 
 -(void)dismissKeyboard {
@@ -722,7 +726,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 // Go though to thee application
                 //asi flow
                 [weakSelf.loadingView setHidden:FALSE];
-                [weakSelf startLoadingServices];
+                [weakSelf startLoadingServicesL];
             }
         }
         else if([user isKindOfClass:[NSString class]]){
@@ -826,8 +830,60 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 }
 
+-(void)startLoadingServicesL{
+    
+    __weak LoginViewController *weakSelf = self;
+    
+    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
+        
+        
+        if(success && !errorString){
+            NSArray *devicesArr = [[SharedUser sharedManager] memberDevicesArr];
+            
+            NSPredicate *devicePredicate = [NSPredicate predicateWithFormat:@"Fingerprint == %@",[ShareOneUtility getUUID]];
+            
+            NSArray *deveiceExistArr = [devicesArr filteredArrayUsingPredicate:devicePredicate];
+            
+            if([deveiceExistArr count]>0){
+                
+                [weakSelf startApplication];
+                
+            }
+            else{
+                // Device not exist : We need to call PostDevices Api with QuickBalance & QuickTransaction permissions
+                __weak LoginViewController *weakSelf = self;
+                
+                NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+                NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+                
+                NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
+                
+                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+                    
+                    
+                    [weakSelf startApplication];
+                    
+                } failureBlock:^(NSError *error) {
+                    [weakSelf.loadingView setHidden:TRUE];
+                }];
+            }
+        }
+        else{
+            [weakSelf.loadingView setHidden:TRUE];
+            
+            [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
+        }
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
 
 -(void)startLoadingServices{
+    
+    
+    
     
     __weak LoginViewController *weakSelf = self;
     

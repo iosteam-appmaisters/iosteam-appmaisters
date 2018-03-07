@@ -11,7 +11,6 @@
 #import "QBDetailsCell.h"
 #import "ShareOneUtility.h"
 #import "QBFooterView.h"
-#import "SuffixInfo.h"
 #import "ShareOneUtility.h"
 
 #import "QuickBalances.h"
@@ -48,49 +47,28 @@
     
     [ShareOneUtility showProgressViewOnView:self.view];
     
-    [QuickBalances getAllBalances:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getUUID],@"DeviceFingerprint",@"HomeBank",@"ServiceType", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [QuickBalances getAllBalances:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType", nil] delegate:weakSelf completionBlock:^(NSArray *qbObjects) {
         
         [ShareOneUtility hideProgressViewOnView:self.view];
         
-        [self refreshData];
+        _qbArr = qbObjects;
+        
+        [weakSelf.qbTblView reloadData];
+        
+        [self fetchAllQuickTransactions];
         
     } failureBlock:^(NSError *error) {
         
         [ShareOneUtility hideProgressViewOnView:self.view];
         
-        [self refreshData];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
--(void)refreshData {
-    
-    _qbArr= [[SharedUser sharedManager] suffixInfoArr];
-    
-    if([_qbArr count]<=0){
-        NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:[ShareOneUtility getSuffixInfo]];
-        _qbArr=suffixArr;
-        [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
-    }
-    
-    NSMutableArray * temp = [NSMutableArray array];
-    
-    for (SuffixInfo * info in _qbArr){
-        
-        if (![[info Hidden]boolValue] && ([info Closed] == nil || ![[info Closed] boolValue])) {
-            if ([info.Access containsString:@"Q"]){
-                NSLog(@"=== %@",info.Access);
-                NSLog(@"Showing:: %@:%@:%@",[info Descr],[info Hidden],[info Closed]);
-                [temp addObject:info];
-            }
-        }
-    }
-    
-    _qbArr = temp;
+-(void)fetchAllQuickTransactions {
     
     __weak QuickBalancesViewController *weakSelf = self;
-    [weakSelf.qbTblView reloadData];
     
     [ShareOneUtility showProgressViewOnView:self.view];
     
@@ -124,8 +102,8 @@
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    SuffixInfo *obj = _qbArr[section];
-    return obj.transArray.count ;
+    QuickBalances *obj = _qbArr[section];
+    return obj.transArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -165,9 +143,9 @@
         [cell.contentView setBackgroundColor:DEFAULT_COLOR_GRAY];
     }
 
-    SuffixInfo *obj = _qbArr[indexPath.section];
+    QuickBalances *obj = _qbArr[indexPath.section];
     
-    QuickTransaction *objQuickTransaction   =  obj.transArray[indexPath.row];
+    QuickTransaction *objQuickTransaction = obj.transArr[indexPath.row];
     
     [cell.tranTitleLbl setText:objQuickTransaction.Tran];
     [cell.tranDateLbl setText:objQuickTransaction.Post];
@@ -191,9 +169,9 @@
     
     QBFooterView *objFZAccordionTableViewHeaderView =(QBFooterView *) [tableView dequeueReusableHeaderFooterViewWithIdentifier:kQBHeaderViewReuseIdentifier];
     
-    SuffixInfo *obj = _qbArr[section];
+    QuickBalances *obj = _qbArr[section];
     
-    if([obj.transArray count]<=0){
+    if([obj.transArr count]<=0){
         objFZAccordionTableViewHeaderView.plusMinusIcon.hidden = YES;
         objFZAccordionTableViewHeaderView.plusMinusIconBg.hidden = YES;
         objFZAccordionTableViewHeaderView.labelTrailing.constant = 10;
@@ -221,14 +199,13 @@
         
         [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:obj.Type]];
     
-    NSNumber * price = obj.Balance;
+    /*NSNumber * price = obj.Balance;
     if ([obj.Type isEqualToString:@"C"] || [obj.Type isEqualToString:@"c"] ||
         [obj.Type isEqualToString:@"S"] || [obj.Type isEqualToString:@"s"]) {
         price = obj.Available;
-    }
+    }*/
     
-    
-    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[self getFormattedAmount:price]];
+    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[self getFormattedAmount:obj.Available]];
     
     [objFZAccordionTableViewHeaderView.headerBtn setTag:section];
     
@@ -309,8 +286,8 @@
 
 -(void) sectionTapped:(int)section {
     
-    SuffixInfo *obj = _qbArr[section];
-    if([obj.transArray count]<=0) {
+    QuickBalances *obj = _qbArr[section];
+    if([obj.transArr count]<=0) {
         [self noTransaction];
         return;
     }

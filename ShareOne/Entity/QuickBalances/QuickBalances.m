@@ -16,17 +16,21 @@
 
 @implementation QuickBalances
 
-+(void)getAllBalances:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)getAllBalances:(NSDictionary*)param
+             delegate:(id)delegate
+      completionBlock:(void(^)(NSArray* qbObjects))block
+         failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:    [NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,/*@"asd"*/[ShareOneUtility getUUID]] delegate:delegate completionBlock:^(NSObject *response) {
-        
-        NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
-        [ShareOneUtility savedQBHeaderInfo:(NSDictionary *)response];
-        [[SharedUser sharedManager] setQBSectionsArr:qbObjects];
+    [[AppServiceModel sharedClient] getMethod:signature
+                                     AndParam:nil
+                              progressMessage:nil
+                                    urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,[ShareOneUtility getUUID]]
+                                     delegate:delegate completionBlock:^(NSObject *response) {
 
-        block(response);
+        NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
+        block(qbObjects);
         
     } failureBlock:^(NSError *error) {
         failBlock(error);
@@ -35,18 +39,18 @@
 }
 
 
-+(void)getAllQuickTransaction:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)getAllQuickTransaction:(NSDictionary*)param
+                     delegate:(id)delegate
+              completionBlock:(void(^)(NSObject *user))block
+                 failureBlock:(void(^)(NSError* error))failBlock{
     
-    NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
+    NSString *signature = [ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_TRANSACTION,[param valueForKey:@"DeviceFingerprint"],[param objectForKey:@"SuffixID"] ,[param valueForKey:@"NumberOfTransactions"]];
+    NSString *url = [NSString stringWithFormat:@"%@/%@/%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_TRANSACTION,[ShareOneUtility getUUID],[param objectForKey:@"SuffixID"] ,[ShareOneUtility getNumberOfQuickViewTransactions]];
     
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:@"Loading..." urlString:url delegate:delegate completionBlock:^(NSObject *response) {
         
         NSArray *qtObjects = [QuickTransaction  getQTObjects:(NSDictionary *)response];
-
-        //block(response);
-
         block((NSArray *)qtObjects);
         
     } failureBlock:^(NSError *error) {

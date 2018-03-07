@@ -24,12 +24,12 @@
     // Do any additional setup after loading the view..
     
     __weak LoadingController *weakSelf = self;
-    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorMessage) {
-        
-        [weakSelf dismisLoader];
-    } failureBlock:^(NSError *error) {
-        
-    }];
+//    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorMessage) {
+//        
+//        [weakSelf dismisLoader];
+//    } failureBlock:^(NSError *error) {
+//        
+//    }];
    
     //[self performSelector:@selector(dismisLoader) withObject:nil afterDelay:2];
 }
