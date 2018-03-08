@@ -726,7 +726,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 // Go though to thee application
                 //asi flow
                 [weakSelf.loadingView setHidden:FALSE];
-                [weakSelf startLoadingServicesL];
+                [weakSelf startLoadingServices];
             }
         }
         else if([user isKindOfClass:[NSString class]]){
@@ -830,7 +830,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 }
 
--(void)startLoadingServicesL{
+-(void)startLoadingServicesWithMemberDevice{
     
     __weak LoginViewController *weakSelf = self;
     
@@ -882,17 +882,15 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 -(void)startLoadingServices{
     
-    
-    
-    
     __weak LoginViewController *weakSelf = self;
     
-    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",@"true",@"Status", nil];
-    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",@"true",@"Status", nil];
+    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
+    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
     
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
     [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
         
         [weakSelf startApplication];
         

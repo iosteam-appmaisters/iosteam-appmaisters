@@ -26,7 +26,7 @@
     [[AppServiceModel sharedClient] getMethod:signature
                                      AndParam:nil
                               progressMessage:nil
-                                    urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,[ShareOneUtility getUUID]]
+                                    urlString:[NSString stringWithFormat:@"%@/%@/%@/HomeBank",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,[ShareOneUtility getUUID]]
                                      delegate:delegate completionBlock:^(NSObject *response) {
 
         NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
