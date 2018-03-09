@@ -12,7 +12,8 @@ pod 'GoogleMaps'
 pod 'AES256Encrypter', '~> 0.0'
 pod 'SAMKeychain', '~> 1.5'
 pod 'XMLDictionary', '~> 1.4'
-
+pod 'Fabric'
+pod 'Crashlytics'
 pod 'SWTableViewCell', '~> 0.3.7'
 
 end

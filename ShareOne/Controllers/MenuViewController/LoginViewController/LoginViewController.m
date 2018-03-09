@@ -34,6 +34,7 @@
 #import "UtilitiesHelper.h"
 #import "DeviceUtil.h"
 #import "SAMKeychain.h"
+#import <Crashlytics/Crashlytics.h>
 
 static NSString *const menuCellIdentifier = @"rotationCell";
 
@@ -135,10 +136,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [_loginBG addGestureRecognizer:tap];
-    
-//    NSString *Appname = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
-//    [SAMKeychain deletePasswordForService:Appname account:@""];
 }
+
+
 
 -(void)dismissKeyboard {
     if (_currentTextField == _userIDTxt){

@@ -14,7 +14,8 @@
 #import "ConstantsShareOne.h"
 #import "SplashViewController.h"
 #import "Configuration.h"
-
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @import GoogleMaps;
 
@@ -31,6 +32,8 @@
     // Override point for customization after application launch.
     
     [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+    
+    [Fabric with:@[[Crashlytics class]]];
     
     if (![ShareOneUtility shouldUseProductionEnviroment]){
         //[TestFairy begin:[ShareOneUtility getTestFairyID]];

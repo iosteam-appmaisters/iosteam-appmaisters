@@ -1410,6 +1410,7 @@
 				6BD405851D81B59200358036 /* Resources */,
 				834F6DE2AAE547ADFA1D690D /* [CP] Embed Pods Frameworks */,
 				85AF07800BA45A56C7FF9023 /* [CP] Copy Pods Resources */,
+				9A1030312052992300D422F2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1538,6 +1539,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9A1030312052992300D422F2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 2f30396b5419338216526ff406207a00ec1130ef c58aa0c73c24bdd82709e9c4357c0053faad361091961daaea640897b8382ead\n";
 		};
 		AB9E1443137F2B82276F3EAF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1833,6 +1847,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
