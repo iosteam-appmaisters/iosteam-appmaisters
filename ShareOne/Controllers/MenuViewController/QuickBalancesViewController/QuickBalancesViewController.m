@@ -39,6 +39,8 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    _numOfQuickViewTransactions = [ShareOneUtility getNumberOfQuickViewTransactions];
+    
     __weak QuickBalancesViewController *weakSelf = self;
     
     self.qbTblView.allowMultipleSectionsOpen = NO;
@@ -54,8 +56,6 @@
         _qbArr = qbObjects;
         
         [weakSelf.qbTblView reloadData];
-        
-        [self fetchAllQuickTransactions];
         
     } failureBlock:^(NSError *error) {
         
@@ -234,6 +234,7 @@
     QBFooterView * qbView = (QBFooterView*)[tableView headerViewForSection:section];
     [qbView.plusMinusIcon setCustomImage:[UIImage imageNamed:@"qb_up_arrow"]];
 
+    [self getQTForSelectedSection:(int)section];
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
@@ -286,14 +287,50 @@
 
 -(void) sectionTapped:(int)section {
     
-    QuickBalances *obj = _qbArr[section];
+    /*QuickBalances *obj = _qbArr[section];
     if([obj.transArr count]<=0) {
         [self noTransaction];
         return;
     }
     else {
         [_qbTblView toggleSection:section];
-    }
+    }*/
+     [_qbTblView toggleSection:section];
+}
+
+- (void)getQTForSelectedSection:(int)section {
+    
+    [ShareOneUtility showProgressViewOnView:self.view];
+    
+    SuffixInfo *obj = _qbArr[section];
+    
+    __weak QuickBalancesViewController *weakSelf = self;
+    
+    NSString *SuffixID = [NSString stringWithFormat:@"%d",obj.Suffixid.intValue];
+    
+    [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility getUUID],@"DeviceFingerprint",SuffixID,@"SuffixID",_numOfQuickViewTransactions,@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+        
+        NSMutableArray * transactionArray = [(NSArray*)user mutableCopy];
+        
+        if([transactionArray count]<=0) {
+            [self noTransaction];
+        }
+        else {
+            for (QuickBalances * qb in _qbArr){
+                if ([[qb.Suffixid stringValue] isEqualToString:SuffixID]) {
+                    qb.transArr = transactionArray;
+                    break;
+                }
+            }
+        }
+        [weakSelf.qbTblView reloadData];
+        
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+    } failureBlock:^(NSError *error) {
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    }];
+    
 }
 
 -(void)noTransaction{
