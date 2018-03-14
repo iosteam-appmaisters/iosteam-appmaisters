@@ -45,18 +45,33 @@
     
     else{
         
-        [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
+        if ([_url isEqualToString:[Configuration getMenuItemHomeURL]]){
+            [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
+                
+                
+                request =(NSMutableURLRequest *)[urlPath mutableCopy];
+                
+                [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+                
+                [weakSelf.webview loadRequest:request];
+                
+            } failureBlock:^(NSError *error) {
+                
+            }];
             
-
-            request =(NSMutableURLRequest *)[urlPath mutableCopy];
+        }
+        else {
+            
+            NSString *siteurl = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],_url];
+            
+            request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:siteurl]];
             
             [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
-
+            
             [weakSelf.webview loadRequest:request];
             
-        } failureBlock:^(NSError *error) {
-            
-        }];
+        }
+        
 
     }
     

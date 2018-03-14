@@ -288,4 +288,16 @@
     return heading;
 }
 
++(NSString*)getMenuItemHomeURL {
+    NSString * heading = @"";
+    NSArray * array = [Configuration  getPlistFileWithName:CONFIG_MENU_ITEMS_SERVICE];
+    
+    for (NSMutableDictionary* dict in array) {
+        if ([dict[@"DisplayText"] isEqualToString:@"Home"]) {
+            heading = dict[@"LinkURL"];
+        }
+    }
+    return heading;
+}
+
 @end

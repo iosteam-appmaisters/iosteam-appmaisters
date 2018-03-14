@@ -6,17 +6,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShareOne/Utility/ShareOneUtility.m"
-            timestampString = "542195524.509948"
+            filePath = "ShareOne/Controllers/BaseViewController/BaseViewController.m"
+            timestampString = "542644088.582179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "973"
-            endingLineNumber = "973"
-            landmarkName = "+getUUID"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
+            landmarkName = "-logoutActions"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BaseViewController logoutActions]"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wahaj/Developer/ShareOne/ShareOne/Controllers/BaseViewController/BaseViewController.m"
+                  timestampString = "542644088.63151"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "583"
+                  endingLineNumber = "583"
+                  offsetFromSymbolStart = "432">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__35-[BaseViewController logoutActions]_block_invoke"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wahaj/Developer/ShareOne/ShareOne/Controllers/BaseViewController/BaseViewController.m"
+                  timestampString = "542644088.633458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "583"
+                  endingLineNumber = "583"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

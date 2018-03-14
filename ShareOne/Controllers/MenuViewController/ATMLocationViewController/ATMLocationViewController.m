@@ -342,10 +342,13 @@
     else{
         lastLoc=  [_locationArr lastObject];
         
-        GMSCameraPosition *sydney = [GMSCameraPosition cameraWithLatitude:[[lastLoc Gpslatitude]floatValue]
-                                                                longitude:[[lastLoc Gpslongitude]floatValue]
+        float lattitude = !isComingFromATM ? [[lastLoc Gpslatitude]floatValue] : [[lastLoc latitude]floatValue];
+        float longitude = !isComingFromATM ? [[lastLoc Gpslongitude]floatValue] : [[lastLoc longitude]floatValue];
+        
+        GMSCameraPosition *locCamera = [GMSCameraPosition cameraWithLatitude:lattitude
+                                                                longitude:longitude
                                                                      zoom:10];
-        [mapView setCamera:sydney];
+        [mapView setCamera:locCamera];
     }
     
 }
