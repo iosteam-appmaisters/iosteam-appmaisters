@@ -1861,10 +1861,10 @@
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "21163d6b-e37f-49c8-9bde-797f480bf4dc";
-				PROVISIONING_PROFILE_SPECIFIER = SHAREONE_PREPROD_DEV;
+				PROVISIONING_PROFILE = "422e08dd-bfc5-4024-90e9-8e0ac8c130d3";
+				PROVISIONING_PROFILE_SPECIFIER = SHAREONE_PROD_DEV;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1892,10 +1892,10 @@
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4db5b13a-6a8b-4c6d-bd68-7f9d2b0b2160";
-				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
+				PROVISIONING_PROFILE = "28f62975-28f9-4166-b738-e1306e58cec0";
+				PROVISIONING_PROFILE_SPECIFIER = NSCONFIG_APPSTORE;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
