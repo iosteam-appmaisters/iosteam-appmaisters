@@ -246,34 +246,7 @@
     }];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
-    NSLog(@"didFailLoadWithError : %@",error);
-    
-    [ShareOneUtility hideProgressViewOnView:self.view];
-    
-    if ([error code] != NSURLErrorCancelled) {
-        [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
-    }
-}
 
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    NSLog(@"webViewDidStartLoad url: %@", webView.request.URL.absoluteString);
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
-    NSLog(@"webViewDidFinishLoad url: %@", webView.request.URL.absoluteString);
-
-    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    if ([theTitle containsString:@"Account Summary"]){
-        [self trackPrintingEventWithScheme:webView.request.URL.scheme];
-    }
-
-    __weak HomeViewController *weakSelf = self;
-    if(![webView.request.URL.absoluteString containsString:@"deeptarget"])
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-}
 
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -283,15 +256,18 @@
     NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
     
     NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-
+    
     if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/log/in"]){
+        
         shouldReload = TRUE;
-        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGOUT_BEGIN];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
         if (![[NSUserDefaults standardUserDefaults]boolForKey:NORMAL_LOGOUT]){
             [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }
-        [self logoutActions];
     }
     
     if([[[request URL] absoluteString] containsString:@"Account/print"]){
@@ -307,6 +283,47 @@
     }
     
     return shouldReload;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    NSLog(@"webViewDidStartLoad url: %@", webView.request.URL.absoluteString);
+    
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    NSLog(@"webViewDidFinishLoad url: %@", webView.request.URL.absoluteString);
+
+    if([[NSUserDefaults standardUserDefaults]boolForKey:LOGOUT_BEGIN]) {
+        [self logoutActions];
+    }
+    
+    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    if ([theTitle containsString:@"Account Summary"]){
+        [self trackPrintingEventWithScheme:webView.request.URL.scheme];
+    }
+
+    __weak HomeViewController *weakSelf = self;
+    if(![webView.request.URL.absoluteString containsString:@"deeptarget"])
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+    NSLog(@"didFailLoadWithError : %@",error);
+    
+    if([[NSUserDefaults standardUserDefaults]boolForKey:LOGOUT_BEGIN]) {
+        [self logoutActions];
+    }
+    
+    [ShareOneUtility hideProgressViewOnView:self.view];
+    
+    if ([error code] != NSURLErrorCancelled) {
+        [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
+    }
+    
+    
 }
 
 -(void)printIt:(NSString *)html{

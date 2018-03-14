@@ -527,9 +527,7 @@
                    controller = objHomeViewController;
                                                                        
                    self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],controller, nil];
-                                                                       
-                   //[self logoutActions];
-                                                                    
+                                                                                                                                           
                }];
             
             [alert addAction:firstAction];
@@ -581,6 +579,11 @@
 }
 
 -(void)logoutActions {
+    
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:LOGOUT_BEGIN];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
     [ShareOneUtility showProgressViewOnView:self.view];
     
