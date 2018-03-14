@@ -115,6 +115,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     self.navigationController.navigationBarHidden = YES;
     
+    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:NORMAL_LOGOUT];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -290,14 +293,14 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                     
                     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
                     
-                    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+                    /*NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
                     
                     [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
                         
                         
                     } failureBlock:^(NSError *error) {
                         
-                    }];
+                    }];*/
 
                 }
             }
@@ -360,7 +363,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 }
 
 
--(void)signOutCurrentSession{
+/*-(void)signOutCurrentSession{
     NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
     
     [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
@@ -370,7 +373,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         
     }];
 
-}
+}*/
+
 -(void)applyConditionsForSessionValidation{
     
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){

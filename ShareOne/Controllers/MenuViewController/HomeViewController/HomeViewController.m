@@ -287,8 +287,10 @@
     if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/log/in"]){
         shouldReload = TRUE;
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        if (![[NSUserDefaults standardUserDefaults]boolForKey:NORMAL_LOGOUT]){
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
         [self logoutActions];
     }
     

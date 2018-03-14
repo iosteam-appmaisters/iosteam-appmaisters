@@ -516,7 +516,20 @@
                        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TEMP_DISABLE_TOUCH_ID];
                        [[NSUserDefaults standardUserDefaults]synchronize];
                    }
-                   [self logoutActions];
+                   
+                  [[NSUserDefaults standardUserDefaults]setBool:YES forKey:NORMAL_LOGOUT];
+                  [[NSUserDefaults standardUserDefaults]synchronize];
+                                                                       
+                   UIViewController *controller = nil;
+                   HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
+                   currentController = objHomeViewController;
+                   objHomeViewController.url = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],@"/log/out"];
+                   controller = objHomeViewController;
+                                                                       
+                   self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],controller, nil];
+                                                                       
+                   //[self logoutActions];
+                                                                    
                }];
             
             [alert addAction:firstAction];
@@ -576,11 +589,14 @@
     [self removeAdsView];
     
     [self sendAdvertismentViewToBack];
-    __weak BaseViewController *weakSelf = self;
-    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
-    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
     
-    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
+    
+    // __weak BaseViewController *weakSelf = self;
+    
+    // NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+    
+    // [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
         
         [ShareOneUtility hideProgressViewOnView:self.view];
         [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
@@ -607,9 +623,9 @@
             
             [self presentViewController:alertController animated:YES completion:nil];
         }
-    } failureBlock:^(NSError *error) {
-        
-    }];
+//    } failureBlock:^(NSError *error) {
+//
+//    }];
 }
 
 
@@ -620,13 +636,13 @@
 -(void)logoutOnGoingBackground{
     
     [self appGoingToBackground];
-    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+    /*NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
 
     [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
 
     } failureBlock:^(NSError *error) {
 
-    }];
+    }];*/
 
     [self.navigationController popViewControllerAnimated:YES];
 }
