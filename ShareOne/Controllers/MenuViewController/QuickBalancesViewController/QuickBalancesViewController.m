@@ -171,19 +171,6 @@
     
     QuickBalances *obj = _qbArr[section];
     
-    if([obj.transArr count]<=0){
-        objFZAccordionTableViewHeaderView.plusMinusIcon.hidden = YES;
-        objFZAccordionTableViewHeaderView.plusMinusIconBg.hidden = YES;
-        objFZAccordionTableViewHeaderView.labelTrailing.constant = 10;
-        [objFZAccordionTableViewHeaderView layoutIfNeeded];
-    }
-    else {
-        objFZAccordionTableViewHeaderView.plusMinusIcon.hidden = NO;
-        objFZAccordionTableViewHeaderView.plusMinusIconBg.hidden = NO;
-        objFZAccordionTableViewHeaderView.labelTrailing.constant = 40;
-        [objFZAccordionTableViewHeaderView layoutIfNeeded];
-    }
-    
     objFZAccordionTableViewHeaderView.plusMinusIconBg.tag = section;
     [objFZAccordionTableViewHeaderView.plusMinusIconBg addTarget:self action:@selector(plusMinusTapped:) forControlEvents:UIControlEventTouchUpInside];
     objFZAccordionTableViewHeaderView.sectionImgVew.hidden = YES;
@@ -198,12 +185,6 @@
     else
         
         [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:obj.Type]];
-    
-    /*NSNumber * price = obj.Balance;
-    if ([obj.Type isEqualToString:@"C"] || [obj.Type isEqualToString:@"c"] ||
-        [obj.Type isEqualToString:@"S"] || [obj.Type isEqualToString:@"s"]) {
-        price = obj.Available;
-    }*/
     
     [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[self getFormattedAmount:obj.Available]];
     

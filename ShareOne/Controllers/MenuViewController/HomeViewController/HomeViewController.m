@@ -47,21 +47,21 @@
         
         if ([_url isEqualToString:[Configuration getMenuItemHomeURL]]){
             [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
-                
-                
+
+
                 request =(NSMutableURLRequest *)[urlPath mutableCopy];
-                
+
                 [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
-                
+
                 [weakSelf.webview loadRequest:request];
-                
+
             } failureBlock:^(NSError *error) {
-                
+
             }];
-            
+
         }
         else {
-            
+        
             NSString *siteurl = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],_url];
             
             request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:siteurl]];
@@ -257,10 +257,10 @@
     
     NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
     
-    if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/log/in"]){
+    if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/Log/Out"] || [[[request URL] absoluteString] containsString:@"/log/in"] || [[[request URL] absoluteString] containsString:@"/log/in"]){
         
         shouldReload = TRUE;
-        
+        webView.hidden = YES;
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGOUT_BEGIN];
         [[NSUserDefaults standardUserDefaults]synchronize];
         

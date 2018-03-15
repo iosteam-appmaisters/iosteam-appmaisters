@@ -448,55 +448,26 @@
 
         }
         else{
-            [User postContextIDForSSOWithDelegate:nil withTabName:webUrl completionBlock:^(id urlPath) {
-                
-                NSMutableURLRequest *request =(NSMutableURLRequest *)[urlPath mutableCopy];
-                
-                InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
-                objInAppBrowserController.request=request;
-                [self.navigationController pushViewController:objInAppBrowserController animated:NO];
-                
-                
-
-                
-            } failureBlock:^(NSError *error) {
-            }];
+            NSString *siteurl = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],webUrl];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:siteurl]];
+            InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
+            objInAppBrowserController.request=request;
+            [self.navigationController pushViewController:objInAppBrowserController animated:NO];
         }
     }
     else{
      
-        // If it is MOBILE_DEPOSIT screen check the vertifi status
         if([contrlollerName isEqualToString:MOBILE_DEPOSIT]){
             
-            // Check whether current user has Accepted Vertifi Agreemant or not
-            //User *currentUser = [ShareOneUtility getUserObject];
-            //if(!currentUser.vertifyEUAContents){
-                contrlollerName= [dict valueForKey:CONTROLLER_NAME];
+            contrlollerName= [dict valueForKey:CONTROLLER_NAME];
             
-//            NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
-//            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
-//            
-//                [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
-            /*}
-            else{
-                // If Vertifi has not Acccepted Vertifi Yet show Agreemant Screen
-                contrlollerName= NSStringFromClass([VertifiAgreemantController class]);
-                screenTitle= @"Register";
-                navigationTitle = @"Register";
-                
-                NSDictionary *dictVertify = [NSDictionary dictionaryWithObjectsAndKeys:contrlollerName,CONTROLLER_NAME,screenTitle,SUB_CAT_TITLE,screenTitle,SUB_CAT_CONTROLLER_TITLE,[NSNumber numberWithBool:FALSE],IS_OPEN_NEW_TAB, nil];
-                [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dictVertify];
-            }*/
-            
-            //[ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
+            NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
+            [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
 
-            
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
             self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
         }
-        
-        
         
         else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
             
@@ -647,7 +618,9 @@
 
     }];*/
 
-    [self.navigationController popViewControllerAnimated:YES];
+    [self logoutActions];
+    
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 

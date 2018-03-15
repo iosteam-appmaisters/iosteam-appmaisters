@@ -55,10 +55,6 @@
     
     NSLog(@"%@",[[request URL] absoluteString]);
     
-    /*if([[[request URL] absoluteString] containsString:@"/log/out"]){
-        
-    }*/
-    
     return YES;
 }
 

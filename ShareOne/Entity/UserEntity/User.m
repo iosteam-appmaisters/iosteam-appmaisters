@@ -138,10 +138,12 @@
     
     [[AppServiceModel sharedClient] getMethod:signature AndParam:nil progressMessage:nil urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],kKEEP_ALIVE,[[[SharedUser sharedManager] userObject] Contextid]] delegate:nil completionBlock:^(NSObject *response) {
         
-        if([response isKindOfClass:[NSDictionary class]])
+        if([response isKindOfClass:[NSDictionary class]]){
             block(TRUE);
-        else
+        }
+        else {
             block(FALSE);
+        }
         
     } failureBlock:^(NSError *error) {}];
 }

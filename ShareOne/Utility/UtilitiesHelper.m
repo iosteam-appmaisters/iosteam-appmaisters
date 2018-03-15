@@ -1094,7 +1094,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     if(!_timer){
         
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        double secondsToFire = 300.000f; //300.000f
+        double secondsToFire = 60.0f; // 300.000f; //300.000f
         
         _timer = CreateDispatchTimer(secondsToFire, queue, ^{
             NSLog(@"keepAlive");
