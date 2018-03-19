@@ -88,6 +88,9 @@
             if([user.Requirements count]==0)
                 user.Password=[param valueForKey:@"password"];
             
+            [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:SHOULD_SSO];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
             [[SharedUser sharedManager] setUserObject:user];
             //[ShareOneUtility saveUserObject:user];
             

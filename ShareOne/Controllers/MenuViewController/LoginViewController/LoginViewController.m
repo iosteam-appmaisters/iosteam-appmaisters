@@ -338,7 +338,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 }
 
 
--(void)allowAppToSignInIfSessionisValidated:(BOOL)isComingFromTouchID{
+/*-(void)allowAppToSignInIfSessionisValidated:(BOOL)isComingFromTouchID{
     
     __weak LoginViewController *weakSelf = self;
     
@@ -360,7 +360,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         
     }];
 
-}
+}*/
 
 
 /*-(void)signOutCurrentSession{
