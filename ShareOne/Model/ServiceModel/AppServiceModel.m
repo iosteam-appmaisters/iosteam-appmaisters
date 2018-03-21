@@ -651,6 +651,11 @@
                 failBlock(error);
             }
             
+            if([req.URL.absoluteString containsString:KQUICK_TRANSACTION]){
+                [self endSession:manager.session];
+                failBlock(error);
+            }
+            
             if([req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT]){
                 [self endSession:manager.session];
                 block(responseObject);

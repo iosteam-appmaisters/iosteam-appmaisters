@@ -51,8 +51,6 @@
 
 #define KQUICK_BALANCES                                 @"eft/quickBalances"
 
-#define KQUICK_TRANSACTIONS                             @"eft/quickTransactions"
-
 #define KSUFFIX_INFO                                    @"eft/suffixInfo"
 
 #define kSUFFIZ_PREPHERENCES                            @"eft/suffixPreferences"

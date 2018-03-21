@@ -283,7 +283,7 @@
     
     [ShareOneUtility showProgressViewOnView:self.view];
     
-    SuffixInfo *obj = _qbArr[section];
+    QuickBalances *obj = _qbArr[section];
     
     __weak QuickBalancesViewController *weakSelf = self;
     
