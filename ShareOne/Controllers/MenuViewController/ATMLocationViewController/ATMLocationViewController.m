@@ -130,10 +130,7 @@
     }
     
     
-    
-    for (Location * loc in _locationArr) {
-        NSLog(@"%f %f",[[loc Gpslatitude]floatValue], [[loc Gpslongitude]floatValue]);
-    }
+    [self removeZeroCoordinates];
     
     Location *objLocation= nil;
 
@@ -156,6 +153,19 @@
     
     [self createGoogleMapMarker:_mapView];
     
+}
+
+-(void)removeZeroCoordinates {
+    
+    NSMutableArray * tempLocArray = [_locationArr mutableCopy];
+    for (Location * loc in tempLocArray) {
+        float lattitude = !isComingFromATM ? [[loc Gpslatitude]floatValue] : [[loc latitude]floatValue];
+        float longitude = !isComingFromATM ? [[loc Gpslongitude]floatValue] : [[loc longitude]floatValue];
+        if (lattitude == 0.0 || longitude == 0.0){
+            [tempLocArray removeObject:loc];
+        }
+    }
+    _locationArr = [tempLocArray copy];
 }
 
 #pragma mark - Web Requests
@@ -255,6 +265,7 @@
                 _mapView.myLocationEnabled = YES;
                 _mapView.delegate=self;
 
+                [self removeZeroCoordinates];
                 [self createGoogleMapMarker:_mapView];
 
             }
