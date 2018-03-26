@@ -293,7 +293,7 @@
     NSArray * array = [Configuration  getPlistFileWithName:CONFIG_MENU_ITEMS_SERVICE];
     
     for (NSMutableDictionary* dict in array) {
-        if ([dict[@"DisplayText"] isEqualToString:@"Home"]) {
+        if ([dict[@"DisplayText"] isEqualToString:@"Home"] || [dict[@"Name"] isEqualToString:@"home"]) {
             heading = dict[@"LinkURL"];
         }
     }
