@@ -320,7 +320,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 }
                 else{
                     // if coming from background when touch id is off
-                    
+                        // Issue::
                         [self applyConditionsForSessionValidation];
                 }
             }
@@ -399,6 +399,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     }
     // Coming from Login Screen
     else{
+        // Issue::
         
         if([ShareOneUtility shouldCallNSConfigServices]){
          
