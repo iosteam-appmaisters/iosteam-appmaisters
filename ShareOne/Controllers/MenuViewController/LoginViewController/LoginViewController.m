@@ -378,15 +378,15 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 -(void)applyConditionsForSessionValidation{
     
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
-        if([ShareOneUtility shouldCallNSConfigServices]){
-            
-            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
-            
-            
-            [self dismissViewControllerAnimated:NO completion:nil];
-        }
-        else
+//        if([ShareOneUtility shouldCallNSConfigServices]){
+//
+//            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+//            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
+//
+//
+//            [self dismissViewControllerAnimated:NO completion:nil];
+//        }
+//        else
             [self showTouchID];
         return;
     }
@@ -401,14 +401,14 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     else{
         // Issue::
         
-        if([ShareOneUtility shouldCallNSConfigServices]){
-         
-            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
-
-
-            [self dismissViewControllerAnimated:NO completion:nil];
-        }
+//        if([ShareOneUtility shouldCallNSConfigServices]){
+//
+//            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+//            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
+//
+//
+//            [self dismissViewControllerAnimated:NO completion:nil];
+//        }
     }
     
 }
@@ -423,16 +423,16 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
 
     _isComingAfterAuthenticatingFromTouchID= TRUE;
-    if([ShareOneUtility shouldCallNSConfigServices]){
-     
-        [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-        [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
-        
-        
-        [self dismissViewControllerAnimated:NO completion:nil];
-
-    }
-    else{
+//    if([ShareOneUtility shouldCallNSConfigServices]){
+//
+//        [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
+//        [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
+//
+//
+//        [self dismissViewControllerAnimated:NO completion:nil];
+//
+//    }
+//    else{
         // check whether session is available or not. If its not 24 hours from NSConfig updates
         [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
             NSLog(@"keepAlive from validateSessionForTouchID_OffSession");
@@ -446,8 +446,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
             
         }];
 
-        
-    }
+//    }
 }
 
 -(void)reAuthenticateLoginWithDelay{

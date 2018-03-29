@@ -129,9 +129,6 @@
         return;
     }
     
-    
-    [self removeZeroCoordinates];
-    
     Location *objLocation= nil;
 
     if(_showMyLocationOnly){
@@ -155,17 +152,17 @@
     
 }
 
--(void)removeZeroCoordinates {
+-(NSArray*)getLocationsWithoutZeroCoordinates {
     
     NSMutableArray * tempLocArray = [_locationArr mutableCopy];
-    for (Location * loc in tempLocArray) {
+    for (Location * loc in _locationArr) {
         float lattitude = !isComingFromATM ? [[loc Gpslatitude]floatValue] : [[loc latitude]floatValue];
         float longitude = !isComingFromATM ? [[loc Gpslongitude]floatValue] : [[loc longitude]floatValue];
         if (lattitude == 0.0 || longitude == 0.0){
             [tempLocArray removeObject:loc];
         }
     }
-    _locationArr = [tempLocArray copy];
+    return [tempLocArray copy];
 }
 
 #pragma mark - Web Requests
@@ -265,7 +262,6 @@
                 _mapView.myLocationEnabled = YES;
                 _mapView.delegate=self;
 
-                [self removeZeroCoordinates];
                 [self createGoogleMapMarker:_mapView];
 
             }
@@ -351,7 +347,7 @@
         [mapView animateToLocation:CLLocationCoordinate2DMake([[lastLoc Gpslatitude]floatValue], [[lastLoc Gpslongitude]floatValue])];
     }
     else{
-        lastLoc=  [_locationArr lastObject];
+        lastLoc=  [[self getLocationsWithoutZeroCoordinates] lastObject];
         
         float lattitude = !isComingFromATM ? [[lastLoc Gpslatitude]floatValue] : [[lastLoc latitude]floatValue];
         float longitude = !isComingFromATM ? [[lastLoc Gpslongitude]floatValue] : [[lastLoc longitude]floatValue];
