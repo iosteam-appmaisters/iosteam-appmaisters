@@ -377,7 +377,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 -(void)applyConditionsForSessionValidation{
     
-    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[NSUserDefaults standardUserDefaults]boolForKey:RESTRICT_TOUCH_ID] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
 //        if([ShareOneUtility shouldCallNSConfigServices]){
 //
 //            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];

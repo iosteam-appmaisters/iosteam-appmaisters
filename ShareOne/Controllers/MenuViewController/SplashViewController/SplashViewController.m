@@ -173,6 +173,11 @@
         [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
     }
     
+    if ([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]) {
+        [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:RESTRICT_TOUCH_ID];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    
     UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
     homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:homeNavigationViewController animated:YES completion:nil];
