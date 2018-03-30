@@ -88,22 +88,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 @implementation LoginViewController
 
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    _userFingerprintBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    _rememberMeBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    _rememberMetxtBtn.titleLabel.numberOfLines = 1;
-    _rememberMetxtBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    _rememberMetxtBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
-    _forgotPasswordBtn.titleLabel.numberOfLines = 1;
-    _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
-    
-}
-
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -120,16 +104,11 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
-
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     [self initiateMenuOptions];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(askAutoLoginOnEnteringBackGround) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromLogin) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -142,6 +121,30 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 }
 
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    _userFingerprintBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _rememberMeBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _rememberMetxtBtn.titleLabel.numberOfLines = 1;
+    _rememberMetxtBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _rememberMetxtBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    _forgotPasswordBtn.titleLabel.numberOfLines = 1;
+    _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [_passwordTxt setText:@""];
+    [self.loadingView setHidden:TRUE];
+}
 
 -(void)dismissKeyboard {
     if (_currentTextField == _userIDTxt){
@@ -152,10 +155,16 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     }
 }
 
+-(void)askAutoLoginOnEnteringBackGround{
+    
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+    NSLog(@"askAutoLoginOnEnteringBackGround");
+    [self updateDataByDefaultValues];
+}
+
 -(void)appGoingToBackgroundFromLogin{
     NSLog(@"appGoingToBackgroundFromLogin");
     [[ShareOneUtility shareUtitlities] cancelTimer];
-    
     
 }
 
@@ -188,71 +197,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     _passwordTxt.returnKeyType = UIReturnKeyGo;
 }
 
--(void)askAutoLoginOnEnteringBackGround{
 
-    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-    NSLog(@"askAutoLoginOnEnteringBackGround");
-    [self updateDataByDefaultValues];
-}
 
 
 -(void)updateDataByDefaultValues{
     
     [self loadLocalCacheOnView];
-    
-   /* if(![ShareOneUtility getUserObject]){
-        
-        NSLog(@"RETURN FROM USER OBJECT NOT SAVED");
-        if([[SharedUser sharedManager] isLaunchFirstTime]){
-            [[SharedUser sharedManager] setIsLaunchFirstTime:FALSE];
-        }
-        return;
-    }
-    __weak LoginViewController *weakSelf = self;
-    
-    [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
-    
-    __block BOOL cacheFlag = [[SharedUser sharedManager] isLaunchFirstTime];
-
-    // Use cases for
-    //if touch id is activated from application settings
-    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
-        
-        [[ShareOneUtility shareUtitlities] showLAContextWithDelegate:weakSelf completionBlock:^(BOOL success) {
-            
-            if(success){
-                
-                // if it is first launch show Re-Auth progress view.
-                if(cacheFlag){
-                    [self reAuthenticateLoginWithDelay];
-                    [ShareOneUtility removeCacheControllerName];
-                }
-                else{
-                // if it is coming from background
-                    [self allowAppToSignInIfSessionisValidated:TRUE];
-                }
-            }
-        }];
-    }
-    
-    // Use cases for
-    // if touch id not activated
-    else{
-        if([[SharedUser sharedManager] isLaunchFirstTime]){
-            // if it is first launch sign out current session if exist
-            NSLog(@"TOUCH ID OFF AND LAUCHED AFTER QUITE THE APP.");
-            [self signOutCurrentSession];
-        }
-        else{
-            [self allowAppToSignInIfSessionisValidated:FALSE];
-        }
-    }
-    
-    // trick : set flag when user not saved and app lauch first time
-    if([[SharedUser sharedManager] isLaunchFirstTime]){
-        [[SharedUser sharedManager] setIsLaunchFirstTime:FALSE];
-    }
-    */
     
     if([ShareOneUtility getUserObject] && ![[SharedUser sharedManager] skipTouchIDForJustLogOut]){
         
@@ -289,19 +239,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 }
                 else{
                     NSLog(@"isLaunchFirstTime Touch off");
-                    
-                    
                     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
                     
-                    /*NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-                    
-                    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
-                        
-                        
-                    } failureBlock:^(NSError *error) {
-                        
-                    }];*/
-
                 }
             }
             else{
@@ -320,8 +259,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 }
                 else{
                     // if coming from background when touch id is off
-                        // Issue::
-                        [self applyConditionsForSessionValidation];
+                    [self applyConditionsForSessionValidation];
                 }
             }
             
@@ -338,77 +276,17 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 }
 
 
-/*-(void)allowAppToSignInIfSessionisValidated:(BOOL)isComingFromTouchID{
-    
-    __weak LoginViewController *weakSelf = self;
-    
-    [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    
-    
-    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
-        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-        
-        if(sucess){
-            [weakSelf startApplication];
-        }
-        else{
-            if(isComingFromTouchID)
-                [self performSelector:@selector(reAuthenticateLoginWithDelay) withObject:nil afterDelay:0.2];
-        }
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-}*/
-
-
-/*-(void)signOutCurrentSession{
-    NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-    
-    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
-        
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-
-}*/
-
 -(void)applyConditionsForSessionValidation{
     
-    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[NSUserDefaults standardUserDefaults]boolForKey:RESTRICT_TOUCH_ID] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
-//        if([ShareOneUtility shouldCallNSConfigServices]){
-//
-//            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-//            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
-//
-//
-//            [self dismissViewControllerAnimated:NO completion:nil];
-//        }
-//        else
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] && ![[NSUserDefaults standardUserDefaults]boolForKey:RESTRICT_TOUCH_ID]){
             [self showTouchID];
         return;
     }
-
     // If comes from Dashboard Screen
     if([[SharedUser sharedManager] isLogingOutFromHome]){
         
         [self validateSessionForTouchID_OffSession];
         [[SharedUser sharedManager] setIsLogingOutFromHome:FALSE];
-    }
-    // Coming from Login Screen
-    else{
-        // Issue::
-        
-//        if([ShareOneUtility shouldCallNSConfigServices]){
-//
-//            [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-//            [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
-//
-//
-//            [self dismissViewControllerAnimated:NO completion:nil];
-//        }
     }
     
 }
@@ -423,30 +301,20 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
 
     _isComingAfterAuthenticatingFromTouchID= TRUE;
-//    if([ShareOneUtility shouldCallNSConfigServices]){
-//
-//        [[SharedUser sharedManager] setIsLaunchFirstTime:TRUE];
-//        [[SharedUser sharedManager] setIsCallingNSConfigServices:TRUE];
-//
-//
-//        [self dismissViewControllerAnimated:NO completion:nil];
-//
-//    }
-//    else{
-        // check whether session is available or not. If its not 24 hours from NSConfig updates
-        [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
-            NSLog(@"keepAlive from validateSessionForTouchID_OffSession");
-            [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-            
-            if(sucess){
-                [weakSelf startApplication];
-            }
-            
-        } failureBlock:^(NSError *error) {
-            
-        }];
 
-//    }
+    // check whether session is available or not. If its not 24 hours from NSConfig updates
+    [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+        NSLog(@"keepAlive from validateSessionForTouchID_OffSession");
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+        
+        if(sucess){
+            [weakSelf startApplication];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 -(void)reAuthenticateLoginWithDelay{
@@ -467,7 +335,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
     __weak LoginViewController *weakSelf = self;
     
-    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS] /*&& ![ShareOneUtility isComingFromPasswordChanged]*/){
+    if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
         
         [[SharedUser sharedManager] setUserObject:[ShareOneUtility getUserObject]];
         
@@ -509,8 +377,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 - (IBAction)loginButtonClicked:(id)sender
 {
     NSLog(@"loginButtonClicked");
-//    [self adPasswordExpireController];
-//    return;
+
     [_passwordTxt resignFirstResponder];
     [_userIDTxt resignFirstResponder];
     [self moveViewDown];
@@ -535,7 +402,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     
     // Get value from text feilds if user object is not locally saved or user did not remember hisself.
-//    if(!savedUser || ![ShareOneUtility isUserRemembered])
     if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS])
 
     {
@@ -553,7 +419,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     if(sender){
         
-//        _isComingAfterAuthenticatingFromTouchID = FALSE;
         savedUser = [[User alloc] init];
         savedUser.UserName=_userIDTxt.text;
         savedUser.Password=_passwordTxt.text;
@@ -570,107 +435,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [self getSignInWithUser:savedUser];
 }
 
-- (void)startApplication{
-    
-    UIViewController *controllerToPush =nil;
-    
-    NSDictionary *dict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
-    
-    NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
-    NSString *webUrl = [dict valueForKey:WEB_URL];
-    
-    NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
-    
-    NSString *webViewController = WEB_VIEWCONTROLLER_ID;
-    
-//    BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
-    
-    // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
-    
-    if(webUrl){
-        HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
-        objHomeViewController.url= webUrl;
-        controllerToPush=objHomeViewController;
-    }
-    else{
-        //If webUrl is empty or nil load Native UI Screen
-        UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-        objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: navigationTitle];
-        controllerToPush = objUIViewController;
-    }
-    [self.navigationController pushViewController:controllerToPush animated:YES];
-    
-    /*
-    
-    if(_isComingAfterAuthenticatingFromTouchID){
-        
-        UIViewController *controllerToPush =nil;
-        _isComingAfterAuthenticatingFromTouchID=FALSE;
-        
-        NSDictionary *dict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
-        
-        NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
-        NSString *webUrl = [dict valueForKey:WEB_URL];
-        
-//        NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
-        NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
-        
-        NSString *webViewController = WEB_VIEWCONTROLLER_ID;
 
-
-        
-        BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
-
-        // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
-        
-        if(isOpenInNewTab){
-            
-        }
-        else{
-            UINavigationController* homeNavigationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
-            
-            
-            if(webUrl){
-                
-                HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
-                objHomeViewController.url= webUrl;
-                controllerToPush=objHomeViewController;
-            }
-            else{
-                
-                //If webUrl is empty or nil load Native UI Screen
-                UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
-                objUIViewController.navigationItem.title = [ShareOneUtility getNavBarTitle:navigationTitle];
-                controllerToPush = objUIViewController;
-            }
-            
-
-            homeNavigationViewController.viewControllers = [NSArray arrayWithObject: controllerToPush];
-            
-            homeNavigationViewController.modalTransitionStyle= UIModalTransitionStyleFlipHorizontal;
-            
-            [self presentViewController:homeNavigationViewController animated:YES completion:nil];
-
-        }
-
-    }
-    else{
-        HomeViewController *objHomeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
-        [self.navigationController pushViewController:objHomeViewController animated:YES];
-    }
-     */
-}
-
--(void)addingLoadingScreen{
-    
-
-    LoadingController * objLoadingController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoadingController"];
-    objLoadingController.controllerDelegate=self;
-    [self presentViewController:objLoadingController animated:NO completion:^{
-
-    }];
-    
-}
 
 - (void)getSignInWithUser:(User *)local_user{
     
@@ -774,66 +539,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
 }
 
-#pragma mark - Status Alert Message
--(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:title
-                                  message:message
-                                  preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-                             
-                         }];
-    [alert addAction:ok];
-    
-    [self presentViewController:alert animated:YES completion:nil];
-    
-}
-
-
-
--(void)startLoadingServicesFromChangePassword:(User *)user{
-    
-    [[SharedUser sharedManager] setUserObject:user];
-    [ShareOneUtility changeToExistingUser:user];
-    [ShareOneUtility saveUserObject:user];
-    
-    [self.loadingView setHidden:FALSE];
-    [self startLoadingServices];
-
-}
-
--(void)addControllerToChangeUserName:(User *)user{
- 
-//    _isComingAfterPressedOpenUrlButton = TRUE;
-
-    UserNamecontroller *objUserNamecontroller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([UserNamecontroller class])];
-    objUserNamecontroller.user=user;
-    objUserNamecontroller.loginDelegate=self;
-    [self presentViewController:objUserNamecontroller animated:YES completion:nil];
-}
-
--(void)addPasswordChangeController:(User *)user{
-    
-    user.isTouchIDOpen=FALSE;
-    
-    [[SharedUser sharedManager] setUserObject:user];
-    [ShareOneUtility changeToExistingUser:user];
-    [ShareOneUtility saveUserObject:user];
-//    _isComingAfterPressedOpenUrlButton = TRUE;
-
-    PasswordChangeController *objPasswordChangeController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PasswordChangeController class])];
-    objPasswordChangeController.loginDelegate=self;
-    objPasswordChangeController.user=user;
-    [self presentViewController:objPasswordChangeController animated:YES completion:nil];
-
-}
-
 -(void)startLoadingServicesWithMemberDevice{
     
     __weak LoginViewController *weakSelf = self;
@@ -903,21 +608,100 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     }];
 }
 
-
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [_passwordTxt setText:@""];
-    [self.loadingView setHidden:TRUE];
+- (void)startApplication{
+    
+    UIViewController *controllerToPush =nil;
+    
+    NSDictionary *dict = [ShareOneUtility getMenuItemForTouchIDAuthentication];
+    
+    NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
+    NSString *webUrl = [dict valueForKey:WEB_URL];
+    
+    NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
+    
+    NSString *webViewController = WEB_VIEWCONTROLLER_ID;
+    
+    if(webUrl){
+        HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
+        objHomeViewController.url= webUrl;
+        controllerToPush=objHomeViewController;
+    }
+    else{
+        //If webUrl is empty or nil load Native UI Screen
+        UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
+        objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: navigationTitle];
+        controllerToPush = objUIViewController;
+    }
+    [self.navigationController pushViewController:controllerToPush animated:YES];
+    
 }
+
+
+-(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+
+
+-(void)startLoadingServicesFromChangePassword:(User *)user{
+    
+    [[SharedUser sharedManager] setUserObject:user];
+    [ShareOneUtility changeToExistingUser:user];
+    [ShareOneUtility saveUserObject:user];
+    
+    [self.loadingView setHidden:FALSE];
+    [self startLoadingServices];
+
+}
+
+-(void)addControllerToChangeUserName:(User *)user{
+ 
+    UserNamecontroller *objUserNamecontroller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([UserNamecontroller class])];
+    objUserNamecontroller.user=user;
+    objUserNamecontroller.loginDelegate=self;
+    [self presentViewController:objUserNamecontroller animated:YES completion:nil];
+}
+
+-(void)addPasswordChangeController:(User *)user{
+    
+    user.isTouchIDOpen=FALSE;
+    
+    [[SharedUser sharedManager] setUserObject:user];
+    [ShareOneUtility changeToExistingUser:user];
+    [ShareOneUtility saveUserObject:user];
+
+    PasswordChangeController *objPasswordChangeController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PasswordChangeController class])];
+    objPasswordChangeController.loginDelegate=self;
+    objPasswordChangeController.user=user;
+    [self presentViewController:objPasswordChangeController animated:YES completion:nil];
+
+}
+
+
+
+
+
 
 - (IBAction)forgotPasswordButtonClicked:(id)sender {
 }
 
 - (IBAction)rememberMeButtonClicked:(id)sender {
-//    UIButton *btnCast = (UIButton *)sender;
-//    [btnCast setSelected:!btnCast.isSelected];
-//    [ShareOneUtility setUserRememberedStatusWithBool:btnCast.isSelected];
-
     
     UISwitch *switchObj = (UISwitch *)sender;
     [ShareOneUtility setUserRememberedStatusWithBool:switchObj.isOn];
@@ -953,51 +737,11 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 
 - (IBAction)openUrlButtonClicked:(id)sender{
-    
-//    Configuration *configuration = [ShareOneUtility getConfigurationFile];
-    
-    ClientSettingsObject *objClientSettingsObject = [Configuration getClientSettingsContent];
-    
-//    _isComingAfterPressedOpenUrlButton = TRUE;
-    NSString *urlString =nil;
-    NSString *screenTitle= nil;
-    UIButton *btn = (UIButton *)sender;
-    
-    screenTitle=[btn titleForState:UIControlStateNormal];
-    if([sender isEqual:_joinButton]){
-        urlString=objClientSettingsObject.joinculink;
-    }
-    else if ([sender isEqual:_applyLoanButton]){
-        urlString=objClientSettingsObject.applyloanlink;
-//        screenTitle=APPLY_FOR_LOAN_TITLE;
-    }
-    else if ([sender isEqual:_branchLocationButton]){
-        urlString=objClientSettingsObject.branchlocationlink;
-//        screenTitle=BRANCH_LOCATION_TITLE;
-    }
-    else if ([sender isEqual:_contactButton]){
-        urlString=objClientSettingsObject.contactculink;
-//        screenTitle=CONTACT_TITLE;
-    }
-    else if ([sender isEqual:_privacyButton]){
-        urlString=objClientSettingsObject.privacylink;
-//        screenTitle=PRIVACY_POLICY_TITLE;
-    }
 
-    WeblinksController *objWeblinksController  = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WeblinksController class])];
-    objWeblinksController.navTitle=screenTitle;
-    objWeblinksController.webLink=urlString;
-    [self presentViewController:objWeblinksController animated:YES completion:nil];
-
-
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)quickBalanceButtonClicked:(id)sender
 {
-//    _isComingAfterPressedOpenUrlButton = TRUE;
-
     QuickBalancesViewController* objQuickBalancesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickBalancesViewController"];
     [self presentViewController:objQuickBalancesViewController animated:YES completion:nil];
 }
@@ -1017,16 +761,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         [self openForgotPasswordInWebView:NO];
         return;
     }
-    
-    /*if(!_objPinResetController){
-        
-        _objPinResetController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PinResetController class])];
-        
-        _objPinResetController.isFromForgotUserName=isFromForgotUserName;
-        _objPinResetController.loginDelegate=self;
-        [self presentViewController:_objPinResetController animated:YES completion:nil];
-    }*/
-    
 }
 
 -(void)openForgotPasswordInWebView:(BOOL)isUsername {
@@ -1080,30 +814,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
             _loginViewConstraintY.constant=value;
 }
 
-#pragma mark UITextFeildDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self adjustTextFeildPositionForTextFeild:textField];
-    
-    if (textField == _passwordTxt){
-        [self loginButtonClicked:[UIButton buttonWithType:UIButtonTypeCustom]];
-    }
-    
-    return YES;
-}
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    _currentTextField = textField;
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    [self adjustTextFeildPositionForTextFeild:textField];
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    
-    [self moveViewUp];
-    return YES;
-}
 
 -(void)adjustTextFeildPositionForTextFeild:(UITextField *)textField{
     if([textField isEqual:_passwordTxt]){
@@ -1139,6 +850,31 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 }
 
+#pragma mark UITextFeildDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self adjustTextFeildPositionForTextFeild:textField];
+    
+    if (textField == _passwordTxt){
+        [self loginButtonClicked:[UIButton buttonWithType:UIButtonTypeCustom]];
+    }
+    
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    _currentTextField = textField;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [self adjustTextFeildPositionForTextFeild:textField];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    [self moveViewUp];
+    return YES;
+}
 
 #pragma mark - Context Menu
 
@@ -1250,7 +986,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
     ClientSettingsObject *objClientSettingsObject = [Configuration getClientSettingsContent];
     
-//    _isComingAfterPressedOpenUrlButton = TRUE;
     NSString *urlString = nil;
     
     NSString * menuHeading = menuTitle;

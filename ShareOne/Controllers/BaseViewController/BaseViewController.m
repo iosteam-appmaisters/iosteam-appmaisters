@@ -566,40 +566,31 @@
     
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
     
-    // __weak BaseViewController *weakSelf = self;
+    [ShareOneUtility hideProgressViewOnView:self.view];
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
     
-    // NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
+    [self.navigationController popToRootViewControllerAnimated:NO];
     
-    // [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:weakSelf completionBlock:^(BOOL sucess) {
+    BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
+
+    if (isTechnicalLogout) {
         
-        [ShareOneUtility hideProgressViewOnView:self.view];
-        [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-        
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        
-        BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
-    
-        if (isTechnicalLogout) {
-            
-            if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
-                [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
-                [[NSUserDefaults standardUserDefaults]synchronize];
-            }
-            
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"The application has experienced a service issue that required it to log out. Please log back in to continue." preferredStyle:UIAlertControllerStyleAlert];
-            
-            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
-                [[NSUserDefaults standardUserDefaults]synchronize];
-                
-            }]];
-            
-            [self presentViewController:alertController animated:YES completion:nil];
+        if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
+            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
+            [[NSUserDefaults standardUserDefaults]synchronize];
         }
-//    } failureBlock:^(NSError *error) {
-//
-//    }];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"The application has experienced a service issue that required it to log out. Please log back in to continue." preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:TECHNICAL_LOGOUT];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 
@@ -610,17 +601,8 @@
 -(void)logoutOnGoingBackground{
     
     [self appGoingToBackground];
-    /*NSString *contextId= [[[SharedUser sharedManager] userObject] Contextid];
-
-    [User signOutUser:[NSDictionary dictionaryWithObjectsAndKeys:contextId,@"ContextID", nil] delegate:nil completionBlock:^(BOOL sucess) {
-
-    } failureBlock:^(NSError *error) {
-
-    }];*/
 
     [self logoutActions];
-    
-    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 
