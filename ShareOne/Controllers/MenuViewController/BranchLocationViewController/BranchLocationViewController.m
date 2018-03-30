@@ -371,6 +371,7 @@
         NSData *data = [[NSData alloc]initWithBase64EncodedString:objPhotos.Data options:NSDataBase64DecodingIgnoreUnknownCharacters];
         UIImage *image64 = [UIImage imageWithData:data];
         [cell.branchlocationImgview setImage:image64];
+        cell.branchlocationImgview.hidden = NO;
     }
     else{
         cell.branchlocationImgview.hidden = YES;

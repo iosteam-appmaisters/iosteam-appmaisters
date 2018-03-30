@@ -10,9 +10,9 @@
 #define THISWAY_Services_h
 
 
-#define BASE_URL_CONFIGURATION   @"https://nsauthpp-extdev.ns3web.com/core"
+#define BASE_URL_CONFIGURATION   @"https://nsauth-extdev.ns3web.com/core"
 
-#define BASE_URL_NSCONFIG @"https://nsconfigpp-extdev.ns3web.com"
+#define BASE_URL_NSCONFIG @"https://nsconfig-extdev.ns3web.com"
 
 #define NSCONFIG_GET_MODIFIEDSERVICES(CAID,VERSION_NUMBER) [NSString stringWithFormat:@"%@/api/ClientApplication/%@/ModifiedServices/%@",BASE_URL_NSCONFIG,CAID,VERSION_NUMBER]
 
