@@ -108,6 +108,6 @@
 
 + (NSString *)GetOurIpAddress ;
 + (NSString *)deviceModel ;
-
++ (NSString*) getSystemLanguageCode ;
 @end
 

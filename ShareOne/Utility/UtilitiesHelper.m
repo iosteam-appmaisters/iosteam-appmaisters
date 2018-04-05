@@ -1156,5 +1156,22 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     return [NSString stringWithCString: systemInfo.machine encoding: NSUTF8StringEncoding];
 }
 
++ (NSString*) getSystemLanguageCode {
+    
+    static dispatch_once_t onceToken;
+    static NSString* lang;
+    dispatch_once(&onceToken, ^
+                  {
+                      lang = [[[NSLocale preferredLanguages] objectAtIndex:0] uppercaseString];
+                      NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"^[A-Za-z]+" options:0 error:nil];
+                      NSTextCheckingResult* match = [regex firstMatchInString:lang options:0 range:NSMakeRange(0, lang.length)];
+                      if (match.range.location != NSNotFound)
+                      {
+                          lang = [lang substringToIndex:match.range.length];
+                      }
+                  });
+    return lang.lowercaseString;
+}
+
 @end
 
