@@ -46,17 +46,33 @@
     else{
         
         if ([_url isEqualToString:[Configuration getMenuItemHomeURL]] && [[NSUserDefaults standardUserDefaults]boolForKey:SHOULD_SSO]){
-            [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(id urlPath) {
+            [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(NSMutableURLRequest* request) {
 
                 NSLog(@"SSO Generated");
                 
                 [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SHOULD_SSO];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 
-                request =(NSMutableURLRequest *)[urlPath mutableCopy];
+                //request =(NSMutableURLRequest *)[urlPath mutableCopy];
 
                 [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
 
+                /*NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                            [Configuration getClientSettingsContent].basewebviewurl, NSHTTPCookieDomain,
+                                            _url, NSHTTPCookieOriginURL,
+                                            @"/", NSHTTPCookiePath,
+                                            @"NSHOME_CULTURE_COOKIE", NSHTTPCookieName,
+                                            @"es", NSHTTPCookieValue,
+                                            nil];
+                
+                NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:properties];
+                
+                NSArray* cookies = [NSArray arrayWithObjects: cookie, nil];
+                
+                NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
+                
+                [request setAllHTTPHeaderFields:headers]; */
+                
                 [weakSelf.webview loadRequest:request];
 
             } failureBlock:^(NSError *error) {

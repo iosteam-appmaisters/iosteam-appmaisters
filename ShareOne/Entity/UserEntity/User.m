@@ -151,7 +151,7 @@
     } failureBlock:^(NSError *error) {}];
 }
 
-+(void)postContextIDForSSOWithDelegate:(id)delegate withTabName:(NSString *)url completionBlock:(void(^)(id  response))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)postContextIDForSSOWithDelegate:(id)delegate withTabName:(NSString *)url completionBlock:(void(^)(NSMutableURLRequest *  request))block failureBlock:(void(^)(NSError* error))failBlock{
     
     NSString *contexID = [[[SharedUser sharedManager] userObject] Contextid];
     
@@ -172,7 +172,7 @@
     NSLog(@"ULR : %@",request.URL.absoluteString);
 
 
-    block(request);
+    block([request mutableCopy]);
 }
 
 

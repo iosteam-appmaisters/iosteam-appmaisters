@@ -1433,7 +1433,7 @@
 					6BD405861D81B59200358036 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = USNDVZCA3F;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 0;
@@ -1845,10 +1845,10 @@
 				CODE_SIGN_ENTITLEMENTS = ShareOne/ShareOne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = USNDVZCA3F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
@@ -1863,8 +1863,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cafc2267-40e0-4374-861b-eea97c017fea";
-				PROVISIONING_PROFILE_SPECIFIER = SHAREONE_PROD_DEV;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1876,10 +1876,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareOne/ShareOne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Share One, Inc. (USNDVZCA3F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = USNDVZCA3F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
@@ -1894,8 +1894,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "28f62975-28f9-4166-b738-e1306e58cec0";
-				PROVISIONING_PROFILE_SPECIFIER = NSCONFIG_APPSTORE;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
