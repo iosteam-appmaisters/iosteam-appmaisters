@@ -551,6 +551,8 @@
 
 -(void)logoutActions {
     
+    [self closeSideMenu];
+    
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:LOGOUT_BEGIN];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
@@ -667,4 +669,9 @@
     }
     return loginController;
 }
+
+-(void)closeSideMenu {
+    [leftMenuViewController backgroundButtonClicked:nil];
+}
+
 @end
