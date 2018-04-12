@@ -825,12 +825,14 @@
     
     NSString *securityVersion = [Configuration getSecurityVersion];
     NSString *hmacType = [Configuration getHmacType];
-
+    NSString *systemLanguage = [UtilitiesHelper getSystemLanguageCode];
+    NSLog(@"Current System Language:: %@",systemLanguage);
     
     if([request isKindOfClass:[NSMutableURLRequest class]]){
         
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        [request setValue:@"en,en-gb;q=0.5" forHTTPHeaderField:@"Accept-Language"];
+        [request setValue:systemLanguage forHTTPHeaderField:@"Accept-Language"];
+//        [request setValue:@"en,en-gb;q=0.5" forHTTPHeaderField:@"Accept-Language"];
         [request setValue:@"max-age=0" forHTTPHeaderField:@"Cache-Control"];
         [request setValue:@"UTF-8;q=0.7,*;q=0.7" forHTTPHeaderField:@"Accept-Charset"];
         [request setValue:@"no-cache" forHTTPHeaderField:@"Pragma"];

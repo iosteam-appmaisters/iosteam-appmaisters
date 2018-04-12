@@ -290,13 +290,23 @@
         }
     }
     
-    /*if([[[request URL] absoluteString] containsString:@"/QuestionChallenge"]) {
+    if([[[request URL] absoluteString] containsString:@"/QuestionChallenge"]) {
         NSLog(@"Security Challenge Detected...");
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.hidesBackButton = YES;
         self.hideSideMenu = YES;
-        
-    }*/
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:SIDEMENU_HIDDEN];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    else {
+        if ([[NSUserDefaults standardUserDefaults]boolForKey:SIDEMENU_HIDDEN]) {
+            [self createLefbarButtonItems];
+            self.navigationItem.hidesBackButton = NO;
+            self.hideSideMenu = NO;
+            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SIDEMENU_HIDDEN];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
+    }
     
     if([[[request URL] absoluteString] containsString:@"Account/print"]){
         shouldReload = FALSE;

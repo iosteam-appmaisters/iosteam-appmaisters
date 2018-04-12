@@ -25,7 +25,7 @@
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint *bottomAdsConstraint;
 @property (nonatomic,assign) BOOL hideSideMenu ;
 
-
+-(void)createLefbarButtonItems;
 -(void)setBackgroundImage;
 -(void)setNavigationBarImage;
 //-(void)showNavigationBarWithBgImagename:(NSString*)imageName andLeftBarButtonItem:(UIButton*)leftBarButton andRightBarButtonArray:(NSArray*)rightBarButton andTitleText:(NSString*)title;
