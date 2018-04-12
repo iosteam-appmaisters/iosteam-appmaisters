@@ -290,6 +290,14 @@
         }
     }
     
+    /*if([[[request URL] absoluteString] containsString:@"/QuestionChallenge"]) {
+        NSLog(@"Security Challenge Detected...");
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.hidesBackButton = YES;
+        self.hideSideMenu = YES;
+        
+    }*/
+    
     if([[[request URL] absoluteString] containsString:@"Account/print"]){
         shouldReload = FALSE;
         [self printIt:yourHTMLSourceCodeString_inner];
