@@ -25,7 +25,17 @@
                                                  name:@"MessageLabelNotification"
                                                object:nil];
 
-    if ([ShareOneUtility shouldCallNSConfigServices]){
+    NSString *systemLanguage = [UtilitiesHelper getSystemLanguageCode];
+    NSString *currentLanguage = [[NSUserDefaults standardUserDefaults]valueForKey:CURRENT_LANG];
+    
+    BOOL shouldCallNSConfig = NO;
+    if (currentLanguage != nil){
+        if (![currentLanguage isEqualToString:systemLanguage]){
+            shouldCallNSConfig = YES;
+        }
+    }
+    
+    if ([ShareOneUtility shouldCallNSConfigServices] || shouldCallNSConfig){
         [self getNSConfigData];
     }
     else {

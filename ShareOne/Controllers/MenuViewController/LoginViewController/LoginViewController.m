@@ -102,6 +102,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [[NSUserDefaults standardUserDefaults]setBool:NO forKey:NORMAL_LOGOUT];
     [[NSUserDefaults standardUserDefaults]synchronize];
     
+    NSString *systemLanguage = [UtilitiesHelper getSystemLanguageCode];
+    [[NSUserDefaults standardUserDefaults]setValue:systemLanguage forKey:CURRENT_LANG];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 -(void)viewDidLoad{

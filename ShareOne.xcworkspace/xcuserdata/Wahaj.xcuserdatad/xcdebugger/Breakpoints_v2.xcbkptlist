@@ -9,14 +9,93 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ShareOne/Controllers/MenuViewController/SlideMenuViewController/LeftMenuViewController.m"
-            timestampString = "545140115.406546"
+            filePath = "ShareOne/Entity/LoaderEntity/LoaderServices.m"
+            timestampString = "545317648.343642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-userDidSwipe:"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "+setConfigurationQueueWithDelegate:withContentDict:queueArray:completionBlock:failureBlock:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/LoaderEntity/LoaderServices.m"
+            timestampString = "545317648.34372"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "+getModifiedServicesWithDelegate:withContentDict:completionBlock:failureBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/LoaderEntity/LoaderServices.m"
+            timestampString = "545317648.344002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "+getModifiedServicesWithDelegate:withContentDict:completionBlock:failureBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__95+[LoaderServices getModifiedServicesWithDelegate:withContentDict:completionBlock:failureBlock:]_block_invoke"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wahaj/Developer/ShareOne/ShareOne/Entity/LoaderEntity/LoaderServices.m"
+                  timestampString = "545317077.7564"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "1337">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__95+[LoaderServices getModifiedServicesWithDelegate:withContentDict:completionBlock:failureBlock:]_block_invoke_2"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wahaj/Developer/ShareOne/ShareOne/Entity/LoaderEntity/LoaderServices.m"
+                  timestampString = "545317077.758276"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.199"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Wahaj/Developer/ShareOne/ShareOne/Entity/LoaderEntity/LoaderServices.m"
+                  timestampString = "545317077.759997"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

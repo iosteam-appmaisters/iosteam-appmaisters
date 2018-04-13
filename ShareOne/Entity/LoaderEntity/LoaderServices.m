@@ -125,7 +125,7 @@
     
     NSDictionary *modifiedServicesDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                           NSCONFIG_GET_MODIFIEDSERVICES([ShareOneUtility getClientApplicationID],
-                                           [ShareOneUtility getVersionNumber]),REQ_URL,
+                                           @"0"),REQ_URL,
                                           RequestType_GET,REQ_TYPE,
                                           authToken,REQ_HEADER_CONFIGURATION,
                                           nil,REQ_PARAM,
