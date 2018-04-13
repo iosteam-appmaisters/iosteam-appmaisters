@@ -469,7 +469,7 @@
             self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
         }
         
-        else if([[dict valueForKey:MAIN_CAT_TITLE] isEqualToString:LOG_OFF]){
+        else if([contrlollerName isEqualToString:@"logoff"]){
             
             // Show log out popup
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:
