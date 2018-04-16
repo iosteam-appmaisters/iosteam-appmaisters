@@ -461,8 +461,8 @@
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
 		8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
+		9A796D9F2084AA390000598B /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
 		9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessingSimulator.a; sourceTree = "<group>"; };
-		9ADF1985207CFEDF007569B0 /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
 		9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuCell.h; sourceTree = "<group>"; };
 		9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMenuCell.m; sourceTree = "<group>"; };
 		9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContextMenuCell.xib; sourceTree = "<group>"; };
@@ -991,7 +991,7 @@
 		6BD405891D81B59200358036 /* ShareOne */ = {
 			isa = PBXGroup;
 			children = (
-				9ADF1985207CFEDF007569B0 /* ShareOne.entitlements */,
+				9A796D9F2084AA390000598B /* ShareOne.entitlements */,
 				1D38993E1E5DA75500A27358 /* UIViews */,
 				1D3C4D871E5D8F230022AF61 /* Resources */,
 				1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */,
@@ -1861,10 +1861,10 @@
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "21163d6b-e37f-49c8-9bde-797f480bf4dc";
-				PROVISIONING_PROFILE_SPECIFIER = SHAREONE_PREPROD_DEV;
+				PROVISIONING_PROFILE = "cafc2267-40e0-4374-861b-eea97c017fea";
+				PROVISIONING_PROFILE_SPECIFIER = SHAREONE_PROD_DEV;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1892,10 +1892,10 @@
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nsconfig.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4db5b13a-6a8b-4c6d-bd68-7f9d2b0b2160";
-				PROVISIONING_PROFILE_SPECIFIER = "C2C APPSTORE";
+				PROVISIONING_PROFILE = "b89fb9a7-c841-44e1-99a6-eb3f74981d8b";
+				PROVISIONING_PROFILE_SPECIFIER = NSCONFIG_APPSTORE;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
