@@ -290,7 +290,7 @@
         }
     }
     
-    if([[[request URL] absoluteString] containsString:@"/QuestionChallenge"]) {
+    if([[[request URL] absoluteString] containsString:@"/SecondaryAuth/"]) {
         NSLog(@"Security Challenge Detected...");
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.hidesBackButton = YES;
