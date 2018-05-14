@@ -130,6 +130,10 @@
 
 }
 
+- (void)dealloc {
+    [_webview setDelegate:nil];
+    [_webview stopLoading];
+}
 
 #define mark - UnWind Segue
 -(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue{
