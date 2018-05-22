@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "ShareOneUtility.h"
 #import "TouchIDSettingsController.h"
+#import "FaceIDSettingsController.h"
 #import "NotifSettingsController.h"
 
 
@@ -17,6 +18,8 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    _currentBiometric = [UtilitiesHelper isFaceIDAvailable] ? @"Face" : @"Touch";
     
     _versionLabel.text = [NSString stringWithFormat:@"Version: %@", [ShareOneUtility getVersionNumber]];
     _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@", [ShareOneUtility getCustomerId]];
@@ -63,6 +66,8 @@
     
     __weak SettingsViewController *weakSelf = self;
 
+    [_touchIDLable setText:[NSString stringWithFormat:@"%@ ID",_currentBiometric]];
+    
     [ShareOneUtility shouldHideTouchID:weakSelf completionBlock:^(BOOL success) {
         if(success){
             
@@ -122,20 +127,22 @@
             if(success){
                 key=TOUCH_ID_SETTINGS;
                 if([_touchIDSwitch isOn]){
-                    alertMesage=@"Touch ID will be requested.";
+                    alertMesage= [NSString stringWithFormat:@"%@ ID will be requested.",_currentBiometric];
                     User *obj = [ShareOneUtility getUserObject];
                     if(!obj.hasUserUpdatedTouchIDSettings){
                         key=nil;
-                        [self addTouchIDAlertScreen];
+                        [self addBiometricAlertScreen];
                         return;
                     }
 
                 }
                 else{
-                    
-                    alertMesage=@"Touch ID will not not be requested.";
+                    alertMesage= [NSString stringWithFormat:@"%@ ID will not not be requested.",_currentBiometric];
                 }
-
+            }
+            else {
+                
+                
             }
         }];
     }
@@ -192,11 +199,19 @@
     
 }
 
--(void)addTouchIDAlertScreen{
+-(void)addBiometricAlertScreen{
     
-    TouchIDSettingsController * obj = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TouchIDSettingsController class])];
-    obj.navigationItem.title=@"ENABLE TOUCH ID";
-    [self.navigationController pushViewController:obj animated:YES];
+    if ([_currentBiometric isEqualToString:@"Face"]){
+        
+        FaceIDSettingsController * obj = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([FaceIDSettingsController class])];
+        obj.navigationItem.title=[NSString stringWithFormat:@"ENABLE %@ ID",[_currentBiometric uppercaseString]];
+        [self.navigationController pushViewController:obj animated:YES];
+    }
+    else {
+        TouchIDSettingsController * obj = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([TouchIDSettingsController class])];
+        obj.navigationItem.title=[NSString stringWithFormat:@"ENABLE %@ ID",[_currentBiometric uppercaseString]];
+        [self.navigationController pushViewController:obj animated:YES];
+    }
 }
 
 @end

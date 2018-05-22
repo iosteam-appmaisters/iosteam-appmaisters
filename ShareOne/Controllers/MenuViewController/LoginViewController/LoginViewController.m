@@ -711,7 +711,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 }
 
-- (IBAction)fingerprintButtonClicked:(id)sender {
+/*- (IBAction)fingerprintButtonClicked:(id)sender {
     
     __weak LoginViewController *weakSelf = self;
 
@@ -736,7 +736,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         }
     }];
 
-}
+}*/
 
 
 - (IBAction)openUrlButtonClicked:(id)sender{

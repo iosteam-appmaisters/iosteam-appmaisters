@@ -96,7 +96,7 @@
 
 +(NSString*)getDeviceIdentifier;
 +(BOOL)isGpsOn;
-
++ (BOOL) isFaceIDAvailable;
 -(void)showLAContextWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block;
 +(void)isTouchIDAvailableWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block;
 

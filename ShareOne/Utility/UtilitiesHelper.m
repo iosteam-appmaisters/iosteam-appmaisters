@@ -943,28 +943,47 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     return isGpsOn;
 }
 
++ (BOOL) isFaceIDAvailable {
+    if (![LAContext class]) return NO;
+    
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    if (![myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+        NSLog(@"%@", [authError localizedDescription]);
+        return NO;
+    }
+    
+    if (@available(iOS 11.0, *)) {
+        if (myContext.biometryType == LABiometryTypeFaceID){
+            return YES;
+        } else {
+            return NO;
+        }
+    } else {
+        return NO;
+    }
+}
+
+
 -(void)showLAContextWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block{
  
     LAContext *myContext = [[LAContext alloc] init];
     NSError *authError = nil;
-    NSString *myLocalizedReasonString = @"Logging in with Touch ID";
+    NSString *myLocalizedReasonString = [UtilitiesHelper isFaceIDAvailable] ? @"Logging in with Face ID" : @"Logging in with Touch ID";
     
     if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
         [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                   localizedReason:myLocalizedReasonString
                             reply:^(BOOL success, NSError *error) {
+                                
                                 if (success) {
                                     dispatch_async(dispatch_get_main_queue(), ^{
                                         block(success);
                                     });
                                 } else {
                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                        
-//                                        [[UtilitiesHelper shareUtitlities] showToastWithMessage:error.localizedDescription title:@"Error" delegate:delegate];
                                         NSLog(@"Switch to fall back authentication - ie, display a keypad or password entry box");
-
                                         block(success);
-
                                     });
                                 }
                             }];
@@ -996,8 +1015,55 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     }
 }
 
++(void)showBioMetricError : (LAError)biometricError : (id)delegate {
+    
+    NSString * biometry = [UtilitiesHelper isFaceIDAvailable] ? @"Face" : @"Touch";
+    NSString * errorMessage = @"";
+    switch (biometricError) {
+            
+        case LAErrorAuthenticationFailed:
+            
+            break;
+            
+        case LAErrorUserCancel:
+            
+            break;
+        case LAErrorUserFallback:
+            
+            break;
+        case LAErrorSystemCancel:
+            
+            break;
+        case LAErrorPasscodeNotSet:
+            
+            break;
+        case LAErrorBiometryNotAvailable:
+            
+            break;
+        case LAErrorBiometryNotEnrolled:
+            
+            break;
+        case LAErrorBiometryLockout:{
+            errorMessage = [NSString stringWithFormat:@"%@ ID is locked out.  Please lock your device and re-enter your security code to unlock",biometry];
+        }
+            break;
+        case LAErrorAppCancel:
+            
+            break;
+        case LAErrorInvalidContext:
+            
+            break;
+        case LAErrorNotInteractive:
+            
+            break;
+        
+    }
+    [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorMessage title:@"Error" delegate:delegate];
+}
+
 +(void)showTouchIDError:(NSError*)authError : (id)delegate {
     
+    NSString * biometry = [UtilitiesHelper isFaceIDAvailable] ? @"Face" : @"Touch";
     NSString *errorMessage = authError.localizedDescription;
     
     switch ([authError code]) {
@@ -1038,7 +1104,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
             
         case -8:{
             NSLog(@"touchIDLockout");
-            errorMessage = @"Touch ID is locked out.  Please lock your device and re-enter your security code to unlock";
+            [NSString stringWithFormat:@"%@ ID is locked out.  Please lock your device and re-enter your security code to unlock",biometry];
         }
             break;
             
@@ -1051,9 +1117,6 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
             NSLog(@"invalidContext");
         }
             break;
-            /*default:
-             errorMessage = authError.localizedDescription;
-             break;*/
     }
     [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorMessage title:@"Error" delegate:delegate];
     
