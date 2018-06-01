@@ -582,7 +582,7 @@
             [[NSUserDefaults standardUserDefaults]synchronize];
         }
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"The application has experienced a service issue that required it to log out. Please log back in to continue." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:[ShareOneUtility getTechnicalLogoutMessage] preferredStyle:UIAlertControllerStyleAlert];
         
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             

@@ -231,4 +231,6 @@
 
 +(void)convertDicToJSON:(NSDictionary*)contentDictionary;
 +(NSString*)getNumberOfQuickViewTransactions;
++(NSString*)getTechnicalLogoutMessage;
+
 @end

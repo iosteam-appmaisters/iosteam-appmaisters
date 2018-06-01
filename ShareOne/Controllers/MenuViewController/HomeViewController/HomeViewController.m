@@ -337,9 +337,7 @@
     
     NSLog(@"webViewDidFinishLoad url: %@", webView.request.URL.absoluteString);
 
-    if([[NSUserDefaults standardUserDefaults]boolForKey:LOGOUT_BEGIN]) {
-        [self logoutActions];
-    }
+    [self logoutAfterChecking];
     
     NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     if ([theTitle containsString:@"Account Summary"]){
@@ -355,9 +353,7 @@
     
     NSLog(@"didFailLoadWithError : %@",error);
     
-    if([[NSUserDefaults standardUserDefaults]boolForKey:LOGOUT_BEGIN]) {
-        [self logoutActions];
-    }
+    [self logoutAfterChecking];
     
     [ShareOneUtility hideProgressViewOnView:self.view];
     
@@ -366,6 +362,41 @@
     }
     
     
+}
+
+-(void)logoutAfterChecking {
+    
+    if([[NSUserDefaults standardUserDefaults]boolForKey:LOGOUT_BEGIN]) {
+        
+        BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
+        
+        if (isTechnicalLogout) {
+            
+            [User keepAlive:nil delegate:nil completionBlock:^(BOOL sucess) {
+                NSLog(@"keepAlive from validateSessionForTouchID_OffSession");
+                [ShareOneUtility hideProgressViewOnView:self.view];
+                
+                if(sucess){
+                    NSLog(@"Session Active After Technical Logout...");
+                    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:SESSION_ACTIVE_LOGOUT];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                }
+                else {
+                    NSLog(@"Session Not Active After Technical Logout...");
+                    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SESSION_ACTIVE_LOGOUT];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                }
+                [self logoutActions];
+                
+            } failureBlock:^(NSError *error) {
+                NSLog(@"Keep Alive Checking Failure After Technical Logout...");
+                [self logoutActions];
+            }];
+        }
+        else {
+            [self logoutActions];
+        }
+    }
 }
 
 -(void)printIt:(NSString *)html{

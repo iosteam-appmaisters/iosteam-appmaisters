@@ -1792,4 +1792,18 @@ NSLog(Y, Z);		\
     return numOfQuickViewTransactions;
 }
 
++(NSString*)getTechnicalLogoutMessage {
+    
+    NSString * message = @"";
+    BOOL isSessionIsActive = [[NSUserDefaults standardUserDefaults]boolForKey: SESSION_ACTIVE_LOGOUT];
+    
+    if (!isSessionIsActive){
+        message = @"You have been logged out. Please log in again.";
+    }
+    else {
+        message = @"The application has experienced a service issue that required it to log out. Please log back in to continue.";
+    }
+    return message;
+}
+
 @end
