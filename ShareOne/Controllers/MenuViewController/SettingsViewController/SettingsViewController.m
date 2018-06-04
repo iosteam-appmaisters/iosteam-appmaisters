@@ -102,10 +102,10 @@
         key=QUICK_BAL_SETTINGS;
         
         if([_quickBalanceSwitch isOn]){
-            alertMesage = @"Quickview is a convenient way to review your balance and recent transactions. It is not recommended for devices you may share with others. It is your responsibility to ensure that you take precautions to protect your account information on your device.";
+            alertMesage = @"Quick View is a convenient way to review your balance and recent transactions. It is not recommended for devices you may share with others. It is your responsibility to ensure that you take precautions to protect your account information on your device.";
         }
         else{
-            alertMesage=@"Quick Balance won't be shown on login screen.";
+            alertMesage=@"Quick View won't be shown on login screen.";
         }
     }
     else if([sender isEqual:_showOffersSwitch]){
