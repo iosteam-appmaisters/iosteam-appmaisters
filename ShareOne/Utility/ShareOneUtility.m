@@ -1561,7 +1561,7 @@ NSLog(Y, Z);		\
 
 +(NSString *)getBaseUrl{
     NSString *baseUrl = [Configuration getBaseUrl];
-    return baseUrl;
+    return [baseUrl stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];;
 }
 
 +(NSString *)getSSOBaseUrl{
@@ -1577,23 +1577,23 @@ NSLog(Y, Z);		\
 
 +(NSString *)getCreditUnionPublicKey{
     NSString *publicKey = [Configuration getBaseUrlPublicKey];
-    return publicKey;
+    return [publicKey stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 +(NSString *)getCreditUnionPrivateKey{
     NSString *private = [Configuration getBaseUrlPrivateKey];
-    return private;
+    return [private stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 +(NSString *)getSecurityVersion{
     NSString *security = [Configuration getSecurityVersion];
-    return security;
+    return [security stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 
 +(NSString *)getHMACType{
     NSString *hmacType = [Configuration getHmacType];
-    return hmacType;
+    return [hmacType stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 +(BOOL)hasShownTutorialsBefore{
