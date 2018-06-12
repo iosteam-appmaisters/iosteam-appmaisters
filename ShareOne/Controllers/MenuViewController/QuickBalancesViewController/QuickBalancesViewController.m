@@ -186,7 +186,7 @@
         
         [objFZAccordionTableViewHeaderView.sectionTitleLbl setText:[ShareOneUtility getSectionTitleByCode:obj.Type]];
     
-    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[self getFormattedAmount:obj.Available]];
+    [objFZAccordionTableViewHeaderView.sectionAmountLbl setText:[self getAmountWithFilters:obj]];
     
     [objFZAccordionTableViewHeaderView.headerBtn setTag:section];
     
@@ -231,6 +231,30 @@
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
     
 }
+
+-(NSString*)getAmountWithFilters:(QuickBalances*) obj {
+    
+    NSLog(@"Descr:: %@, Type:: %@, Available:: %@, Balance:: %@",obj.Descr, obj.Type,obj.Available,obj.Balance);
+    
+    if ([obj.Type isEqualToString:@"V"]){
+        return [self getFormattedAmount:obj.Balance];
+    }
+    else if ([obj.Type isEqualToString:@"S"]){
+        return [self getFormattedAmount:obj.Available];
+    }
+    else {
+        if ( [obj.Type isEqualToString:@"C"] || [obj.Type isEqualToString:@"L"]) {
+            if (obj.Available.intValue == 0){
+                return [self getFormattedAmount:obj.Balance];
+            }
+            else if (obj.Available.intValue > 0){
+                return [NSString stringWithFormat:@"%@ (%@ Avl)",[self getFormattedAmount:obj.Balance],[self getFormattedAmount:obj.Available]];
+            }
+        }
+    }
+    return [self getFormattedAmount:obj.Available];
+}
+
 
 -(NSString *)getFormattedAmount:(NSNumber*)value {
     
