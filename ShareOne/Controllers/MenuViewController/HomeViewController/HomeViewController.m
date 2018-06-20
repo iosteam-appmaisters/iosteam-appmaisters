@@ -15,6 +15,7 @@
 #import "SuffixInfo.h"
 #import "User.h"
 #import "LoadingController.h"
+#import "UIPrintPageRenderer+PrintToPDF.h"
 //#import "WebViewProxyURLProtocol.h"
 
 
@@ -312,10 +313,10 @@
         }
     }
     
-    if([[[request URL] absoluteString] containsString:@"Account/print"]){
-        shouldReload = FALSE;
-        [self printIt:yourHTMLSourceCodeString_inner];
-    }
+//    if([[[request URL] absoluteString] containsString:@"print=True"]){
+//        shouldReload = FALSE;
+//        [self printIt:yourHTMLSourceCodeString_inner];
+//    }
     
     if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
         shouldReload = FALSE;
@@ -344,6 +345,10 @@
         [self trackPrintingEventWithScheme:webView.request.URL.scheme];
     }
 
+    if([webView.request.URL.absoluteString containsString:@"print=True"]){
+        [self savePDFToDocumentsDirectory];
+    }
+    
     __weak HomeViewController *weakSelf = self;
     if(![webView.request.URL.absoluteString containsString:@"deeptarget"])
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
@@ -398,6 +403,77 @@
         }
     }
 }
+
+#define kPaperSizeA4 CGSizeMake(595.2,841.8)
+
+-(void)savePDFToDocumentsDirectory {
+    
+    UIPrintPageRenderer *render = [[UIPrintPageRenderer alloc] init];
+    [render addPrintFormatter:self.webview.viewPrintFormatter startingAtPageAtIndex:0];
+    
+    //increase these values according to your requirement
+    float topPadding = 10.0f;
+    float bottomPadding = 10.0f;
+    float leftPadding = 10.0f;
+    float rightPadding = 10.0f;
+    CGRect printableRect = CGRectMake(leftPadding,
+                                      topPadding,
+                                      kPaperSizeA4.width-leftPadding-rightPadding,
+                                      kPaperSizeA4.height-topPadding-bottomPadding);
+    CGRect paperRect = CGRectMake(0, 0, kPaperSizeA4.width, kPaperSizeA4.height);
+    [render setValue:[NSValue valueWithCGRect:paperRect] forKey:@"paperRect"];
+    [render setValue:[NSValue valueWithCGRect:printableRect] forKey:@"printableRect"];
+    NSData *pdfData = [render printToPDF];
+    if (pdfData) {
+        NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        documentsURL = [documentsURL URLByAppendingPathComponent:@"localFile.pdf"];
+        [pdfData writeToURL:documentsURL  atomically: YES];
+        [self connectPrinter];
+    }
+    else
+    {
+        NSLog(@"PDF couldnot be created");
+    }
+}
+
+
+-(void)connectPrinter {
+    
+        [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
+        
+        NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        documentsURL = [documentsURL URLByAppendingPathComponent:@"localFile.pdf"];
+        
+        NSData *myData = [NSData dataWithContentsOfURL:documentsURL];
+        
+        UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
+        
+        if(pic && [UIPrintInteractionController canPrintData: myData] ) {
+            
+            //pic.delegate = self;
+            
+            UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+            printInfo.outputType = UIPrintInfoOutputGeneral;
+            printInfo.jobName = @"New";//[path lastPathComponent];
+            printInfo.duplex = UIPrintInfoDuplexLongEdge;
+            pic.printInfo = printInfo;
+            pic.showsPageRange = YES;
+            pic.printingItem = myData;
+            
+            void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) = ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
+                //self.content = nil;
+                if (!completed && error) {
+                    NSLog(@"FAILED! due to error in domain %@ with error code %ld", error.domain, (long)error.code);
+                }
+            };
+            
+            [pic presentAnimated:YES completionHandler:completionHandler];
+            
+        }
+        
+        
+}
+
 
 -(void)printIt:(NSString *)html{
     

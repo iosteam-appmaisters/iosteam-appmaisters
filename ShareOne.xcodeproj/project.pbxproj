@@ -159,6 +159,7 @@
 		6BD433DB1D8C09C30067515A /* po.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* po.plist */; };
 		8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */; };
 		9A44C9C420B3F16D0031531B /* FaceIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A44C9C320B3F16D0031531B /* FaceIDSettingsController.m */; };
+		9A986AA420DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A986AA320DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m */; };
 		9AC5BB59202B0301007EBF93 /* libVertifiImageProcessingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */; };
 		9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */; };
 		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
@@ -465,6 +466,8 @@
 		9A44C9C220B3F16D0031531B /* FaceIDSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceIDSettingsController.h; sourceTree = "<group>"; };
 		9A44C9C320B3F16D0031531B /* FaceIDSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceIDSettingsController.m; sourceTree = "<group>"; };
 		9A5A1CC0209B1E14009AC72E /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
+		9A986AA220DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPrintPageRenderer+PrintToPDF.h"; sourceTree = "<group>"; };
+		9A986AA320DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPrintPageRenderer+PrintToPDF.m"; sourceTree = "<group>"; };
 		9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessingSimulator.a; sourceTree = "<group>"; };
 		9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuCell.h; sourceTree = "<group>"; };
 		9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMenuCell.m; sourceTree = "<group>"; };
@@ -1181,6 +1184,8 @@
 				1D1415481DA4D3710048F8B1 /* SharedUser.m */,
 				8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */,
 				8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */,
+				9A986AA220DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.h */,
+				9A986AA320DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1611,6 +1616,7 @@
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
 				1D20C2601E4E110500D3FC93 /* CameraGridView.m in Sources */,
 				1D20C2861E4E110500D3FC93 /* TableView_SectionFooter.m in Sources */,
+				9A986AA420DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m in Sources */,
 				1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */,
 				F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */,
 				1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */,
