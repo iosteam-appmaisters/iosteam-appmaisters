@@ -159,69 +159,7 @@ NSLog(Y, Z);		\
 
     return locationArr;
 }
-+ (NSString *) geoCodeUsingAddress:(NSString *)address
-{
-    double latitude1 = 0, longitude1 = 0;
-    
-    NSString *esc_addr =  [address stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", esc_addr]]
-                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                        timeoutInterval:60.0];
-    
-    NSURLResponse *response = NULL;
-    NSError *requestError = NULL;
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&response error:&requestError];
-    //  NSString *dataString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
-    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData //1
-                                                                   options:kNilOptions
-                                                                     error:&requestError];
-    id results = [jsonDictionary objectForKey:@"results"];
-    for( id stuff in results )
-    {
-        //NSDictionary *northeast = [[[stuff objectForKey:@"geometry"] objectForKey:@"bounds"] objectForKey:@"northeast"];
-        //NSDictionary *southwest = [[[stuff objectForKey:@"geometry"] objectForKey:@"bounds"] objectForKey:@"southwest"];
-        NSDictionary *center4 = [[stuff objectForKey:@"geometry"] objectForKey:@"location"];
-        latitude1=[[center4 objectForKey:@"lat"] floatValue];
-        longitude1=[[center4 objectForKey:@"lng"] floatValue];
-        
-    }
-    NSLog(@"%f",latitude1);
-    NSLog(@"%f",longitude1);
-    CLLocationCoordinate2D centers;
-    centers.latitude = latitude1;
-    centers.longitude = longitude1;
-    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",centers.latitude,centers.longitude];
-    return CoordinateStr;
-}
-+(NSString *)getDistancefromAdresses:(NSString *)source Destination:(NSString *)Destination
-{
-    NSString *urlPath = [NSString stringWithFormat:@"/maps/api/distancematrix/json?origins=%@&destinations=%@&mode=driving&language=en-EN&sensor=false",source ,Destination ];
-    NSURL *url = [[NSURL alloc]initWithScheme:@"https" host:@"maps.googleapis.com" path:urlPath];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-    [request setURL:url];
-    [request setHTTPMethod:@"GET"];
-    
-    NSURLResponse *response ;
-    NSError *error;
-    NSData *data;
-    data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    NSMutableDictionary *jsonDict= (NSMutableDictionary*)[NSJSONSerialization  JSONObjectWithData:data options:kNilOptions error:&error];
-    NSMutableDictionary *newdict=[jsonDict valueForKey:@"rows"];
-    NSArray *elementsArr=[newdict valueForKey:@"elements"];
-    if([elementsArr count]!=0)
-    {
-        NSArray *arr=[elementsArr objectAtIndex:0];
-        NSDictionary *dict=[arr objectAtIndex:0];
-        NSMutableDictionary *distanceDict=[dict valueForKey:@"distance"];
-        NSLog(@"distance:%@",[distanceDict valueForKey:@"text"]);
-        return [distanceDict valueForKey:@"text"];
 
-    }
-    return [jsonDict valueForKey:@"status"];
-}
 + (NSArray *)getDummyDataForQB{
     
     
@@ -1662,8 +1600,8 @@ NSLog(Y, Z);		\
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour | NSCalendarUnitMinute|NSCalendarUnitDay) fromDate:[NSDate date]];
     NSInteger day = [dateComponents day];
-    NSInteger hour = [dateComponents hour];
-    NSInteger minute = [dateComponents minute];
+//    NSInteger hour = [dateComponents hour];
+//    NSInteger minute = [dateComponents minute];
     date = [NSString stringWithFormat:@"%ld",(long)day];
     return date;
 }

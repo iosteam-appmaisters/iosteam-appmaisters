@@ -249,7 +249,7 @@
                 
                 self.LocCopyArray = [[NSArray alloc] initWithArray:self.locationArr];
                 
-                Location *objLocation= _locationArr[0];
+                Location *objLocation= weakSelf.locationArr[0];
                 float lat_local=[[objLocation latitude] floatValue];
                 float lon_local=[[objLocation longitude] floatValue];
                 
@@ -258,11 +258,11 @@
                 GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat_local
                                                                         longitude:lon_local
                                                                              zoom:15];
-                _mapView.camera=camera;
-                _mapView.myLocationEnabled = YES;
-                _mapView.delegate=self;
+                weakSelf.mapView.camera=camera;
+                weakSelf.mapView.myLocationEnabled = YES;
+                weakSelf.mapView.delegate=self;
 
-                [self createGoogleMapMarker:_mapView];
+                [self createGoogleMapMarker:weakSelf.mapView];
 
             }
         }
@@ -484,14 +484,14 @@
             [_coordinates removeAllObjects];
         }
         else{
-            _markerStart.position = [[_coordinates objectAtIndex:0] coordinate];
-            _markerStart.map = self.mapView;
-            _markerFinish.position = [[_coordinates lastObject] coordinate];
-            _markerFinish.map = self.mapView;
-            _polyline = polyline;
-            _polyline.strokeWidth = 3;
-            _polyline.strokeColor = [UIColor blueColor];
-            _polyline.map = self.mapView;
+            self->_markerStart.position = [[_coordinates objectAtIndex:0] coordinate];
+            self->_markerStart.map = self.mapView;
+            self->_markerFinish.position = [[_coordinates lastObject] coordinate];
+            self->_markerFinish.map = self.mapView;
+            self->_polyline = polyline;
+            self->_polyline.strokeWidth = 3;
+            self->_polyline.strokeColor = [UIColor blueColor];
+            self->_polyline.map = self.mapView;
         }
     }];
 }
@@ -554,7 +554,7 @@
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction * action)
                                    {
-                                       if (isComingFromATM) {
+                                       if (self->isComingFromATM) {
                                            [self navigateToLastController];
                                        }
                                        [alert dismissViewControllerAnimated:YES completion:^{

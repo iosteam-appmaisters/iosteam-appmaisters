@@ -321,7 +321,7 @@
             [self noTransaction];
         }
         else {
-            for (QuickBalances * qb in _qbArr){
+            for (QuickBalances * qb in weakSelf.qbArr){
                 if ([[qb.Suffixid stringValue] isEqualToString:SuffixID]) {
                     qb.transArr = transactionArray;
                     break;

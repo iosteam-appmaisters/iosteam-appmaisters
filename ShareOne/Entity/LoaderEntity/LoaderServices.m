@@ -18,62 +18,6 @@
 
 @implementation LoaderServices
 
-+(void)setRequestOnQueueWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{
-    
-    
-    NSDictionary *getDevicesDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,/*@"ABC"*/[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
-    
-    
-    NSDictionary *getSuffixDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KSUFFIX_INFO,/*@"ABC"*/[[[SharedUser sharedManager] userObject] Contextid]],REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];
-    
-    
-    /*NSDictionary *getQBDict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KQUICK_BALANCES,[ShareOneUtility getUUID]]
-     ,REQ_URL,RequestType_GET,REQ_TYPE,[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET],REQ_HEADER,nil,REQ_PARAM, nil];*/
-    
-    
-    //getSuffixDict
-    NSArray *reqArr = [NSArray arrayWithObjects:getDevicesDict,/*,getSuffixDict,*/ nil];
-    
-    
-    [[AppServiceModel sharedClient] createBatchOfRequestsWithObject:reqArr requestCompletionBlock:^(NSObject *response,id responseObj) {
-        
-        NSURLResponse *responseCast = (NSURLResponse *)responseObj;
-        
-        if([[responseCast.URL absoluteString] containsString:KMEMBER_DEVICES])
-            
-            //        if([responseObj containsString:KMEMBER_DEVICES])
-        {
-            NSArray *arr = [MemberDevices getMemberDevices:(NSDictionary *)response];
-            [ShareOneUtility savedDevicesInfo:(NSDictionary *)response];
-            [[SharedUser sharedManager] setMemberDevicesArr:arr];
-        }
-        if([[responseCast.URL absoluteString] containsString:KSUFFIX_INFO])
-            
-            //        if([responseObj containsString:KSUFFIX_INFO])
-        {
-            NSArray *suffixArr = [SuffixInfo getSuffixArrayWithObject:(NSDictionary *)response];
-            [ShareOneUtility savedSuffixInfo:(NSDictionary *)response];
-            [[SharedUser sharedManager] setSuffixInfoArr:suffixArr];
-        }
-        if([[responseCast.URL absoluteString] containsString:KQUICK_BALANCES])
-            
-            //        if([responseObj containsString:KQUICK_BALANCES])
-        {
-            NSArray *qbObjects = [QuickBalances  getQBObjects:(NSDictionary *)response];
-            [ShareOneUtility savedQBHeaderInfo:(NSDictionary *)response];
-            [[SharedUser sharedManager] setQBSectionsArr:qbObjects];
-        }
-        
-        
-    } requestFailureBlock:^(NSError *error) {
-        
-    } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
-        block(sucess,errorString);
-        
-    } queueFailureBlock:^(NSError *error) {
-        
-    }];
-}
 
 
 +(void)setQTRequestOnQueueWithDelegate:(id)delegate AndQuickBalanceArr:(NSArray *)qbArr completionBlock:(void(^)(BOOL success,NSString *errorString))block failureBlock:(void(^)(NSError* error))failBlock{

@@ -346,19 +346,6 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     return myString;
 }
 
-
-+(void)showAlert:(NSString*)message {
-    
-    //[UtilitiesHelper showLMAlertforTitle:@"Message" withMessage:message forDelegate:nil];
-
-
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Message" message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    
-    [alertView show];
-    
-    
-}
-
 +(void)createLayerWithRoundRect:(UIView*)view{
     CALayer * l = [view layer];
     [l setMasksToBounds:YES];

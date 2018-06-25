@@ -34,9 +34,6 @@
 + (NSString *)getAuthHeaderWithRequestType:(NSString *)request_type;
 
 
-+(NSString *)getDistancefromAdresses:(NSString *)source Destination:(NSString *)Destination;
-
-+(NSString *) geoCodeUsingAddress:(NSString *)address;
 
 + (void)showProgressViewOnView:(UIView *)view;
 + (void)hideProgressViewOnView:(UIView *)view;

@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view..
     
-    __weak LoadingController *weakSelf = self;
+ //   __weak LoadingController *weakSelf = self;
 //    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorMessage) {
 //        
 //        [weakSelf dismisLoader];

@@ -376,10 +376,10 @@
     [self.navigationController addChildViewController:leftMenuViewController];
     [self.navigationController.view addSubview:leftMenuViewController.view];
     [UIView animateWithDuration:0.3 animations:^{
-        [leftMenuViewController.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        [self->leftMenuViewController.view setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         
     } completion:^(BOOL finished) {
-        [menuButton setEnabled:TRUE];
+        [self->menuButton setEnabled:TRUE];
     }];
 
 }
@@ -427,12 +427,12 @@
 
     NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
     NSString *webUrl = [dict valueForKey:WEB_URL];
-    NSString *screenTitle = [[dict valueForKey:SUB_CAT_TITLE] capitalizedString];
+    
     NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     NSString *webViewController = WEB_VIEWCONTROLLER_ID;
     
-    __weak BaseViewController *weakSelf = self;
+    
     
     // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
 
@@ -493,7 +493,7 @@
                                                                        
                    UIViewController *controller = nil;
                    HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
-                   currentController = objHomeViewController;
+                                                                       self->currentController = objHomeViewController;
                    objHomeViewController.url = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],@"/log/out"];
                    controller = objHomeViewController;
                                                                        

@@ -12,7 +12,6 @@
 #import "ShareOneUtility.h"
 #import "User.h"
 #import "SharedUser.h"
-#import "LoadingController.h"
 #import "LoaderServices.h"
 #import "MemberDevices.h"
 #import "QuickBalances.h"
@@ -72,7 +71,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 @property(nonatomic,strong) UITextField * currentTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *loginBG;
 
-- (IBAction)scanTouchID:(id)sender ;
 
 - (void)updateDataByDefaultValues;
 
@@ -232,8 +230,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                             [ShareOneUtility removeCacheControllerName];
 
                             User *user = [ShareOneUtility getUserObject];
-                            [_userIDTxt setText:user.UserName];
-                            [_passwordTxt setText:user.Password];
+                            [weakSelf.userIDTxt setText:user.UserName];
+                            [weakSelf.passwordTxt setText:user.Password];
                             [self loginButtonClicked:nil];
                         }
                     }];
@@ -346,7 +344,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
             
             if(success){
                 
-                _isComingAfterAuthenticatingFromTouchID= TRUE;
+                weakSelf.isComingAfterAuthenticatingFromTouchID= TRUE;
                 // check whether session is available or not
                 [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
@@ -466,9 +464,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         
         if([user isKindOfClass:[User class]]){
             
-            if(_objPinResetController){
-                [_objPinResetController dismissViewControllerAnimated:NO completion:nil];
-                _objPinResetController=nil;
+            if(weakSelf.objPinResetController){
+                [weakSelf.objPinResetController dismissViewControllerAnimated:NO completion:nil];
+                weakSelf.objPinResetController=nil;
             }
             
             // if user has any requirment like PinChange or ChangeAccountName process it before continuing.
@@ -541,56 +539,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     }];
     
 }
-
--(void)startLoadingServicesWithMemberDevice{
-    
-    __weak LoginViewController *weakSelf = self;
-    
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-    [LoaderServices setRequestOnQueueWithDelegate:weakSelf completionBlock:^(BOOL success,NSString *errorString) {
-        
-        
-        if(success && !errorString){
-            NSArray *devicesArr = [[SharedUser sharedManager] memberDevicesArr];
-            
-            NSPredicate *devicePredicate = [NSPredicate predicateWithFormat:@"Fingerprint == %@",[ShareOneUtility getUUID]];
-            
-            NSArray *deveiceExistArr = [devicesArr filteredArrayUsingPredicate:devicePredicate];
-            
-            if([deveiceExistArr count]>0){
-                
-                [weakSelf startApplication];
-                
-            }
-            else{
-                // Device not exist : We need to call PostDevices Api with QuickBalance & QuickTransaction permissions
-                __weak LoginViewController *weakSelf = self;
-                
-                NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-                NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-                
-                NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
-                
-                [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
-                    
-                    
-                    [weakSelf startApplication];
-                    
-                } failureBlock:^(NSError *error) {
-                    [weakSelf.loadingView setHidden:TRUE];
-                }];
-            }
-        }
-        else{
-            [weakSelf.loadingView setHidden:TRUE];
-            
-            [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorString title:@"" delegate:weakSelf];
-        }
-    } failureBlock:^(NSError *error) {
-        
-    }];
-}
-
 
 -(void)startLoadingServices{
     
@@ -879,7 +827,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     return YES;
 }
 
-#pragma mark - Context Menu
+/*#pragma mark - Context Menu
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
     //should be called after rotation animation completed
@@ -890,7 +838,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     
     [self.contextMenuTableView updateAlongsideRotation];
-}
+}*/
 
 - (void)viewWillTransitionToSize:(CGSize)size
        withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {

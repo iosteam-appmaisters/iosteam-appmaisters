@@ -772,7 +772,7 @@
 
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
-        progressHud.progress = uploadProgress.fractionCompleted;
+        self->progressHud.progress = uploadProgress.fractionCompleted;
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

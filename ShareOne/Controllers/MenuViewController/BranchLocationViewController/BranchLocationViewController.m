@@ -120,35 +120,11 @@
     CLLocationCoordinate2D user = [location coordinate];
     NSLog(@"longitude :%f",user.longitude);
     NSLog(@"latitude  :%f",user.latitude);
-//    CLLocation *location2=[[CLLocation alloc]initWithLatitude:37.785834 longitude:-122.406417];
-//    CLLocation *currentLocation=[[CLLocation alloc]initWithLatitude:user.latitude longitude:user.longitude];
     
     NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",user.latitude ,user.longitude];
     
-//    NSString *CoordinateStr=[NSString stringWithFormat:@"%f,%f",33.473178 ,-90.208646];
-
     sourceaddress = CoordinateStr;
     
-    //[self reverseGeoCode:currentLocation];
-}
-
--(void)reverseGeoCode:(CLLocation *)location
-{
-    [[GMSGeocoder geocoder]reverseGeocodeCoordinate:location.coordinate completionHandler:^(GMSReverseGeocodeResponse *response, NSError *error)
-     {
-         if (error)
-         {
-             NSLog(@"%@",[error description]);
-         }
-         else
-         {
-             id userCity=[[[response results] firstObject] locality];
-             NSLog(@"%@",userCity);
-             sourceaddress=userCity;
-             NSString *Distance=[ShareOneUtility getDistancefromAdresses:sourceaddress Destination:Destinationaddress];
-             NSLog(@"Distance..........----------------------%f miles",[Distance floatValue]* 0.000621371);
-         }
-     }];
 }
 
 /*********************************************************************************************************/

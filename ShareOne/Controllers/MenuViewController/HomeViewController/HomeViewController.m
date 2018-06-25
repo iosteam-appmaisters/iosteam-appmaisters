@@ -14,7 +14,7 @@
 #import "QuickBalances.h"
 #import "SuffixInfo.h"
 #import "User.h"
-#import "LoadingController.h"
+
 #import "UIPrintPageRenderer+PrintToPDF.h"
 //#import "WebViewProxyURLProtocol.h"
 
@@ -280,7 +280,7 @@
     
     NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
     
-    NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+    //NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
     
     if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/Log/Out"] || [[[request URL] absoluteString] containsString:@"/log/in"] || [[[request URL] absoluteString] containsString:@"/Log/In"]){
         
@@ -545,7 +545,7 @@
                              
                              [ShareOneUtility showProgressViewOnView:self.view];
 
-                             [_webview loadRequest:_webViewRequest];
+                             [self->_webview loadRequest:self->_webViewRequest];
                              
                          }];
     [alert addAction:tryAgain];

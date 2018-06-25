@@ -71,12 +71,12 @@
     [ShareOneUtility shouldHideTouchID:weakSelf completionBlock:^(BOOL success) {
         if(success){
             
-            [_touchIDLable setHidden:TRUE];
-            [_touchIDSwitch setHidden:TRUE];
+            [self->_touchIDLable setHidden:TRUE];
+            [self->_touchIDSwitch setHidden:TRUE];
         }
         else{
-            [_touchIDLable setHidden:FALSE];
-            [_touchIDSwitch setHidden:FALSE];
+            [self->_touchIDLable setHidden:FALSE];
+            [self->_touchIDSwitch setHidden:FALSE];
 
         }
     }];
@@ -126,8 +126,8 @@
         [ShareOneUtility isTouchIDAvailableWithDelegate:weakSelf completionBlock:^(BOOL success) {
             if(success){
                 key=TOUCH_ID_SETTINGS;
-                if([_touchIDSwitch isOn]){
-                    alertMesage= [NSString stringWithFormat:@"%@ ID will be requested.",_currentBiometric];
+                if([self->_touchIDSwitch isOn]){
+                    alertMesage= [NSString stringWithFormat:@"%@ ID will be requested.",self->_currentBiometric];
                     User *obj = [ShareOneUtility getUserObject];
                     if(!obj.hasUserUpdatedTouchIDSettings){
                         key=nil;
@@ -137,7 +137,7 @@
 
                 }
                 else{
-                    alertMesage= [NSString stringWithFormat:@"%@ ID will not not be requested.",_currentBiometric];
+                    alertMesage= [NSString stringWithFormat:@"%@ ID will not not be requested.",self->_currentBiometric];
                 }
             }
             else {

@@ -57,7 +57,7 @@
             break;
     }
     
-    url = [NSMutableString stringWithString:[url stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    url = [NSMutableString stringWithString:[url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]];
     
 
     [[AppServiceModel sharedClient] getMethod:nil AndParam:nil progressMessage:nil urlString:url delegate:nil completionBlock:^(NSObject *response) {

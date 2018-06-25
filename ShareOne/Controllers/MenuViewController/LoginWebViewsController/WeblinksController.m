@@ -124,10 +124,10 @@
                                    
                                    [ShareOneUtility showProgressViewOnView:self.view];
                                    
-                                   NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_webLink]];
+                                   NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:self->_webLink]];
                                    
                                    [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
-                                   [_webView loadRequest:request];
+                                   [self->_webView loadRequest:request];
                                    
                                }];
     [alert addAction:tryAgain];

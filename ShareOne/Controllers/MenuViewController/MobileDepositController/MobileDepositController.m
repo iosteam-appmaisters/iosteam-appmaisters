@@ -287,9 +287,9 @@
         
         if(success){
             VertifiObject *obj = (VertifiObject *)user;
-            _depositLimt=obj.DepositLimit;
+            weakSelf.depositLimt=obj.DepositLimit;
             
-            [_depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit Limit $%.2f)",[_depositLimt floatValue]]];
+            [weakSelf.depositLimitLbl setText:[NSString stringWithFormat:@"(Deposit Limit $%.2f)",[weakSelf.depositLimt floatValue]]];
             
             if(![obj.InputValidation isEqualToString:@"OK"]){
                 [self showAlertWithTitle:@"" AndMessage:obj.InputValidation];
@@ -364,16 +364,16 @@
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
         if(succes){
-            _objVertifiObject=(VertifiObject *)user;
+            weakSelf.objVertifiObject=(VertifiObject *)user;
             
-            if(![_objVertifiObject.InputValidation isEqualToString:@"OK"]){
-                [self showAlertWithTitle:@"" AndMessage:_objVertifiObject.InputValidation];
+            if(![weakSelf.objVertifiObject.InputValidation isEqualToString:@"OK"]){
+                [self showAlertWithTitle:@"" AndMessage:weakSelf.objVertifiObject.InputValidation];
             }
             
-            if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_PASSED] || [_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_FAILED]){
+            if([weakSelf.objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_PASSED] || [weakSelf.objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_FAILED]){
                 
-                float CARAmount = [_objVertifiObject.CARAmount floatValue];
-                float _ammountTxtFeild_value = [[_ammountTxtFeild text] floatValue];
+                float CARAmount = [weakSelf.objVertifiObject.CARAmount floatValue];
+                float _ammountTxtFeild_value = [[weakSelf.ammountTxtFeild text] floatValue];
                 if(_ammountTxtFeild_value >0.0){
                     
                     if(CARAmount!=_ammountTxtFeild_value){
@@ -381,7 +381,7 @@
                     }
                 }
                 else if (CARAmount>0)
-                    [_ammountTxtFeild setText:[NSString stringWithFormat:@"%.2f",CARAmount]];
+                    [weakSelf.ammountTxtFeild setText:[NSString stringWithFormat:@"%.2f",CARAmount]];
             }
             
             /*if([_objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_NOT_TESTED]){
@@ -718,6 +718,8 @@
 
 - (void) onPictureTaken:(UIImage *)imageColor withBWImage:(UIImage *)imageBW results:(NSDictionary *)dictResults isFront:(BOOL)isFront
 {
+    __weak MobileDepositController *weakSelf = self;
+    
     // dismiss CameraViewController
     [self dismissViewControllerAnimated:YES completion:^(void){} ];
     NSLog(@"%@",dictResults);
@@ -769,25 +771,25 @@
                            {
                                [self setSelectedImageOnButton:imageBW];
                                
-                               if(_isFrontorBack && imageErrors.count == 0)
+                               if(weakSelf.isFrontorBack && self->imageErrors.count == 0)
                                {
-                                   if (_isRecapturing){
-                                       _isRecapturing = NO;
-                                       _ammountTxtFeild.text = @"";
-                                       _backCheckImage.image = [UIImage imageNamed:@"back_check_placeholder"];;
-                                       [self viewDisabled:_recaptureBackCheckButton];
-                                       [_backCheckOverlayButton setTitle:@"Scan Back Of Check" forState:UIControlStateNormal];
+                                   if (weakSelf.isRecapturing){
+                                       weakSelf.isRecapturing = NO;
+                                       weakSelf.ammountTxtFeild.text = @"";
+                                       weakSelf.backCheckImage.image = [UIImage imageNamed:@"back_check_placeholder"];;
+                                       [self viewDisabled:weakSelf.recaptureBackCheckButton];
+                                       [weakSelf.backCheckOverlayButton setTitle:@"Scan Back Of Check" forState:UIControlStateNormal];
                                    }
-                                   [self viewEnabled:_recaptureFrontCheckButton];
-                                   _frontCheckImage.image = _frontImage;
-                                   [_frontCheckOverlayButton setTitle:@"View" forState:UIControlStateNormal];
+                                   [self viewEnabled:weakSelf.recaptureFrontCheckButton];
+                                   weakSelf.frontCheckImage.image = weakSelf.frontImage;
+                                   [weakSelf.frontCheckOverlayButton setTitle:@"View" forState:UIControlStateNormal];
                                    [self vertifiPaymentInIt];
                                }
                                else{
-                                   if(imageErrors.count == 0){
-                                       [self viewEnabled:_recaptureBackCheckButton];
-                                       _backCheckImage.image = _backImage;
-                                       [_backCheckOverlayButton setTitle:@"View" forState:UIControlStateNormal];
+                                   if(self->imageErrors.count == 0){
+                                       [self viewEnabled:weakSelf.recaptureBackCheckButton];
+                                       weakSelf.backCheckImage.image = weakSelf.backImage;
+                                       [weakSelf.backCheckOverlayButton setTitle:@"View" forState:UIControlStateNormal];
                                    }
                                }
 

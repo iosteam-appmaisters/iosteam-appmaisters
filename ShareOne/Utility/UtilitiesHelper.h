@@ -64,7 +64,6 @@
 +(BOOL) validateUsername:(NSString*)checkUsername;
 + (id)loadNibNamed:(NSString *)nibName ofClass:(Class)objClass;
 +(NSString *) addSuffixToNumber:(NSInteger) number;
-+(void)showAlert:(NSString*)message;
 +(void)createLayerWithRoundRect:(UIView*)view;
 +(NSString *) getStringFromObject:(NSObject *) object;
 +(NSString *) getEmptyStringFromObjectIfNull:(NSObject *) object;

@@ -88,8 +88,8 @@
         [[self homeDelegate] bringAdvertismentFront];
 
         if([sender isKindOfClass:[NSIndexPath class]]){
-            if (_homeDelegate != nil && [_homeDelegate respondsToSelector:@selector(pushViewControllerWithObject:)]){
-                [[self homeDelegate] pushViewControllerWithObject:_controllerInfoDict];
+            if (self->_homeDelegate != nil && [self->_homeDelegate respondsToSelector:@selector(pushViewControllerWithObject:)]){
+                [[self homeDelegate] pushViewControllerWithObject:self->_controllerInfoDict];
             }
         }
     }];

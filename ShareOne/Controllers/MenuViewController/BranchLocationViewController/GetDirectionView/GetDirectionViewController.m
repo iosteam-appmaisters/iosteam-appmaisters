@@ -47,8 +47,6 @@
 -(void)initCoorindatesArray
 {
     LocationArr=[[NSMutableArray alloc] init];
-//    NSString * center1=[ShareOneUtility geoCodeUsingAddress:self.sourceAddress];
-//    NSString * center2=[ShareOneUtility geoCodeUsingAddress:self.DestinationAddress];
     
     NSString * center1=self.sourceAddress;
     NSString * center2=self.DestinationAddress;
@@ -191,19 +189,19 @@
                         NSLog(@"No route");
                         [self noRouteFound];
 
-                        [_coordinates removeAllObjects];
+                        [self->_coordinates removeAllObjects];
                     }
                     else
                     {
-                        NSLog(@"Coordinates...%@",_coordinates);
-                        _markerStart.position = [[_coordinates objectAtIndex:0] coordinate];
-                        _markerStart.map = self.mapView;
-                        _markerFinish.position = [[_coordinates lastObject] coordinate];
-                        _markerFinish.map = self.mapView;
-                        _polyline = polyline;
-                        _polyline.strokeWidth = 3;
-                        _polyline.strokeColor = [UIColor blueColor];
-                        _polyline.map = self.mapView;
+                        NSLog(@"Coordinates...%@",self->_coordinates);
+                        self->_markerStart.position = [[self->_coordinates objectAtIndex:0] coordinate];
+                        self->_markerStart.map = self.mapView;
+                        self->_markerFinish.position = [[self->_coordinates lastObject] coordinate];
+                        self->_markerFinish.map = self.mapView;
+                        self->_polyline = polyline;
+                        self->_polyline.strokeWidth = 3;
+                        self->_polyline.strokeColor = [UIColor blueColor];
+                        self->_polyline.map = self.mapView;
                     }
                 }];
             }
