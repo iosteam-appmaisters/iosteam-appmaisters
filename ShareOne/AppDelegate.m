@@ -7,8 +7,6 @@
 //
 
 
-//Test Commits by Muhammad Rizwan
-
 #import "AppDelegate.h"
 #import "ShareOneUtility.h"
 #import "ConstantsShareOne.h"
