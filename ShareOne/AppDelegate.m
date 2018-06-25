@@ -26,7 +26,7 @@
 
 @implementation AppDelegate
 
-/* TEST COMMIT FROM SHAREONE-NSCONFIG */
+/* TEST COMMIT FROM SHAREONE-NSCONFIG BY RIZWAAN */
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
