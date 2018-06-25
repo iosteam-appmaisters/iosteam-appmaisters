@@ -699,16 +699,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 -(IBAction)pinResetButtonClicked:(id)sender{
     
-    BOOL isFromForgotUserName =FALSE;
     UIButton *btn = (UIButton *)sender;
     if(btn.tag==111){
-        isFromForgotUserName=TRUE;
-        
         [self openForgotPasswordInWebView:YES];
         return;
     }
     else{
-        isFromForgotUserName=FALSE;
         [self openForgotPasswordInWebView:NO];
         return;
     }
