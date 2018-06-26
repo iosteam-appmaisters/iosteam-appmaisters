@@ -119,8 +119,6 @@
         }
         _scrollView.scrollEnabled = NO;
     }
-    
-//    _submittBtn.enabled = NO;
 }
 
 -(void)backButtonClicked:(id)sender{
@@ -910,12 +908,6 @@
         [self.view layoutIfNeeded];    }
     return TRUE;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (BOOL)shouldAutorotate{
     

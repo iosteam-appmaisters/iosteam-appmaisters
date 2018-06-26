@@ -81,8 +81,6 @@
 -(IBAction)goDeclineAgreemant:(id)sender{
     
     [self navigateToLastController];
-    
-//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)navigateToLastController{
@@ -98,19 +96,6 @@
     [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
     //rootview
     self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objHomeViewController,nil];
-    
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
     
 }
 

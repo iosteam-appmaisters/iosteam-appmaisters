@@ -53,7 +53,7 @@
         
         [ShareOneUtility hideProgressViewOnView:self.view];
         
-        _qbArr = qbObjects;
+        weakSelf.qbArr = qbObjects;
         
         [weakSelf.qbTblView reloadData];
         

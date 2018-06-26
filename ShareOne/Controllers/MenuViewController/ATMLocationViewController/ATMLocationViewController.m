@@ -90,10 +90,6 @@
     CLLocationCoordinate2D user = [location coordinate];
     NSLog(@"longitude :%f",user.longitude);
     NSLog(@"latitude  :%f",user.latitude);
-//        CLLocation *location2=[[CLLocation alloc]initWithLatitude:37.785834 longitude:-122.406417];
-    
-//    user= [location2 coordinate];
-//    CLLocation *currentLocation=[[CLLocation alloc]initWithLatitude:user.latitude longitude:user.longitude];
     
     lat=[NSString stringWithFormat:@"%f",user.latitude];
     lon=[NSString stringWithFormat:@"%f",user.longitude];
@@ -182,17 +178,8 @@
     
     __weak ATMLocationViewController *weakSelf = self;
     
-//    http://api.co-opfs.org/locator/proximitySearch?latitude=34.104369&longitude=117.573459
-//    NSDictionary *searchByZipCode =[NSDictionary dictionaryWithObjectsAndKeys:@"91730",@"ZipCode", nil];
-//    
-//    NSDictionary *searchByStateNCity =[NSDictionary dictionaryWithObjectsAndKeys:@"CA",@"state",@"Hermosa Beach",@"city", nil];
-//    
-//    NSDictionary *searchByCoordinate =[NSDictionary dictionaryWithObjectsAndKeys:@"34.104369",@"latitude",@"117.573459",@"longitude", nil];
-//    
     NSDictionary *maxResultsNRadiousNZip = dict ;
-     
-//    @"A",@"loctype"
-    
+
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     
     [Location getAllBranchLocations:maxResultsNRadiousNZip delegate:weakSelf completionBlock:^(NSArray *locations) {
@@ -361,14 +348,12 @@
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker{
-//    [_getDirectionButton setHidden:FALSE];
     selectedMarker=marker;
     [self showDirectionMenu:mapView];
     
     return FALSE;
 }
 - (void)mapView:(GMSMapView *)mapView didCloseInfoWindowOfMarker:(GMSMarker *)marker{
-   // [_getDirectionButton setHidden:[selectedMarker isEqual:marker]];
 }
 
 -(void)showDirectionMenu:(id)sender {
@@ -382,15 +367,7 @@
          mapV.selectedMarker = nil;
          
      }]];
-     
-     /*[actionSheet addAction:[UIAlertAction actionWithTitle:@"Show Inside App" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-     
-     __weak ATMLocationViewController *weakSelf = self;
-     [ShareOneUtility showProgressViewOnView:weakSelf.view];
-     [self showCurrentLocationWithRefrenceMarker];
-     
-     }]];*/
-     
+    
      [actionSheet addAction:[UIAlertAction actionWithTitle:@"Get Directions" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
      
      [self showDirectionOutsideApp];
@@ -448,7 +425,6 @@
     GMSMarker *_markerCurrentLoc = [GMSMarker new];
     _markerCurrentLoc.position = CLLocationCoordinate2DMake([lat floatValue], [lon floatValue]);
     _markerCurrentLoc.map = self.mapView;
-//    _markerCurrentLoc.title=@"Current Location";
 
     [self.mapView setSelectedMarker:_markerCurrentLoc];
     

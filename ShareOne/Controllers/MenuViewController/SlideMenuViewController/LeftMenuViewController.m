@@ -1,11 +1,13 @@
 
 
 #import "LeftMenuViewController.h"
-#import "WebViewController.h"
+
 #import "AccordionHeaderView.h"
 #import "ShareOneUtility.h"
 #import "SideMenuCell.h"
 #import "StyleValuesObject.h"
+#import "UIColor+HexColor.h"
+#import "ConstantsShareOne.h"
 
 @interface LeftMenuViewController ()<UIGestureRecognizerDelegate>
 
@@ -49,10 +51,6 @@
     [self.fzaTblView registerNib:[UINib nibWithNibName:@"AccordionHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:kAccordionHeaderViewReuseIdentifier];
     
     self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    
-    //[self performSelector:@selector(reloadCustomData) withObject:nil afterDelay:2];
-
 
 }
 
@@ -104,9 +102,6 @@
     NSDictionary *dict = _contentArr[section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     
-
-
-//    if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0 && [[dict valueForKey:HAS_SECTIONS] boolValue])
     if([subCatArr isKindOfClass:[NSArray class]] && [subCatArr count]>0)
         subCatCount = [subCatArr count];
     
@@ -119,28 +114,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.0;
-//    return UITableViewAutomaticDimension;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return kDefaultAccordionHeaderViewHeight;
-    
-//    return UITableViewAutomaticDimension ;
-    
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    return 100.0;
-
     return [self tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-//    return 100.0;
-
     return [self tableView:tableView heightForHeaderInSection:section];
 }
 
@@ -228,8 +212,6 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"didSelectRowAtIndexPath");
-    
     NSDictionary *dict = _contentArr[indexPath.section];
     NSArray *catArr =  [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
     _controllerInfoDict = catArr[indexPath.row];
@@ -240,12 +222,9 @@
 #pragma mark - <FZAccordionTableViewDelegate> -
 
 - (void)tableView:(FZAccordionTableView *)tableView willOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-//    NSLog(@"willOpenSection");
     NSDictionary *dict = _contentArr[section];
     NSArray *subCatArr = [dict valueForKey:MAIN_CAT_SUB_CATEGORIES];
-//    if([subCatArr isKindOfClass:[NSArray class]] && ![[dict valueForKey:HAS_SECTIONS] boolValue])
     if(![subCatArr isKindOfClass:[NSArray class]])
-
     {
         _controllerInfoDict = _contentArr[section];
         [self backgroundButtonClicked:[NSIndexPath indexPathForRow:0 inSection:section]];

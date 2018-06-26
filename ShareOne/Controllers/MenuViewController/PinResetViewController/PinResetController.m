@@ -104,14 +104,14 @@
         
         [User userPinReset:[NSDictionary dictionaryWithObjectsAndKeys:_accountNameTxtFeild.text,@"Account",_taxIDTxtFeild.text,@"Last4",_dateTxtFeild.text,@"DateOfBirth",_postalCodeTxtFeild.text,@"PostalCode", nil] delegate:self completionBlock:^(id  response) {
             
-            _accountInfoDict=(NSDictionary *)response;
+            weakSelf.accountInfoDict=(NSDictionary *)response;
             
-            [_emailLbl setText:_accountInfoDict[@"EmailAddress"]];
-            [_passLbl setText:_accountInfoDict[@"TempPassword"]];
-            [_dateLbl setText:_accountInfoDict[@"NewExpiration"]];
+            [weakSelf.emailLbl setText:weakSelf.accountInfoDict[@"EmailAddress"]];
+            [weakSelf.passLbl setText:weakSelf.accountInfoDict[@"TempPassword"]];
+            [weakSelf.dateLbl setText:weakSelf.accountInfoDict[@"NewExpiration"]];
             
             
-            [_accountInfoView setHidden:FALSE];
+            [weakSelf.accountInfoView setHidden:FALSE];
             
             
         } failureBlock:^(NSError *error) {

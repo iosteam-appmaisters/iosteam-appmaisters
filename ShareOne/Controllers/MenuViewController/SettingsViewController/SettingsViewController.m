@@ -84,16 +84,12 @@
     [_quickBalanceSwitch setOn:[ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_showOffersSwitch setOn:[ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]];
     [_touchIDSwitch setOn:[ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]];
-    //[_retinaScanSwitch setOn:[ShareOneUtility getSettingsWithKey:RETINA_SCAN_SETTINGS]];
     [_pushNotifSwitch setOn:[ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS]];
-    //[_reSkinSwitch setOn:[ShareOneUtility getSettingsWithKey:RE_SKIN_SETTINGS]];
 }
 
 
 -(IBAction)changeSettingsAction:(UISwitch *)sender{
     
-//    User *obj = [ShareOneUtility getUserObject];
-
     __weak SettingsViewController *weakSelf = self;
 
     __block NSString *key=nil;
@@ -117,10 +113,6 @@
             alertMesage=@"Offers will not be displayed.";
         }
     }
-    /*else if([sender isEqual:_reSkinSwitch]){
-        key=RE_SKIN_SETTINGS;
-
-    }*/
     else if([sender isEqual:_touchIDSwitch]){
         
         [ShareOneUtility isTouchIDAvailableWithDelegate:weakSelf completionBlock:^(BOOL success) {
@@ -146,16 +138,6 @@
             }
         }];
     }
-    /*else if([sender isEqual:_retinaScanSwitch]){
-        key=RETINA_SCAN_SETTINGS;
-        if([_retinaScanSwitch isOn]){
-            alertMesage=@"Retina Scan will be active after your next login.";
-        }
-        else{
-            alertMesage=@"Retina Scan won't be active.";
-        }
-
-    }*/
     else if([sender isEqual:_pushNotifSwitch]){
         key=PUSH_NOTIF_SETTINGS;
         if([_pushNotifSwitch isOn]){

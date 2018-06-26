@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "WebViewController.h"
+
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
 #import "MemberDevices.h"
@@ -16,9 +16,6 @@
 #import "User.h"
 
 #import "UIPrintPageRenderer+PrintToPDF.h"
-//#import "WebViewProxyURLProtocol.h"
-
-
 
 @implementation HomeViewController
 
@@ -54,25 +51,7 @@
                 [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SHOULD_SSO];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 
-                //request =(NSMutableURLRequest *)[urlPath mutableCopy];
-
                 [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
-
-                /*NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                            [Configuration getClientSettingsContent].basewebviewurl, NSHTTPCookieDomain,
-                                            _url, NSHTTPCookieOriginURL,
-                                            @"/", NSHTTPCookiePath,
-                                            @"NSHOME_CULTURE_COOKIE", NSHTTPCookieName,
-                                            @"es", NSHTTPCookieValue,
-                                            nil];
-                
-                NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:properties];
-                
-                NSArray* cookies = [NSArray arrayWithObjects: cookie, nil];
-                
-                NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
-                
-                [request setAllHTTPHeaderFields:headers]; */
                 
                 [weakSelf.webview loadRequest:request];
 
@@ -103,32 +82,12 @@
 }
 
 -(void)showMenuFromHomeView{
-    
     [self performSelector:@selector(showSideMenu) withObject:nil afterDelay:0.1];
-//    [self showSideMenu];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-//    if([_webview.request.URL.absoluteString containsString:@"Account/Summary"])
-//    if([self.navigationItem.title isEqualToString:@"Account Summary"] && !_isLoadedFirstTime){
-//        [self showMenuFromHomeView];
-//    }
-//    else
-//        _isLoadedFirstTime= FALSE;
-//    [self sendAdvertismentViewToBack];
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    //[self sendAdvertismentViewToBack];
     [self bringAdvertismentViewToFront];
-
 }
 
 - (void)dealloc {
@@ -280,8 +239,6 @@
     
     NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
     
-    //NSString *yourHTMLSourceCodeString_inner = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-    
     if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/Log/Out"] || [[[request URL] absoluteString] containsString:@"/log/in"] || [[[request URL] absoluteString] containsString:@"/Log/In"]){
         
         shouldReload = TRUE;
@@ -312,11 +269,6 @@
             [[NSUserDefaults standardUserDefaults]synchronize];
         }
     }
-    
-//    if([[[request URL] absoluteString] containsString:@"print=True"]){
-//        shouldReload = FALSE;
-//        [self printIt:yourHTMLSourceCodeString_inner];
-//    }
     
     if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
         shouldReload = FALSE;

@@ -106,7 +106,6 @@
 		1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3ED8591E2676BD00AE91C1 /* ContactDeleteCell.m */; };
 		1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F0F9E1E11484E00B57B5F /* WeblinksController.m */; };
 		1D3F46D11E5ECC7E009E8F50 /* PlainCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3F46D01E5ECC7E009E8F50 /* PlainCustomLabel.m */; };
-		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
 		1D5441361E51834F00C07072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D5441351E51834F00C07072 /* Assets.xcassets */; };
@@ -129,7 +128,6 @@
 		1DBD4DC21DB1053200943995 /* QBFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD4DC11DB1053200943995 /* QBFooterView.m */; };
 		1DBD4DC41DB105BC00943995 /* QBFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DBD4DC31DB105BC00943995 /* QBFooterView.xib */; };
 		1DDAC0E01EB86ACF0067D85A /* InAppBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDAC0DF1EB86ACF0067D85A /* InAppBrowserController.m */; };
-		1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBD76A1D93F58600277DF6 /* PayPersonController.m */; };
 		1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6081E1DAB997900FF85E2 /* CashDeposit.m */; };
 		1DFE17251EE93D8700CDEB70 /* ApiSettingsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFE17241EE93D8700CDEB70 /* ApiSettingsObject.m */; };
 		2A1B38C5F344B79D83DE1BDB /* libPods-ShareOne.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */; };
@@ -147,12 +145,9 @@
 		6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405D91D8306C800358036 /* LoginViewController.m */; };
 		6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405DC1D8306D900358036 /* ForgotPasswordViewController.m */; };
 		6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405DF1D8306EC00358036 /* QuickBalancesViewController.m */; };
-		6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E21D83070B00358036 /* SendMoneyViewController.m */; };
 		6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E51D83071D00358036 /* SettingsViewController.m */; };
 		6BD405EC1D83074600358036 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EB1D83074600358036 /* SplashViewController.m */; };
-		6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */; };
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
-		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
 		8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */; };
 		9A44C9C420B3F16D0031531B /* FaceIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A44C9C320B3F16D0031531B /* FaceIDSettingsController.m */; };
 		9A986AA420DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A986AA320DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m */; };
@@ -359,8 +354,6 @@
 		1D3F0F9E1E11484E00B57B5F /* WeblinksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeblinksController.m; sourceTree = "<group>"; };
 		1D3F46CF1E5ECC7E009E8F50 /* PlainCustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlainCustomLabel.h; sourceTree = "<group>"; };
 		1D3F46D01E5ECC7E009E8F50 /* PlainCustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlainCustomLabel.m; sourceTree = "<group>"; };
-		1D4245D31DCB198400A76E52 /* AdvertisementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementController.h; sourceTree = "<group>"; };
-		1D4245D41DCB198400A76E52 /* AdvertisementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementController.m; sourceTree = "<group>"; };
 		1D4245D61DCB780200A76E52 /* QuickTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTransaction.h; sourceTree = "<group>"; };
 		1D4245D71DCB780200A76E52 /* QuickTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickTransaction.m; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -402,8 +395,6 @@
 		1DDAC0DE1EB86ACF0067D85A /* InAppBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppBrowserController.h; sourceTree = "<group>"; };
 		1DDAC0DF1EB86ACF0067D85A /* InAppBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppBrowserController.m; sourceTree = "<group>"; };
 		1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationDelegate.h; sourceTree = "<group>"; };
-		1DEBD7691D93F58600277DF6 /* PayPersonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPersonController.h; sourceTree = "<group>"; };
-		1DEBD76A1D93F58600277DF6 /* PayPersonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayPersonController.m; sourceTree = "<group>"; };
 		1DF6081D1DAB997900FF85E2 /* CashDeposit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CashDeposit.h; sourceTree = "<group>"; };
 		1DF6081E1DAB997900FF85E2 /* CashDeposit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashDeposit.m; sourceTree = "<group>"; };
 		1DFE17231EE93D8700CDEB70 /* ApiSettingsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiSettingsObject.h; sourceTree = "<group>"; };
@@ -438,18 +429,12 @@
 		6BD405DC1D8306D900358036 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		6BD405DE1D8306EC00358036 /* QuickBalancesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickBalancesViewController.h; sourceTree = "<group>"; };
 		6BD405DF1D8306EC00358036 /* QuickBalancesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickBalancesViewController.m; sourceTree = "<group>"; };
-		6BD405E11D83070B00358036 /* SendMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMoneyViewController.h; sourceTree = "<group>"; };
-		6BD405E21D83070B00358036 /* SendMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMoneyViewController.m; sourceTree = "<group>"; };
 		6BD405E41D83071D00358036 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		6BD405E51D83071D00358036 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		6BD405EA1D83074600358036 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		6BD405EB1D83074600358036 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
-		6BD405ED1D83077D00358036 /* SurchargeAtmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurchargeAtmsViewController.h; sourceTree = "<group>"; };
-		6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurchargeAtmsViewController.m; sourceTree = "<group>"; };
 		6BD405F01D83079100358036 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		6BD405F11D83079100358036 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		6BD405F41D8307DF00358036 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
-		6BD405F51D8307DF00358036 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
 		8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
@@ -850,15 +835,6 @@
 			path = LoginWebViewsController;
 			sourceTree = "<group>";
 		};
-		1D4245D21DCB193700A76E52 /* AdvertismentController */ = {
-			isa = PBXGroup;
-			children = (
-				1D4245D31DCB198400A76E52 /* AdvertisementController.h */,
-				1D4245D41DCB198400A76E52 /* AdvertisementController.m */,
-			);
-			path = AdvertismentController;
-			sourceTree = "<group>";
-		};
 		1D4546DA1E093487004797FD /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,15 +913,6 @@
 				1DDC9E5C1D910BE70049DAD4 /* HomeNavigationDelegate.h */,
 			);
 			path = Delegates;
-			sourceTree = "<group>";
-		};
-		1DEBD7681D93F56E00277DF6 /* PayPersonController */ = {
-			isa = PBXGroup;
-			children = (
-				1DEBD7691D93F58600277DF6 /* PayPersonController.h */,
-				1DEBD76A1D93F58600277DF6 /* PayPersonController.m */,
-			);
-			path = PayPersonController;
 			sourceTree = "<group>";
 		};
 		1DF6081C1DAB995500FF85E2 /* CashDepositEntity */ = {
@@ -1097,18 +1064,13 @@
 				1D72E24A1DEC023700A054BA /* NotifSettingsViewController */,
 				1D38BE171DE6F45A00F37849 /* VertifiAgreemantViewController */,
 				1D33909A1DE5A9C800D89982 /* DepositListViewController */,
-				1D4245D21DCB193700A76E52 /* AdvertismentController */,
-				1DEBD7681D93F56E00277DF6 /* PayPersonController */,
 				1D8478EB1D93D68400153B19 /* MobileDepositController */,
 				F26255401D9416F400383B9E /* ATMLocationViewController */,
-				6BD405F31D8307C800358036 /* WebViewController */,
 				6BD405CD1D83068D00358036 /* BranchLocationViewController */,
 				6BD405CE1D83068D00358036 /* LoginViewController */,
 				6BD405CF1D83068D00358036 /* QuickBalancesViewController */,
-				6BD405D01D83068D00358036 /* SendMoneyViewController */,
 				6BD405D11D83068D00358036 /* SettingsViewController */,
 				6BD405D31D83068D00358036 /* SplashViewController */,
-				6BD405D41D83068D00358036 /* SurchargeAtmsViewController */,
 				6BD405B31D829EBA00358036 /* HomeViewController */,
 				6BD405AF1D81B91E00358036 /* SlideMenuViewController */,
 			);
@@ -1233,15 +1195,6 @@
 			path = QuickBalancesViewController;
 			sourceTree = "<group>";
 		};
-		6BD405D01D83068D00358036 /* SendMoneyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6BD405E11D83070B00358036 /* SendMoneyViewController.h */,
-				6BD405E21D83070B00358036 /* SendMoneyViewController.m */,
-			);
-			path = SendMoneyViewController;
-			sourceTree = "<group>";
-		};
 		6BD405D11D83068D00358036 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1258,24 +1211,6 @@
 				6BD405EB1D83074600358036 /* SplashViewController.m */,
 			);
 			path = SplashViewController;
-			sourceTree = "<group>";
-		};
-		6BD405D41D83068D00358036 /* SurchargeAtmsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6BD405ED1D83077D00358036 /* SurchargeAtmsViewController.h */,
-				6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */,
-			);
-			path = SurchargeAtmsViewController;
-			sourceTree = "<group>";
-		};
-		6BD405F31D8307C800358036 /* WebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6BD405F41D8307DF00358036 /* WebViewController.h */,
-				6BD405F51D8307DF00358036 /* WebViewController.m */,
-			);
-			path = WebViewController;
 			sourceTree = "<group>";
 		};
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
@@ -1599,12 +1534,10 @@
 				6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */,
 				1D20C27D1E4E110500D3FC93 /* RegistrationViewController.m in Sources */,
 				F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */,
-				6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */,
 				1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */,
 				1D3D037C1E602EF300886C79 /* CustomTextFeild.m in Sources */,
 				9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */,
 				1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */,
-				6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */,
 				1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */,
 				1D38993D1E5DA64300A27358 /* UIColor+HexColor.m in Sources */,
 				1D20C2711E4E110500D3FC93 /* ErrorViewController.m in Sources */,
@@ -1620,7 +1553,6 @@
 				1D10A6111E2606E100BD40CD /* PaymentController.m in Sources */,
 				1D3ED8521E2662E300AE91C1 /* ContactsHeaderView.m in Sources */,
 				6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */,
-				6BD405F61D8307DF00358036 /* WebViewController.m in Sources */,
 				1D20C26C1E4E110500D3FC93 /* DepositSubmitViewController.m in Sources */,
 				1D31B9B91E5EBE4300503E45 /* CustomLabel.m in Sources */,
 				1D1F21A61EF3E7BF00C1045F /* DepositListController.m in Sources */,
@@ -1636,7 +1568,6 @@
 				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
 				1D20C2931E4E110500D3FC93 /* VIPViewUtility.m in Sources */,
-				1DEBD76B1D93F58600277DF6 /* PayPersonController.m in Sources */,
 				1D20C27E1E4E110500D3FC93 /* ResponseDictionary.m in Sources */,
 				1D31B9BC1E5EC44600503E45 /* PlainCustomButton.m in Sources */,
 				1D10A60E1E2606CE00BD40CD /* PaymentSettingController.m in Sources */,
@@ -1680,7 +1611,6 @@
 				1D20C2611E4E110500D3FC93 /* CameraInstructionViewController.m in Sources */,
 				1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */,
 				1D5F34401E2F572500026EF2 /* TransferSomeOneElseCell.m in Sources */,
-				1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */,
 				1D3C4D921E5D9BE20022AF61 /* Configuration.m in Sources */,
 				1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */,
 				1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */,

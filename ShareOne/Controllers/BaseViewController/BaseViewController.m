@@ -3,11 +3,9 @@
 #import <UIKit/UIKit.h>
 #import "ConstantsShareOne.h"
 #import "LeftMenuViewController.h"
-#import "WebViewController.h"
 #import "HomeViewController.h"
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
-#import "AdvertisementController.h"
 #import "VertifiAgreemantController.h"
 #import "MobileDepositController.h"
 #import "IQKeyboardManager.h"
@@ -24,19 +22,10 @@
 
 @implementation BaseViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:TRUE];
 
@@ -45,8 +34,6 @@
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:dummyView];
    
-//    [self manageAds];
-
     [self createLefbarButtonItems];
     
     [self setNavigationBarImage];
@@ -59,7 +46,6 @@
     
     [self setGesturesToBringLeftMenu];
     
-//    [self performSelector:@selector(addAdvertismentControllerOnBottomScreen) withObject:nil afterDelay:2];
 }
 
 -(void)setGesturesToBringLeftMenu{
@@ -286,12 +272,6 @@
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)setTitleTextAttribute{
     
     StyleValuesObject *obj = [Configuration getStyleValueContent];
@@ -317,7 +297,6 @@
     titleLabel.text = title;
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     titleLabel.backgroundColor = [UIColor clearColor];
-//    titleLabel.textColor = [UIColor colorWithRed:170.0/255.0 green:31.0/255.0 blue:35.0/255.0 alpha:1.0];
     titleLabel.textColor = color;
 
     if(APPC_IS_IPAD){
@@ -328,8 +307,6 @@
     }
     
     titleLabel.numberOfLines=0;
-//    titleLabel.adjustsFontSizeToFitWidth = YES; // As alternative you can also make it multi-line.
-//    titleLabel.minimumScaleFactor = 0.5;
     self.navigationItem.titleView = titleLabel;
 
 }
@@ -409,7 +386,7 @@
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent; // your own style
+    return UIStatusBarStyleLightContent;
 }
 
 
@@ -431,8 +408,6 @@
     NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     NSString *webViewController = WEB_VIEWCONTROLLER_ID;
-    
-    
     
     // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
 

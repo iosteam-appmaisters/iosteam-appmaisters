@@ -138,7 +138,7 @@
             VertifiObject * obj = (VertifiObject *)user;
             if(!obj.deletedError){
                 
-                [_contentArr removeObjectAtIndex:index];
+                [weakSelf.contentArr removeObjectAtIndex:index];
                 [weakSelf.tblView reloadData];
                 [weakSelf reloadCustomData];
             }

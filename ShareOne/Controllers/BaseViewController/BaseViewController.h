@@ -18,7 +18,6 @@
 @interface BaseViewController : UIViewController<HomeNavigationDelegate>{
     
     UIViewController *currentController;
-//    BOOL hideSideMenu ;
 
 }
 
@@ -28,9 +27,6 @@
 -(void)createLefbarButtonItems;
 -(void)setBackgroundImage;
 -(void)setNavigationBarImage;
-//-(void)showNavigationBarWithBgImagename:(NSString*)imageName andLeftBarButtonItem:(UIButton*)leftBarButton andRightBarButtonArray:(NSArray*)rightBarButton andTitleText:(NSString*)title;
-//-(void)createOptionButton;
-//-(void)showToastWithMessage:(NSString*)text;
 -(void)addAdvertismentControllerOnBottomScreen;
 -(void)sendAdvertismentViewToBack;
 -(void)bringAdvertismentViewToFront;

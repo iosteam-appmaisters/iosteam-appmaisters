@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     Configuration *config = [ShareOneUtility getConfigurationFile];
     UIColor *color = [UIColor colorWithHexString:config.variableTextColor];
@@ -76,9 +75,6 @@
     
 }
 
-
-
-
 - (BOOL)shouldAutorotate{
     
     return YES;
@@ -86,12 +82,6 @@
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Status Alert Message
@@ -135,15 +125,4 @@
     [self presentViewController:alert animated:YES completion:nil];
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

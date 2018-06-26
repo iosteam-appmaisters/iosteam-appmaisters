@@ -70,19 +70,13 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
-//    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-//    self.navigationItem.title=theTitle;
-    
+   
     __weak PasswordChangeController *weakSelf = self;
 
     NSLog(@"%@",webView.request.URL.absoluteString);
     if([webView.request.URL.absoluteString containsString:@"Account/Summary"]){
-        // disabled auto login
-//        [_loginDelegate startLoadingServicesFromChangePassword:_user];
         _loginDelegate.isComingAfterPressedOpenUrlButton=TRUE;
         [self dismissViewControllerAnimated:NO completion:nil];
-//        [ShareOneUtility setStatusOfPasswordChanged:YES];
     }
     
     if([webView.request.URL.absoluteString isEqualToString:@"https://nsmobilecp.ns3web.com/"]){

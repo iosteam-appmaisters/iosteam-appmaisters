@@ -17,10 +17,7 @@
 
 }
 -(IBAction)noButtonClicked:(id)sender{
-//    [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:TOUCH_ID_SETTINGS_UPDATION];
-//    [ShareOneUtility saveSettingsWithStatus:FALSE AndKey:TOUCH_ID_SETTINGS];
     [self.navigationController popViewControllerAnimated:YES];
-
 }
 
 @end
