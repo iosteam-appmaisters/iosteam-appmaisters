@@ -39,20 +39,12 @@
     
     currentUser = [ShareOneUtility getUserObject];
     
-    
-    
     if(![ShareOneUtility getFavContactsForUser:currentUser]){
         contactsArr=[[NSMutableArray alloc] init];
     }
     else
         contactsArr=[ShareOneUtility getFavContactsForUser:currentUser];
 
-    
-    //[_profileLinkTextFeild setText:@"paypal.me/"];
-//    [_profileNameTextFeild setText:@"Asd"];
-
-
-    // Do any additional setup after loading the view.
     self.favContactsTblView.allowMultipleSectionsOpen = NO;
     [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([ContactsHeaderView class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kContactsHeaderViewReuseIdentifier];
     
@@ -164,13 +156,11 @@
     [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
     [_favContactsTblView reloadData];
     [_profileNameTextFeild setText:@""];
-    //[_profileLinkTextFeild setText:@"paypal.me/"];
 
     [_profileNameTextFeild resignFirstResponder];
     [_profileLinkTextFeild resignFirstResponder];
     [self updateViewWithRefrenceOfContacts];
 
-    //[self updateViewWithRefrenceOfContacts];
 }
 
 -(IBAction)closeWebView:(id)sender{
@@ -193,15 +183,8 @@
     [ShareOneUtility hideProgressViewOnView:self.view];
     
     [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
-    
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -226,13 +209,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self tableView:tableView heightForRowAtIndexPath:indexPath];
-//    return UITableViewAutomaticDimension;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
     return [self tableView:tableView heightForHeaderInSection:section];
-//    return UITableViewAutomaticDimension;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -256,13 +236,6 @@
     else{
         EditContactCell *editCell =  (EditContactCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EditContactCell class]) forIndexPath:indexPath];
         
-//        NSAttributedString *nickNamePlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new Nickname" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
-//        
-//        NSAttributedString *urlPlaceHolder = [[NSAttributedString alloc] initWithString:@"Enter the new URL" attributes:@{ NSForegroundColorAttributeName : DEFAULT_RED_COLOR }];
-//        editCell.nickNameTxtFeild.attributedPlaceholder = nickNamePlaceHolder;
-//        editCell.urlTxtFeild.attributedPlaceholder = urlPlaceHolder;
-
-        
         [editCell.nickNameTxtFeild setTag:indexPath.section];
         [editCell.urlTxtFeild setTag:indexPath.section];
         
@@ -279,8 +252,6 @@
         editCell.urlTxtFeild.delegate=self;
         [editCell.confirmContactNameBtn setTag:indexPath.section];
         [editCell.confirmContactNameBtn addTarget:self action:@selector(confirmButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-
-        
 
         cell = editCell;
     }
@@ -315,8 +286,6 @@
 #pragma mark - Selector Methods
 -(void)deleteButtonAction:(id)sender{
     
-//    [self setEditModeActive:TRUE];
-
     UIButton *btnCase = (UIButton *)sender;
     int sectionSelected = (int) btnCase.tag;
 
@@ -330,7 +299,6 @@
 }
 
 -(void)editButtonAction:(id)sender{
-//    [self setEditModeActive:TRUE];
     
     UIButton *btnCase = (UIButton *)sender;
     int sectionSelected = (int) btnCase.tag;
@@ -346,7 +314,6 @@
 }
 
 -(void)deleteButtonYesAction:(id)sender{
-    //[self updateViewWithRefrenceOfContacts];
     
     UIButton *btn = (UIButton *)sender;
     
@@ -369,7 +336,6 @@
 }
 
 -(void)deleteButtonNoAction:(id)sender{
-    //[self updateViewWithRefrenceOfContacts];
     
     UIButton *btn = (UIButton *)sender;
 
@@ -417,14 +383,12 @@
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-    //        NSLog(@"didOpenSection");
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-    //        NSLog(@"didCloseSection");
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -441,23 +405,11 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     NSLog(@"textFieldDidBeginEditing");
-//    int sectionSelected = (int) textField.tag;
-//    
-//    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
-//    
-//    NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:0 inSection:sectionSelected];
-//    NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
-////    [_favContactsTblView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
-//    
-//    NSIndexSet *section = [NSIndexSet indexSetWithIndex:sectionSelected];
-//    [_favContactsTblView reloadSections:section withRowAnimation:UITableViewRowAnimationTop];
-
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [self adjustTextFeildPositionForTextFeild:textField];
-
     return TRUE;
 }
 
@@ -497,16 +449,4 @@
     }
     return YES;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -29,7 +29,6 @@
 #define UserUserImage @"UserUserImage"
 #define UserUserCountryName @"UserUserCountryName"
 #define UserUserCityName @"UserUserCityName"
-#define UserSocialMediaId @"UserSocialMediaId"
 #define PushStatus   @"PushStatus"
 
 #define UserLoginType @"UserLoginType"

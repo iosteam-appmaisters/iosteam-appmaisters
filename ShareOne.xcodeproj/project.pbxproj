@@ -109,7 +109,6 @@
 		1D4245D51DCB198400A76E52 /* AdvertisementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D41DCB198400A76E52 /* AdvertisementController.m */; };
 		1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4245D71DCB780200A76E52 /* QuickTransaction.m */; };
 		1D4BA8701D9CE98E00395B16 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */; };
-		1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */; };
 		1D5441361E51834F00C07072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D5441351E51834F00C07072 /* Assets.xcassets */; };
 		1D5F34381E2F4C2700026EF2 /* PaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F34371E2F4C2700026EF2 /* PaymentCell.m */; };
 		1D5F343B1E2F4FFF00026EF2 /* MoneyTransferHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F343A1E2F4FFF00026EF2 /* MoneyTransferHeader.m */; };
@@ -124,7 +123,6 @@
 		1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D956DC81DA3AFE2007F6D11 /* CustomNavController.m */; };
 		1DA3B5FA1DB7950500DB5731 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3B5F91DB7950500DB5731 /* Location.m */; };
 		1DA8D2881F45E4F900FD14E1 /* ClientApplicationsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA8D2871F45E4F900FD14E1 /* ClientApplicationsObject.m */; };
-		1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB927371DBE193E00C08F29 /* LoadingController.m */; };
 		1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */; };
 		1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9273E1DBE29B800C08F29 /* LoaderServices.m */; };
 		1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD4DBE1DB0EE7F00943995 /* MemberDevices.m */; };
@@ -151,12 +149,10 @@
 		6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405DF1D8306EC00358036 /* QuickBalancesViewController.m */; };
 		6BD405E31D83070B00358036 /* SendMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E21D83070B00358036 /* SendMoneyViewController.m */; };
 		6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E51D83071D00358036 /* SettingsViewController.m */; };
-		6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405E81D83073700358036 /* SocialMediaViewController.m */; };
 		6BD405EC1D83074600358036 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EB1D83074600358036 /* SplashViewController.m */; };
 		6BD405EF1D83077D00358036 /* SurchargeAtmsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EE1D83077D00358036 /* SurchargeAtmsViewController.m */; };
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
 		6BD405F61D8307DF00358036 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F51D8307DF00358036 /* WebViewController.m */; };
-		6BD433DB1D8C09C30067515A /* po.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD433DA1D8C09C30067515A /* po.plist */; };
 		8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */; };
 		9A44C9C420B3F16D0031531B /* FaceIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A44C9C320B3F16D0031531B /* FaceIDSettingsController.m */; };
 		9A986AA420DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A986AA320DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m */; };
@@ -368,7 +364,6 @@
 		1D4245D61DCB780200A76E52 /* QuickTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTransaction.h; sourceTree = "<group>"; };
 		1D4245D71DCB780200A76E52 /* QuickTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickTransaction.m; sourceTree = "<group>"; };
 		1D4BA86F1D9CE98E00395B16 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SlideMenu.plist; sourceTree = "<group>"; };
 		1D5441351E51834F00C07072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D5F34361E2F4C2700026EF2 /* PaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentCell.h; sourceTree = "<group>"; };
 		1D5F34371E2F4C2700026EF2 /* PaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentCell.m; sourceTree = "<group>"; };
@@ -395,8 +390,6 @@
 		1DA3B5F91DB7950500DB5731 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		1DA8D2861F45E4F900FD14E1 /* ClientApplicationsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientApplicationsObject.h; sourceTree = "<group>"; };
 		1DA8D2871F45E4F900FD14E1 /* ClientApplicationsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientApplicationsObject.m; sourceTree = "<group>"; };
-		1DB927361DBE193E00C08F29 /* LoadingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingController.h; sourceTree = "<group>"; };
-		1DB927371DBE193E00C08F29 /* LoadingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingController.m; sourceTree = "<group>"; };
 		1DB927391DBE267900C08F29 /* HTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestOperation.h; sourceTree = "<group>"; };
 		1DB9273A1DBE267900C08F29 /* HTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequestOperation.m; sourceTree = "<group>"; };
 		1DB9273D1DBE29B800C08F29 /* LoaderServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderServices.h; sourceTree = "<group>"; };
@@ -449,8 +442,6 @@
 		6BD405E21D83070B00358036 /* SendMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMoneyViewController.m; sourceTree = "<group>"; };
 		6BD405E41D83071D00358036 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		6BD405E51D83071D00358036 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		6BD405E71D83073700358036 /* SocialMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMediaViewController.h; sourceTree = "<group>"; };
-		6BD405E81D83073700358036 /* SocialMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMediaViewController.m; sourceTree = "<group>"; };
 		6BD405EA1D83074600358036 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		6BD405EB1D83074600358036 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		6BD405ED1D83077D00358036 /* SurchargeAtmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurchargeAtmsViewController.h; sourceTree = "<group>"; };
@@ -459,7 +450,6 @@
 		6BD405F11D83079100358036 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		6BD405F41D8307DF00358036 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		6BD405F51D8307DF00358036 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		6BD433DA1D8C09C30067515A /* po.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = po.plist; sourceTree = "<group>"; };
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
 		8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
@@ -912,15 +902,6 @@
 			path = Locations;
 			sourceTree = "<group>";
 		};
-		1DB927351DBE191E00C08F29 /* LoadingController */ = {
-			isa = PBXGroup;
-			children = (
-				1DB927361DBE193E00C08F29 /* LoadingController.h */,
-				1DB927371DBE193E00C08F29 /* LoadingController.m */,
-			);
-			path = LoadingController;
-			sourceTree = "<group>";
-		};
 		1DB9273C1DBE29A100C08F29 /* LoaderEntity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,7 +994,6 @@
 				6BD405AD1D81B5FC00358036 /* Validation */,
 				6BD4058D1D81B59300358036 /* AppDelegate.h */,
 				6BD4058E1D81B59300358036 /* AppDelegate.m */,
-				1D4D4C941E28EF8000F4D1C0 /* SlideMenu.plist */,
 				6BD405931D81B59300358036 /* Main.storyboard */,
 				6BD405981D81B59300358036 /* LaunchScreen.storyboard */,
 				6BD4059B1D81B59300358036 /* Info.plist */,
@@ -1027,7 +1007,6 @@
 			children = (
 				1D5441351E51834F00C07072 /* Assets.xcassets */,
 				6BD4058B1D81B59200358036 /* main.m */,
-				6BD433DA1D8C09C30067515A /* po.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1119,7 +1098,6 @@
 				1D38BE171DE6F45A00F37849 /* VertifiAgreemantViewController */,
 				1D33909A1DE5A9C800D89982 /* DepositListViewController */,
 				1D4245D21DCB193700A76E52 /* AdvertismentController */,
-				1DB927351DBE191E00C08F29 /* LoadingController */,
 				1DEBD7681D93F56E00277DF6 /* PayPersonController */,
 				1D8478EB1D93D68400153B19 /* MobileDepositController */,
 				F26255401D9416F400383B9E /* ATMLocationViewController */,
@@ -1129,7 +1107,6 @@
 				6BD405CF1D83068D00358036 /* QuickBalancesViewController */,
 				6BD405D01D83068D00358036 /* SendMoneyViewController */,
 				6BD405D11D83068D00358036 /* SettingsViewController */,
-				6BD405D21D83068D00358036 /* SocialMediaViewController */,
 				6BD405D31D83068D00358036 /* SplashViewController */,
 				6BD405D41D83068D00358036 /* SurchargeAtmsViewController */,
 				6BD405B31D829EBA00358036 /* HomeViewController */,
@@ -1272,15 +1249,6 @@
 				6BD405E51D83071D00358036 /* SettingsViewController.m */,
 			);
 			path = SettingsViewController;
-			sourceTree = "<group>";
-		};
-		6BD405D21D83068D00358036 /* SocialMediaViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6BD405E71D83073700358036 /* SocialMediaViewController.h */,
-				6BD405E81D83073700358036 /* SocialMediaViewController.m */,
-			);
-			path = SocialMediaViewController;
 			sourceTree = "<group>";
 		};
 		6BD405D31D83068D00358036 /* SplashViewController */ = {
@@ -1506,7 +1474,6 @@
 				1D20C26E1E4E110500D3FC93 /* DepositViewController.xib in Resources */,
 				1D20C2801E4E110500D3FC93 /* Settings.plist in Resources */,
 				1D20C2911E4E110500D3FC93 /* VIPSample.strings in Resources */,
-				6BD433DB1D8C09C30067515A /* po.plist in Resources */,
 				1D20C27A1E4E110500D3FC93 /* MainWindow.xib in Resources */,
 				1D20C2641E4E110500D3FC93 /* CameraViewController.xib in Resources */,
 				1D20C2621E4E110500D3FC93 /* CameraInstructionViewController.xib in Resources */,
@@ -1514,7 +1481,6 @@
 				1D20C2851E4E110500D3FC93 /* SubmittedDepositsViewController.xib in Resources */,
 				1D5441361E51834F00C07072 /* Assets.xcassets in Resources */,
 				9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */,
-				1D4D4C951E28EF8000F4D1C0 /* SlideMenu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1545,13 +1511,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SAMKeychain.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1609,7 +1573,6 @@
 				1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */,
 				1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */,
 				1D0E265D1E5DD61A005FE91F /* CustomImageView.m in Sources */,
-				6BD405E91D83073700358036 /* SocialMediaViewController.m in Sources */,
 				1DDAC0E01EB86ACF0067D85A /* InAppBrowserController.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
 				1D20C28C1E4E110500D3FC93 /* TableViewCell_LblSubtitle.m in Sources */,
@@ -1690,7 +1653,6 @@
 				1D20C2901E4E110500D3FC93 /* UISchema.m in Sources */,
 				F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */,
 				1D20C2881E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m in Sources */,
-				1DB927381DBE193E00C08F29 /* LoadingController.m in Sources */,
 				1D20C2681E4E110500D3FC93 /* DepositModel.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,

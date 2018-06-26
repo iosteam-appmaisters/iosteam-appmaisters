@@ -37,7 +37,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
 
@@ -48,8 +47,6 @@
     [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([MoneyTransferHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kMoneyTransferHeaderViewReuseIdentifier];
 
     [_favContactsTblView setBackgroundColor:[UIColor whiteColor]];
-    
-
     
 }
 
@@ -125,7 +122,6 @@
     [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
     [_webView loadRequest:request];
     
-//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:paypal_url]]];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
@@ -155,23 +151,17 @@
     return [contactsArr count]+1;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 25.0;
-//}
-//
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 35.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
     return UITableViewAutomaticDimension;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
     return [self tableView:tableView heightForHeaderInSection:section];
-    //    return UITableViewAutomaticDimension;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -187,14 +177,6 @@
         
         [editCell.profileLinkTxtFeild setTag:indexPath.section];
         [editCell.amountTxtFeild setTag:indexPath.section];
-        
-//        NSDictionary *contactDict = contactsArr[indexPath.section];
-//        NSString *profileLink = [ShareOneUtility getFavouriteContactProfileLinkWithObject:contactDict];
-//        NSString *profileNickname = [ShareOneUtility getFavouriteContactNickNameWithObject:contactDict];
-//        
-//        
-//        [editCell.nickNameTxtFeild setText:profileNickname];
-//        [editCell.urlTxtFeild setText:profileLink];
         
         editCell.profileLinkTxtFeild.delegate=self;
         editCell.amountTxtFeild.delegate=self;
@@ -224,12 +206,8 @@
         [paymentCell.payButtonBtn setTag:indexPath.section];
         [paymentCell.payButtonBtn addTarget:self action:@selector(sendMoney:) forControlEvents:UIControlEventTouchUpInside];
 
-
-
         cell = paymentCell;
 
-
-        
     }
     
     return cell;
@@ -342,53 +320,14 @@
 }
 -(void)editButtonAction:(id)sender{
     
-//    UIButton *btnCase = (UIButton *)sender;
-//    int sectionSelected = (int) btnCase.tag;
-//    
-//    selected = sectionSelected;
-//    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
-//    
-//    if([self.favContactsTblView isSectionOpen:sectionSelected] && _isFromDelete){
-//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
-//    }
-//    _isFromDelete = NO;
-//    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
 }
 
 -(void)deleteButtonYesAction:(id)sender{
     
-//    UIButton *btn = (UIButton *)sender;
-//    
-//    int buttonTag = (int)btn.tag;
-//    
-//    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
-//    
-//    if([self.favContactsTblView isSectionOpen:buttonTag]){
-//        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
-//    }
-//    
-//    [contactsArr removeObjectAtIndex:buttonTag];
-//    
-//    [ShareOneUtility saveContactsForUser:currentUser withArray:contactsArr];
-//    
-//    [self updateViewWithRefrenceOfContacts];
-//    [_favContactsTblView reloadData];
-    
-    
 }
 
 -(void)deleteButtonNoAction:(id)sender{
-    //[self updateViewWithRefrenceOfContacts];
     
-//    UIButton *btn = (UIButton *)sender;
-//    
-//    int buttonTag = (int)btn.tag;
-//    
-//    ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
-//    
-//    if([self.favContactsTblView isSectionOpen:buttonTag]){
-//        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
-//    }
 }
 
 -(void)transferMoneyButtonClick:(id)sender{
@@ -418,14 +357,12 @@
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didOpenSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-    //        NSLog(@"didOpenSection");
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView willCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
 }
 
 - (void)tableView:(FZAccordionTableView *)tableView didCloseSection:(NSInteger)section withHeader:(UITableViewHeaderFooterView *)header {
-    //        NSLog(@"didCloseSection");
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -458,7 +395,6 @@
     UITableViewCell *cell = (UITableViewCell *)[_favContactsTblView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:buttonTag]];
     
     if([cell isKindOfClass:[PaymentCell class]]){
-//        PaymentCell *pCell = (PaymentCell *)cell;
         _yConstriantTblView.constant=0;
     }
     
@@ -478,21 +414,4 @@
     }
 
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -32,7 +32,6 @@
 #import "YALContextMenuTableView.h"
 #import "UtilitiesHelper.h"
 #import "DeviceUtil.h"
-#import "SAMKeychain.h"
 #import <Crashlytics/Crashlytics.h>
 
 static NSString *const menuCellIdentifier = @"rotationCell";
