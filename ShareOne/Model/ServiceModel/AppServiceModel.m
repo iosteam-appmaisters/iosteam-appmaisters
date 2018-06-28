@@ -462,6 +462,7 @@
         
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [req setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    //[req setValue:@"1.2" forHTTPHeaderField:@"SecurityVersion"];
     
     // create body
     NSData *httpBody = [ShareOneUtility createBodyWithBoundary:boundary parameters:params];
