@@ -17,7 +17,7 @@
     
     NSMutableDictionary *dict = [param mutableCopy];
     [dict setValue:[Configuration getVertifiRDCTestMode] forKey:@"mode"];
-    
+    [dict setValue:@"true" forKey:@"scaled"];
 //    NSLog(@"param vertify : %@",param);
 
     

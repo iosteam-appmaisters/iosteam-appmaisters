@@ -355,7 +355,7 @@
     NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"img.png"]);
     [params setValue:imageDataPNG forKey:@"image"];
     
-    NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 1.0);
+    NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 0.75);
     [params setValue:imageDataJPG forKey:@"imageColor"];
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:  [NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_DEP_ININT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
