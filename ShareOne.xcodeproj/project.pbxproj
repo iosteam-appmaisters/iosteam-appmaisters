@@ -22,58 +22,6 @@
 		1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1AD7A21D9947CA0014C743 /* BBAES.m */; };
 		1D1F21A31EF3E77A00C1045F /* DepositTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F21A21EF3E77A00C1045F /* DepositTutorialController.m */; };
 		1D1F21A61EF3E7BF00C1045F /* DepositListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D1F21A51EF3E7BF00C1045F /* DepositListController.m */; };
-		1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */; };
-		1D20C25C1E4E110500D3FC93 /* AccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */; };
-		1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */; };
-		1D20C25E1E4E110500D3FC93 /* BadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FC1E4E110400D3FC93 /* BadgeBarButtonItem.m */; };
-		1D20C25F1E4E110500D3FC93 /* CameraCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C1FE1E4E110400D3FC93 /* CameraCropView.m */; };
-		1D20C2601E4E110500D3FC93 /* CameraGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2001E4E110400D3FC93 /* CameraGridView.m */; };
-		1D20C2611E4E110500D3FC93 /* CameraInstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2021E4E110400D3FC93 /* CameraInstructionViewController.m */; };
-		1D20C2621E4E110500D3FC93 /* CameraInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2031E4E110400D3FC93 /* CameraInstructionViewController.xib */; };
-		1D20C2631E4E110500D3FC93 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2051E4E110400D3FC93 /* CameraViewController.m */; };
-		1D20C2641E4E110500D3FC93 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2061E4E110400D3FC93 /* CameraViewController.xib */; };
-		1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2081E4E110400D3FC93 /* DataAccountsDelegate.m */; };
-		1D20C2661E4E110500D3FC93 /* DepositAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C20A1E4E110400D3FC93 /* DepositAccount.m */; };
-		1D20C2671E4E110500D3FC93 /* DepositInitOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C20C1E4E110400D3FC93 /* DepositInitOperation.m */; };
-		1D20C2681E4E110500D3FC93 /* DepositModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C20E1E4E110400D3FC93 /* DepositModel.m */; };
-		1D20C2691E4E110500D3FC93 /* DepositSubmitOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2101E4E110400D3FC93 /* DepositSubmitOperation.m */; };
-		1D20C26A1E4E110500D3FC93 /* DepositSubmitQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2121E4E110400D3FC93 /* DepositSubmitQueue.m */; };
-		1D20C26B1E4E110500D3FC93 /* DepositSubmitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2131E4E110400D3FC93 /* DepositSubmitView.xib */; };
-		1D20C26C1E4E110500D3FC93 /* DepositSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2151E4E110400D3FC93 /* DepositSubmitViewController.m */; };
-		1D20C26D1E4E110500D3FC93 /* DepositViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2171E4E110400D3FC93 /* DepositViewController.m */; };
-		1D20C26E1E4E110500D3FC93 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2181E4E110400D3FC93 /* DepositViewController.xib */; };
-		1D20C26F1E4E110500D3FC93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2191E4E110400D3FC93 /* InfoPlist.strings */; };
-		1D20C2701E4E110500D3FC93 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C21B1E4E110400D3FC93 /* ErrorView.xib */; };
-		1D20C2711E4E110500D3FC93 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */; };
-		1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */; };
-		1D20C2761E4E110500D3FC93 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */; };
-		1D20C27A1E4E110500D3FC93 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2281E4E110500D3FC93 /* MainWindow.xib */; };
-		1D20C27B1E4E110500D3FC93 /* MultiPartForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */; };
-		1D20C27C1E4E110500D3FC93 /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C22C1E4E110500D3FC93 /* RegistrationView.xib */; };
-		1D20C27D1E4E110500D3FC93 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C22E1E4E110500D3FC93 /* RegistrationViewController.m */; };
-		1D20C27E1E4E110500D3FC93 /* ResponseDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2301E4E110500D3FC93 /* ResponseDictionary.m */; };
-		1D20C27F1E4E110500D3FC93 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2311E4E110500D3FC93 /* Settings.bundle */; };
-		1D20C2801E4E110500D3FC93 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2321E4E110500D3FC93 /* Settings.plist */; };
-		1D20C2811E4E110500D3FC93 /* SubmittedDeposit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2341E4E110500D3FC93 /* SubmittedDeposit.m */; };
-		1D20C2821E4E110500D3FC93 /* SubmittedDepositReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2361E4E110500D3FC93 /* SubmittedDepositReportViewController.m */; };
-		1D20C2831E4E110500D3FC93 /* SubmittedDepositReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2371E4E110500D3FC93 /* SubmittedDepositReportViewController.xib */; };
-		1D20C2841E4E110500D3FC93 /* SubmittedDepositsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2391E4E110500D3FC93 /* SubmittedDepositsViewController.m */; };
-		1D20C2851E4E110500D3FC93 /* SubmittedDepositsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C23A1E4E110500D3FC93 /* SubmittedDepositsViewController.xib */; };
-		1D20C2861E4E110500D3FC93 /* TableView_SectionFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C23C1E4E110500D3FC93 /* TableView_SectionFooter.m */; };
-		1D20C2871E4E110500D3FC93 /* TableView_SectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C23E1E4E110500D3FC93 /* TableView_SectionHeader.m */; };
-		1D20C2881E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2401E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m */; };
-		1D20C2891E4E110500D3FC93 /* TableViewCell_Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2421E4E110500D3FC93 /* TableViewCell_Button.m */; };
-		1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2441E4E110500D3FC93 /* TableViewCell_ChkPhoto.m */; };
-		1D20C28B1E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2471E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m */; };
-		1D20C28C1E4E110500D3FC93 /* TableViewCell_LblSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2491E4E110500D3FC93 /* TableViewCell_LblSubtitle.m */; };
-		1D20C28D1E4E110500D3FC93 /* TextChangeFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C24B1E4E110500D3FC93 /* TextChangeFormatters.m */; };
-		1D20C28E1E4E110500D3FC93 /* ToastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C24D1E4E110500D3FC93 /* ToastMessage.m */; };
-		1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C24F1E4E110500D3FC93 /* TransparentToolbar.m */; };
-		1D20C2901E4E110500D3FC93 /* UISchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2511E4E110500D3FC93 /* UISchema.m */; };
-		1D20C2911E4E110500D3FC93 /* VIPSample.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D20C2541E4E110500D3FC93 /* VIPSample.strings */; };
-		1D20C2921E4E110500D3FC93 /* VIPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2561E4E110500D3FC93 /* VIPSampleAppDelegate.m */; };
-		1D20C2931E4E110500D3FC93 /* VIPViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C2581E4E110500D3FC93 /* VIPViewUtility.m */; };
-		1D20C2941E4E110500D3FC93 /* XmlSimpleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D20C25A1E4E110500D3FC93 /* XmlSimpleParser.m */; };
 		1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */; };
 		1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D23999A1D9135B000157320 /* AccordionHeaderView.m */; };
 		1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D23999B1D9135B000157320 /* AccordionHeaderView.xib */; };
@@ -82,7 +30,6 @@
 		1D2887481DED517400AD7C74 /* PinResetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D2887471DED517400AD7C74 /* PinResetController.m */; };
 		1D31B9B91E5EBE4300503E45 /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D31B9B81E5EBE4300503E45 /* CustomLabel.m */; };
 		1D31B9BC1E5EC44600503E45 /* PlainCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D31B9BB1E5EC44600503E45 /* PlainCustomButton.m */; };
-		1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */; };
 		1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37102A1E40B0350030D33C /* ConfigurationModel.m */; };
 		1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D08F1DDC418F0076F5B6 /* FBEncryptorAES.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D37D0911DDC418F0076F5B6 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -149,9 +96,71 @@
 		6BD405EC1D83074600358036 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405EB1D83074600358036 /* SplashViewController.m */; };
 		6BD405F21D83079100358036 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD405F11D83079100358036 /* HomeViewController.m */; };
 		8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */; };
+		9A4041D720F38F2800EDF179 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40416A20F38F2800EDF179 /* AccountsViewController.m */; };
+		9A4041D820F38F2800EDF179 /* AccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40416B20F38F2800EDF179 /* AccountsViewController.xib */; };
+		9A4041D920F38F2800EDF179 /* ActivityLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40416D20F38F2800EDF179 /* ActivityLabelView.m */; };
+		9A4041DA20F38F2800EDF179 /* BadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40416F20F38F2800EDF179 /* BadgeBarButtonItem.m */; };
+		9A4041DB20F38F2800EDF179 /* CameraInstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40417120F38F2800EDF179 /* CameraInstructionViewController.m */; };
+		9A4041DC20F38F2800EDF179 /* CameraInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40417220F38F2800EDF179 /* CameraInstructionViewController.xib */; };
+		9A4041DD20F38F2800EDF179 /* CameraLetterboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40417420F38F2800EDF179 /* CameraLetterboxView.m */; };
+		9A4041DE20F38F2800EDF179 /* CameraOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40417620F38F2800EDF179 /* CameraOverlayView.m */; };
+		9A4041DF20F38F2800EDF179 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40417820F38F2800EDF179 /* CameraViewController.m */; };
+		9A4041E020F38F2800EDF179 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40417920F38F2800EDF179 /* CameraViewController.xib */; };
+		9A4041E120F38F2800EDF179 /* DataAccountsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40417B20F38F2800EDF179 /* DataAccountsDelegate.m */; };
+		9A4041E220F38F2800EDF179 /* DepositAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40417D20F38F2800EDF179 /* DepositAccount.m */; };
+		9A4041E320F38F2800EDF179 /* DepositCommitOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40417F20F38F2800EDF179 /* DepositCommitOperation.m */; };
+		9A4041E420F38F2800EDF179 /* DepositHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40418120F38F2800EDF179 /* DepositHistory.m */; };
+		9A4041E520F38F2800EDF179 /* DepositHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40418320F38F2800EDF179 /* DepositHistoryViewController.m */; };
+		9A4041E620F38F2800EDF179 /* DepositHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40418420F38F2800EDF179 /* DepositHistoryViewController.xib */; };
+		9A4041E720F38F2800EDF179 /* DepositInitOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40418620F38F2800EDF179 /* DepositInitOperation.m */; };
+		9A4041E820F38F2800EDF179 /* DepositModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40418820F38F2800EDF179 /* DepositModel.m */; };
+		9A4041E920F38F2800EDF179 /* DepositReportOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40418A20F38F2800EDF179 /* DepositReportOperation.m */; };
+		9A4041EA20F38F2800EDF179 /* DepositReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40418C20F38F2800EDF179 /* DepositReportViewController.m */; };
+		9A4041EB20F38F2800EDF179 /* DepositReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40418D20F38F2800EDF179 /* DepositReportViewController.xib */; };
+		9A4041EC20F38F2800EDF179 /* DepositSubmitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40418E20F38F2800EDF179 /* DepositSubmitView.xib */; };
+		9A4041ED20F38F2800EDF179 /* DepositSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40419020F38F2800EDF179 /* DepositSubmitViewController.m */; };
+		9A4041EE20F38F2800EDF179 /* DepositViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40419220F38F2800EDF179 /* DepositViewController.m */; };
+		9A4041EF20F38F2800EDF179 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40419320F38F2800EDF179 /* DepositViewController.xib */; };
+		9A4041F020F38F2800EDF179 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A40419420F38F2800EDF179 /* InfoPlist.strings */; };
+		9A4041F120F38F2800EDF179 /* EndorsementTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40419620F38F2800EDF179 /* EndorsementTestViewController.xib */; };
+		9A4041F220F38F2800EDF179 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A40419720F38F2800EDF179 /* ErrorView.xib */; };
+		9A4041F320F38F2800EDF179 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40419920F38F2800EDF179 /* ErrorViewController.m */; };
+		9A4041F420F38F2800EDF179 /* FormPostHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40419B20F38F2800EDF179 /* FormPostHandler.m */; };
+		9A4041F520F38F2800EDF179 /* HeldForReviewDeleteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A40419E20F38F2800EDF179 /* HeldForReviewDeleteOperation.m */; };
+		9A4041F620F38F2800EDF179 /* HistoryAuditQueryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041A020F38F2800EDF179 /* HistoryAuditQueryOperation.m */; };
+		9A4041F720F38F2800EDF179 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041A120F38F2800EDF179 /* Images.xcassets */; };
+		9A4041F820F38F2800EDF179 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041A220F38F2800EDF179 /* Info.plist */; };
+		9A4041F920F38F2800EDF179 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041A320F38F2800EDF179 /* Launch Screen.storyboard */; };
+		9A4041FA20F38F2800EDF179 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041A420F38F2800EDF179 /* MainWindow.xib */; };
+		9A4041FB20F38F2800EDF179 /* MultiPartForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041A620F38F2800EDF179 /* MultiPartForm.m */; };
+		9A4041FC20F38F2800EDF179 /* NetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041A820F38F2800EDF179 /* NetworkQueue.m */; };
+		9A4041FD20F38F2800EDF179 /* RegistrationAcceptOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041AB20F38F2800EDF179 /* RegistrationAcceptOperation.m */; };
+		9A4041FE20F38F2800EDF179 /* RegistrationGetEUAOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041AD20F38F2800EDF179 /* RegistrationGetEUAOperation.m */; };
+		9A4041FF20F38F2800EDF179 /* RegistrationQueryDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041AF20F38F2800EDF179 /* RegistrationQueryDelegate.m */; };
+		9A40420020F38F2800EDF179 /* RegistrationQueryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041B120F38F2800EDF179 /* RegistrationQueryOperation.m */; };
+		9A40420120F38F2800EDF179 /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041B220F38F2800EDF179 /* RegistrationView.xib */; };
+		9A40420220F38F2800EDF179 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041B420F38F2800EDF179 /* RegistrationViewController.m */; };
+		9A40420320F38F2800EDF179 /* ResponseDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041B620F38F2800EDF179 /* ResponseDictionary.m */; };
+		9A40420420F38F2800EDF179 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041B720F38F2800EDF179 /* Settings.bundle */; };
+		9A40420520F38F2800EDF179 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041B820F38F2800EDF179 /* Settings.plist */; };
+		9A40420620F38F2800EDF179 /* TableView_SectionFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041BA20F38F2800EDF179 /* TableView_SectionFooter.m */; };
+		9A40420720F38F2800EDF179 /* TableView_SectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041BC20F38F2800EDF179 /* TableView_SectionHeader.m */; };
+		9A40420820F38F2800EDF179 /* TableView_SectionHeaderChkPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041BE20F38F2800EDF179 /* TableView_SectionHeaderChkPhoto.m */; };
+		9A40420920F38F2800EDF179 /* TableViewCell_Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041C020F38F2800EDF179 /* TableViewCell_Button.m */; };
+		9A40420A20F38F2800EDF179 /* TableViewCell_ChkPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041C220F38F2800EDF179 /* TableViewCell_ChkPhoto.m */; };
+		9A40420B20F38F2800EDF179 /* TableViewCell_ImgLblSubtitleValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041C520F38F2800EDF179 /* TableViewCell_ImgLblSubtitleValue.m */; };
+		9A40420C20F38F2800EDF179 /* TableViewCell_LblSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041C720F38F2800EDF179 /* TableViewCell_LblSubtitle.m */; };
+		9A40420D20F38F2800EDF179 /* TextChangeFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041C920F38F2800EDF179 /* TextChangeFormatters.m */; };
+		9A40420E20F38F2800EDF179 /* ToastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041CB20F38F2800EDF179 /* ToastMessage.m */; };
+		9A40420F20F38F2800EDF179 /* UISchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041CD20F38F2800EDF179 /* UISchema.m */; };
+		9A40421020F38F2800EDF179 /* VIPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041D020F38F2800EDF179 /* VIPNavigationController.m */; };
+		9A40421120F38F2800EDF179 /* VIPSample.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A4041D220F38F2800EDF179 /* VIPSample.strings */; };
+		9A40421220F38F2800EDF179 /* VIPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041D420F38F2800EDF179 /* VIPSampleAppDelegate.m */; };
+		9A40421320F38F2800EDF179 /* VIPViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4041D620F38F2800EDF179 /* VIPViewUtility.m */; };
+		9A40421B20F3960D00EDF179 /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A40421A20F3960D00EDF179 /* VIPLibrary.framework */; };
+		9A40421C20F3960D00EDF179 /* VIPLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A40421A20F3960D00EDF179 /* VIPLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A44C9C420B3F16D0031531B /* FaceIDSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A44C9C320B3F16D0031531B /* FaceIDSettingsController.m */; };
 		9A986AA420DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A986AA320DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m */; };
-		9AC5BB59202B0301007EBF93 /* libVertifiImageProcessingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */; };
 		9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */; };
 		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
 		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
@@ -170,6 +179,20 @@
 		F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FB1D9BF6A000D76E0D /* GetDirectionViewController.m */; };
 		F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BFF9FE1D9BFBA500D76E0D /* LRouteController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9A40421D20F3960E00EDF179 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9A40421C20F3960D00EDF179 /* VIPLibrary.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D0309A01DD2F070005953FA /* NSString+MD5String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5String.h"; sourceTree = "<group>"; };
@@ -201,100 +224,6 @@
 		1D1F21A21EF3E77A00C1045F /* DepositTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositTutorialController.m; sourceTree = "<group>"; };
 		1D1F21A41EF3E7BF00C1045F /* DepositListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositListController.h; sourceTree = "<group>"; };
 		1D1F21A51EF3E7BF00C1045F /* DepositListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositListController.m; sourceTree = "<group>"; };
-		1D20C1F61E4E110400D3FC93 /* AccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsViewController.h; sourceTree = "<group>"; };
-		1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsViewController.m; sourceTree = "<group>"; };
-		1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountsViewController.xib; sourceTree = "<group>"; };
-		1D20C1F91E4E110400D3FC93 /* ActivityLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLabelView.h; sourceTree = "<group>"; };
-		1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLabelView.m; sourceTree = "<group>"; };
-		1D20C1FB1E4E110400D3FC93 /* BadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeBarButtonItem.h; sourceTree = "<group>"; };
-		1D20C1FC1E4E110400D3FC93 /* BadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeBarButtonItem.m; sourceTree = "<group>"; };
-		1D20C1FD1E4E110400D3FC93 /* CameraCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCropView.h; sourceTree = "<group>"; };
-		1D20C1FE1E4E110400D3FC93 /* CameraCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCropView.m; sourceTree = "<group>"; };
-		1D20C1FF1E4E110400D3FC93 /* CameraGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraGridView.h; sourceTree = "<group>"; };
-		1D20C2001E4E110400D3FC93 /* CameraGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraGridView.m; sourceTree = "<group>"; };
-		1D20C2011E4E110400D3FC93 /* CameraInstructionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInstructionViewController.h; sourceTree = "<group>"; };
-		1D20C2021E4E110400D3FC93 /* CameraInstructionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraInstructionViewController.m; sourceTree = "<group>"; };
-		1D20C2031E4E110400D3FC93 /* CameraInstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraInstructionViewController.xib; sourceTree = "<group>"; };
-		1D20C2041E4E110400D3FC93 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
-		1D20C2051E4E110400D3FC93 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
-		1D20C2061E4E110400D3FC93 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
-		1D20C2071E4E110400D3FC93 /* DataAccountsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccountsDelegate.h; sourceTree = "<group>"; };
-		1D20C2081E4E110400D3FC93 /* DataAccountsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccountsDelegate.m; sourceTree = "<group>"; };
-		1D20C2091E4E110400D3FC93 /* DepositAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositAccount.h; sourceTree = "<group>"; };
-		1D20C20A1E4E110400D3FC93 /* DepositAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositAccount.m; sourceTree = "<group>"; };
-		1D20C20B1E4E110400D3FC93 /* DepositInitOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositInitOperation.h; sourceTree = "<group>"; };
-		1D20C20C1E4E110400D3FC93 /* DepositInitOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositInitOperation.m; sourceTree = "<group>"; };
-		1D20C20D1E4E110400D3FC93 /* DepositModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositModel.h; sourceTree = "<group>"; };
-		1D20C20E1E4E110400D3FC93 /* DepositModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositModel.m; sourceTree = "<group>"; };
-		1D20C20F1E4E110400D3FC93 /* DepositSubmitOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositSubmitOperation.h; sourceTree = "<group>"; };
-		1D20C2101E4E110400D3FC93 /* DepositSubmitOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositSubmitOperation.m; sourceTree = "<group>"; };
-		1D20C2111E4E110400D3FC93 /* DepositSubmitQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositSubmitQueue.h; sourceTree = "<group>"; };
-		1D20C2121E4E110400D3FC93 /* DepositSubmitQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositSubmitQueue.m; sourceTree = "<group>"; };
-		1D20C2131E4E110400D3FC93 /* DepositSubmitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositSubmitView.xib; sourceTree = "<group>"; };
-		1D20C2141E4E110400D3FC93 /* DepositSubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositSubmitViewController.h; sourceTree = "<group>"; };
-		1D20C2151E4E110400D3FC93 /* DepositSubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositSubmitViewController.m; sourceTree = "<group>"; };
-		1D20C2161E4E110400D3FC93 /* DepositViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositViewController.h; sourceTree = "<group>"; };
-		1D20C2171E4E110400D3FC93 /* DepositViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositViewController.m; sourceTree = "<group>"; };
-		1D20C2181E4E110400D3FC93 /* DepositViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositViewController.xib; sourceTree = "<group>"; };
-		1D20C21A1E4E110400D3FC93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1D20C21B1E4E110400D3FC93 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
-		1D20C21C1E4E110400D3FC93 /* ErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
-		1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
-		1D20C21E1E4E110400D3FC93 /* FormPostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormPostHandler.h; sourceTree = "<group>"; };
-		1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormPostHandler.m; sourceTree = "<group>"; };
-		1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessing.a; sourceTree = "<group>"; };
-		1D20C2281E4E110500D3FC93 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		1D20C2291E4E110500D3FC93 /* MultiPartForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPartForm.h; sourceTree = "<group>"; };
-		1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPartForm.m; sourceTree = "<group>"; };
-		1D20C22B1E4E110500D3FC93 /* PostHandlerBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostHandlerBlocks.h; sourceTree = "<group>"; };
-		1D20C22C1E4E110500D3FC93 /* RegistrationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
-		1D20C22D1E4E110500D3FC93 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
-		1D20C22E1E4E110500D3FC93 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
-		1D20C22F1E4E110500D3FC93 /* ResponseDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseDictionary.h; sourceTree = "<group>"; };
-		1D20C2301E4E110500D3FC93 /* ResponseDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseDictionary.m; sourceTree = "<group>"; };
-		1D20C2311E4E110500D3FC93 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		1D20C2321E4E110500D3FC93 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
-		1D20C2331E4E110500D3FC93 /* SubmittedDeposit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittedDeposit.h; sourceTree = "<group>"; };
-		1D20C2341E4E110500D3FC93 /* SubmittedDeposit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittedDeposit.m; sourceTree = "<group>"; };
-		1D20C2351E4E110500D3FC93 /* SubmittedDepositReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittedDepositReportViewController.h; sourceTree = "<group>"; };
-		1D20C2361E4E110500D3FC93 /* SubmittedDepositReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittedDepositReportViewController.m; sourceTree = "<group>"; };
-		1D20C2371E4E110500D3FC93 /* SubmittedDepositReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubmittedDepositReportViewController.xib; sourceTree = "<group>"; };
-		1D20C2381E4E110500D3FC93 /* SubmittedDepositsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittedDepositsViewController.h; sourceTree = "<group>"; };
-		1D20C2391E4E110500D3FC93 /* SubmittedDepositsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittedDepositsViewController.m; sourceTree = "<group>"; };
-		1D20C23A1E4E110500D3FC93 /* SubmittedDepositsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubmittedDepositsViewController.xib; sourceTree = "<group>"; };
-		1D20C23B1E4E110500D3FC93 /* TableView_SectionFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionFooter.h; sourceTree = "<group>"; };
-		1D20C23C1E4E110500D3FC93 /* TableView_SectionFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionFooter.m; sourceTree = "<group>"; };
-		1D20C23D1E4E110500D3FC93 /* TableView_SectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionHeader.h; sourceTree = "<group>"; };
-		1D20C23E1E4E110500D3FC93 /* TableView_SectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionHeader.m; sourceTree = "<group>"; };
-		1D20C23F1E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionHeaderChkPhoto.h; sourceTree = "<group>"; };
-		1D20C2401E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionHeaderChkPhoto.m; sourceTree = "<group>"; };
-		1D20C2411E4E110500D3FC93 /* TableViewCell_Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_Button.h; sourceTree = "<group>"; };
-		1D20C2421E4E110500D3FC93 /* TableViewCell_Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_Button.m; sourceTree = "<group>"; };
-		1D20C2431E4E110500D3FC93 /* TableViewCell_ChkPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_ChkPhoto.h; sourceTree = "<group>"; };
-		1D20C2441E4E110500D3FC93 /* TableViewCell_ChkPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_ChkPhoto.m; sourceTree = "<group>"; };
-		1D20C2451E4E110500D3FC93 /* TableViewCell_Defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_Defs.h; sourceTree = "<group>"; };
-		1D20C2461E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_ImgLblSubtitleValue.h; sourceTree = "<group>"; };
-		1D20C2471E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_ImgLblSubtitleValue.m; sourceTree = "<group>"; };
-		1D20C2481E4E110500D3FC93 /* TableViewCell_LblSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_LblSubtitle.h; sourceTree = "<group>"; };
-		1D20C2491E4E110500D3FC93 /* TableViewCell_LblSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_LblSubtitle.m; sourceTree = "<group>"; };
-		1D20C24A1E4E110500D3FC93 /* TextChangeFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextChangeFormatters.h; sourceTree = "<group>"; };
-		1D20C24B1E4E110500D3FC93 /* TextChangeFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextChangeFormatters.m; sourceTree = "<group>"; };
-		1D20C24C1E4E110500D3FC93 /* ToastMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastMessage.h; sourceTree = "<group>"; };
-		1D20C24D1E4E110500D3FC93 /* ToastMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastMessage.m; sourceTree = "<group>"; };
-		1D20C24E1E4E110500D3FC93 /* TransparentToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentToolbar.h; sourceTree = "<group>"; };
-		1D20C24F1E4E110500D3FC93 /* TransparentToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransparentToolbar.m; sourceTree = "<group>"; };
-		1D20C2501E4E110500D3FC93 /* UISchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISchema.h; sourceTree = "<group>"; };
-		1D20C2511E4E110500D3FC93 /* UISchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISchema.m; sourceTree = "<group>"; };
-		1D20C2521E4E110500D3FC93 /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
-		1D20C2531E4E110500D3FC93 /* VIPSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VIPSample-Prefix.pch"; sourceTree = "<group>"; };
-		1D20C2541E4E110500D3FC93 /* VIPSample.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = VIPSample.strings; sourceTree = "<group>"; };
-		1D20C2551E4E110500D3FC93 /* VIPSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPSampleAppDelegate.h; sourceTree = "<group>"; };
-		1D20C2561E4E110500D3FC93 /* VIPSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPSampleAppDelegate.m; sourceTree = "<group>"; };
-		1D20C2571E4E110500D3FC93 /* VIPViewUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewUtility.h; sourceTree = "<group>"; };
-		1D20C2581E4E110500D3FC93 /* VIPViewUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewUtility.m; sourceTree = "<group>"; };
-		1D20C2591E4E110500D3FC93 /* XmlSimpleParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlSimpleParser.h; sourceTree = "<group>"; };
-		1D20C25A1E4E110500D3FC93 /* XmlSimpleParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlSimpleParser.m; sourceTree = "<group>"; };
 		1D21A18C1E28CEDA005CCAB5 /* EditContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContactCell.h; sourceTree = "<group>"; };
 		1D21A18D1E28CEDA005CCAB5 /* EditContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContactCell.m; sourceTree = "<group>"; };
 		1D2399991D9135B000157320 /* AccordionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccordionHeaderView.h; sourceTree = "<group>"; };
@@ -438,12 +367,121 @@
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
 		8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
+		9A40416920F38F2800EDF179 /* AccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsViewController.h; sourceTree = "<group>"; };
+		9A40416A20F38F2800EDF179 /* AccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsViewController.m; sourceTree = "<group>"; };
+		9A40416B20F38F2800EDF179 /* AccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountsViewController.xib; sourceTree = "<group>"; };
+		9A40416C20F38F2800EDF179 /* ActivityLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLabelView.h; sourceTree = "<group>"; };
+		9A40416D20F38F2800EDF179 /* ActivityLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLabelView.m; sourceTree = "<group>"; };
+		9A40416E20F38F2800EDF179 /* BadgeBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeBarButtonItem.h; sourceTree = "<group>"; };
+		9A40416F20F38F2800EDF179 /* BadgeBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeBarButtonItem.m; sourceTree = "<group>"; };
+		9A40417020F38F2800EDF179 /* CameraInstructionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInstructionViewController.h; sourceTree = "<group>"; };
+		9A40417120F38F2800EDF179 /* CameraInstructionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraInstructionViewController.m; sourceTree = "<group>"; };
+		9A40417220F38F2800EDF179 /* CameraInstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraInstructionViewController.xib; sourceTree = "<group>"; };
+		9A40417320F38F2800EDF179 /* CameraLetterboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraLetterboxView.h; sourceTree = "<group>"; };
+		9A40417420F38F2800EDF179 /* CameraLetterboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraLetterboxView.m; sourceTree = "<group>"; };
+		9A40417520F38F2800EDF179 /* CameraOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraOverlayView.h; sourceTree = "<group>"; };
+		9A40417620F38F2800EDF179 /* CameraOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraOverlayView.m; sourceTree = "<group>"; };
+		9A40417720F38F2800EDF179 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		9A40417820F38F2800EDF179 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		9A40417920F38F2800EDF179 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		9A40417A20F38F2800EDF179 /* DataAccountsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccountsDelegate.h; sourceTree = "<group>"; };
+		9A40417B20F38F2800EDF179 /* DataAccountsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccountsDelegate.m; sourceTree = "<group>"; };
+		9A40417C20F38F2800EDF179 /* DepositAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositAccount.h; sourceTree = "<group>"; };
+		9A40417D20F38F2800EDF179 /* DepositAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositAccount.m; sourceTree = "<group>"; };
+		9A40417E20F38F2800EDF179 /* DepositCommitOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositCommitOperation.h; sourceTree = "<group>"; };
+		9A40417F20F38F2800EDF179 /* DepositCommitOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositCommitOperation.m; sourceTree = "<group>"; };
+		9A40418020F38F2800EDF179 /* DepositHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositHistory.h; sourceTree = "<group>"; };
+		9A40418120F38F2800EDF179 /* DepositHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositHistory.m; sourceTree = "<group>"; };
+		9A40418220F38F2800EDF179 /* DepositHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositHistoryViewController.h; sourceTree = "<group>"; };
+		9A40418320F38F2800EDF179 /* DepositHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositHistoryViewController.m; sourceTree = "<group>"; };
+		9A40418420F38F2800EDF179 /* DepositHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositHistoryViewController.xib; sourceTree = "<group>"; };
+		9A40418520F38F2800EDF179 /* DepositInitOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositInitOperation.h; sourceTree = "<group>"; };
+		9A40418620F38F2800EDF179 /* DepositInitOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositInitOperation.m; sourceTree = "<group>"; };
+		9A40418720F38F2800EDF179 /* DepositModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositModel.h; sourceTree = "<group>"; };
+		9A40418820F38F2800EDF179 /* DepositModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositModel.m; sourceTree = "<group>"; };
+		9A40418920F38F2800EDF179 /* DepositReportOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositReportOperation.h; sourceTree = "<group>"; };
+		9A40418A20F38F2800EDF179 /* DepositReportOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositReportOperation.m; sourceTree = "<group>"; };
+		9A40418B20F38F2800EDF179 /* DepositReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositReportViewController.h; sourceTree = "<group>"; };
+		9A40418C20F38F2800EDF179 /* DepositReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositReportViewController.m; sourceTree = "<group>"; };
+		9A40418D20F38F2800EDF179 /* DepositReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositReportViewController.xib; sourceTree = "<group>"; };
+		9A40418E20F38F2800EDF179 /* DepositSubmitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositSubmitView.xib; sourceTree = "<group>"; };
+		9A40418F20F38F2800EDF179 /* DepositSubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositSubmitViewController.h; sourceTree = "<group>"; };
+		9A40419020F38F2800EDF179 /* DepositSubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositSubmitViewController.m; sourceTree = "<group>"; };
+		9A40419120F38F2800EDF179 /* DepositViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepositViewController.h; sourceTree = "<group>"; };
+		9A40419220F38F2800EDF179 /* DepositViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepositViewController.m; sourceTree = "<group>"; };
+		9A40419320F38F2800EDF179 /* DepositViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepositViewController.xib; sourceTree = "<group>"; };
+		9A40419520F38F2800EDF179 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A40419620F38F2800EDF179 /* EndorsementTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EndorsementTestViewController.xib; sourceTree = "<group>"; };
+		9A40419720F38F2800EDF179 /* ErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		9A40419820F38F2800EDF179 /* ErrorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
+		9A40419920F38F2800EDF179 /* ErrorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
+		9A40419A20F38F2800EDF179 /* FormPostHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormPostHandler.h; sourceTree = "<group>"; };
+		9A40419B20F38F2800EDF179 /* FormPostHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormPostHandler.m; sourceTree = "<group>"; };
+		9A40419D20F38F2800EDF179 /* HeldForReviewDeleteOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeldForReviewDeleteOperation.h; sourceTree = "<group>"; };
+		9A40419E20F38F2800EDF179 /* HeldForReviewDeleteOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeldForReviewDeleteOperation.m; sourceTree = "<group>"; };
+		9A40419F20F38F2800EDF179 /* HistoryAuditQueryOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryAuditQueryOperation.h; sourceTree = "<group>"; };
+		9A4041A020F38F2800EDF179 /* HistoryAuditQueryOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAuditQueryOperation.m; sourceTree = "<group>"; };
+		9A4041A120F38F2800EDF179 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9A4041A220F38F2800EDF179 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A4041A320F38F2800EDF179 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9A4041A420F38F2800EDF179 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		9A4041A520F38F2800EDF179 /* MultiPartForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPartForm.h; sourceTree = "<group>"; };
+		9A4041A620F38F2800EDF179 /* MultiPartForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPartForm.m; sourceTree = "<group>"; };
+		9A4041A720F38F2800EDF179 /* NetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkQueue.h; sourceTree = "<group>"; };
+		9A4041A820F38F2800EDF179 /* NetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkQueue.m; sourceTree = "<group>"; };
+		9A4041A920F38F2800EDF179 /* PostHandlerBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostHandlerBlocks.h; sourceTree = "<group>"; };
+		9A4041AA20F38F2800EDF179 /* RegistrationAcceptOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationAcceptOperation.h; sourceTree = "<group>"; };
+		9A4041AB20F38F2800EDF179 /* RegistrationAcceptOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationAcceptOperation.m; sourceTree = "<group>"; };
+		9A4041AC20F38F2800EDF179 /* RegistrationGetEUAOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationGetEUAOperation.h; sourceTree = "<group>"; };
+		9A4041AD20F38F2800EDF179 /* RegistrationGetEUAOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationGetEUAOperation.m; sourceTree = "<group>"; };
+		9A4041AE20F38F2800EDF179 /* RegistrationQueryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationQueryDelegate.h; sourceTree = "<group>"; };
+		9A4041AF20F38F2800EDF179 /* RegistrationQueryDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationQueryDelegate.m; sourceTree = "<group>"; };
+		9A4041B020F38F2800EDF179 /* RegistrationQueryOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationQueryOperation.h; sourceTree = "<group>"; };
+		9A4041B120F38F2800EDF179 /* RegistrationQueryOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationQueryOperation.m; sourceTree = "<group>"; };
+		9A4041B220F38F2800EDF179 /* RegistrationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
+		9A4041B320F38F2800EDF179 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		9A4041B420F38F2800EDF179 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		9A4041B520F38F2800EDF179 /* ResponseDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseDictionary.h; sourceTree = "<group>"; };
+		9A4041B620F38F2800EDF179 /* ResponseDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseDictionary.m; sourceTree = "<group>"; };
+		9A4041B720F38F2800EDF179 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		9A4041B820F38F2800EDF179 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		9A4041B920F38F2800EDF179 /* TableView_SectionFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionFooter.h; sourceTree = "<group>"; };
+		9A4041BA20F38F2800EDF179 /* TableView_SectionFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionFooter.m; sourceTree = "<group>"; };
+		9A4041BB20F38F2800EDF179 /* TableView_SectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionHeader.h; sourceTree = "<group>"; };
+		9A4041BC20F38F2800EDF179 /* TableView_SectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionHeader.m; sourceTree = "<group>"; };
+		9A4041BD20F38F2800EDF179 /* TableView_SectionHeaderChkPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_SectionHeaderChkPhoto.h; sourceTree = "<group>"; };
+		9A4041BE20F38F2800EDF179 /* TableView_SectionHeaderChkPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_SectionHeaderChkPhoto.m; sourceTree = "<group>"; };
+		9A4041BF20F38F2800EDF179 /* TableViewCell_Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_Button.h; sourceTree = "<group>"; };
+		9A4041C020F38F2800EDF179 /* TableViewCell_Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_Button.m; sourceTree = "<group>"; };
+		9A4041C120F38F2800EDF179 /* TableViewCell_ChkPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_ChkPhoto.h; sourceTree = "<group>"; };
+		9A4041C220F38F2800EDF179 /* TableViewCell_ChkPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_ChkPhoto.m; sourceTree = "<group>"; };
+		9A4041C320F38F2800EDF179 /* TableViewCell_Defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_Defs.h; sourceTree = "<group>"; };
+		9A4041C420F38F2800EDF179 /* TableViewCell_ImgLblSubtitleValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_ImgLblSubtitleValue.h; sourceTree = "<group>"; };
+		9A4041C520F38F2800EDF179 /* TableViewCell_ImgLblSubtitleValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_ImgLblSubtitleValue.m; sourceTree = "<group>"; };
+		9A4041C620F38F2800EDF179 /* TableViewCell_LblSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell_LblSubtitle.h; sourceTree = "<group>"; };
+		9A4041C720F38F2800EDF179 /* TableViewCell_LblSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell_LblSubtitle.m; sourceTree = "<group>"; };
+		9A4041C820F38F2800EDF179 /* TextChangeFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextChangeFormatters.h; sourceTree = "<group>"; };
+		9A4041C920F38F2800EDF179 /* TextChangeFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextChangeFormatters.m; sourceTree = "<group>"; };
+		9A4041CA20F38F2800EDF179 /* ToastMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastMessage.h; sourceTree = "<group>"; };
+		9A4041CB20F38F2800EDF179 /* ToastMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastMessage.m; sourceTree = "<group>"; };
+		9A4041CC20F38F2800EDF179 /* UISchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISchema.h; sourceTree = "<group>"; };
+		9A4041CD20F38F2800EDF179 /* UISchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISchema.m; sourceTree = "<group>"; };
+		9A4041CE20F38F2800EDF179 /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
+		9A4041CF20F38F2800EDF179 /* VIPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPNavigationController.h; sourceTree = "<group>"; };
+		9A4041D020F38F2800EDF179 /* VIPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPNavigationController.m; sourceTree = "<group>"; };
+		9A4041D120F38F2800EDF179 /* VIPSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VIPSample-Prefix.pch"; sourceTree = "<group>"; };
+		9A4041D220F38F2800EDF179 /* VIPSample.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = VIPSample.strings; sourceTree = "<group>"; };
+		9A4041D320F38F2800EDF179 /* VIPSampleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPSampleAppDelegate.h; sourceTree = "<group>"; };
+		9A4041D420F38F2800EDF179 /* VIPSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPSampleAppDelegate.m; sourceTree = "<group>"; };
+		9A4041D520F38F2800EDF179 /* VIPViewUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewUtility.h; sourceTree = "<group>"; };
+		9A4041D620F38F2800EDF179 /* VIPViewUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewUtility.m; sourceTree = "<group>"; };
+		9A40421420F38F7A00EDF179 /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VIPLibrary.framework; path = ShareOne/ReuseableComponents/VIPLibrary.framework; sourceTree = "<group>"; };
+		9A40421A20F3960D00EDF179 /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VIPLibrary.framework; path = ShareOne/ReuseableComponents/VIPLibrary.framework; sourceTree = "<group>"; };
 		9A44C9C220B3F16D0031531B /* FaceIDSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceIDSettingsController.h; sourceTree = "<group>"; };
 		9A44C9C320B3F16D0031531B /* FaceIDSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceIDSettingsController.m; sourceTree = "<group>"; };
 		9A5A1CC0209B1E14009AC72E /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
 		9A986AA220DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPrintPageRenderer+PrintToPDF.h"; sourceTree = "<group>"; };
 		9A986AA320DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPrintPageRenderer+PrintToPDF.m"; sourceTree = "<group>"; };
-		9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVertifiImageProcessingSimulator.a; sourceTree = "<group>"; };
 		9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuCell.h; sourceTree = "<group>"; };
 		9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMenuCell.m; sourceTree = "<group>"; };
 		9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContextMenuCell.xib; sourceTree = "<group>"; };
@@ -481,8 +519,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AC5BB59202B0301007EBF93 /* libVertifiImageProcessingSimulator.a in Frameworks */,
-				1D32A5031E4E17820087F638 /* libVertifiImageProcessing.a in Frameworks */,
+				9A40421B20F3960D00EDF179 /* VIPLibrary.framework in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -575,112 +612,10 @@
 		1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				9A40416820F38F2800EDF179 /* Vertifi7.5 */,
 				9AEB7DEA1F5EEEB30027DA65 /* ContextMenu */,
-				1D20C1F51E4E110400D3FC93 /* VertifiLatestSDK */,
 			);
 			path = ReuseableComponents;
-			sourceTree = "<group>";
-		};
-		1D20C1F51E4E110400D3FC93 /* VertifiLatestSDK */ = {
-			isa = PBXGroup;
-			children = (
-				9AC5BB58202B0301007EBF93 /* libVertifiImageProcessingSimulator.a */,
-				1D20C1F61E4E110400D3FC93 /* AccountsViewController.h */,
-				1D20C1F71E4E110400D3FC93 /* AccountsViewController.m */,
-				1D20C1F81E4E110400D3FC93 /* AccountsViewController.xib */,
-				1D20C1F91E4E110400D3FC93 /* ActivityLabelView.h */,
-				1D20C1FA1E4E110400D3FC93 /* ActivityLabelView.m */,
-				1D20C1FB1E4E110400D3FC93 /* BadgeBarButtonItem.h */,
-				1D20C1FC1E4E110400D3FC93 /* BadgeBarButtonItem.m */,
-				1D20C1FD1E4E110400D3FC93 /* CameraCropView.h */,
-				1D20C1FE1E4E110400D3FC93 /* CameraCropView.m */,
-				1D20C1FF1E4E110400D3FC93 /* CameraGridView.h */,
-				1D20C2001E4E110400D3FC93 /* CameraGridView.m */,
-				1D20C2011E4E110400D3FC93 /* CameraInstructionViewController.h */,
-				1D20C2021E4E110400D3FC93 /* CameraInstructionViewController.m */,
-				1D20C2031E4E110400D3FC93 /* CameraInstructionViewController.xib */,
-				1D20C2041E4E110400D3FC93 /* CameraViewController.h */,
-				1D20C2051E4E110400D3FC93 /* CameraViewController.m */,
-				1D20C2061E4E110400D3FC93 /* CameraViewController.xib */,
-				1D20C2071E4E110400D3FC93 /* DataAccountsDelegate.h */,
-				1D20C2081E4E110400D3FC93 /* DataAccountsDelegate.m */,
-				1D20C2091E4E110400D3FC93 /* DepositAccount.h */,
-				1D20C20A1E4E110400D3FC93 /* DepositAccount.m */,
-				1D20C20B1E4E110400D3FC93 /* DepositInitOperation.h */,
-				1D20C20C1E4E110400D3FC93 /* DepositInitOperation.m */,
-				1D20C20D1E4E110400D3FC93 /* DepositModel.h */,
-				1D20C20E1E4E110400D3FC93 /* DepositModel.m */,
-				1D20C20F1E4E110400D3FC93 /* DepositSubmitOperation.h */,
-				1D20C2101E4E110400D3FC93 /* DepositSubmitOperation.m */,
-				1D20C2111E4E110400D3FC93 /* DepositSubmitQueue.h */,
-				1D20C2121E4E110400D3FC93 /* DepositSubmitQueue.m */,
-				1D20C2131E4E110400D3FC93 /* DepositSubmitView.xib */,
-				1D20C2141E4E110400D3FC93 /* DepositSubmitViewController.h */,
-				1D20C2151E4E110400D3FC93 /* DepositSubmitViewController.m */,
-				1D20C2161E4E110400D3FC93 /* DepositViewController.h */,
-				1D20C2171E4E110400D3FC93 /* DepositViewController.m */,
-				1D20C2181E4E110400D3FC93 /* DepositViewController.xib */,
-				1D20C2191E4E110400D3FC93 /* InfoPlist.strings */,
-				1D20C21B1E4E110400D3FC93 /* ErrorView.xib */,
-				1D20C21C1E4E110400D3FC93 /* ErrorViewController.h */,
-				1D20C21D1E4E110400D3FC93 /* ErrorViewController.m */,
-				1D20C21E1E4E110400D3FC93 /* FormPostHandler.h */,
-				1D20C21F1E4E110400D3FC93 /* FormPostHandler.m */,
-				1D20C2241E4E110400D3FC93 /* Launch Screen.storyboard */,
-				1D20C2251E4E110400D3FC93 /* libVertifiImageProcessing.a */,
-				1D20C2281E4E110500D3FC93 /* MainWindow.xib */,
-				1D20C2291E4E110500D3FC93 /* MultiPartForm.h */,
-				1D20C22A1E4E110500D3FC93 /* MultiPartForm.m */,
-				1D20C22B1E4E110500D3FC93 /* PostHandlerBlocks.h */,
-				1D20C22C1E4E110500D3FC93 /* RegistrationView.xib */,
-				1D20C22D1E4E110500D3FC93 /* RegistrationViewController.h */,
-				1D20C22E1E4E110500D3FC93 /* RegistrationViewController.m */,
-				1D20C22F1E4E110500D3FC93 /* ResponseDictionary.h */,
-				1D20C2301E4E110500D3FC93 /* ResponseDictionary.m */,
-				1D20C2311E4E110500D3FC93 /* Settings.bundle */,
-				1D20C2321E4E110500D3FC93 /* Settings.plist */,
-				1D20C2331E4E110500D3FC93 /* SubmittedDeposit.h */,
-				1D20C2341E4E110500D3FC93 /* SubmittedDeposit.m */,
-				1D20C2351E4E110500D3FC93 /* SubmittedDepositReportViewController.h */,
-				1D20C2361E4E110500D3FC93 /* SubmittedDepositReportViewController.m */,
-				1D20C2371E4E110500D3FC93 /* SubmittedDepositReportViewController.xib */,
-				1D20C2381E4E110500D3FC93 /* SubmittedDepositsViewController.h */,
-				1D20C2391E4E110500D3FC93 /* SubmittedDepositsViewController.m */,
-				1D20C23A1E4E110500D3FC93 /* SubmittedDepositsViewController.xib */,
-				1D20C23B1E4E110500D3FC93 /* TableView_SectionFooter.h */,
-				1D20C23C1E4E110500D3FC93 /* TableView_SectionFooter.m */,
-				1D20C23D1E4E110500D3FC93 /* TableView_SectionHeader.h */,
-				1D20C23E1E4E110500D3FC93 /* TableView_SectionHeader.m */,
-				1D20C23F1E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.h */,
-				1D20C2401E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m */,
-				1D20C2411E4E110500D3FC93 /* TableViewCell_Button.h */,
-				1D20C2421E4E110500D3FC93 /* TableViewCell_Button.m */,
-				1D20C2431E4E110500D3FC93 /* TableViewCell_ChkPhoto.h */,
-				1D20C2441E4E110500D3FC93 /* TableViewCell_ChkPhoto.m */,
-				1D20C2451E4E110500D3FC93 /* TableViewCell_Defs.h */,
-				1D20C2461E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.h */,
-				1D20C2471E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m */,
-				1D20C2481E4E110500D3FC93 /* TableViewCell_LblSubtitle.h */,
-				1D20C2491E4E110500D3FC93 /* TableViewCell_LblSubtitle.m */,
-				1D20C24A1E4E110500D3FC93 /* TextChangeFormatters.h */,
-				1D20C24B1E4E110500D3FC93 /* TextChangeFormatters.m */,
-				1D20C24C1E4E110500D3FC93 /* ToastMessage.h */,
-				1D20C24D1E4E110500D3FC93 /* ToastMessage.m */,
-				1D20C24E1E4E110500D3FC93 /* TransparentToolbar.h */,
-				1D20C24F1E4E110500D3FC93 /* TransparentToolbar.m */,
-				1D20C2501E4E110500D3FC93 /* UISchema.h */,
-				1D20C2511E4E110500D3FC93 /* UISchema.m */,
-				1D20C2521E4E110500D3FC93 /* VertifiImageProcessing.h */,
-				1D20C2531E4E110500D3FC93 /* VIPSample-Prefix.pch */,
-				1D20C2541E4E110500D3FC93 /* VIPSample.strings */,
-				1D20C2551E4E110500D3FC93 /* VIPSampleAppDelegate.h */,
-				1D20C2561E4E110500D3FC93 /* VIPSampleAppDelegate.m */,
-				1D20C2571E4E110500D3FC93 /* VIPViewUtility.h */,
-				1D20C2581E4E110500D3FC93 /* VIPViewUtility.m */,
-				1D20C2591E4E110500D3FC93 /* XmlSimpleParser.h */,
-				1D20C25A1E4E110500D3FC93 /* XmlSimpleParser.m */,
-			);
-			path = VertifiLatestSDK;
 			sourceTree = "<group>";
 		};
 		1D2887451DED515500AD7C74 /* PinResetViewController */ = {
@@ -927,6 +862,7 @@
 		6BD4057E1D81B59200358036 = {
 			isa = PBXGroup;
 			children = (
+				9A40421A20F3960D00EDF179 /* VIPLibrary.framework */,
 				6BD405891D81B59200358036 /* ShareOne */,
 				6BD405881D81B59200358036 /* Products */,
 				DCE61F0EA6E37C18C6765C07 /* Pods */,
@@ -1216,6 +1152,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A40421420F38F7A00EDF179 /* VIPLibrary.framework */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -1227,6 +1164,129 @@
 				B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A40416820F38F2800EDF179 /* Vertifi7.5 */ = {
+			isa = PBXGroup;
+			children = (
+				9A40416920F38F2800EDF179 /* AccountsViewController.h */,
+				9A40416A20F38F2800EDF179 /* AccountsViewController.m */,
+				9A40416B20F38F2800EDF179 /* AccountsViewController.xib */,
+				9A40416C20F38F2800EDF179 /* ActivityLabelView.h */,
+				9A40416D20F38F2800EDF179 /* ActivityLabelView.m */,
+				9A40416E20F38F2800EDF179 /* BadgeBarButtonItem.h */,
+				9A40416F20F38F2800EDF179 /* BadgeBarButtonItem.m */,
+				9A40417020F38F2800EDF179 /* CameraInstructionViewController.h */,
+				9A40417120F38F2800EDF179 /* CameraInstructionViewController.m */,
+				9A40417220F38F2800EDF179 /* CameraInstructionViewController.xib */,
+				9A40417320F38F2800EDF179 /* CameraLetterboxView.h */,
+				9A40417420F38F2800EDF179 /* CameraLetterboxView.m */,
+				9A40417520F38F2800EDF179 /* CameraOverlayView.h */,
+				9A40417620F38F2800EDF179 /* CameraOverlayView.m */,
+				9A40417720F38F2800EDF179 /* CameraViewController.h */,
+				9A40417820F38F2800EDF179 /* CameraViewController.m */,
+				9A40417920F38F2800EDF179 /* CameraViewController.xib */,
+				9A40417A20F38F2800EDF179 /* DataAccountsDelegate.h */,
+				9A40417B20F38F2800EDF179 /* DataAccountsDelegate.m */,
+				9A40417C20F38F2800EDF179 /* DepositAccount.h */,
+				9A40417D20F38F2800EDF179 /* DepositAccount.m */,
+				9A40417E20F38F2800EDF179 /* DepositCommitOperation.h */,
+				9A40417F20F38F2800EDF179 /* DepositCommitOperation.m */,
+				9A40418020F38F2800EDF179 /* DepositHistory.h */,
+				9A40418120F38F2800EDF179 /* DepositHistory.m */,
+				9A40418220F38F2800EDF179 /* DepositHistoryViewController.h */,
+				9A40418320F38F2800EDF179 /* DepositHistoryViewController.m */,
+				9A40418420F38F2800EDF179 /* DepositHistoryViewController.xib */,
+				9A40418520F38F2800EDF179 /* DepositInitOperation.h */,
+				9A40418620F38F2800EDF179 /* DepositInitOperation.m */,
+				9A40418720F38F2800EDF179 /* DepositModel.h */,
+				9A40418820F38F2800EDF179 /* DepositModel.m */,
+				9A40418920F38F2800EDF179 /* DepositReportOperation.h */,
+				9A40418A20F38F2800EDF179 /* DepositReportOperation.m */,
+				9A40418B20F38F2800EDF179 /* DepositReportViewController.h */,
+				9A40418C20F38F2800EDF179 /* DepositReportViewController.m */,
+				9A40418D20F38F2800EDF179 /* DepositReportViewController.xib */,
+				9A40418E20F38F2800EDF179 /* DepositSubmitView.xib */,
+				9A40418F20F38F2800EDF179 /* DepositSubmitViewController.h */,
+				9A40419020F38F2800EDF179 /* DepositSubmitViewController.m */,
+				9A40419120F38F2800EDF179 /* DepositViewController.h */,
+				9A40419220F38F2800EDF179 /* DepositViewController.m */,
+				9A40419320F38F2800EDF179 /* DepositViewController.xib */,
+				9A40419420F38F2800EDF179 /* InfoPlist.strings */,
+				9A40419620F38F2800EDF179 /* EndorsementTestViewController.xib */,
+				9A40419720F38F2800EDF179 /* ErrorView.xib */,
+				9A40419820F38F2800EDF179 /* ErrorViewController.h */,
+				9A40419920F38F2800EDF179 /* ErrorViewController.m */,
+				9A40419A20F38F2800EDF179 /* FormPostHandler.h */,
+				9A40419B20F38F2800EDF179 /* FormPostHandler.m */,
+				9A40419C20F38F2800EDF179 /* Frameworks */,
+				9A40419D20F38F2800EDF179 /* HeldForReviewDeleteOperation.h */,
+				9A40419E20F38F2800EDF179 /* HeldForReviewDeleteOperation.m */,
+				9A40419F20F38F2800EDF179 /* HistoryAuditQueryOperation.h */,
+				9A4041A020F38F2800EDF179 /* HistoryAuditQueryOperation.m */,
+				9A4041A120F38F2800EDF179 /* Images.xcassets */,
+				9A4041A220F38F2800EDF179 /* Info.plist */,
+				9A4041A320F38F2800EDF179 /* Launch Screen.storyboard */,
+				9A4041A420F38F2800EDF179 /* MainWindow.xib */,
+				9A4041A520F38F2800EDF179 /* MultiPartForm.h */,
+				9A4041A620F38F2800EDF179 /* MultiPartForm.m */,
+				9A4041A720F38F2800EDF179 /* NetworkQueue.h */,
+				9A4041A820F38F2800EDF179 /* NetworkQueue.m */,
+				9A4041A920F38F2800EDF179 /* PostHandlerBlocks.h */,
+				9A4041AA20F38F2800EDF179 /* RegistrationAcceptOperation.h */,
+				9A4041AB20F38F2800EDF179 /* RegistrationAcceptOperation.m */,
+				9A4041AC20F38F2800EDF179 /* RegistrationGetEUAOperation.h */,
+				9A4041AD20F38F2800EDF179 /* RegistrationGetEUAOperation.m */,
+				9A4041AE20F38F2800EDF179 /* RegistrationQueryDelegate.h */,
+				9A4041AF20F38F2800EDF179 /* RegistrationQueryDelegate.m */,
+				9A4041B020F38F2800EDF179 /* RegistrationQueryOperation.h */,
+				9A4041B120F38F2800EDF179 /* RegistrationQueryOperation.m */,
+				9A4041B220F38F2800EDF179 /* RegistrationView.xib */,
+				9A4041B320F38F2800EDF179 /* RegistrationViewController.h */,
+				9A4041B420F38F2800EDF179 /* RegistrationViewController.m */,
+				9A4041B520F38F2800EDF179 /* ResponseDictionary.h */,
+				9A4041B620F38F2800EDF179 /* ResponseDictionary.m */,
+				9A4041B720F38F2800EDF179 /* Settings.bundle */,
+				9A4041B820F38F2800EDF179 /* Settings.plist */,
+				9A4041B920F38F2800EDF179 /* TableView_SectionFooter.h */,
+				9A4041BA20F38F2800EDF179 /* TableView_SectionFooter.m */,
+				9A4041BB20F38F2800EDF179 /* TableView_SectionHeader.h */,
+				9A4041BC20F38F2800EDF179 /* TableView_SectionHeader.m */,
+				9A4041BD20F38F2800EDF179 /* TableView_SectionHeaderChkPhoto.h */,
+				9A4041BE20F38F2800EDF179 /* TableView_SectionHeaderChkPhoto.m */,
+				9A4041BF20F38F2800EDF179 /* TableViewCell_Button.h */,
+				9A4041C020F38F2800EDF179 /* TableViewCell_Button.m */,
+				9A4041C120F38F2800EDF179 /* TableViewCell_ChkPhoto.h */,
+				9A4041C220F38F2800EDF179 /* TableViewCell_ChkPhoto.m */,
+				9A4041C320F38F2800EDF179 /* TableViewCell_Defs.h */,
+				9A4041C420F38F2800EDF179 /* TableViewCell_ImgLblSubtitleValue.h */,
+				9A4041C520F38F2800EDF179 /* TableViewCell_ImgLblSubtitleValue.m */,
+				9A4041C620F38F2800EDF179 /* TableViewCell_LblSubtitle.h */,
+				9A4041C720F38F2800EDF179 /* TableViewCell_LblSubtitle.m */,
+				9A4041C820F38F2800EDF179 /* TextChangeFormatters.h */,
+				9A4041C920F38F2800EDF179 /* TextChangeFormatters.m */,
+				9A4041CA20F38F2800EDF179 /* ToastMessage.h */,
+				9A4041CB20F38F2800EDF179 /* ToastMessage.m */,
+				9A4041CC20F38F2800EDF179 /* UISchema.h */,
+				9A4041CD20F38F2800EDF179 /* UISchema.m */,
+				9A4041CE20F38F2800EDF179 /* VertifiImageProcessing.h */,
+				9A4041CF20F38F2800EDF179 /* VIPNavigationController.h */,
+				9A4041D020F38F2800EDF179 /* VIPNavigationController.m */,
+				9A4041D120F38F2800EDF179 /* VIPSample-Prefix.pch */,
+				9A4041D220F38F2800EDF179 /* VIPSample.strings */,
+				9A4041D320F38F2800EDF179 /* VIPSampleAppDelegate.h */,
+				9A4041D420F38F2800EDF179 /* VIPSampleAppDelegate.m */,
+				9A4041D520F38F2800EDF179 /* VIPViewUtility.h */,
+				9A4041D620F38F2800EDF179 /* VIPViewUtility.m */,
+			);
+			path = Vertifi7.5;
+			sourceTree = "<group>";
+		};
+		9A40419C20F38F2800EDF179 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		9A44C9C120B3F14D0031531B /* FaceIDSettingsController */ = {
@@ -1332,6 +1392,7 @@
 				834F6DE2AAE547ADFA1D690D /* [CP] Embed Pods Frameworks */,
 				85AF07800BA45A56C7FF9023 /* [CP] Copy Pods Resources */,
 				9A1030312052992300D422F2 /* ShellScript */,
+				9A40421D20F3960E00EDF179 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1393,29 +1454,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBD4DC41DB105BC00943995 /* QBFooterView.xib in Resources */,
+				9A4041F720F38F2800EDF179 /* Images.xcassets in Resources */,
+				9A40421120F38F2800EDF179 /* VIPSample.strings in Resources */,
+				9A4041EF20F38F2800EDF179 /* DepositViewController.xib in Resources */,
+				9A40420120F38F2800EDF179 /* RegistrationView.xib in Resources */,
 				6BD4059A1D81B59300358036 /* LaunchScreen.storyboard in Resources */,
+				9A4041FA20F38F2800EDF179 /* MainWindow.xib in Resources */,
 				1D5F343D1E2F50AB00026EF2 /* MoneyTransferHeader.xib in Resources */,
+				9A4041F220F38F2800EDF179 /* ErrorView.xib in Resources */,
+				9A4041F920F38F2800EDF179 /* Launch Screen.storyboard in Resources */,
 				1D3C4D8D1E5D9AC60022AF61 /* ConfigurationSettings.plist in Resources */,
-				1D20C2701E4E110500D3FC93 /* ErrorView.xib in Resources */,
-				1D20C2831E4E110500D3FC93 /* SubmittedDepositReportViewController.xib in Resources */,
-				1D20C26B1E4E110500D3FC93 /* DepositSubmitView.xib in Resources */,
-				1D20C26F1E4E110500D3FC93 /* InfoPlist.strings in Resources */,
+				9A4041F020F38F2800EDF179 /* InfoPlist.strings in Resources */,
 				1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */,
-				1D20C2761E4E110500D3FC93 /* Launch Screen.storyboard in Resources */,
-				1D20C27C1E4E110500D3FC93 /* RegistrationView.xib in Resources */,
+				9A4041F120F38F2800EDF179 /* EndorsementTestViewController.xib in Resources */,
+				9A4041EC20F38F2800EDF179 /* DepositSubmitView.xib in Resources */,
+				9A4041E620F38F2800EDF179 /* DepositHistoryViewController.xib in Resources */,
 				1D23999D1D9135B000157320 /* AccordionHeaderView.xib in Resources */,
-				1D20C25C1E4E110500D3FC93 /* AccountsViewController.xib in Resources */,
+				9A4041EB20F38F2800EDF179 /* DepositReportViewController.xib in Resources */,
+				9A4041D820F38F2800EDF179 /* AccountsViewController.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
-				1D20C26E1E4E110500D3FC93 /* DepositViewController.xib in Resources */,
-				1D20C2801E4E110500D3FC93 /* Settings.plist in Resources */,
-				1D20C2911E4E110500D3FC93 /* VIPSample.strings in Resources */,
-				1D20C27A1E4E110500D3FC93 /* MainWindow.xib in Resources */,
-				1D20C2641E4E110500D3FC93 /* CameraViewController.xib in Resources */,
-				1D20C2621E4E110500D3FC93 /* CameraInstructionViewController.xib in Resources */,
-				1D20C27F1E4E110500D3FC93 /* Settings.bundle in Resources */,
-				1D20C2851E4E110500D3FC93 /* SubmittedDepositsViewController.xib in Resources */,
 				1D5441361E51834F00C07072 /* Assets.xcassets in Resources */,
+				9A4041E020F38F2800EDF179 /* CameraViewController.xib in Resources */,
+				9A4041DC20F38F2800EDF179 /* CameraInstructionViewController.xib in Resources */,
+				9A40420420F38F2800EDF179 /* Settings.bundle in Resources */,
 				9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */,
+				9A4041F820F38F2800EDF179 /* Info.plist in Resources */,
+				9A40420520F38F2800EDF179 /* Settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1498,121 +1562,128 @@
 				1D37102B1E40B0350030D33C /* ConfigurationModel.m in Sources */,
 				9AEB7DF81F5EEEB30027DA65 /* YALContextMenuTableView.m in Sources */,
 				1D21A18E1E28CEDA005CCAB5 /* EditContactCell.m in Sources */,
-				1D20C2921E4E110500D3FC93 /* VIPSampleAppDelegate.m in Sources */,
-				1D20C26A1E4E110500D3FC93 /* DepositSubmitQueue.m in Sources */,
-				1D20C2841E4E110500D3FC93 /* SubmittedDepositsViewController.m in Sources */,
-				1D20C2871E4E110500D3FC93 /* TableView_SectionHeader.m in Sources */,
+				9A4041ED20F38F2800EDF179 /* DepositSubmitViewController.m in Sources */,
 				1D0C99021DE847CC009B60F0 /* DepositCell.m in Sources */,
-				1D20C26D1E4E110500D3FC93 /* DepositViewController.m in Sources */,
 				1D398F9E1E07F5DE00275E4E /* Address.m in Sources */,
-				1D20C28A1E4E110500D3FC93 /* TableViewCell_ChkPhoto.m in Sources */,
 				1D4245D81DCB780200A76E52 /* QuickTransaction.m in Sources */,
 				1D0E265D1E5DD61A005FE91F /* CustomImageView.m in Sources */,
 				1DDAC0E01EB86ACF0067D85A /* InAppBrowserController.m in Sources */,
 				6BD405EC1D83074600358036 /* SplashViewController.m in Sources */,
-				1D20C28C1E4E110500D3FC93 /* TableViewCell_LblSubtitle.m in Sources */,
 				1D8478EE1D93D6BA00153B19 /* MobileDepositController.m in Sources */,
-				1D20C2601E4E110500D3FC93 /* CameraGridView.m in Sources */,
-				1D20C2861E4E110500D3FC93 /* TableView_SectionFooter.m in Sources */,
 				9A986AA420DA6ED6001D753E /* UIPrintPageRenderer+PrintToPDF.m in Sources */,
 				1DB9273F1DBE29B800C08F29 /* LoaderServices.m in Sources */,
 				F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */,
 				1D112C0D1DB4E6C6000435DE /* SuffixInfo.m in Sources */,
+				9A40420E20F38F2800EDF179 /* ToastMessage.m in Sources */,
 				1D3899441E5DA7E200A27358 /* CustomButton.m in Sources */,
 				6BD405DD1D8306D900358036 /* ForgotPasswordViewController.m in Sources */,
+				9A4041FD20F38F2800EDF179 /* RegistrationAcceptOperation.m in Sources */,
 				6BD405C81D82CA2F00358036 /* UtilitiesHelper.m in Sources */,
+				9A40420A20F38F2800EDF179 /* TableViewCell_ChkPhoto.m in Sources */,
+				9A4041E320F38F2800EDF179 /* DepositCommitOperation.m in Sources */,
 				F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */,
+				9A4041D720F38F2800EDF179 /* AccountsViewController.m in Sources */,
 				F2BFF9FC1D9BF6A000D76E0D /* GetDirectionViewController.m in Sources */,
-				1D20C2891E4E110500D3FC93 /* TableViewCell_Button.m in Sources */,
 				6BD405BC1D82B08900358036 /* Validation.m in Sources */,
 				1D8478E91D9294EC00153B19 /* QBDetailsCell.m in Sources */,
+				9A4041E720F38F2800EDF179 /* DepositInitOperation.m in Sources */,
+				9A4041D920F38F2800EDF179 /* ActivityLabelView.m in Sources */,
 				1D86C4B81EC1D6880036F72A /* StyleValuesObject.m in Sources */,
 				F20C71F21D92CF940072D405 /* BranchLocationCell.m in Sources */,
 				1D38BE1A1DE6F47800F37849 /* VertifiAgreemantController.m in Sources */,
 				6BD405CC1D82CA7200358036 /* User.m in Sources */,
+				9A4041E520F38F2800EDF179 /* DepositHistoryViewController.m in Sources */,
+				9A4041DD20F38F2800EDF179 /* CameraLetterboxView.m in Sources */,
 				1D1AD7A31D9947CA0014C743 /* BBAES.m in Sources */,
 				6BD405D71D8306AC00358036 /* BranchLocationViewController.m in Sources */,
-				1D20C27D1E4E110500D3FC93 /* RegistrationViewController.m in Sources */,
 				F2BFF9FF1D9BFBA500D76E0D /* LRouteController.m in Sources */,
-				1D20C28F1E4E110500D3FC93 /* TransparentToolbar.m in Sources */,
 				1D3D037C1E602EF300886C79 /* CustomTextFeild.m in Sources */,
 				9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */,
-				1D20C2721E4E110500D3FC93 /* FormPostHandler.m in Sources */,
-				1D20C2651E4E110500D3FC93 /* DataAccountsDelegate.m in Sources */,
 				1D38993D1E5DA64300A27358 /* UIColor+HexColor.m in Sources */,
-				1D20C2711E4E110500D3FC93 /* ErrorViewController.m in Sources */,
 				1D3A7BDA1DF0599900AEA159 /* PasswordChangeController.m in Sources */,
+				9A40420F20F38F2800EDF179 /* UISchema.m in Sources */,
+				9A4041F620F38F2800EDF179 /* HistoryAuditQueryOperation.m in Sources */,
+				9A4041E420F38F2800EDF179 /* DepositHistory.m in Sources */,
+				9A4041FF20F38F2800EDF179 /* RegistrationQueryDelegate.m in Sources */,
 				9A44C9C420B3F16D0031531B /* FaceIDSettingsController.m in Sources */,
-				1D20C28D1E4E110500D3FC93 /* TextChangeFormatters.m in Sources */,
-				1D20C25F1E4E110500D3FC93 /* CameraCropView.m in Sources */,
+				9A4041E120F38F2800EDF179 /* DataAccountsDelegate.m in Sources */,
 				1D3D127A1DBF353500719170 /* DeviceAuth.m in Sources */,
 				1D3ED8571E2676A800AE91C1 /* ContactEditCell.m in Sources */,
 				1D398FA41E07F73900275E4E /* Photos.m in Sources */,
-				1D20C2631E4E110500D3FC93 /* CameraViewController.m in Sources */,
-				1D20C28E1E4E110500D3FC93 /* ToastMessage.m in Sources */,
 				1D10A6111E2606E100BD40CD /* PaymentController.m in Sources */,
 				1D3ED8521E2662E300AE91C1 /* ContactsHeaderView.m in Sources */,
 				6BD4058F1D81B59300358036 /* AppDelegate.m in Sources */,
-				1D20C26C1E4E110500D3FC93 /* DepositSubmitViewController.m in Sources */,
+				9A40420020F38F2800EDF179 /* RegistrationQueryOperation.m in Sources */,
+				9A4041DA20F38F2800EDF179 /* BadgeBarButtonItem.m in Sources */,
 				1D31B9B91E5EBE4300503E45 /* CustomLabel.m in Sources */,
 				1D1F21A61EF3E7BF00C1045F /* DepositListController.m in Sources */,
-				1D20C2941E4E110500D3FC93 /* XmlSimpleParser.m in Sources */,
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
+				9A4041FE20F38F2800EDF179 /* RegistrationGetEUAOperation.m in Sources */,
 				1DA8D2881F45E4F900FD14E1 /* ClientApplicationsObject.m in Sources */,
-				1D20C25D1E4E110500D3FC93 /* ActivityLabelView.m in Sources */,
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
+				9A40420320F38F2800EDF179 /* ResponseDictionary.m in Sources */,
 				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,
 				1D3A02621E5F2DE6009ABC8C /* AttributedCustomLabel.m in Sources */,
+				9A4041E920F38F2800EDF179 /* DepositReportOperation.m in Sources */,
 				9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */,
+				9A4041FB20F38F2800EDF179 /* MultiPartForm.m in Sources */,
+				9A40420D20F38F2800EDF179 /* TextChangeFormatters.m in Sources */,
+				9A4041DE20F38F2800EDF179 /* CameraOverlayView.m in Sources */,
+				9A40420920F38F2800EDF179 /* TableViewCell_Button.m in Sources */,
 				1DF6081F1DAB997900FF85E2 /* CashDeposit.m in Sources */,
 				F2099FAD1D9D3B7D00AAA8AC /* ImageViewPopUpController.m in Sources */,
-				1D20C2931E4E110500D3FC93 /* VIPViewUtility.m in Sources */,
-				1D20C27E1E4E110500D3FC93 /* ResponseDictionary.m in Sources */,
+				9A40421220F38F2800EDF179 /* VIPSampleAppDelegate.m in Sources */,
 				1D31B9BC1E5EC44600503E45 /* PlainCustomButton.m in Sources */,
+				9A40420820F38F2800EDF179 /* TableView_SectionHeaderChkPhoto.m in Sources */,
 				1D10A60E1E2606CE00BD40CD /* PaymentSettingController.m in Sources */,
+				9A40420B20F38F2800EDF179 /* TableViewCell_ImgLblSubtitleValue.m in Sources */,
+				9A4041E220F38F2800EDF179 /* DepositAccount.m in Sources */,
+				9A4041EE20F38F2800EDF179 /* DepositViewController.m in Sources */,
 				1DBD4DC21DB1053200943995 /* QBFooterView.m in Sources */,
 				6BD405C21D82C93700358036 /* AppServiceModel.m in Sources */,
-				1D20C2811E4E110500D3FC93 /* SubmittedDeposit.m in Sources */,
 				1D2399A31D9169CF00157320 /* SideMenuCell.m in Sources */,
+				9A4041EA20F38F2800EDF179 /* DepositReportViewController.m in Sources */,
+				9A40420620F38F2800EDF179 /* TableView_SectionFooter.m in Sources */,
 				6BD405B21D81B92E00358036 /* LeftMenuViewController.m in Sources */,
 				1D72E24D1DEC025500A054BA /* NotifSettingsController.m in Sources */,
 				1D0309A51DD30B1B005953FA /* VertifiObject.m in Sources */,
-				1D20C25E1E4E110500D3FC93 /* BadgeBarButtonItem.m in Sources */,
-				1D20C2691E4E110500D3FC93 /* DepositSubmitOperation.m in Sources */,
 				1D03DD351E28B46E0025D7D0 /* DeleteContactCell.m in Sources */,
-				1D20C2901E4E110500D3FC93 /* UISchema.m in Sources */,
+				9A4041F320F38F2800EDF179 /* ErrorViewController.m in Sources */,
+				9A40421020F38F2800EDF179 /* VIPNavigationController.m in Sources */,
 				F26255431D94171300383B9E /* ATMLocationViewController.m in Sources */,
-				1D20C2881E4E110500D3FC93 /* TableView_SectionHeaderChkPhoto.m in Sources */,
-				1D20C2681E4E110500D3FC93 /* DepositModel.m in Sources */,
 				6BD405DA1D8306C800358036 /* LoginViewController.m in Sources */,
 				6BD405E61D83071D00358036 /* SettingsViewController.m in Sources */,
 				1D3F46D11E5ECC7E009E8F50 /* PlainCustomLabel.m in Sources */,
 				1D5F343B1E2F4FFF00026EF2 /* MoneyTransferHeader.m in Sources */,
 				1D23999C1D9135B000157320 /* AccordionHeaderView.m in Sources */,
-				1D20C27B1E4E110500D3FC93 /* MultiPartForm.m in Sources */,
+				9A4041F520F38F2800EDF179 /* HeldForReviewDeleteOperation.m in Sources */,
+				9A4041FC20F38F2800EDF179 /* NetworkQueue.m in Sources */,
 				1D2887481DED517400AD7C74 /* PinResetController.m in Sources */,
 				6BD405E01D8306EC00358036 /* QuickBalancesViewController.m in Sources */,
+				9A40420C20F38F2800EDF179 /* TableViewCell_LblSubtitle.m in Sources */,
+				9A4041DF20F38F2800EDF179 /* CameraViewController.m in Sources */,
+				9A4041F420F38F2800EDF179 /* FormPostHandler.m in Sources */,
 				1D3F0F9F1E11484E00B57B5F /* WeblinksController.m in Sources */,
 				1D1F21A31EF3E77A00C1045F /* DepositTutorialController.m in Sources */,
+				9A4041DB20F38F2800EDF179 /* CameraInstructionViewController.m in Sources */,
+				9A40420720F38F2800EDF179 /* TableView_SectionHeader.m in Sources */,
+				9A4041E820F38F2800EDF179 /* DepositModel.m in Sources */,
+				9A40420220F38F2800EDF179 /* RegistrationViewController.m in Sources */,
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
-				1D20C2661E4E110500D3FC93 /* DepositAccount.m in Sources */,
 				1D398FA11E07F66E00275E4E /* Hours.m in Sources */,
 				1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */,
+				9A40421320F38F2800EDF179 /* VIPViewUtility.m in Sources */,
 				1D5F34381E2F4C2700026EF2 /* PaymentCell.m in Sources */,
 				1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */,
-				1D20C2821E4E110500D3FC93 /* SubmittedDepositReportViewController.m in Sources */,
 				1D3A7BDE1DF0828200AEA159 /* UserNamecontroller.m in Sources */,
 				8BAF9CB61FF6A77100E97BE9 /* DeviceUtil.m in Sources */,
-				1D20C28B1E4E110500D3FC93 /* TableViewCell_ImgLblSubtitleValue.m in Sources */,
 				1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */,
 				6BD405F21D83079100358036 /* HomeViewController.m in Sources */,
 				1DFE17251EE93D8700CDEB70 /* ApiSettingsObject.m in Sources */,
-				1D20C2611E4E110500D3FC93 /* CameraInstructionViewController.m in Sources */,
 				1D112C0A1DB4BCCE000435DE /* QuickBalances.m in Sources */,
 				1D5F34401E2F572500026EF2 /* TransferSomeOneElseCell.m in Sources */,
 				1D3C4D921E5D9BE20022AF61 /* Configuration.m in Sources */,
-				1D20C25B1E4E110500D3FC93 /* AccountsViewController.m in Sources */,
 				1DBD4DBF1DB0EE7F00943995 /* MemberDevices.m in Sources */,
 				1D956DC91DA3AFE2007F6D11 /* CustomNavController.m in Sources */,
 				1D3B4EE41DEC12ED00F1D536 /* TouchIDSettingsController.m in Sources */,
@@ -1620,7 +1691,6 @@
 				6BD4058C1D81B59200358036 /* main.m in Sources */,
 				1D86C4BB1EC204B60036F72A /* ClientSettingsObject.m in Sources */,
 				1D37D0921DDC418F0076F5B6 /* FBEncryptorAES.m in Sources */,
-				1D20C2671E4E110500D3FC93 /* DepositInitOperation.m in Sources */,
 				1DB9273B1DBE267900C08F29 /* HTTPRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1628,14 +1698,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1D20C2191E4E110400D3FC93 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D20C21A1E4E110400D3FC93 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		6BD405931D81B59300358036 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1650,6 +1712,14 @@
 				6BD405991D81B59300358036 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9A40419420F38F2800EDF179 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A40419520F38F2800EDF179 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1778,15 +1848,19 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/Vertifi7.5/VIPSample-Prefix.pch";
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
@@ -1809,15 +1883,19 @@
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/VertifiLatestSDK/VIPSample-Prefix.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/Vertifi7.5/VIPSample-Prefix.pch";
 				INFOPLIST_FILE = ShareOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/VertifiLatestSDK",
+					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;

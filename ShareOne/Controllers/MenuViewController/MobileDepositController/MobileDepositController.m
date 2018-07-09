@@ -18,10 +18,10 @@
 #import "ConstantsShareOne.h"
 #import "VertifiObject.h"
 #import "HomeViewController.h"
-#import "CameraCropView.h"
-#import "TransparentToolbar.h"
+//#import "CameraCropView.h"
+//#import "TransparentToolbar.h"
 #import "CameraInstructionViewController.h"
-#import "CameraGridView.h"
+//#import "CameraGridView.h"
 #import "VertifiAgreemantController.h"
 
 
