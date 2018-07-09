@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController">
+            <connections>
+                <outlet property="previewView" destination="47" id="51"/>
+                <outlet property="scrollViewPreview" destination="46" id="52"/>
+                <outlet property="toolbarBottom" destination="48" id="50"/>
+                <outlet property="toolbarTop" destination="ZCE-kc-ELW" id="g6l-bi-HXd"/>
+                <outlet property="view" destination="45" id="49"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="45">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" minimumZoomScale="0.10000000149011612" maximumZoomScale="2" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="276"/>
+                    <color key="backgroundColor" red="0.89919352531433105" green="0.89919352531433105" blue="0.89919352531433105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </scrollView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCE-kc-ELW">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <items/>
+                </toolbar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48">
+                    <rect key="frame" x="0.0" y="276" width="480" height="44"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <items/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="48" firstAttribute="top" secondItem="46" secondAttribute="bottom" id="5Sr-kg-sej"/>
+                <constraint firstAttribute="trailing" secondItem="46" secondAttribute="trailing" id="5hW-kT-P4l"/>
+                <constraint firstItem="orh-kJ-guX" firstAttribute="bottom" secondItem="48" secondAttribute="bottom" id="IFK-mT-NPR"/>
+                <constraint firstItem="48" firstAttribute="leading" secondItem="45" secondAttribute="leading" id="J4q-qs-hQw"/>
+                <constraint firstItem="46" firstAttribute="top" secondItem="45" secondAttribute="top" id="cvF-Tk-DDR"/>
+                <constraint firstAttribute="trailing" secondItem="48" secondAttribute="trailing" id="fOm-z0-IBA"/>
+                <constraint firstItem="46" firstAttribute="leading" secondItem="45" secondAttribute="leading" id="g1y-yX-fml"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="orh-kJ-guX"/>
+        </view>
+    </objects>
+</document>

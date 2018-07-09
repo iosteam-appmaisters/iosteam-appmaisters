@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>URL_AccountEnumeration</key>
+	<string>https://test.vertifi.com/vmb/secure/getAccountsVIPSample.ashx</string>
+	<key>URL_RDCHost</key>
+	<string>https://test.vertifi.com</string>
+	<key>Path_RegistrationQuery</key>
+	<string>rdc/sso/mobdep_regquery.ashx</string>
+	<key>Path_RegistrationGetEUA</key>
+	<string>rdc/sso/mobdep_reggeteua.ashx</string>
+	<key>Path_RegistrationAccept</key>
+	<string>rdc/sso/mobdep_regaccept.ashx</string>
+	<key>Path_DepositInit</key>
+	<string>rdc/sso/mobdep_init.ashx</string>
+	<key>Path_DepositCommit</key>
+	<string>rdc/sso/mobdep_commit.ashx</string>
+	<key>Path_HistoryAuditQuery</key>
+	<string>rdc/sso/mobdep_historyaudit.ashx</string>
+	<key>Path_HeldForReviewQuery</key>
+	<string>rdc/sso/mobdep_reviewquery.ashx</string>
+	<key>Path_HeldForReviewReport</key>
+	<string>rdc/sso/mobdep_reviewreport.ashx</string>
+	<key>Path_HeldForReviewDeleteDeposit</key>
+	<string>rdc/sso/mobdep_reviewdelete.ashx</string>
+	<key>Path_HistoryReport</key>
+	<string>rdc/sso/mobdep_historyreport.ashx</string>
+</dict>
+</plist>
