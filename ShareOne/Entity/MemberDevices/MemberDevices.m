@@ -12,18 +12,11 @@
 #import "ShareOneUtility.h"
 #import "SharedUser.h"
 #import "DeviceAuth.h"
-#import <Crashlytics/Crashlytics.h>
 
 
 @implementation MemberDevices
 
 +(void)postMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
-   
-    NSString * dT = param[@"DeviceToken"];
-    NSDictionary * deviceToken = @{@"DeviceToken": dT};
-    
-    [Answers logCustomEventWithName:@"Post Member Device Params" customAttributes:deviceToken];
-    //CLS_LOG(@"Post Member Device Params :: %@", param);
     
     [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);

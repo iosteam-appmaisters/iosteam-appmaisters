@@ -115,8 +115,8 @@
         
     } queueCompletionBlock:^(BOOL sucess,NSString *errorString) {
         
-        if([ShareOneUtility isConfigDataSaved])
-            block(sucess,errorString);
+//        if([ShareOneUtility isConfigDataSaved])
+//            block(sucess,errorString);
         
     } queueFailureBlock:^(NSError *error) {
         block(FALSE,[Configuration getMaintenanceVerbiage]);
