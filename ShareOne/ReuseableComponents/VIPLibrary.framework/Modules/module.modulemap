@@ -1,6 +1,0 @@
-framework module VIPLibrary {
-  umbrella header "VIPLibrary.h"
-
-  export *
-  module * { export * }
-}
