@@ -92,14 +92,7 @@
     [self loadDataOnPickerView];
     
     _noteLabel.text = [Configuration getClientSettingsContent].rdcpostingmsg;
-    
-    BOOL forcedInstructions = [[Configuration getClientSettingsContent].rdcforceinstruction boolValue];
-    if (forcedInstructions){
-        [[NSUserDefaults standardUserDefaults]setBool:forcedInstructions forKey:kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_FRONT];
-        [[NSUserDefaults standardUserDefaults]setBool:forcedInstructions forKey:kVIP_PREFERENCE_SHOW_CAMERA_INSTRUCTION_BACK];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-    }
-    
+ 
 //    _ncuaLogo.hidden = ![[Configuration getClientSettingsContent].enablencualogo boolValue];
     _ncuaLogo.hidden = YES;
     [self checkVertifiStatus];

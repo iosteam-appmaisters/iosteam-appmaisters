@@ -24,6 +24,7 @@
 #import "CameraInstructionViewController.h"
 #import "UISchema.h"
 #import "DepositModel.h"
+#import "Configuration.h"
 
 @interface CameraInstructionViewController ()
 @end
@@ -90,7 +91,17 @@
     UIBarButtonItem *buttonFixSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     buttonFixSpace.width = 10;
     
-    [toolbar setItems:@[buttonLabelShowAgain,buttonFixSpace,buttonShowAgain,buttonFlexSpace,buttonContinue]];
+    BOOL forcedInstructions = [[Configuration getClientSettingsContent].rdcforceinstruction boolValue];
+    if (forcedInstructions) {
+        switchDoNotShow.hidden = YES;
+        [toolbar setItems:@[buttonFixSpace,buttonFlexSpace,buttonContinue]];
+    }
+    else {
+        switchDoNotShow.hidden = NO;
+        [toolbar setItems:@[buttonLabelShowAgain,buttonFixSpace,buttonShowAgain,buttonFlexSpace,buttonContinue]];
+
+    }
+    
 
     if (images.count > 1)
     {
