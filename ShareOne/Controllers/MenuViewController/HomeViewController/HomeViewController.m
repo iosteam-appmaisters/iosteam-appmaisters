@@ -91,8 +91,10 @@
 }
 
 - (void)dealloc {
-    [_webview setDelegate:nil];
+    
+    _webview.delegate = nil;
     [_webview stopLoading];
+    
 }
 
 #define mark - UnWind Segue

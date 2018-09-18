@@ -185,6 +185,13 @@
     [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
 }
 
+- (void)dealloc {
+    
+    _webView.delegate = nil;
+    [_webView stopLoading];
+    
+}
+
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

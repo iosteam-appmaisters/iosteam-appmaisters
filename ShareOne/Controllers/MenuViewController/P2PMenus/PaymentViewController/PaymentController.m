@@ -140,6 +140,12 @@
     
 }
 
+- (void)dealloc {
+    
+    _webView.delegate = nil;
+    [_webView stopLoading];
+    
+}
 
 #pragma mark - <UITableViewDataSource> / <UITableViewDelegate> -
 

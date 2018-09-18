@@ -131,7 +131,6 @@
 		9AA04A1F211B0464009BC70F /* HeldForReviewDeleteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA049C7211B0464009BC70F /* HeldForReviewDeleteOperation.m */; };
 		9AA04A20211B0464009BC70F /* HistoryAuditQueryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA049C9211B0464009BC70F /* HistoryAuditQueryOperation.m */; };
 		9AA04A21211B0464009BC70F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA049CA211B0464009BC70F /* Images.xcassets */; };
-		9AA04A22211B0464009BC70F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AA049CB211B0464009BC70F /* Info.plist */; };
 		9AA04A23211B0464009BC70F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AA049CC211B0464009BC70F /* Launch Screen.storyboard */; };
 		9AA04A24211B0464009BC70F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA049CD211B0464009BC70F /* MainWindow.xib */; };
 		9AA04A25211B0464009BC70F /* MultiPartForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA049CF211B0464009BC70F /* MultiPartForm.m */; };
@@ -428,7 +427,6 @@
 		9AA049C8211B0464009BC70F /* HistoryAuditQueryOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryAuditQueryOperation.h; sourceTree = "<group>"; };
 		9AA049C9211B0464009BC70F /* HistoryAuditQueryOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAuditQueryOperation.m; sourceTree = "<group>"; };
 		9AA049CA211B0464009BC70F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9AA049CB211B0464009BC70F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AA049CC211B0464009BC70F /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9AA049CD211B0464009BC70F /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		9AA049CE211B0464009BC70F /* MultiPartForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPartForm.h; sourceTree = "<group>"; };
@@ -1232,7 +1230,6 @@
 				9AA049C8211B0464009BC70F /* HistoryAuditQueryOperation.h */,
 				9AA049C9211B0464009BC70F /* HistoryAuditQueryOperation.m */,
 				9AA049CA211B0464009BC70F /* Images.xcassets */,
-				9AA049CB211B0464009BC70F /* Info.plist */,
 				9AA049CC211B0464009BC70F /* Launch Screen.storyboard */,
 				9AA049CD211B0464009BC70F /* MainWindow.xib */,
 				9AA049CE211B0464009BC70F /* MultiPartForm.h */,
@@ -1470,7 +1467,6 @@
 				9AA04A06211B0464009BC70F /* CameraInstructionViewController.xib in Resources */,
 				9AA04A2E211B0464009BC70F /* Settings.bundle in Resources */,
 				9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */,
-				9AA04A22211B0464009BC70F /* Info.plist in Resources */,
 				9AA04A2F211B0464009BC70F /* Settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

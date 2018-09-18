@@ -125,4 +125,12 @@
     [self presentViewController:alert animated:YES completion:nil];
     
 }
+
+- (void)dealloc {
+    
+    _webView.delegate = nil;
+    [_webView stopLoading];
+    
+}
+
 @end

@@ -102,6 +102,12 @@
     [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
 }
 
+- (void)dealloc {
+    
+    _webview.delegate = nil;
+    [_webview stopLoading];
+    
+}
 
 #pragma mark - Status Alert Message
 -(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{

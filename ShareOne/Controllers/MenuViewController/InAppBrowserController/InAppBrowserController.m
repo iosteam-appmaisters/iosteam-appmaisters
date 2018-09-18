@@ -85,6 +85,12 @@
     }
 }
 
+- (void)dealloc {
+    
+    _webView.delegate = nil;
+    [_webView stopLoading];
+    
+}
 
 #pragma mark - Status Alert Message
 -(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{

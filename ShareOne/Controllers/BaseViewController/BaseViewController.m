@@ -209,7 +209,18 @@
 }
 
 
-
+- (void)dealloc {
+    
+    for(UIView *view in self.navigationController.view.window.subviews){
+        if([view isKindOfClass:[UIWebView class]]){
+            UIWebView *webView = (UIWebView *)view;
+            webView.delegate = nil;
+            [webView stopLoading];
+            break;
+        }
+    }
+    
+}
 
 - (UIWebView *)getAdverTismentView{
     
