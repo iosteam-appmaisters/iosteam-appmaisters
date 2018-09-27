@@ -39,6 +39,18 @@ DEPENDENCIES:
   - SWTableViewCell (~> 0.3.7)
   - XMLDictionary (~> 1.4)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Crashlytics
+    - Fabric
+    - FZAccordionTableView
+    - GoogleMaps
+    - IQKeyboardManager
+    - MBProgressHUD
+    - SWTableViewCell
+    - XMLDictionary
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Crashlytics: a989ef242b66605577a425733797f810bd2725eb
@@ -50,6 +62,6 @@ SPEC CHECKSUMS:
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
 
-PODFILE CHECKSUM: aa264e40f201b5fa41e8592bdd1936ea9a82346b
+PODFILE CHECKSUM: 2039c687e357cb5c3b7286228da280f2a90b4d3d
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
