@@ -547,7 +547,15 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
-    [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:[[[SharedUser sharedManager] userObject]Contextid],@"ContextID",[ShareOneUtility getUUID],@"Fingerprint",PROVIDER_TYPE_VALUE,@"ProviderType",@"ios",@"DeviceType",[ShareOneUtility getDeviceNotifToken],@"DeviceToken",authArray,@"Authorizations", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
+    [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
+                                      [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
+                                      [ShareOneUtility getUUID],@"Fingerprint",
+                                      PROVIDER_TYPE_VALUE,@"ProviderType",
+                                      @"ios",@"DeviceType",
+                                      [ShareOneUtility getDeviceNotifToken],@"DeviceToken",
+                                      authArray,@"Authorizations", nil]
+                             message:@""
+                            delegate:weakSelf completionBlock:^(NSObject *user) {
         
         
         [weakSelf startApplication];

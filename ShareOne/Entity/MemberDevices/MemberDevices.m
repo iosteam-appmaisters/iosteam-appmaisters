@@ -16,9 +16,9 @@
 
 @implementation MemberDevices
 
-+(void)postMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
++(void)postMemberDevices:(NSDictionary*)param message:(NSString*)progressMessage delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
-    [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:param progressMessage:nil  urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
+    [[AppServiceModel sharedClient] postRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_POST] AndParam:param progressMessage:progressMessage  urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
         block(response);
         
     } failureBlock:^(NSError *error) {
@@ -30,9 +30,9 @@
 +(void)putMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock{
     
     [[AppServiceModel sharedClient] putRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_PUT] AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES] delegate:delegate completionBlock:^(NSObject *response) {
-        
+        block(response);
     } failureBlock:^(NSError *error) {
-        
+        failBlock(error);
     }];
 }
 
@@ -40,10 +40,11 @@
     
     NSString *signature =[ShareOneUtility getAuthHeaderWithRequestType:RequestType_GET];
     
-    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Please Wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
-        
-        
-    } failureBlock:^(NSError *error) {}];
+    [[AppServiceModel sharedClient] getMethod:signature AndParam:param progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,[[[SharedUser sharedManager] userObject] Contextid]] delegate:delegate completionBlock:^(NSObject *response) {
+        block(response);
+    } failureBlock:^(NSError *error) {
+        failBlock(error);
+    }];
 
 }
 
@@ -52,12 +53,11 @@
     
     NSString *context = [[[SharedUser sharedManager] userObject] Contextid];
     NSString *deviceID = [param valueForKey:@"ID"];
-//    NSString *deviceFingerPrint = [param valueForKey:@"Fingerprint"];
 
-    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/ContextID/%@/ID/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,context,deviceID] delegate:delegate completionBlock:^(NSObject *response) {
-        
+    [[AppServiceModel sharedClient] deleteRequestWithAuthHeader:[ShareOneUtility getAuthHeaderWithRequestType:RequestType_DELETE] AndParam:nil progressMessage:@"Please wait..." urlString:[NSString stringWithFormat:@"%@/%@/%@/%@",[ShareOneUtility getBaseUrl],KMEMBER_DEVICES,context,deviceID] delegate:delegate completionBlock:^(NSObject *response) {
+        block(response);
     } failureBlock:^(NSError *error) {
-        
+        failBlock(error);
     }];
 
 }
@@ -87,24 +87,22 @@
 
 }
 
-+(NSMutableArray *)getMemberDevices :(NSDictionary *)dict{
++(void)getCurrentMemberDeviceObject :(NSDictionary *)dict
+                     completionBlock:(void(^)(MemberDevices *memberDevice))successBlock
+                        failureBlock:(void(^)(NSError* error))failBlock {
     
-    
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
     NSArray *contentArr = dict[@"MemberDevices"];
     
     [contentArr enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         MemberDevices *objMemberDevices = [[MemberDevices alloc] initWithDictionary:obj];
         
-        objMemberDevices.Authorizations= [DeviceAuth getDeviceAuthArrWithObject:obj];
-        
-        [arr addObject:objMemberDevices];
-        
+        if ([objMemberDevices.Fingerprint isEqualToString:[ShareOneUtility getUUID]]){
+            successBlock(objMemberDevices);
+        }
         
     }];
-    return arr;
-
+    
 }
 
 

@@ -741,7 +741,7 @@
             [self hideProgressAlert];
             
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
-            
+            failBlock(error);
             
         }
     }] resume];

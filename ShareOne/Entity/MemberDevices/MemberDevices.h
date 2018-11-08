@@ -24,7 +24,7 @@
 
 -(id) initWithDictionary:(NSDictionary *)dict;
 
-+(void)postMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock;
++(void)postMemberDevices:(NSDictionary*)param message:(NSString*)progressMessage delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock;
 
 +(void)putMemberDevices:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock;
 
@@ -32,7 +32,9 @@
 
 +(void)deleteMemberDevice:(NSDictionary*)param delegate:(id)delegate completionBlock:(void(^)(NSObject *user))block failureBlock:(void(^)(NSError* error))failBlock;
 
-+(NSMutableArray *)getMemberDevices :(NSDictionary *)dict;
++(void)getCurrentMemberDeviceObject :(NSDictionary *)dict
+                     completionBlock:(void(^)(MemberDevices *memberDevice))successBlock
+                        failureBlock:(void(^)(NSError* error))failBlock;
 
 
 

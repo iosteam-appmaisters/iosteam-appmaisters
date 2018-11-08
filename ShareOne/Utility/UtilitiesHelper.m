@@ -935,18 +935,18 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     
     LAContext *myContext = [[LAContext alloc] init];
     NSError *authError = nil;
-    if (![myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
-        NSLog(@"%@", [authError localizedDescription]);
+    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+        if (@available(iOS 11.0, *)) {
+            if (myContext.biometryType == LABiometryTypeFaceID){
+                return YES;
+            } else {
+                return NO;
+            }
+        }
         return NO;
     }
-    
-    if (@available(iOS 11.0, *)) {
-        if (myContext.biometryType == LABiometryTypeFaceID){
-            return YES;
-        } else {
-            return NO;
-        }
-    } else {
+    else {
+        NSLog(@"%@", [authError localizedDescription]);
         return NO;
     }
 }
