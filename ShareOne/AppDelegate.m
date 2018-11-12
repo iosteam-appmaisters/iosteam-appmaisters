@@ -192,10 +192,14 @@
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"deviceToken---%@", token);
     [ShareOneUtility saveDeviceToken:token];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"NewTokenRegisteration" object:self userInfo:nil];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Error in registration. Error: %@", error);
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"NewTokenRegisteration" object:self userInfo:@{@"error":error}];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

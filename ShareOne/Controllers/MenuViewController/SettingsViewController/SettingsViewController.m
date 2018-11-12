@@ -13,6 +13,7 @@
 #import "NotifSettingsController.h"
 #import "MemberDevices.h"
 #import "SharedUser.h"
+#import "AppDelegate.h"
 
 @implementation SettingsViewController
 
@@ -25,7 +26,6 @@
     _versionLabel.text = [NSString stringWithFormat:@"Version: %@", [ShareOneUtility getVersionNumber]];
     _customerIDLabel.text = [NSString stringWithFormat:@"Customer ID: %@", [ShareOneUtility getCustomerId]];
     _appVersionLabel.text = [ShareOneUtility getApplicationVersion];
-    
     
     ClientSettingsObject  *config = [Configuration getClientSettingsContent];
     
@@ -56,18 +56,50 @@
         [_quickBalanceSwitch setHidden:TRUE];
         [_quickBalanceLabel setHidden:TRUE];
     }
-   
+    
     
 }
+
+-(void)onNewTokenRegisteration:(NSNotification *) notification {
+    
+    __weak SettingsViewController *weakSelf = self;
+    
+    NSString * message = @"";
+    if (notification.userInfo != nil){
+        message = [(NSError*)[notification.userInfo valueForKey:@"error"] localizedDescription];
+        [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"" delegate:nil];
+    }
+    else {
+        [self enablePushNotificationAgain:^(BOOL status){
+            
+            NSString * alertMessage = status == YES ?  @"Notifications enabled." : @"Problem Re-enabling Notifications";
+            [ShareOneUtility saveSettingsWithStatus:status AndKey:PUSH_NOTIF_SETTINGS];
+            [self->_pushNotifSwitch setOn:status];
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMessage title:@"" delegate:weakSelf];
+            
+        }];
+    }
+}
+
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self loadSettingsLocally];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNewTokenRegisteration:) name:@"NewTokenRegisteration" object:nil];
+    
 }
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NewTokenRegisteration" object:nil];
+}
+
 -(void)loadSettingsLocally{
     
     __weak SettingsViewController *weakSelf = self;
-
+    
     [_touchIDLable setText:[NSString stringWithFormat:@"%@ ID",_currentBiometric]];
     
     [ShareOneUtility shouldHideTouchID:weakSelf completionBlock:^(BOOL success) {
@@ -79,10 +111,10 @@
         else{
             [self->_touchIDLable setHidden:FALSE];
             [self->_touchIDSwitch setHidden:FALSE];
-
+            
         }
     }];
-
+    
     [_quickBalanceSwitch setOn:[ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     [_showOffersSwitch setOn:[ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]];
     [_touchIDSwitch setOn:[ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]];
@@ -93,7 +125,7 @@
 -(IBAction)changeSettingsAction:(UISwitch *)sender{
     
     __weak SettingsViewController *weakSelf = self;
-
+    
     __block NSString *key=nil;
     __block NSString *alertMesage= nil;
     if([sender isEqual:_quickBalanceSwitch]){
@@ -128,7 +160,7 @@
                         [self addBiometricAlertScreen];
                         return;
                     }
-
+                    
                 }
                 else{
                     alertMesage= [NSString stringWithFormat:@"%@ ID will not not be requested.",self->_currentBiometric];
@@ -150,34 +182,34 @@
                 return;
             }
             else {
+                
                 //Enable Notifications
-                [self enablePushNotificationAgain:^(BOOL status){
-                    if (status) {
-                        alertMesage = @"Notifications enabled.";
-                        [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
-                        [ShareOneUtility saveSettingsWithStatus:YES AndKey:key];
-                        [sender setOn:YES];
-                    }
-                    else {
-                        [sender setOn:NO];
-                    }
-                }];
+                
+                AppDelegate * appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+                [appDelegate registerForPushNotifications:[UIApplication sharedApplication]];
+                
+                
             }
             
         }
         else{
-            // Disable Notifications
-            [self disablePushNotification:^(BOOL status){
-                if (status){
-                    alertMesage=@"Notifications disabled.";
-                    [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
-                    [ShareOneUtility saveSettingsWithStatus:NO AndKey:key];
-                    [sender setOn:NO];
-                }
-                else {
-                    [sender setOn:YES];
-                }
-            }];
+            
+            [[UIApplication sharedApplication]unregisterForRemoteNotifications];
+            
+            alertMesage=@"Notifications disabled.";
+            [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
+            [ShareOneUtility saveSettingsWithStatus:NO AndKey:key];
+            [sender setOn:NO];
+            
+            /* Disable Notifications
+             [self disablePushNotification:^(BOOL status){
+             if (status){
+             
+             }
+             else {
+             [sender setOn:YES];
+             }
+             }];*/
         }
     }
     
@@ -255,30 +287,30 @@
 }
 
 /*-(void)putMemberDevice{
-    
-    __weak SettingsViewController *weakSelf = self;
-    
-    NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
-    NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
-    NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
-    
-    
-    [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
-                                     [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
-                                     [ShareOneUtility getUUID],@"Fingerprint",
-                                     PROVIDER_TYPE_VALUE,@"ProviderType",
-                                     @"ios",@"DeviceType",
-                                     [ShareOneUtility getDeviceNotifToken],@"DeviceToken",
-                                     @"109",@"ID",
-                                     authArray,@"Authorizations", nil]
-                           delegate:weakSelf completionBlock:^(NSObject *user) {
-                               
-                           } failureBlock:^(NSError *error) {
-                               NSLog(@"%@",[error localizedDescription]);
-                           }];
-    
-    
-}*/
+ 
+ __weak SettingsViewController *weakSelf = self;
+ 
+ NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
+ NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
+ NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
+ 
+ 
+ [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
+ [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
+ [ShareOneUtility getUUID],@"Fingerprint",
+ PROVIDER_TYPE_VALUE,@"ProviderType",
+ @"ios",@"DeviceType",
+ [ShareOneUtility getDeviceNotifToken],@"DeviceToken",
+ @"109",@"ID",
+ authArray,@"Authorizations", nil]
+ delegate:weakSelf completionBlock:^(NSObject *user) {
+ 
+ } failureBlock:^(NSError *error) {
+ NSLog(@"%@",[error localizedDescription]);
+ }];
+ 
+ 
+ }*/
 
 -(void)disablePushNotification:(void(^)(BOOL status))completionBlock{
     
