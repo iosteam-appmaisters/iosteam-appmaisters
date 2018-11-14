@@ -196,20 +196,14 @@
             
             [[UIApplication sharedApplication]unregisterForRemoteNotifications];
             
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"device_token"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
             alertMesage=@"Notifications disabled.";
             [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
             [ShareOneUtility saveSettingsWithStatus:NO AndKey:key];
             [sender setOn:NO];
             
-            /* Disable Notifications
-             [self disablePushNotification:^(BOOL status){
-             if (status){
-             
-             }
-             else {
-             [sender setOn:YES];
-             }
-             }];*/
         }
     }
     
