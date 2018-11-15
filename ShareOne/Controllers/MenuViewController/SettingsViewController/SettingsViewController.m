@@ -70,9 +70,9 @@
         [[ShareOneUtility shareUtitlities] showToastWithMessage:message title:@"" delegate:nil];
     }
     else {
-        [self enablePushNotificationAgain:^(BOOL status){
+        [self enablePushNotificationAgain:^(BOOL status, NSError* error){
             
-            NSString * alertMessage = status == YES ?  @"Notifications enabled." : @"Problem Re-enabling Notifications";
+            NSString * alertMessage = status == YES ?  @"Notifications enabled." : error.localizedDescription;
             [ShareOneUtility saveSettingsWithStatus:status AndKey:PUSH_NOTIF_SETTINGS];
             [self->_pushNotifSwitch setOn:status];
             [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMessage title:@"" delegate:weakSelf];
@@ -251,60 +251,62 @@
     }
 }
 
--(void)enablePushNotificationAgain: (void(^)(BOOL status))completionBlock {
+
+
+-(void)enablePushNotificationAgain:(void(^)(BOOL status, NSError* error))completionBlock{
+    
+    __weak SettingsViewController *weakSelf = self;
+    
+    [MemberDevices getMemberDevices:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+        [ShareOneUtility getUUID];
+        NSDictionary * response = (NSDictionary*)user;
+        
+        [MemberDevices getCurrentMemberDeviceObject:response completionBlock:^(MemberDevices * memberDevice){
+            NSLog(@"%@",memberDevice.Id.stringValue);
+            
+            [self putMemberDevice:memberDevice.Id.stringValue block:^(BOOL status, NSError* error){
+                completionBlock(status,error);
+            }];
+            
+        } failureBlock:^(NSError * error){
+            NSLog(@"%@",[error localizedDescription]);
+            completionBlock(NO,error);
+        }];
+    } failureBlock:^(NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
+        completionBlock(NO,error);
+    }];
+}
+
+-(void)putMemberDevice:(NSString*)memberDeviceID block:(void(^)(BOOL status, NSError* error))completionBlock {
     
     __weak SettingsViewController *weakSelf = self;
     
     NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
     NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
-    
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
-    [MemberDevices postMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
-                                      [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
-                                      [ShareOneUtility getUUID],@"Fingerprint",
-                                      PROVIDER_TYPE_VALUE,@"ProviderType",
-                                      @"ios",@"DeviceType",
-                                      [ShareOneUtility getDeviceNotifToken],@"DeviceToken",
-                                      authArray,@"Authorizations", nil]
-                             message: @"Please wait..."
-                            delegate:weakSelf completionBlock:^(NSObject *user) {
-                                
-                                NSDictionary * result = (NSDictionary*)user;
-                                BOOL isDeviceAdded = [result[@"MemberDeviceAdded"]boolValue];
-                                completionBlock(isDeviceAdded);
-                                
-                            } failureBlock:^(NSError *error) {
-                                NSLog(@"%@",[error localizedDescription]);
-                                completionBlock(NO);
-                            }];
+    
+    [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
+                                     [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
+                                     [ShareOneUtility getUUID],@"Fingerprint",
+                                     PROVIDER_TYPE_VALUE,@"ProviderType",
+                                     @"ios",@"DeviceType",
+                                     memberDeviceID,@"ID",
+                                     [ShareOneUtility getDeviceNotifToken],@"DeviceToken",
+                                     authArray,@"Authorization", nil]
+                           delegate:weakSelf completionBlock:^(NSObject *user) {
+                               
+                               NSDictionary * result = (NSDictionary*)user;
+                               BOOL isDeviceUpdated = [result[@"MemberDeviceEdited"]boolValue];
+                               completionBlock(isDeviceUpdated,nil);
+                               
+                           } failureBlock:^(NSError *error) {
+                               NSLog(@"%@",[error localizedDescription]);
+                               completionBlock(NO,error);
+                           }];
+    
 }
-
-/*-(void)putMemberDevice{
- 
- __weak SettingsViewController *weakSelf = self;
- 
- NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
- NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:FALSE],@"Status", nil];
- NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
- 
- 
- [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
- [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
- [ShareOneUtility getUUID],@"Fingerprint",
- PROVIDER_TYPE_VALUE,@"ProviderType",
- @"ios",@"DeviceType",
- [ShareOneUtility getDeviceNotifToken],@"DeviceToken",
- @"109",@"ID",
- authArray,@"Authorizations", nil]
- delegate:weakSelf completionBlock:^(NSObject *user) {
- 
- } failureBlock:^(NSError *error) {
- NSLog(@"%@",[error localizedDescription]);
- }];
- 
- 
- }*/
 
 -(void)disablePushNotification:(void(^)(BOOL status))completionBlock{
     
@@ -317,7 +319,7 @@
         [MemberDevices getCurrentMemberDeviceObject:response completionBlock:^(MemberDevices * memberDevice){
             NSLog(@"%@",memberDevice.Id.stringValue);
             
-            [self deleteMemberDevices:memberDevice.Id.stringValue block:^(BOOL status){
+            [self deleteMemberDevice:memberDevice.Id.stringValue block:^(BOOL status){
                 completionBlock(status);
             }];
             
@@ -331,7 +333,7 @@
     }];
 }
 
--(void)deleteMemberDevices:(NSString*)memberDeviceID block:(void(^)(BOOL status))completionBlock {
+-(void)deleteMemberDevice:(NSString*)memberDeviceID block:(void(^)(BOOL status))completionBlock {
     
     __weak SettingsViewController *weakSelf = self;
     

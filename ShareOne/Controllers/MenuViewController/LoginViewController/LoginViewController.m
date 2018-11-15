@@ -430,7 +430,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         }
         
     }
-
     [self getSignInWithUser:savedUser];
 }
 
@@ -547,18 +546,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
-    NSMutableDictionary * dicInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
-                                     [ShareOneUtility getUUID],@"Fingerprint",
-                                     PROVIDER_TYPE_VALUE,@"ProviderType",
-                                     @"ios",@"DeviceType",
-                                     authArray,@"Authorizations", nil];
-    
-    if ([ShareOneUtility shouldSendDeviceToken]) {
-        [dicInfo setObject:[ShareOneUtility getDeviceNotifToken]  forKey:@"DeviceToken"];
-    }
-    
-    [MemberDevices postMemberDevices:[dicInfo copy]
+    [MemberDevices postMemberDevices:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                      [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
+                                      [ShareOneUtility getUUID],@"Fingerprint",
+                                      PROVIDER_TYPE_VALUE,@"ProviderType",
+                                      @"ios",@"DeviceType",
+                                      authArray,@"Authorizations", nil]
                              message:@""
                             delegate:weakSelf completionBlock:^(NSObject *user) {
         
