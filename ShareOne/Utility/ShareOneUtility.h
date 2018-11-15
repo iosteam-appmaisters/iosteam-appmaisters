@@ -45,6 +45,7 @@
 +(void)saveUserObjectToLocalObjects:(User *)user;
 +(NSArray *)getUserObjectsFromLocalObjects;
 
++(BOOL)shouldSendDeviceToken;
 
 + (void)setUserRememberedStatusWithBool:(BOOL)isRemember;
 + (BOOL)isUserRemembered;

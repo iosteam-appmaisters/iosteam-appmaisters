@@ -917,6 +917,28 @@ NSLog(Y, Z);		\
         device_token=@"";
     return device_token;
 }
+
++(BOOL)shouldSendDeviceToken {
+    BOOL val = NO;
+    
+    User * savedUser = [ShareOneUtility getUserObject];
+    
+    if (savedUser == nil) {
+        
+        ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+        if ([config.allownotifications boolValue]) {
+            val = YES;
+        }
+    }
+    else {
+//        if([ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS]) {
+//            val = YES;
+//        }
+    }
+    
+    return val;
+}
+
 +(NSString *)getLocationStatusWithObject:(Location *)location{
     
     NSString *status =nil;
