@@ -493,7 +493,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 // Go though to thee application
                 //asi flow
                 [weakSelf.loadingView setHidden:FALSE];
-                [weakSelf startLoadingServices];
+                [weakSelf checkToSendDeviceToken];
             }
         }
         else if([user isKindOfClass:[NSString class]]){
@@ -537,7 +537,51 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
 }
 
--(void)startLoadingServices{
+-(void)checkToSendDeviceToken {
+    
+    __weak LoginViewController *weakSelf = self;
+    
+    [MemberDevices getMemberDevices:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+        [ShareOneUtility getUUID];
+        NSDictionary * response = (NSDictionary*)user;
+        
+        [MemberDevices iterateMemberDevices:response completionBlock:^(BOOL status, MemberDevices * memberDevice){
+            
+            if (!status){
+                
+                ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+                if ([config.allownotifications boolValue]) {
+                 
+                    if([ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS]) {
+                        [self startLoadingServices:YES];
+                    }
+                    else {
+                        [weakSelf startApplication];
+                    }
+                    
+                }
+                else {
+                    [self startLoadingServices:NO];
+                }
+                
+            }
+            else {
+                NSLog(@"%@",memberDevice.Id.stringValue);
+                 [weakSelf startApplication];
+            }
+            
+            
+        } failureBlock:^(NSError * error){
+            NSLog(@"%@",[error localizedDescription]);
+        }];
+    } failureBlock:^(NSError *error) {
+        NSLog(@"%@",[error localizedDescription]);
+    }];
+    
+}
+
+
+-(void)startLoadingServices:(BOOL) shouldSendDeviceToken{
     
     __weak LoginViewController *weakSelf = self;
     
@@ -546,12 +590,18 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
-    [MemberDevices postMemberDevices:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                      [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
-                                      [ShareOneUtility getUUID],@"Fingerprint",
-                                      PROVIDER_TYPE_VALUE,@"ProviderType",
-                                      @"ios",@"DeviceType",
-                                      authArray,@"Authorizations", nil]
+    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
+                                 [ShareOneUtility getUUID],@"Fingerprint",
+                                 PROVIDER_TYPE_VALUE,@"ProviderType",
+                                 @"ios",@"DeviceType",
+                                 authArray,@"Authorizations", nil];
+    
+    if (shouldSendDeviceToken){
+        [dic setObject:[ShareOneUtility getDeviceNotifToken] forKey:@"DeviceToken"];
+    }
+    
+    [MemberDevices postMemberDevices:[dic copy]
                              message:@""
                             delegate:weakSelf completionBlock:^(NSObject *user) {
         
@@ -621,7 +671,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [ShareOneUtility saveUserObject:user];
     
     [self.loadingView setHidden:FALSE];
-    [self startLoadingServices];
+//    [self startLoadingServices];
 
 }
 

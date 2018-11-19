@@ -105,6 +105,38 @@
     
 }
 
++(void)iterateMemberDevices :(NSDictionary *)dict
+                     completionBlock:(void(^)(BOOL status, MemberDevices *memberDevice))successBlock
+                        failureBlock:(void(^)(NSError* error))failBlock {
+    
+    NSArray *contentArr = dict[@"MemberDevices"];
+    
+    NSLog(@"%@",contentArr);
+    
+    BOOL value = NO;
+    MemberDevices *objMemberDevices = nil;
+    
+    for (int i = 0; i < contentArr.count; i++) {
+        
+        NSDictionary * obj = contentArr[i];
+        
+        objMemberDevices = [[MemberDevices alloc] initWithDictionary:obj];
+        
+        if ([objMemberDevices.Fingerprint isEqualToString:[ShareOneUtility getUUID]]){
+            value = YES;
+            break;
+        }
+        
+    }
+    if (value) {
+        successBlock(YES, objMemberDevices);
+    }
+    else {
+        successBlock(NO,nil);
+    }
+  
+}
+
 
 
 @end

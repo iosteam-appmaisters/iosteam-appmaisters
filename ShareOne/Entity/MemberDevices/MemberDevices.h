@@ -36,6 +36,8 @@
                      completionBlock:(void(^)(MemberDevices *memberDevice))successBlock
                         failureBlock:(void(^)(NSError* error))failBlock;
 
-
++(void)iterateMemberDevices :(NSDictionary *)dict
+             completionBlock:(void(^)(BOOL status, MemberDevices *memberDevice))successBlock
+                failureBlock:(void(^)(NSError* error))failBlock;
 
 @end
