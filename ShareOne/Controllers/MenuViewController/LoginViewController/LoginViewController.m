@@ -556,7 +556,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                         [self startLoadingServices:YES];
                     }
                     else {
-                        [weakSelf startApplication];
+                        [self startLoadingServices:NO];
                     }
                     
                 }
