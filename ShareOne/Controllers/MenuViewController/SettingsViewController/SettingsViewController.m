@@ -194,16 +194,22 @@
         }
         else{
             
-            [[UIApplication sharedApplication]unregisterForRemoteNotifications];
-            
-            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"device_token"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            
-            alertMesage=@"Notifications disabled.";
-            [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
-            [ShareOneUtility saveSettingsWithStatus:NO AndKey:key];
-            [sender setOn:NO];
-            
+            [self disablePushNotification:^(BOOL status, NSError* error){
+                
+                NSString * alertMessage = status == YES ?  @"Notifications disabled." : error.localizedDescription;
+                [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMessage title:@"" delegate:weakSelf];
+
+                if (status) {
+                    [ShareOneUtility saveSettingsWithStatus:NO AndKey:PUSH_NOTIF_SETTINGS];
+                    [sender setOn:NO];
+                    
+                    [[UIApplication sharedApplication]unregisterForRemoteNotifications];
+                    
+                    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"device_token"];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                }
+                
+            }];
         }
     }
     
@@ -264,7 +270,7 @@
         [MemberDevices getCurrentMemberDeviceObject:response completionBlock:^(MemberDevices * memberDevice){
             NSLog(@"%@",memberDevice.Id.stringValue);
             
-            [self putMemberDevice:memberDevice.Id.stringValue block:^(BOOL status, NSError* error){
+            [self putMemberDevice:memberDevice.Id.stringValue withToken: YES block:^(BOOL status, NSError* error){
                 completionBlock(status,error);
             }];
             
@@ -278,7 +284,7 @@
     }];
 }
 
--(void)putMemberDevice:(NSString*)memberDeviceID block:(void(^)(BOOL status, NSError* error))completionBlock {
+-(void)putMemberDevice:(NSString*)memberDeviceID withToken:(BOOL)isDeviceToken block:(void(^)(BOOL status, NSError* error))completionBlock {
     
     __weak SettingsViewController *weakSelf = self;
     
@@ -286,6 +292,7 @@
     NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
+    NSString * deviceToken = isDeviceToken ? [ShareOneUtility getDeviceNotifToken] : NULL;
     
     [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
                                      [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
@@ -293,7 +300,7 @@
                                      PROVIDER_TYPE_VALUE,@"ProviderType",
                                      @"ios",@"DeviceType",
                                      memberDeviceID,@"ID",
-                                     [ShareOneUtility getDeviceNotifToken],@"DeviceToken",
+                                     deviceToken,@"DeviceToken",
                                      authArray,@"Authorization", nil]
                            delegate:weakSelf completionBlock:^(NSObject *user) {
                                
@@ -308,7 +315,7 @@
     
 }
 
--(void)disablePushNotification:(void(^)(BOOL status))completionBlock{
+-(void)disablePushNotification:(void(^)(BOOL status, NSError* error))completionBlock{
     
     __weak SettingsViewController *weakSelf = self;
     
@@ -319,17 +326,17 @@
         [MemberDevices getCurrentMemberDeviceObject:response completionBlock:^(MemberDevices * memberDevice){
             NSLog(@"%@",memberDevice.Id.stringValue);
             
-            [self deleteMemberDevice:memberDevice.Id.stringValue block:^(BOOL status){
-                completionBlock(status);
+            [self putMemberDevice:memberDevice.Id.stringValue withToken: NO block:^(BOOL status, NSError* error){
+                completionBlock(status,nil);
             }];
             
         } failureBlock:^(NSError * error){
             NSLog(@"%@",[error localizedDescription]);
-            completionBlock(NO);
+            completionBlock(NO,error);
         }];
     } failureBlock:^(NSError *error) {
         NSLog(@"%@",[error localizedDescription]);
-        completionBlock(NO);
+        completionBlock(NO,error);
     }];
 }
 
