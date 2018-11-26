@@ -292,7 +292,6 @@
     NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
-    NSString * deviceToken = isDeviceToken ? [ShareOneUtility getDeviceNotifToken] : NULL;
     
     [MemberDevices putMemberDevices:[NSDictionary dictionaryWithObjectsAndKeys:
                                      [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
@@ -300,7 +299,7 @@
                                      PROVIDER_TYPE_VALUE,@"ProviderType",
                                      @"ios",@"DeviceType",
                                      memberDeviceID,@"ID",
-                                     deviceToken,@"DeviceToken",
+                                     isDeviceToken ? [ShareOneUtility getDeviceNotifToken] : [NSNull null],@"DeviceToken",
                                      authArray,@"Authorization", nil]
                            delegate:weakSelf completionBlock:^(NSObject *user) {
                                
