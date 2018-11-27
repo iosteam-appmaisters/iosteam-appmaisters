@@ -14,42 +14,20 @@
 -(id) initWithDictionary:(NSDictionary *)dict{
     
     self = [super init];{
-        [self setValuesForKeysWithDictionary:dict];
+    
+        self.ApplicationName = dict[@"ApplicationName"];
+        self.ClientApplications = dict[@"ClientApplications"];
+        self.CreatedDTM = dict[@"CreatedDTM"];
+        self.HMACType = dict[@"HMACType"];
+        self.HostName = dict[@"HostName"];
+        self.ID = dict[@"ID"];
+        self.PrivateKey = dict[@"PrivateKey"];
+        self.PublicKey = dict[@"PublicKey"];
+        self.SecurityVersion = dict[@"SecurityVersion"];
+        self.UpdatedDTM = dict[@"UpdatedDTM"];
+        
     }
     return self;
-}
-
-+(ApiSettingsObject *)parseClientSettings:(NSDictionary *)dict{
-    
-    
-    [self setValuesForKeysWithDictionary:dict];
-
-    ApiSettingsObject *obj = [[ApiSettingsObject alloc] init];
-    
-    for (NSString* key in dict) {
-        id value_key = [dict objectForKey:key];
-//        NSString *value = [dict objectForKey:@"Data"];
-        
-        //NSLog(@"%@",stylesDict );
-        if([value_key isKindOfClass:[NSString class]] && [value_key length]>0){
-            
-            SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-            NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value_key);
-            if (value_key != [NSNull null]) {
-                if ([obj respondsToSelector:selector]) {
-                    
-#       pragma clang diagnostic push
-#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    [obj performSelector:selector withObject:value_key];
-#       pragma clang diagnostic pop
-                    
-                }
-            }
-        }
-        
-    }
-    
-    return obj;
 }
 
 @end

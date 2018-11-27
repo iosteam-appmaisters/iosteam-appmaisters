@@ -9,12 +9,20 @@
 #import "ClientApplicationsObject.h"
 
 @implementation ClientApplicationsObject
-
+    
 -(id) initWithDictionary:(NSDictionary *)dict{
     
     self = [super init];{
-        [self setValuesForKeysWithDictionary:dict];
+        
+        self.ClientApplicationTypeID = dict[@"ClientApplicationTypeID"];
+        self.CustomerEnvironmentTypeID = dict[@"CustomerEnvironmentTypeID"];
+        self.CustomerID = dict[@"CustomerID"];
+        self.ID = dict[@"ID"];
+        self.Name = dict[@"Name"];
+        
     }
     return self;
 }
+    
+    
 @end

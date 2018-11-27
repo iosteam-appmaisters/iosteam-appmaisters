@@ -21,7 +21,6 @@
 @property (nonatomic,strong) NSString *SecurityVersion;
 @property (nonatomic,strong) NSString *UpdatedDTM;
 
-+(ApiSettingsObject *)parseClientSettings:(NSDictionary *)dict;
 -(id) initWithDictionary:(NSDictionary *)dict;
 
 
