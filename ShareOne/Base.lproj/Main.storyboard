@@ -898,6 +898,9 @@
                                     <constraint firstAttribute="width" constant="30" id="pxl-gW-8Mz"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="print_icon2"/>
+                                <connections>
+                                    <action selector="printPDF:" destination="as5-Vt-hhq" eventType="touchUpInside" id="gql-No-jr7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -913,6 +916,7 @@
                     <navigationItem key="navigationItem" id="nio-1D-MyX"/>
                     <connections>
                         <outlet property="bottomAdsConstraint" destination="hv8-0V-TnG" id="W75-rQ-E6P"/>
+                        <outlet property="printPDFButton" destination="qt1-rJ-H40" id="hKa-hg-JRH"/>
                         <outlet property="webview" destination="xB2-EZ-tpB" id="PQm-w1-dxa"/>
                     </connections>
                 </viewController>
@@ -2736,7 +2740,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="S7J-jj-etD">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
                                                 <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
@@ -3140,7 +3144,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="eyx-yh-2M5">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1n4-cV-EJh">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1n4-cV-EJh">
                                                 <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
@@ -3228,7 +3232,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="mVd-ge-9SF">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
                                                 <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
@@ -3501,7 +3505,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="zLz-gn-VQb">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
                                                 <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
@@ -5739,7 +5743,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
         <image name="paypal_logo" width="124.33333587646484" height="30"/>
         <image name="pin-ok-btn" width="348.66665649414062" height="41.333332061767578"/>
         <image name="pin-submit-btn" width="348.66665649414062" height="41.333332061767578"/>
-        <image name="print_icon2" width="16" height="16"/>
+        <image name="print_icon2" width="100" height="100"/>
         <image name="qbDownIcon" width="414" height="49"/>
         <image name="rdc_delete_icon" width="10" height="11"/>
         <image name="recapture_btn" width="321" height="103"/>

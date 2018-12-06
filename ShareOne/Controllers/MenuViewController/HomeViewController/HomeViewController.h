@@ -15,5 +15,6 @@
 @property (nonatomic,strong) NSMutableURLRequest *webViewRequest;
 -(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue;
 
+@property (weak, nonatomic) IBOutlet UIButton *printPDFButton;
 
 @end

@@ -25,6 +25,7 @@
     __weak HomeViewController *weakSelf = self;
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;
+    _printPDFButton.hidden = YES;
 
     if(!_url)
         _url = @"";
@@ -229,7 +230,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     NSLog(@"webViewDidFinishLoad url: %@", webView.request.URL.absoluteString);
-
+    NSString * contentType = [webView stringByEvaluatingJavaScriptFromString:@"document.contentType;"];
+    if ([contentType isEqualToString:@"application/pdf"]){
+        _printPDFButton.hidden = NO;
+    }
+    
     [self logoutAfterChecking];
     
     NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
@@ -297,6 +302,11 @@
 }
 
 #define kPaperSizeA4 CGSizeMake(595.2,841.8)
+
+- (IBAction)printPDF:(UIButton *)sender {
+    
+    [self savePDFToDocumentsDirectory];
+}
 
 -(void)savePDFToDocumentsDirectory {
     
