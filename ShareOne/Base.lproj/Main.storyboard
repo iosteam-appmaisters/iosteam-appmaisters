@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -459,14 +459,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BS-sd-5gL">
-                                        <rect key="frame" x="269.5" y="357.5" width="11" height="27"/>
+                                        <rect key="frame" x="258.5" y="330" width="33" height="82"/>
                                         <state key="normal" backgroundImage="dot_bullets"/>
                                         <connections>
                                             <action selector="infoButtonTapped:" destination="Grc-iE-xzY" eventType="touchUpInside" id="wLf-nn-9X4"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up_arrow_white" translatesAutoresizingMaskIntoConstraints="NO" id="eyf-Eg-j9B">
-                                        <rect key="frame" x="154.5" y="411" width="11" height="9"/>
+                                        <rect key="frame" x="142.5" y="411" width="35" height="29"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -715,7 +715,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow_white" translatesAutoresizingMaskIntoConstraints="NO" id="KTb-Ba-BEO">
-                                <rect key="frame" x="154.5" y="25" width="11" height="9"/>
+                                <rect key="frame" x="142.5" y="25" width="35" height="29"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ii0-5V-DRE" customClass="FZAccordionTableView">
                                 <rect key="frame" x="0.0" y="120" width="320" height="448"/>
@@ -891,6 +891,14 @@
                                 <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qt1-rJ-H40">
+                                <rect key="frame" x="260" y="50" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="c5v-xX-rs9"/>
+                                    <constraint firstAttribute="width" constant="30" id="pxl-gW-8Mz"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="print_icon2"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -898,6 +906,8 @@
                             <constraint firstItem="xB2-EZ-tpB" firstAttribute="leading" secondItem="9v0-UK-2tX" secondAttribute="leading" id="am5-NE-YdJ"/>
                             <constraint firstAttribute="trailing" secondItem="xB2-EZ-tpB" secondAttribute="trailing" id="eDI-W2-ILl"/>
                             <constraint firstItem="faW-uz-hGd" firstAttribute="top" secondItem="xB2-EZ-tpB" secondAttribute="bottom" id="hv8-0V-TnG"/>
+                            <constraint firstAttribute="trailing" secondItem="qt1-rJ-H40" secondAttribute="trailing" constant="30" id="tJ3-dY-KIy"/>
+                            <constraint firstItem="qt1-rJ-H40" firstAttribute="top" secondItem="RVA-pX-CkI" secondAttribute="bottom" constant="30" id="wJG-xr-NMV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nio-1D-MyX"/>
@@ -2726,8 +2736,8 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="S7J-jj-etD">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
-                                                <rect key="frame" x="219" y="0.5" width="85" height="43"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0DY-eh-c5R">
+                                                <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -3027,7 +3037,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk0-QX-Nau" userLabel="closeButton" customClass="CustomButton">
-                                <rect key="frame" x="0.0" y="30" width="24" height="24"/>
+                                <rect key="frame" x="0.0" y="30" width="72" height="72"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="cross_circle"/>
                                 <connections>
@@ -3035,7 +3045,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_image" translatesAutoresizingMaskIntoConstraints="NO" id="j0p-eF-4hZ">
-                                <rect key="frame" x="7" y="37" width="10" height="10"/>
+                                <rect key="frame" x="20" y="51" width="32" height="30"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3130,8 +3140,8 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="eyx-yh-2M5">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1n4-cV-EJh">
-                                                <rect key="frame" x="219" y="0.5" width="85" height="43"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1n4-cV-EJh">
+                                                <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -3218,8 +3228,8 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="mVd-ge-9SF">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
-                                                <rect key="frame" x="219" y="0.5" width="85" height="43"/>
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uBb-7d-RNW">
+                                                <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -3491,8 +3501,8 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="zLz-gn-VQb">
-                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
-                                                <rect key="frame" x="219" y="0.5" width="85" height="43"/>
+                                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MRc-ER-SO9">
+                                                <rect key="frame" x="103" y="0.0" width="201" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="top_logo"/>
                                             </button>
@@ -4381,7 +4391,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwu-Ac-Xhc" customClass="CustomButton">
-                                <rect key="frame" x="165" y="431.5" width="150" height="36"/>
+                                <rect key="frame" x="165" y="413.5" width="300" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="YES, PLEASE" backgroundImage="touch-yes"/>
                                 <connections>
@@ -4963,7 +4973,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwc-D5-nt7" userLabel="closeButton" customClass="CustomButton">
-                                <rect key="frame" x="0.0" y="20" width="24" height="24"/>
+                                <rect key="frame" x="0.0" y="20" width="72" height="72"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="cross_circle"/>
                                 <connections>
@@ -4971,7 +4981,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_image" translatesAutoresizingMaskIntoConstraints="NO" id="XgP-A1-dCm">
-                                <rect key="frame" x="7" y="27" width="10" height="10"/>
+                                <rect key="frame" x="20" y="41" width="32" height="30"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -5083,14 +5093,14 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="postal-code"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t69-ru-Nzg" userLabel="menuButton">
-                                        <rect key="frame" x="273" y="9.5" width="37" height="31"/>
+                                        <rect key="frame" x="198" y="-22" width="112" height="94"/>
                                         <state key="normal" image="atm_location_menu_icon"/>
                                         <connections>
                                             <action selector="mapMenuButtonAction:" destination="8ab-Lt-nRm" eventType="touchUpInside" id="Esr-Zb-DKu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgg-Nf-R51" userLabel="SearchButton">
-                                        <rect key="frame" x="129" y="10" width="123" height="30"/>
+                                        <rect key="frame" x="-194" y="-20.5" width="371" height="91"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="atm_location_searchBtn"/>
                                         <connections>
@@ -5098,7 +5108,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roC-QO-UvJ" userLabel="SeperatorView">
-                                        <rect key="frame" x="262" y="3" width="1" height="44"/>
+                                        <rect key="frame" x="187" y="3" width="1" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="ARb-fD-2eN"/>
@@ -5120,10 +5130,10 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lET-XQ-bju" userLabel="mapMenuView">
-                                <rect key="frame" x="217.5" y="70" width="92.5" height="90"/>
+                                <rect key="frame" x="56" y="70" width="254" height="90"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="atm_location_menu_view_bg" translatesAutoresizingMaskIntoConstraints="NO" id="xP7-9I-bG7">
-                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="254" height="90"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="8TN-e5-3fV"/>
                                         </constraints>
@@ -5165,19 +5175,19 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-Sb-nFG">
-                                        <rect key="frame" x="31" y="12" width="56.5" height="16"/>
+                                        <rect key="frame" x="31" y="12" width="218" height="16"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Branch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwC-8A-YiV">
-                                        <rect key="frame" x="31" y="38" width="56.5" height="14"/>
+                                        <rect key="frame" x="31" y="38" width="218" height="14"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By ATM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2t-vo-v06">
-                                        <rect key="frame" x="31" y="63" width="56.5" height="14"/>
+                                        <rect key="frame" x="31" y="63" width="218" height="14"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -5214,7 +5224,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcc-2Y-n91">
-                                <rect key="frame" x="260" y="518" width="40" height="40"/>
+                                <rect key="frame" x="180" y="436" width="120" height="122"/>
                                 <state key="normal" image="current_location_btn"/>
                                 <connections>
                                     <action selector="currentLocationBtnTapped:" destination="8ab-Lt-nRm" eventType="touchUpInside" id="AK2-Hh-kDt"/>
@@ -5507,7 +5517,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehq-Pq-qjk" customClass="CustomButton">
-                                <rect key="frame" x="165" y="431.5" width="150" height="36"/>
+                                <rect key="frame" x="165" y="413.5" width="300" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="YES, PLEASE" backgroundImage="touch-yes"/>
                                 <connections>
@@ -5682,69 +5692,70 @@ You agree that you will not use Mobile Deposit to deposit:</string>
     <resources>
         <image name="ATMtop_banner" width="414" height="151"/>
         <image name="FingerPrint_Button" width="205" height="37"/>
-        <image name="Lock_icon" width="37" height="37"/>
-        <image name="Login_Button" width="384" height="45"/>
+        <image name="Lock_icon" width="37.666667938232422" height="37.666667938232422"/>
+        <image name="Login_Button" width="384.33334350585938" height="45.666667938232422"/>
         <image name="QuickBalance_Button" width="414" height="49"/>
-        <image name="Rembember_Box" width="16" height="16"/>
-        <image name="Rembember_Box_checked" width="16" height="16"/>
-        <image name="UserID_icon" width="37" height="37"/>
-        <image name="add_fav_btn" width="113" height="26"/>
-        <image name="add_new_fav_btn" width="121" height="22"/>
-        <image name="arrow_field" width="366" height="25"/>
-        <image name="atm_location_active_radioBtn" width="12" height="12"/>
-        <image name="atm_location_inactive_radioBtn" width="12" height="12"/>
-        <image name="atm_location_menu_icon" width="37" height="31"/>
-        <image name="atm_location_menu_view_bg" width="84" height="71"/>
-        <image name="atm_location_searchBtn" width="123" height="30"/>
-        <image name="back_check_placeholder" width="554" height="260"/>
-        <image name="back_icon" width="25" height="17"/>
+        <image name="Rembember_Box" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="Rembember_Box_checked" width="16.666666030883789" height="16.666666030883789"/>
+        <image name="UserID_icon" width="37.666667938232422" height="37.666667938232422"/>
+        <image name="add_fav_btn" width="113" height="26.666666030883789"/>
+        <image name="add_new_fav_btn" width="121.66666412353516" height="22.666666030883789"/>
+        <image name="arrow_field" width="732" height="50"/>
+        <image name="atm_location_active_radioBtn" width="37" height="38"/>
+        <image name="atm_location_inactive_radioBtn" width="37" height="38"/>
+        <image name="atm_location_menu_icon" width="112" height="94"/>
+        <image name="atm_location_menu_view_bg" width="254" height="214"/>
+        <image name="atm_location_searchBtn" width="371" height="91"/>
+        <image name="back_check_placeholder" width="1108" height="520"/>
+        <image name="back_icon" width="25" height="17.666666030883789"/>
         <image name="boc-deposit-list" width="70" height="13"/>
-        <image name="confirm_btn" width="59" height="23"/>
-        <image name="cross_circle" width="24" height="24"/>
-        <image name="cross_image" width="10" height="10"/>
-        <image name="current_location_btn" width="40" height="40"/>
+        <image name="confirm_btn" width="59.666667938232422" height="23"/>
+        <image name="cross_circle" width="72" height="72"/>
+        <image name="cross_image" width="32" height="30"/>
+        <image name="current_location_btn" width="120" height="122"/>
         <image name="default_marker.png" width="21" height="38"/>
-        <image name="del_no" width="55" height="22"/>
-        <image name="del_yes" width="55" height="22"/>
+        <image name="del_no" width="55.333332061767578" height="22.666666030883789"/>
+        <image name="del_yes" width="55.333332061767578" height="22.666666030883789"/>
         <image name="direction_bttn" width="80" height="18"/>
-        <image name="dot_bullets" width="11" height="27"/>
-        <image name="dot_circle" width="48" height="49"/>
-        <image name="down-arrow" width="7" height="4"/>
-        <image name="down_arrow_white" width="11" height="9"/>
+        <image name="dot_bullets" width="33" height="82"/>
+        <image name="dot_circle" width="146" height="147"/>
+        <image name="down-arrow" width="7.3333334922790527" height="4"/>
+        <image name="down_arrow_white" width="35" height="29"/>
         <image name="foc-deposit-list" width="70" height="13"/>
-        <image name="front_check_placeholder" width="554" height="260"/>
-        <image name="grey_overlay" width="554" height="260"/>
-        <image name="header_icon_payment" width="109" height="116"/>
-        <image name="icon-clock" width="12" height="12"/>
+        <image name="front_check_placeholder" width="1108" height="520"/>
+        <image name="grey_overlay" width="1108" height="520"/>
+        <image name="header_icon_payment" width="109.66666412353516" height="116"/>
+        <image name="icon-clock" width="12.333333015441895" height="12.333333015441895"/>
         <image name="icon-dollar" width="20" height="20"/>
         <image name="ios_settings" width="414" height="151"/>
-        <image name="login_bg" width="414" height="736"/>
-        <image name="map_direction" width="121" height="28"/>
+        <image name="login_bg" width="1242" height="2208"/>
+        <image name="map_direction" width="121.33333587646484" height="28.333333969116211"/>
         <image name="menu_branch_location_icon" width="24" height="23"/>
-        <image name="ncua_logo" width="210" height="101"/>
+        <image name="ncua_logo" width="420" height="203"/>
         <image name="next-btn-img" width="169" height="45"/>
-        <image name="notif-cont-btn" width="349" height="41"/>
-        <image name="notif-icon-btn" width="162" height="193"/>
-        <image name="paypal_btn" width="83" height="23"/>
-        <image name="paypal_logo" width="124" height="30"/>
-        <image name="pin-ok-btn" width="348" height="41"/>
-        <image name="pin-submit-btn" width="348" height="41"/>
+        <image name="notif-cont-btn" width="349" height="41.666667938232422"/>
+        <image name="notif-icon-btn" width="162" height="193.33332824707031"/>
+        <image name="paypal_btn" width="83.333335876464844" height="23.666666030883789"/>
+        <image name="paypal_logo" width="124.33333587646484" height="30"/>
+        <image name="pin-ok-btn" width="348.66665649414062" height="41.333332061767578"/>
+        <image name="pin-submit-btn" width="348.66665649414062" height="41.333332061767578"/>
+        <image name="print_icon2" width="16" height="16"/>
         <image name="qbDownIcon" width="414" height="49"/>
         <image name="rdc_delete_icon" width="10" height="11"/>
-        <image name="recapture_btn" width="160" height="51"/>
-        <image name="sep_field" width="336" height="25"/>
+        <image name="recapture_btn" width="321" height="103"/>
+        <image name="sep_field" width="673" height="50"/>
         <image name="setting_icon-p2p" width="111" height="111"/>
-        <image name="show_button" width="127" height="18"/>
+        <image name="show_button" width="127" height="18.333333969116211"/>
         <image name="show_on_map_bttn" width="80" height="18"/>
-        <image name="splash" width="414" height="736"/>
-        <image name="submit-btn" width="367" height="41"/>
+        <image name="splash" width="1242" height="2208"/>
+        <image name="submit-btn" width="367" height="41.333332061767578"/>
         <image name="swap_right" width="414" height="736"/>
-        <image name="top_Banner" width="414" height="299"/>
+        <image name="top_Banner" width="414" height="299.66665649414062"/>
         <image name="top_banner" width="414" height="151"/>
-        <image name="top_logo" width="67" height="43"/>
+        <image name="top_logo" width="201" height="131"/>
         <image name="touch-no-thanks" width="150" height="36"/>
-        <image name="touch-thumb" width="147" height="177"/>
-        <image name="touch-yes" width="150" height="36"/>
-        <image name="up_arrow_white" width="11" height="9"/>
+        <image name="touch-thumb" width="147.33332824707031" height="177.33332824707031"/>
+        <image name="touch-yes" width="300" height="72"/>
+        <image name="up_arrow_white" width="35" height="29"/>
     </resources>
 </document>
