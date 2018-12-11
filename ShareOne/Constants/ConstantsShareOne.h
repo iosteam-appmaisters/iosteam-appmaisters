@@ -132,6 +132,7 @@
 
 #define CHANGE_PIN                  @"PINChange"
 #define CHANGE_ACCOUNT_USER_NAME    @"AccountName"
+#define SIGN_UP                     @"Signup"
 
 //#define SUB_CAT_CONTROLLER          @"detailVCIdentifier"
 #define SUB_CAT_CONTROLLER_TITLE    @"DisplayText"

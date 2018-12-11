@@ -18,6 +18,7 @@
 @property (nonatomic,strong) User *user;
 @property (nonatomic,weak) IBOutlet UIButton *backButton;
 @property (nonatomic,weak) IBOutlet UINavigationBar *navBar;
+@property (nonatomic,strong) NSString *withEndURL;
 
 
 -(IBAction)backButtonClicked:(id)sender;

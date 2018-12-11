@@ -85,6 +85,9 @@
 //#define KSINGLE_SIGN_ON                                 @"api/SSO/SignOn"
 
 #define KSINGLE_SIGN_ON                                 @"SSO/SignOn"
+#define KPIN_CHANGE                                     @"Credential/Change"
+#define KACCOUNT_NAME_CHANGE                            @"Credential/RequiredChangeAccount"
+#define KSIGN_UP_CHANGE                                 @"Credential/RequiredChangeAccount"
 
 #define kNO_OF_TRANSACTION                              @"5"
 

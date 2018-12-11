@@ -163,8 +163,8 @@
     NSString *redirect_path = [url URLEncodedString_ch] ;
 
 //    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:encrytedID ,@"EncryptedContextID",randomIV ,@"EncryptionIV",redirect_path  ,@"RedirectPath", nil];
-    
     NSString *siteurl = [NSString stringWithFormat:@"%@/%@?",[Configuration getSSOBaseUrl],KSINGLE_SIGN_ON];
+    
     NSString *enquiryurl = [NSString stringWithFormat:@"%@EncryptedContextID=%@&EncryptionIV=%@&RedirectPath=%@",siteurl,encrytedID,randomIV,redirect_path];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:enquiryurl]];

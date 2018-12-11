@@ -12,6 +12,7 @@
 #import "User.h"
 #import "LoginViewController.h"
 #import "Services.h"
+#import "NSString+MD5String.h"
 
 @implementation PasswordChangeController
 
@@ -58,9 +59,16 @@
         [User postContextIDForSSOWithDelegate:weakSelf withTabName:@"" completionBlock:^(id urlPath) {
             
             NSMutableURLRequest *req = [(NSMutableURLRequest *)urlPath mutableCopy];
-            [req setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
 
-            [weakSelf.webview loadRequest:req];
+            NSString *redirect_path = [self->_withEndURL URLEncodedString_ch];
+            NSString *str = @"%2F";
+            NSString *finalURL = [NSString stringWithFormat:@"%@%@%@",req.URL.absoluteString,str,redirect_path];
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:finalURL]];
+
+            [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+
+            [weakSelf.webview loadRequest:request];
             
         } failureBlock:^(NSError *error) {
             

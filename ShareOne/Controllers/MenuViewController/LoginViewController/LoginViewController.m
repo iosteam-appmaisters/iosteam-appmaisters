@@ -468,22 +468,24 @@ static NSString *const menuCellIdentifier = @"rotationCell";
             
             // if user has any requirment like PinChange or ChangeAccountName process it before continuing.
                 if(user.Requirements){
-                    if([user.Requirements count]>1){
-                        NSString *status = user.Requirements[0];
+                    for (NSString* currentString in user.Requirements)
+                    {
+                        NSLog(@"%@", currentString);
                         
-                        if([status isEqualToString:CHANGE_PIN]){
-                            [weakSelf addPasswordChangeController:user];
+                        if([currentString isEqualToString:CHANGE_PIN]){
+                            [weakSelf addPasswordChangeController:user withURL:KPIN_CHANGE];
+                            break;
                         }
-                        
-                    }
-                    if([user.Requirements count]>0){
-                        NSString *status = user.Requirements[0];
-                        
-                        if([status isEqualToString:CHANGE_PIN]){
-                            [weakSelf addPasswordChangeController:user];
+                        else if([currentString isEqualToString:CHANGE_ACCOUNT_USER_NAME]){
+                            [weakSelf addPasswordChangeController:user withURL:KACCOUNT_NAME_CHANGE];
+                            break;
                         }
-                        if([status isEqualToString:CHANGE_ACCOUNT_USER_NAME]){
-                            [self addControllerToChangeUserName:user];
+                        else if([currentString isEqualToString:SIGN_UP]){
+                            [weakSelf addPasswordChangeController:user withURL:KSIGN_UP_CHANGE];
+                            break;
+                        }
+                        else{
+                            NSLog(@"No user Requirement value is matching.");
                         }
                     }
                     
@@ -683,7 +685,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [self presentViewController:objUserNamecontroller animated:YES completion:nil];
 }
 
--(void)addPasswordChangeController:(User *)user{
+-(void)addPasswordChangeController:(User *)user withURL:(NSString*)withEndUrl{
     
     user.isTouchIDOpen=FALSE;
     
@@ -694,6 +696,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     PasswordChangeController *objPasswordChangeController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PasswordChangeController class])];
     objPasswordChangeController.loginDelegate=self;
     objPasswordChangeController.user=user;
+    objPasswordChangeController.withEndURL = withEndUrl;
     [self presentViewController:objPasswordChangeController animated:YES completion:nil];
 
 }
