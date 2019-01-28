@@ -77,10 +77,10 @@
 -(void)getNSConfigData{
 
     [self showIndicaterView];
-        
+        //"Please wait while we check for updates" replaced with "Applying settings..."
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"MessageLabelNotification"
-     object:self userInfo:@{@"MESSAGE":@"Please wait while we check for updates",
+     object:self userInfo:@{@"MESSAGE":@"Applying settings...",
                             @"STATUS":@"0",
                             @"VERSION":[ShareOneUtility getVersionNumber],
                             @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
