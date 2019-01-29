@@ -26,7 +26,7 @@
     self.navBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:11],NSFontAttributeName,nil];
 
     
-    _webview.delegate=self;
+    _webview.delegate=self; 
     [self loadRequestOnWebView];
     
     
@@ -54,7 +54,7 @@
     }
     else{
         
-        [_backButton setHidden:TRUE];
+        [_backButton setHidden:FALSE];
 
         [User postContextIDForSSOWithDelegate:weakSelf withTabName:@"" completionBlock:^(id urlPath) {
             
