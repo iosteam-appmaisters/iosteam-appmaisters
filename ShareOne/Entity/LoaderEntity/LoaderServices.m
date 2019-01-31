@@ -196,7 +196,14 @@
             [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)response AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_STYLE_VALUES_SERVICE]];
         }
         if([[responseCast.URL absoluteString] containsString:CONFIG_API_SETTINGS_SERVICE]){
-            [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)response AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_API_SETTINGS_SERVICE]];
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)response];
+            [dict setObject:Client_Private_key forKey:@"PrivateKey"];
+            [dict setObject:Client_Public_key forKey:@"PublicKey"];
+           
+            [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)dict AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_API_SETTINGS_SERVICE]];
+            
+            
+            
         }
 
 
