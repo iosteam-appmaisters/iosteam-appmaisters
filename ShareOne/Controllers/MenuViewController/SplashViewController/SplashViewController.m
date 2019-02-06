@@ -96,7 +96,7 @@
             
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"MessageLabelNotification"
-             object:self userInfo:@{@"MESSAGE":@"Please wait while we update app",
+             object:self userInfo:@{@"MESSAGE":@"Applying settings...",
                                     @"STATUS":@"1",
                                     @"VERSION":[ShareOneUtility getVersionNumber],
                                     @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
@@ -113,7 +113,7 @@
                 
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"MessageLabelNotification"
-                 object:self userInfo:@{@"MESSAGE":@"Please wait while we update app",
+                 object:self userInfo:@{@"MESSAGE":@"Applying settings...",
                                         @"STATUS":@"2",
                                         @"VERSION":[ShareOneUtility getVersionNumber],
                                         @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];

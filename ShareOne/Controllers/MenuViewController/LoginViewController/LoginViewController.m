@@ -209,6 +209,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
         if(_isComingAfterPressedOpenUrlButton){
             _isComingAfterPressedOpenUrlButton= FALSE;
+            [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Please login again with your new credentials" title:@"" delegate:weakSelf];
         }
         else{
             

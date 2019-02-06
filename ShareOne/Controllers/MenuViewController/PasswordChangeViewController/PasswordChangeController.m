@@ -82,6 +82,7 @@
     __weak PasswordChangeController *weakSelf = self;
 
     NSLog(@"%@",webView.request.URL.absoluteString);
+    
     if([webView.request.URL.absoluteString containsString:@"Account/Summary"]){
         _loginDelegate.isComingAfterPressedOpenUrlButton=TRUE;
         [self dismissViewControllerAnimated:NO completion:nil];

@@ -149,7 +149,7 @@
     }
     
     if(!isAlreadyAdded){
-        CGRect frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height);
+        CGRect frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height-12, [UIScreen mainScreen].bounds.size.width, height);
         
         
         UIWebView *webView =[[UIWebView alloc] initWithFrame:frame];
