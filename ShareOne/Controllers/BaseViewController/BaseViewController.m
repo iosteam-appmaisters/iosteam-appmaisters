@@ -149,7 +149,14 @@
     }
     
     if(!isAlreadyAdded){
-        CGRect frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height-12, [UIScreen mainScreen].bounds.size.width, height);
+        CGRect frame = CGRectMake(0, 0, 0, 0);
+        
+        if (IS_IPHONE_X) {
+            frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height-12, [UIScreen mainScreen].bounds.size.width, height);
+        }else{
+            frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height);
+        }
+        
         
         
         UIWebView *webView =[[UIWebView alloc] initWithFrame:frame];

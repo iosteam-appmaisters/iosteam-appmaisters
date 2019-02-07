@@ -87,7 +87,7 @@
         
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"MessageLabelNotification"
-         object:self userInfo:@{@"MESSAGE":@"Please wait while we update app",
+         object:self userInfo:@{@"MESSAGE":@"Applying settings...",
                                 @"STATUS":@"0",
                                 @"VERSION":versionNumber,
                                 @"CUSTOMER_ID":[ShareOneUtility getCustomerId]}];
