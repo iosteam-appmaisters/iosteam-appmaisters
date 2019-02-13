@@ -23,8 +23,8 @@
 #define Grant_Type_Value       @"client_credentials"
 #define Scope_value            @"content_file.read content_text_group.read content_text.read style_value.read client_setting.read menu_item.read nsapi_setting.read modified_service.read client_application.read"
 
-#define Client_ID_value        @"nsmobile_nsconfig_read_client" //"B959D9AF-C00F-42D6-86D2-16C28F6FBA90"
-#define Client_Secret_value    @"202E8187-94DE-4CDA-8908-7A9436B21292"  //"6917A838-980D-4910-8278-AA13C39C3989"
+#define Client_ID_value        @"B959D9AF-C00F-42D6-86D2-16C28F6FBA90"  //"nsmobile_nsconfig_read_client"
+#define Client_Secret_value    @"6917A838-980D-4910-8278-AA13C39C3989"  //"202E8187-94DE-4CDA-8908-7A9436B21292"
 #define Client_Public_key      @"bea351786c074347a0528acf729d0b8f"
 #define Client_Private_key     @"3b185aa994d2408091714536c28e324b"
 

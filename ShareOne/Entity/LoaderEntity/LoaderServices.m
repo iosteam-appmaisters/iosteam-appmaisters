@@ -199,8 +199,8 @@
             NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:(NSDictionary *)response];
             
             //Will be reset as constant from app.
-//            [dict setObject:Client_Private_key forKey:@"PrivateKey"];
-//            [dict setObject:Client_Public_key forKey:@"PublicKey"];
+            [dict setObject:Client_Private_key forKey:@"PrivateKey"];
+            [dict setObject:Client_Public_key forKey:@"PublicKey"];
            
             [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)dict AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_API_SETTINGS_SERVICE]];
         }
