@@ -243,6 +243,10 @@
         
         [self parseUserInfoOnLoginWithObject:obj AndParsingDict:userProfileDict];
         NSDictionary *masterDict = userProfileDict[@"Master"];
+        NSDictionary *getVersionNumberDic = userProfileDict[@"IOSLoginPrompt"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:getVersionNumberDic forKey:AFTER_LOGIN_VERSION_NUMBER];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
         [self parseUserInfoOnLoginWithObject:obj AndParsingDict:masterDict];
         
