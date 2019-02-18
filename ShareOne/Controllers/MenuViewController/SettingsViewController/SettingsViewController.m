@@ -29,7 +29,7 @@
     
     ClientSettingsObject  *config = [Configuration getClientSettingsContent];
     
-    if([config.disableadsglobally boolValue]){
+    if([config.hideshowoffersoption boolValue]){
         [_showOffersSwitch setHidden:TRUE];
         [_showOffersLbl setHidden:TRUE];
     }
@@ -48,7 +48,7 @@
         
     }
     
-    if ([config.enablequickview boolValue]){
+    if ([config.quickviewdefaultsetting boolValue] && [config.enablequickview boolValue]){
         [_quickBalanceSwitch setHidden:FALSE];
         [_quickBalanceLabel setHidden:FALSE];
     }

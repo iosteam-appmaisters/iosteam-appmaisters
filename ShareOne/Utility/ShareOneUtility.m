@@ -407,7 +407,7 @@ NSLog(Y, Z);		\
     else{
         user.isShowOffersOpen=TRUE;
     }
-    user.isQBOpen=TRUE;
+    user.isQBOpen=FALSE;
     
 }
 +(NSArray *)getUserObjectsFromLocalObjects{

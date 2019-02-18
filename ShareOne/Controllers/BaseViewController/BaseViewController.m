@@ -87,7 +87,7 @@
     [self setTitleOnNavBar:self.navigationItem.title];
 
     ClientSettingsObject *obj = [Configuration getClientSettingsContent];
-    if ([obj.disableadsglobally boolValue]) {
+    if ([obj.hideshowoffersoption boolValue]) {
         [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
     }
     
