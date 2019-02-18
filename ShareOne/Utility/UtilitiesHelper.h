@@ -90,6 +90,7 @@
 -(void)showAlertWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate;
 -(void)showAlertWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate completion:(void (^)(bool completed))block;
 -(void)showOptionWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate completion:(void (^)(bool completed))block;
+-(void)showMessageWithOptions:(NSString*)message title:(NSString*)title rightBtnTitle:(NSString*)rightTitle leftBtnTitle:(NSString*)leftTitle completion:(void (^)(bool completed))block;
 +(void)addActivityIndicatorToView:(UIView*)view;
 +(void)removeActivityIndicatorToView:(UIView*)view;
 

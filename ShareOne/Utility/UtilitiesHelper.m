@@ -770,7 +770,52 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     [alertController addAction:cancelAction];
     
     [delegate presentViewController:alertController animated:YES completion:nil];
+}
+
+-(void)showMessageWithOptions:(NSString*)message title:(NSString*)title rightBtnTitle:(NSString*)rightTitle leftBtnTitle:(NSString*)leftTitle completion:(void (^)(bool completed))block{
     
+    
+    UIWindow *alertVC = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
+    alertVC.rootViewController = [UIViewController new];
+    alertVC.windowLevel = UIWindowLevelAlert + 1;
+    [alertVC makeKeyAndVisible];
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:title
+                                          message:message
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:[NSString stringWithFormat:@"%@", leftTitle]
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   [alertController dismissViewControllerAnimated:YES completion:^{
+                                       
+                                       
+                                   }];
+                                   block(YES);
+                                   
+                               }];
+    
+    [alertController addAction:okAction];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:[NSString stringWithFormat:@"%@", rightTitle]
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       [alertController dismissViewControllerAnimated:YES completion:^{
+                                           
+                                           
+                                       }];
+                                       block(NO);
+                                       
+                                   }];
+    
+    [alertController addAction:cancelAction];
+    
+    [alertVC.rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 

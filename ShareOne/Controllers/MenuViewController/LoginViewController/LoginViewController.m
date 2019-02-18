@@ -633,6 +633,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
         objHomeViewController.url= webUrl;
         controllerToPush=objHomeViewController;
+        [self checkVersionUpdate];
     }
     else{
         //If webUrl is empty or nil load Native UI Screen
@@ -644,6 +645,29 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
 }
 
+-(void)checkVersionUpdate{
+    
+    NSDictionary *getAfterLoginVersionNoDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:AFTER_LOGIN_VERSION_NUMBER];
+    
+    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    NSString *getAfterLoginVersionNo = getAfterLoginVersionNoDic[@"Version"];
+    
+    if ([getAfterLoginVersionNo compare:currentVersion options:NSNumericSearch] == NSOrderedDescending && getAfterLoginVersionNoDic[@"Date"]) {
+        
+        [[UtilitiesHelper shareUtitlities] showMessageWithOptions:getAfterLoginVersionNoDic[@"Prompt"] title:@"" rightBtnTitle:@"Upgrade" leftBtnTitle:@"Continue" completion:^(bool success){
+            if (success) {
+                NSLog(@"Contiune Pressed");
+            }
+            else {
+                NSLog(@"Upgrade Pressed");
+                NSString *iTunesLink = @"itms://itunes.apple.com/us/app/apple-store/id375380948?mt=8";
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+            }
+        }];
+        
+    }
+}
 
 -(void)showAlertWithTitle:(NSString *)title AndMessage:(NSString *)message{
     UIAlertController * alert=   [UIAlertController

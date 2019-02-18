@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) NSString *deeptargetid;
 @property (nonatomic,strong) NSNumber *disableadsglobally;
+@property (nonatomic,strong) NSNumber *hideshowoffersoption;
 @property (nonatomic,strong) NSString *sociallinkfacebook;
 @property (nonatomic,strong) NSString *sociallinktwitter;
 @property (nonatomic,strong) NSString *sociallinklinkedin;
@@ -33,6 +34,8 @@
 @property (nonatomic,strong) NSString *allownotifications;
 @property (nonatomic,strong) NSString *quickviewnumoftransactions;
 @property (nonatomic,strong) NSString *enablequickview;
+@property (nonatomic,strong) NSString *quickviewdefaultsetting;
+
 
 @property (nonatomic,strong) NSString *vertifirdcsecretkey;
 @property (nonatomic,strong) NSString *vertifirdcrequestorkey;

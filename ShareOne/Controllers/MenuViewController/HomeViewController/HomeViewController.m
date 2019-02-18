@@ -89,21 +89,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self bringAdvertismentViewToFront];
-    
-    __weak HomeViewController *weakSelf = self;
-
-    NSDictionary *getAfterLoginVersionNoDic = [[NSUserDefaults standardUserDefaults] dictionaryForKey:AFTER_LOGIN_VERSION_NUMBER];
-    
-    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    
-    NSString *getAfterLoginVersionNo = getAfterLoginVersionNoDic[@"Version"];
-//    NSString *getBeforeLoginVersionNo = [ShareOneUtility getVersionNumber];
-//    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
-
-    if ([getAfterLoginVersionNo compare:currentVersion options:NSNumericSearch] == NSOrderedDescending && getAfterLoginVersionNoDic[@"Date"]) {
-        
-        [[UtilitiesHelper shareUtitlities]showToastWithMessage:getAfterLoginVersionNoDic[@"Prompt"] title:@"" delegate:weakSelf];
-    }
 }
 
 - (void)dealloc {
