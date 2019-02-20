@@ -171,13 +171,18 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     ClientSettingsObject  *config = [Configuration getClientSettingsContent];
     
-    if (![config.enablequickview boolValue] && ![config.quickviewdefaultsetting boolValue]){
+    if (![config.enablequickview boolValue]){
         [_quickBalanceArrowIcon setHidden:TRUE];
         [_quickBalanceBtn setHidden:TRUE];
     }
     else {
-        [_quickBalanceArrowIcon setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
-        [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
+        if ([[NSUserDefaults standardUserDefaults]boolForKey:QUICK_BAL_SETTINGS]) {
+            [_quickBalanceArrowIcon setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
+            [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
+        }else{
+            [_quickBalanceArrowIcon setHidden:!config.quickviewdefaultsetting];
+            [_quickBalanceBtn setHidden:!config.quickviewdefaultsetting];
+        }
     }
     
     

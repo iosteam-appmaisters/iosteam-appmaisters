@@ -665,7 +665,7 @@ NSLog(Y, Z);		\
 
 +(void)setDefaultSettingValues{
     
-    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:QUICK_BAL_SETTINGS];
+//    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:QUICK_BAL_SETTINGS];
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:SHOW_OFFERS_SETTINGS];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
