@@ -170,7 +170,7 @@
                     
                 }
                 else{
-                    alertMesage= [NSString stringWithFormat:@"%@ ID will not not be requested.",self->_currentBiometric];
+                    alertMesage= [NSString stringWithFormat:@"%@ ID will not be requested.",self->_currentBiometric];
                 }
             }
             else {
