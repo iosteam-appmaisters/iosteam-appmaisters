@@ -1166,8 +1166,8 @@
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_branch_location_icon" translatesAutoresizingMaskIntoConstraints="NO" id="svk-Uw-Glz">
                                                                     <rect key="frame" x="50" y="-0.5" width="24" height="23"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drg-Hr-aTV">
-                                                                    <rect key="frame" x="84" y="0.0" width="49" height="22"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Header" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drg-Hr-aTV">
+                                                                    <rect key="frame" x="84" y="0.0" width="167" height="22"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1182,6 +1182,7 @@
                                                                 <constraint firstItem="drg-Hr-aTV" firstAttribute="leading" secondItem="svk-Uw-Glz" secondAttribute="trailing" constant="10" id="gbe-50-ScP"/>
                                                                 <constraint firstItem="drg-Hr-aTV" firstAttribute="centerY" secondItem="2Si-fu-p6t" secondAttribute="centerY" id="jZZ-XA-Fb8"/>
                                                                 <constraint firstItem="svk-Uw-Glz" firstAttribute="leading" secondItem="2Si-fu-p6t" secondAttribute="leading" constant="50" id="yqs-2c-lIP"/>
+                                                                <constraint firstAttribute="trailing" secondItem="drg-Hr-aTV" secondAttribute="trailing" constant="5" id="zOa-mt-69B"/>
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">

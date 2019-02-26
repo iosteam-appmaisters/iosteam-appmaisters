@@ -52,6 +52,8 @@
     
     self.fzaTblView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
+    _fzaTblView.estimatedRowHeight = 44.0;
+    _fzaTblView.rowHeight = UITableViewAutomaticDimension;
 }
 
 -(void)reloadCustomData{
@@ -112,17 +114,17 @@
     return [_contentArr count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 44.0;
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return kDefaultAccordionHeaderViewHeight;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
-}
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
     return [self tableView:tableView heightForHeaderInSection:section];
