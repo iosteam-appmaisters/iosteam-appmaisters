@@ -87,8 +87,10 @@
     [self setTitleOnNavBar:self.navigationItem.title];
 
     ClientSettingsObject *obj = [Configuration getClientSettingsContent];
-    if ([obj.hideshowoffersoption boolValue]) {
+    if ([obj.disableadsglobally boolValue]) {
         [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+    }else{
+        [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
     }
     
     [self addAdvertismentControllerOnBottomScreen];

@@ -149,7 +149,7 @@
     
     return [ClientSettingsObject parseClientSettings:cleintSettingsArray];
 }
-
+//[ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)response AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_CLIENT_SETTINGS_SERVICE]];
 
 +(NSString *)getBaseUrl{
     
