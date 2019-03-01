@@ -171,20 +171,30 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     ClientSettingsObject  *config = [Configuration getClientSettingsContent];
     
-    if (![config.enablequickview boolValue]){
-        [_quickBalanceArrowIcon setHidden:TRUE];
-        [_quickBalanceBtn setHidden:TRUE];
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:DEFAULT_QB_SETTINGS]){
+        [[NSUserDefaults standardUserDefaults] setValue:config.quickviewdefaultsetting forKey:DEFAULT_QB_SETTINGS];
     }
-    else {
-        if ([[NSUserDefaults standardUserDefaults]boolForKey:QUICK_BAL_SETTINGS]) {
+    
+    if(![config.enablequickview boolValue]){
+        [_quickBalanceArrowIcon setHidden:![config.quickviewdefaultsetting boolValue]];
+        [_quickBalanceBtn setHidden:![config.quickviewdefaultsetting boolValue]];
+    }else{
+        if ([[NSUserDefaults standardUserDefaults] valueForKey:QUICK_BAL_SETTINGS]) {
             [_quickBalanceArrowIcon setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
             [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
         }else{
-            [_quickBalanceArrowIcon setHidden:!config.quickviewdefaultsetting];
-            [_quickBalanceBtn setHidden:!config.quickviewdefaultsetting];
+            [_quickBalanceArrowIcon setHidden:[config.quickviewdefaultsetting boolValue]];
+            [_quickBalanceBtn setHidden:[config.quickviewdefaultsetting boolValue]];
+        }
+        
+        bool previousVal = [[NSUserDefaults standardUserDefaults]boolForKey:DEFAULT_QB_SETTINGS];
+        
+        if (previousVal != [config.quickviewdefaultsetting boolValue]){
+            [ShareOneUtility saveSettingsWithStatus:[config.quickviewdefaultsetting boolValue] AndKey:QUICK_BAL_SETTINGS];
+            [_quickBalanceArrowIcon setHidden:[config.quickviewdefaultsetting boolValue]];
+            [_quickBalanceBtn setHidden:[config.quickviewdefaultsetting boolValue]];
         }
     }
-    
     
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_rememberMeSwitch setOn:[ShareOneUtility isUserRemembered]];

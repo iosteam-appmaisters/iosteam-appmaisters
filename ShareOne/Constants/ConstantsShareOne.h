@@ -175,6 +175,7 @@
 #define ALL_USER_OBJECTS                @"ALL_USER_OBJECTS"
 #define NOTIFICATION_SETTINGS_UPDATION  @"NOTIFICATION_SETTINGS_UPDATION"
 #define TOUCH_ID_SETTINGS_UPDATION      @"TOUCH_ID_SETTINGS_UPDATION"
+#define DEFAULT_QB_SETTINGS             @"DEFAULT_QB_SETTINGS"
 
 #define ERROR_MESSAGE                  @"The service is temporarily unavailable, please try again later."
 #define RESPONSE_TIME_OUT              60.0

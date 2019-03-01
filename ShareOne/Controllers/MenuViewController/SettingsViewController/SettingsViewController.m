@@ -115,11 +115,11 @@
         }
     }];
     
-    if ([[NSUserDefaults standardUserDefaults]boolForKey:QUICK_BAL_SETTINGS]) {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:QUICK_BAL_SETTINGS]) {
         [_quickBalanceSwitch setOn:[ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
     }else{
         ClientSettingsObject  *config = [Configuration getClientSettingsContent];
-        [_quickBalanceSwitch setOn:config.quickviewdefaultsetting];
+        [_quickBalanceSwitch setOn:[config.quickviewdefaultsetting boolValue]];
     }
     
     [_showOffersSwitch setOn:[ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]];
@@ -136,12 +136,13 @@
     __block NSString *alertMesage= nil;
     if([sender isEqual:_quickBalanceSwitch]){
         key=QUICK_BAL_SETTINGS;
-        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:QUICK_BAL_SETTINGS];
 
         if([_quickBalanceSwitch isOn]){
+            [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:QUICK_BAL_SETTINGS];
             alertMesage = @"Quick View is a convenient way to review your balance and recent transactions. It is not recommended for devices you may share with others. It is your responsibility to ensure that you take precautions to protect your account information on your device.";
         }
         else{
+            [[NSUserDefaults standardUserDefaults] setValue:@"0" forKey:QUICK_BAL_SETTINGS];
             alertMesage=@"Quick View won't be shown on login screen.";
         }
     }
