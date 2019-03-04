@@ -183,8 +183,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
             [_quickBalanceArrowIcon setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
             [_quickBalanceBtn setHidden:![ShareOneUtility getSettingsWithKey:QUICK_BAL_SETTINGS]];
         }else{
-            [_quickBalanceArrowIcon setHidden:[config.quickviewdefaultsetting boolValue]];
-            [_quickBalanceBtn setHidden:[config.quickviewdefaultsetting boolValue]];
+            [_quickBalanceArrowIcon setHidden:![config.quickviewdefaultsetting boolValue]];
+            [_quickBalanceBtn setHidden:![config.quickviewdefaultsetting boolValue]];
         }
         
         bool previousVal = [[NSUserDefaults standardUserDefaults]boolForKey:DEFAULT_QB_SETTINGS];
@@ -441,8 +441,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         [ShareOneUtility showProgressViewOnView:weakSelf.view];
 
         if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]) {
-            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:OVERRIDE_TOUCH_ID];
-            [[NSUserDefaults standardUserDefaults]synchronize];
+            //commited override if user selected yes in settings. just for Emery FCU
+//           [[NSUserDefaults standardUserDefaults]setBool:YES forKey:OVERRIDE_TOUCH_ID];
+//           [[NSUserDefaults standardUserDefaults]synchronize];
         }
         
     }
