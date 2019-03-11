@@ -21,12 +21,14 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self setBackBtnImage];
     
     __weak HomeViewController *weakSelf = self;
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _webview.delegate=self;
     _printPDFButton.hidden = YES;
-
+    _backBtnForPDFs.hidden = YES;
+    
     if(!_url)
         _url = @"";
 
@@ -80,6 +82,12 @@
     self.title = [ShareOneUtility getNavBarTitle:@""];
 
     self.title = [ShareOneUtility getNavBarTitle:@""];
+}
+
+-(void)setBackBtnImage{
+    UIImage *back_icon = [[UIImage imageNamed:@"back_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [_backBtnForPDFs setTintColor:UIColor.blackColor];
+    [_backBtnForPDFs setImage:back_icon forState:UIControlStateNormal];
 }
 
 -(void)showMenuFromHomeView{
@@ -218,13 +226,40 @@
         [[UIApplication sharedApplication] openURL:url];
     }
     
+    //Testing purpose will be reset.
+    NSString* const kOpenInNewTabPrefix = @"newtab:";//This NEEDS to end with ':'
+
+    if ([[request.URL.absoluteString lowercaseString] hasPrefix:[kOpenInNewTabPrefix lowercaseString]])
+    {
+        // JS-hacked URl is a target=_blank url - manually open the browser.
+        NSURL *url = [NSURL URLWithString:[request.URL.absoluteString substringFromIndex:[kOpenInNewTabPrefix length]]];
+        [[UIApplication sharedApplication] openURL:url];
+
+        return YES;
+    }
+
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+
+    }
+    if (navigationType == UIWebViewNavigationTypeReload) {
+
+    }
+    if (navigationType == UIWebViewNavigationTypeBackForward) {
+
+    }
+    if ([[[request URL] absoluteString] hasPrefix:@"newtab:"])
+    {
+        // JS-hacked URl is a target=_blank url - manually open the browser.
+        NSURL *url = [NSURL URLWithString:[request.URL.absoluteString substringFromIndex:7]];
+        [[UIApplication sharedApplication] openURL:url];
+        shouldReload = FALSE;
+    }
+    //end testing code
     return shouldReload;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     NSLog(@"webViewDidStartLoad url: %@", webView.request.URL.absoluteString);
-    
-    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
@@ -233,6 +268,10 @@
     NSString * contentType = [webView stringByEvaluatingJavaScriptFromString:@"document.contentType;"];
     if ([contentType isEqualToString:@"application/pdf"]){
         _printPDFButton.hidden = NO;
+        _backBtnForPDFs.hidden = NO;
+    }else{
+        _printPDFButton.hidden = YES;
+        _backBtnForPDFs.hidden = YES;
     }
     
     [self logoutAfterChecking];

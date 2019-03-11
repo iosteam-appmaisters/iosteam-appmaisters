@@ -902,19 +902,31 @@
                                     <action selector="printPDF:" destination="as5-Vt-hhq" eventType="touchUpInside" id="gql-No-jr7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGh-eY-e92">
+                                <rect key="frame" x="30" y="50" width="30" height="30"/>
+                                <state key="normal" image="back_icon"/>
+                                <connections>
+                                    <action selector="goBack" destination="xB2-EZ-tpB" eventType="touchDown" id="X1Y-r3-ek1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xB2-EZ-tpB" firstAttribute="top" secondItem="RVA-pX-CkI" secondAttribute="bottom" id="8df-Hw-QGd"/>
+                            <constraint firstItem="tGh-eY-e92" firstAttribute="top" secondItem="RVA-pX-CkI" secondAttribute="bottom" constant="30" id="N0m-G4-420"/>
+                            <constraint firstItem="tGh-eY-e92" firstAttribute="leading" secondItem="9v0-UK-2tX" secondAttribute="leading" constant="30" id="NK0-QU-H0D"/>
                             <constraint firstItem="xB2-EZ-tpB" firstAttribute="leading" secondItem="9v0-UK-2tX" secondAttribute="leading" id="am5-NE-YdJ"/>
+                            <constraint firstItem="tGh-eY-e92" firstAttribute="height" secondItem="qt1-rJ-H40" secondAttribute="height" id="dgp-mu-7PX"/>
                             <constraint firstAttribute="trailing" secondItem="xB2-EZ-tpB" secondAttribute="trailing" id="eDI-W2-ILl"/>
                             <constraint firstItem="faW-uz-hGd" firstAttribute="top" secondItem="xB2-EZ-tpB" secondAttribute="bottom" id="hv8-0V-TnG"/>
+                            <constraint firstItem="tGh-eY-e92" firstAttribute="width" secondItem="qt1-rJ-H40" secondAttribute="width" id="ped-rG-ixC"/>
                             <constraint firstAttribute="trailing" secondItem="qt1-rJ-H40" secondAttribute="trailing" constant="30" id="tJ3-dY-KIy"/>
                             <constraint firstItem="qt1-rJ-H40" firstAttribute="top" secondItem="RVA-pX-CkI" secondAttribute="bottom" constant="30" id="wJG-xr-NMV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nio-1D-MyX"/>
                     <connections>
+                        <outlet property="backBtnForPDFs" destination="tGh-eY-e92" id="7C1-UD-eC6"/>
                         <outlet property="bottomAdsConstraint" destination="hv8-0V-TnG" id="W75-rQ-E6P"/>
                         <outlet property="printPDFButton" destination="qt1-rJ-H40" id="hKa-hg-JRH"/>
                         <outlet property="webview" destination="xB2-EZ-tpB" id="PQm-w1-dxa"/>

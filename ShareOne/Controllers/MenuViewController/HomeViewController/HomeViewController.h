@@ -16,5 +16,6 @@
 -(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue;
 
 @property (weak, nonatomic) IBOutlet UIButton *printPDFButton;
+@property (weak, nonatomic) IBOutlet UIButton *backBtnForPDFs;
 
 @end
