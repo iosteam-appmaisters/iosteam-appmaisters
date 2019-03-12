@@ -225,36 +225,7 @@
         NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
         [[UIApplication sharedApplication] openURL:url];
     }
-    
-    //Testing purpose will be reset.
-    NSString* const kOpenInNewTabPrefix = @"newtab:";//This NEEDS to end with ':'
 
-    if ([[request.URL.absoluteString lowercaseString] hasPrefix:[kOpenInNewTabPrefix lowercaseString]])
-    {
-        // JS-hacked URl is a target=_blank url - manually open the browser.
-        NSURL *url = [NSURL URLWithString:[request.URL.absoluteString substringFromIndex:[kOpenInNewTabPrefix length]]];
-        [[UIApplication sharedApplication] openURL:url];
-
-        return YES;
-    }
-
-    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-
-    }
-    if (navigationType == UIWebViewNavigationTypeReload) {
-
-    }
-    if (navigationType == UIWebViewNavigationTypeBackForward) {
-
-    }
-    if ([[[request URL] absoluteString] hasPrefix:@"newtab:"])
-    {
-        // JS-hacked URl is a target=_blank url - manually open the browser.
-        NSURL *url = [NSURL URLWithString:[request.URL.absoluteString substringFromIndex:7]];
-        [[UIApplication sharedApplication] openURL:url];
-        shouldReload = FALSE;
-    }
-    //end testing code
     return shouldReload;
 }
 
