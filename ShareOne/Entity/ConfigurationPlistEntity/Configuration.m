@@ -156,6 +156,9 @@
     NSDictionary *dict =[self getPlistDictFileWithName:CONFIG_API_SETTINGS_SERVICE];
     ApiSettingsObject *objparseClientSettings=[[ApiSettingsObject alloc] initWithDictionary:dict];
     NSString *hostname = objparseClientSettings.HostName;
+    if ([hostname isEqualToString:@""]) {
+        hostname = @"HostNameIsComingNil";
+    }
     if(![hostname containsString:@"https"])
         hostname=[NSString stringWithFormat:@"https://%@",hostname];
     return  hostname;
@@ -253,11 +256,14 @@
 
 +(NSString *)getSSOBaseUrl{
     
-    NSString *hostname = nil;
+    NSString *hostname = @"";
     ClientSettingsObject *obj = [self getClientSettingsContent];
 
     hostname = obj.basewebviewurl;
     
+    if ([hostname isEqualToString:@""]) {
+        hostname = @"HostNameIsComingNil";
+    }
     if(![hostname containsString:@"https"])
         hostname=[NSString stringWithFormat:@"https://%@",hostname];
 
