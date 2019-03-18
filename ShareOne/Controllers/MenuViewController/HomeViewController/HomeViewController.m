@@ -219,6 +219,11 @@
         }
     }
     
+    if ([request.URL.absoluteString containsString:@"/EStatements/Consent"]) {
+        __weak HomeViewController *weakSelf = self;
+        [ShareOneUtility showProgressViewOnView:weakSelf.view];
+    }
+    
     if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
         shouldReload = FALSE;
         
@@ -246,6 +251,11 @@
     }
     
     [self logoutAfterChecking];
+    
+    if ([webView.request.URL.absoluteString containsString:@"/EStatements/Consent"]) {
+        __weak HomeViewController *weakSelf = self;
+        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    }
     
     NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     if ([theTitle containsString:@"Account Summary"]){
