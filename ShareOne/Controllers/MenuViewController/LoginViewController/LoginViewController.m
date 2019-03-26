@@ -191,8 +191,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         
         if (previousVal != [config.quickviewdefaultsetting boolValue]){
             [ShareOneUtility saveSettingsWithStatus:[config.quickviewdefaultsetting boolValue] AndKey:QUICK_BAL_SETTINGS];
-            [_quickBalanceArrowIcon setHidden:[config.quickviewdefaultsetting boolValue]];
-            [_quickBalanceBtn setHidden:[config.quickviewdefaultsetting boolValue]];
+            [_quickBalanceArrowIcon setHidden:![config.quickviewdefaultsetting boolValue]];
+            [_quickBalanceBtn setHidden:![config.quickviewdefaultsetting boolValue]];
         }
     }
     
@@ -210,8 +210,6 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
     _passwordTxt.returnKeyType = UIReturnKeyGo;
 }
-
-
 
 
 -(void)updateDataByDefaultValues{
