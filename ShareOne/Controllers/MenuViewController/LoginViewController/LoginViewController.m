@@ -196,6 +196,13 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         }
     }
     
+    User *user = [[SharedUser sharedManager] userObject];
+    
+    if (user == nil) {
+        [_quickBalanceArrowIcon setHidden:TRUE];
+        [_quickBalanceBtn setHidden:TRUE];
+    }
+    
     [_rememberMeBtn setSelected:[ShareOneUtility isUserRemembered]];
     [_rememberMeSwitch setOn:[ShareOneUtility isUserRemembered]];
     [_userFingerprintBtn setSelected:[ShareOneUtility isTouchIDEnabled]];
