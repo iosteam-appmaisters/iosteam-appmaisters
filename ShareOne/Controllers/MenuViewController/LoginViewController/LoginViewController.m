@@ -27,11 +27,13 @@
 #import "HomeViewController.h"
 #import "UIColor+HexColor.h"
 #import "ClientSettingsObject.h"
+#import <UserNotifications/UserNotifications.h>
 
 #import "ContextMenuCell.h"
 #import "YALContextMenuTableView.h"
 #import "UtilitiesHelper.h"
 #import "DeviceUtil.h"
+#import "AppDelegate.h"
 
 static NSString *const menuCellIdentifier = @"rotationCell";
 
@@ -117,6 +119,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [_loginBG addGestureRecognizer:tap];
+    
+    ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+    
+    if ([config.allownotifications boolValue]) {
+        [self pushNotificationPermisionPopUp];
+    }
 }
 
 
@@ -151,6 +159,36 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     }
     else if (_currentTextField == _passwordTxt){
         [_passwordTxt resignFirstResponder];
+    }
+}
+
+-(void)pushNotificationPermisionPopUp{
+    
+    
+    AppDelegate * appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [appDelegate registerForPushNotifications:[UIApplication sharedApplication]];
+    
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = appDelegate;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if( !error ){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[UIApplication sharedApplication] registerForRemoteNotifications];
+                });
+            }
+        }];
+    }
+    else{
+        
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+                                                                                                  | UIUserNotificationTypeBadge
+                                                                                                  | UIUserNotificationTypeSound)
+                                                                                      categories:nil];
+            
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        }
     }
 }
 
@@ -575,8 +613,9 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 
                 ClientSettingsObject  *config = [Configuration getClientSettingsContent];
                 if ([config.allownotifications boolValue]) {
-                 
-                    if([ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS]) {
+                    BOOL  isRegister = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+
+                    if([ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS] || isRegister) {
                         [self startLoadingServices:YES];
                     }
                     else {
@@ -628,7 +667,13 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [MemberDevices postMemberDevices:[dic copy]
                              message:@""
                             delegate:weakSelf completionBlock:^(NSObject *user) {
-        
+                                
+        BOOL  isRegister = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+                                
+        if (isRegister){
+            [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:NOTIFICATION_SETTINGS_UPDATION];
+            [ShareOneUtility saveSettingsWithStatus:TRUE AndKey:PUSH_NOTIF_SETTINGS];
+        }
         
         [weakSelf startApplication];
         

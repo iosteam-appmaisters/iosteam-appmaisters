@@ -41,30 +41,30 @@
     }
     [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey_old]];
     
-    [self registerForPushNotifications:application];
-
-    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
-            if( !error ){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[UIApplication sharedApplication] registerForRemoteNotifications];
-                });
-            }
-        }];
-    }
-    else{
-        
-        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-            UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
-                                                                                                  | UIUserNotificationTypeBadge
-                                                                                                  | UIUserNotificationTypeSound)
-                                                                                      categories:nil];
-            
-            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        }
-    }
+//    [self registerForPushNotifications:application];
+//
+//    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+//        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//        center.delegate = self;
+//        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+//            if( !error ){
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [[UIApplication sharedApplication] registerForRemoteNotifications];
+//                });
+//            }
+//        }];
+//    }
+//    else{
+//
+//        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+//            UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+//                                                                                                  | UIUserNotificationTypeBadge
+//                                                                                                  | UIUserNotificationTypeSound)
+//                                                                                      categories:nil];
+//
+//            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//        }
+//    }
 
     return YES;
 }
@@ -184,6 +184,19 @@
     
     // Register for remote notifications.
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    BOOL pushEnabled = notificationSettings.types & UIUserNotificationTypeAlert;
+    
+    if (pushEnabled){
+        NSLog(@"Push Notification Allowed From Default PopUp.");
+
+        
+    }else{
+        
+    }
+    
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
