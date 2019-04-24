@@ -87,10 +87,31 @@
     [self setTitleOnNavBar:self.navigationItem.title];
 
     ClientSettingsObject *obj = [Configuration getClientSettingsContent];
+    
     if ([obj.disableadsglobally boolValue]) {
-        [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+        if ([obj.hideshowoffersoption boolValue]) {
+            [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+        }else{
+            BOOL val = [ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS];
+            if (val) {
+                [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+            }else{
+                [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
+            }
+        }
     }else{
-        [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
+        if ([obj.hideshowoffersoption boolValue]) {
+            [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
+            
+        }else{
+            BOOL val = [ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS];
+            if (val) {
+                [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
+                
+            }else{
+                [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+            }
+        }
     }
     
     [self addAdvertismentControllerOnBottomScreen];
