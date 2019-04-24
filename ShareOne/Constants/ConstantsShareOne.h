@@ -176,6 +176,7 @@
 #define NOTIFICATION_SETTINGS_UPDATION  @"NOTIFICATION_SETTINGS_UPDATION"
 #define TOUCH_ID_SETTINGS_UPDATION      @"TOUCH_ID_SETTINGS_UPDATION"
 #define DEFAULT_QB_SETTINGS             @"DEFAULT_QB_SETTINGS"
+#define USER_INTERACTED_SHOW_OFFER      @"USER_INTERACTED_SHOW_OFFER"
 
 #define ERROR_MESSAGE                  @"The service is temporarily unavailable, please try again later."
 #define RESPONSE_TIME_OUT              60.0

@@ -231,6 +231,7 @@
             [[ShareOneUtility shareUtitlities] showToastWithMessage:alertMesage title:@"" delegate:weakSelf];
         [ShareOneUtility saveSettingsWithStatus:[sender isOn] AndKey:key];
         if([key isEqualToString:SHOW_OFFERS_SETTINGS]){
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_INTERACTED_SHOW_OFFER];
             if([sender isOn]){
                 [self bringAdvertismentViewToFront];
             }else{

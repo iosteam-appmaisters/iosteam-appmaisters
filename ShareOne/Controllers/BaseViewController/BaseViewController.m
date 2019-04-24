@@ -92,11 +92,16 @@
         if ([obj.hideshowoffersoption boolValue]) {
             [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
         }else{
-            BOOL val = [ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS];
+            BOOL val = [[NSUserDefaults standardUserDefaults] boolForKey:USER_INTERACTED_SHOW_OFFER];
             if (val) {
-                [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+                BOOL val = [ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS];
+                if (val) {
+                    [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
+                }else{
+                    [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
+                }
             }else{
-                [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
+                [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
             }
         }
     }else{
