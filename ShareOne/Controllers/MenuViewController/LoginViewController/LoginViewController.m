@@ -234,7 +234,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         }
     }
     
-    User *user = [[SharedUser sharedManager] userObject];
+    User *user = [ShareOneUtility getUserObject];
     
     if (user == nil) {
         [_quickBalanceArrowIcon setHidden:TRUE];
