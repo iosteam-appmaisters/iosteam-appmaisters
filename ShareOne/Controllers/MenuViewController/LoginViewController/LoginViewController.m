@@ -723,12 +723,11 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         
         [[UtilitiesHelper shareUtitlities] showMessageWithOptions:getAfterLoginVersionNoDic[@"Prompt"] title:@"" rightBtnTitle:@"Upgrade" leftBtnTitle:@"Continue" completion:^(bool success){
             if (success) {
-                NSLog(@"Contiune Pressed");
-            }
-            else {
                 NSLog(@"Upgrade Pressed");
                 NSString *iTunesLink = @"itms://itunes.apple.com/us/app/apple-store/id375380948?mt=8";
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+            }else{
+                
             }
         }];
         

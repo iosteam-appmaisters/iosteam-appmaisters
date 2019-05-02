@@ -794,7 +794,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                                        
                                        
                                    }];
-                                   block(YES);
+                                   block(NO);
                                    
                                }];
     
@@ -809,7 +809,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                                            
                                            
                                        }];
-                                       block(NO);
+                                       block(YES);
                                        
                                    }];
     
