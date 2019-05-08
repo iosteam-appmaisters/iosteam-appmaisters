@@ -480,8 +480,10 @@
         [self askForScreenClearWithIndex: [NSNumber numberWithInteger:row]];
     }
     else {
-         _objSuffixInfo = _suffixArr[row];
-        [_accountTxtFeild setText:_objSuffixInfo.Descr];
+        if ([_suffixArr count] > 0) {
+            _objSuffixInfo = _suffixArr[row];
+            [_accountTxtFeild setText:_objSuffixInfo.Descr];
+        }
     }
 }
 
