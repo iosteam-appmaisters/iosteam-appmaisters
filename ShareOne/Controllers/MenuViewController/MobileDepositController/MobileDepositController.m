@@ -421,6 +421,11 @@
         
         NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"backimg.png"]);
         [params setValue:imageDataPNG forKey:@"image"];
+      
+        //Add Color image of back side cheqeue
+        NSData *imageDataJPG = UIImagePNGRepresentation([self getBWImagePath:@"backimg_color.jpg"]);
+        [params setValue:imageDataJPG forKey:@"imageColor"];
+   
         [params setValue:objVertifi.SSOKey forKey:@"ssokey"];
         
         [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_COMMIT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
