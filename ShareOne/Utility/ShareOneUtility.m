@@ -694,8 +694,8 @@ NSLog(Y, Z);		\
 
 +(NSString *)getSessionnKey{
 //    [self getBytesOfString:@"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m"];
-    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
-//    return [self randomStringWithLength:80];
+//    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
+   return [self randomStringWithLength:80];
 
 }
 
