@@ -438,6 +438,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
     [_passwordTxt resignFirstResponder];
     [_userIDTxt resignFirstResponder];
+    NSString *key = [ShareOneUtility randomStringWithLength:26];
+    
+    NSUserDefaults *data = [NSUserDefaults standardUserDefaults];
+    
+    [data setObject:key forKey:SESSION_KEY_LOGGED_IN];
+    [data synchronize];
     [self moveViewDown];
     __weak LoginViewController *weakSelf = self;
     /*

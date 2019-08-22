@@ -510,6 +510,7 @@
                    }
                    
                   [[NSUserDefaults standardUserDefaults]setBool:YES forKey:NORMAL_LOGOUT];
+                                                                       [[NSUserDefaults standardUserDefaults]setObject:@"" forKey:SESSION_KEY_LOGGED_IN];
                   [[NSUserDefaults standardUserDefaults]synchronize];
                                                                        
                    UIViewController *controller = nil;

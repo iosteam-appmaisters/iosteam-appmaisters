@@ -140,7 +140,7 @@
 
 #define LOG_OFF                     @"Log Off"
 #define WEB_VIEWCONTROLLER_ID       @"WebViewController"
-
+#define SESSION_KEY_LOGGED_IN       @"SessionKeyLoggedIn"
 // ShareOne
 //#define googleApiKey                 @"AIzaSyBtowmB1r1XTOD4CjheliFm_cuxdPgLQZE"
 

@@ -422,7 +422,7 @@
     NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[ShareOneUtility getSessionnKey] forKey:@"session"];
+    [params setValue:[ShareOneUtility calculatedMacSessionKey] forKey:@"session"];
     [params setValue:[Configuration getVertifiRequesterKey] forKey:@"requestor"];
     
     [params setValue:[NSString stringWithFormat:@"%d",currentTimeStamp] forKey:@"timestamp"];
