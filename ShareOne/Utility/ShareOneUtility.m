@@ -48,6 +48,10 @@ NSLog(Y, Z);		\
 
 
 @import GoogleMaps;
+
+static NSString *calculatedMacSessionKey = @"";
+
+
 @implementation ShareOneUtility
 
 + (NSArray *)getSideMenuDataFromPlist{
@@ -695,7 +699,8 @@ NSLog(Y, Z);		\
 +(NSString *)getSessionnKey{
 //    [self getBytesOfString:@"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m"];
 //    return @"Klko4DmW3CAW2oJai4Iz1TUyD3YiR4V8wv5o89SHYDSq29rTmnNfcCtoGaxakbMXOKNvPZ97AoNFUx9m";
-   return [self randomStringWithLength:80];
+    NSString *key = [self randomStringWithLength:26];
+    return key;
 
 }
 
@@ -788,12 +793,18 @@ NSLog(Y, Z);		\
 //    return @"Louis Uncommon";
 }
 
++(NSString *)calculatedMacSessionKey{
+    return calculatedMacSessionKey;
+}
+
 
 +(NSString*)getMacWithSuffix:(SuffixInfo*)objSuffixInfo currentTimeStamp:(int)timeStamp {
     
     NSLog(@"Current Timestamp (During): %d",timeStamp);
     
-    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[Configuration getVertifiRequesterKey],[self getSessionnKey],timeStamp,[Configuration getVertifiRouterKey],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
+     calculatedMacSessionKey = [self getSessionnKey];
+    
+    NSString *mac=[NSString stringWithFormat:@"%@%@%d%@%@%@",[Configuration getVertifiRequesterKey],calculatedMacSessionKey,timeStamp,[Configuration getVertifiRouterKey],[self getMemberValue],[self getAccountValueWithSuffix:objSuffixInfo]];
     
     NSData* data = [mac dataUsingEncoding:NSUTF8StringEncoding];
     

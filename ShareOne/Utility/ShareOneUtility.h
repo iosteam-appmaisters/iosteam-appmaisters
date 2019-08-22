@@ -93,7 +93,7 @@
 
 +(NSString *)getMemberName;
     
-
++(NSString *)calculatedMacSessionKey;
 
 
 +(void)savedQBHeaderInfo:(NSDictionary *)dict;
