@@ -1,7 +1,7 @@
 //
 //  UtilitiesHelper.h
 //
-// 
+//
 //
 //
 
@@ -35,7 +35,7 @@
     
     
     __block UIView *objLoaderView;
-
+    
     
 }
 
@@ -109,5 +109,9 @@
 + (NSString *)GetOurIpAddress ;
 + (NSString *)deviceModel ;
 + (NSString*) getSystemLanguageCode ;
+
+
++ (NSString *)getIPAddress:(BOOL)preferIPv4 ;
++ (NSDictionary *)getIPAddresses ;
 @end
 

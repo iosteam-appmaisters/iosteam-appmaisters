@@ -1,7 +1,7 @@
 
 //  UtilitiesHelper.m
 //
-// 
+//
 //
 //
 
@@ -35,7 +35,7 @@
 @implementation UtilitiesHelper
 {
     dispatch_source_t _timer;
-
+    
     
 }
 
@@ -69,9 +69,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
 + (void)setUserDefaultForKey:(NSString*)key  value:(NSString*)value
 {
-   NSUserDefaults *usrDef =    [NSUserDefaults standardUserDefaults];
-   [usrDef setObject:value forKey:key];
-   [usrDef synchronize];
+    NSUserDefaults *usrDef =    [NSUserDefaults standardUserDefaults];
+    [usrDef setObject:value forKey:key];
+    [usrDef synchronize];
 }
 
 
@@ -89,30 +89,30 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     AppDelegate *objDele = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     
     
-  __block  MBProgressHUD *progressHUD;
+    __block  MBProgressHUD *progressHUD;
     dispatch_async(dispatch_get_main_queue(), ^{
-
+        
         progressHUD = [MBProgressHUD showHUDAddedTo:[[objDele.window subviews] lastObject] animated:YES];    });
-
+    
     
     [progressHUD setMode:mode];
-//    [progressHUD setDimBackground:YES];
-//    [progressHUD setLabelText:title];
+    //    [progressHUD setDimBackground:YES];
+    //    [progressHUD setLabelText:title];
     [progressHUD setMinShowTime:1.0];
     
-
+    
 }
 
 +(void)hideLoader:(UIView *)forView
 {
     /*
-    AppDelegate *objDele = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD hideAllHUDsForView:[[objDele.window subviews] lastObject] animated:YES];
-    });
+     AppDelegate *objDele = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+     
+     dispatch_async(dispatch_get_main_queue(), ^{
+     [MBProgressHUD hideAllHUDsForView:[[objDele.window subviews] lastObject] animated:YES];
+     });
      */
-
+    
 }
 
 
@@ -145,17 +145,17 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 //^\+?\d+(-\d+)*$
 
 +(BOOL) checkForEmptySpaces : (UITextField *)textField  {
- 
-
+    
+    
     
     NSString *rawString = textField.text;
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSString *trimmed = [rawString stringByTrimmingCharactersInSet:whitespace];
     if ([trimmed length] == 0) {
-//        textField.text = textField.placeholder;
-//        textField.textColor = [UIColor redColor];
+        //        textField.text = textField.placeholder;
+        //        textField.textColor = [UIColor redColor];
         // Text was empty or only whitespace.
-    
+        
         textField.text = @"";
         return NO;
     }
@@ -167,7 +167,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 +(BOOL) checkForEmptySpacesInString : (NSString *)rawString  {
     
     
-       NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSString *trimmed = [rawString stringByTrimmingCharactersInSet:whitespace];
     if ([trimmed length] == 0) {
         return NO;
@@ -198,12 +198,12 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 +(void)showPromptAlertforTitle:(NSString *)title withMessage:(NSString *)message forDelegate:(id)deleg
 {
     
-
-//    BlockAlertView  *alertBlock = [[BlockAlertView alloc]initWithTitle:title message:message];
-//    [alertBlock setCancelButtonWithTitle:@"Ok" block:^{
-//        
-//    }];
-//    [alertBlock show];
+    
+    //    BlockAlertView  *alertBlock = [[BlockAlertView alloc]initWithTitle:title message:message];
+    //    [alertBlock setCancelButtonWithTitle:@"Ok" block:^{
+    //
+    //    }];
+    //    [alertBlock show];
     
     
 }
@@ -272,19 +272,19 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 +(NSURL *)imageURLMaker :(NSString *)imgUrl
 {
     
-  return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[ShareOneUtility getBaseUrl],imgUrl]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[ShareOneUtility getBaseUrl],imgUrl]];
     
 }
 
 
 +(void)showLMAlertforTitle:(NSString *)title withMessage:(NSString *)message forDelegate:(id)deleg {
     
-//    LMAlertView *alertView = [[LMAlertView alloc] initWithTitle:title
-//                                                        message:message
-//                                                       delegate:deleg
-//                                              cancelButtonTitle:@"Ok"
-//                                              otherButtonTitles:nil];
-//    [alertView show];
+    //    LMAlertView *alertView = [[LMAlertView alloc] initWithTitle:title
+    //                                                        message:message
+    //                                                       delegate:deleg
+    //                                              cancelButtonTitle:@"Ok"
+    //                                              otherButtonTitles:nil];
+    //    [alertView show];
     
 }
 
@@ -310,9 +310,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, fileName];
     NSLog(@"filePath %@", filePath);
-
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) { // if file is not exist, create it.
-         NSError *error;
+        NSError *error;
         [responseString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
         
     }
@@ -320,7 +320,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     {
         NSError *error;
         [[NSFileManager defaultManager] removeItemAtPath: filePath error: &error];
-
+        
         [responseString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }
     
@@ -334,9 +334,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:myPathDocs])
     {
-//        NSString *myPathInfo = [[NSBundle mainBundle] pathForResource:@"myfile" ofType:@"txt"];
-//        NSFileManager *fileManager = [NSFileManager defaultManager];
-//        [fileManager copyItemAtPath:myPathInfo toPath:myPathDocs error:NULL];
+        //        NSString *myPathInfo = [[NSBundle mainBundle] pathForResource:@"myfile" ofType:@"txt"];
+        //        NSFileManager *fileManager = [NSFileManager defaultManager];
+        //        [fileManager copyItemAtPath:myPathInfo toPath:myPathDocs error:NULL];
         return NULL;
     }
     
@@ -403,36 +403,36 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 //    return date;
 //}
 /*
-+ (NSString *) getDateFromSQLDate:(NSString *)datePlusTime{
-    
-    NSDateFormatter *formatter;
-    NSString        *dateString;
-    
-    formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:DATE_TIME_FORMAT_FOR_DISPLAY];
-    
-    dateString = [formatter stringFromDate:[self getDateFromString:datePlusTime]];
-    
-    formatter = nil;
-    return dateString;
-//    NSString *localDateTimeInStringFormat = [self getLocalDateFromUTCDate:dateString];
-//    return localDateTimeInStringFormat;
-}
-
-+ (NSString *) getLocalDateFromUTCDate :(NSString *)gmtDateStr {
-    
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:DATE_TIME_FORMAT_FOR_DISPLAY];
-    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    [formatter setTimeZone:gmt];
-    
-    NSDate *localDate = [formatter dateFromString:gmtDateStr]; // get the date
-    NSTimeInterval timeZoneOffset = [[NSTimeZone systemTimeZone] secondsFromGMT]; // You could also use the systemTimeZone method
-    
-    NSTimeInterval gmtTimeInterval = [localDate timeIntervalSinceReferenceDate] + timeZoneOffset;
-    NSDate *gmtCurrentDate = [NSDate dateWithTimeIntervalSinceReferenceDate:gmtTimeInterval];
-    return [formatter stringFromDate:gmtCurrentDate];
-}
+ + (NSString *) getDateFromSQLDate:(NSString *)datePlusTime{
+ 
+ NSDateFormatter *formatter;
+ NSString        *dateString;
+ 
+ formatter = [[NSDateFormatter alloc] init];
+ [formatter setDateFormat:DATE_TIME_FORMAT_FOR_DISPLAY];
+ 
+ dateString = [formatter stringFromDate:[self getDateFromString:datePlusTime]];
+ 
+ formatter = nil;
+ return dateString;
+ //    NSString *localDateTimeInStringFormat = [self getLocalDateFromUTCDate:dateString];
+ //    return localDateTimeInStringFormat;
+ }
+ 
+ + (NSString *) getLocalDateFromUTCDate :(NSString *)gmtDateStr {
+ 
+ NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+ [formatter setDateFormat:DATE_TIME_FORMAT_FOR_DISPLAY];
+ NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+ [formatter setTimeZone:gmt];
+ 
+ NSDate *localDate = [formatter dateFromString:gmtDateStr]; // get the date
+ NSTimeInterval timeZoneOffset = [[NSTimeZone systemTimeZone] secondsFromGMT]; // You could also use the systemTimeZone method
+ 
+ NSTimeInterval gmtTimeInterval = [localDate timeIntervalSinceReferenceDate] + timeZoneOffset;
+ NSDate *gmtCurrentDate = [NSDate dateWithTimeIntervalSinceReferenceDate:gmtTimeInterval];
+ return [formatter stringFromDate:gmtCurrentDate];
+ }
  */
 
 
@@ -514,26 +514,26 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 }
 
 /*
-+ (NSString *) getTimeFromSQLDate:(NSString *)datePlusTime{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"h:mm a"];
-    formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:[NSTimeZone localTimeZone].secondsFromGMT];
-    NSString* strDate = [formatter stringFromDate:[self getDateFromString:datePlusTime]];
-    
-    return strDate;
-}
-
-
-+ (NSDate *) getDateFromString:(NSString *)dateString {
-    
-    NSDateFormatter *currentFormat = [[NSDateFormatter alloc] init];
-    [currentFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    currentFormat.timeZone = [NSTimeZone defaultTimeZone];
-    NSDate* date = [currentFormat dateFromString:dateString];
-    
-    return date;
-}
-*/
+ + (NSString *) getTimeFromSQLDate:(NSString *)datePlusTime{
+ NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+ [formatter setDateFormat:@"h:mm a"];
+ formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:[NSTimeZone localTimeZone].secondsFromGMT];
+ NSString* strDate = [formatter stringFromDate:[self getDateFromString:datePlusTime]];
+ 
+ return strDate;
+ }
+ 
+ 
+ + (NSDate *) getDateFromString:(NSString *)dateString {
+ 
+ NSDateFormatter *currentFormat = [[NSDateFormatter alloc] init];
+ [currentFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+ currentFormat.timeZone = [NSTimeZone defaultTimeZone];
+ NSDate* date = [currentFormat dateFromString:dateString];
+ 
+ return date;
+ }
+ */
 + (NSString *) getTimeFromSQLDate:(NSString *)datePlusTime{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"h:mm a"];
@@ -558,63 +558,63 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 +(NSString *) getDurationFromTime:(NSString *) source
 {
     /*
-    NSDate *sourceDate;
-    NSDate *currentDate = [NSDate date];
-    NSDateFormatter *foramtter = [[NSDateFormatter alloc] init];
-    [foramtter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    [foramtter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    //    [foramtter setFormatterBehavior:NSDateFormatterBehavior10_4];
-    //    [foramtter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    //[foramtter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    sourceDate = [foramtter dateFromString:source];
-    
-    NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit| NSHourCalendarUnit| NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents* dateComponentsNow = [gregorian components:unitFlags fromDate:sourceDate toDate:currentDate options:0];
-    
-    int day     = (int)dateComponentsNow.day;
-    int weeks   = (int)dateComponentsNow.week;
-    int hours   = (int)dateComponentsNow.hour;
-    int minutes = (int)dateComponentsNow.minute;
-    int second  = (int)dateComponentsNow.second;
-    int month   = (int)dateComponentsNow.month;
-    int year    = (int)dateComponentsNow.year;
-    NSString *timeString = @"0 second ago";
-    if (year > 0)
-    {
-        timeString = [self timeStringByCheck:year timeString:@"Year"];
-    }
-    else if(month > 0)
-    {
-        timeString = [self timeStringByCheck:month timeString:@"Month"];
-    }
-    else if(weeks > 0)
-    {
-        timeString = [self timeStringByCheck:weeks timeString:@"Week"];
-    }
-    else if(day > 0)
-    {
-        timeString = [self timeStringByCheck:day timeString:@"Day"];
-    }
-    else if(hours > 0)
-    {
-        timeString = [self timeStringByCheck:hours timeString:@"Hour"];
-    }
-    else if(minutes > 0)
-    {
-        timeString = [self timeStringByCheck:minutes timeString:@"Minute"];
-    }
-    else if(second > 0)
-    {
-        timeString = [self timeStringByCheck:second timeString:@"Second"];
-    }
-    foramtter = nil;
-    gregorian = nil;
-    return [timeString lowercaseString];
+     NSDate *sourceDate;
+     NSDate *currentDate = [NSDate date];
+     NSDateFormatter *foramtter = [[NSDateFormatter alloc] init];
+     [foramtter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+     [foramtter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+     //    [foramtter setFormatterBehavior:NSDateFormatterBehavior10_4];
+     //    [foramtter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+     //[foramtter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+     
+     sourceDate = [foramtter dateFromString:source];
+     
+     NSCalendar * gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit| NSHourCalendarUnit| NSMinuteCalendarUnit | NSSecondCalendarUnit;
+     NSDateComponents* dateComponentsNow = [gregorian components:unitFlags fromDate:sourceDate toDate:currentDate options:0];
+     
+     int day     = (int)dateComponentsNow.day;
+     int weeks   = (int)dateComponentsNow.week;
+     int hours   = (int)dateComponentsNow.hour;
+     int minutes = (int)dateComponentsNow.minute;
+     int second  = (int)dateComponentsNow.second;
+     int month   = (int)dateComponentsNow.month;
+     int year    = (int)dateComponentsNow.year;
+     NSString *timeString = @"0 second ago";
+     if (year > 0)
+     {
+     timeString = [self timeStringByCheck:year timeString:@"Year"];
+     }
+     else if(month > 0)
+     {
+     timeString = [self timeStringByCheck:month timeString:@"Month"];
+     }
+     else if(weeks > 0)
+     {
+     timeString = [self timeStringByCheck:weeks timeString:@"Week"];
+     }
+     else if(day > 0)
+     {
+     timeString = [self timeStringByCheck:day timeString:@"Day"];
+     }
+     else if(hours > 0)
+     {
+     timeString = [self timeStringByCheck:hours timeString:@"Hour"];
+     }
+     else if(minutes > 0)
+     {
+     timeString = [self timeStringByCheck:minutes timeString:@"Minute"];
+     }
+     else if(second > 0)
+     {
+     timeString = [self timeStringByCheck:second timeString:@"Second"];
+     }
+     foramtter = nil;
+     gregorian = nil;
+     return [timeString lowercaseString];
      */
     return @"";
-     
+    
 }
 
 +(NSString *) timeStringByCheck:(int)time timeString:(NSString *)timeName
@@ -661,7 +661,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     NSString *timeStamp = [dateFormatterGMT stringFromDate:[NSDate date]];
     
     return timeStamp;
-
+    
 }
 
 
@@ -686,7 +686,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 }
 
 -(void)showAlertWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate{
-  
+    
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:title
                                           message:message
@@ -701,9 +701,9 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                                }];
     
     [alertController addAction:okAction];
-        
+    
     [delegate presentViewController:alertController animated:YES completion:nil];
-
+    
 }
 
 -(void)showAlertWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate completion:(void (^)(bool completed))block{
@@ -720,10 +720,10 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                                {
                                    [alertController dismissViewControllerAnimated:YES completion:^{
                                        
-                                 
+                                       
                                    }];
                                    block(YES);
-
+                                   
                                }];
     
     [alertController addAction:okAction];
@@ -755,17 +755,17 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     [alertController addAction:okAction];
     
     UIAlertAction *cancelAction = [UIAlertAction
-                               actionWithTitle:NSLocalizedString(@"No", @"Cancel action")
-                               style:UIAlertActionStyleCancel
-                               handler:^(UIAlertAction *action)
-                               {
-                                   [alertController dismissViewControllerAnimated:YES completion:^{
-                                       
+                                   actionWithTitle:NSLocalizedString(@"No", @"Cancel action")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       [alertController dismissViewControllerAnimated:YES completion:^{
+                                           
+                                           
+                                       }];
+                                       block(NO);
                                        
                                    }];
-                                   block(NO);
-                                   
-                               }];
     
     [alertController addAction:cancelAction];
     
@@ -832,14 +832,14 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                                }];
     
     [alert addAction:okAction];
-
+    
     [delegate presentViewController:alert animated:YES completion:nil];
     
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(3*NSEC_PER_SEC) ), dispatch_get_main_queue(), ^{
-//        [alert dismissViewControllerAnimated:YES completion:^{
-//        }];
-//    });
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(3*NSEC_PER_SEC) ), dispatch_get_main_queue(), ^{
+    //        [alert dismissViewControllerAnimated:YES completion:^{
+    //        }];
+    //    });
 }
 
 -(void)showToastWithMessage:(NSString*)message title:(NSString*)title delegate:(id)delegate completion:(void (^)(bool completed))block{
@@ -882,7 +882,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 //        NSLog(@"finally block called");
 //
 //    }
-// 
+//
 //
 //}
 
@@ -891,29 +891,29 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     __weak __typeof(UIView*)weakView=view;
     BOOL isHavingIndicatorView=NO;
     
-        for(UIView* tmpView in [weakView subviews]){
-            if([tmpView isKindOfClass:[UIActivityIndicatorView class]]){
-                isHavingIndicatorView=YES;
-                UIActivityIndicatorView* indicator=(UIActivityIndicatorView*)tmpView;
-                [indicator setCenter:CGPointMake(weakView.frame.size.width/2, weakView.frame.size.height/2)];
-                [indicator startAnimating];
-                [weakView bringSubviewToFront:indicator];
-            }
-        }
-        if(!isHavingIndicatorView){
-            UIActivityIndicatorView* indicator=[[UIActivityIndicatorView alloc]init];
+    for(UIView* tmpView in [weakView subviews]){
+        if([tmpView isKindOfClass:[UIActivityIndicatorView class]]){
+            isHavingIndicatorView=YES;
+            UIActivityIndicatorView* indicator=(UIActivityIndicatorView*)tmpView;
             [indicator setCenter:CGPointMake(weakView.frame.size.width/2, weakView.frame.size.height/2)];
-            [indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
             [indicator startAnimating];
-            [weakView addSubview:indicator];
             [weakView bringSubviewToFront:indicator];
         }
+    }
+    if(!isHavingIndicatorView){
+        UIActivityIndicatorView* indicator=[[UIActivityIndicatorView alloc]init];
+        [indicator setCenter:CGPointMake(weakView.frame.size.width/2, weakView.frame.size.height/2)];
+        [indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+        [indicator startAnimating];
+        [weakView addSubview:indicator];
+        [weakView bringSubviewToFront:indicator];
+    }
     
-
+    
     
 }
 +(void)removeActivityIndicatorToView:(UIView*)view{
-   __block UIActivityIndicatorView* indicator;
+    __block UIActivityIndicatorView* indicator;
     __weak __typeof(UIView*)weakView=view;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -939,7 +939,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                 
             }
         }
-
+        
     });
     
     
@@ -998,7 +998,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
 
 -(void)showLAContextWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block{
- 
+    
     LAContext *myContext = [[LAContext alloc] init];
     NSError *authError = nil;
     NSString *myLocalizedReasonString = [UtilitiesHelper isFaceIDAvailable] ? @"Logging in with Face ID" : @"Logging in with Touch ID";
@@ -1023,10 +1023,10 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
         dispatch_async(dispatch_get_main_queue(), ^{
             [UtilitiesHelper showTouchIDError:authError :delegate];
             block(FALSE);
-
+            
         });
     }
-
+    
 }
 
 +(void)isTouchIDAvailableWithDelegate:(id)delegate completionBlock:(void(^)(BOOL success))block{
@@ -1088,7 +1088,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
         case LAErrorNotInteractive:
             
             break;
-        
+            
     }
     [[UtilitiesHelper shareUtitlities] showToastWithMessage:errorMessage title:@"Error" delegate:delegate];
 }
@@ -1182,7 +1182,7 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
     else{
         block(flag);
     }
-
+    
 }
 - (void)startTimerWithCompletionBlock:(void(^)(BOOL  sucess))block
 {
@@ -1217,30 +1217,36 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 }
 
 
+
+
+
 // Get IP Address
 + (NSString *)GetOurIpAddress {
     NSString *address = @"error";
-    struct ifaddrs *interfaces = NULL;
-    struct ifaddrs *temp_addr = NULL;
-    int success = 0;
-    // retrieve the current interfaces - returns 0 on success
-    success = getifaddrs(&interfaces);
-    if (success == 0) {
-        // Loop through linked list of interfaces
-        temp_addr = interfaces;
-        while(temp_addr != NULL) {
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
-                    // Get NSString from C String
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-                }
-            }
-            temp_addr = temp_addr->ifa_next;
-        }
-    }
-    // Free memory
-    freeifaddrs(interfaces);
+    
+    address = [UtilitiesHelper getIPAddress:NO];
+    //
+    //    struct ifaddrs *interfaces = NULL;
+    //    struct ifaddrs *temp_addr = NULL;
+    //    int success = 0;
+    //    // retrieve the current interfaces - returns 0 on success
+    //    success = getifaddrs(&interfaces);
+    //    if (success == 0) {
+    //        // Loop through linked list of interfaces
+    //        temp_addr = interfaces;
+    //        while(temp_addr != NULL) {
+    //            if(temp_addr->ifa_addr->sa_family == AF_INET) {
+    //                // Check if interface is en0 which is the wifi connection on the iPhone
+    //                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+    //                    // Get NSString from C String
+    //                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+    //                }
+    //            }
+    //            temp_addr = temp_addr->ifa_next;
+    //        }
+    //    }
+    //    // Free memory
+    //    freeifaddrs(interfaces);
     return address;
 }
 
@@ -1266,6 +1272,66 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
                       }
                   });
     return lang.lowercaseString;
+}
+
+
+
++ (NSString *)getIPAddress:(BOOL)preferIPv4
+{
+    NSArray *searchArray = preferIPv4 ?
+    @[ /*IOS_VPN @"/" IP_ADDR_IPv4, IOS_VPN @"/" IP_ADDR_IPv6,*/ IOS_WIFI @"/" IP_ADDR_IPv4, IOS_WIFI @"/" IP_ADDR_IPv6, IOS_CELLULAR @"/" IP_ADDR_IPv4, IOS_CELLULAR @"/" IP_ADDR_IPv6 ] :
+    @[ /*IOS_VPN @"/" IP_ADDR_IPv6, IOS_VPN @"/" IP_ADDR_IPv4,*/ IOS_WIFI @"/" IP_ADDR_IPv6, IOS_WIFI @"/" IP_ADDR_IPv4, IOS_CELLULAR @"/" IP_ADDR_IPv6, IOS_CELLULAR @"/" IP_ADDR_IPv4 ] ;
+    
+    NSDictionary *addresses = [UtilitiesHelper getIPAddresses];
+    NSLog(@"addresses: %@", addresses);
+    
+    __block NSString *address;
+    [searchArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop)
+     {
+         address = addresses[key];
+         if(address) *stop = YES;
+     } ];
+    return address ? address : @"0.0.0.0";
+}
+
++ (NSDictionary *)getIPAddresses
+{
+    NSMutableDictionary *addresses = [NSMutableDictionary dictionaryWithCapacity:8];
+    
+    // retrieve the current interfaces - returns 0 on success
+    struct ifaddrs *interfaces;
+    if(!getifaddrs(&interfaces)) {
+        // Loop through linked list of interfaces
+        struct ifaddrs *interface;
+        for(interface=interfaces; interface; interface=interface->ifa_next) {
+            if(!(interface->ifa_flags & IFF_UP) /* || (interface->ifa_flags & IFF_LOOPBACK) */ ) {
+                continue; // deeply nested code harder to read
+            }
+            const struct sockaddr_in *addr = (const struct sockaddr_in*)interface->ifa_addr;
+            char addrBuf[ MAX(INET_ADDRSTRLEN, INET6_ADDRSTRLEN) ];
+            if(addr && (addr->sin_family==AF_INET || addr->sin_family==AF_INET6)) {
+                NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
+                NSString *type;
+                if(addr->sin_family == AF_INET) {
+                    if(inet_ntop(AF_INET, &addr->sin_addr, addrBuf, INET_ADDRSTRLEN)) {
+                        type = IP_ADDR_IPv4;
+                    }
+                } else {
+                    const struct sockaddr_in6 *addr6 = (const struct sockaddr_in6*)interface->ifa_addr;
+                    if(inet_ntop(AF_INET6, &addr6->sin6_addr, addrBuf, INET6_ADDRSTRLEN)) {
+                        type = IP_ADDR_IPv6;
+                    }
+                }
+                if(type) {
+                    NSString *key = [NSString stringWithFormat:@"%@/%@", name, type];
+                    addresses[key] = [NSString stringWithUTF8String:addrBuf];
+                }
+            }
+        }
+        // Free memory
+        freeifaddrs(interfaces);
+    }
+    return [addresses count] ? addresses : nil;
 }
 
 @end
