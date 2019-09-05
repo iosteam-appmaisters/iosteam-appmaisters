@@ -15,9 +15,91 @@
 #import "SuffixInfo.h"
 #import "User.h"
 
+
 #import "UIPrintPageRenderer+PrintToPDF.h"
 
 @implementation HomeViewController
+BOOL _Authenticated;
+NSURLRequest *_FailedRequest;
+
+#pragma UIWebViewDelegate
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request   navigationType:(UIWebViewNavigationType)navigationType {
+    BOOL result = _Authenticated;
+    if (!_Authenticated) {
+        _FailedRequest = request;
+        BOOL shouldReload = TRUE;
+        
+        NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
+        
+        if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/Log/Out"] || [[[request URL] absoluteString] containsString:@"/log/in"] || [[[request URL] absoluteString] containsString:@"/Log/In"]){
+            
+            shouldReload = TRUE;
+            webView.hidden = YES;
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGOUT_BEGIN];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
+            if (![[NSUserDefaults standardUserDefaults]boolForKey:NORMAL_LOGOUT]){
+                [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+        }
+        
+        if([[[request URL] absoluteString] containsString:@"/SecondaryAuth/"]) {
+            NSLog(@"Security Challenge Detected...");
+            self.navigationItem.leftBarButtonItem = nil;
+            self.navigationItem.hidesBackButton = YES;
+            self.hideSideMenu = YES;
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:SIDEMENU_HIDDEN];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
+        else {
+            if ([[NSUserDefaults standardUserDefaults]boolForKey:SIDEMENU_HIDDEN]) {
+                [self createLefbarButtonItems];
+                self.navigationItem.hidesBackButton = NO;
+                self.hideSideMenu = NO;
+                [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SIDEMENU_HIDDEN];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+        }
+        
+        if ([request.URL.absoluteString containsString:@"/EStatements/Consent"]) {
+            __weak HomeViewController *weakSelf = self;
+            [ShareOneUtility showProgressViewOnView:weakSelf.view];
+        }
+        
+        if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
+            shouldReload = FALSE;
+            
+            NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
+            [[UIApplication sharedApplication] canOpenURL:url];
+        }
+        
+        return shouldReload;
+    }
+    return result;
+}
+
+#pragma NSURLConnectionDelegate
+
+-(void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        NSURL* baseURL = [NSURL URLWithString:@"your url"];
+        if ([challenge.protectionSpace.host isEqualToString:baseURL.host]) {
+            NSLog(@"trusting connection to host %@", challenge.protectionSpace.host);
+            [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+        } else
+            NSLog(@"Not trusting connection to host %@", challenge.protectionSpace.host);
+    }
+    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)pResponse {
+    _Authenticated = YES;
+    [connection cancel];
+    [self.webview loadRequest:_FailedRequest];
+}
+
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -31,16 +113,16 @@
     
     if(!_url)
         _url = @"";
-
     
-    __block NSMutableURLRequest *request = nil;
+    
+    __block NSMutableURLRequest *myRequest = nil;
     
     
     if([_url containsString:@"http"]){
         
-        request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
-        [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
-        [weakSelf.webview loadRequest:request];
+        myRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
+        [myRequest setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+        [weakSelf.webview loadRequest:myRequest];
         
     }
     
@@ -48,41 +130,45 @@
         
         if ([_url isEqualToString:[Configuration getMenuItemHomeURL]] && [[NSUserDefaults standardUserDefaults]boolForKey:SHOULD_SSO]){
             [User postContextIDForSSOWithDelegate:weakSelf withTabName:_url completionBlock:^(NSMutableURLRequest* request) {
-
+                
                 NSLog(@"SSO Generated");
                 
                 [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SHOULD_SSO];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 
-                [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+                myRequest = request;
+                [weakSelf.webview setExclusiveTouch:YES];
                 
-                [weakSelf.webview loadRequest:request];
-
+                
+                [weakSelf.webview loadRequest:myRequest];
+                
             } failureBlock:^(NSError *error) {
-
+                
             }];
-
+            
         }
         else {
-        
+            
             NSString *siteurl = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],_url];
             
-            request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:siteurl]];
+            myRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:siteurl]];
             
-            [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+            [myRequest setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
             
-            [weakSelf.webview loadRequest:request];
+            [weakSelf.webview loadRequest:myRequest];
             
         }
         
-
+        
     }
     
-    _webViewRequest = request;
+    _webViewRequest = myRequest;
     self.title = [ShareOneUtility getNavBarTitle:@""];
-
+    
     self.title = [ShareOneUtility getNavBarTitle:@""];
 }
+
+
 
 -(void)setBackBtnImage{
     UIImage *back_icon = [[UIImage imageNamed:@"back_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -125,7 +211,7 @@
 -(void)getSuffixInfo{
     
     __weak HomeViewController *weakSelf = self;
-
+    
     [SuffixInfo getSuffixInfo:nil delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
@@ -142,13 +228,13 @@
     } failureBlock:^(NSError *error) {
         
     }];
-
+    
 }
 
 -(void)keepMeAlive{
     
     __weak HomeViewController *weakSelf = self;
-
+    
     [User keepAlive:nil delegate:weakSelf completionBlock:^(BOOL sucess) {
         
     } failureBlock:^(NSError *error) {
@@ -161,7 +247,7 @@
     
     __weak HomeViewController *weakSelf = self;
     
-
+    
     [QuickBalances getAllQuickTransaction:[NSDictionary dictionaryWithObjectsAndKeys:@"HomeBank",@"ServiceType",[ShareOneUtility getUUID],@"DeviceFingerprint",@"55220",@"SuffixID",@"2",@"NumberOfTransactions", nil] delegate:weakSelf completionBlock:^(NSObject *user) {
         
     } failureBlock:^(NSError *error) {
@@ -182,57 +268,57 @@
 
 
 
-- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
-    
-    BOOL shouldReload = TRUE;
-    
-    NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
-    
-    if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/Log/Out"] || [[[request URL] absoluteString] containsString:@"/log/in"] || [[[request URL] absoluteString] containsString:@"/Log/In"]){
-        
-        shouldReload = TRUE;
-        webView.hidden = YES;
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGOUT_BEGIN];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
-        if (![[NSUserDefaults standardUserDefaults]boolForKey:NORMAL_LOGOUT]){
-            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-        }
-    }
-    
-    if([[[request URL] absoluteString] containsString:@"/SecondaryAuth/"]) {
-        NSLog(@"Security Challenge Detected...");
-        self.navigationItem.leftBarButtonItem = nil;
-        self.navigationItem.hidesBackButton = YES;
-        self.hideSideMenu = YES;
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:SIDEMENU_HIDDEN];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-    }
-    else {
-        if ([[NSUserDefaults standardUserDefaults]boolForKey:SIDEMENU_HIDDEN]) {
-            [self createLefbarButtonItems];
-            self.navigationItem.hidesBackButton = NO;
-            self.hideSideMenu = NO;
-            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SIDEMENU_HIDDEN];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-        }
-    }
-    
-    if ([request.URL.absoluteString containsString:@"/EStatements/Consent"]) {
-        __weak HomeViewController *weakSelf = self;
-        [ShareOneUtility showProgressViewOnView:weakSelf.view];
-    }
-    
-    if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
-        shouldReload = FALSE;
-        
-        NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
-        [[UIApplication sharedApplication] openURL:url];
-    }
-
-    return shouldReload;
-}
+//- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
+//
+//    BOOL shouldReload = TRUE;
+//
+//    NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
+//
+//    if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/Log/Out"] || [[[request URL] absoluteString] containsString:@"/log/in"] || [[[request URL] absoluteString] containsString:@"/Log/In"]){
+//
+//        shouldReload = TRUE;
+//        webView.hidden = YES;
+//        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGOUT_BEGIN];
+//        [[NSUserDefaults standardUserDefaults]synchronize];
+//
+//        if (![[NSUserDefaults standardUserDefaults]boolForKey:NORMAL_LOGOUT]){
+//            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TECHNICAL_LOGOUT];
+//            [[NSUserDefaults standardUserDefaults]synchronize];
+//        }
+//    }
+//
+//    if([[[request URL] absoluteString] containsString:@"/SecondaryAuth/"]) {
+//        NSLog(@"Security Challenge Detected...");
+//        self.navigationItem.leftBarButtonItem = nil;
+//        self.navigationItem.hidesBackButton = YES;
+//        self.hideSideMenu = YES;
+//        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:SIDEMENU_HIDDEN];
+//        [[NSUserDefaults standardUserDefaults]synchronize];
+//    }
+//    else {
+//        if ([[NSUserDefaults standardUserDefaults]boolForKey:SIDEMENU_HIDDEN]) {
+//            [self createLefbarButtonItems];
+//            self.navigationItem.hidesBackButton = NO;
+//            self.hideSideMenu = NO;
+//            [[NSUserDefaults standardUserDefaults]setBool:NO forKey:SIDEMENU_HIDDEN];
+//            [[NSUserDefaults standardUserDefaults]synchronize];
+//        }
+//    }
+//
+//    if ([request.URL.absoluteString containsString:@"/EStatements/Consent"]) {
+//        __weak HomeViewController *weakSelf = self;
+//        [ShareOneUtility showProgressViewOnView:weakSelf.view];
+//    }
+//
+//    if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
+//        shouldReload = FALSE;
+//
+//        NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
+//        [[UIApplication sharedApplication] openURL:url];
+//    }
+//
+//    return shouldReload;
+//}
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     NSLog(@"webViewDidStartLoad url: %@", webView.request.URL.absoluteString);
@@ -261,7 +347,7 @@
     if ([theTitle containsString:@"Account Summary"]){
         [self trackPrintingEventWithScheme:webView.request.URL.scheme];
     }
-
+    
     if([webView.request.URL.absoluteString containsString:@"print=True"]){
         [self savePDFToDocumentsDirectory];
     }
@@ -361,55 +447,55 @@
 
 -(void)connectPrinter {
     
-        [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
+    
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    documentsURL = [documentsURL URLByAppendingPathComponent:@"localFile.pdf"];
+    
+    NSData *myData = [NSData dataWithContentsOfURL:documentsURL];
+    
+    UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
+    
+    if(pic && [UIPrintInteractionController canPrintData: myData] ) {
         
-        NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        documentsURL = [documentsURL URLByAppendingPathComponent:@"localFile.pdf"];
+        //pic.delegate = self;
         
-        NSData *myData = [NSData dataWithContentsOfURL:documentsURL];
+        UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+        printInfo.outputType = UIPrintInfoOutputGeneral;
+        printInfo.jobName = @"New";//[path lastPathComponent];
+        printInfo.duplex = UIPrintInfoDuplexLongEdge;
+        pic.printInfo = printInfo;
+        pic.showsPageRange = YES;
+        pic.printingItem = myData;
         
-        UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
+        void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) = ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
+            //self.content = nil;
+            if (!completed && error) {
+                NSLog(@"FAILED! due to error in domain %@ with error code %ld", error.domain, (long)error.code);
+            }
+        };
         
-        if(pic && [UIPrintInteractionController canPrintData: myData] ) {
-            
-            //pic.delegate = self;
-            
-            UIPrintInfo *printInfo = [UIPrintInfo printInfo];
-            printInfo.outputType = UIPrintInfoOutputGeneral;
-            printInfo.jobName = @"New";//[path lastPathComponent];
-            printInfo.duplex = UIPrintInfoDuplexLongEdge;
-            pic.printInfo = printInfo;
-            pic.showsPageRange = YES;
-            pic.printingItem = myData;
-            
-            void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) = ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
-                //self.content = nil;
-                if (!completed && error) {
-                    NSLog(@"FAILED! due to error in domain %@ with error code %ld", error.domain, (long)error.code);
-                }
-            };
-            
-            [pic presentAnimated:YES completionHandler:completionHandler];
-            
-        }
+        [pic presentAnimated:YES completionHandler:completionHandler];
         
-        
+    }
+    
+    
 }
 
 
 -(void)printIt:(NSString *)html{
     
     __weak HomeViewController *weakSelf = self;
-
+    
     if ([UIPrintInteractionController class]) {
         // Create an instance of the class and use it.
         
         [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
-
+        
         UIMarkupTextPrintFormatter *htmlFormatter = [[UIMarkupTextPrintFormatter alloc] initWithMarkupText:html];
         
         htmlFormatter.contentInsets = UIEdgeInsetsMake(0, 20, 0, 20);
-
+        
         UIPrintInteractionController* printController = [UIPrintInteractionController sharedPrintController];
         [printController setPrintFormatter:htmlFormatter];
         [printController presentAnimated:YES completionHandler:^(UIPrintInteractionController *printInteractionController, BOOL completed, NSError *error) {
@@ -421,7 +507,7 @@
                     [[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:weakSelf];
             }
         }];
-
+        
     } else {
         // Alternate code path to follow when the
         // class is not available.
@@ -458,20 +544,20 @@
     
     
     UIAlertAction* tryAgain = [UIAlertAction
-                         actionWithTitle:@"Try Again"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:^{
-                             }];
-                             
-                             [ShareOneUtility showProgressViewOnView:self.view];
-
-                             [self->_webview loadRequest:self->_webViewRequest];
-                             
-                         }];
+                               actionWithTitle:@"Try Again"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action)
+                               {
+                                   [alert dismissViewControllerAnimated:YES completion:^{
+                                   }];
+                                   
+                                   [ShareOneUtility showProgressViewOnView:self.view];
+                                   
+                                   [self->_webview loadRequest:self->_webViewRequest];
+                                   
+                               }];
     [alert addAction:tryAgain];
-
+    
     [self presentViewController:alert animated:YES completion:nil];
     
 }
