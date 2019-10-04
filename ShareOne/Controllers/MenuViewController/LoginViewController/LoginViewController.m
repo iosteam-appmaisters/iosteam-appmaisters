@@ -718,7 +718,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 contrlollerName = currentString;
                 
             }else {
-                contrlollerName = @"HomeNavigationController";
+                contrlollerName = @"WebViewController";
             }
         }
         
