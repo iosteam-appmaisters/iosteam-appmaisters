@@ -70,7 +70,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 @property(nonatomic,strong) UITextField * currentTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *loginBG;
-
+@property (nonatomic, strong) NSArray *storyboardControllers;
 
 - (void)updateDataByDefaultValues;
 
@@ -92,6 +92,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
     
     [self loadLocalCacheOnView];
+    _storyboardControllers = @[@"LoginViewController" , @"QuickBalancesViewController",@"SplashViewController" ,@"HomeNavigationController",@"WebViewController",@"settings",@"LeftMenuViewController",@"mobileDeposit",@"ImageViewPopUpController",@"VertifiAgreemantController",@"branchLocations",@"depositedChecksList",@"NotifSettingsController",@"ImageViewPopUpController",@"p2psettings",@"GetDirectionViewController",@"surchargeFreeAtms",@"PasswordChangeController",@"PinResetController",@"TouchIDSettingsController",@"FaceIDSettingsController",@"payments",@"UserNamecontroller",@"WeblinksController",@"InAppBrowserController",@"DepositTutorialController"];
     
     [self updateDataByDefaultValues];
     
@@ -706,9 +707,23 @@ static NSString *const menuCellIdentifier = @"rotationCell";
         objHomeViewController.url= webUrl;
         controllerToPush=objHomeViewController;
         [self checkVersionUpdate];
+        
     }
     else{
         //If webUrl is empty or nil load Native UI Screen
+        for (NSString* currentString in _storyboardControllers)
+        {
+            if ([currentString isEqualToString:contrlollerName]) {
+                
+                contrlollerName = currentString;
+                
+            }else {
+                contrlollerName = @"HomeNavigationController";
+            }
+        }
+        
+
+        
         UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
         objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: navigationTitle];
         controllerToPush = objUIViewController;
