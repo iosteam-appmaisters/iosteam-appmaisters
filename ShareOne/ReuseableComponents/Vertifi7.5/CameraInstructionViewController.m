@@ -61,7 +61,8 @@
     if (isFront)
         self.images = @[ [UIImage imageNamed:@"ckinstructfront"] ];
     else
-        self.images = @[ [UIImage imageNamed:@"ckinstructback"], [UIImage imageNamed:@"ckinstructback2"], [UIImage imageNamed:@"ckinstructback3"] ];
+    //Remove extra images as per request of Adeel bahi.
+        self.images = @[ [UIImage imageNamed:@"ckinstructback"] ];
     
     nImageSequence = 0;
     [imageView setImage:[self.images objectAtIndex:nImageSequence]];
