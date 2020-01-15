@@ -1818,7 +1818,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareOne/ShareOne.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
@@ -1840,11 +1840,12 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
 				);
+				MARKETING_VERSION = 2.9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cf910c54-da76-4c5a-988d-2c11ec6eb242";
-				PROVISIONING_PROFILE_SPECIFIER = SHAREONE_PREPROD_DEV;
+				PROVISIONING_PROFILE_SPECIFIER = "Share-One-PreProduction-AB";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1876,11 +1877,12 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
 				);
+				MARKETING_VERSION = 2.9.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b89fb9a7-c841-44e1-99a6-eb3f74981d8b";
-				PROVISIONING_PROFILE_SPECIFIER = Share_One_PrePro_DIST;
+				PROVISIONING_PROFILE_SPECIFIER = "Share-One-Dist-PreProduction";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

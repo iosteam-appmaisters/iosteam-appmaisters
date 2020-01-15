@@ -515,6 +515,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     NSDictionary *memberAnalytics = @{@"AbsoluteUri": [Configuration getSSOBaseUrl],
                                       @"IsMobile":@YES,
                                       @"IsNsMobile":@YES,
+                                      @"IsLogin": @YES,
                                       @"UserHostAddress":[UtilitiesHelper GetOurIpAddress],
                                       @"DeviceName":deviceName};
     

@@ -38,15 +38,16 @@
         [_showOffersLbl setHidden:FALSE];
     }
     
-    if ([config.allownotifications boolValue]) {
-        [_pushNotifSwitch setHidden:FALSE];
-        [_pushNotificationLabel setHidden:FALSE];
-    }
-    else {
-        [_pushNotifSwitch setHidden:TRUE];
-        [_pushNotificationLabel setHidden:TRUE];
-        
-    }
+    //Share One 2.9.0 Build Changes
+//    if ([config.allownotifications boolValue]) {
+//        [_pushNotifSwitch setHidden:FALSE];
+//        [_pushNotificationLabel setHidden:FALSE];
+//    }
+//    else {
+//        [_pushNotifSwitch setHidden:TRUE];
+//        [_pushNotificationLabel setHidden:TRUE];
+//
+//    }
     
     if ([config.enablequickview boolValue]){
         [_quickBalanceSwitch setHidden:FALSE];
@@ -124,7 +125,8 @@
     
     [_showOffersSwitch setOn:[ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]];
     [_touchIDSwitch setOn:[ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]];
-    [_pushNotifSwitch setOn:[ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS]];
+    //Share One 2.9.0 Build Changes
+//    [_pushNotifSwitch setOn:[ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS]];
 }
 
 

@@ -563,9 +563,12 @@ static NSString *calculatedMacSessionKey = @"";
     User *user = [self getUserObject];
     if(user){
         
-        if([key isEqualToString:PUSH_NOTIF_SETTINGS])
-            flag= user.isPushNotifOpen;
-        else if ([key isEqualToString:QUICK_BAL_SETTINGS])
+        //Share One 2.9.0 Build Changes
+//        if([key isEqualToString:PUSH_NOTIF_SETTINGS])
+//            flag= user.isPushNotifOpen;
+//        else
+        
+        if ([key isEqualToString:QUICK_BAL_SETTINGS])
             flag = user.isQBOpen;
         else if ([key isEqualToString:TOUCH_ID_SETTINGS])
             flag= user.isTouchIDOpen;
