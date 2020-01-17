@@ -661,16 +661,21 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     NSArray *authArray= [NSArray arrayWithObjects:zuthDicForQB,zuthDicForQT, nil];
     
+    NSString *deviceName = [NSString stringWithFormat:@"%@ (%@)",
+    [DeviceUtil hardwareString], [[UIDevice currentDevice] systemVersion]];
+    
     NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
                                  [ShareOneUtility getUUID],@"Fingerprint",
                                  PROVIDER_TYPE_VALUE,@"ProviderType",
                                  @"ios",@"DeviceType",
+                                 @"DeviceName":deviceName,
+                                 @"IsLogin": @YES,
                                  authArray,@"Authorizations", nil];
     
-    if (shouldSendDeviceToken){
+//    if (shouldSendDeviceToken){
         [dic setObject:[ShareOneUtility getDeviceNotifToken] forKey:@"DeviceToken"];
-    }
+//    }
     
     [MemberDevices postMemberDevices:[dic copy]
                              message:@""
