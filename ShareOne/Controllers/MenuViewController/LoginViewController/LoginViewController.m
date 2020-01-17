@@ -665,31 +665,19 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     NSString *deviceName = [NSString stringWithFormat:@"%@ (%@)",
     [DeviceUtil hardwareString], [[UIDevice currentDevice] systemVersion]];
-
-    NSMutableDictionary * dic = [NSMutableDictionary new];
-    [dic setObject:[ShareOneUtility getDeviceNotifToken] forKey:@"DeviceToken"];
-    [dic setObject:[[[SharedUser sharedManager] userObject]Contextid] forKey:@"ContextID"];
-    [dic setObject:[ShareOneUtility getUUID] forKey:@"Fingerprint"];
-    [dic setObject:PROVIDER_TYPE_VALUE forKey:@"ProviderType"];
-    [dic setObject:@"ios" forKey:@"DeviceType"];
-    [dic setObject:deviceName forKey:@"DeviceName"];
-    [dic setObject:@(YES) forKey:@"IsLogin"];
-    [dic setObject:authArray forKey:@"Authorizations"];
     
-    /*
     NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  [[[SharedUser sharedManager] userObject]Contextid],@"ContextID",
                                  [ShareOneUtility getUUID],@"Fingerprint",
                                  PROVIDER_TYPE_VALUE,@"ProviderType",
                                  @"ios",@"DeviceType",
-                                 @"DeviceName",deviceName,
-                                 @"IsLogin",@YES,
+                                 @"DeviceName":deviceName,
+                                 @"IsLogin": @YES,
                                  authArray,@"Authorizations", nil];
     
 //    if (shouldSendDeviceToken){
         [dic setObject:[ShareOneUtility getDeviceNotifToken] forKey:@"DeviceToken"];
 //    }
-     */
     
     [MemberDevices postMemberDevices:[dic copy]
                              message:@""
