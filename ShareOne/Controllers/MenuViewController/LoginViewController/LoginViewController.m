@@ -656,6 +656,8 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     __weak LoginViewController *weakSelf = self;
     
+    NSLog(@"Test Log For Reverse Commit");
+    
     NSDictionary *zuthDicForQB = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
     NSDictionary *zuthDicForQT = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"Type",[NSNumber numberWithBool:TRUE],@"Status", nil];
     
