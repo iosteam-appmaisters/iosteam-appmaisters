@@ -41,30 +41,30 @@
     }
     [GMSServices provideAPIKey:[ShareOneUtility getGoogleMapKey_old]];
     
-//    [self registerForPushNotifications:application];
-//
-//    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
-//        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//        center.delegate = self;
-//        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
-//            if( !error ){
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    [[UIApplication sharedApplication] registerForRemoteNotifications];
-//                });
-//            }
-//        }];
-//    }
-//    else{
-//
-//        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-//            UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
-//                                                                                                  | UIUserNotificationTypeBadge
-//                                                                                                  | UIUserNotificationTypeSound)
-//                                                                                      categories:nil];
-//
-//            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-//        }
-//    }
+    [self registerForPushNotifications:application];
+
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if( !error ){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[UIApplication sharedApplication] registerForRemoteNotifications];
+                });
+            }
+        }];
+    }
+    else{
+
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            UIUserNotificationSettings * settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert
+                                                                                                  | UIUserNotificationTypeBadge
+                                                                                                  | UIUserNotificationTypeSound)
+                                                                                      categories:nil];
+
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        }
+    }
 
     return YES;
 }
@@ -201,10 +201,21 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"deviceToken---%@", token);
-    [ShareOneUtility saveDeviceToken:token];
+    
+    const unsigned *tokenBytes = [deviceToken bytes];
+    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+                         ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+                         ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+                         ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    
+   
+    
+      [ShareOneUtility saveDeviceToken:[NSString stringWithFormat:@"%@" , hexToken] ];
+    
+//    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+//    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    NSLog(@"deviceToken---%@", token);
+  
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"NewTokenRegisteration" object:self userInfo:nil];
 }
