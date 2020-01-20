@@ -526,7 +526,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [User getUserWithParam:loginParams delegate:weakSelf completionBlock:^(User *user) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-        
+        [weakSelf checkToSendDeviceToken];
         if([user isKindOfClass:[User class]]){
             
             if(weakSelf.objPinResetController){
@@ -563,7 +563,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
                 // Go though to thee application
                 //asi flow
                 [weakSelf.loadingView setHidden:FALSE];
-                [weakSelf checkToSendDeviceToken];
+                
             }
         }
         else if([user isKindOfClass:[NSString class]]){
@@ -611,43 +611,43 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     __weak LoginViewController *weakSelf = self;
     
-    [MemberDevices getMemberDevices:nil delegate:weakSelf completionBlock:^(NSObject *user) {
-        [ShareOneUtility getUUID];
-        NSDictionary * response = (NSDictionary*)user;
-        
-        [MemberDevices iterateMemberDevices:response completionBlock:^(BOOL status, MemberDevices * memberDevice){
-            
-            if (!status){
-                
-                ClientSettingsObject  *config = [Configuration getClientSettingsContent];
-                if ([config.allownotifications boolValue]) {
-                    BOOL  isRegister = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
-
-                    if([ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS] || isRegister) {
+//    [MemberDevices getMemberDevices:nil delegate:weakSelf completionBlock:^(NSObject *user) {
+//        [ShareOneUtility getUUID];
+//        NSDictionary * response = (NSDictionary*)user;
+//
+//        [MemberDevices iterateMemberDevices:response completionBlock:^(BOOL status, MemberDevices * memberDevice){
+//
+//            if (!status){
+//
+//                ClientSettingsObject  *config = [Configuration getClientSettingsContent];
+//                if ([config.allownotifications boolValue]) {
+//                    BOOL  isRegister = [[UIApplication sharedApplication] isRegisteredForRemoteNotifications];
+//
+//                    if([ShareOneUtility getSettingsWithKey:PUSH_NOTIF_SETTINGS] || isRegister) {
                         [self startLoadingServices:YES];
-                    }
-                    else {
-                        [self startLoadingServices:NO];
-                    }
-                    
-                }
-                else {
-                    [self startLoadingServices:NO];
-                }
-                
-            }
-            else {
-                NSLog(@"%@",memberDevice.Id.stringValue);
-                 [weakSelf startApplication];
-            }
-            
-            
-        } failureBlock:^(NSError * error){
-            NSLog(@"%@",[error localizedDescription]);
-        }];
-    } failureBlock:^(NSError *error) {
-        NSLog(@"%@",[error localizedDescription]);
-    }];
+//                    }
+//                    else {
+//                        [self startLoadingServices:NO];
+//                    }
+//
+//                }
+//                else {
+//                    [self startLoadingServices:NO];
+//                }
+//
+//            }
+//            else {
+//                NSLog(@"%@",memberDevice.Id.stringValue);
+//                 [weakSelf startApplication];
+//            }
+//
+//
+//        } failureBlock:^(NSError * error){
+//            NSLog(@"%@",[error localizedDescription]);
+//        }];
+//    } failureBlock:^(NSError *error) {
+//        NSLog(@"%@",[error localizedDescription]);
+//    }];
     
 }
 
