@@ -666,7 +666,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     
     NSMutableDictionary * dic = [NSMutableDictionary new];
     [dic setObject:[ShareOneUtility getDeviceNotifToken] forKey:@"DeviceToken"];
-    [dic setObject:[[[SharedUser sharedManager] userObject]Contextid] forKey:@"ContextID"];
+    if ([[SharedUser sharedManager] userObject] != nil) {
+    
+        [dic setObject:[[[SharedUser sharedManager] userObject]Contextid] forKey:@"ContextID"];
+    }
+    
+
     [dic setObject:[ShareOneUtility getUUID] forKey:@"Fingerprint"];
     [dic setObject:PROVIDER_TYPE_VALUE forKey:@"ProviderType"];
     [dic setObject:@"ios" forKey:@"DeviceType"];

@@ -428,6 +428,8 @@
    
         [params setValue:objVertifi.SSOKey forKey:@"ssokey"];
         
+        
+        
         [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_COMMIT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
             
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];

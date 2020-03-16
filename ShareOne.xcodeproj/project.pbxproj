@@ -165,6 +165,7 @@
 		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
 		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
 		9AEB7DF81F5EEEB30027DA65 /* YALContextMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */; };
+		EAB89021241FA9C8009D5A80 /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB89020241FA9C7009D5A80 /* VIPLibrary.framework */; };
 		F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */; };
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
@@ -367,7 +368,6 @@
 		814EAC4D7022C3B362F8BA3F /* Pods-ShareOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.release.xcconfig"; sourceTree = "<group>"; };
 		8BAF9CB41FF6A77100E97BE9 /* DeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceUtil.h; sourceTree = "<group>"; };
 		8BAF9CB51FF6A77100E97BE9 /* DeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceUtil.m; sourceTree = "<group>"; };
-		9A40421420F38F7A00EDF179 /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VIPLibrary.framework; path = ShareOne/ReuseableComponents/VIPLibrary.framework; sourceTree = "<group>"; };
 		9A44C9C220B3F16D0031531B /* FaceIDSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceIDSettingsController.h; sourceTree = "<group>"; };
 		9A44C9C320B3F16D0031531B /* FaceIDSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceIDSettingsController.m; sourceTree = "<group>"; };
 		9A5A1CC0209B1E14009AC72E /* ShareOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareOne.entitlements; sourceTree = "<group>"; };
@@ -492,6 +492,7 @@
 		9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALContextMenuTableView.m; sourceTree = "<group>"; };
 		B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShareOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
+		EAB89020241FA9C7009D5A80 /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VIPLibrary.framework; path = "../../Documents/Vertifi V8/Vertifi/Vertifi Image Processing Libraries/Libraries & Documentation/iOS/Release/VIPLibrary.framework"; sourceTree = "<group>"; };
 		F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F2099FA41D9D3B4C00AAA8AC /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
 		F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
@@ -519,6 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB89021241FA9C8009D5A80 /* VIPLibrary.framework in Frameworks */,
 				9AA04A3F211B0474009BC70F /* VIPLibrary.framework in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
@@ -1151,7 +1153,7 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A40421420F38F7A00EDF179 /* VIPLibrary.framework */,
+				EAB89020241FA9C7009D5A80 /* VIPLibrary.framework */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -1830,6 +1832,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/Vertifi7.5/VIPSample-Prefix.pch";
@@ -1868,6 +1871,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ShareOne/ReuseableComponents/Vertifi7.5/VIPSample-Prefix.pch";
