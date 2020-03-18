@@ -46,10 +46,14 @@
             NSString *CARMismatch = [xmlDoc valueForKeyPath:@"ImageValidation.CARMismatch"];
 
             NSString *CARAmount = [xmlDoc valueForKeyPath:@"ImageValidation.CARAmount"];
+            
+            NSString *dupSuspectUsability = [[xmlDoc valueForKey:@"ImageValidation"] valueForKey:@"DupSuspectUsability"];
 
             NSArray *DepositArray = [xmlDoc arrayValueForKeyPath:@"Deposit"];
             NSDictionary *imageDictionary = [xmlDoc valueForKeyPath:@"Deposit.Deposit_Item"];
             NSString *deletedError = [xmlDoc valueForKeyPath:@"Status.Error"];
+            
+            
 
 
             VertifiObject *obj = [[VertifiObject alloc] init];
@@ -64,6 +68,7 @@
             obj.CARAmount=CARAmount;
             obj.CARMismatch=CARMismatch;
             obj.deletedError=deletedError;
+            obj.dupSuspectUsability = dupSuspectUsability;
 
             
             if(EUAContents)

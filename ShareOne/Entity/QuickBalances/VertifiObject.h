@@ -27,6 +27,8 @@
 @property (nonatomic,strong) NSString *CARAmount;
 @property (nonatomic,strong) NSString *CARMismatch;
 @property (nonatomic,strong) NSString *deletedError;
+@property (nonatomic,strong) NSString *dupSuspectUsability;
+
 
 
 +(NSArray *)parseAllDepositsWithObject:(NSArray *)array;

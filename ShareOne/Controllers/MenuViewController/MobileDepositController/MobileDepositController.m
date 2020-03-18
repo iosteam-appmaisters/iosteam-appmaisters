@@ -348,8 +348,10 @@
     NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"img.png"]);
     [params setValue:imageDataPNG forKey:@"image"];
     
-    NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 0.75);
+    NSData *imageDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"img_color.jpg"], 0.6);
     [params setValue:imageDataJPG forKey:@"imageColor"];
+    
+    [params setValue:@"true" forKey:@"checkDups"];
     
     [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:  [NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_DEP_ININT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
@@ -360,6 +362,15 @@
             if(![weakSelf.objVertifiObject.InputValidation isEqualToString:@"OK"]){
                 [self showAlertWithTitle:@"" AndMessage:weakSelf.objVertifiObject.InputValidation];
             }
+            
+             if([weakSelf.objVertifiObject.dupSuspectUsability isEqualToString:@"Failed"]){
+                 
+                 [ShareOneUtility showLMAlertforTitle:@"" withMessage:@"this check appears to have been previously deposited." forDelegate:self];
+                 
+//                 [ShareOneUtility showPromptAlertforTitle:@"" withMessage:@"this check appears to have been previously deposited." forDelegate:self];
+//                            [self showAlertWithTitle:@"" AndMessage:@"this check appears to have been previously deposited."];
+                        }
+                        
             
             if([weakSelf.objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_PASSED] || [weakSelf.objVertifiObject.CARMismatch isEqualToString:CAR_MISMATCH_FAILED]){
                 
@@ -390,6 +401,26 @@
     }];
 }
 
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToFillSize:(CGSize)size
+{
+    CGFloat scale = MAX(size.width/image.size.width, size.height/image.size.height);
+    CGFloat width = image.size.width * scale;
+    CGFloat height = image.size.height * scale;
+    CGRect imageRect = CGRectMake((size.width - width)/2.0f,
+                                  (size.height - height)/2.0f,
+                                  width,
+                                  height);
+
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [image drawInRect:imageRect];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
+
 -(void)vertifiComitWithObject:(VertifiObject *)objVertifi{
     
     __weak MobileDepositController *weakSelf = self;
@@ -418,17 +449,48 @@
         [params setValue:calculatedMac forKey:@"MAC"];
         [params setValue:[Configuration getVertifiRDCTestMode] forKey:@"mode"];
         [params setValue:[ShareOneUtility getDeviceType] forKey:@"source"];
+         [params setValue:@"0" forKey:@"Iurearendorsement"];
+       
         
-        NSData *imageDataPNG = UIImagePNGRepresentation([self getBWImagePath:@"backimg.png"]);
+        NSData *imageDataJpeg = UIImageJPEGRepresentation([self getBWImagePath:@"backimg.png"], 0.6);
+        
+       
+        
+        UIImage *img= [UIImage imageWithData:imageDataJpeg];
+        
+        
+        
+        NSLog(@"Image ------===----backB&W");
+        NSLog(@"%f" , img.scale);;
+        NSLog(@"Image ------===----backB&W");
+        
+         NSData *imageDataPNG = UIImagePNGRepresentation(img);
+        
         [params setValue:imageDataPNG forKey:@"image"];
       
         //Add Color image of back side cheqeue
-        NSData *imageDataJPG = UIImagePNGRepresentation([self getBWImagePath:@"backimg_color.jpg"]);
-        [params setValue:imageDataJPG forKey:@"imageColor"];
+//        NSData *imageDataJPG = UIImagePNGRepresentation([self getBWImagePath:@"backimg_color.jpg"]);
+//
+        NSData *backImgDataJPG = UIImageJPEGRepresentation([self getBWImagePath:@"backimg_color.jpg"], 0.4);
+
+
+//
+//        UIImage *imgback = [UIImage imageWithData:backImgDataJPG];
+//
+//        NSLog(@"Image ------===----backColor");
+//
+//
+//
+//        NSLog(@"%f" , imgback.scale);
+//         NSLog(@"Image ------===----backColor");
+//
+//        NSData *imageDataJPGPNG = UIImagePNGRepresentation(imgback);
+
+        [params setValue:backImgDataJPG forKey:@"imageColor"];
    
         [params setValue:objVertifi.SSOKey forKey:@"ssokey"];
         
-        
+      
         
         [CashDeposit getRegisterToVirtifi:params delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFI_COMMIT] AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
             

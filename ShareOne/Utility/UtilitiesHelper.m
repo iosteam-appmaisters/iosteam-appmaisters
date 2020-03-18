@@ -279,12 +279,14 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 
 +(void)showLMAlertforTitle:(NSString *)title withMessage:(NSString *)message forDelegate:(id)deleg {
     
-    //    LMAlertView *alertView = [[LMAlertView alloc] initWithTitle:title
-    //                                                        message:message
-    //                                                       delegate:deleg
-    //                                              cancelButtonTitle:@"Ok"
-    //                                              otherButtonTitles:nil];
-    //    [alertView show];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                            message:message
+                                                           delegate:deleg
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+    
+    
+        [alertView show];
     
 }
 
