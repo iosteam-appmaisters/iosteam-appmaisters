@@ -17,6 +17,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "User.h"
 #import "ShareOneUtility.h"
+#import "HomeViewController.h"
 
 
 #include <ifaddrs.h>
@@ -277,16 +278,24 @@ dispatch_source_t CreateDispatchTimer(double interval, dispatch_queue_t queue, d
 }
 
 
+
 +(void)showLMAlertforTitle:(NSString *)title withMessage:(NSString *)message forDelegate:(id)deleg {
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
-                                                            message:message
-                                                           delegate:deleg
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-    
-    
-        [alertView show];
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+//                                                            message:message
+//                                                           delegate:deleg
+//                                                  cancelButtonTitle:@"Yes"
+//                                                  otherButtonTitles:nil];
+//    
+//    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//       
+//       
+//        
+//    }];
+//    
+//    
+//    
+//        [alertView show];
     
 }
 

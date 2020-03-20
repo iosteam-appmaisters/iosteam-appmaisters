@@ -311,6 +311,38 @@
     
 }
 
+-(void)showLMAlertforTitle:(NSString *)title withMessage:(NSString *)message forDelegate:(id)deleg {
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                            message:message
+                                                           delegate:deleg
+                                                  cancelButtonTitle:@"Yes"
+                                              otherButtonTitles:@"No", nil];
+
+
+
+
+
+         
+        [alertView show];
+        
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        //Code for OK button
+    }
+    if (buttonIndex == 1)
+    {
+        //Code for download button
+        [self navigateToLastController];
+    }
+}
+
+
 -(void)vertifiPaymentInIt{
     
     __weak MobileDepositController *weakSelf = self;
@@ -365,7 +397,7 @@
             
              if([weakSelf.objVertifiObject.dupSuspectUsability isEqualToString:@"Failed"]){
                  
-                 [ShareOneUtility showLMAlertforTitle:@"" withMessage:@"this check appears to have been previously deposited." forDelegate:self];
+                 [self showLMAlertforTitle:@"" withMessage:@"this check appears to have been previously deposited. Do you want to continue" forDelegate:self];
                  
 //                 [ShareOneUtility showPromptAlertforTitle:@"" withMessage:@"this check appears to have been previously deposited." forDelegate:self];
 //                            [self showAlertWithTitle:@"" AndMessage:@"this check appears to have been previously deposited."];
