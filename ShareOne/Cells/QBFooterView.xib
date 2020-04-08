@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,8 +24,8 @@
                             <rect key="frame" x="277" y="7.5" width="46" height="30"/>
                             <state key="normal" title="Button"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-fb-Yxo">
-                            <rect key="frame" x="20" y="14.5" width="360" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-fb-Yxo">
+                            <rect key="frame" x="20" y="8" width="358" height="34"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -37,7 +34,7 @@
                             </variation>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0a-Sy-dgP">
-                            <rect key="frame" x="386" y="14.5" width="174" height="21"/>
+                            <rect key="frame" x="386" y="14" width="174" height="21"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -49,20 +46,21 @@
                             <rect key="frame" x="20" y="12.5" width="20" height="20"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4m-CO-wog">
-                            <rect key="frame" x="573" y="14" width="19" height="22"/>
+                            <rect key="frame" x="573" y="13.5" width="19" height="22"/>
                             <state key="normal" image="qb_white_circle"/>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qb_down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-fo-OLd" customClass="CustomImageView">
-                            <rect key="frame" x="577.5" y="22.5" width="9" height="5"/>
+                            <rect key="frame" x="578" y="22" width="9" height="5"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerX" secondItem="TCM-oh-32N" secondAttribute="centerX" id="3Ln-fl-fNC"/>
                         <constraint firstItem="9di-dU-KAL" firstAttribute="centerX" secondItem="TCM-oh-32N" secondAttribute="centerX" id="3fL-OY-4Gc"/>
-                        <constraint firstItem="AWE-fb-Yxo" firstAttribute="centerY" secondItem="9di-dU-KAL" secondAttribute="centerY" id="5I9-1f-xYT"/>
                         <constraint firstItem="WO8-fo-OLd" firstAttribute="centerX" secondItem="i4m-CO-wog" secondAttribute="centerX" id="C4V-D0-uEd"/>
                         <constraint firstItem="9di-dU-KAL" firstAttribute="top" secondItem="TCM-oh-32N" secondAttribute="top" id="CxN-yb-0A7"/>
+                        <constraint firstItem="AWE-fb-Yxo" firstAttribute="top" secondItem="TCM-oh-32N" secondAttribute="top" constant="8" id="DKg-O2-9ah"/>
+                        <constraint firstItem="i0a-Sy-dgP" firstAttribute="leading" secondItem="AWE-fb-Yxo" secondAttribute="trailing" constant="8" id="Dh1-uT-Y0w"/>
                         <constraint firstItem="i4m-CO-wog" firstAttribute="centerY" secondItem="i0a-Sy-dgP" secondAttribute="centerY" id="IKo-jo-nbZ"/>
                         <constraint firstAttribute="bottom" secondItem="9di-dU-KAL" secondAttribute="bottom" constant="1" id="OwX-iV-dzk"/>
                         <constraint firstAttribute="trailing" secondItem="i0a-Sy-dgP" secondAttribute="trailing" constant="40" id="Tp0-6z-FeY"/>
@@ -70,8 +68,8 @@
                         <constraint firstItem="lnh-gF-mll" firstAttribute="leading" secondItem="TCM-oh-32N" secondAttribute="leading" constant="20" id="WBa-gO-FBB"/>
                         <constraint firstItem="i0a-Sy-dgP" firstAttribute="width" secondItem="9di-dU-KAL" secondAttribute="width" multiplier="0.29" id="Zzx-6d-mKz"/>
                         <constraint firstItem="lnh-gF-mll" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" constant="-2.5" id="aOP-mf-BEJ"/>
+                        <constraint firstAttribute="bottom" secondItem="AWE-fb-Yxo" secondAttribute="bottom" constant="8" id="lBS-HC-Pub"/>
                         <constraint firstItem="bdx-o0-2Gu" firstAttribute="centerY" secondItem="TCM-oh-32N" secondAttribute="centerY" constant="-2.5" id="oLq-Eg-JC7"/>
-                        <constraint firstItem="AWE-fb-Yxo" firstAttribute="width" secondItem="9di-dU-KAL" secondAttribute="width" multiplier="0.6" id="pyQ-Tr-Win"/>
                         <constraint firstItem="i0a-Sy-dgP" firstAttribute="centerY" secondItem="9di-dU-KAL" secondAttribute="centerY" id="quB-jj-11b"/>
                         <constraint firstItem="AWE-fb-Yxo" firstAttribute="leading" secondItem="TCM-oh-32N" secondAttribute="leading" constant="20" id="rP5-eQ-xsN"/>
                         <constraint firstItem="WO8-fo-OLd" firstAttribute="centerY" secondItem="i4m-CO-wog" secondAttribute="centerY" id="yoq-ig-AyP"/>
@@ -98,11 +96,12 @@
                 <outlet property="sectionImgVew" destination="lnh-gF-mll" id="BXP-bu-Ke1"/>
                 <outlet property="sectionTitleLbl" destination="AWE-fb-Yxo" id="nNW-JN-ipi"/>
             </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="153.82308845577214"/>
         </view>
     </objects>
     <resources>
         <image name="icon-dollar" width="20" height="20"/>
-        <image name="qb_down_arrow" width="9" height="5"/>
+        <image name="qb_down_arrow" width="9" height="5.3333334922790527"/>
         <image name="qb_white_circle" width="19" height="19"/>
     </resources>
 </document>

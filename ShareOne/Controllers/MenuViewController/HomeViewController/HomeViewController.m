@@ -28,13 +28,14 @@ NSURLRequest *_FailedRequest;
     BOOL result = _Authenticated;
     if (!_Authenticated) {
         _FailedRequest = request;
-        BOOL shouldReload = TRUE;
+        BOOL shouldReload = YES;
         
         NSLog(@"shouldStartLoadWithRequest : %@",request.URL.absoluteString);
         
         if([[[request URL] absoluteString] containsString:@"/log/out"] || [[[request URL] absoluteString] containsString:@"/Log/Out"] || [[[request URL] absoluteString] containsString:@"/log/in"] || [[[request URL] absoluteString] containsString:@"/Log/In"]){
             
-            shouldReload = TRUE;
+            shouldReload = YES;
+            result = YES;
             webView.hidden = YES;
             [[NSUserDefaults standardUserDefaults]setBool:YES forKey:LOGOUT_BEGIN];
             [[NSUserDefaults standardUserDefaults]synchronize];
@@ -70,7 +71,7 @@ NSURLRequest *_FailedRequest;
         
         if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
             shouldReload = FALSE;
-            
+            result = FALSE;
             NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
             [[UIApplication sharedApplication] canOpenURL:url];
         }

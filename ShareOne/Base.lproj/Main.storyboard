@@ -1665,29 +1665,15 @@ Tm90ZToQIA
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJK-mF-eHS" customClass="CustomButton">
-                                <rect key="frame" x="0.0" y="528" width="159.5" height="40"/>
-                                <color key="backgroundColor" red="0.58884179592132568" green="0.059621315449476242" blue="0.10815258324146271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Irk-np-3Ef"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
-                                <state key="normal" title="Accept"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqV-As-XVc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
+                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="goAcceptAgreemant:" destination="bq6-eb-PGd" eventType="touchUpInside" id="sUV-7U-HWr"/>
+                                    <outlet property="delegate" destination="bq6-eb-PGd" id="WtM-Bg-6D0"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-Zo-b6e" customClass="CustomButton">
-                                <rect key="frame" x="160.5" y="528" width="159.5" height="40"/>
-                                <color key="backgroundColor" red="0.58884179592132568" green="0.059621315449476242" blue="0.10815258324146271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
-                                <state key="normal" title="Decline"/>
-                                <connections>
-                                    <action selector="goDeclineAgreemant:" destination="bq6-eb-PGd" eventType="touchUpInside" id="5zh-Aa-IJH"/>
-                                </connections>
-                            </button>
+                            </webView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCp-tg-mdN">
-                                <rect key="frame" x="20" y="30" width="280" height="498"/>
+                                <rect key="frame" x="20" y="30" width="280" height="483"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPL-8s-WWU">
                                         <rect key="frame" x="0.0" y="10" width="280" height="67.5"/>
@@ -1805,13 +1791,27 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     </mask>
                                 </variation>
                             </scrollView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqV-As-XVc">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
-                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJK-mF-eHS" customClass="CustomButton">
+                                <rect key="frame" x="0.0" y="513" width="159.5" height="40"/>
+                                <color key="backgroundColor" red="0.58884179592132568" green="0.059621315449476242" blue="0.10815258324146271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Irk-np-3Ef"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                <state key="normal" title="Accept"/>
                                 <connections>
-                                    <outlet property="delegate" destination="bq6-eb-PGd" id="WtM-Bg-6D0"/>
+                                    <action selector="goAcceptAgreemant:" destination="bq6-eb-PGd" eventType="touchUpInside" id="sUV-7U-HWr"/>
                                 </connections>
-                            </webView>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-Zo-b6e" customClass="CustomButton">
+                                <rect key="frame" x="160.5" y="513" width="159.5" height="40"/>
+                                <color key="backgroundColor" red="0.58884179592132568" green="0.059621315449476242" blue="0.10815258324146271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                <state key="normal" title="Decline"/>
+                                <connections>
+                                    <action selector="goDeclineAgreemant:" destination="bq6-eb-PGd" eventType="touchUpInside" id="5zh-Aa-IJH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1824,7 +1824,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                             <constraint firstItem="A6R-RP-8fs" firstAttribute="top" secondItem="kJK-mF-eHS" secondAttribute="bottom" multiplier="1.7" id="O9N-Ue-oKb"/>
                             <constraint firstItem="i3V-Zo-b6e" firstAttribute="height" secondItem="kJK-mF-eHS" secondAttribute="height" id="OUY-eg-rz5"/>
                             <constraint firstAttribute="trailing" secondItem="aCp-tg-mdN" secondAttribute="trailing" constant="20" id="Q17-vi-BtJ"/>
-                            <constraint firstItem="A6R-RP-8fs" firstAttribute="top" secondItem="kJK-mF-eHS" secondAttribute="bottom" id="Sty-77-rwT"/>
+                            <constraint firstItem="A6R-RP-8fs" firstAttribute="top" secondItem="kJK-mF-eHS" secondAttribute="bottom" constant="15" id="Sty-77-rwT"/>
                             <constraint firstItem="aCp-tg-mdN" firstAttribute="width" secondItem="miV-pv-6b2" secondAttribute="width" id="UZ6-S0-3fq"/>
                             <constraint firstItem="JPL-8s-WWU" firstAttribute="leading" secondItem="miV-pv-6b2" secondAttribute="leading" constant="20" id="Uar-l3-FRn"/>
                             <constraint firstItem="A6R-RP-8fs" firstAttribute="top" secondItem="kJK-mF-eHS" secondAttribute="bottom" id="bSI-A2-Ka0">
@@ -1959,7 +1959,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <rect key="frame" x="-4" y="0.0" width="328" height="302"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-oN-4PI" customClass="CustomButton">
-                                <rect key="frame" x="125" y="30" width="176" height="27"/>
+                                <rect key="frame" x="47" y="30" width="254" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="SHOW ALL BRANCHES ON MAP" backgroundImage="show_button"/>
                                 <connections>
@@ -1967,13 +1967,13 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFS-ob-Psc">
-                                <rect key="frame" x="125" y="30" width="176" height="34"/>
+                                <rect key="frame" x="47" y="30" width="254" height="43"/>
                                 <connections>
                                     <action selector="showAllBranchesonMapButtonClicked:" destination="p2t-aQ-tQO" eventType="touchUpInside" id="htX-GF-ZCj"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p87-bd-lgH">
-                                <rect key="frame" x="15" y="64" width="290" height="504"/>
+                                <rect key="frame" x="15" y="73" width="290" height="495"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -2044,11 +2044,11 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                                     <rect key="frame" x="154.5" y="61.5" width="130.5" height="77"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6as-fo-C0U" userLabel="DirectionsBtn">
-                                                    <rect key="frame" x="5" y="137" width="80" height="58"/>
+                                                    <rect key="frame" x="5" y="137" width="160" height="58"/>
                                                     <state key="normal" image="direction_bttn"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7M-Qc-7TL" userLabel="MapBtn">
-                                                    <rect key="frame" x="95" y="155" width="80" height="22"/>
+                                                    <rect key="frame" x="175" y="148" width="160" height="36"/>
                                                     <state key="normal" image="show_on_map_bttn"/>
                                                     <connections>
                                                         <action selector="showCurrentLocationMapButtonClicked:" destination="p2t-aQ-tQO" eventType="touchUpInside" id="OBo-GA-eds"/>
@@ -2152,12 +2152,12 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="bgr-GW-MNh"/>
+                                <exclude reference="Jrf-Xb-VMN"/>
+                                <exclude reference="ZXV-mQ-C71"/>
                                 <exclude reference="UIm-e8-TC6"/>
                                 <exclude reference="YAx-nI-s2f"/>
                                 <exclude reference="UJK-xO-BwA"/>
                                 <exclude reference="pyj-3x-qaL"/>
-                                <exclude reference="Jrf-Xb-VMN"/>
-                                <exclude reference="ZXV-mQ-C71"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -2231,7 +2231,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="V5R-6b-yEJ">
-                                        <rect key="frame" x="252.5" y="23" width="7.5" height="4"/>
+                                        <rect key="frame" x="246" y="21" width="14" height="8"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dr-Ye-xxP" userLabel="AccountTxtFldBtn">
                                         <rect key="frame" x="76" y="10" width="194" height="30"/>
@@ -2508,10 +2508,10 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notif-icon-btn" translatesAutoresizingMaskIntoConstraints="NO" id="mYr-d5-sMk" customClass="CustomImageView">
-                                <rect key="frame" x="95" y="20" width="162" height="193.5"/>
+                                <rect key="frame" x="14" y="20" width="324" height="386"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push Notification on your mobile device?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJb-FL-mCO" customClass="CustomLabel">
-                                <rect key="frame" x="40" y="243.5" width="240" height="47"/>
+                                <rect key="frame" x="40" y="436" width="240" height="47"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="21"/>
                                 <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2520,7 +2520,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vr4-FC-6u4">
-                                <rect key="frame" x="30" y="310.5" width="260" height="73"/>
+                                <rect key="frame" x="30" y="503" width="260" height="73"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Push Notifications">
                                         <attributes>
@@ -2580,7 +2580,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2l-qf-ROT" customClass="CustomButton">
-                                <rect key="frame" x="33" y="393.5" width="255" height="30"/>
+                                <rect key="frame" x="33" y="586" width="255" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="D2l-qf-ROT" secondAttribute="height" multiplier="349:41" id="DTW-xE-j7O"/>
                                 </constraints>
@@ -2801,10 +2801,10 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_icon_payment" translatesAutoresizingMaskIntoConstraints="NO" id="XSt-Mx-O0o" customClass="CustomImageView">
-                                <rect key="frame" x="105" y="10" width="110" height="116"/>
+                                <rect key="frame" x="50.5" y="10" width="219" height="232"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D4-fc-0eq" customClass="AttributedCustomLabel">
-                                <rect key="frame" x="20" y="176" width="280" height="38"/>
+                                <rect key="frame" x="20" y="322" width="280" height="38"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Pay ">
                                         <attributes>
@@ -2849,16 +2849,16 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal_logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Cu-99-R2T">
-                                <rect key="frame" x="98" y="136" width="124" height="30"/>
+                                <rect key="frame" x="36" y="252" width="248" height="60"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-HY-bnW" customClass="CustomLabel">
-                                <rect key="frame" x="20" y="224" width="70" height="19"/>
+                                <rect key="frame" x="20" y="370" width="70" height="19"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kt3-UL-AMF" userLabel="AddNewFavButton" customClass="CustomButton">
-                                <rect key="frame" x="20" y="253" width="121.5" height="22"/>
+                                <rect key="frame" x="20" y="399" width="243" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="SbP-Zx-UUN"/>
                                 </constraints>
@@ -2876,7 +2876,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LvP-Ew-1oV" customClass="FZAccordionTableView">
-                                <rect key="frame" x="0.0" y="275" width="320" height="263"/>
+                                <rect key="frame" x="0.0" y="421" width="320" height="117"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -2888,19 +2888,19 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="YW5-ot-GJZ" userLabel="SeeraterView1">
-                                                    <rect key="frame" x="106.5" y="33" width="193.5" height="1"/>
+                                                    <rect key="frame" x="24" y="33" width="276" height="1"/>
                                                     <color key="backgroundColor" red="0.87444537879999995" green="0.87454748149999995" blue="0.87439841029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="oBu-fp-mpd"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWo-Rc-iQX">
-                                                    <rect key="frame" x="216.5" y="7.5" width="83.5" height="23.5"/>
+                                                    <rect key="frame" x="134" y="-4.5" width="166" height="47"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <state key="normal" image="paypal_btn"/>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="732" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="blw-4n-AE2" customClass="CustomTextFeild">
-                                                    <rect key="frame" x="106.5" y="10" width="100" height="18"/>
+                                                    <rect key="frame" x="24" y="10" width="100" height="18"/>
                                                     <color key="tintColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.65757632259999999" green="0.023454438889999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
@@ -2979,7 +2979,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0H-br-O7t">
-                                                    <rect key="frame" x="226.5" y="10.5" width="83.5" height="23.5"/>
+                                                    <rect key="frame" x="144" y="-1.5" width="166" height="47"/>
                                                     <state key="normal" image="paypal_btn"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="2hf-S1-Ox1" userLabel="SeeraterView2">
@@ -3051,7 +3051,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk0-QX-Nau" userLabel="closeButton" customClass="CustomButton">
-                                <rect key="frame" x="0.0" y="10" width="24" height="24"/>
+                                <rect key="frame" x="0.0" y="10" width="48" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="cross_circle"/>
                                 <connections>
@@ -3059,7 +3059,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross_image" translatesAutoresizingMaskIntoConstraints="NO" id="j0p-eF-4hZ">
-                                <rect key="frame" x="6.5" y="17" width="11" height="10"/>
+                                <rect key="frame" x="13.5" y="24" width="21" height="20"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4346,10 +4346,10 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touch-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="Qun-cQ-2hn" customClass="CustomImageView">
-                                <rect key="frame" x="86.5" y="20" width="147" height="177.5"/>
+                                <rect key="frame" x="13" y="20" width="294" height="354"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Mobile Banking With Touch ID ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZc-d1-0Pq" customClass="CustomLabel">
-                                <rect key="frame" x="40" y="217.5" width="240" height="45"/>
+                                <rect key="frame" x="40" y="394" width="240" height="45"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" red="0.59314095973968506" green="0.059442538768053055" blue="0.10456137359142303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4358,7 +4358,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Touch ID to quickly and easily access your account(s)." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbJ-9e-Qcw" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="282.5" width="260" height="27"/>
+                                <rect key="frame" x="20" y="459" width="260" height="27"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381477356" green="0.28533178567886353" blue="0.28527271747589111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4367,7 +4367,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn Off Touch ID anytime from" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNH-zA-GIW" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="314.5" width="167" height="13.5"/>
+                                <rect key="frame" x="20" y="491" width="167" height="13.5"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381477356" green="0.28533178567886353" blue="0.28527271747589111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4376,7 +4376,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Settings." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AW-Cc-tyY" customClass="PlainCustomLabel">
-                                <rect key="frame" x="190" y="314.5" width="101.5" height="13.5"/>
+                                <rect key="frame" x="190" y="491" width="101.5" height="13.5"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381477356" green="0.28533178567886353" blue="0.28527271747589111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4385,7 +4385,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aho-ND-3aY" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="333" width="260" height="54"/>
+                                <rect key="frame" x="20" y="509.5" width="260" height="54"/>
                                 <string key="text">We do not recommend using Touch ID if you share your device. Anyone who has a saved fingerprint on this device can access your account(s).</string>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381477356" green="0.28533178567886353" blue="0.28527271747589111" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4395,14 +4395,14 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBY-81-r2X">
-                                <rect key="frame" x="5" y="412" width="150" height="36"/>
+                                <rect key="frame" x="-145" y="588.5" width="300" height="72"/>
                                 <state key="normal" backgroundImage="touch-no-thanks"/>
                                 <connections>
                                     <action selector="noButtonClicked:" destination="j4H-5A-mwo" eventType="touchUpInside" id="JnU-cX-la5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwu-Ac-Xhc" customClass="CustomButton">
-                                <rect key="frame" x="165" y="412" width="150" height="36"/>
+                                <rect key="frame" x="165" y="588.5" width="300" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="YES, PLEASE" backgroundImage="touch-yes"/>
                                 <connections>
@@ -4513,16 +4513,16 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <exclude reference="Lnd-GW-zr9"/>
                                 <exclude reference="xB9-Ay-fIE"/>
                                 <exclude reference="5DW-rG-fbJ"/>
-                                <exclude reference="Ujl-Kf-Mkg"/>
-                                <exclude reference="4db-hP-9RZ"/>
-                                <exclude reference="54V-r2-rvT"/>
-                                <exclude reference="ZJs-OB-agB"/>
-                                <exclude reference="lLb-Zg-m4L"/>
                                 <exclude reference="0Fj-bK-ZgR"/>
                                 <exclude reference="Zy5-GG-suM"/>
                                 <exclude reference="g62-Hc-clR"/>
                                 <exclude reference="rq6-ul-cWJ"/>
                                 <exclude reference="tF5-LG-80X"/>
+                                <exclude reference="4db-hP-9RZ"/>
+                                <exclude reference="54V-r2-rvT"/>
+                                <exclude reference="ZJs-OB-agB"/>
+                                <exclude reference="lLb-Zg-m4L"/>
+                                <exclude reference="Ujl-Kf-Mkg"/>
                                 <exclude reference="YHx-B6-mfe"/>
                                 <exclude reference="J5v-zE-b7O"/>
                                 <exclude reference="PA0-Z3-kFj"/>
@@ -4537,10 +4537,6 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                             </mask>
                             <mask key="constraints">
                                 <include reference="xB9-Ay-fIE"/>
-                                <include reference="Ujl-Kf-Mkg"/>
-                                <include reference="54V-r2-rvT"/>
-                                <exclude reference="ZJs-OB-agB"/>
-                                <exclude reference="wug-91-9Ql"/>
                                 <include reference="0Fj-bK-ZgR"/>
                                 <exclude reference="XuL-8B-71C"/>
                                 <exclude reference="Zy5-GG-suM"/>
@@ -4548,6 +4544,10 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <exclude reference="lfA-uD-b0o"/>
                                 <exclude reference="rq6-ul-cWJ"/>
                                 <exclude reference="wUQ-8t-4VP"/>
+                                <include reference="54V-r2-rvT"/>
+                                <exclude reference="ZJs-OB-agB"/>
+                                <exclude reference="wug-91-9Ql"/>
+                                <include reference="Ujl-Kf-Mkg"/>
                                 <include reference="YHx-B6-mfe"/>
                                 <include reference="J5v-zE-b7O"/>
                                 <include reference="PA0-Z3-kFj"/>
@@ -4559,12 +4559,12 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                             <mask key="constraints">
                                 <include reference="e5a-6p-J3B"/>
                                 <include reference="Lnd-GW-zr9"/>
-                                <include reference="lLb-Zg-m4L"/>
-                                <exclude reference="wug-91-9Ql"/>
                                 <exclude reference="XuL-8B-71C"/>
                                 <exclude reference="lfA-uD-b0o"/>
                                 <include reference="tF5-LG-80X"/>
                                 <exclude reference="wUQ-8t-4VP"/>
+                                <include reference="lLb-Zg-m4L"/>
+                                <exclude reference="wug-91-9Ql"/>
                             </mask>
                         </variation>
                     </view>
@@ -5427,7 +5427,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEq-E2-3RO" customClass="CustomButton">
-                                <rect key="frame" x="111" y="483" width="169" height="45"/>
+                                <rect key="frame" x="-58" y="438" width="338" height="90"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="Next" backgroundImage="next-btn-img"/>
                                 <connections>
@@ -5471,10 +5471,10 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touch-thumb" translatesAutoresizingMaskIntoConstraints="NO" id="qXs-Ar-KTO" customClass="CustomImageView">
-                                <rect key="frame" x="86.5" y="20" width="147" height="177.5"/>
+                                <rect key="frame" x="13" y="20" width="294" height="354"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access Mobile Banking With Face ID ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eR1-2j-IM2" customClass="CustomLabel">
-                                <rect key="frame" x="40" y="217.5" width="240" height="45"/>
+                                <rect key="frame" x="40" y="394" width="240" height="45"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" red="0.59314095970000003" green="0.059442538769999997" blue="0.10456137359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -5483,7 +5483,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Face ID to quickly and easily access your account(s)." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91U-2L-Kpm" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="282.5" width="260" height="27"/>
+                                <rect key="frame" x="20" y="459" width="260" height="27"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381" green="0.28533178570000001" blue="0.28527271749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -5492,7 +5492,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn Off Face ID anytime from" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17i-KG-kqV" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="314.5" width="161.5" height="13.5"/>
+                                <rect key="frame" x="20" y="491" width="161.5" height="13.5"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381" green="0.28533178570000001" blue="0.28527271749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -5501,7 +5501,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Settings." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQd-Ld-2XV" customClass="PlainCustomLabel">
-                                <rect key="frame" x="184.5" y="314.5" width="101.5" height="13.5"/>
+                                <rect key="frame" x="184.5" y="491" width="101.5" height="13.5"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381" green="0.28533178570000001" blue="0.28527271749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -5510,7 +5510,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yy2-D2-XMY" customClass="PlainCustomLabel">
-                                <rect key="frame" x="20" y="333" width="260" height="54"/>
+                                <rect key="frame" x="20" y="509.5" width="260" height="54"/>
                                 <string key="text">We do not recommend using Face ID if you share your device. Anyone who has a saved face mesh on this device can access your account(s).</string>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                 <color key="textColor" red="0.2852967381" green="0.28533178570000001" blue="0.28527271749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5520,14 +5520,14 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl2-l4-x80">
-                                <rect key="frame" x="5" y="412" width="150" height="36"/>
+                                <rect key="frame" x="-145" y="588.5" width="300" height="72"/>
                                 <state key="normal" backgroundImage="touch-no-thanks"/>
                                 <connections>
                                     <action selector="noButtonClicked:" destination="Npz-OG-S4d" eventType="touchUpInside" id="cU0-tS-WhF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehq-Pq-qjk" customClass="CustomButton">
-                                <rect key="frame" x="165" y="412" width="150" height="36"/>
+                                <rect key="frame" x="165" y="588.5" width="300" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="YES, PLEASE" backgroundImage="touch-yes"/>
                                 <connections>
@@ -5638,16 +5638,16 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <exclude reference="Fxe-i4-zET"/>
                                 <exclude reference="YV2-HC-G4b"/>
                                 <exclude reference="bby-aw-aQY"/>
-                                <exclude reference="iKU-5B-5Kt"/>
-                                <exclude reference="357-gz-UPG"/>
-                                <exclude reference="JK5-Cy-lZs"/>
-                                <exclude reference="eZh-Ha-Qzw"/>
-                                <exclude reference="jig-zM-jVn"/>
                                 <exclude reference="JPS-wj-aWR"/>
                                 <exclude reference="Jkj-rU-Gqd"/>
                                 <exclude reference="hGU-Kw-XYU"/>
                                 <exclude reference="nXh-mb-E4R"/>
                                 <exclude reference="rRp-Ne-Yix"/>
+                                <exclude reference="357-gz-UPG"/>
+                                <exclude reference="JK5-Cy-lZs"/>
+                                <exclude reference="eZh-Ha-Qzw"/>
+                                <exclude reference="jig-zM-jVn"/>
+                                <exclude reference="iKU-5B-5Kt"/>
                                 <exclude reference="jlq-84-00k"/>
                                 <exclude reference="Nqc-FL-w8a"/>
                                 <exclude reference="XWJ-0F-oSt"/>
@@ -5662,10 +5662,6 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Fxe-i4-zET"/>
-                                <include reference="iKU-5B-5Kt"/>
-                                <exclude reference="357-gz-UPG"/>
-                                <exclude reference="clT-rR-pXc"/>
-                                <include reference="eZh-Ha-Qzw"/>
                                 <exclude reference="FVS-2B-SQq"/>
                                 <exclude reference="HlB-Qk-JMh"/>
                                 <exclude reference="JPS-wj-aWR"/>
@@ -5673,6 +5669,10 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <include reference="hGU-Kw-XYU"/>
                                 <exclude reference="nXh-mb-E4R"/>
                                 <exclude reference="rRp-Ne-Yix"/>
+                                <exclude reference="357-gz-UPG"/>
+                                <exclude reference="clT-rR-pXc"/>
+                                <include reference="eZh-Ha-Qzw"/>
+                                <include reference="iKU-5B-5Kt"/>
                                 <include reference="jlq-84-00k"/>
                                 <include reference="Nqc-FL-w8a"/>
                                 <include reference="XWJ-0F-oSt"/>
@@ -5684,12 +5684,12 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                             <mask key="constraints">
                                 <include reference="mdB-Zv-Old"/>
                                 <include reference="YV2-HC-G4b"/>
-                                <include reference="JK5-Cy-lZs"/>
-                                <exclude reference="clT-rR-pXc"/>
                                 <exclude reference="FVS-2B-SQq"/>
                                 <exclude reference="HlB-Qk-JMh"/>
                                 <include reference="Jkj-rU-Gqd"/>
                                 <exclude reference="NoR-Vw-mx7"/>
+                                <include reference="JK5-Cy-lZs"/>
+                                <exclude reference="clT-rR-pXc"/>
                             </mask>
                         </variation>
                     </view>
