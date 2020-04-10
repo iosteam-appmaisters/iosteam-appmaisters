@@ -261,7 +261,7 @@
         id value = [userProfileDict objectForKey:key];
         
         SEL selector = NSSelectorFromString([NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] uppercaseString], [[key substringFromIndex:1] lowercaseString]]);
-//        NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
+        NSLog(@"Selector Name: %@ Value :%@",NSStringFromSelector(selector),value);
         if (value != [NSNull null]) {
             if ([obj respondsToSelector:selector]) {
                 
@@ -303,6 +303,7 @@
         self.Accountname=[decoder decodeObjectForKey:@"Accountname"];
         self.Name=[decoder decodeObjectForKey:@"Name"];
         self.Email=[decoder decodeObjectForKey:@"Email"];
+        self.Mailname=[decoder decodeObjectForKey:@"MailName"];
         self.favouriteContactsArray=[decoder decodeObjectForKey:@"favouriteContactsArray"];
         self.LoginValidation=[decoder decodeObjectForKey:@"LoginValidation"];
 
@@ -335,6 +336,7 @@
     [encoder encodeObject: self.Accountname forKey:@"Accountname"];
     [encoder encodeObject: self.Name forKey:@"Name"];
     [encoder encodeObject: self.Email forKey:@"Email"];
+    [encoder encodeObject:self.Mailname forKey: @"MailName"];
     [encoder encodeObject: self.favouriteContactsArray forKey:@"favouriteContactsArray"];
     [encoder encodeObject: self.LoginValidation forKey:@"LoginValidation"];
     [encoder encodeBool:self.isReSkinOn forKey:@"isReSkinOn"];

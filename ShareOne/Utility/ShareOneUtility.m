@@ -796,6 +796,13 @@ static NSString *calculatedMacSessionKey = @"";
 //    return @"Louis Uncommon";
 }
 
++(NSString *)getMemberEmailName{
+
+    User *obj = [[SharedUser sharedManager] userObject];
+    return obj.Mailname;
+    
+}
+
 +(NSString *)calculatedMacSessionKey{
     return calculatedMacSessionKey;
 }

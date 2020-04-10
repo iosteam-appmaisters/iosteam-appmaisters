@@ -1,69 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "A5BE091A-6124-42A3-8231-D3A05B283CD7"
+   uuid = "AC5CBAEE-4CF5-458A-A7B0-148390E186AF"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E6112D1D-B68F-4E56-8068-788361FEDA40"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Entity/CashDepositEntity/CashDeposit.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "+getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "710B3272-5F4D-4336-80D3-3DEA5686F5F5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Entity/CashDepositEntity/CashDeposit.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "+getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9EE94E6E-9FBB-49E7-82D9-D9090B774FE5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareOne/Entity/CashDepositEntity/CashDeposit.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "+getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5E88ABFB-C76D-4DCA-B6DF-8557287E38D0"
-            shouldBeEnabled = "Yes"
+            uuid = "51381A13-88F0-4068-96BA-7DCFD6B69DA5"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/HomeViewController/HomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "7">
          </BreakpointContent>
@@ -71,16 +23,143 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C5F77077-F8AE-4A5A-849F-8C042CAD1CCD"
-            shouldBeEnabled = "Yes"
+            uuid = "359D3A65-EB04-4A71-9ACC-B05BA4F57E9E"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ShareOne/Controllers/MenuViewController/HomeViewController/HomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "166214D7-E017-4532-8156-80C67A6E8929"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Controllers/MenuViewController/MobileDepositController/MobileDepositController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "-checkVertifiStatus"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "166214D7-E017-4532-8156-80C67A6E8929 - 8659dd85fffcb132"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MobileDepositController checkVertifiStatus]"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/Developer/ShareOne/ShareOne/Controllers/MenuViewController/MobileDepositController/MobileDepositController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "275"
+                  endingLineNumber = "275"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  uuid = "166214D7-E017-4532-8156-80C67A6E8929 - 2642caf44ab434bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[MobileDepositController checkVertifiStatus]_block_invoke"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/Developer/ShareOne/ShareOne/Controllers/MenuViewController/MobileDepositController/MobileDepositController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "166214D7-E017-4532-8156-80C67A6E8929 - c1c85198822aa2ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_e8_32s40w"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/Developer/ShareOne/ShareOne/Controllers/MenuViewController/MobileDepositController/MobileDepositController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "275"
+                  endingLineNumber = "275"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "74F88D42-4765-4C0A-98B7-F64450E49AA0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Entity/CashDepositEntity/CashDeposit.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "+getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "74F88D42-4765-4C0A-98B7-F64450E49AA0 - 32f3ac61dc19e2d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[CashDeposit getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:]"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/Developer/ShareOne/ShareOne/Entity/CashDepositEntity/CashDeposit.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "388">
+               </Location>
+               <Location
+                  uuid = "74F88D42-4765-4C0A-98B7-F64450E49AA0 - 7b26f646101b546d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__96+[CashDeposit getRegisterToVirtifi:delegate:url:AndLoadingMessage:completionBlock:failureBlock:]_block_invoke"
+                  moduleName = "ShareOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/Developer/ShareOne/ShareOne/Entity/CashDepositEntity/CashDeposit.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BA2E965-0F1F-4800-9730-E4065CEDA5C8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareOne/Utility/ShareOneUtility.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "802"
+            endingLineNumber = "802"
+            landmarkName = "+getMemberEmailName"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

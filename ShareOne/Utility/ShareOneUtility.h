@@ -89,6 +89,8 @@
 
 //+(NSString *)getSecretKey;
 
++(NSString *)getMemberEmailName;
+
 +(NSString *)getMemberEmail;
 
 +(NSString *)getMemberName;

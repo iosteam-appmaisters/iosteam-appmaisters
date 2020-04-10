@@ -22,6 +22,7 @@
 @property (nonatomic,strong) NSString *Accountname;
 @property (nonatomic,strong) NSString *Name;
 @property (nonatomic,strong) NSString *Email;
+@property (nonatomic,strong) NSString *Mailname;
 
 @property (nonatomic,strong) NSMutableArray *favouriteContactsArray;
 

@@ -70,10 +70,10 @@ NSURLRequest *_FailedRequest;
         }
         
         if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
-            shouldReload = FALSE;
-            result = FALSE;
+            shouldReload = NO;
+            result = NO;
             NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
-            [[UIApplication sharedApplication] canOpenURL:url];
+            [[UIApplication sharedApplication] openURL:url];
         }
         
         return shouldReload;

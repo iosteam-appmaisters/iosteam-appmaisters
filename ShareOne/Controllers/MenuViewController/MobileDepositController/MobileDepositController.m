@@ -272,7 +272,7 @@
     
     NSLog(@"Current Timestamp (After): %d",currentTimeStamp);
     
-    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility calculatedMacSessionKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
+    [CashDeposit getRegisterToVirtifi:[NSDictionary dictionaryWithObjectsAndKeys:[ShareOneUtility calculatedMacSessionKey],@"session",[Configuration getVertifiRequesterKey],@"requestor",[NSString stringWithFormat:@"%d",currentTimeStamp],@"timestamp",[Configuration getVertifiRouterKey],@"routing",[ShareOneUtility getMemberValue],@"member",[ShareOneUtility getAccountValueWithSuffix:_objSuffixInfo],@"account",calculatedMac,@"MAC",[ShareOneUtility getMemberEmailName],@"membername",[ShareOneUtility getMemberEmail],@"email", nil] delegate:weakSelf url:[NSString stringWithFormat:@"%@%@",[Configuration getVertifiRDCURL],kVERTIFY_MONEY_REGISTER] AndLoadingMessage:nil completionBlock:^(NSObject *user,BOOL success) {
         
         [ShareOneUtility hideProgressViewOnView:weakSelf.view];
         
