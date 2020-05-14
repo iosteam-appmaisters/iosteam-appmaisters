@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import "User.h"
 
 @class LoginViewController;
-@interface PasswordChangeController : UIViewController<UIWebViewDelegate>
+@interface PasswordChangeController : UIViewController<WKNavigationDelegate>
 
-@property (nonatomic, weak) IBOutlet UIWebView *webview;
+@property (nonatomic, weak) IBOutlet WKWebView *webview;
 
 @property (nonatomic,assign) LoginViewController *loginDelegate;
 @property (nonatomic,strong) User *user;

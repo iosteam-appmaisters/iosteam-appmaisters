@@ -26,7 +26,7 @@
     self.navBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:11],NSFontAttributeName,nil];
 
     
-    _webview.delegate=self; 
+    _webview.navigationDelegate=self;
     [self loadRequestOnWebView];
     
     
@@ -77,23 +77,23 @@
 
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-   
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     __weak PasswordChangeController *weakSelf = self;
 
-    NSLog(@"%@",webView.request.URL.absoluteString);
+      NSLog(@"%@",webView.URL.absoluteString);
+      
+      if([webView.URL.absoluteString containsString:@"Account/Summary"]){
+          _loginDelegate.isComingAfterPressedOpenUrlButton=TRUE;
+          [self dismissViewControllerAnimated:NO completion:nil];
+      }
+      
+      if([webView.URL.absoluteString isEqualToString:@"https://nsmobilecp.ns3web.com/"]){
+          [self dismissViewControllerAnimated:NO completion:^{
+          }];
+          
+      }
+      [ShareOneUtility hideProgressViewOnView:weakSelf.view];
     
-    if([webView.request.URL.absoluteString containsString:@"Account/Summary"]){
-        _loginDelegate.isComingAfterPressedOpenUrlButton=TRUE;
-        [self dismissViewControllerAnimated:NO completion:nil];
-    }
-    
-    if([webView.request.URL.absoluteString isEqualToString:@"https://nsmobilecp.ns3web.com/"]){
-        [self dismissViewControllerAnimated:NO completion:^{
-        }];
-        
-    }
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 
 -(void)showAlerWithDelay{
@@ -102,18 +102,18 @@
     [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Password has changed" title:@"" delegate:weakSelf];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     NSLog(@"didFailLoadWithError : %@",error);
+       
+       [ShareOneUtility hideProgressViewOnView:self.view];
+       
+       [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
     
-    [ShareOneUtility hideProgressViewOnView:self.view];
-    
-    [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
 }
 
 - (void)dealloc {
     
-    _webview.delegate = nil;
+    _webview.navigationDelegate = nil;
     [_webview stopLoading];
     
 }

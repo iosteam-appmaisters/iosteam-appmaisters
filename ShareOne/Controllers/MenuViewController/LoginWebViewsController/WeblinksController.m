@@ -50,30 +50,31 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType{
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+     NSLog(@"%@",[[webView URL] absoluteString]);
     
-    NSLog(@"%@",[[request URL] absoluteString]);
-    
-    return YES;
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
 
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    
     [ShareOneUtility hideProgressViewOnView:self.view];
+
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     
     NSLog(@"didFailLoadWithError : %@",error);
-    
-    [ShareOneUtility hideProgressViewOnView:self.view];
-    
-    if ([error code] != NSURLErrorCancelled) {
-        [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
-    }
-
-    
+      
+      [ShareOneUtility hideProgressViewOnView:self.view];
+      
+      if ([error code] != NSURLErrorCancelled) {
+          [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
+      }
 }
+
 
 - (BOOL)shouldAutorotate{
     
@@ -128,7 +129,7 @@
 
 - (void)dealloc {
     
-    _webView.delegate = nil;
+    _webView.navigationDelegate = nil;
     [_webView stopLoading];
     
 }

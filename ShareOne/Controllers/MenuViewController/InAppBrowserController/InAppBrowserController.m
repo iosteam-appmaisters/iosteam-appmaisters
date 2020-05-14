@@ -11,12 +11,13 @@
 #import "UIColor+HexColor.h"
 #import "ShareOneUtility.h"
 #import "ConstantsShareOne.h"
+#import <WebKit/WebKit.h>
 
 @interface InAppBrowserController ()
 
 @property (nonatomic,weak) IBOutlet UIButton *backButton;
 @property (nonatomic,weak) IBOutlet UINavigationBar *navBar;
-@property (nonatomic,weak) IBOutlet UIWebView *webView;
+@property (nonatomic,weak) IBOutlet WKWebView *webView;
 
 
 -(IBAction)backButtonPressed:(id)sender;
@@ -66,15 +67,21 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     __weak InAppBrowserController *weakSelf = self;
 
-    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+       [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 
+//- (void)webViewDidFinishLoad:(UIWebView *)webView{
+//
+//    __weak InAppBrowserController *weakSelf = self;
+//
+//    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+//}
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     
     NSLog(@"didFailLoadWithError : %@",error);
     
@@ -85,9 +92,20 @@
     }
 }
 
+//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+//
+//    NSLog(@"didFailLoadWithError : %@",error);
+//
+//    [ShareOneUtility hideProgressViewOnView:self.view];
+//
+//    if ([error code] != NSURLErrorCancelled) {
+//        [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
+//    }
+//}
+
 - (void)dealloc {
     
-    _webView.delegate = nil;
+    _webView.navigationDelegate = nil;
     [_webView stopLoading];
     
 }

@@ -63,16 +63,16 @@
 //            case AFNetworkReachabilityStatusReachableViaWWAN:
 //                NSLog(@"The internet is working via WWAN.");
 //                break;
-//                
+//
 //            case AFNetworkReachabilityStatusReachableViaWiFi:
 //                [operationQueue setSuspended:NO];
 //                NSLog(@"The internet is working via WIFI.");
 //                break;
-//                
+//
 //            case AFNetworkReachabilityStatusNotReachable:
 //                NSLog(@"No Network Connection! Please enable your internet");
 //                break;
-//                
+//
 //            default:
 //                [operationQueue setSuspended:YES];
 //                break;
@@ -159,27 +159,39 @@
     if(progressMessage)
         [self showProgressWithMessage:progressMessage];
     
-    [self POST:urlString parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+    [self POST:urlString parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-        block(responseObject);
+               [self hideProgressAlert];
+               block(responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self hideProgressAlert];
-//#ifdef DEBUG
-//        
-//        [[UtilitiesHelper shareUtitlities]showAlertWithMessage:error.description title:@"" delegate:delegate];
-//        
-//#else
-//        
+         [self hideProgressAlert];
         [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
-        
-//#endif
-        
     }];
+    
+//    [self POST:urlString parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+//
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//
+//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//        [self hideProgressAlert];
+//        block(responseObject);
+//
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        [self hideProgressAlert];
+////#ifdef DEBUG
+////
+////        [[UtilitiesHelper shareUtitlities]showAlertWithMessage:error.description title:@"" delegate:delegate];
+////
+////#else
+////
+//        [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
+//
+////#endif
+//
+//    }];
     
 }
 
@@ -234,12 +246,13 @@
         
     }
     
-    
-    
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    [[manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-
+        
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
             
@@ -255,7 +268,7 @@
             
             NSLog(@"Error : %@",[error localizedDescription]);
             NSLog(@"Error : %@",error );
-
+            
             NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
             //NSLog(@"Headers : %@",headers);
             
@@ -282,7 +295,56 @@
                 block(errorString);
             }
         }
-    }] resume];
+    }]resume];
+    
+    
+//    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//
+//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//
+//        if (!error) {
+//            NSLog(@"Reply JSON: %@", responseObject);
+//
+//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//                [self hideProgressAlert];
+//                [self endSession:manager.session];
+//                block(responseObject);
+//
+//            }
+//
+//        } else {
+//
+//            NSLog(@"Error : %@",[error localizedDescription]);
+//            NSLog(@"Error : %@",error );
+//
+//            NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+//            //NSLog(@"Headers : %@",headers);
+//
+//            NSString *errorString = [headers valueForKey:@"ApiResponse"];
+//
+//            NSString *customError = [self parseErrorObject:errorString];
+//
+//            if(!customError)
+//                customError = [self getLocalizeErrorMessageForInternetConnection:error];
+//
+//            [self hideProgressAlert];
+//
+//            if(![req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN]){
+//                [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+//            }
+//
+//            if([req.URL.absoluteString containsString:KMEMBER_DEVICES]){
+//                [self endSession:manager.session];
+//                failBlock(error);
+//            }
+//
+//            if([req.URL.absoluteString containsString:KWEB_SERVICE_LOGIN]){
+//                [self endSession:manager.session];
+//                block(errorString);
+//            }
+//        }
+//    }] resume];
     
 }
 -(void)postRequestForConfigAPIWithParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -296,20 +358,37 @@
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager POST:urlString parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:urlString parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
-
+        
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self endSession:manager.session];
         block(responseObject);
-    } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self hideProgressAlert];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self endSession:manager.session];
         block(nil);
-
+        
         NSLog(@"%@",error);
     }];
+    
+//    [manager POST:urlString parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSLog(@"%@",responseObject);
+//
+//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//        [self endSession:manager.session];
+//        block(responseObject);
+//    } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
+//        [self hideProgressAlert];
+//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//        [self endSession:manager.session];
+//        block(nil);
+//
+//        NSLog(@"%@",error);
+//    }];
 }
 
 -(void)getRequestForConfigAPIWithAuthHeader:(NSString *)header andProgressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -324,24 +403,43 @@
 
     [manager.requestSerializer setValue:header forHTTPHeaderField:@"Authorization"];
     
-    [manager GET:urlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:urlString parameters:nil headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
-
+        
         if([urlString containsString:CONFIG_CLIENT_APP]){
             [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)responseObject AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_CLIENT_APP]];
         }
         [self endSession:manager.session];
-
+        
         block(responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
         [self endSession:manager.session];
-
+        
         failBlock(error);
     }];
+    
+//    [manager GET:urlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+//
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"%@",responseObject);
+//
+//        if([urlString containsString:CONFIG_CLIENT_APP]){
+//            [ShareOneUtility writeDataToPlistFileWithJSON:(NSDictionary *)responseObject AndFileName:[NSString stringWithFormat:@"%@.plist",CONFIG_CLIENT_APP]];
+//        }
+//        [self endSession:manager.session];
+//
+//        block(responseObject);
+//
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"%@",error);
+//        [self endSession:manager.session];
+//
+//        failBlock(error);
+//    }];
 }
 
 -(void)postRequestForSSOWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -385,24 +483,28 @@
         return request ;
     }];
     
-    NSURLSessionDataTask *managerHttpRequest =  [manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    NSURLSessionDataTask *managerHttpRequest = [manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSLog(@"Response: %@", responseObject);
         
         
         if(error){
-        
-//            NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+            
+            //            NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
             
             //            NSLog(@"SSO URL : %@",[error.userInfo valueForKey:@"NSErrorFailingURLKey"]);
-//            NSString *url =[error.userInfo valueForKey:@"NSErrorFailingURLKey"];
+            //            NSString *url =[error.userInfo valueForKey:@"NSErrorFailingURLKey"];
             
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             
-//            url = response.URL.absoluteString;
+            //            url = response.URL.absoluteString;
             
-//            block(url);
+            //            block(url);
             block(req);
-
+            
             
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }
@@ -411,6 +513,33 @@
             NSLog(@"Response : %@", response);
         }
     }];
+    
+//    NSURLSessionDataTask *managerHttpRequest =  [manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//        NSLog(@"Response: %@", responseObject);
+//
+//
+//        if(error){
+//
+////            NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+//
+//            //            NSLog(@"SSO URL : %@",[error.userInfo valueForKey:@"NSErrorFailingURLKey"]);
+////            NSString *url =[error.userInfo valueForKey:@"NSErrorFailingURLKey"];
+//
+//            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+//
+////            url = response.URL.absoluteString;
+//
+////            block(url);
+//            block(req);
+//
+//
+//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//        }
+//        else {
+//            NSLog(@"error : %@", error.localizedDescription);
+//            NSLog(@"Response : %@", response);
+//        }
+//    }];
     
     [managerHttpRequest resume];
     
@@ -471,27 +600,51 @@
     AFHTTPResponseSerializer * responseSerializer = [AFHTTPResponseSerializer serializer];
     responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/xml", nil];
     manager.responseSerializer = responseSerializer;
+    
+    [[manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
         
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             [self hideProgressAlert];
             [self endSession:manager.session];
             block(responseObject,TRUE);
-//            NSLog(@"Reply JSON: %@", responseObject);
+            //            NSLog(@"Reply JSON: %@", responseObject);
             
         } else {
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
             [self endSession:manager.session];
             block([self getLocalizeErrorMessageForInternetConnection:error],FALSE);
-
+            
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             [self hideProgressAlert];
             //[[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
             
         }
-    }] resume];
+    }]resume];
+        
+//    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//
+//        if (!error) {
+//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//            [self hideProgressAlert];
+//            [self endSession:manager.session];
+//            block(responseObject,TRUE);
+////            NSLog(@"Reply JSON: %@", responseObject);
+//
+//        } else {
+//            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+//            [self endSession:manager.session];
+//            block([self getLocalizeErrorMessageForInternetConnection:error],FALSE);
+//
+//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//            [self hideProgressAlert];
+//            //[[UtilitiesHelper shareUtitlities]showToastWithMessage:error.localizedDescription title:@"" delegate:delegate];
+//
+//        }
+//    }] resume];
 }
 
 
@@ -527,13 +680,15 @@
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    [[manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
             
-
+            
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 [self hideProgressAlert];
@@ -563,7 +718,44 @@
             
             [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
         }
-    }] resume];
+    }]resume];
+    
+//    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//
+//        if (!error) {
+//            NSLog(@"Reply JSON: %@", responseObject);
+//
+//
+//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//                [self hideProgressAlert];
+//                [self endSession:manager.session];
+//                block(responseObject);
+//            }
+//        } else {
+//
+//            //NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//            NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+//            //NSLog(@"Headers : %@",headers);
+//
+//            NSString *errorString = [headers valueForKey:@"ApiResponse"];
+//
+//            NSString *customError = [self parseErrorObject:errorString];
+//
+//            if(!customError)
+//                customError = [self getLocalizeErrorMessageForInternetConnection:error];
+//
+//            if([req.URL.absoluteString containsString:KWEB_SERVICE_MEMBER_VALIDATE]){
+//                [self endSession:manager.session];
+//                block(nil);
+//            }
+//
+//            [self hideProgressAlert];
+//
+//            [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+//        }
+//    }] resume];
     
     
 }
@@ -603,8 +795,11 @@
         [self setHeaderForLocationApiOnRequest:req];
     }
     NSLog(@"%@",req.URL.absoluteString);
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * response, id   responseObject, NSError * _Nullable error) {
+    [[manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
             
             if(auth_header)
@@ -646,7 +841,7 @@
                 block(responseObject);
             }
             
-
+            
             if([req.URL.absoluteString containsString:KQUICK_BALANCES]){
                 [self endSession:manager.session];
                 failBlock(error);
@@ -661,10 +856,73 @@
                 [self endSession:manager.session];
                 block(responseObject);
             }
-
-
+            
+            
         }
-    }] resume];
+    }]resume];
+    
+//    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * response, id   responseObject, NSError * _Nullable error) {
+//
+//        if (!error) {
+//
+//            if(auth_header)
+//                NSLog(@"Reply JSON: %@", responseObject);
+//
+//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//                if(![req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT])
+//                    [self hideProgressAlert];
+//                [self endSession:manager.session];
+//                block(responseObject);
+//            }
+//
+//
+//        } else {
+//
+//
+//            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//
+//
+//            NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+//            //NSLog(@"Headers : %@",headers);
+//
+//            NSString *errorString = [headers valueForKey:@"ApiResponse"];
+//
+//            NSString *customError = [self parseErrorObject:errorString];
+//
+//            if(!customError)
+//                customError = [self getLocalizeErrorMessageForInternetConnection:error];
+//
+//            [self hideProgressAlert];
+//
+//            [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+//
+//
+//            if([req.URL.absoluteString containsString:kKEEP_ALIVE]){
+//                [self endSession:manager.session];
+//                block(responseObject);
+//            }
+//
+//
+//            if([req.URL.absoluteString containsString:KQUICK_BALANCES]){
+//                [self endSession:manager.session];
+//                failBlock(error);
+//            }
+//
+//            if([req.URL.absoluteString containsString:KQUICK_TRANSACTION]){
+//                [self endSession:manager.session];
+//                failBlock(error);
+//            }
+//
+//            if([req.URL.absoluteString containsString:KWEB_SERVICE_SIGN_OUT]){
+//                [self endSession:manager.session];
+//                block(responseObject);
+//            }
+//
+//
+//        }
+//    }] resume];
     
     
     
@@ -711,9 +969,11 @@
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
-    
-    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    [[manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
         
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
             NSLog(@"Reply JSON: %@", responseObject);
             
@@ -744,7 +1004,40 @@
             failBlock(error);
             
         }
-    }] resume];
+    }]resume];
+//    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//
+//        if (!error) {
+//            NSLog(@"Reply JSON: %@", responseObject);
+//
+//            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//                [self hideProgressAlert];
+//                block(responseObject);
+//
+//            }
+//        } else {
+//            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//
+//
+//            NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+//            //NSLog(@"Headers : %@",headers);
+//
+//            NSString *errorString = [headers valueForKey:@"ApiResponse"];
+//
+//            NSString *customError = [self parseErrorObject:errorString];
+//
+//            if(!customError)
+//                customError = [self getLocalizeErrorMessageForInternetConnection:error];
+//
+//            [self hideProgressAlert];
+//
+//            [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+//            failBlock(error);
+//
+//        }
+//    }] resume];
 
 }
 
@@ -766,57 +1059,64 @@
     [tmpDict removeObjectForKey:@"image"];
     [tmpDict removeObjectForKey:@"image_share"];
 
-    [self POST:urlString parameters:tmpDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        if ([imageData length]>0)
-            [formData appendPartWithFileData:imageData name:imageName fileName:@"image.png" mimeType:@"image/png"];
-
+    
+    [self POST:urlString parameters:tmpDict headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            if ([imageData length]>0)
+                [formData appendPartWithFileData:imageData name:imageName fileName:@"image.png" mimeType:@"image/png"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        self->progressHud.progress = uploadProgress.fractionCompleted;
-        
+          self->progressHud.progress = uploadProgress.fractionCompleted;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self hideProgressAlert];
-        block(responseObject);
-        
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                [self hideProgressAlert];
+                block(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-       [self hideProgressAlert];
-//#ifdef DEBUG
-//        
-//        [[UtilitiesHelper shareUtitlities]showAlertWithMessage:error.description title:@"" delegate:delegate];
-//        
-//#else
-        if(progressMessage)
-            [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
+         [self hideProgressAlert];
+        //#ifdef DEBUG
+        //
+        //        [[UtilitiesHelper shareUtitlities]showAlertWithMessage:error.description title:@"" delegate:delegate];
+        //
+        //#else
+                if(progressMessage)
+                    [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
         
-//#endif
-      
-        failBlock(error);
-    }];
-//    
-//    [self POST:urlString parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//        if ([imageData length]>0)
-//            [formData appendPartWithFileData:imageData name:@"picture" fileName:@"picture.png" mimeType:@"image/png"];
-//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //#endif
+        
+                failBlock(error);
+            }];
+        
+
+//    [self POST:urlString parameters:tmpDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 //
-//         
-//         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//         [self hideProgressAlert];
-//         block(responseObject);
-//         
-//         
-//     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//         NSLog(@"Error: %@", error.localizedDescription);
-//         NSLog(@"Service:%@ & Error: %@",operation.request, operation.responseString);
-//         
-//         [self hideProgressAlert];
-//         [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
-//         
-//         //         failBlock(error);
-//     }];
+//        if ([imageData length]>0)
+//            [formData appendPartWithFileData:imageData name:imageName fileName:@"image.png" mimeType:@"image/png"];
+//
+//    } progress:^(NSProgress * _Nonnull uploadProgress) {
+//
+//        self->progressHud.progress = uploadProgress.fractionCompleted;
+//
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//
+//        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//        [self hideProgressAlert];
+//        block(responseObject);
+//
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//       [self hideProgressAlert];
+////#ifdef DEBUG
+////
+////        [[UtilitiesHelper shareUtitlities]showAlertWithMessage:error.description title:@"" delegate:delegate];
+////
+////#else
+//        if(progressMessage)
+//            [[UtilitiesHelper shareUtitlities]showToastWithMessage:@"Server Not Responding, please try again later!" title:@"" delegate:delegate];
+//
+////#endif
+//
+//        failBlock(error);
+//    }];
+
+    
+    
     
 }
 
@@ -1123,12 +1423,14 @@
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager POST:url parameters:parametersDictionary progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
-    } failure:^(NSURLSessionDataTask  *task, NSError   *error) {
-        NSLog(@"%@",error);
+    [manager POST:url parameters:parametersDictionary headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"%@",error);
     }];
-    
+   
 }
 
 -(void)endSession:(NSURLSession*)aSession {

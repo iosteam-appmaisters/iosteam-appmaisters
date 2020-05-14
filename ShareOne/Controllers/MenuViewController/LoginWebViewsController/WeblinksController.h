@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
-@interface WeblinksController : UIViewController
+@interface WeblinksController : UIViewController<WKNavigationDelegate>
 
-@property (nonatomic,weak)IBOutlet UIWebView *webView;
+@property (nonatomic,weak)IBOutlet WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @property (nonatomic,strong) NSString *navTitle;

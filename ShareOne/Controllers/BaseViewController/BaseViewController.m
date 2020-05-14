@@ -12,8 +12,9 @@
 #import "InAppBrowserController.h"
 #import "ClientSettingsObject.h"
 #import "LoaderServices.h"
+#import <WebKit/WebKit.h>
 
-@interface BaseViewController ()<UIWebViewDelegate>{
+@interface BaseViewController ()<WKNavigationDelegate>{
     LeftMenuViewController* leftMenuViewController;
     UIButton* menuButton;
 }
@@ -46,6 +47,8 @@
     
     [self setGesturesToBringLeftMenu];
     
+//    self.basedelegate = self;
+
 }
 
 -(void)setGesturesToBringLeftMenu{
@@ -54,6 +57,11 @@
     [gesture setDirection:UISwipeGestureRecognizerDirectionRight];
     [gesture addTarget:self action:@selector(userDidSwipe:)];
     [self.view setGestureRecognizers:[NSArray arrayWithObject:gesture]];
+}
+
+-(void)initWebView {
+    _basedelegate = self;
+    
 }
 
 -(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture
@@ -147,12 +155,12 @@
 -(void)unSetDelegeteForAdsWebView:(BOOL)shouldDisabled{
     
     for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            UIWebView *webView = (UIWebView *)view;
+        if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            WKWebView *webView = (WKWebView *)view;
             if(shouldDisabled)
-                webView.delegate=nil;
+                webView.navigationDelegate=nil;
             else
-                webView.delegate=self;
+                webView.navigationDelegate=self;
 
             break;
         }
@@ -164,13 +172,13 @@
     
     ClientSettingsObject *obj = [Configuration getClientSettingsContent];
     
-    float height =     [UIScreen mainScreen].bounds.size.width/6.4;
+    float height =     [UIScreen mainScreen].bounds.size.width/4.2;
 
     float isAlreadyAdded = FALSE;
     for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            UIWebView *webView = (UIWebView *)view;
-            webView.delegate=self;
+        if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            WKWebView *webView = (WKWebView *)view;
+            webView.navigationDelegate=self;
             isAlreadyAdded=TRUE;
             break;
         }
@@ -184,22 +192,26 @@
         }else{
             frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height);
         }
-        
-        
-        
-        UIWebView *webView =[[UIWebView alloc] initWithFrame:frame];
-        webView.delegate=self;
+    
+        WKWebView *webView =[[WKWebView alloc] initWithFrame:frame];
+        webView.navigationDelegate=self;
         [webView setTag:ADVERTISMENT_WEBVIEW_TAG];
 
-        NSString *deepTargetUrl = obj.deeptargetid;
+//        NSString *deepTargetUrl = obj.deeptargetid;
+        NSString *deepTargetUrl =  @"https://olb2.deeptarget.com/Service1stCU";
 
         if (![deepTargetUrl hasSuffix: @"/"]){
             deepTargetUrl = [deepTargetUrl stringByAppendingString:@"/"];
         }
         
-        NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
+        if (deepTargetUrl == nil) {
+            deepTargetUrl = @"0";
+        }
+        
+        NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%ld&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,(long)[[[[SharedUser sharedManager] userObject ] Account] integerValue],[UIScreen mainScreen].bounds.size.width,height];
         
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+        
         
         [self.navigationController.view.window addSubview:webView];
         
@@ -218,38 +230,48 @@
 }
 
 #pragma mark WEB-VIEW Delegate
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    NSLog(@"Ads Url shouldStartLoadWithRequest : %@ UIWebViewNavigationType: %ld",webView.request.URL.absoluteString,(long)navigationType);
-    
-    BOOL shouldReload = TRUE;
-    if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![request.URL.absoluteString containsString:@"deeptarget.com"]){
-        shouldReload = FALSE;
-        
-        NSURL *url = [NSURL URLWithString:request.URL.absoluteString];
-        [[UIApplication sharedApplication] openURL:url];
-    }
 
-    return shouldReload;
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    
+    NSLog(@"Ads Url shouldStartLoadWithRequest : %@ UIWebViewNavigationType: %ld",webView.URL.absoluteString,(long)navigation);
+       
+       BOOL shouldReload = TRUE;
+       if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![webView.URL.absoluteString containsString:@"deeptarget.com"]){
+           shouldReload = FALSE;
+           
+           NSURL *url = [NSURL URLWithString:webView.URL.absoluteString];
+           [[UIApplication sharedApplication] canOpenURL:url];
+       }
+
 }
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    NSLog(@"Ads Url webViewDidStartLoad : %@",webView.request.URL.absoluteString);
+
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
+    NSLog(@"Ads Url webViewDidStartLoad : %@",webView.URL.absoluteString);
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    
+    NSLog(@"Ads Url webViewDidFinishLoad : %@",webView.URL.absoluteString);
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    
     
 }
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    NSLog(@"Ads Url webViewDidFinishLoad : %@",webView.request.URL.absoluteString);
-    
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
-}
+
 
 
 - (void)dealloc {
     
     for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[UIWebView class]]){
-            UIWebView *webView = (UIWebView *)view;
-            webView.delegate = nil;
+        if([view isKindOfClass:[WKWebView class]]){
+            WKWebView *webView = (WKWebView *)view;
+            webView.navigationDelegate = nil;
             [webView stopLoading];
             break;
         }
@@ -257,12 +279,12 @@
     
 }
 
-- (UIWebView *)getAdverTismentView{
+- (WKWebView *)getAdverTismentView{
     
-    UIWebView *webView = nil;
+    WKWebView *webView = nil;
     for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            webView=(UIWebView *)view;
+        if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            webView=(WKWebView *)view;
             break;
         }
     }
@@ -270,14 +292,14 @@
 }
 
 -(void)sendAdvertismentViewToBack{
-    UIWebView *view = [self getAdverTismentView];
+    WKWebView *view = [self getAdverTismentView];
     [view reload];
     [view setHidden:TRUE];
     [self.navigationController.view.window sendSubviewToBack:view];
 }
 
 -(void)bringAdvertismentViewToFront{
-    UIWebView *view = [self getAdverTismentView];
+    WKWebView *view = [self getAdverTismentView];
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
         [self.navigationController.view.window bringSubviewToFront:view];
         [view setHidden:FALSE];
@@ -286,11 +308,11 @@
 
 -(void)removeAdsView{
     
-    UIWebView *webView = nil;
+    WKWebView *webView = nil;
     float isAlreadyAdded = FALSE;
     for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[UIWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            webView = (UIWebView *)view;
+        if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
+            webView = (WKWebView *)view;
             isAlreadyAdded=TRUE;
             break;
         }
@@ -524,7 +546,7 @@
                }];
             
             [alert addAction:firstAction];
-            [alert addAction:secondAction]; 
+            [alert addAction:secondAction];
             
             [self presentViewController:alert animated:YES completion:nil];
         }

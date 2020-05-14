@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import "BaseViewController.h"
 
 @interface VertifiAgreemantController :BaseViewController
 
-@property (nonatomic,weak)IBOutlet UIWebView *webView;
+@property (nonatomic,weak)IBOutlet WKWebView *webView;
 @property (nonatomic, weak) IBOutlet UIButton *acceptBtn;
 @property (nonatomic, weak) IBOutlet UIButton *declineBtn;
 
