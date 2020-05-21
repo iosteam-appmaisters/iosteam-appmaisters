@@ -7,10 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import <WebKit/WebKit.h>
 
-@interface HomeViewController : BaseViewController<UIWebViewDelegate>
+@interface HomeViewController : BaseViewController<WKNavigationDelegate>
 
-@property (nonatomic, weak) IBOutlet UIWebView *webview;
+@property (weak, nonatomic) IBOutlet WKWebView *webview;
+//@property (copy) WKWebView *webviewC;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic,strong) NSMutableURLRequest *webViewRequest;
 -(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue;

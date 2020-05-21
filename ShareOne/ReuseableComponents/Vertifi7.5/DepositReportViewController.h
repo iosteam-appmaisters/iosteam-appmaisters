@@ -26,14 +26,15 @@
 #import "DepositHistory.h"
 #import "UISchema.h"
 #import "DepositModel.h"
+#import <WebKit/WebKit.h>
 
-@interface DepositReportViewController : UIViewController <UIWebViewDelegate>
+@interface DepositReportViewController : UIViewController <WKNavigationDelegate>
 {
     UISchema *schema;
     DepositModel *depositModel;
     DepositHistory *deposit;
     
-	IBOutlet UIWebView *webViewReport;
+	IBOutlet WKWebView *webViewReport;
 	IBOutlet UIActivityIndicatorView *webLoading;
 	
     IBOutlet NSLayoutConstraint *webViewTopConstraint;
@@ -41,7 +42,7 @@
 }
 
 @property DepositHistory *deposit;
-@property UIWebView *webViewReport;
+@property WKWebView *webViewReport;
 @property UIActivityIndicatorView *webLoading;
 @property (nonatomic) NSLayoutConstraint *webViewTopConstraint;
 @property (nonatomic) NSLayoutConstraint *navBarHeightConstraint;
@@ -50,8 +51,11 @@
 - (void) reportComplete:(NSNotification *)notification;
 
 // WebView
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
-- (void)webViewDidStartLoad:(UIWebView *)webView;
-- (void)webViewDidFinishLoad:(UIWebView *)webView;
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler;
+
+-(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation;
+
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;
+
 
 @end

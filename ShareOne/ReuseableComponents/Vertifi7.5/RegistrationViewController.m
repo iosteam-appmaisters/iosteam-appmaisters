@@ -65,7 +65,7 @@
     UIBarButtonItem *buttonClose = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onRegistrationDone:)];
     self.navigationItem.rightBarButtonItem = buttonClose;
     
-    webView.scalesPageToFit = YES;
+//    webView.scalesPageToFit = YES;
 	[self onSetSchema];
 	
     [self onShowContent];
@@ -103,7 +103,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-	webView.delegate = nil;				// clear delegate before release
+	webView.navigationDelegate = nil;				// clear delegate before release
 }
 
 //-----------------------------------------------------------------------------

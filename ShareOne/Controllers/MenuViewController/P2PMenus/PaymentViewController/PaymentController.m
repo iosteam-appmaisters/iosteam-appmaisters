@@ -14,7 +14,7 @@
 #import "MoneyTransferHeader.h"
 #import "IQKeyboardManager.h"
 
-@interface PaymentController ()<UITextFieldDelegate>{
+@interface PaymentController ()<UITextFieldDelegate,WKNavigationDelegate>{
     
     int selected;
     User *currentUser;
@@ -47,6 +47,8 @@
     [self.favContactsTblView registerNib:[UINib nibWithNibName:NSStringFromClass([MoneyTransferHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kMoneyTransferHeaderViewReuseIdentifier];
 
     [_favContactsTblView setBackgroundColor:[UIColor whiteColor]];
+    
+    _webView.navigationDelegate = self;
     
 }
 
@@ -124,25 +126,35 @@
     
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     
-    __weak PaymentController *weakSelf = self;
-    [ShareOneUtility hideProgressViewOnView:weakSelf.webView];
+    decisionHandler(WKNavigationActionPolicyAllow);
+    
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
-    NSLog(@"didFailLoadWithError : %@",error);
-    
-    [ShareOneUtility hideProgressViewOnView:self.webView];
-    
-    [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    NSLog(@"%@", webView.URL.absoluteString);
     
 }
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+     __weak PaymentController *weakSelf = self;
+        [ShareOneUtility hideProgressViewOnView:weakSelf.webView];
+    
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    
+     NSLog(@"didFailLoadWithError : %@",error);
+    
+    [ShareOneUtility hideProgressViewOnView:self.webView];
+      
+      [[UtilitiesHelper shareUtitlities]showToastWithMessage:[Configuration getMaintenanceVerbiage] title:@"" delegate:self];
+}
+
 
 - (void)dealloc {
     
-    _webView.delegate = nil;
+    _webView.navigationDelegate = nil;
     [_webView stopLoading];
     
 }

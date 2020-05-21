@@ -11,13 +11,14 @@
 #import "UIColor+HexColor.h"
 #import "ShareOneUtility.h"
 #import "ConstantsShareOne.h"
+#import "WKWebViewSingleton.h"
 #import <WebKit/WebKit.h>
 
 @interface InAppBrowserController ()
 
 @property (nonatomic,weak) IBOutlet UIButton *backButton;
 @property (nonatomic,weak) IBOutlet UINavigationBar *navBar;
-@property (nonatomic,weak) IBOutlet WKWebView *webView;
+//@property (nonatomic,weak) IBOutlet WKWebView *webView;
 
 
 -(IBAction)backButtonPressed:(id)sender;
@@ -44,7 +45,11 @@
     self.navBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:11],NSFontAttributeName,nil];
     
     self.title = [ShareOneUtility getNavBarTitle:@""];
+    
+    [[WKWebViewSingleton sharedInstance] webviewSingle].navigationDelegate = self ;
+    [[self view] addSubview:[[WKWebViewSingleton sharedInstance] webviewSingle]];
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self sendAdvertismentViewToBack];
@@ -59,7 +64,7 @@
 
     NSMutableURLRequest *request = _request;
     [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
-    [_webView loadRequest:request];
+    [[[WKWebViewSingleton sharedInstance] webviewSingle] loadRequest:request];
 
 }
 
@@ -73,14 +78,6 @@
        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
 }
 
-//- (void)webViewDidFinishLoad:(UIWebView *)webView{
-//
-//    __weak InAppBrowserController *weakSelf = self;
-//
-//    [ShareOneUtility hideProgressViewOnView:weakSelf.view];
-//}
-
-
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     
     NSLog(@"didFailLoadWithError : %@",error);
@@ -92,22 +89,11 @@
     }
 }
 
-//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-//
-//    NSLog(@"didFailLoadWithError : %@",error);
-//
-//    [ShareOneUtility hideProgressViewOnView:self.view];
-//
-//    if ([error code] != NSURLErrorCancelled) {
-//        [self showAlertWithTitle:@"" AndMessage:[Configuration getMaintenanceVerbiage]];
-//    }
-//}
-
 - (void)dealloc {
     
-    _webView.navigationDelegate = nil;
-    [_webView stopLoading];
-    
+//    [[WKWebViewSingleton sharedInstance] webviewSingle].navigationDelegate = nil;
+//    [[[WKWebViewSingleton sharedInstance] webviewSingle] stopLoading];
+   
 }
 
 #pragma mark - Status Alert Message

@@ -1,7 +1,7 @@
+//BaseViewController.h
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <WebKit/WebKit.h>
 #import "UtilitiesHelper.h"
 #import "Services.h"
 #import "ConstantsShareOne.h"
@@ -24,9 +24,6 @@
 
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint *bottomAdsConstraint;
 @property (nonatomic,assign) BOOL hideSideMenu ;
-@property (assign) id <WKNavigationDelegate> basedelegate;
-
-
 
 -(void)createLefbarButtonItems;
 -(void)setBackgroundImage;
@@ -34,7 +31,7 @@
 -(void)addAdvertismentControllerOnBottomScreen;
 -(void)sendAdvertismentViewToBack;
 -(void)bringAdvertismentViewToFront;
--(void)initWebView;
+
 -(void)logoutOnGoingBackground;
 -(void)setTitleOnNavBar:(NSString *)title;
 -(void)logoutActions;

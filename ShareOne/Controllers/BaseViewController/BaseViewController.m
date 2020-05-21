@@ -1,3 +1,4 @@
+//BaseViewController.h
 
 #import "BaseViewController.h"
 #import <UIKit/UIKit.h>
@@ -12,6 +13,7 @@
 #import "InAppBrowserController.h"
 #import "ClientSettingsObject.h"
 #import "LoaderServices.h"
+#import "WKWebViewSingleton.h"
 #import <WebKit/WebKit.h>
 
 @interface BaseViewController ()<WKNavigationDelegate>{
@@ -29,12 +31,12 @@
     [super viewDidLoad];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:TRUE];
-
+    
     UIView* dummyView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [dummyView setBackgroundColor:[UIColor clearColor]];
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:dummyView];
-   
+    
     [self createLefbarButtonItems];
     
     [self setNavigationBarImage];
@@ -42,13 +44,11 @@
     [self setTitleView];
     
     [self setBackgroundImage];
-
+    
     [self setTitleTextAttribute];
     
     [self setGesturesToBringLeftMenu];
     
-//    self.basedelegate = self;
-
 }
 
 -(void)setGesturesToBringLeftMenu{
@@ -59,25 +59,20 @@
     [self.view setGestureRecognizers:[NSArray arrayWithObject:gesture]];
 }
 
--(void)initWebView {
-    _basedelegate = self;
-    
-}
-
 -(void)userDidSwipe:(UISwipeGestureRecognizer*)gesture
 {
     if(self.hideSideMenu){
         return ;
     }
-
+    
     if(gesture.state==UIGestureRecognizerStateEnded){
         [self showSideMenu];
     }
-
+    
     if(gesture.state==UIGestureRecognizerStateBegan){
         
     }
-
+    
 }
 
 
@@ -91,45 +86,17 @@
     [super viewWillAppear:animated];
     
     [[self navigationController] setNavigationBarHidden:NO animated:NO];
-
-    [self setTitleOnNavBar:self.navigationItem.title];
-
-    ClientSettingsObject *obj = [Configuration getClientSettingsContent];
     
+    [self setTitleOnNavBar:self.navigationItem.title];
+    
+    ClientSettingsObject *obj = [Configuration getClientSettingsContent];
     if ([obj.disableadsglobally boolValue]) {
-        if ([obj.hideshowoffersoption boolValue]) {
-            [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
-        }else{
-            BOOL val = [[NSUserDefaults standardUserDefaults] boolForKey:USER_INTERACTED_SHOW_OFFER];
-            if (val) {
-                BOOL val = [ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS];
-                if (val) {
-                    [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
-                }else{
-                    [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
-                }
-            }else{
-                [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
-            }
-        }
-    }else{
-        if ([obj.hideshowoffersoption boolValue]) {
-            [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
-            
-        }else{
-            BOOL val = [ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS];
-            if (val) {
-                [ShareOneUtility saveSettingsWithStatus:YES AndKey:SHOW_OFFERS_SETTINGS];
-                
-            }else{
-                [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
-            }
-        }
+        [ShareOneUtility saveSettingsWithStatus:NO AndKey:SHOW_OFFERS_SETTINGS];
     }
     
     [self addAdvertismentControllerOnBottomScreen];
     [self manageAds];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appComingFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
@@ -137,7 +104,7 @@
 -(void)manageAds{
     
     float height =     [UIScreen mainScreen].bounds.size.width/6.4;
-
+    
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
         _bottomAdsConstraint.constant=height;
     }
@@ -154,66 +121,43 @@
 
 -(void)unSetDelegeteForAdsWebView:(BOOL)shouldDisabled{
     
-    for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            WKWebView *webView = (WKWebView *)view;
-            if(shouldDisabled)
-                webView.navigationDelegate=nil;
-            else
-                webView.navigationDelegate=self;
-
-            break;
-        }
-    }
-
+    if(shouldDisabled)
+        [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate=nil;
+    else
+        [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate=self;
+    
 }
 
 -(void)addAdvertismentControllerOnBottomScreen{
     
     ClientSettingsObject *obj = [Configuration getClientSettingsContent];
     
-    float height =     [UIScreen mainScreen].bounds.size.width/4.2;
-
+    float height =     [UIScreen mainScreen].bounds.size.width/6.4;
+    
     float isAlreadyAdded = FALSE;
-    for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            WKWebView *webView = (WKWebView *)view;
-            webView.navigationDelegate=self;
-            isAlreadyAdded=TRUE;
-            break;
-        }
+    
+    if ( [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate != nil) {
+        [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate=self;
+        isAlreadyAdded=TRUE;
     }
     
     if(!isAlreadyAdded){
-        CGRect frame = CGRectMake(0, 0, 0, 0);
         
-        if (IS_IPHONE_X) {
-            frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height-12, [UIScreen mainScreen].bounds.size.width, height);
-        }else{
-            frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height);
-        }
-    
-        WKWebView *webView =[[WKWebView alloc] initWithFrame:frame];
-        webView.navigationDelegate=self;
-        [webView setTag:ADVERTISMENT_WEBVIEW_TAG];
-
-//        NSString *deepTargetUrl = obj.deeptargetid;
-        NSString *deepTargetUrl =  @"https://olb2.deeptarget.com/Service1stCU";
-
+        [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate = self;
+        
+        [[[WKWebViewSingleton baseSharedInstance] webviewSingle] setTag:ADVERTISMENT_WEBVIEW_TAG];
+        
+        NSString *deepTargetUrl = obj.deeptargetid;
+        
         if (![deepTargetUrl hasSuffix: @"/"]){
             deepTargetUrl = [deepTargetUrl stringByAppendingString:@"/"];
         }
         
-        if (deepTargetUrl == nil) {
-            deepTargetUrl = @"0";
-        }
+        NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
         
-        NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%ld&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,(long)[[[[SharedUser sharedManager] userObject ] Account] integerValue],[UIScreen mainScreen].bounds.size.width,height];
+        [[[WKWebViewSingleton baseSharedInstance] webviewSingle] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
         
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-        
-        
-        [self.navigationController.view.window addSubview:webView];
+        [self.navigationController.view.window addSubview:[[WKWebViewSingleton baseSharedInstance] webviewSingle]];
         
         if(![ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
             [self sendAdvertismentViewToBack];
@@ -231,102 +175,90 @@
 
 #pragma mark WEB-VIEW Delegate
 
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSLog(@"Ads Url shouldStartLoadWithRequest : %@ WKWebviewNavigationType: %ld",webView.URL.absoluteString,(long)navigationAction.navigationType);
     
-    NSLog(@"Ads Url shouldStartLoadWithRequest : %@ UIWebViewNavigationType: %ld",webView.URL.absoluteString,(long)navigation);
-       
-       BOOL shouldReload = TRUE;
-       if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![webView.URL.absoluteString containsString:@"deeptarget.com"]){
-           shouldReload = FALSE;
-           
-           NSURL *url = [NSURL URLWithString:webView.URL.absoluteString];
-           [[UIApplication sharedApplication] canOpenURL:url];
-       }
-
+    BOOL shouldReload = TRUE;
+    if([webView tag]==ADVERTISMENT_WEBVIEW_TAG && ![webView.URL.absoluteString containsString:@"deeptarget.com"]){
+        shouldReload = FALSE;
+        
+        NSURL *url = [NSURL URLWithString:webView.URL.absoluteString];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    
+    if (shouldReload) {
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }else {
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
 }
 
-- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     NSLog(@"Ads Url webViewDidStartLoad : %@",webView.URL.absoluteString);
 }
 
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    
-    decisionHandler(WKNavigationActionPolicyAllow);
-}
-
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    
     NSLog(@"Ads Url webViewDidFinishLoad : %@",webView.URL.absoluteString);
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     
-    
+    NSLog(@"Ads Url webViewDidFail : %@" , webView.URL.absoluteString);
 }
-
 
 
 - (void)dealloc {
     
-    for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[WKWebView class]]){
-            WKWebView *webView = (WKWebView *)view;
-            webView.navigationDelegate = nil;
-            [webView stopLoading];
-            break;
-        }
-    }
+    //
+    //   [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate = nil;
+    //    [[[WKWebViewSingleton baseSharedInstance] webviewSingle] stopLoading];
+    
     
 }
 
 - (WKWebView *)getAdverTismentView{
     
-    WKWebView *webView = nil;
-    for(UIView *view in self.navigationController.view.window.subviews){
-        if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            webView=(WKWebView *)view;
-            break;
-        }
-    }
-    return webView;
+    return [[WKWebViewSingleton baseSharedInstance] webviewSingle];
 }
 
 -(void)sendAdvertismentViewToBack{
-    WKWebView *view = [self getAdverTismentView];
-    [view reload];
-    [view setHidden:TRUE];
-    [self.navigationController.view.window sendSubviewToBack:view];
+    
+    [[[WKWebViewSingleton baseSharedInstance] webviewSingle] reload];
+    [[[WKWebViewSingleton baseSharedInstance] webviewSingle]setHidden:TRUE];
+    [self.navigationController.view.window sendSubviewToBack:[[WKWebViewSingleton baseSharedInstance] webviewSingle]];
 }
 
 -(void)bringAdvertismentViewToFront{
-    WKWebView *view = [self getAdverTismentView];
+    
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
-        [self.navigationController.view.window bringSubviewToFront:view];
-        [view setHidden:FALSE];
+        [self.navigationController.view.window bringSubviewToFront:[[WKWebViewSingleton baseSharedInstance] webviewSingle]];
+        [[[WKWebViewSingleton baseSharedInstance] webviewSingle] setHidden:FALSE];
     }
 }
 
 -(void)removeAdsView{
     
-    WKWebView *webView = nil;
+    //    WKWebView *webView = nil;
     float isAlreadyAdded = FALSE;
     for(UIView *view in self.navigationController.view.window.subviews){
         if([view isKindOfClass:[WKWebView class]] && view.tag==ADVERTISMENT_WEBVIEW_TAG){
-            webView = (WKWebView *)view;
             isAlreadyAdded=TRUE;
             break;
         }
     }
     
+    
+    
     if(isAlreadyAdded){
-        [webView removeFromSuperview];
+        [[[WKWebViewSingleton baseSharedInstance] webviewSingle] removeFromSuperview];
     }
 }
 
 -(void)createLefbarButtonItems{
     UIView* leftView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
     [leftView setBackgroundColor:[UIColor clearColor]];
-
+    
     //rootview
     if([[self.navigationController viewControllers] count]>2 && ![self.navigationController.viewControllers.lastObject isKindOfClass:[HomeViewController class]]){
         [leftView addSubview:[self getBackButton]];
@@ -343,9 +275,9 @@
 -(void)setTitleTextAttribute{
     
     StyleValuesObject *obj = [Configuration getStyleValueContent];
-
+    
     UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
-
+    
     if(APPC_IS_IPAD){
         self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:color,NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:24],NSFontAttributeName,nil];
     }
@@ -358,15 +290,15 @@
     
     
     StyleValuesObject *obj = [Configuration getStyleValueContent];
-
+    
     UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
-
+    
     UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width/2, 40)];
     titleLabel.text = title;
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = color;
-
+    
     if(APPC_IS_IPAD){
         titleLabel.font=[UIFont boldSystemFontOfSize:24];
     }
@@ -376,13 +308,13 @@
     
     titleLabel.numberOfLines=0;
     self.navigationItem.titleView = titleLabel;
-
+    
 }
 
 -(void)setBackgroundImage{
     UIImageView* backgroundImageView;
     backgroundImageView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_bg2"]];
-
+    
     [self.view addSubview:backgroundImageView];
     [self.view sendSubviewToBack:backgroundImageView];
 }
@@ -394,12 +326,12 @@
 -(UIButton*)getMenuButton{
     
     StyleValuesObject *obj = [Configuration getStyleValueContent];
-
+    
     UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
-
+    
     UIImage *menuImage = [[UIImage imageNamed:@"menu_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] ;
-
-     menuButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 30, 44)];
+    
+    menuButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 0, 30, 44)];
     [menuButton setImage:menuImage    forState:UIControlStateNormal];
     [menuButton setTintColor:color];
     [menuButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -426,17 +358,17 @@
     } completion:^(BOOL finished) {
         [self->menuButton setEnabled:TRUE];
     }];
-
+    
 }
 
 -(UIButton*)getBackButton{
     
     
     StyleValuesObject *obj = [Configuration getStyleValueContent];
-
+    
     UIColor *color = [UIColor colorWithHexString:obj.buttoncolortop];
     UIImage *back_icon = [[UIImage imageNamed:@"back_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] ;
-
+    
     UIButton* backButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
     [backButton setTintColor:color];
     [backButton setImage:back_icon forState:UIControlStateNormal];
@@ -461,7 +393,7 @@
 -(void)setTitleView{
     
     UIImage* logoImage = [UIImage imageNamed:@"top_logo"];
-
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:[[UIImageView alloc] initWithImage:logoImage]];
 }
 
@@ -469,7 +401,7 @@
 #pragma mark - Custom Navigation Delegate
 
 - (void)pushViewControllerWithObject:(NSDictionary *)dict{
-
+    
     NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
     NSString *webUrl = [dict valueForKey:WEB_URL];
     
@@ -478,7 +410,7 @@
     NSString *webViewController = WEB_VIEWCONTROLLER_ID;
     
     // If isOpenInNewTab : TRUE than we need to open the current webview in InAppBrowser else proceed with other screen.
-
+    
     if(isOpenInNewTab){
         
         if([webUrl containsString:@"http"]){
@@ -488,7 +420,7 @@
             InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
             objInAppBrowserController.request=request;
             [self.navigationController pushViewController:objInAppBrowserController animated:NO];
-
+            
         }
         else{
             NSString *siteurl = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],webUrl];
@@ -499,14 +431,14 @@
         }
     }
     else{
-     
+        
         if([contrlollerName isEqualToString:MOBILE_DEPOSIT]){
             
             contrlollerName= [dict valueForKey:CONTROLLER_NAME];
             
             NSDictionary *cacheControlerDict = [Configuration getAllMenuItemsIncludeHiddenItems:NO][0];
             [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:cacheControlerDict];
-
+            
             UIViewController * objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
             objUIViewController.navigationItem.title= [ShareOneUtility getNavBarTitle:navigationTitle];
             self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView], objUIViewController,nil];
@@ -521,40 +453,39 @@
                                                                     preferredStyle:UIAlertControllerStyleAlert]; // 1
             UIAlertAction *firstAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                                   style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                                                      NSLog(@"You pressed button one");
-                                                                  }]; // 2
+                NSLog(@"You pressed button one");
+            }]; // 2
             UIAlertAction *secondAction = [UIAlertAction actionWithTitle:LOG_OFF
                                                                    style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                                                       
-                   if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]) {
-                       [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TEMP_DISABLE_TOUCH_ID];
-                       [[NSUserDefaults standardUserDefaults]synchronize];
-                   }
-                   
-                  [[NSUserDefaults standardUserDefaults]setBool:YES forKey:NORMAL_LOGOUT];
-                                                                       [[NSUserDefaults standardUserDefaults]setObject:@"" forKey:SESSION_KEY_LOGGED_IN];
-                  [[NSUserDefaults standardUserDefaults]synchronize];
-                                                                       
-                   UIViewController *controller = nil;
-                   HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
-                                                                       self->currentController = objHomeViewController;
-                   objHomeViewController.url = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],@"/log/out"];
-                   controller = objHomeViewController;
-                                                                       
-                   self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],controller, nil];
-                                                                                                                                           
-               }];
+                
+                if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]) {
+                    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:TEMP_DISABLE_TOUCH_ID];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                }
+                
+                [[NSUserDefaults standardUserDefaults]setBool:YES forKey:NORMAL_LOGOUT];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                
+                UIViewController *controller = nil;
+                HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
+                self->currentController = objHomeViewController;
+                objHomeViewController.url = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],@"/log/out"];
+                controller = objHomeViewController;
+                
+                self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],controller, nil];
+                
+            }];
             
             [alert addAction:firstAction];
             [alert addAction:secondAction];
             
             [self presentViewController:alert animated:YES completion:nil];
         }
-
+        
         
         else{
             [ShareOneUtility saveMenuItemObjectForTouchIDAuthentication:dict];
-
+            
             // If webUrl has a valid URL than we need to load HomeViewController with URL
             UIViewController *controller = nil;
             if(webUrl){
@@ -567,13 +498,13 @@
             else{
                 
                 UIViewController * objUIViewController =nil;
-
+                
                 //If webUrl is empty or nil load Native UI Screen
                 @try {
                     objUIViewController = [self.storyboard instantiateViewControllerWithIdentifier:contrlollerName];
                     objUIViewController.navigationItem.title=[ShareOneUtility getNavBarTitle: navigationTitle];
                     controller = objUIViewController;
-
+                    
                 }
                 @catch (NSException *exception) {
                     NSLog(@"Reason %@" , exception.reason);
@@ -618,7 +549,7 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
     
     BOOL isTechnicalLogout = [[NSUserDefaults standardUserDefaults]boolForKey:TECHNICAL_LOGOUT];
-
+    
     if (isTechnicalLogout) {
         
         if(![ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
@@ -647,7 +578,7 @@
 -(void)logoutOnGoingBackground{
     
     [self appGoingToBackground];
-
+    
     [self logoutActions];
 }
 
@@ -670,16 +601,16 @@
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:TRUE];
     [[ShareOneUtility shareUtitlities] cancelTimer];
     
-     [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)appComingFromBackground{
     NSLog(@"appComingFromBackground from home");
     
     [self unSetDelegeteForAdsWebView:FALSE];
-
+    
     [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-
+    
     
     if([ShareOneUtility getSettingsWithKey:TOUCH_ID_SETTINGS]){
         
@@ -699,7 +630,7 @@
 
 -(void)startTimerForKeepAlive{
     __weak BaseViewController *weakSelf = self;
-
+    
     [[ShareOneUtility shareUtitlities] startTimerWithCompletionBlock:^(BOOL sucess) {
         [weakSelf logoutOnGoingBackground];
     }];

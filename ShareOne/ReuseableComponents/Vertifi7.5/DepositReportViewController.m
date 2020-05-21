@@ -85,7 +85,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-	webViewReport.delegate = nil;				// clear delegate before release
+	webViewReport.navigationDelegate = nil;				// clear delegate before release
 }
 
 #pragma mark Notifications
@@ -111,9 +111,9 @@
         
         else if (url != nil)
         {
-            webViewReport.scalesPageToFit = YES;
-            webViewReport.delegate = self;
-            [webViewReport loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+//            webViewReport.scalesPageToFit = YES;
+            self->webViewReport.navigationDelegate = self;
+            [self->webViewReport loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
         }
     });
     
@@ -125,64 +125,122 @@
 // WebViewDelegate Methods
 //---------------------------------------------------------------------------------------------
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-	if (navigationType == UIWebViewNavigationTypeLinkClicked)
-	{
-		NSURL *url = [request URL];
-		
-		// mail/telephone/appstore
-		if (([[url scheme] hasPrefix:@"mailto"]) || ([[url scheme] hasPrefix:@"tel"]) || ([[url scheme] hasPrefix:@"itms"]))
-		{
-			[[UIApplication sharedApplication] openURL:url];
-			return (NO);
-		}
-		
-		// YouTube
-		if ([[url scheme] hasPrefix:@"vnd.youtube"])
-		{
-			NSURL *urlYouTube = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.youtube.com/v/%@",[url resourceSpecifier]]];
-			[[UIApplication sharedApplication] openURL:urlYouTube];
-			return (NO);
-		}
-	}
-	
-	return (YES);
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated)
+    {
+        NSURL *url = [webView URL];
+        
+        // mail/telephone/appstore
+        if (([[url scheme] hasPrefix:@"mailto"]) || ([[url scheme] hasPrefix:@"tel"]) || ([[url scheme] hasPrefix:@"itms"]))
+        {
+            [[UIApplication sharedApplication] openURL:url];
+            decisionHandler(WKNavigationActionPolicyCancel);
+        }
+        
+        // YouTube
+        if ([[url scheme] hasPrefix:@"vnd.youtube"])
+        {
+            NSURL *urlYouTube = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.youtube.com/v/%@",[url resourceSpecifier]]];
+            [[UIApplication sharedApplication] openURL:urlYouTube];
+            decisionHandler(WKNavigationActionPolicyCancel);
+        }
+    }
+    
+   decisionHandler(WKNavigationActionPolicyAllow);
+    
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
+-(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    
     [VIPSampleAppDelegate sessionOpen];
-    
-    [UIView animateWithDuration:0.4f animations:^{
-        [webLoading setAlpha:1.0f];
-    }];
-	[webLoading startAnimating];
+       
+       [UIView animateWithDuration:0.4f animations:^{
+           [webLoading setAlpha:1.0f];
+       }];
+       [webLoading startAnimating];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [VIPSampleAppDelegate sessionClose];
-    
-    [UIView animateWithDuration:0.4f animations:^{
-        [webLoading setAlpha:0.0f];
-    } completion:^(BOOL finished) {
-        [webLoading stopAnimating];
-    }];
+      
+      [UIView animateWithDuration:0.4f animations:^{
+          [webLoading setAlpha:0.0f];
+      } completion:^(BOOL finished) {
+          [webLoading stopAnimating];
+      }];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
+-(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [VIPSampleAppDelegate sessionClose];
 
-    [webLoading stopAnimating];
-	
-	if (error.code == kCFURLErrorCancelled)
-		return;
-	
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Sorry, unable to load report content:\n\n%@",[error localizedDescription]] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-    [self presentViewController:alert animated:YES completion:nil];
+       [webLoading stopAnimating];
+       
+       if (error.code == kCFURLErrorCancelled)
+           return;
+       
+       UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Sorry, unable to load report content:\n\n%@",[error localizedDescription]] preferredStyle:UIAlertControllerStyleAlert];
+       [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+       [self presentViewController:alert animated:YES completion:nil];
 }
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+//{
+//	if (navigationType == UIWebViewNavigationTypeLinkClicked)
+//	{
+//		NSURL *url = [request URL];
+//
+//		// mail/telephone/appstore
+//		if (([[url scheme] hasPrefix:@"mailto"]) || ([[url scheme] hasPrefix:@"tel"]) || ([[url scheme] hasPrefix:@"itms"]))
+//		{
+//			[[UIApplication sharedApplication] openURL:url];
+//			return (NO);
+//		}
+//
+//		// YouTube
+//		if ([[url scheme] hasPrefix:@"vnd.youtube"])
+//		{
+//			NSURL *urlYouTube = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.youtube.com/v/%@",[url resourceSpecifier]]];
+//			[[UIApplication sharedApplication] openURL:urlYouTube];
+//			return (NO);
+//		}
+//	}
+//
+//	return (YES);
+//}
+
+//- (void)webViewDidStartLoad:(UIWebView *)webView
+//{
+//    [VIPSampleAppDelegate sessionOpen];
+//
+//    [UIView animateWithDuration:0.4f animations:^{
+//        [webLoading setAlpha:1.0f];
+//    }];
+//	[webLoading startAnimating];
+//}
+
+//- (void)webViewDidFinishLoad:(UIWebView *)webView
+//{
+//    [VIPSampleAppDelegate sessionClose];
+//
+//    [UIView animateWithDuration:0.4f animations:^{
+//        [webLoading setAlpha:0.0f];
+//    } completion:^(BOOL finished) {
+//        [webLoading stopAnimating];
+//    }];
+//}
+
+//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+//{
+//    [VIPSampleAppDelegate sessionClose];
+//
+//    [webLoading stopAnimating];
+//
+//	if (error.code == kCFURLErrorCancelled)
+//		return;
+//
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"Sorry, unable to load report content:\n\n%@",[error localizedDescription]] preferredStyle:UIAlertControllerStyleAlert];
+//    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+//    [self presentViewController:alert animated:YES completion:nil];
+//}
 
 @end

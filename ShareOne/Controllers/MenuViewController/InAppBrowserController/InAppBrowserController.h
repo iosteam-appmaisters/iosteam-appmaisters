@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "LeftMenuViewController.h"
+#import <WebKit/WebKit.h>
 
 
-@interface InAppBrowserController : BaseViewController 
+@interface InAppBrowserController : BaseViewController<WKNavigationDelegate>
 
 @property (nonatomic,strong) NSMutableURLRequest *request;
 @end

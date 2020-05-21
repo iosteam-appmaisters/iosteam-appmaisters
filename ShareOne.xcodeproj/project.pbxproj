@@ -158,14 +158,14 @@
 		9AA04A3C211B0464009BC70F /* VIPSample.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AA049FC211B0464009BC70F /* VIPSample.strings */; };
 		9AA04A3D211B0464009BC70F /* VIPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA049FE211B0464009BC70F /* VIPSampleAppDelegate.m */; };
 		9AA04A3E211B0464009BC70F /* VIPViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA04A00211B0464009BC70F /* VIPViewUtility.m */; };
-		9AA04A3F211B0474009BC70F /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA049F8211B0464009BC70F /* VIPLibrary.framework */; };
-		9AA04A40211B0474009BC70F /* VIPLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA049F8211B0464009BC70F /* VIPLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AB2428A215E127600D599E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AB24289215E127600D599E2 /* Info.plist */; };
 		9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */; };
 		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
 		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
 		9AEB7DF81F5EEEB30027DA65 /* YALContextMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */; };
-		EAB89021241FA9C8009D5A80 /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB89020241FA9C7009D5A80 /* VIPLibrary.framework */; };
+		EA39540924764BF9009EAA4B /* WKWebViewSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = EA39540824764BF9009EAA4B /* WKWebViewSingleton.m */; };
+		EA39541C24769FA5009EAA4B /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39541A24769F7B009EAA4B /* VIPLibrary.framework */; };
+		EA39541D24769FA5009EAA4B /* VIPLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA39541A24769F7B009EAA4B /* VIPLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */; };
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
@@ -188,7 +188,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9AA04A40211B0474009BC70F /* VIPLibrary.framework in Embed Frameworks */,
+				EA39541D24769FA5009EAA4B /* VIPLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,7 +472,6 @@
 		9AA049F5211B0464009BC70F /* UISchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISchema.h; sourceTree = "<group>"; };
 		9AA049F6211B0464009BC70F /* UISchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISchema.m; sourceTree = "<group>"; };
 		9AA049F7211B0464009BC70F /* VertifiImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiImageProcessing.h; sourceTree = "<group>"; };
-		9AA049F8211B0464009BC70F /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VIPLibrary.framework; sourceTree = "<group>"; };
 		9AA049F9211B0464009BC70F /* VIPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPNavigationController.h; sourceTree = "<group>"; };
 		9AA049FA211B0464009BC70F /* VIPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPNavigationController.m; sourceTree = "<group>"; };
 		9AA049FB211B0464009BC70F /* VIPSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VIPSample-Prefix.pch"; sourceTree = "<group>"; };
@@ -492,7 +491,9 @@
 		9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALContextMenuTableView.m; sourceTree = "<group>"; };
 		B90ABDC2A7EA08C5AA70E630 /* libPods-ShareOne.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShareOne.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
-		EAB89020241FA9C7009D5A80 /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VIPLibrary.framework; path = "../../Documents/Vertifi V8/Vertifi/Vertifi Image Processing Libraries/Libraries & Documentation/iOS/Release/VIPLibrary.framework"; sourceTree = "<group>"; };
+		EA39540724764BF1009EAA4B /* WKWebViewSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKWebViewSingleton.h; sourceTree = "<group>"; };
+		EA39540824764BF9009EAA4B /* WKWebViewSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewSingleton.m; sourceTree = "<group>"; };
+		EA39541A24769F7B009EAA4B /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VIPLibrary.framework; sourceTree = "<group>"; };
 		F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F2099FA41D9D3B4C00AAA8AC /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
 		F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
@@ -520,8 +521,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAB89021241FA9C8009D5A80 /* VIPLibrary.framework in Frameworks */,
-				9AA04A3F211B0474009BC70F /* VIPLibrary.framework in Frameworks */,
+				EA39541C24769FA5009EAA4B /* VIPLibrary.framework in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -1089,6 +1089,8 @@
 			children = (
 				6BD405F01D83079100358036 /* HomeViewController.h */,
 				6BD405F11D83079100358036 /* HomeViewController.m */,
+				EA39540724764BF1009EAA4B /* WKWebViewSingleton.h */,
+				EA39540824764BF9009EAA4B /* WKWebViewSingleton.m */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -1153,7 +1155,6 @@
 		88BB98E136A282A5D9BC05EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EAB89020241FA9C7009D5A80 /* VIPLibrary.framework */,
 				F229DB711D9E7FEC00A705A5 /* Foundation.framework */,
 				F229DB6F1D9E7D8100A705A5 /* QuartzCore.framework */,
 				F229DB6D1D9E7D7B00A705A5 /* CoreMedia.framework */,
@@ -1278,8 +1279,8 @@
 				9AA049F4211B0464009BC70F /* ToastMessage.m */,
 				9AA049F5211B0464009BC70F /* UISchema.h */,
 				9AA049F6211B0464009BC70F /* UISchema.m */,
+				EA39541A24769F7B009EAA4B /* VIPLibrary.framework */,
 				9AA049F7211B0464009BC70F /* VertifiImageProcessing.h */,
-				9AA049F8211B0464009BC70F /* VIPLibrary.framework */,
 				9AA049F9211B0464009BC70F /* VIPNavigationController.h */,
 				9AA049FA211B0464009BC70F /* VIPNavigationController.m */,
 				9AA049FB211B0464009BC70F /* VIPSample-Prefix.pch */,
@@ -1601,6 +1602,7 @@
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				9AA04A2D211B0464009BC70F /* ResponseDictionary.m in Sources */,
 				1D3ED85A1E2676BD00AE91C1 /* ContactDeleteCell.m in Sources */,
+				EA39540924764BF9009EAA4B /* WKWebViewSingleton.m in Sources */,
 				1D3A02621E5F2DE6009ABC8C /* AttributedCustomLabel.m in Sources */,
 				9AA04A13211B0464009BC70F /* DepositReportOperation.m in Sources */,
 				9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */,
@@ -1822,7 +1824,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
@@ -1842,7 +1844,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1862,7 +1864,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = USNDVZCA3F;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1881,7 +1883,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ShareOne/ReuseableComponents/Vertifi7.5",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.shareone.coast2coast;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -195,7 +195,7 @@
 	[strContent appendString:@"</body></html>"];
 	 
     // set delegate and load html
-    webViewErrors.delegate = self;
+    webViewErrors.navigationDelegate = self;
 	[webViewErrors loadHTMLString:strContent baseURL:nil];
 	 
 	return;
@@ -217,7 +217,7 @@
 
 - (void)dealloc 
 {
-	webViewErrors.delegate = nil;				// clear delegate before release
+	webViewErrors.navigationDelegate = nil;				// clear delegate before release
 }
 
 //---------------------------------------------------------------------------------------------

@@ -23,12 +23,13 @@
 #import <UIKit/UIKit.h>
 #import "ActivityLabelView.h"
 #import "DepositModel.h"
+#import <WebKit/WebKit.h>
 
 @interface RegistrationViewController : UIViewController
 {
     DepositModel *depositModel;                             // model
 
-	IBOutlet UIWebView *webView;                            // web view
+	IBOutlet WKWebView *webView;                            // web view
 	IBOutlet UIToolbar *toolBar;                            // bottom toolbar
 	IBOutlet UIBarButtonItem *buttonAccept;                 // toolbar bar buttons
 	IBOutlet UIBarButtonItem *buttonDeny;
@@ -43,7 +44,7 @@
 
 // Properties
 
-@property  UIWebView *webView;
+@property  WKWebView *webView;
 @property  UIToolbar *toolBar;
 @property  UIBarButtonItem *buttonAccept;
 @property  UIBarButtonItem *buttonDeny;

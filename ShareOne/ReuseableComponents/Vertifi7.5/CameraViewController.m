@@ -509,7 +509,7 @@ static const float VIP_VIEWPORT_ASPECT_NORMAL = 2.2f;
                 self.imageBW = [mVIP onProcessImageBWDrawImageAuto:arrayResults];
                 if (isFront)
                 {
-                    depositModel.isSmartScaled = mVIP.isSmartScaled;                       // set smart scaling flag on front image
+//                    depositModel.isSmartScaled = mVIP.isSmartScaled;                       // set smart scaling flag on front image
                 }
                 
                 if ([arrayResults containsObject:@"UpsideDown"])

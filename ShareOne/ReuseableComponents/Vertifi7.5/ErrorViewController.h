@@ -22,17 +22,18 @@
 
 #import <UIKit/UIKit.h>
 #import "DepositModel.h"
+#import <WebKit/WebKit.h>
 
-@interface ErrorViewController : UIViewController <UIWebViewDelegate>
+@interface ErrorViewController : UIViewController <WKNavigationDelegate>
 {
     DepositModel *depositModel;
-	IBOutlet UIWebView *webViewErrors;
+	IBOutlet WKWebView *webViewErrors;
 	IBOutlet UIActivityIndicatorView *webLoading;
 	
 	char cFrontOrBack;
 }
 
-@property  UIWebView *webViewErrors;
+@property  WKWebView *webViewErrors;
 @property  UIActivityIndicatorView *webLoading;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forb:(char)forb;
