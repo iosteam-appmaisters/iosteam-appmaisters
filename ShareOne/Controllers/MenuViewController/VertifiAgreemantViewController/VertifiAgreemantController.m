@@ -18,7 +18,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-
+    self.title = @"Vertifi Registration";
     Configuration *config = [ShareOneUtility getConfigurationFile];
     [_acceptBtn setBackgroundColor:[UIColor colorWithHexString:config.buttonColor]];
     [_declineBtn setBackgroundColor:_acceptBtn.backgroundColor];

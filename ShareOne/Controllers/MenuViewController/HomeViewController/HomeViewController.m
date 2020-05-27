@@ -244,7 +244,7 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     
     NSLog(@"webViewDidStartLoad url: %@", webView.URL.absoluteString);
-    
+     [ShareOneUtility showProgressViewOnView:self.view];
     
 }
 
@@ -299,7 +299,7 @@
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
     }];
     
-    
+       [ShareOneUtility hideProgressViewOnView:self.view];
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {

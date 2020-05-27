@@ -136,10 +136,10 @@
     
     float isAlreadyAdded = FALSE;
     
-    if ( [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate != nil) {
-        [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate=self;
-        isAlreadyAdded=TRUE;
-    }
+    if ( [[WKWebViewSingleton baseSharedInstance] webviewSingle] != nil) {
+           [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate=self;
+           isAlreadyAdded= FALSE;
+       }
     
     if(!isAlreadyAdded){
         
@@ -168,7 +168,14 @@
         
     }
     if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
-        [self bringAdvertismentViewToFront];
+        if ([self.navigationItem.title containsString:@"Mobile Deposit"] || [self.navigationItem.title containsString:@"Vertifi Registration"]) {
+            
+            [self removeAdsView];
+            
+        }else {
+            [self bringAdvertismentViewToFront];
+        }
+        
     }
     
 }
