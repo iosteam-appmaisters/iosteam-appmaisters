@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet WKWebView *webview;
 //@property (copy) WKWebView *webviewC;
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic,strong) NSString *lastUrl;
 @property (nonatomic,strong) NSMutableURLRequest *webViewRequest;
 -(IBAction)prepareForUnwindToHome:(UIStoryboardSegue *)segue;
 

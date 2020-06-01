@@ -34,7 +34,7 @@
     dispatch_once(&onceToken, ^{
         if (instance == nil)
         {
-            float height =     [UIScreen mainScreen].bounds.size.width/6.4;
+            float height =     [UIScreen mainScreen].bounds.size.width/5.0;
             instance = [[self alloc] init];
             instance.webviewSingle = [[WKWebView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-height, [UIScreen mainScreen].bounds.size.width, height)];
         }

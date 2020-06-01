@@ -30,7 +30,7 @@
     [ShareOneUtility showProgressViewOnView:weakSelf.view];
     _printPDFButton.hidden = YES;
     _backBtnForPDFs.hidden = YES;
-    
+    _lastUrl = @"";
 
     if(!_url)
         _url = @"";
@@ -94,7 +94,23 @@
     self.title = [ShareOneUtility getNavBarTitle:@""];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+   
+    if (![_lastUrl  isEqual: @""]) {
+      
+        [[WKWebViewSingleton sharedInstance] webviewSingle].navigationDelegate = self ;
+           [[self view] addSubview:[[WKWebViewSingleton sharedInstance] webviewSingle]];
+           [[self view]addSubview: _printPDFButton];
+           [[self view]addSubview:_backBtnForPDFs];
+        NSString *siteurl = [NSString stringWithFormat:@"%@",_lastUrl];
+         NSURL *url = [NSURL URLWithString:siteurl];
+         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+         [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
+         [[[WKWebViewSingleton sharedInstance] webviewSingle] loadRequest:request];
+    
+    }
+}
 
 -(void)showMenuFromHomeView{
     [self performSelector:@selector(showSideMenu) withObject:nil afterDelay:0.1];
@@ -244,13 +260,17 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     
     NSLog(@"webViewDidStartLoad url: %@", webView.URL.absoluteString);
-     [ShareOneUtility showProgressViewOnView:self.view];
+       [ShareOneUtility showProgressViewOnView:self.view];
     
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     
     NSLog(@"webViewDidFinishLoad url: %@", webView.URL.absoluteString);
+    if (![webView.URL.absoluteString containsString:@"deeptarget.com"]) {
+        _lastUrl = webView.URL.absoluteString;
+    }
+    
     //       NSString * contentType = [webView stringByEvaluatingJavaScriptFromString:@"document.contentType;"];
     [webView evaluateJavaScript:@"document.contentType;" completionHandler:^(NSString *result, NSError *error)
      {
@@ -298,8 +318,8 @@
         if(![webView.URL.absoluteString containsString:@"deeptarget"])
             [ShareOneUtility hideProgressViewOnView:weakSelf.view];
     }];
+    [ShareOneUtility hideProgressViewOnView:self.view];
     
-       [ShareOneUtility hideProgressViewOnView:self.view];
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {

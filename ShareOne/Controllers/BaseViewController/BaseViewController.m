@@ -140,7 +140,7 @@
            [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate=self;
            isAlreadyAdded= FALSE;
        }
-    
+
     if(!isAlreadyAdded){
         
         [[WKWebViewSingleton baseSharedInstance] webviewSingle].navigationDelegate = self;
@@ -148,17 +148,21 @@
         [[[WKWebViewSingleton baseSharedInstance] webviewSingle] setTag:ADVERTISMENT_WEBVIEW_TAG];
         
         NSString *deepTargetUrl = obj.deeptargetid;
-        
-        if (![deepTargetUrl hasSuffix: @"/"]){
-            deepTargetUrl = [deepTargetUrl stringByAppendingString:@"/"];
+       
+        if (obj.deeptargetid != nil) {
+            if (![deepTargetUrl hasSuffix: @"/"]){
+                      deepTargetUrl = [deepTargetUrl stringByAppendingString:@"/"];
+                  }
+                  
+                  NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
+                  
+                  [[[WKWebViewSingleton baseSharedInstance] webviewSingle] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+                  
+                  [self.navigationController.view.window addSubview:[[WKWebViewSingleton baseSharedInstance] webviewSingle]];
+                  
         }
         
-        NSString *url =[NSString stringWithFormat:@"%@trgtframes.ashx?Method=M&DTA=%d&Channel=Mobile&Width=%.0f&Height=%.0f",deepTargetUrl,[[[[SharedUser sharedManager] userObject ] Account]intValue],[UIScreen mainScreen].bounds.size.width,height];
-        
-        [[[WKWebViewSingleton baseSharedInstance] webviewSingle] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-        
-        [self.navigationController.view.window addSubview:[[WKWebViewSingleton baseSharedInstance] webviewSingle]];
-        
+      
         if(![ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
             [self sendAdvertismentViewToBack];
         }
@@ -167,7 +171,7 @@
         }
         
     }
-    if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
+   if([ShareOneUtility getSettingsWithKey:SHOW_OFFERS_SETTINGS]){
         if ([self.navigationItem.title containsString:@"Mobile Deposit"] || [self.navigationItem.title containsString:@"Vertifi Registration"]) {
             
             [self removeAdsView];
