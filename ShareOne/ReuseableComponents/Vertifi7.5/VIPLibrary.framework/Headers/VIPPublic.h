@@ -92,7 +92,7 @@ typedef NS_ENUM(NSInteger,IURearEndorsement)
 - (CGFloat) brightness;
 
 // smart-scaled image?
-//- (BOOL) isSmartScaled;
+- (BOOL) isSmartScaled;
 
 // rear endorsement value
 - (IURearEndorsement) iuRearEndorsement;

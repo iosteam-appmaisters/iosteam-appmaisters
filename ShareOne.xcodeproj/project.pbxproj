@@ -164,8 +164,8 @@
 		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
 		9AEB7DF81F5EEEB30027DA65 /* YALContextMenuTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF41F5EEEB30027DA65 /* YALContextMenuTableView.m */; };
 		EA39540924764BF9009EAA4B /* WKWebViewSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = EA39540824764BF9009EAA4B /* WKWebViewSingleton.m */; };
-		EA39541C24769FA5009EAA4B /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA39541A24769F7B009EAA4B /* VIPLibrary.framework */; };
-		EA39541D24769FA5009EAA4B /* VIPLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA39541A24769F7B009EAA4B /* VIPLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA65D3D224B33364008F932F /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA65D3D024B332F0008F932F /* VIPLibrary.framework */; };
+		EA65D3D324B33364008F932F /* VIPLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA65D3D024B332F0008F932F /* VIPLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */; };
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
@@ -188,7 +188,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EA39541D24769FA5009EAA4B /* VIPLibrary.framework in Embed Frameworks */,
+				EA65D3D324B33364008F932F /* VIPLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +493,7 @@
 		E246EEFEB46DDBE639849ABF /* Pods-ShareOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareOne/Pods-ShareOne.debug.xcconfig"; sourceTree = "<group>"; };
 		EA39540724764BF1009EAA4B /* WKWebViewSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKWebViewSingleton.h; sourceTree = "<group>"; };
 		EA39540824764BF9009EAA4B /* WKWebViewSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewSingleton.m; sourceTree = "<group>"; };
-		EA39541A24769F7B009EAA4B /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VIPLibrary.framework; sourceTree = "<group>"; };
+		EA65D3D024B332F0008F932F /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VIPLibrary.framework; sourceTree = "<group>"; };
 		F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F2099FA41D9D3B4C00AAA8AC /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
 		F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
@@ -521,7 +521,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA39541C24769FA5009EAA4B /* VIPLibrary.framework in Frameworks */,
+				EA65D3D224B33364008F932F /* VIPLibrary.framework in Frameworks */,
 				F229DB721D9E7FEC00A705A5 /* Foundation.framework in Frameworks */,
 				F229DB701D9E7D8100A705A5 /* QuartzCore.framework in Frameworks */,
 				F229DB6E1D9E7D7B00A705A5 /* CoreMedia.framework in Frameworks */,
@@ -1279,7 +1279,7 @@
 				9AA049F4211B0464009BC70F /* ToastMessage.m */,
 				9AA049F5211B0464009BC70F /* UISchema.h */,
 				9AA049F6211B0464009BC70F /* UISchema.m */,
-				EA39541A24769F7B009EAA4B /* VIPLibrary.framework */,
+				EA65D3D024B332F0008F932F /* VIPLibrary.framework */,
 				9AA049F7211B0464009BC70F /* VertifiImageProcessing.h */,
 				9AA049F9211B0464009BC70F /* VIPNavigationController.h */,
 				9AA049FA211B0464009BC70F /* VIPNavigationController.m */,

@@ -28,6 +28,7 @@
     [ShareOneUtility showProgressViewOnView:self.view];
     [self updateWebLinks];
     
+    _webView.navigationDelegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appGoingToBackgroundFromWebLink) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 

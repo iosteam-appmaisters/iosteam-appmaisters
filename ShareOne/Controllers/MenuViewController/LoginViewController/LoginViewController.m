@@ -831,6 +831,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     objPasswordChangeController.loginDelegate=self;
     objPasswordChangeController.user=user;
     objPasswordChangeController.withEndURL = withEndUrl;
+    objPasswordChangeController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:objPasswordChangeController animated:YES completion:nil];
 
 }
@@ -919,7 +920,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     else {
         return;
     }
-    
+    objWeblinksController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:objWeblinksController animated:YES completion:nil];
 }
 
