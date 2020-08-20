@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
@@ -1787,10 +1787,15 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqV-As-XVc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
                                 <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bq6-eb-PGd" id="WtM-Bg-6D0"/>
-                                </connections>
                             </webView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uld-hj-xxB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJK-mF-eHS" customClass="CustomButton">
                                 <rect key="frame" x="0.0" y="513" width="159.5" height="40"/>
                                 <color key="backgroundColor" red="0.58884179592132568" green="0.059621315449476242" blue="0.10815258324146271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1815,7 +1820,9 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="kJK-mF-eHS" firstAttribute="top" secondItem="uld-hj-xxB" secondAttribute="bottom" id="3l7-H7-gBO"/>
                             <constraint firstAttribute="trailing" secondItem="JPL-8s-WWU" secondAttribute="trailing" constant="20" id="6lv-t4-VxD"/>
+                            <constraint firstItem="uld-hj-xxB" firstAttribute="leading" secondItem="miV-pv-6b2" secondAttribute="leading" id="9M4-U1-qP0"/>
                             <constraint firstAttribute="trailing" secondItem="oTP-Y2-ILB" secondAttribute="trailing" constant="20" id="G1q-R9-g07"/>
                             <constraint firstItem="EqV-As-XVc" firstAttribute="leading" secondItem="miV-pv-6b2" secondAttribute="leading" id="Hnb-AL-0XX"/>
                             <constraint firstItem="i3V-Zo-b6e" firstAttribute="width" secondItem="kJK-mF-eHS" secondAttribute="width" id="JiZ-1i-Qqc"/>
@@ -1840,10 +1847,15 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                             <constraint firstItem="EqV-As-XVc" firstAttribute="top" secondItem="b8Z-rG-FO7" secondAttribute="bottom" id="j1W-WF-bSn"/>
                             <constraint firstItem="A6R-RP-8fs" firstAttribute="top" secondItem="EqV-As-XVc" secondAttribute="bottom" id="k4R-cJ-hH5"/>
                             <constraint firstAttribute="trailing" secondItem="i3V-Zo-b6e" secondAttribute="trailing" id="k8h-ec-irB"/>
+                            <constraint firstItem="uld-hj-xxB" firstAttribute="top" secondItem="b8Z-rG-FO7" secondAttribute="bottom" id="ofj-f9-59H"/>
+                            <constraint firstAttribute="trailing" secondItem="uld-hj-xxB" secondAttribute="trailing" id="pe5-vr-vxv"/>
                             <constraint firstItem="kJK-mF-eHS" firstAttribute="top" secondItem="aCp-tg-mdN" secondAttribute="bottom" id="pu0-o9-8V3"/>
                             <constraint firstItem="kJK-mF-eHS" firstAttribute="leading" secondItem="miV-pv-6b2" secondAttribute="leading" id="uA0-KF-neU"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="EqV-As-XVc"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="UZ6-S0-3fq"/>
                                 <exclude reference="6lv-t4-VxD"/>
@@ -1866,12 +1878,12 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                         <outlet property="acceptBtn" destination="kJK-mF-eHS" id="GZ4-hL-CeD"/>
                         <outlet property="bottomAdsConstraint" destination="Sty-77-rwT" id="46a-wd-7Rp"/>
                         <outlet property="declineBtn" destination="i3V-Zo-b6e" id="LdT-IM-fo0"/>
-                        <outlet property="webView" destination="EqV-As-XVc" id="ISk-AG-jL7"/>
+                        <outlet property="webView" destination="uld-hj-xxB" id="a5P-TT-C4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peF-YC-ywn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="1775"/>
+            <point key="canvasLocation" x="-191.25" y="1774.6478873239437"/>
         </scene>
         <!--Image View Pop Up Controller-->
         <scene sceneID="dMh-s8-99X">

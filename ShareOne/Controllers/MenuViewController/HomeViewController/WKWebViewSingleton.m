@@ -20,7 +20,7 @@
         if (instance == nil)
         {
             instance = [[self alloc] init];
-            instance.webviewSingle = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+            instance.webviewSingle = [[WKWebView alloc] initWithFrame:CGRectMake(0, 80, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         }
     });
     
