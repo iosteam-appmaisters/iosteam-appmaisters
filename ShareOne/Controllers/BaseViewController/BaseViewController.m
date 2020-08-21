@@ -425,8 +425,8 @@
     if(isOpenInNewTab){
         
         if([webUrl containsString:@"http"]){
-            
-            NSURL *url = [NSURL URLWithString:webUrl];
+            NSString *trimUrl = [webUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
+            NSURL *url = [NSURL URLWithString:trimUrl];
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
             InAppBrowserController *objInAppBrowserController = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([InAppBrowserController class])];
             objInAppBrowserController.request=request;
