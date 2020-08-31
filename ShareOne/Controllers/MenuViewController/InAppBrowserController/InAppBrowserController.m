@@ -47,12 +47,14 @@
     self.title = [ShareOneUtility getNavBarTitle:@""];
     
     [[WKWebViewSingleton sharedInstance] webviewSingle].navigationDelegate = self ;
+    [[WKWebViewSingleton sharedInstance]webviewSingle].UIDelegate = self;
     [[self view] addSubview:[[WKWebViewSingleton sharedInstance] webviewSingle]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self sendAdvertismentViewToBack];
+  
 }
 
 -(void)loadRequestOnWebView{
@@ -66,19 +68,57 @@
     [request setTimeoutInterval:RESPONSE_TIME_OUT_WEB_VIEW];
     [[[WKWebViewSingleton sharedInstance] webviewSingle] loadRequest:request];
 
+
 }
 
 -(IBAction)backButtonPressed:(id)sender{
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+        
+    NSLog(@"didloadurl : %@",[[[navigationAction request] URL] absoluteString]);
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
+   
+}
+
+-(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
+
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+     
+    
+    
+    __weak InAppBrowserController *weakSelf = self;
+      [ShareOneUtility showProgressViewOnView :weakSelf.view];
+    
+}
+
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+   
+    
+    
     __weak InAppBrowserController *weakSelf = self;
 
        [ShareOneUtility hideProgressViewOnView:weakSelf.view];
+    
+    
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    
+  
     
     NSLog(@"didFailLoadWithError : %@",error);
     

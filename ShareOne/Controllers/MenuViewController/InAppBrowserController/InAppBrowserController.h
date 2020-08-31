@@ -12,7 +12,7 @@
 #import <WebKit/WebKit.h>
 
 
-@interface InAppBrowserController : BaseViewController<WKNavigationDelegate>
+@interface InAppBrowserController : BaseViewController<WKNavigationDelegate,WKUIDelegate>
 
 @property (nonatomic,strong) NSMutableURLRequest *request;
 @end
