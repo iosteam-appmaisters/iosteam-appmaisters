@@ -249,7 +249,7 @@
            NSURL *url = [NSURL URLWithString:navigationAction.request.URL.absoluteString];
            [[UIApplication sharedApplication] openURL:url];
        }
-       
+         webView.hidden = NO;
     if (shouldReload) {
         decisionHandler(WKNavigationActionPolicyAllow);
     }else {
