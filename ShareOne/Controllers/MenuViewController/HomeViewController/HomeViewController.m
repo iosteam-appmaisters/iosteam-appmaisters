@@ -39,6 +39,7 @@
     __block NSMutableURLRequest *request = nil;
     
     [[WKWebViewSingleton sharedInstance] webviewSingle].navigationDelegate = self ;
+    [[WKWebViewSingleton sharedInstance]webviewSingle].UIDelegate = self;
     [[self view] addSubview:[[WKWebViewSingleton sharedInstance] webviewSingle]];
     [[self view]addSubview: _printPDFButton];
     [[self view]addSubview:_backBtnForPDFs];
@@ -100,6 +101,7 @@
     if (![_lastUrl  isEqual: @""]) {
       
         [[WKWebViewSingleton sharedInstance] webviewSingle].navigationDelegate = self ;
+        [[WKWebViewSingleton sharedInstance]webviewSingle].UIDelegate = self;
            [[self view] addSubview:[[WKWebViewSingleton sharedInstance] webviewSingle]];
            [[self view]addSubview: _printPDFButton];
            [[self view]addSubview:_backBtnForPDFs];
@@ -256,6 +258,19 @@
         decisionHandler(WKNavigationActionPolicyCancel);
     }
 }
+
+-(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
+
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     
