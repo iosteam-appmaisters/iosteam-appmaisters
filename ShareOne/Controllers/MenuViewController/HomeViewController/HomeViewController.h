@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface HomeViewController : BaseViewController<WKNavigationDelegate>
+@interface HomeViewController : BaseViewController<WKNavigationDelegate,WKUIDelegate>
 
 @property (weak, nonatomic) IBOutlet WKWebView *webview;
 //@property (copy) WKWebView *webviewC;
