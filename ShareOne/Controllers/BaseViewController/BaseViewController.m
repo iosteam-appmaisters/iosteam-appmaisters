@@ -415,7 +415,8 @@
     
     NSString *contrlollerName = [dict valueForKey:CONTROLLER_NAME];
     NSString *webUrl = [dict valueForKey:WEB_URL];
-    
+    webUrl = [webUrl stringByTrimmingCharactersInSet:
+       [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *navigationTitle = [[dict valueForKey:SUB_CAT_CONTROLLER_TITLE] capitalizedString];
     BOOL isOpenInNewTab  = [[dict valueForKey:IS_OPEN_NEW_TAB] boolValue];
     NSString *webViewController = WEB_VIEWCONTROLLER_ID;
