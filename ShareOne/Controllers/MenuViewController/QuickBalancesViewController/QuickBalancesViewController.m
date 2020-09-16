@@ -31,7 +31,8 @@
     
     UIButton *btnCase = (UIButton *)sender;
     QBFooterView*    groupSectionHeaderView = (QBFooterView *)[self.qbTblView headerViewForSection:btnCase.tag];
-    [self.qbTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//    [self.qbTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    [self.qbTblView toggleSection:btnCase.tag];
 }
 
 

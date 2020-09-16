@@ -240,7 +240,8 @@
         
         [objFZAccordionTableViewHeaderView.transferBtn setTag:section];
         
-        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+//        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.gestureRecognizers.firstObject];
         [objFZAccordionTableViewHeaderView.transferBtn addTarget:self action:@selector(transferButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
         headerView = objFZAccordionTableViewHeaderView;
@@ -260,7 +261,8 @@
         image= [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [objFZAccordionTableViewHeaderView.deleteImageView setImage:image];
         
-        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+//        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+        [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.gestureRecognizers.firstObject];
         [objFZAccordionTableViewHeaderView.contactNameLbl setText:profileName];
         [objFZAccordionTableViewHeaderView.deleteButton setTitle:@"PAY" forState:UIControlStateNormal];
         
@@ -292,10 +294,12 @@
     ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
     
     if([self.favContactsTblView isSectionOpen:sectionSelected]){
-        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+        [self.favContactsTblView toggleSection:btnCase.tag];
     }
     else
-        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    [self.favContactsTblView toggleSection:btnCase.tag];
 }
 
 -(void)sendMoney:(id)sender{
@@ -318,7 +322,8 @@
 
     [self loadUrlWithName:name AndAmount:amount];
     
-    [self.favContactsTblView toggleSection:selectedIndex withHeaderView:groupSectionHeaderView];
+//    [self.favContactsTblView toggleSection:selectedIndex withHeaderView:groupSectionHeaderView];
+    [self.favContactsTblView toggleSection:selectedIndex];
 
     [_favContactsTblView reloadData];
 
@@ -330,10 +335,12 @@
     ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
     
     if([self.favContactsTblView isSectionOpen:sectionSelected]){
-        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+        [self.favContactsTblView toggleSection:btnCase.tag];
     }
     else
-        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    [self.favContactsTblView toggleSection:btnCase.tag];
 
 }
 -(void)editButtonAction:(id)sender{

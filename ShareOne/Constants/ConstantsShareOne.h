@@ -224,14 +224,6 @@
 #define CO_OP_GENERAL_ERROR_MSG     @"The Co-Op is not returning correct data."
 
 
-#define ONDOT_USER_NAME @"eglinCardControls"
-#define ONDOT_PASSWORD @"Ondot@1234$"
-#define ONDOT_SUBSCRIBERREFERENCEID @"9b257d4f-69f8-4391-99e9-f531b9d533e2"
-#define ONDOT_LANGUAGE @"us-en"
-#define ONDOT_FITOKEN @"845106541"
-#define ONDOT_APPTOKEN @"eglinCardControls"
-#define ONDOT_BASEURL_REGISTRATION @"https://apiassessment.ondotsystems.com:30010/fiserver/cbes/perform.do?"
-
 
 
 #endif

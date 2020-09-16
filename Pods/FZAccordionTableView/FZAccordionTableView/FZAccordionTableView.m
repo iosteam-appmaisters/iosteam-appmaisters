@@ -62,12 +62,7 @@
 }
 
 - (void)singleInit {
-
-    
-    _headerTapGesture =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedHeaderView:)];
-    
-    [self addGestureRecognizer:_headerTapGesture];
-//    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedHeaderView:)]];
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedHeaderView:)]];
 }
 
 - (void)touchedHeaderView:(UITapGestureRecognizer *)recognizer {

@@ -289,7 +289,8 @@
     [objFZAccordionTableViewHeaderView.editButton setTag:section];
     [objFZAccordionTableViewHeaderView.deleteButton setTag:section];
     
-    [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+//    [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.headerTapGesture];
+    [objFZAccordionTableViewHeaderView removeGestureRecognizer:objFZAccordionTableViewHeaderView.gestureRecognizers.firstObject];
     [objFZAccordionTableViewHeaderView.contactNameLbl setText:profileLink];
     
     
@@ -312,10 +313,12 @@
     ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
     
     if([self.favContactsTblView isSectionOpen:sectionSelected] && !_isFromDelete){
-        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+        [self.favContactsTblView toggleSection:btnCase.tag];
     }
     _isFromDelete = YES;
-    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    [self.favContactsTblView toggleSection:btnCase.tag];
 }
 
 -(void)editButtonAction:(id)sender{
@@ -327,10 +330,12 @@
     ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:sectionSelected];
     
     if([self.favContactsTblView isSectionOpen:sectionSelected] && _isFromDelete){
-        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+        [self.favContactsTblView toggleSection:btnCase.tag];
     }
     _isFromDelete = NO;
-    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+//    [self.favContactsTblView toggleSection:btnCase.tag withHeaderView:groupSectionHeaderView];
+    [self.favContactsTblView toggleSection:btnCase.tag];
 }
 
 -(void)deleteButtonYesAction:(id)sender{
@@ -342,7 +347,8 @@
     ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
     
     if([self.favContactsTblView isSectionOpen:buttonTag]){
-        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+        [self.favContactsTblView toggleSection:buttonTag];
     }
     
     [contactsArr removeObjectAtIndex:buttonTag];
@@ -364,7 +370,8 @@
     ContactsHeaderView*    groupSectionHeaderView = (ContactsHeaderView *)[self.favContactsTblView headerViewForSection:buttonTag];
     
     if([self.favContactsTblView isSectionOpen:buttonTag]){
-        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+//        [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+        [self.favContactsTblView toggleSection:buttonTag];
     }
 }
 
@@ -389,7 +396,8 @@
 
     _yConstriantTblView.constant=20;
     
-    [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+//    [self.favContactsTblView toggleSection:buttonTag withHeaderView:groupSectionHeaderView];
+    [self.favContactsTblView toggleSection:buttonTag];
 
     [_favContactsTblView reloadData];
 

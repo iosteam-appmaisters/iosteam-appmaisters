@@ -28,11 +28,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FZAccordionTableViewHeaderView : UITableViewHeaderFooterView{
- 
-}
-@property (nonatomic,strong)    UITapGestureRecognizer * _Nullable headerTapGesture;
-
+@interface FZAccordionTableViewHeaderView : UITableViewHeaderFooterView
 
 @end
 
@@ -50,9 +46,6 @@
         The default value is NO.
  */
 @property (nonatomic) BOOL allowMultipleSectionsOpen;
-
-@property (nonatomic) BOOL tapHeaderShouldNotWork;
-
 
 /*!
  @desc  If set to YES, one section will always be open.
@@ -109,10 +102,6 @@
  */
 - (NSInteger)sectionForHeaderView:(nonnull UITableViewHeaderFooterView *)headerView;
 
-- (void)toggleSection:(NSInteger)section withHeaderView:(nullable FZAccordionTableViewHeaderView *)sectionHeaderView ;
-
-
-
 @end
 
 /*!
@@ -122,7 +111,6 @@
 @protocol FZAccordionTableViewDelegate <NSObject>
 
 @optional
-
 
 /*!
  @desc  Implement to respond to which sections can be interacted with.
