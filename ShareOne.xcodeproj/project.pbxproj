@@ -166,6 +166,8 @@
 		EA39540924764BF9009EAA4B /* WKWebViewSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = EA39540824764BF9009EAA4B /* WKWebViewSingleton.m */; };
 		EA65D3D224B33364008F932F /* VIPLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA65D3D024B332F0008F932F /* VIPLibrary.framework */; };
 		EA65D3D324B33364008F932F /* VIPLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA65D3D024B332F0008F932F /* VIPLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EA74F00B251218470050874A /* OnDotServices.m in Sources */ = {isa = PBXBuildFile; fileRef = EA74F00A251218470050874A /* OnDotServices.m */; };
+		EA74F00E2512408E0050874A /* RegistrationValidUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EA74F00D2512408E0050874A /* RegistrationValidUser.m */; };
 		F2099F9A1D9D37D700AAA8AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */; };
 		F2099FA81D9D3B4C00AAA8AC /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */; };
 		F2099FA91D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2099FA71D9D3B4C00AAA8AC /* UIViewController+MJPopupViewController.m */; };
@@ -494,6 +496,10 @@
 		EA39540724764BF1009EAA4B /* WKWebViewSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WKWebViewSingleton.h; sourceTree = "<group>"; };
 		EA39540824764BF9009EAA4B /* WKWebViewSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewSingleton.m; sourceTree = "<group>"; };
 		EA65D3D024B332F0008F932F /* VIPLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VIPLibrary.framework; sourceTree = "<group>"; };
+		EA74F009251218470050874A /* OnDotServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnDotServices.h; sourceTree = "<group>"; };
+		EA74F00A251218470050874A /* OnDotServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnDotServices.m; sourceTree = "<group>"; };
+		EA74F00C2512408E0050874A /* RegistrationValidUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegistrationValidUser.h; sourceTree = "<group>"; };
+		EA74F00D2512408E0050874A /* RegistrationValidUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegistrationValidUser.m; sourceTree = "<group>"; };
 		F2099F991D9D37D700AAA8AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F2099FA41D9D3B4C00AAA8AC /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
 		F2099FA51D9D3B4C00AAA8AC /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
@@ -1017,6 +1023,7 @@
 		6BD405A61D81B5FC00358036 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				EA74F0052512165C0050874A /* OnDotServices */,
 				1D3C4D8F1E5D9BC10022AF61 /* ConfigurationPlistEntity */,
 				1DB9273C1DBE29A100C08F29 /* LoaderEntity */,
 				1DA3B5F71DB794EC00DB5731 /* Locations */,
@@ -1333,6 +1340,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EA74F0052512165C0050874A /* OnDotServices */ = {
+			isa = PBXGroup;
+			children = (
+				EA74F00F251240950050874A /* Registration_Valid_User */,
+				EA74F009251218470050874A /* OnDotServices.h */,
+				EA74F00A251218470050874A /* OnDotServices.m */,
+			);
+			path = OnDotServices;
+			sourceTree = "<group>";
+		};
+		EA74F00F251240950050874A /* Registration_Valid_User */ = {
+			isa = PBXGroup;
+			children = (
+				EA74F00D2512408E0050874A /* RegistrationValidUser.m */,
+				EA74F00C2512408E0050874A /* RegistrationValidUser.h */,
+			);
+			path = Registration_Valid_User;
+			sourceTree = "<group>";
+		};
 		F2099F921D9D36D700AAA8AC /* ImageZoomPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1598,6 +1624,7 @@
 				6BD405B61D829FAA00358036 /* BaseViewController.m in Sources */,
 				1D2399A01D913C8C00157320 /* ShareOneUtility.m in Sources */,
 				9AA04A28211B0464009BC70F /* RegistrationGetEUAOperation.m in Sources */,
+				EA74F00B251218470050874A /* OnDotServices.m in Sources */,
 				1DA8D2881F45E4F900FD14E1 /* ClientApplicationsObject.m in Sources */,
 				1D37D0931DDC418F0076F5B6 /* NSData+Base64.m in Sources */,
 				9AA04A2D211B0464009BC70F /* ResponseDictionary.m in Sources */,
@@ -1652,6 +1679,7 @@
 				1D8478E61D92949400153B19 /* QBHeaderCell.m in Sources */,
 				1D398FA11E07F66E00275E4E /* Hours.m in Sources */,
 				1D1415491DA4D3710048F8B1 /* SharedUser.m in Sources */,
+				EA74F00E2512408E0050874A /* RegistrationValidUser.m in Sources */,
 				9AA04A3E211B0464009BC70F /* VIPViewUtility.m in Sources */,
 				1D5F34381E2F4C2700026EF2 /* PaymentCell.m in Sources */,
 				1D0C98FF1DE81A58009B60F0 /* VertifiDepositObject.m in Sources */,

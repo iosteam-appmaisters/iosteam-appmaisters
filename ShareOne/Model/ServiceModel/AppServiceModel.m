@@ -573,6 +573,7 @@
 
 
 -(void)postRequestForVertifiWithParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response,BOOL succes))block failureBlock:(void(^)(NSError* error))failBlock{
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     if(progressMessage)
@@ -646,6 +647,8 @@
 //        }
 //    }] resume];
 }
+
+
 
 
 -(void)putRequestWithAuthHeader:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
@@ -761,7 +764,88 @@
 }
 
 
+-(void)putRequestWithAuthHeaderOnDot:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
+ 
+ 
+ NSLog(@"putRequestWithAuthHeader");
+ 
+ [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+ 
+ if(progressMessage)
+     [self showProgressWithMessage:progressMessage];
+ 
+ 
+AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+ 
+ AFJSONResponseSerializer *jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+ 
+ jsonResponseSerializer.acceptableContentTypes = [self getAcceptableContentTypesWithSerializer:jsonResponseSerializer];
+ 
+  manager.responseSerializer = jsonResponseSerializer;
+ 
+ NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:RequestType_POST URLString:urlString parameters:nil error:nil];
+ 
+ [req setTimeoutInterval:RESPONSE_TIME_OUT];
 
+ if(auth_header)
+ {
+     [self setHeaderOnRequest:req withAuth:auth_header];
+ }else {
+     [self setHeaderForOnDotApiOnRequest:req];
+ }
+ if(params){
+     NSError *error;
+     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+     [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+ }
+ [[manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+     
+ } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+     
+ } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+     if (!error) {
+         NSLog(@"Reply JSON: %@", responseObject);
+         
+
+         NSDictionary *responseDic = (NSDictionary *)responseObject;
+         NSError * err;
+         NSData * jsonData = [NSJSONSerialization dataWithJSONObject:responseDic options:0 error:&err];
+         NSString * myString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+         NSLog(@"JSON STRING => %@",myString);
+         
+         
+         if ([responseObject isKindOfClass:[NSDictionary class]]) {
+             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+             [self hideProgressAlert];
+             [self endSession:manager.session];
+             block(responseObject);
+         }
+     } else {
+         
+         //NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+         NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
+         //NSLog(@"Headers : %@",headers);
+         
+         NSString *errorString = [headers valueForKey:@"ApiResponse"];
+         
+         NSString *customError = [self parseErrorObject:errorString];
+         
+         if(!customError)
+             customError = [self getLocalizeErrorMessageForInternetConnection:error];
+         
+         if([req.URL.absoluteString containsString:KWEB_SERVICE_MEMBER_VALIDATE]){
+             [self endSession:manager.session];
+             block(nil);
+         }
+         
+         [self hideProgressAlert];
+         
+         [[UtilitiesHelper shareUtitlities]showToastWithMessage:customError title:@"" delegate:delegate];
+     }
+ }]resume];
+}
 
 -(void)getMethod:(NSString *)auth_header AndParam:(NSDictionary *)params progressMessage:(NSString*)progressMessage urlString:(NSString*)urlString delegate:(id)delegate completionBlock:(void(^)(NSObject *response))block failureBlock:(void(^)(NSError* error))failBlock{
     
@@ -1162,6 +1246,20 @@
 
 }
 
+-(void)setHeaderForOnDotApiOnRequest:(NSMutableURLRequest *)request {
+    
+    if([request isKindOfClass:[NSMutableURLRequest class]]){
+        
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:ONDOT_USER_NAME forHTTPHeaderField:@"userName"];
+        [request setValue:ONDOT_PASSWORD forHTTPHeaderField:@"password"];
+
+    }
+    else{
+
+    }
+
+}
 
 -(NSMutableSet *)getAcceptableContentTypesWithSerializer:(AFJSONResponseSerializer *)jsonResponseSerializer{
     

@@ -15,6 +15,7 @@
 #import "SuffixInfo.h"
 #import "User.h"
 #import "WKWebViewSingleton.h"
+#import "OnDotServices.h"
 
 
 #import "UIPrintPageRenderer+PrintToPDF.h"
@@ -93,6 +94,7 @@
     self.title = [ShareOneUtility getNavBarTitle:@""];
 
     self.title = [ShareOneUtility getNavBarTitle:@""];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

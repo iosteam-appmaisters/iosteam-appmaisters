@@ -28,6 +28,7 @@
 #import "UIColor+HexColor.h"
 #import "ClientSettingsObject.h"
 #import <UserNotifications/UserNotifications.h>
+#import "OnDotServices.h"
 
 #import "ContextMenuCell.h"
 #import "YALContextMenuTableView.h"
@@ -126,6 +127,23 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     if ([config.allownotifications boolValue]) {
         [self pushNotificationPermisionPopUp];
     }
+
+    NSMutableDictionary *OnDotparams = [[NSMutableDictionary alloc] init];
+    NSArray *registrationTokenList = [NSArray arrayWithObjects:@"4466654320001231",@"4466654320001232",@"4466654320001233", nil];
+     [OnDotparams setValue:@"FALSE" forKey:@"isEncrypted"];
+     [OnDotparams setValue:ONDOT_SUBSCRIBERREFERENCEID forKey:@"subscriberReferenceId"];
+     [OnDotparams setValue:registrationTokenList forKey:@"registrationTokenList"];
+     [OnDotparams setValue:@"TRUE" forKey:@"additionalRegistrationTokens"];
+     [OnDotparams setValue:@"FALSE" forKey:@"deleteRegistrationTokens"];
+     [OnDotparams setValue:ONDOT_LANGUAGE forKey:@"language"];
+     [OnDotparams setValue:ONDOT_FITOKEN forKey:@"fiToken"];
+     [OnDotparams setValue:ONDOT_APPTOKEN forKey:@"appToken"];
+    
+    [OnDotServices getRegisterToOnDot:OnDotparams delegate:self url:ONDOT_BASEURL_REGISTRATION AndLoadingMessage:nil completionBlock:^(NSObject *user, BOOL succes) {
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 }
 
 
