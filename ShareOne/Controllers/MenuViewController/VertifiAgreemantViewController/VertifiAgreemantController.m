@@ -101,8 +101,8 @@
 
 - (void)dealloc {
     
-    _webView.navigationDelegate = nil;
-    [_webView stopLoading];
+//    _webView.navigationDelegate = nil;
+//    [_webView stopLoading];
     
 }
 
