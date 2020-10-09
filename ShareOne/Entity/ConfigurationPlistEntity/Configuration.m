@@ -306,4 +306,17 @@
     return heading;
 }
 
++(double)getGlobleDisablity {
+      ClientSettingsObject *obj = [self getClientSettingsContent];
+    double valueDouble;
+    BOOL value = obj.disableadsglobally;
+    if (value) {
+        valueDouble = 120.0;
+    }else {
+        valueDouble = 0.0;
+    }
+    return valueDouble;
+}
+
+
 @end

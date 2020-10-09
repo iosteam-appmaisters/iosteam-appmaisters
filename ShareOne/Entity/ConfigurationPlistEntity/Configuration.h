@@ -91,6 +91,6 @@
 +(NSArray *)getClientApplications;
 +(NSString*)getMenuItemDisplayName:(NSString*)name;
 +(NSString*)getMenuItemHomeURL;
-
++(double)getGlobleDisablity;
 
 @end
