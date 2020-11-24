@@ -34,6 +34,10 @@
 
 @implementation PaymentSettingController
 
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self sendAdvertismentViewToBack];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
