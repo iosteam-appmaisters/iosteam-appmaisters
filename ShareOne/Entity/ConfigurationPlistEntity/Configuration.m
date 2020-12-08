@@ -311,7 +311,7 @@
     double valueDouble;
     BOOL value = obj.disableadsglobally;
     if (value) {
-        valueDouble = 100.0;
+        valueDouble = 140;
     }else {
         valueDouble = 0.0;
     }
