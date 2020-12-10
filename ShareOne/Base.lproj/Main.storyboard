@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +28,7 @@
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3G-wS-hLk">
                                 <rect key="frame" x="36" y="455" width="248" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" systemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YiZ-E7-l6C"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kw-fK-Fqv">
                                 <rect key="frame" x="36" y="485" width="248" height="21"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" systemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3gY-sz-I0D"/>
                                 </constraints>
@@ -201,14 +201,14 @@
                                                     <action selector="loginButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="7DC-z3-P8B"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htK-91-tSX" customClass="CustomButton">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htK-91-tSX" customClass="CustomButton">
                                                 <rect key="frame" x="26" y="50" width="113" height="18"/>
                                                 <state key="normal" title="Forgot Username or Password?"/>
                                                 <connections>
                                                     <action selector="forgotPasswordButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="6NN-uO-dfU"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dmc-6B-Ssh" customClass="PlainCustomButton">
                                                 <rect key="frame" x="173.5" y="50" width="52.5" height="18"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -216,7 +216,7 @@
                                                 </constraints>
                                                 <state key="normal" title="Remember Me"/>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-Rm-OI0" customClass="PlainCustomButton">
                                                 <rect key="frame" x="230" y="46.5" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="RNv-uO-EJb"/>
@@ -334,7 +334,7 @@
                                                     <action selector="fingerprintButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="CtH-Z6-9jo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-XY-Cad" customClass="PlainCustomButton">
+                                            <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHb-XY-Cad" customClass="PlainCustomButton">
                                                 <rect key="frame" x="20" y="8.5" width="114" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Forgot username ?"/>
@@ -345,7 +345,7 @@
                                                     <action selector="pinResetButtonClicked:" destination="Grc-iE-xzY" eventType="touchUpInside" id="7IH-iz-mqI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-ZN-8NF" customClass="PlainCustomButton">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-ZN-8NF" customClass="PlainCustomButton">
                                                 <rect key="frame" x="148" y="8.5" width="112" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Forgot password ?"/>
@@ -1579,7 +1579,7 @@ Tm90ZToQIA
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxw-YW-MyM" userLabel="DoneBtnView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEy-Cd-m9J">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEy-Cd-m9J">
                                                 <rect key="frame" x="263" y="0.0" width="37" height="30"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
@@ -1971,7 +1971,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <rect key="frame" x="-4" y="0.0" width="328" height="151"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSc-oN-4PI" customClass="CustomButton">
-                                <rect key="frame" x="125" y="30" width="176" height="27"/>
+                                <rect key="frame" x="126" y="30" width="175" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <state key="normal" title="SHOW ALL BRANCHES ON MAP" backgroundImage="show_button"/>
                                 <connections>
@@ -1979,7 +1979,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFS-ob-Psc">
-                                <rect key="frame" x="125" y="30" width="176" height="34"/>
+                                <rect key="frame" x="126" y="30" width="175" height="34"/>
                                 <connections>
                                     <action selector="showAllBranchesonMapButtonClicked:" destination="p2t-aQ-tQO" eventType="touchUpInside" id="htX-GF-ZCj"/>
                                 </connections>
@@ -2245,7 +2245,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="V5R-6b-yEJ">
                                         <rect key="frame" x="252.5" y="23" width="7.5" height="4"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dr-Ye-xxP" userLabel="AccountTxtFldBtn">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dr-Ye-xxP" userLabel="AccountTxtFldBtn">
                                         <rect key="frame" x="76" y="10" width="194" height="30"/>
                                         <connections>
                                             <action selector="accountButtonClicked:" destination="v0j-ZO-7qH" eventType="touchUpInside" id="bB6-pH-vvQ"/>
@@ -2432,7 +2432,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVj-bI-vzK" userLabel="DoneBtnView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-av-jII">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsN-av-jII">
                                                 <rect key="frame" x="263" y="0.0" width="37" height="30"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
@@ -2829,14 +2829,14 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <attributedString key="attributedText">
                                     <fragment content="Pay ">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="Arial-BoldMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="one of your favorites or pay someone else">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="ArialMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -2879,7 +2879,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kt3-UL-AMF" userLabel="AddNewFavButton" customClass="CustomButton">
-                                <rect key="frame" x="20" y="253" width="121.5" height="22"/>
+                                <rect key="frame" x="20" y="253" width="122" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="SbP-Zx-UUN"/>
                                 </constraints>
@@ -2889,7 +2889,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <action selector="goToAddFavouriteController:" destination="Ddh-0z-8eC" eventType="touchUpInside" id="HMG-xr-5rG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-da-VLa" customClass="CustomButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKI-da-VLa" customClass="CustomButton">
                                 <rect key="frame" x="112" y="538" width="188" height="30"/>
                                 <state key="normal" title="How does PayPal.me work?"/>
                                 <connections>
@@ -2916,7 +2916,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWo-Rc-iQX">
-                                                    <rect key="frame" x="216.5" y="7.5" width="83.5" height="23.5"/>
+                                                    <rect key="frame" x="216.5" y="7" width="83.5" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <state key="normal" image="paypal_btn"/>
                                                 </button>
@@ -3000,7 +3000,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0H-br-O7t">
-                                                    <rect key="frame" x="226.5" y="10.5" width="83.5" height="23.5"/>
+                                                    <rect key="frame" x="226.5" y="10" width="83.5" height="24"/>
                                                     <state key="normal" image="paypal_btn"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" verticalHuggingPriority="244" translatesAutoresizingMaskIntoConstraints="NO" id="2hf-S1-Ox1" userLabel="SeeraterView2">
@@ -3724,7 +3724,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BgY-lN-EuX" userLabel="DoneToolBar">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElB-Q6-Sgs">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElB-Q6-Sgs">
                                                 <rect key="frame" x="263" y="10" width="37" height="30"/>
                                                 <state key="normal" title="Done"/>
                                                 <connections>
@@ -4640,21 +4640,21 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <attributedString key="attributedText">
                                     <fragment content="You can add up to ">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="ArialMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="5 names">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="Arial-BoldMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" of people you regularly send money to">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="ArialMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -4665,28 +4665,28 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <attributedString key="attributedText">
                                         <fragment content="You can add up to ">
                                             <attributes>
-                                                <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                                 <font key="NSFont" size="20" name="ArialMT"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                         <fragment content="5 names">
                                             <attributes>
-                                                <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                                 <font key="NSFont" size="18" name="Arial-BoldMT"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                         <fragment content=" ">
                                             <attributes>
-                                                <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                                 <font key="NSFont" metaFont="system" size="17"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                         <fragment content="of people you regularly send money to">
                                             <attributes>
-                                                <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                                 <font key="NSFont" size="20" name="ArialMT"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -4699,21 +4699,21 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                 <attributedString key="attributedText">
                                     <fragment content="You have reached the ">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="ArialMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="maximum">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="Arial-BoldMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" number of favorites">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <color key="NSColor" systemColor="viewFlipsideBackgroundColor"/>
                                             <font key="NSFont" size="17" name="ArialMT"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -5001,7 +5001,7 @@ You agree that you will not use Mobile Deposit to deposit:</string>
                                     <outlet property="delegate" destination="DHz-AG-NAT" id="ZbA-X9-lB3"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyK-u9-qPo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyK-u9-qPo">
                                 <rect key="frame" x="112" y="538" width="188" height="30"/>
                                 <state key="normal" title="How does PayPal.me work?"/>
                                 <connections>
@@ -5838,5 +5838,26 @@ You agree that you will not use Mobile Deposit to deposit:</string>
         <image name="touch-thumb" width="147.33332824707031" height="177.33332824707031"/>
         <image name="touch-yes" width="150" height="36"/>
         <image name="up_arrow_white" width="11.666666984558105" height="9.6666669845581055"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
