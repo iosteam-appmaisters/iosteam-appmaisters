@@ -1,14 +1,6 @@
-//
-//  DeviceUtil.m
-//
-//  Created by Inder Kumar Rathore on 19/01/13.
-//  Copyright (c) 2013 Rathore. All rights reserved.
-//
-//  Hardware string can be found @http://www.everymac.com
-//
-
 #import "DeviceUtil.h"
 #include <sys/sysctl.h>
+#import <sys/utsname.h>
 
 /**
  * Hardware string of devices
@@ -109,16 +101,29 @@ NSString* const x86_64_Sim  = @"x86_64";
 
 
 @implementation DeviceUtil
-+ (NSString*)hardwareString {
-    int name[] = {CTL_HW,HW_MACHINE};
-    size_t size = 100;
-    sysctl(name, 2, NULL, &size, NULL, 0); // getting size of answer
-    char *hw_machine = malloc(size);
-    
-    sysctl(name, 2, hw_machine, &size, NULL, 0);
-    NSString *hardware = [NSString stringWithUTF8String:hw_machine];
-    free(hw_machine);
-    return hardware;
+//+ (NSString*)hardwareString {
+//    int name[] = {CTL_HW,HW_MACHINE};
+//    size_t size = 100;
+//    sysctl(name, 2, NULL, &size, NULL, 0); // getting size of answer
+//    char *hw_machine = malloc(size);
+//
+//    sysctl(name, 2, hw_machine, &size, NULL, 0);
+//    NSString *hardware = [NSString stringWithUTF8String:hw_machine];
+//    free(hw_machine);
+//    return hardware;
+//}
++ (NSString*) hardwareString
+{
+    struct utsname systemInfo;
+    uname(&systemInfo);
+
+    NSString *iOSDeviceModelsPath = [[NSBundle mainBundle] pathForResource:@"DevicePlist" ofType:@"plist"];
+    NSDictionary *iOSDevices = [NSDictionary dictionaryWithContentsOfFile:iOSDeviceModelsPath];
+
+    NSString* deviceModel = [NSString stringWithCString:systemInfo.machine
+                                               encoding:NSUTF8StringEncoding];
+
+    return [iOSDevices valueForKey:deviceModel];
 }
 
 /* This is another way of gtting the system info

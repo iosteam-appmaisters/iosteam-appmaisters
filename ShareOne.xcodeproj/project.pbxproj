@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F60EDD42592177E007E2603 /* DevicePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F60EDD32592177E007E2603 /* DevicePlist.plist */; };
 		1D0309A21DD2F070005953FA /* NSString+MD5String.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0309A11DD2F070005953FA /* NSString+MD5String.m */; };
 		1D0309A51DD30B1B005953FA /* VertifiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0309A41DD30B1B005953FA /* VertifiObject.m */; };
 		1D03DD351E28B46E0025D7D0 /* DeleteContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D03DD341E28B46E0025D7D0 /* DeleteContactCell.m */; };
@@ -196,6 +197,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F60EDD32592177E007E2603 /* DevicePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevicePlist.plist; sourceTree = "<group>"; };
 		1D0309A01DD2F070005953FA /* NSString+MD5String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5String.h"; sourceTree = "<group>"; };
 		1D0309A11DD2F070005953FA /* NSString+MD5String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5String.m"; sourceTree = "<group>"; };
 		1D0309A31DD30B1B005953FA /* VertifiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertifiObject.h; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 			isa = PBXGroup;
 			children = (
 				9A5A1CC0209B1E14009AC72E /* ShareOne.entitlements */,
+				0F60EDD32592177E007E2603 /* DevicePlist.plist */,
 				1D38993E1E5DA75500A27358 /* UIViews */,
 				1D3C4D871E5D8F230022AF61 /* Resources */,
 				1D20C1961E4E0F5E00D3FC93 /* ReuseableComponents */,
@@ -1459,6 +1462,7 @@
 				9AA04A1C211B0464009BC70F /* ErrorView.xib in Resources */,
 				9AA04A23211B0464009BC70F /* Launch Screen.storyboard in Resources */,
 				1D3C4D8D1E5D9AC60022AF61 /* ConfigurationSettings.plist in Resources */,
+				0F60EDD42592177E007E2603 /* DevicePlist.plist in Resources */,
 				9AA04A1A211B0464009BC70F /* InfoPlist.strings in Resources */,
 				1D3ED8541E2662FF00AE91C1 /* ContactsHeaderView.xib in Resources */,
 				9AA04A1B211B0464009BC70F /* EndorsementTestViewController.xib in Resources */,
