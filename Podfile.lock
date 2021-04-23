@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - ATAppUpdater (2.0)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
@@ -30,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - ATAppUpdater
   - Crashlytics
   - Fabric
   - FZAccordionTableView (~> 0.2)
@@ -42,6 +44,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - ATAppUpdater
     - Crashlytics
     - Fabric
     - FZAccordionTableView
@@ -53,6 +56,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  ATAppUpdater: a9f7027060959d47e58733d3b48f6b9a28cb8de1
   Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
   Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   FZAccordionTableView: e64f49c71c32d750feda14025b088bcd25d1a71f
@@ -62,6 +66,6 @@ SPEC CHECKSUMS:
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 2039c687e357cb5c3b7286228da280f2a90b4d3d
+PODFILE CHECKSUM: 1f8a474fd3055f41805420956b104980f1e52040
 
 COCOAPODS: 1.10.1

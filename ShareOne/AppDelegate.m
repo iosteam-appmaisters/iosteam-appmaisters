@@ -140,7 +140,7 @@
         [[self topViewController]dismissViewControllerAnimated:NO completion:^{
             
             [[UIApplication sharedApplication].keyWindow setRootViewController:splash];
-
+            
         }];
 
     }

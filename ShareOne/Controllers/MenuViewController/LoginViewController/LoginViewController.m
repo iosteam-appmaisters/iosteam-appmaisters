@@ -34,6 +34,8 @@
 #import "UtilitiesHelper.h"
 #import "DeviceUtil.h"
 #import "AppDelegate.h"
+#import "ATAppUpdater.h"
+
 
 static NSString *const menuCellIdentifier = @"rotationCell";
 
@@ -131,6 +133,16 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 }
 
 
+- (void)checkVersion {
+    ATAppUpdater *updater = [ATAppUpdater sharedUpdater];
+    [updater setAlertTitle:NSLocalizedString(@"Nuwe Weergawe", @"Alert Title")];
+    [updater setAlertMessage:NSLocalizedString(@"Weergawe %@ is beskikbaar op die AppStore.", @"Alert Message")];
+    [updater setAlertUpdateButtonTitle:@"Opgradeer"];
+    [updater setAlertCancelButtonTitle:@"Nie nou nie"];
+    //   [updater setDelegate:self]; // Optional
+    [updater showUpdateWithConfirmation];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
@@ -142,6 +154,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     _forgotPasswordBtn.titleLabel.numberOfLines = 1;
     _forgotPasswordBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     _forgotPasswordBtn.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    [self checkVersion];
     
 }
 
