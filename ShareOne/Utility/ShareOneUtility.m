@@ -471,13 +471,33 @@ static NSString *calculatedMacSessionKey = @"";
             NSLog(@"%@,%@",key,info[key]);
         }
     }*/
+    //Crashing App
+//    NSDictionary *notNullValuesDict = [self eliminateNullValuesFromDictionary:dict parentDictionaryKey:@"Suffixes"];
+//    [[NSUserDefaults standardUserDefaults] setValue:notNullValuesDict forKey:@"suffix_info"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     NSDictionary *notNullValuesDict = [self eliminateNullValuesFromDictionary:dict parentDictionaryKey:@"Suffixes"];
-    [[NSUserDefaults standardUserDefaults] setValue:notNullValuesDict forKey:@"suffix_info"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+       
+       NSMutableDictionary *mutableDictionary = [notNullValuesDict mutableCopy];
+       NSData *data = [NSJSONSerialization dataWithJSONObject:notNullValuesDict options:NSJSONWritingPrettyPrinted error:nil];
+       NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+       NSLog(@"JSON String %@ ",jsonString);
+
+       
+       NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+       [userDefaults setValue:jsonString forKey:@"suffix_info"];
+       [[NSUserDefaults standardUserDefaults] synchronize];
+       
 }
 
 +(NSDictionary *)getSuffixInfo{
-    return (NSDictionary *) [[NSUserDefaults standardUserDefaults] valueForKey:@"suffix_info"];
+    NSString *jsonStr = (NSString *) [[NSUserDefaults standardUserDefaults] valueForKey:@"suffix_info"];
+    NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&error];
+    
+    return jsonDic;
+//    return (NSDictionary *) [[NSUserDefaults standardUserDefaults] valueForKey:@"suffix_info"];
 }
 
 +(void)savedDevicesInfo:(NSDictionary *)dict{

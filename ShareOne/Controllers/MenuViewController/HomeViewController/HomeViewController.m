@@ -397,7 +397,7 @@
 -(void)savePDFToDocumentsDirectory {
     
     UIPrintPageRenderer *render = [[UIPrintPageRenderer alloc] init];
-    [render addPrintFormatter:self.webview.viewPrintFormatter startingAtPageAtIndex:0];
+    [render addPrintFormatter:[[WKWebViewSingleton sharedInstance] webviewSingle].viewPrintFormatter startingAtPageAtIndex:0];
     
     //increase these values according to your requirement
     float topPadding = 10.0f;
