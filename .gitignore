@@ -1,0 +1,23 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vscode
+/.vagrant
+/certificates/*.pem
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+.phpunit.result.cache
+Pods
+
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+/public/backend/images/

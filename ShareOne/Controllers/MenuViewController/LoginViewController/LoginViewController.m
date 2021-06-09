@@ -92,6 +92,10 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     [super viewWillAppear:animated];
     
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+    NSLog(@"askAutoLoginOnEnteringBackGround");
+    [self updateDataByDefaultValues];
+    
     
     [self loadLocalCacheOnView];
     _storyboardControllers = @[@"LoginViewController" , @"QuickBalancesViewController",@"SplashViewController" ,@"HomeNavigationController",@"WebViewController",@"settings",@"LeftMenuViewController",@"mobileDeposit",@"ImageViewPopUpController",@"VertifiAgreemantController",@"branchLocations",@"depositedChecksList",@"NotifSettingsController",@"ImageViewPopUpController",@"p2psettings",@"GetDirectionViewController",@"surchargeFreeAtms",@"PasswordChangeController",@"PinResetController",@"TouchIDSettingsController",@"FaceIDSettingsController",@"payments",@"UserNamecontroller",@"WeblinksController",@"InAppBrowserController",@"DepositTutorialController"];
