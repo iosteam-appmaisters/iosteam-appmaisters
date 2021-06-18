@@ -13,7 +13,9 @@
 #import "ShareOneUtility.h"
 #import "CustomButton.h"
 
-
+@protocol LogoutDelegate <NSObject>   //define delegate protocol
+- (void) userDidLogout; //define delegate method to be implemented within another class
+@end
 
 @class HomeViewController;
 @interface BaseViewController : UIViewController<HomeNavigationDelegate>{
@@ -21,7 +23,7 @@
     UIViewController *currentController;
 
 }
-
+@property (nonatomic, weak) id <LogoutDelegate> myDelegate;
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint *bottomAdsConstraint;
 @property (nonatomic,assign) BOOL hideSideMenu ;
 

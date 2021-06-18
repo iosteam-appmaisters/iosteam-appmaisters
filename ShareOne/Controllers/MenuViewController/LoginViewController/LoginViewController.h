@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "PinResetController.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<LogoutDelegate>
 
 
 //@property(nonatomic,strong)UINavigationController* homeNavigationViewController;

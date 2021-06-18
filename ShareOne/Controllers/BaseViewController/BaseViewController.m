@@ -483,6 +483,7 @@
                 self->currentController = objHomeViewController;
                 objHomeViewController.url = [NSString stringWithFormat:@"%@/%@",[Configuration getSSOBaseUrl],@"/log/out"];
                 controller = objHomeViewController;
+                [_myDelegate userDidLogout];
                 
                 self.navigationController.viewControllers = [NSArray arrayWithObjects:[self getLoginViewForRootView],controller, nil];
                 

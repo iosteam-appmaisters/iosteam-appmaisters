@@ -91,10 +91,10 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
-    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
-    NSLog(@"askAutoLoginOnEnteringBackGround");
-    [self updateDataByDefaultValues];
+//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:FALSE];
+//    [[SharedUser sharedManager] setSkipTouchIDForJustLogOut:FALSE];
+//    NSLog(@"askAutoLoginOnEnteringBackGround");
+//    [self updateDataByDefaultValues];
     
     
     [self loadLocalCacheOnView];
@@ -135,6 +135,12 @@ static NSString *const menuCellIdentifier = @"rotationCell";
 
 
 }
+
+-(void) userDidLogout {
+    NSLog(@"Logout Called");
+    [self updateDataByDefaultValues];
+}
+
 
 
 - (void)checkVersion {
@@ -747,6 +753,7 @@ static NSString *const menuCellIdentifier = @"rotationCell";
     if(webUrl){
         HomeViewController *objHomeViewController =  [self.storyboard instantiateViewControllerWithIdentifier:webViewController];
         objHomeViewController.url= webUrl;
+        objHomeViewController.myDelegate = self;
         controllerToPush=objHomeViewController;
         [self checkVersionUpdate];
         
