@@ -159,7 +159,6 @@
 		9AA04A3C211B0464009BC70F /* VIPSample.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AA049FC211B0464009BC70F /* VIPSample.strings */; };
 		9AA04A3D211B0464009BC70F /* VIPSampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA049FE211B0464009BC70F /* VIPSampleAppDelegate.m */; };
 		9AA04A3E211B0464009BC70F /* VIPViewUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA04A00211B0464009BC70F /* VIPViewUtility.m */; };
-		9AB2428A215E127600D599E2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AB24289215E127600D599E2 /* Info.plist */; };
 		9AEB7DF51F5EEEB30027DA65 /* ContextMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */; };
 		9AEB7DF61F5EEEB30027DA65 /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */; };
 		9AEB7DF71F5EEEB30027DA65 /* UIView+YALConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEB7DF11F5EEEB30027DA65 /* UIView+YALConstraints.m */; };
@@ -482,7 +481,6 @@
 		9AA049FE211B0464009BC70F /* VIPSampleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPSampleAppDelegate.m; sourceTree = "<group>"; };
 		9AA049FF211B0464009BC70F /* VIPViewUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIPViewUtility.h; sourceTree = "<group>"; };
 		9AA04A00211B0464009BC70F /* VIPViewUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIPViewUtility.m; sourceTree = "<group>"; };
-		9AB24289215E127600D599E2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AEB7DEC1F5EEEB30027DA65 /* ContextMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextMenuCell.h; sourceTree = "<group>"; };
 		9AEB7DED1F5EEEB30027DA65 /* ContextMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextMenuCell.m; sourceTree = "<group>"; };
 		9AEB7DEE1F5EEEB30027DA65 /* ContextMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContextMenuCell.xib; sourceTree = "<group>"; };
@@ -1183,7 +1181,6 @@
 		9AA04992211B0464009BC70F /* Vertifi7.5 */ = {
 			isa = PBXGroup;
 			children = (
-				9AB24289215E127600D599E2 /* Info.plist */,
 				9AA04993211B0464009BC70F /* AccountsViewController.h */,
 				9AA04994211B0464009BC70F /* AccountsViewController.m */,
 				9AA04995211B0464009BC70F /* AccountsViewController.xib */,
@@ -1472,7 +1469,6 @@
 				9AA04A15211B0464009BC70F /* DepositReportViewController.xib in Resources */,
 				9AA04A02211B0464009BC70F /* AccountsViewController.xib in Resources */,
 				6BD405951D81B59300358036 /* Main.storyboard in Resources */,
-				9AB2428A215E127600D599E2 /* Info.plist in Resources */,
 				1D5441361E51834F00C07072 /* Assets.xcassets in Resources */,
 				9AA04A0A211B0464009BC70F /* CameraViewController.xib in Resources */,
 				9AA04A06211B0464009BC70F /* CameraInstructionViewController.xib in Resources */,
